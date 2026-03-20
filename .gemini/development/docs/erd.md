@@ -9,11 +9,9 @@ erDiagram
     CONTACT ||--o{ LEAD : "converts_from"
     CONTACT ||--o{ OPPORTUNITY : "owns"
     CONTACT ||--o{ ASSET : "owns"
-    CONTACT ||--o{ TASK : "assigned_to"
     CONTACT ||--o{ MESSAGE : "receives/sends"
     
     LEAD ||--o{ OPPORTUNITY : "converts_to"
-    LEAD }o--|| CAMPAIGN : "belongs_to"
     LEAD }o--|| PRODUCT : "interested_in"
     LEAD }o--|| VEHICLE_SPECIFICATION : "interested_brand"
     LEAD }o--|| MODEL : "interested_model"
@@ -35,10 +33,6 @@ erDiagram
     VEHICLE_SPECIFICATION ||--o{ VEHICLE_SPECIFICATION : "parent (Brand -> Model)"
     MODEL }o--|| VEHICLE_SPECIFICATION : "brand"
     
-    TASK }o--|| CONTACT : "related_to"
-    TASK }o--|| OPPORTUNITY : "related_to"
-    TASK }o--|| MESSAGE : "triggered_by"
-    
     MESSAGE }o--|| CONTACT : "sent_to"
     MESSAGE }o--|| MESSAGE_TEMPLATE : "uses"
 
@@ -57,7 +51,6 @@ erDiagram
         string status
         boolean is_converted
         string converted_contact_id FK
-        string campaign_id FK
     }
 
     OPPORTUNITY {

@@ -39,13 +39,6 @@
                     <option value="{{ contact.id }}" {% if val == contact.id %}selected{% endif %}>{{ contact.first_name }} {{ contact.last_name }}</option>
                     {% endfor %}
                 </select>
-                {% elif field == 'campaign_id' %}
-                <select name="campaign_id" class="btn" style="text-align: left;">
-                    <option value="">-- Select Campaign --</option>
-                    {% for cmp in campaigns %}
-                    <option value="{{ cmp.id }}" {% if val == cmp.id %}selected{% endif %}>{{ cmp.name }}</option>
-                    {% endfor %}
-                </select>
                 {% elif field == 'brand_id' %}
                 <select name="brand_id" class="btn" style="text-align: left;">
                     <option value="">-- Select Brand --</option>

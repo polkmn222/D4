@@ -177,23 +177,6 @@
         "updated_at": "Timestamp when record was last updated.",
         "deleted_at": "Soft delete timestamp."
       }
-    },
-    "tasks": {
-      "description": "Activity tasks linked to opportunities or contacts.",
-      "columns": {
-        "id": "Unique identifier (18 chars).",
-        "opportunity": "Lookup to opportunities table.",
-        "contact": "Lookup to contacts table.",
-        "subject": "Task subject.",
-        "status": "Current status (Not Started, In Progress, Completed).",
-        "priority": "Task priority (Normal, High, Low).",
-        "description": "Detailed task notes.",
-        "due_date": "Task deadline.",
-        "message": "Lookup to message_sends table.",
-        "created_at": "Timestamp when record was created.",
-        "updated_at": "Timestamp when record was last updated.",
-        "deleted_at": "Soft delete timestamp."
-      }
     }
   }
 }

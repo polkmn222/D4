@@ -6,7 +6,7 @@ from db.database import Base
 # Import all models to ensure test coverage
 from db.models import (
     Contact, Lead, Opportunity, Asset, Product, Model, VehicleSpecification,
-    MessageSend, MessageTemplate, Task, Attachment
+    MessageSend, MessageTemplate, Attachment
 )
 
 # Import services if necessary, or we can test the base mechanism directly
@@ -21,7 +21,7 @@ from backend.app.services.message_service import MessageService
 from backend.app.services.message_template_service import MessageTemplateService
 
 # Setup test database
-SQLALCHEMY_DATABASE_URL = "sqlite:///./test_deletion.db"
+SQLALCHEMY_DATABASE_URL = "sqlite:///./.gemini/development/test/databases/test_deletion.db"
 engine = create_engine(SQLALCHEMY_DATABASE_URL, connect_args={"check_same_thread": False})
 TestingSessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 
@@ -101,16 +101,4 @@ def test_messaging_soft_delete(db):
     assert template.deleted_at is not None
     assert msg.deleted_at is not None
 
-def test_task_soft_delete(db):
-    # Testing BaseService directly if no TaskService exists
-    from backend.app.services.base_service import BaseService
-    
-    class TaskService(BaseService[Task]):
-        model = Task
-        object_name = "Task"
-        
-    task_obj = TaskService.create(db, subject="Follow Up Tasks")
-    TaskService.delete(db, task_obj.id)
-    
-    db.refresh(task_obj)
-    assert task_obj.deleted_at is not None
+

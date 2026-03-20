@@ -50,12 +50,11 @@
                     
                     {% set val = initial_values[field] | format_value if initial_values else '' %}
                     
-                    {% if field in ['contact', 'campaign', 'brand', 'model', 'parent', 'product', 'asset', 'opportunity', 'message', 'template'] %}
+                    {% if field in ['contact', 'brand', 'model', 'parent', 'product', 'asset', 'opportunity', 'message', 'template'] %}
                         <div id="lookup-container-{{ field }}"></div>
                         <script>
                             (function() {
                                 let objType = 'Contact';
-                                if ('{{ field }}' === 'campaign') objType = 'Campaign';
                                 if ('{{ field }}' === 'brand' || '{{ field }}' === 'parent') objType = 'Brand';
                                 if ('{{ field }}' === 'model') objType = 'Model';
                                 if ('{{ field }}' === 'product') objType = 'Product';

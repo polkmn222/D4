@@ -154,16 +154,4 @@ class Attachment(BaseModel):
     parent_type = Column(String, nullable=True)   # e.g., 'MessageTemplate'
     provider_key = Column(String, nullable=True)   # SUREM imageKey
 
-class Task(BaseModel):
-    __tablename__ = "tasks"
 
-    id = Column(String(18), primary_key=True, index=True)
-    # account = Column(String(18), ForeignKey("accounts.id"), nullable=True)
-    opportunity = Column(String(18), ForeignKey("opportunities.id"), nullable=True)
-    contact = Column(String(18), ForeignKey("contacts.id"), nullable=True)
-    subject = Column(String, nullable=True)
-    status = Column(String, default="Not Started")
-    priority = Column(String, default="Normal")
-    description = Column(Text, nullable=True)
-    due_date = Column(DateTime, nullable=True)
-    message = Column(String(18), ForeignKey("message_sends.id"), nullable=True)
