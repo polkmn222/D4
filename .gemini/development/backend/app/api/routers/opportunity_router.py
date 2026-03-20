@@ -165,7 +165,7 @@ async def delete_opportunity(request: Request, opp_id: str, db: Session = Depend
         return RedirectResponse(url=f"/opportunities?error=Error+deleting+opportunity:+{str(e).replace(' ', '+')}", status_code=303)
 
 
-@router.post("/opportunities/{opp_id}/stage")
+@router.post("/{opp_id}/stage")
 async def update_opportunity_stage_endpoint(opp_id: str, stage: str = Form(...), db: Session = Depends(get_db)):
     try:
         OpportunityService.update_stage(db, opp_id, stage)
@@ -174,7 +174,7 @@ async def update_opportunity_stage_endpoint(opp_id: str, stage: str = Form(...),
         logger.error(f"Update Opportunity Stage error: {e}")
         return RedirectResponse(url=f"/opportunities/{opp_id}?error=Error+updating+stage:+{str(e).replace(' ', '+')}", status_code=303)
 
-@router.post("/opportunities/{opp_id}/restore")
+@router.post("/{opp_id}/restore")
 async def restore_opportunity_endpoint(opp_id: str, db: Session = Depends(get_db)):
     try:
         OpportunityService.restore_opportunity(db, opp_id)
@@ -183,7 +183,7 @@ async def restore_opportunity_endpoint(opp_id: str, db: Session = Depends(get_db
         logger.error(f"Restore Opportunity error: {e}")
         return RedirectResponse(url=f"/opportunities?error=Error+restoring+opportunity:+{str(e).replace(' ', '+')}", status_code=303)
 
-@router.post("/opportunities")
+@router.post("/")
 async def create_opportunity(
     contact: Optional[str] = Form(None),
     asset: Optional[str] = Form(None),

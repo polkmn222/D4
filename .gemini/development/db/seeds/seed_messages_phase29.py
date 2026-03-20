@@ -1,6 +1,6 @@
 from sqlalchemy.orm import Session
-from backend.app.database import SessionLocal
-from backend.app.models import MessageSend, Contact, MessageTemplate
+from db.database import SessionLocal
+from db.models import MessageSend, Contact, MessageTemplate
 from backend.app.utils.sf_id import get_id
 import random
 

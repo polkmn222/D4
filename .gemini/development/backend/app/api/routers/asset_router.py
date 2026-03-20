@@ -30,7 +30,7 @@ async def new_asset_form(request: Request, contact_id: str = None, db: Session =
         "contact_id": contact_id
     })
 
-@router.get("/assets/{asset_id}", response_class=HTMLResponse)
+@router.get("/{asset_id}", response_class=HTMLResponse)
 @handle_agent_errors
 async def asset_detail(request: Request, asset_id: str, db: Session = Depends(get_db)):
     if not is_feature_enabled("assets"):
@@ -99,7 +99,7 @@ async def list_assets(request: Request, db: Session = Depends(get_db)):
         logger.error(f"Error listing assets: {e}")
         return RedirectResponse(url="/?error=Error+loading+assets")
 
-@router.post("/assets/{asset_id}")
+@router.post("/{asset_id}")
 async def update_asset_endpoint(
     asset_id: str,
     name: Optional[str] = Form(None),
@@ -122,7 +122,7 @@ async def update_asset_endpoint(
         logger.error(f"Error updating asset: {e}")
         return RedirectResponse(url=f"/assets/{asset_id}?error=Error+updating+record:+{str(e).replace(' ', '+')}", status_code=303)
 
-@router.post("/assets/{asset_id}/delete")
+@router.post("/{asset_id}/delete")
 async def delete_asset(request: Request, asset_id: str, db: Session = Depends(get_db)):
     try:
         AssetService.delete_asset(db, asset_id)
@@ -133,7 +133,7 @@ async def delete_asset(request: Request, asset_id: str, db: Session = Depends(ge
         logger.error(f"Delete Asset error: {e}")
         return RedirectResponse(url=f"/assets?error=Error+deleting+asset:+{str(e).replace(' ', '+')}", status_code=303)
 
-@router.post("/assets")
+@router.post("/")
 async def create_asset_endpoint(
     name: Optional[str] = Form(None),
     contact: Optional[str] = Form(None),

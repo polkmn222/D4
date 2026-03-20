@@ -1,6 +1,6 @@
 from fastapi.testclient import TestClient
 from backend.app.main import app
-from backend.app.database import engine, Base
+from db.database import engine, Base
 
 def test_dashboard_route():
     # Ensure tables are created for the test context

@@ -2,9 +2,9 @@ import os
 
 def test_template_sorting_hooks():
     templates_to_check = [
-        "/Users/sangyeol.park@gruve.ai/Documents/D4/.gemini/skills/frontend/templates/dashboard/dashboard.html",
-        "/Users/sangyeol.park@gruve.ai/Documents/D4/.gemini/skills/frontend/templates/dashboard/dashboard_ai_recommend_fragment.html",
-        "/Users/sangyeol.park@gruve.ai/Documents/D4/.gemini/skills/frontend/templates/send_message.html"
+        "/Users/sangyeol.park@gruve.ai/Documents/D4/.gemini/development/frontend/templates/dashboard/dashboard.html",
+        "/Users/sangyeol.park@gruve.ai/Documents/D4/.gemini/development/frontend/templates/dashboard/dashboard_ai_recommend_fragment.html",
+        "/Users/sangyeol.park@gruve.ai/Documents/D4/.gemini/development/frontend/templates/send_message.html"
     ]
     
     missing_hooks = []

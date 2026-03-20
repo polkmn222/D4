@@ -1,10 +1,10 @@
 import pytest
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
-from backend.app.database import Base
+from db.database import Base
 from backend.app.services.lead_service import LeadService
 from backend.app.services.opportunity_service import OpportunityService
-from backend.app.models import Lead, Opportunity
+from db.models import Lead, Opportunity
 
 # Use a separate test database file
 SQLALCHEMY_DATABASE_URL = "sqlite:///./test_phase16.db"

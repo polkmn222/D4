@@ -1,8 +1,8 @@
 import pytest
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
-from backend.app.database import Base
-from backend.app.models import Contact, Lead, Opportunity
+from db.database import Base
+from db.models import Contact, Lead, Opportunity
 from backend.app.services.lead_service import LeadService
 from backend.app.services.contact_service import ContactService
 from backend.app.utils.sf_id import get_id

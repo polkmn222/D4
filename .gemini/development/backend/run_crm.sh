@@ -15,11 +15,20 @@ if [ ! -z "$PID" ]; then
 fi
 
 # Start uvicorn from the project root
-PROJECT_ROOT=$(cd "$(dirname "$0")/.." && pwd)
+# Resolve the directory where this script is actually located
+SOURCE="${BASH_SOURCE[0]}"
+while [ -h "$SOURCE" ]; do # resolve $SOURCE until the file is no longer a symlink
+  DIR="$( cd -P "$( dirname "$SOURCE" )" && pwd )"
+  SOURCE="$(readlink "$SOURCE")"
+  [[ $SOURCE != /* ]] && SOURCE="$DIR/$SOURCE" # if $SOURCE was a relative symlink, we need to resolve it relative to the path where the symlink file was located
+done
+SCRIPT_DIR="$( cd -P "$( dirname "$SOURCE" )" && pwd )"
+PROJECT_ROOT=$(cd "$SCRIPT_DIR/.." && pwd)
+
 cd "$PROJECT_ROOT"
 export PYTHONPATH=.:../skills:$PYTHONPATH
 
-uvicorn backend.app.main:app --host 127.0.0.1 --port $PORT > crm.log 2>&1 &
+uvicorn backend.app.main:app --host 0.0.0.0 --port $PORT > crm.log 2>&1 &
 SERVER_PID=$!
 
 # 3. Wait for startup

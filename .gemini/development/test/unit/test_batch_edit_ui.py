@@ -2,8 +2,8 @@ import os
 import re
 import pytest
 
-# In the current environment, the project is under .gemini/skills/
-BASE_DIR = "/Users/sangyeol.park@gruve.ai/Documents/D4/.gemini/skills"
+# In the current environment, the project is under .gemini/development/
+BASE_DIR = "/Users/sangyeol.park@gruve.ai/Documents/D4/.gemini/development"
 TEMPLATE_DIR = os.path.join(BASE_DIR, "frontend/templates")
 
 DETAIL_FILES = [

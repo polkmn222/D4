@@ -6,7 +6,7 @@ from sqlalchemy.orm import sessionmaker
 from unittest.mock import patch, MagicMock, AsyncMock
 
 from db.database import Base
-from ai_agent.backend.service import AskAgentService
+from ai_agent.backend.service import AiAgentService as AiAgentService
 from db.models import Lead, Contact, Opportunity, VehicleSpecification, Model, Product, Asset, Task, MessageTemplate, MessageSend
 
 # Setup Test Database
@@ -36,7 +36,7 @@ async def test_phase1_metadata():
         assert "contacts" in data["tables"]
 
 @pytest.mark.asyncio
-@patch("ai_agent.backend.service.AskAgentService._call_llm")
+@patch("ai_agent.backend.service.AiAgentService._call_llm")
 async def test_phase2_lead_crud(mock_llm, db):
     """Test Lead CRUD via AI Agent."""
     # Test Create
@@ -46,7 +46,7 @@ async def test_phase2_lead_crud(mock_llm, db):
         "data": {"first_name": "John", "last_name": "Wick", "phone": "010-1234-5678"}, 
         "object_type": "lead"
     })
-    res = await AskAgentService.process_query(db, "Create a lead for John Wick")
+    res = await AiAgentService.process_query(db, "Create a lead for John Wick")
     assert res["intent"] == "CREATE"
     lead = db.query(Lead).filter(Lead.last_name == "Wick").first()
     assert lead is not None
@@ -59,12 +59,12 @@ async def test_phase2_lead_crud(mock_llm, db):
         "sql": "SELECT * FROM leads WHERE last_name = 'Wick' AND deleted_at IS NULL", 
         "object_type": "lead"
     })
-    res = await AskAgentService.process_query(db, "Find lead Wick")
+    res = await AiAgentService.process_query(db, "Find lead Wick")
     assert len(res["results"]) > 0
     assert res["results"][0]["last_name"] == "Wick"
 
 @pytest.mark.asyncio
-@patch("ai_agent.backend.service.AskAgentService._call_llm")
+@patch("ai_agent.backend.service.AiAgentService._call_llm")
 async def test_phase3_contact_crud(mock_llm, db):
     """Test Contact CRUD."""
     mock_llm.return_value = json.dumps({
@@ -72,12 +72,12 @@ async def test_phase3_contact_crud(mock_llm, db):
         "data": {"first_name": "Tony", "last_name": "Stark", "email": "tony@stark.com"}, 
         "object_type": "contact"
     })
-    await AskAgentService.process_query(db, "Create contact Tony Stark")
+    await AiAgentService.process_query(db, "Create contact Tony Stark")
     contact = db.query(Contact).filter(Contact.last_name == "Stark").first()
     assert contact is not None
 
 @pytest.mark.asyncio
-@patch("ai_agent.backend.service.AskAgentService._call_llm")
+@patch("ai_agent.backend.service.AiAgentService._call_llm")
 async def test_phase4_opportunity_crud(mock_llm, db):
     """Test Opportunity CRUD."""
     mock_llm.return_value = json.dumps({
@@ -85,12 +85,12 @@ async def test_phase4_opportunity_crud(mock_llm, db):
         "data": {"name": "Big Deal", "amount": 50000000}, 
         "object_type": "opportunity"
     })
-    await AskAgentService.process_query(db, "Create an opportunity Big Deal for 50M")
+    await AiAgentService.process_query(db, "Create an opportunity Big Deal for 50M")
     opp = db.query(Opportunity).filter(Opportunity.name == "Big Deal").first()
     assert opp is not None
 
 @pytest.mark.asyncio
-@patch("ai_agent.backend.service.AskAgentService._call_llm")
+@patch("ai_agent.backend.service.AiAgentService._call_llm")
 async def test_phase5_master_and_task(mock_llm, db):
     """Test Brands, Models, and Tasks."""
     # Test Brand
@@ -99,7 +99,7 @@ async def test_phase5_master_and_task(mock_llm, db):
         "data": {"name": "Tesla", "record_type": "Brand"}, 
         "object_type": "vehicle_specification"
     })
-    await AskAgentService.process_query(db, "Create brand Tesla")
+    await AiAgentService.process_query(db, "Create brand Tesla")
     brand = db.query(VehicleSpecification).filter(VehicleSpecification.name == "Tesla").first()
     assert brand is not None
 
@@ -109,12 +109,12 @@ async def test_phase5_master_and_task(mock_llm, db):
         "data": {"subject": "Follow up with Tesla"}, 
         "object_type": "task"
     })
-    await AskAgentService.process_query(db, "Remind me to follow up")
+    await AiAgentService.process_query(db, "Remind me to follow up")
     task = db.query(Task).filter(Task.subject == "Follow up with Tesla").first()
     assert task is not None
 
 @pytest.mark.asyncio
-@patch("ai_agent.backend.service.AskAgentService._call_llm")
+@patch("ai_agent.backend.service.AiAgentService._call_llm")
 async def test_phase6_chat_and_inventory(mock_llm, db):
     """Test CHAT intent and Product/Asset CRUD."""
     # Test Greeting (CHAT)
@@ -122,7 +122,7 @@ async def test_phase6_chat_and_inventory(mock_llm, db):
         "intent": "CHAT", 
         "text": "Hello! I am your AI Agent."
     })
-    res = await AskAgentService.process_query(db, "Hi")
+    res = await AiAgentService.process_query(db, "Hi")
     assert res["intent"] == "CHAT"
     assert "Hello" in res["text"]
 
@@ -132,12 +132,12 @@ async def test_phase6_chat_and_inventory(mock_llm, db):
         "data": {"name": "Battery Pack", "category": "Parts"}, 
         "object_type": "product"
     })
-    await AskAgentService.process_query(db, "Add product Battery Pack")
+    await AiAgentService.process_query(db, "Add product Battery Pack")
     prod = db.query(Product).filter(Product.name == "Battery Pack").first()
     assert prod is not None
 
 @pytest.mark.asyncio
-@patch("ai_agent.backend.service.AskAgentService._call_llm")
+@patch("ai_agent.backend.service.AiAgentService._call_llm")
 async def test_phase7_messaging_data(mock_llm, db):
     """Test Template and Message Log CRUD."""
     # Test Template
@@ -146,12 +146,12 @@ async def test_phase7_messaging_data(mock_llm, db):
         "data": {"name": "Template A", "content": "Hello World"}, 
         "object_type": "message_template"
     })
-    await AskAgentService.process_query(db, "Create template A")
+    await AiAgentService.process_query(db, "Create template A")
     temp = db.query(MessageTemplate).filter(MessageTemplate.name == "Template A").first()
     assert temp is not None
 
 @pytest.mark.asyncio
-@patch("ai_agent.backend.service.AskAgentService._call_llm")
+@patch("ai_agent.backend.service.AiAgentService._call_llm")
 @patch("backend.app.services.messaging_service.MessagingService.bulk_send")
 async def test_phase8_realtime_messaging(mock_bulk, mock_llm, db):
     """Test real-time message sending."""
@@ -161,12 +161,12 @@ async def test_phase8_realtime_messaging(mock_bulk, mock_llm, db):
         "text": "Sending...", 
         "data": {"contact_ids": ["003test"], "content": "Hi", "record_type": "SMS"}
     })
-    res = await AskAgentService.process_query(db, "Send message to 003test")
+    res = await AiAgentService.process_query(db, "Send message to 003test")
     assert res["intent"] == "MESSAGE"
     mock_bulk.assert_called_once()
 
 @pytest.mark.asyncio
-@patch("ai_agent.backend.service.AskAgentService._call_llm")
+@patch("ai_agent.backend.service.AiAgentService._call_llm")
 async def test_fuzzy_logic_and_fallback(mock_llm, db):
     """Test 'opp' abbreviation and out-of-scope fallback."""
     # Test 'opp' abbreviation
@@ -175,7 +175,7 @@ async def test_fuzzy_logic_and_fallback(mock_llm, db):
         "sql": "SELECT * FROM opportunities WHERE deleted_at IS NULL", 
         "object_type": "opportunity"
     })
-    res = await AskAgentService.process_query(db, "show me opps")
+    res = await AiAgentService.process_query(db, "show me opps")
     assert res["object_type"] == "opportunity"
 
     # Test Out of Scope
@@ -183,5 +183,5 @@ async def test_fuzzy_logic_and_fallback(mock_llm, db):
         "intent": "CHAT", 
         "text": "I’m afraid I can’t help with that specific request, but I can assist you with something else. Thank you."
     })
-    res = await AskAgentService.process_query(db, "Who is the president?")
+    res = await AiAgentService.process_query(db, "Who is the president?")
     assert "I’m afraid I can’t help" in res["text"]

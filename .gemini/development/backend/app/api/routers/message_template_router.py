@@ -13,7 +13,7 @@ router = APIRouter()
 logger = logging.getLogger(__name__)
 
 # --- MESSAGE TEMPLATES ---
-@router.get("/message_templates/new-modal")
+@router.get("/new-modal")
 async def new_template_modal_base(request: Request, id: str = None, db: Session = Depends(get_db)):
     try:
         return RedirectResponse(url=f"/message_templates/new?id={id}" if id else "/message_templates/new")
@@ -21,7 +21,7 @@ async def new_template_modal_base(request: Request, id: str = None, db: Session 
         logger.error(f"New template modal error: {e}")
         return RedirectResponse(url=f"/message_templates?error=Error+opening+modal:+{str(e).replace(' ', '+')}")
 
-@router.get("/message_templates")
+@router.get("/")
 async def list_templates(request: Request, db: Session = Depends(get_db)):
     try:
         templates_data = MessageTemplateService.get_templates(db)
@@ -44,7 +44,7 @@ async def list_templates(request: Request, db: Session = Depends(get_db)):
         logger.error(f"List templates error: {e}")
         return RedirectResponse(url=f"/?error=Error+loading+templates:+{str(e).replace(' ', '+')}")
 
-@router.get("/message_templates/{template_id}")
+@router.get("/{template_id}")
 async def template_detail(request: Request, template_id: str, db: Session = Depends(get_db)):
     try:
         t = MessageTemplateService.get_template(db, template_id)
@@ -73,7 +73,7 @@ async def template_detail(request: Request, template_id: str, db: Session = Depe
         logger.error(f"Error loading template detail: {e}")
         return RedirectResponse(url="/message_templates?error=An+unexpected+error+occurred.+Please+try+again")
 
-@router.post("/message_templates")
+@router.post("/")
 async def create_template_route(
     name: Optional[str] = Form(None),
     subject: Optional[str] = Form(None),
@@ -99,7 +99,7 @@ async def create_template_route(
         logger.error(f"Create Template error: {e}")
         return RedirectResponse(url=f"/message_templates?error=Error+creating+template:+{str(e).replace(' ', '+')}", status_code=303)
 
-@router.post("/message_templates/{template_id}")
+@router.post("/{template_id}")
 async def update_template_route(
     template_id: str,
     name: Optional[str] = Form(None),
@@ -126,7 +126,7 @@ async def update_template_route(
         logger.error(f"Update Template error: {e}")
         return RedirectResponse(url=f"/message_templates/{template_id}?error=Error+updating+template:+{str(e).replace(' ', '+')}", status_code=303)
 
-@router.post("/message_templates/{template_id}/delete")
+@router.post("/{template_id}/delete")
 async def delete_template_route(request: Request, template_id: str, db: Session = Depends(get_db)):
     try:
         MessageTemplateService.delete_template(db, template_id)
@@ -137,7 +137,7 @@ async def delete_template_route(request: Request, template_id: str, db: Session 
         logger.error(f"Delete Template error: {e}")
         return RedirectResponse(url=f"/message_templates?error=Error+deleting+template:+{str(e).replace(' ', '+')}", status_code=303)
 
-@router.post("/message_templates/{template_id}/upload")
+@router.post("/{template_id}/upload")
 async def template_upload(template_id: str, file: UploadFile = File(...), db: Session = Depends(get_db)):
     try:
         upload_dir = "app/static/uploads"
@@ -157,7 +157,7 @@ async def template_upload(template_id: str, file: UploadFile = File(...), db: Se
         logger.error(f"Error uploading file for template {template_id}: {e}")
         return JSONResponse(status_code=500, content={"status": "error", "message": str(e)})
 
-@router.post("/message_templates/{template_id}/clear-image")
+@router.post("/{template_id}/clear-image")
 async def clear_template_image(template_id: str, db: Session = Depends(get_db)):
     try:
         MessageTemplateService.update_image_url(db, template_id, image_url="")

@@ -29,7 +29,7 @@ api_router.include_router(contact_router.router, prefix="/contacts", tags=["Cont
 api_router.include_router(opportunity_router.router, prefix="/opportunities", tags=["Opportunities"])
 api_router.include_router(asset_router.router, prefix="/assets", tags=["Assets"])
 api_router.include_router(product_router.router, prefix="/products", tags=["Products"])
-api_router.include_router(vehicle_spec_router.router, prefix="/vehicle_specifications", tags=["Vehicle Specifications"])
+api_router.include_router(vehicle_spec_router.router, tags=["Vehicle Specifications"])
 
 api_router.include_router(message_router.router, prefix="/messages", tags=["Messages"])
 api_router.include_router(message_template_router.router, prefix="/message_templates", tags=["Message Templates"])

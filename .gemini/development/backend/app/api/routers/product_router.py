@@ -17,7 +17,7 @@ from backend.app.utils.error_handler import handle_agent_errors
 router = APIRouter()
 logger = logging.getLogger(__name__)
 
-@router.get("/products/{product_id}")
+@router.get("/{product_id}")
 @handle_agent_errors
 async def product_detail(request: Request, product_id: str, db: Session = Depends(get_db)):
     if not is_feature_enabled("products"):
@@ -50,7 +50,7 @@ async def product_detail(request: Request, product_id: str, db: Session = Depend
         logger.error(f"Error loading product detail: {e}")
         return RedirectResponse(url=f"/products?error=Error+loading+product+detail:+{str(e).replace(' ', '+')}")
 
-@router.get("/products", response_class=HTMLResponse)
+@router.get("/", response_class=HTMLResponse)
 @handle_agent_errors
 async def list_products(request: Request, db: Session = Depends(get_db)):
     if not is_feature_enabled("products"):
@@ -82,7 +82,7 @@ async def list_products(request: Request, db: Session = Depends(get_db)):
         logger.error(f"List products error: {e}")
         return RedirectResponse(url="/?error=Error+loading+products")
 
-@router.post("/products")
+@router.post("/")
 async def create_product(
     name: Optional[str] = Form(None),
     brand: Optional[str] = Form(None),
@@ -101,7 +101,7 @@ async def create_product(
         logger.error(f"Error creating product: {e}")
         return RedirectResponse(url=f"/products?error=Error+creating+product:+{str(e).replace(' ', '+')}", status_code=303)
 
-@router.post("/products/{product_id}")
+@router.post("/{product_id}")
 async def update_product(
     product_id: str,
     name: Optional[str] = Form(None),
@@ -121,7 +121,7 @@ async def update_product(
         logger.error(f"Error updating product: {e}")
         return RedirectResponse(url=f"/products/{product_id}?error=Error+updating+product:+{str(e).replace(' ', '+')}", status_code=303)
 
-@router.post("/products/{product_id}/delete")
+@router.post("/{product_id}/delete")
 async def delete_product(request: Request, product_id: str, db: Session = Depends(get_db)):
     try:
         ProductService.delete_product(db, product_id)

@@ -1,7 +1,7 @@
 import pytest
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
-from backend.app.database import Base
+from db.database import Base
 from backend.app.services.contact_service import ContactService
 
 # Use in-memory SQLite for tests

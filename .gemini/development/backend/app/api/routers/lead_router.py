@@ -172,7 +172,7 @@ async def convert_lead_modal(request: Request, lead_id: str, db: Session = Depen
     })
 
 
-@router.post("/leads/{lead_id}/convert")
+@router.post("/{lead_id}/convert")
 async def convert_lead(
     request: Request,
     lead_id: str, 
@@ -198,7 +198,7 @@ async def convert_lead(
         logger.error(f"Error converting lead: {str(e)}")
         return RedirectResponse(url=f"/leads/{lead_id}?error=Error+converting+lead:+{str(e).replace(' ', '+')}", status_code=303)
 
-@router.post("/leads/{lead_id}/stage")
+@router.post("/{lead_id}/stage")
 async def update_lead_stage_endpoint(lead_id: str, stage: str = Form(...), db: Session = Depends(get_db)):
     try:
         LeadService.update_stage(db, lead_id, stage)
@@ -207,12 +207,12 @@ async def update_lead_stage_endpoint(lead_id: str, stage: str = Form(...), db: S
         logger.error(f"Error updating lead stage: {e}")
         return {"status": "error", "message": str(e)}
 
-@router.post("/leads/{lead_id}/toggle-follow")
+@router.post("/{lead_id}/toggle-follow")
 async def toggle_lead_follow_endpoint(lead_id: str, enabled: bool = Form(...), db: Session = Depends(get_db)):
     LeadService.toggle_follow(db, lead_id, enabled)
     return {"status": "success", "followed": enabled}
 
-@router.post("/leads/{lead_id}/restore")
+@router.post("/{lead_id}/restore")
 async def restore_lead_endpoint(lead_id: str, db: Session = Depends(get_db)):
     LeadService.restore_lead(db, lead_id)
     return {"status": "success"}

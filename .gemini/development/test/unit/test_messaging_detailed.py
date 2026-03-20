@@ -2,9 +2,9 @@ import pytest
 from unittest.mock import patch, MagicMock
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
-from backend.app.database import Base
+from db.database import Base
 from backend.app.services.messaging_service import MessagingService
-from backend.app.models import Contact, MessageSend, Attachment
+from db.models import Contact, MessageSend, Attachment
 
 # Setup test database
 SQLALCHEMY_DATABASE_URL = "sqlite:///./test_messaging.db"
@@ -26,7 +26,7 @@ def db():
         Base.metadata.drop_all(bind=engine)
 
 def test_send_sms_success(db):
-    with patch("app.services.surem_service.SureMService.send_sms") as mock_send_sms:
+    with patch("backend.app.services.surem_service.SureMService.send_sms") as mock_send_sms:
         mock_send_sms.return_value = {"status": "success", "code": "A0000"}
         
         msg = MessagingService.send_message(db, contact_id="003000000000000001", content="Hello SMS", record_type="SMS")
@@ -36,7 +36,7 @@ def test_send_sms_success(db):
         mock_send_sms.assert_called_once_with(text="Hello SMS")
 
 def test_send_lms_success(db):
-    with patch("app.services.surem_service.SureMService.send_mms") as mock_send_mms:
+    with patch("backend.app.services.surem_service.SureMService.send_mms") as mock_send_mms:
         mock_send_mms.return_value = {"status": "success", "code": "A0000"}
         
         msg = MessagingService.send_message(db, contact_id="003000000000000001", content="Hello LMS", record_type="LMS")
@@ -51,7 +51,7 @@ def test_send_mms_success_with_attachment(db):
     db.add(att)
     db.commit()
     
-    with patch("app.services.surem_service.SureMService.send_mms") as mock_send_mms:
+    with patch("backend.app.services.surem_service.SureMService.send_mms") as mock_send_mms:
         mock_send_mms.return_value = {"status": "success", "code": "A0000"}
         
         msg = MessagingService.send_message(
@@ -67,7 +67,7 @@ def test_send_mms_success_with_attachment(db):
         mock_send_mms.assert_called_once_with(subject="GK CRM Message", text="Hello MMS", image_key="IMG_KEY_123")
 
 def test_send_message_failure(db):
-    with patch("app.services.surem_service.SureMService.send_sms") as mock_send_sms:
+    with patch("backend.app.services.surem_service.SureMService.send_sms") as mock_send_sms:
         mock_send_sms.return_value = {"status": "error", "code": "E9999", "message": "Failed"}
         
         with pytest.raises(ValueError, match="Failed to send message via SUREM broker"):

@@ -1,6 +1,6 @@
 import pytest
 from unittest.mock import patch, AsyncMock, MagicMock
-from backend.app.services.ai_service import AIService
+from ai_agent.backend.ai_service import AIService
 
 @pytest.mark.asyncio
 async def test_ai_summary_generation_mock():

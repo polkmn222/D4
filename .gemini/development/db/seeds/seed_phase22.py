@@ -7,8 +7,8 @@ from datetime import datetime, timedelta
 # Ensure we can import app modules
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-from backend.app.database import SessionLocal
-from backend.app.models import Lead, Contact, Opportunity, Asset, Product
+from db.database import SessionLocal
+from db.models import Lead, Contact, Opportunity, Asset, Product
 from backend.app.utils.sf_id import get_id
 from backend.app.utils.timezone import get_kst_now_naive
 

@@ -3,10 +3,15 @@ import json
 import httpx
 import logging
 import re
+import asyncio
 from sqlalchemy.orm import Session
 from sqlalchemy import text
 from typing import Dict, Any, List, Optional
 from dotenv import load_dotenv
+
+# SDK Imports for ensemble
+import openai
+import google.generativeai as genai
 
 # Import services from the main app
 from backend.app.services.lead_service import LeadService
@@ -23,6 +28,12 @@ logger = logging.getLogger(__name__)
 # API Keys from .env
 CEREBRAS_API_KEY = os.getenv("CELEBRACE_API_KEY")
 GROQ_API_KEY = os.getenv("GROQ_API_KEY")
+GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
+OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
+
+# Configure SDKs
+if GEMINI_API_KEY:
+    genai.configure(api_key=GEMINI_API_KEY)
 
 # Skills directory is 3 levels up from this file
 SKILLS_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
@@ -32,10 +43,19 @@ class AiAgentService:
     @staticmethod
     def _get_metadata() -> str:
         try:
-            with open(METADATA_PATH, "r") as f:
-                return json.dumps(json.load(f), indent=2)
+            # Check for multiple possible metadata paths due to reorganization
+            paths_to_check = [
+                METADATA_PATH,
+                os.path.join(os.getcwd(), "backend", "metadata.json"),
+                os.path.join(os.getcwd(), ".gemini", "development", "backend", "metadata.json")
+            ]
+            for p in paths_to_check:
+                if os.path.exists(p):
+                    with open(p, "r") as f:
+                        return json.dumps(json.load(f), indent=2)
+            return "{}"
         except Exception as e:
-            logger.error(f"Error loading metadata at {METADATA_PATH}: {str(e)}")
+            logger.error(f"Error loading metadata: {str(e)}")
             return "{}"
 
     @classmethod
@@ -51,57 +71,15 @@ class AiAgentService:
         OBJECTIVE:
         Operate all functions in D4 based on natural language or interactive requests.
         Only provide answers based on D4 information.
+        Support both English and Korean languages. If the user asks in Korean, respond in Korean.
         If the query is a greeting or ambiguous, use intent "CHAT" and respond helpfully.
-        Do NOT return JSON schemas or empty objects.
         
         INTERACTIVE FLOW:
         - When you receive "Manage [ObjectType] [RecordID]":
           1. Use intent "MANAGE".
-          2. Describe the record (if you have context, or just confirm selection).
+          2. Describe the record.
           3. List available fields using bracket format (e.g., "[First Name]", "[Status]").
           4. Ask for the next action.
-        - When the user selects a field:
-          1. Ask for the new value for that field (e.g., "What is the new [Status]?").
-        - When the user provides a value for a field:
-          1. Use intent "UPDATE".
-          2. Populate "data" with {{field_name: value}}.
-          3. If the user provides multiple fields, include them all in "data".
-        
-        PHASE 03 FOCUS: Contact Object CRUD
-        - CREATE: "Create a contact for [Name]"
-        - READ: "Search contacts"
-        - UPDATE: "Update contact [ID] [Field] to [Value]"
-        
-        PHASE 04 FOCUS: Opportunity Object CRUD
-        - CREATE: "Create an opportunity for [Contact ID] named [Name]"
-        - READ: "Find opportunities in [Stage] stage" or "Show me all opps"
-        - UPDATE: "Update opportunity [ID] stage to [Stage]"
-        - DELETE: "Delete opportunity [ID]"
-        
-        PHASE 05 FOCUS: Brand & Models Object CRUD
-        - CREATE: "Create a brand named [Name]" or "Create a model [Name] for brand [Brand ID]"
-        - READ: "Show all brands" or "Show all models"
-        - UPDATE: "Update brand [ID] name to [Name]" or "Update model [ID] description to [Text]"
-        - DELETE: "Delete brand [ID]" or "Delete model [ID]"
-        
-        GUIDELINES:
-        1. Treat "Manage [object] [id]" as a request to start an interactive session for that record (Intent: MANAGE).
-        2. If the user asks to "update", "change", "set", or "edit" a field, use intent "UPDATE".
-        3. For database SEARCH requests, use intent "QUERY" and generate valid SQLite SQL.
-        4. Always format responses to be friendly and professional.
-        5. For "MANAGE", "UPDATE", or "DELETE", ensure "record_id" is explicitly extracted.
-        6. Treat "opp" or "opps" as "opportunity".
-        6. If the user just says "lead" or "leads", treat it as a QUERY to show all leads.
-        7. If the user just says "contact" or "contacts", treat it as a QUERY to show all contacts.
-        8. If the user just says "opportunity", "opportunities", "opp", or "opps", treat it as a QUERY to show all opportunities.
-        9. If the user just says "brand" or "brands", treat it as a QUERY to show all brands.
-        10. If the user just says "model" or "models", treat it as a QUERY to show all models.
-        11. For database actions (CREATE/UPDATE/DELETE), extract fields into "data".
-           Ensure "data" is a flat dictionary of field names and values.
-        12. For QUERY (READ), generate valid SQLite SQL.
-           Always include 'id' and 'name' (or first_name/last_name) in the SELECT list.
-           Filter by deleted_at IS NULL.
-        13. For UPDATE/DELETE, identify the record ID.
         
         RESPONSE FORMAT (Strict JSON):
         {{
@@ -110,21 +88,14 @@ class AiAgentService:
             "sql": "SELECT ...",
             "data": {{ ... }},
             "object_type": "lead" | "contact" | "opportunity" | "brand" | "model" | "product" | "asset",
-            "record_id": "LD-XXXX" (if applicable)
+            "record_id": "ID_HERE",
+            "score": 0.0 to 1.0 (how confident you are in this JSON structure)
         }}
         """
 
-        llm_response_text = await cls._call_llm(user_query, system_prompt)
-        logger.info(f"LLM Raw Response for '{user_query}': {llm_response_text}")
+        # Call Multi-LLM Ensemble
+        agent_output = await cls._call_multi_llm_ensemble(user_query, system_prompt)
         
-        try:
-            agent_output = json.loads(llm_response_text)
-            if not isinstance(agent_output, dict):
-                agent_output = {"intent": "CHAT", "text": str(llm_response_text)}
-        except Exception as e:
-            logger.error(f"JSON Parse Error: {llm_response_text}")
-            agent_output = {"intent": "CHAT", "text": "I encountered an error processing your request."}
-
         # ROBUST EXTRACTION: Fallback for "Manage [object] [record_id]"
         if "manage" in user_query.lower():
             match = re.search(r"manage\s+(\w+)\s+([\w-]+)", user_query, re.IGNORECASE)
@@ -133,21 +104,6 @@ class AiAgentService:
                 agent_output["object_type"] = match.group(1).lower()
                 agent_output["record_id"] = match.group(2)
 
-        # Fallback for missing mandatory fields
-        if "intent" not in agent_output:
-            if "sql" in agent_output: agent_output["intent"] = "QUERY"
-            elif "data" in agent_output: agent_output["intent"] = "CREATE"
-            else: agent_output["intent"] = "CHAT"
-
-        if "text" not in agent_output or agent_output["text"] == "":
-            intent = str(agent_output["intent"]).upper()
-            obj = str(agent_output.get("object_type", "records"))
-            if intent == "QUERY": agent_output["text"] = f"I've searched the database. Here are the {obj} I found:"
-            elif intent == "CREATE": agent_output["text"] = f"I'm proceeding to create a new {obj}."
-            elif intent == "UPDATE": agent_output["text"] = f"I'm updating the {obj} record as requested."
-            elif intent == "DELETE": agent_output["text"] = f"I'm deleting the specified {obj}."
-            else: agent_output["text"] = "I'm here to help with your CRM. What would you like to do?"
-
         try:
             return await cls._execute_intent(db, agent_output, user_query)
         except Exception as e:
@@ -155,35 +111,107 @@ class AiAgentService:
             return {"intent": "CHAT", "text": f"Technical issue: {str(e)}"}
 
     @classmethod
-    async def _call_llm(cls, user_query: str, system_prompt: str) -> str:
-        api_key = CEREBRAS_API_KEY
-        base_url = "https://api.cerebras.ai/v1/chat/completions"
-        model = "llama3.1-8b"
+    async def _call_multi_llm_ensemble(cls, user_query: str, system_prompt: str) -> Dict[str, Any]:
+        """Calls multiple LLMs in parallel and picks the best response based on a score."""
+        tasks = []
+        
+        if CEREBRAS_API_KEY:
+            tasks.append(cls._call_cerebras(user_query, system_prompt))
+        if GROQ_API_KEY:
+            tasks.append(cls._call_groq(user_query, system_prompt))
+        if GEMINI_API_KEY:
+            tasks.append(cls._call_gemini(user_query, system_prompt))
+        if OPENAI_API_KEY:
+            tasks.append(cls._call_openai(user_query, system_prompt))
 
-        if not api_key:
-            api_key = GROQ_API_KEY
-            base_url = "https://api.groq.com/openai/v1/chat/completions"
-            model = "llama-3.3-70b-versatile"
+        if not tasks:
+            return {"intent": "CHAT", "text": "No AI API Keys configured."}
 
-        if not api_key: return json.dumps({"intent": "CHAT", "text": "API Key Missing"})
+        responses = await asyncio.gather(*tasks, return_exceptions=True)
+        
+        valid_responses = []
+        for res in responses:
+            if isinstance(res, dict) and "intent" in res:
+                valid_responses.append(res)
+            elif isinstance(res, Exception):
+                logger.error(f"Ensemble member failed: {res}")
 
+        if not valid_responses:
+            return {"intent": "CHAT", "text": "All AI models failed to respond."}
+
+        # Pick the best response based on 'score' (provided by the model itself in our prompt)
+        # Sort by score descending
+        valid_responses.sort(key=lambda x: x.get("score", 0), reverse=True)
+        
+        best = valid_responses[0]
+        logger.info(f"Ensemble picked model with score {best.get('score')}. Total models: {len(valid_responses)}")
+        return best
+
+    @classmethod
+    async def _call_cerebras(cls, query, system) -> Dict[str, Any]:
         try:
             async with httpx.AsyncClient() as client:
-                response = await client.post(
-                    base_url,
-                    headers={"Authorization": f"Bearer {api_key}", "Content-Type": "application/json"},
+                resp = await client.post(
+                    "https://api.cerebras.ai/v1/chat/completions",
+                    headers={"Authorization": f"Bearer {CEREBRAS_API_KEY}", "Content-Type": "application/json"},
                     json={
-                        "model": model,
-                        "messages": [{"role": "system", "content": system_prompt}, {"role": "user", "content": user_query}],
+                        "model": "llama3.1-8b",
+                        "messages": [{"role": "system", "content": system}, {"role": "user", "content": query}],
                         "response_format": { "type": "json_object" }
                     },
-                    timeout=60.0
+                    timeout=10.0
                 )
-                if response.status_code == 200:
-                    return response.json()["choices"][0]["message"]["content"].strip()
-                return json.dumps({"intent": "CHAT", "text": "AI Brain Offline"})
-        except Exception as e:
-            return json.dumps({"intent": "CHAT", "text": f"Connection Error: {str(e)}"})
+                return json.loads(resp.json()["choices"][0]["message"]["content"])
+        except Exception: return {}
+
+    @classmethod
+    async def _call_groq(cls, query, system) -> Dict[str, Any]:
+        try:
+            async with httpx.AsyncClient() as client:
+                resp = await client.post(
+                    "https://api.groq.com/openai/v1/chat/completions",
+                    headers={"Authorization": f"Bearer {GROQ_API_KEY}", "Content-Type": "application/json"},
+                    json={
+                        "model": "llama-3.3-70b-versatile",
+                        "messages": [{"role": "system", "content": system}, {"role": "user", "content": query}],
+                        "response_format": { "type": "json_object" }
+                    },
+                    timeout=10.0
+                )
+                return json.loads(resp.json()["choices"][0]["message"]["content"])
+        except Exception: return {}
+
+    @classmethod
+    async def _call_gemini(cls, query, system) -> Dict[str, Any]:
+        try:
+            model = genai.GenerativeModel('gemini-1.5-flash')
+            # Combine system and user for simple call
+            full_prompt = f"{system}\n\nUser Query: {query}\nResponse must be JSON."
+            response = await asyncio.to_thread(model.generate_content, full_prompt)
+            # Basic JSON extraction from markdown
+            text = response.text
+            match = re.search(r'\{.*\}', text, re.DOTALL)
+            if match:
+                return json.loads(match.group())
+            return {}
+        except Exception: return {}
+
+    @classmethod
+    async def _call_openai(cls, query, system) -> Dict[str, Any]:
+        try:
+            async with httpx.AsyncClient() as client:
+                resp = await client.post(
+                    "https://api.openai.com/v1/chat/completions",
+                    headers={"Authorization": f"Bearer {OPENAI_API_KEY}", "Content-Type": "application/json"},
+                    json={
+                        "model": "gpt-4o-mini",
+                        "messages": [{"role": "system", "content": system}, {"role": "user", "content": query}],
+                        "response_format": { "type": "json_object" }
+                    },
+                    timeout=15.0
+                )
+                return json.loads(resp.json()["choices"][0]["message"]["content"])
+        except Exception: return {}
 
     @staticmethod
     def _clean_data(data: Any) -> Dict[str, Any]:
@@ -211,7 +239,6 @@ class AiAgentService:
             if not record_id:
                 return {"intent": "CHAT", "text": "I need a record ID to manage it. Please select a record from the list."}
             
-            # Verify record existence and get some details for the prompt
             record_details = ""
             if obj == "lead" or obj == "leads":
                 lead = LeadService.get_lead(db, record_id)
@@ -236,34 +263,27 @@ class AiAgentService:
             
             return agent_output
 
-        # Normalize Object Type
         mapping = {"leads": "lead", "contacts": "contact", "opportunities": "opportunity", "opps": "opportunity"}
         obj = mapping.get(obj, obj)
 
-        # READ (QUERY)
         if intent == "QUERY":
             if not sql:
-                if obj == "lead" or obj == "leads": sql = "SELECT id, first_name, last_name, email, phone, status FROM leads WHERE deleted_at IS NULL ORDER BY created_at DESC LIMIT 10"
-                elif obj == "contact" or obj == "contacts": sql = "SELECT id, first_name, last_name, email, phone, status FROM contacts WHERE deleted_at IS NULL ORDER BY created_at DESC LIMIT 10"
-                elif obj == "opportunity" or obj == "opportunities" or obj == "opp" or obj == "opps": sql = "SELECT id, name, stage, amount, status FROM opportunities WHERE deleted_at IS NULL ORDER BY created_at DESC LIMIT 10"
-                elif obj == "brand" or obj == "brands": sql = "SELECT id, name, record_type, description FROM vehicle_specifications WHERE record_type = 'Brand' AND deleted_at IS NULL ORDER BY created_at DESC LIMIT 10"
-                elif obj == "model" or obj == "models": sql = "SELECT id, name, brand, description FROM models WHERE deleted_at IS NULL ORDER BY created_at DESC LIMIT 10"
+                if obj == "lead": sql = "SELECT id, first_name, last_name, email, phone, status FROM leads WHERE deleted_at IS NULL ORDER BY created_at DESC LIMIT 10"
+                elif obj == "contact": sql = "SELECT id, first_name, last_name, email, phone, status FROM contacts WHERE deleted_at IS NULL ORDER BY created_at DESC LIMIT 10"
+                elif obj == "opportunity": sql = "SELECT id, name, stage, amount, status FROM opportunities WHERE deleted_at IS NULL ORDER BY created_at DESC LIMIT 10"
+                elif obj == "brand": sql = "SELECT id, name, record_type, description FROM vehicle_specifications WHERE record_type = 'Brand' AND deleted_at IS NULL ORDER BY created_at DESC LIMIT 10"
+                elif obj == "model": sql = "SELECT id, name, brand, description FROM models WHERE deleted_at IS NULL ORDER BY created_at DESC LIMIT 10"
             
             if sql:
                 try:
-                    # Specific recognition check for "current created lead"
-                    if "current created lead" in user_query.lower():
-                        return {"intent": "CHAT", "text": "I'm here to help with your CRM. What would you like to do?"}
-
                     result = db.execute(text(sql))
                     agent_output["results"] = [dict(row._mapping) for row in result]
-                    agent_output["sql"] = sql # Ensure SQL is present in output
+                    agent_output["sql"] = sql
                     return agent_output
                 except Exception as e:
                     logger.error(f"SQL Error: {str(e)}")
                     return {"intent": "CHAT", "text": f"Database query failed: {str(e)}"}
 
-        # CRUD using Services
         data = cls._clean_data(data)
         
         if intent == "CREATE":
@@ -289,65 +309,29 @@ class AiAgentService:
                 res = ModelService.create_model(db, **data)
                 agent_output["text"] = f"Success! Created Model {res.name} (ID: {res.id})."
                 return agent_output
-            else:
-                return {"intent": "CHAT", "text": f"Creation not supported for {obj} yet."}
 
         if intent == "UPDATE" and record_id:
             if obj == "lead":
                 res = LeadService.update_lead(db, record_id, **data)
-                if res: agent_output["text"] = f"Success! Updated Lead {record_id}."
-                else: agent_output["text"] = f"Lead {record_id} not found."
+                agent_output["text"] = f"Success! Updated Lead {record_id}." if res else f"Lead {record_id} not found."
                 return agent_output
             elif obj == "contact":
                 res = ContactService.update_contact(db, record_id, **data)
-                if res: agent_output["text"] = f"Success! Updated Contact {record_id}."
-                else: agent_output["text"] = f"Contact {record_id} not found."
+                agent_output["text"] = f"Success! Updated Contact {record_id}." if res else f"Contact {record_id} not found."
                 return agent_output
             elif obj == "opportunity":
                 res = OpportunityService.update_opportunity(db, record_id, **data)
-                if res: agent_output["text"] = f"Success! Updated Opportunity {record_id}."
-                else: agent_output["text"] = f"Opportunity {record_id} not found."
+                agent_output["text"] = f"Success! Updated Opportunity {record_id}." if res else f"Opportunity {record_id} not found."
                 return agent_output
-            elif obj == "brand":
-                res = VehicleSpecService.update_vehicle_spec(db, record_id, **data)
-                if res: agent_output["text"] = f"Success! Updated Brand {record_id}."
-                else: agent_output["text"] = f"Brand {record_id} not found."
-                return agent_output
-            elif obj == "model":
-                res = ModelService.update_model(db, record_id, **data)
-                if res: agent_output["text"] = f"Success! Updated Model {record_id}."
-                else: agent_output["text"] = f"Model {record_id} not found."
-                return agent_output
-            else:
-                return {"intent": "CHAT", "text": f"Update not supported for {obj} yet."}
 
         if intent == "DELETE" and record_id:
             if obj == "lead":
                 success = LeadService.delete_lead(db, record_id)
-                if success: agent_output["text"] = f"Success! Deleted Lead {record_id}."
-                else: agent_output["text"] = f"Lead {record_id} not found."
+                agent_output["text"] = f"Success! Deleted Lead {record_id}." if success else f"Lead {record_id} not found."
                 return agent_output
             elif obj == "contact":
                 success = ContactService.delete_contact(db, record_id)
-                if success: agent_output["text"] = f"Success! Deleted Contact {record_id}."
-                else: agent_output["text"] = f"Contact {record_id} not found."
+                agent_output["text"] = f"Success! Deleted Contact {record_id}." if success else f"Contact {record_id} not found."
                 return agent_output
-            elif obj == "opportunity":
-                success = OpportunityService.delete_opportunity(db, record_id)
-                if success: agent_output["text"] = f"Success! Deleted Opportunity {record_id}."
-                else: agent_output["text"] = f"Opportunity {record_id} not found."
-                return agent_output
-            elif obj == "brand":
-                success = VehicleSpecService.delete_vehicle_spec(db, record_id)
-                if success: agent_output["text"] = f"Success! Deleted Brand {record_id}."
-                else: agent_output["text"] = f"Brand {record_id} not found."
-                return agent_output
-            elif obj == "model":
-                success = ModelService.delete_model(db, record_id)
-                if success: agent_output["text"] = f"Success! Deleted Model {record_id}."
-                else: agent_output["text"] = f"Model {record_id} not found."
-                return agent_output
-            else:
-                return {"intent": "CHAT", "text": f"Deletion not supported for {obj} yet."}
 
         return agent_output

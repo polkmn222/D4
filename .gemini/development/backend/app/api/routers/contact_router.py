@@ -126,7 +126,7 @@ async def delete_contact(request: Request, contact_id: str, db: Session = Depend
         logger.error(f"Delete Contact error: {e}")
         return RedirectResponse(url=f"/contacts?error=Error+deleting+contact:+{str(e).replace(' ', '+')}", status_code=303)
 
-@router.post("/contacts/{contact_id}/restore")
+@router.post("/{contact_id}/restore")
 async def restore_contact_endpoint(contact_id: str, db: Session = Depends(get_db)):
     try:
         contact = ContactService.restore_contact(db, contact_id)

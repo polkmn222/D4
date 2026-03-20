@@ -1,1 +1,1 @@
-.gemini/skills/backend/run_crm.sh
+.gemini/development/backend/run_crm.sh
