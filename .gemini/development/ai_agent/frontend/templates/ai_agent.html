@@ -1,0 +1,64 @@
+<!-- AI Agent Assets -->
+<link rel="stylesheet" href="/ai-agent/static/css/ai_agent.css">
+<script src="/ai-agent/static/js/ai_agent.js" defer></script>
+
+<!-- AI Agent Trigger Button -->
+<div style="padding: 0 1rem 1rem;">
+    <button class="btn" style="width: 100%; background: #0176d3; color: white; border-radius: 20px; padding: 0.75rem; display: flex; align-items: center; justify-content: center; gap: 0.5rem; font-weight: 700; border: none; cursor: pointer;" onclick="toggleAiAgent()">
+        <span style="background: white; color: #0176d3; border-radius: 50%; width: 24px; height: 24px; display: flex; align-items: center; justify-content: center; font-size: 0.8rem;">🤖</span>
+        Ask AI Agent
+    </button>
+</div>
+
+<!-- AI Agent Chat Window -->
+<div id="ai-agent-window">
+    <!-- Window Header -->
+    <div style="background: white; padding: 12px 16px; border-bottom: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center;">
+        <div style="display: flex; align-items: center; gap: 8px;">
+            <span style="font-weight: 700; color: #16325c;">AI Agent</span>
+        </div>
+        <div style="display: flex; gap: 12px; align-items: center;">
+            <button onclick="minimizeAiAgent()" style="background: none; border: none; cursor: pointer; font-size: 1.2rem; color: var(--text-label);">_</button>
+            <button onclick="maximizeAiAgent()" style="background: none; border: none; cursor: pointer; font-size: 1rem; color: var(--text-label);">⛶</button>
+            <button onclick="toggleAiAgent()" style="background: none; border: none; cursor: pointer; font-size: 1.2rem; color: var(--text-label);">×</button>
+        </div>
+    </div>
+
+    <!-- Window Body with Sidebar -->
+    <div class="ai-agent-main-container">
+        <!-- Quick Access Guide Sidebar (NOW ON LEFT) -->
+        <div class="quick-guide-sidebar">
+            <h3>📖 Quick Access Guide</h3>
+            <p>Click to auto-fill common commands</p>
+            
+            <button class="quick-btn" onclick="sendQuickMessage('Show all Leads')">Show all Leads</button>
+            <button class="quick-btn" onclick="sendQuickMessage('Show all Contacts')">Show all Contacts</button>
+            <button class="quick-btn" onclick="sendQuickMessage('Show all Opportunities')">Show all Opportunities</button>
+            <button class="quick-btn" onclick="sendQuickMessage('Show recent Opportunities')">Show recent Opportunities</button>
+            <button class="quick-btn" onclick="sendQuickMessage('List all Opportunities')">List all Opportunities</button>
+            <button class="quick-btn" onclick="sendQuickMessage('List my Leads')">List my Leads</button>
+            <button class="quick-btn" onclick="sendQuickMessage('Show high-value deals')">Show high-value deals</button>
+            <button class="quick-btn" onclick="sendQuickMessage('Show my top deals')">Show my top deals</button>
+            <button class="quick-btn" onclick="sendQuickMessage('Find Accounts without contact')">Find Accounts without contact</button>
+        </div>
+
+        <!-- Chat Area -->
+        <div id="ai-agent-body">
+            <div style="text-align: center; color: #706e6b; font-size: 0.8rem; margin-bottom: 10px;">Conversation started</div>
+            
+            <!-- Welcome Message -->
+            <div style="display: flex; gap: 10px; align-self: flex-start;">
+                <div style="width: 28px; height: 28px; background: #0176d3; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; flex-shrink: 0; font-size: 0.8rem;">🤖</div>
+                <div style="background: white; padding: 12px; border-radius: 0 12px 12px 12px; box-shadow: 0 2px 4px rgba(0,0,0,0.05); font-size: 0.9rem; line-height: 1.4; max-width: 80%;">
+                    Hello! I'm your AI Agent. I can help you manage <strong>Leads</strong>, <strong>Contacts</strong>, and <strong>Opportunities</strong> interactively.
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Window Footer -->
+    <div id="ai-agent-footer" style="padding: 12px; border-top: 1px solid var(--border); display: flex; gap: 8px; align-items: center; background: white;">
+        <input type="text" id="ai-agent-input" placeholder="Ask the AI Agent." style="flex-grow: 1; border: 1px solid var(--border); border-radius: 20px; padding: 8px 16px; font-size: 0.9rem; outline: none;" onkeypress="if(event.key === 'Enter') sendAiMessage()">
+        <button onclick="sendAiMessage()" style="background: #0176d3; border: none; cursor: pointer; color: white; width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.9rem;">➤</button>
+    </div>
+</div>

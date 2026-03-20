@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}AI CRM{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', path='/css/base.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', path='/css/objects.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', path='/css/interactions.css') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <script src="/static/js/lookup.js"></script>
+    <script src="/static/js/bulk_action.js"></script>
+</head>
+<body>
+    <header class="sf-header">
+        <div style="display: flex; align-items: center; gap: 0.75rem;">
+            <!-- Updated Logo: GK -->
+            <img src="/static/images/gk_logo.png" alt="GK" style="height: 32px; border-radius: 4px;">
+            <span style="font-weight: 700; font-size: 1.125rem; color: #181818;">GK</span>
+        </div>
+        <div style="flex-grow: 1;">
+            <input type="text" placeholder="Search..." class="btn" style="width: 300px; text-align: left; background: #f3f3f3;">
+        </div>
+    </header>
+    <nav class="sf-tabs">
+        <a href="/" class="sf-tab" id="nav-home">Home</a>
+        <a href="/leads" class="sf-tab" id="nav-leads">Leads</a>
+        <a href="/contacts" class="sf-tab" id="nav-contacts">Contacts</a>
+        <a href="/opportunities" class="sf-tab" id="nav-opportunities">Opportunities</a>
+        <a href="/vehicle_specifications" class="sf-tab" id="nav-specs">Brands</a>
+        <a href="/models" class="sf-tab" id="nav-models">Models</a>
+        <a href="/products" class="sf-tab" id="nav-products">Products</a>
+        <a href="/assets" class="sf-tab" id="nav-assets">Assets</a>
+        <!-- <a href="/tasks" class="sf-tab" id="nav-tasks">Tasks</a> -->
+        <a href="/messages" class="sf-tab" id="nav-messages">Send</a>
+        <a href="/message_templates" class="sf-tab" id="nav-templates">Templates</a>
+    </nav>
+    <script>
+        document.querySelectorAll('.sf-tab').forEach(tab => {
+            const path = window.location.pathname;
+            const href = tab.getAttribute('href');
+            if (href === '/' && path === '/') {
+                tab.classList.add('active');
+            } else if (href !== '/' && path.startsWith(href)) {
+                tab.classList.add('active');
+            } else {
+                tab.classList.remove('active');
+            }
+        });
+    </script>
+    <div id="sf-modal-overlay" class="sf-modal-overlay">
+        <div class="sf-modal">
+            <div id="modal-content"></div>
+        </div>
+    </div>
+
+    <!-- Phase 17: Toast Notifications -->
+    <div id="sf-toast-container" class="sf-toast-container"></div>
+
+    <!-- Phase 17: Delete Confirmation Modal -->
+    <div id="sf-confirm-modal" class="sf-confirm-modal">
+        <div class="sf-confirm-box">
+            <div class="sf-confirm-header" id="sf-confirm-title">Delete Record</div>
+            <div class="sf-confirm-body" id="sf-confirm-msg">Are you sure you want to delete this record?</div>
+            <div class="sf-confirm-footer">
+                <button class="btn btn-inline-cancel" id="sf-confirm-cancel-btn" onclick="closeConfirmModal()">Cancel</button>
+                <button class="btn btn-primary" id="sf-confirm-delete-btn" style="background:#004787;">Delete</button>
+            </div>
+        </div>
+    </div>
+    <!-- Phase 18: Edit Footer (Salesforce Style) -->
+    <div id="sf-edit-footer" class="sf-edit-footer" style="display: none;">
+        <div class="sf-edit-footer-content">
+            <button class="btn btn-inline-cancel" onclick="cancelBatchEdit()">Cancel</button>
+            <button class="btn btn-primary" onclick="saveBatchEdit()" style="background: #0070d2;">Save</button>
+        </div>
+    </div>
+
+    <script>
+        function openModal(url) {
+            fetch(url)
+                .then(response => response.text())
+                .then(html => {
+                    const content = document.getElementById('modal-content');
+                    content.innerHTML = html;
+                    
+                    // Manually execute scripts in the loaded HTML
+                    const scripts = content.querySelectorAll('script');
+                    scripts.forEach(oldScript => {
+                        const newScript = document.createElement('script');
+                        Array.from(oldScript.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value));
+                        newScript.appendChild(document.createTextNode(oldScript.innerHTML));
+                        oldScript.parentNode.replaceChild(newScript, oldScript);
+                    });
+
+                    document.getElementById('sf-modal-overlay').style.display = 'flex';
+                });
+        }
+
+        function closeModal() {
+            document.getElementById('sf-modal-overlay').style.display = 'none';
+        }
+
+        // --- TOAST SYSTEM ---
+        function showToast(message, isError = false, undoUrl = null) {
+            const container = document.getElementById('sf-toast-container');
+            const toast = document.createElement('div');
+            toast.className = `sf-toast ${isError ? 'error' : ''}`;
+            
+            let innerHTML = `<span>${message}</span>`;
+            if (undoUrl) {
+                innerHTML += `<span class="undo-link" onclick="undoAction('${undoUrl}', this.parentElement)">Undo</span>`;
+            }
+            innerHTML += `<span class="close-btn" onclick="this.parentElement.remove()">×</span>`;
+            
+            toast.innerHTML = innerHTML;
+            container.appendChild(toast);
+            
+            setTimeout(() => { if(toast.parentElement) toast.remove(); }, 5000);
+        }
+
+        function undoAction(url, toastElement) {
+            fetch(url, { method: 'POST' })
+                .then(res => res.json())
+                .then(data => {
+                    showToast("Action undone successfully.");
+                    toastElement.remove();
+                    window.location.reload();
+                });
+        }
+
+        // --- DELETE CONFIRMATION ---
+        function showConfirmModal(title, msg, onConfirm) {
+            const modal = document.getElementById('sf-confirm-modal');
+            const titleEl = document.getElementById('sf-confirm-title');
+            const msgEl = document.getElementById('sf-confirm-msg');
+            const deleteBtn = document.getElementById('sf-confirm-delete-btn');
+            
+            titleEl.innerText = title;
+            msgEl.innerText = msg;
+            modal.style.display = 'flex';
+            
+            deleteBtn.onclick = () => {
+                onConfirm();
+                closeConfirmModal();
+            };
+        }
+
+        function confirmDelete(type, id, name, pluralType) {
+            const title = `Delete ${type}`;
+            const msg = `Are you sure you want to delete this ${type.toLowerCase()}?`;
+            
+            showConfirmModal(title, msg, () => {
+                const url = `/${pluralType}/${id}/delete`;
+                fetch(url, { 
+                    method: 'POST',
+                    headers: { 'Accept': 'application/json' }
+                })
+                .then(res => res.json())
+                .then(data => {
+                    showToast(`${type} "${name}" was deleted.`, false, `/${pluralType}/${id}/restore`);
+                    setTimeout(() => { window.location.href = `/${pluralType}`; }, 1000);
+                });
+            });
+        }
+
+        function closeConfirmModal() {
+            document.getElementById('sf-confirm-modal').style.display = 'none';
+        }
+
+        // --- SALESFORCE INLINE EDITING (BATCH SAVE) ---
+        let draftEdits = {};
+
+        function toggleInlineEdit(fieldId, objectType, recordId, fieldLabel) {
+            const valueDisplay = document.getElementById(`value-${fieldId}`);
+            const editCont = document.getElementById(`edit-${fieldId}`);
+            
+            if (editCont.style.display === 'none') {
+                valueDisplay.style.display = 'none';
+                editCont.style.display = 'block';
+                const input = editCont.querySelector('input, textarea');
+                if (input) {
+                    input.focus();
+                    if (!draftEdits[fieldId]) {
+                        input.value = document.getElementById(`text-${fieldId}`).innerText.trim();
+                    }
+                }
+                showEditFooter();
+            } else {
+                valueDisplay.style.display = 'block';
+                editCont.style.display = 'none';
+            }
+        }
+
+        function showEditFooter() {
+            document.getElementById('sf-edit-footer').style.display = 'flex';
+            document.body.classList.add('sf-editing');
+        }
+
+        function hideEditFooter() {
+            document.getElementById('sf-edit-footer').style.display = 'none';
+            document.body.classList.remove('sf-editing');
+        }
+
+        function cancelBatchEdit() {
+            draftEdits = {};
+            // Revert all UI states
+            document.querySelectorAll('[id^="edit-"]').forEach(el => el.style.display = 'none');
+            document.querySelectorAll('[id^="value-"]').forEach(el => el.style.display = 'block');
+            hideEditFooter();
+        }
+
+        function saveBatchEdit() {
+            const pathParts = window.location.pathname.split('/');
+            const objectType = pathParts[1];
+            const recordId = pathParts[2];
+            
+            // Gather all current inputs in 'edit-' containers
+            const updates = {};
+            document.querySelectorAll('[id^="edit-"]').forEach(cont => {
+                if (cont.style.display !== 'none') {
+                    const fieldId = cont.id.replace('edit-', '');
+                    const input = cont.querySelector('input, textarea');
+                    const label = cont.getAttribute('data-label');
+                    if (input) {
+                        updates[label || fieldId] = input.value;
+                    }
+                }
+            });
+
+            if (Object.keys(updates).length === 0) {
+                hideEditFooter();
+                return;
+            }
+
+            fetch(`/${objectType}/${recordId}/batch-save`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(updates)
+            })
+            .then(res => res.json())
+            .then(data => {
+                if (data.status === 'success') {
+                    window.location.href = window.location.pathname + "?success=Record+updated+successfully";
+                } else {
+                    showToast(data.message || "Failed to save changes.", true);
+                }
+            })
+            .catch(err => {
+                showToast("An error occurred during save.", true);
+            });
+        }
+
+        window.onclick = function(event) {
+            // Modals can now only be closed by the "Cancel" button or explicit close calls
+            // Removed overlay click-to-close logic per user requirement
+        }
+        
+        document.addEventListener('DOMContentLoaded', () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const successMsg = urlParams.get('success');
+            const errorMsg = urlParams.get('error');
+            
+            if (successMsg) {
+                showToast(successMsg.replace(/\+/g, ' '));
+            }
+            if (errorMsg) {
+                showToast(errorMsg.replace(/\+/g, ' '), true);
+            }
+
+            if (successMsg || errorMsg) {
+                // Clean up URL without reloading
+                const newUrl = window.location.pathname;
+                window.history.replaceState({}, document.title, newUrl);
+            }
+        });
+
+        function toggleLookupEdit(fieldId, objectType, fieldLabel, initialId, initialName) {
+            const valueDisplay = document.getElementById(`value-${fieldId}`);
+            const editCont = document.getElementById(`edit-${fieldId}`);
+            
+            if (editCont.style.display === 'none') {
+                valueDisplay.style.display = 'none';
+                editCont.style.display = 'block';
+                
+                // Initialize lookup directly in the detail grid
+                editCont.innerHTML = `<div id="lookup-inline-${fieldId}"></div>`;
+                initLookup(`lookup-inline-${fieldId}`, objectType, fieldId, initialId, initialName);
+                
+                showEditFooter();
+            } else {
+                valueDisplay.style.display = 'block';
+                editCont.style.display = 'none';
+            }
+        }
+
+        function showComingSoon() {
+            showToast("Under Development (Coming Soon)", false);
+        }
+
+        function globalSearch(query) {
+            if (!query) return;
+            window.location.href = `/search?q=${encodeURIComponent(query)}`;
+        }
+
+        // --- LIST VIEW UI & SORTING ---
+        function toggleDropdown(id) {
+            const dropdown = document.getElementById(id);
+            if (dropdown) {
+                dropdown.classList.toggle('active');
+            }
+        }
+        
+        window.addEventListener('click', function(e) {
+            if (!e.target.closest('.sf-dropdown')) {
+                document.querySelectorAll('.sf-dropdown.active').forEach(dd => {
+                    dd.classList.remove('active');
+                });
+            }
+        });
+
+        function selectView(viewName) {
+            showToast(`Switched to: ${viewName}`);
+            toggleDropdown('view-selector-dropdown');
+        }
+
+        let currentSortCol = -1;
+        let currentSortAsc = true;
+        
+        function sortTable(thElement, columnIndex) {
+            const table = thElement.closest('table');
+            const tbody = table.querySelector('tbody');
+            const rows = Array.from(tbody.querySelectorAll('tr'));
+            
+            if (currentSortCol === columnIndex) {
+                currentSortAsc = !currentSortAsc;
+            } else {
+                currentSortCol = columnIndex;
+                currentSortAsc = true;
+            }
+            
+            table.querySelectorAll('th svg').forEach(svg => {
+                svg.style.transform = '';
+                svg.style.fill = 'var(--text-label)';
+            });
+            const svg = thElement.querySelector('svg');
+            if (svg) {
+                svg.style.transform = currentSortAsc ? 'rotate(180deg)' : '';
+                svg.style.fill = 'var(--nav-blue)';
+            }
+            
+            const colName = thElement.innerText.trim() || 'Name';
+            const sortedBySpan = document.getElementById('current-sort-col');
+            if (sortedBySpan) {
+                sortedBySpan.innerText = colName;
+            }
+
+            rows.sort((a, b) => {
+                const tdA = a.querySelectorAll('td')[columnIndex];
+                const tdB = b.querySelectorAll('td')[columnIndex];
+                if (!tdA || !tdB) return 0;
+                
+                let valA = tdA.innerText.trim();
+                let valB = tdB.innerText.trim();
+                
+                if (valA.startsWith('$')) valA = valA.replace(/[^0-9.-]+/g,"");
+                if (valB.startsWith('$')) valB = valB.replace(/[^0-9.-]+/g,"");
+                
+                const numA = parseFloat(valA);
+                const numB = parseFloat(valB);
+                
+                if (!isNaN(numA) && !isNaN(numB) && valA !== '' && valB !== '') {
+                    return currentSortAsc ? numA - numB : numB - numA;
+                }
+                return currentSortAsc ? valA.localeCompare(valB) : valB.localeCompare(valA);
+            });
+            
+            tbody.innerHTML = '';
+            rows.forEach(row => tbody.appendChild(row));
+        }
+
+        function filterTable(query) {
+            query = query.toLowerCase();
+            const rows = document.querySelectorAll('.sf-table tbody tr');
+            let visibleCount = 0;
+            rows.forEach(row => {
+                const text = row.innerText.toLowerCase();
+                if (text.includes(query)) {
+                    row.style.display = '';
+                    visibleCount++;
+                } else {
+                    row.style.display = 'none';
+                }
+            });
+            
+            const summary = document.getElementById('list-view-summary');
+            if (summary) {
+                summary.innerHTML = summary.innerHTML.replace(/^\d+ items/, `${visibleCount} items`);
+            }
+        }
+    </script>
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+</body>
+</html>

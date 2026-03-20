@@ -1,0 +1,191 @@
+from fastapi import APIRouter, Request, Depends, Form
+from fastapi.responses import RedirectResponse
+from sqlalchemy.orm import Session
+from ...database import get_db
+from ...services.lead_service import LeadService
+from ...services.model_service import ModelService
+from ...services.product_service import ProductService
+from ...services.vehicle_spec_service import VehicleSpecService as BrandService
+from ...core.templates import templates
+import logging
+
+from ...core.enums import LeadStatus, RecordType
+
+router = APIRouter()
+logger = logging.getLogger(__name__)
+
+@router.get("/leads/{lead_id}")
+async def lead_detail(request: Request, lead_id: str, db: Session = Depends(get_db)):
+    try:
+        logger.info(f"Accessing Lead Detail: {lead_id}")
+        lead = LeadService.get_lead(db, lead_id)
+        if not lead:
+            return RedirectResponse(url="/leads?error=Lead+not+found")
+        
+        brand = BrandService.get_vehicle_spec(db, lead.brand) if lead.brand else None
+        model = ModelService.get_model(db, lead.model) if lead.model else None
+        prod = ProductService.get_product(db, lead.product) if lead.product else None
+        
+        details = {
+            "Name": f"{lead.first_name if lead.first_name else ''} {lead.last_name if lead.last_name else ''}".strip() or "",
+            "Status": lead.status if lead.status else "",
+            "Brand": brand.name if brand else "",
+            "Brand_Hidden_Ref": lead.brand if lead.brand else "",
+            "Model": model.name if model else "",
+            "Model_Hidden_Ref": lead.model if lead.model else "",
+            "Product": prod.name if prod else "",
+            "Product_Hidden_Ref": lead.product if lead.product else "",
+            "Email": lead.email if lead.email else "",
+            "Phone": lead.phone if lead.phone else "",
+            "Is Followed": "Yes" if lead.is_followed else "No",
+            "Created Date": lead.created_at.strftime("%Y-%m-%d %H:%M") if lead.created_at else ""
+        }
+        
+        # Path/Progress bar
+        stages = [LeadStatus.NEW, LeadStatus.FOLLOW_UP, LeadStatus.QUALIFIED, LeadStatus.LOST]
+        path = []
+        found_active = False
+        for s in stages:
+            is_active = (s == lead.status)
+            is_completed = not found_active and not is_active
+            if is_active: found_active = True
+            path.append({"label": s, "active": is_active, "completed": is_completed})
+
+        return templates.TemplateResponse("leads/detail_view.html", {
+            "request": request,
+            "object_type": "Lead",
+            "plural_type": "leads",
+            "record_id": lead_id,
+            "record_name": f"{lead.first_name} {lead.last_name}",
+            "details": details,
+            "path": path,
+            "is_followed": lead.is_followed,
+            "created_at": lead.created_at,
+            "updated_at": lead.updated_at,
+            "is_converted": lead.is_converted,
+            "related_lists": []
+        })
+    except Exception as e:
+        logger.error(f"Lead Detail error: {e}")
+        return RedirectResponse(url=f"/leads?error=Error+loading+lead+detail:+{str(e).replace(' ', '+')}")
+
+@router.get("/leads")
+async def list_leads(request: Request, db: Session = Depends(get_db)):
+    leads = LeadService.get_leads(db, converted=False)
+    items = []
+    for l in leads:
+        model = ModelService.get_model(db, l.model) if l.model else None
+        items.append({
+            "id": l.id,
+            "name": f"{l.first_name} {l.last_name}",
+            "phone": l.phone if l.phone else "",
+            "model": model.name if model else "",
+            "status": l.status,
+            "created": l.created_at.strftime("%Y-%m-%d") if l.created_at else "",
+            "edit_url": f"/leads/new-modal?id={l.id}"
+        })
+
+    columns = ["name", "phone", "model", "status", "created"]
+    return templates.TemplateResponse("leads/list_view.html", {
+        "request": request, 
+        "object_type": "Lead", 
+        "plural_type": "leads",
+        "items": items, 
+        "columns": columns
+    })
+
+@router.post("/leads")
+async def create_lead(
+    first_name: str = Form(...),
+    last_name: str = Form(...),
+    gender: str = Form(None),
+    email: str = Form(...),
+    phone: str = Form(None),
+    campaign: str = Form(None),
+    brand: str = Form(None),
+    model: str = Form(None),
+    product: str = Form(None),
+    description: str = Form(None),
+    db: Session = Depends(get_db)
+):
+    lead = LeadService.create_lead(
+        db, first_name=first_name, last_name=last_name, gender=gender,
+        email=email, phone=phone, campaign=campaign,
+        brand=brand, model=model, 
+        product=product, description=description, status=LeadStatus.NEW
+    )
+    return RedirectResponse(url=f"/leads/{lead.id}?success=Record+created+successfully", status_code=303)
+
+@router.post("/leads/{lead_id}")
+async def update_lead(
+    lead_id: str,
+    first_name: str = Form(...),
+    last_name: str = Form(...),
+    gender: str = Form(None),
+    email: str = Form(...),
+    phone: str = Form(None),
+    status: str = Form(None),
+    campaign: str = Form(None),
+    brand: str = Form(None),
+    model: str = Form(None),
+    product: str = Form(None),
+    description: str = Form(None),
+    db: Session = Depends(get_db)
+):
+    LeadService.update_lead(
+        db, lead_id, first_name=first_name, last_name=last_name, gender=gender,
+        email=email, phone=phone, status=status, campaign=campaign,
+        brand=brand, model=model, 
+        product=product, description=description
+    )
+    return RedirectResponse(url=f"/leads/{lead_id}?success=Record+updated+successfully", status_code=303)
+
+@router.post("/leads/{lead_id}/delete")
+async def delete_lead(request: Request, lead_id: str, db: Session = Depends(get_db)):
+    LeadService.delete_lead(db, lead_id)
+    if "application/json" in request.headers.get("Accept", ""):
+        return {"status": "success", "message": "Record deleted successfully"}
+    return RedirectResponse(url="/leads?success=Record+deleted+successfully", status_code=303)
+
+@router.post("/leads/{lead_id}/convert")
+async def convert_lead(
+    request: Request,
+    lead_id: str, 
+    account_name: str = Form(None),
+    account_record_type: str = Form(RecordType.INDIVIDUAL),
+    opportunity_name: str = Form(None),
+    dont_create_opp: bool = Form(False),
+    converted_status: str = Form("Closed - Converted"),
+    db: Session = Depends(get_db)
+):
+    try:
+        result = LeadService.convert_lead_advanced(
+            db, lead_id, account_name, account_record_type, 
+            opportunity_name, dont_create_opp, converted_status
+        )
+        if result and "account" in result:
+            return templates.TemplateResponse("lead_convert_success.html", {
+                "request": request,
+                "account": result["account"],
+                "contact": result["contact"],
+                "opportunity": result["opportunity"]
+            })
+        return RedirectResponse(url=f"/leads/{lead_id}?error=Failed+to+convert+lead", status_code=303)
+    except Exception as e:
+        logger.error(f"Error converting lead: {str(e)}")
+        return RedirectResponse(url=f"/leads/{lead_id}?error=Error+converting+lead:+{str(e).replace(' ', '+')}", status_code=303)
+
+@router.post("/leads/{lead_id}/stage")
+async def update_lead_stage_endpoint(lead_id: str, stage: str = Form(...), db: Session = Depends(get_db)):
+    LeadService.update_stage(db, lead_id, stage)
+    return {"status": "success", "new_stage": stage}
+
+@router.post("/leads/{lead_id}/toggle-follow")
+async def toggle_lead_follow_endpoint(lead_id: str, enabled: bool = Form(...), db: Session = Depends(get_db)):
+    LeadService.toggle_follow(db, lead_id, enabled)
+    return {"status": "success", "followed": enabled}
+
+@router.post("/leads/{lead_id}/restore")
+async def restore_lead_endpoint(lead_id: str, db: Session = Depends(get_db)):
+    LeadService.restore_lead(db, lead_id)
+    return {"status": "success"}

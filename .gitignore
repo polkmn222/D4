@@ -3,7 +3,6 @@
 
 # Logs
 *.log
-crm.log
 
 # Python
 __pycache__/
@@ -17,6 +16,3 @@ __pycache__/
 
 # Env
 .env
-
-# Gemini Agent Cache
-.gemini/
