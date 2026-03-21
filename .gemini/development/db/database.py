@@ -40,7 +40,7 @@ def build_engine(database_url: str):
 def get_database_url() -> str:
     # Always use SQLite for tests to avoid remote connection issues
     if "pytest" in os.environ.get("PYTEST_CURRENT_TEST", "") or os.environ.get("TEST_MODE") == "1":
-        return f"sqlite:///{BASE_DIR.parent}/test_runs/test_active.db"
+        return f"sqlite:///{BASE_DIR.parent}/test/databases/test_active.db"
     
     return os.getenv("DATABASE_URL", "").strip() or DEFAULT_DATABASE_URL
 

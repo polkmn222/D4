@@ -3,9 +3,11 @@ from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from db.database import Base
 from backend.app.services.contact_service import ContactService
+from pathlib import Path
 
 # Use in-memory SQLite for tests
-SQLALCHEMY_DATABASE_URL = "sqlite:///./db/test_runs/test_crm.db"
+TEST_DB_PATH = Path(__file__).resolve().parents[1] / "databases" / "test_crm.db"
+SQLALCHEMY_DATABASE_URL = f"sqlite:///{TEST_DB_PATH}"
 engine = create_engine(SQLALCHEMY_DATABASE_URL, connect_args={"check_same_thread": False})
 TestingSessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 

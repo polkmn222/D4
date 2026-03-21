@@ -6,7 +6,7 @@ import logging
 from db.database import get_db
 from backend.app.utils.error_handler import handle_agent_errors
 
-router = APIRouter(prefix="/api/test", tags=["Test"])
+router = APIRouter(prefix="/api/test", tags=["SureM Debug"])
 logger = logging.getLogger(__name__)
 
 class SmsRequest(BaseModel):
@@ -60,4 +60,3 @@ async def test_send_mms(req: MmsRequest):
     except Exception as e:
         logger.error(f"Error testing MMS: {e}")
         return JSONResponse(status_code=500, content={"status": "error", "message": str(e)})
-

@@ -2,12 +2,14 @@ import pytest
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from unittest.mock import patch, AsyncMock
+from pathlib import Path
 
 from db.database import Base
 from ai_agent.backend.service import AiAgentService
 from db.models import MessageTemplate, MessageSend, Contact
 
-SQLALCHEMY_DATABASE_URL = "sqlite:///./db/test_runs/test_ai_messaging_crud.db"
+TEST_DB_PATH = Path(__file__).resolve().parents[1] / "databases" / "test_ai_messaging_crud.db"
+SQLALCHEMY_DATABASE_URL = f"sqlite:///{TEST_DB_PATH}"
 engine = create_engine(SQLALCHEMY_DATABASE_URL, connect_args={"check_same_thread": False})
 TestingSessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 

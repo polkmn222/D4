@@ -5,9 +5,11 @@ from db.database import Base
 from backend.app.services.lead_service import LeadService
 from backend.app.services.opportunity_service import OpportunityService
 from db.models import Lead, Opportunity
+from pathlib import Path
 
 # Use a separate test database file
-SQLALCHEMY_DATABASE_URL = "sqlite:///./db/test_runs/test_phase16.db"
+TEST_DB_PATH = Path(__file__).resolve().parents[1] / "databases" / "test_phase16.db"
+SQLALCHEMY_DATABASE_URL = f"sqlite:///{TEST_DB_PATH}"
 engine = create_engine(SQLALCHEMY_DATABASE_URL, connect_args={"check_same_thread": False})
 TestingSessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 

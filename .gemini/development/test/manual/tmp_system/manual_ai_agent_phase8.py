@@ -6,6 +6,7 @@ from sqlalchemy.orm import Session
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from unittest.mock import patch, MagicMock
+from pathlib import Path
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
@@ -19,7 +20,8 @@ from ask_agent.ask_agent_service import AskAgentService
 from db.models import Contact
 
 # Use a test database
-SQLALCHEMY_DATABASE_URL = "sqlite:///./test_ai_agent_phase8.db"
+TEST_DB_PATH = Path(__file__).resolve().parents[2] / "databases" / "legacy" / "test_ai_agent_phase8.db"
+SQLALCHEMY_DATABASE_URL = f"sqlite:///{TEST_DB_PATH}"
 engine = create_engine(SQLALCHEMY_DATABASE_URL, connect_args={"check_same_thread": False})
 TestingSessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 
@@ -45,8 +47,8 @@ async def test_phase8_messaging():
     finally:
         db.close()
         # Clean up
-        if os.path.exists("./test_ai_agent_phase8.db"):
-            os.remove("./test_ai_agent_phase8.db")
+        if os.path.exists("./test/databases/legacy/test_ai_agent_phase8.db"):
+            os.remove("./test/databases/legacy/test_ai_agent_phase8.db")
 
 if __name__ == "__main__":
     asyncio.run(test_phase8_messaging())

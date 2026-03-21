@@ -15,7 +15,7 @@ from backend.app.api.routers import message_router
 from backend.app.api.routers import message_template_router
 from backend.app.api.routers import utility_router
 from backend.app.api.routers import bulk_router
-from backend.app.api.routers import test_router
+from backend.app.api.routers import surem_debug_router
 from . import messaging_router
 
 api_router = APIRouter()
@@ -35,6 +35,5 @@ api_router.include_router(message_router.router, prefix="/messages", tags=["Mess
 api_router.include_router(message_template_router.router, prefix="/message_templates", tags=["Message Templates"])
 api_router.include_router(utility_router.router)
 api_router.include_router(bulk_router.router)
-api_router.include_router(test_router.router, prefix="/test")
+api_router.include_router(surem_debug_router.router, prefix="/test")
 api_router.include_router(messaging_router.router)
-

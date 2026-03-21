@@ -1,9 +1,13 @@
 import os
 import re
+from pathlib import Path
+
 import pytest
 
-TEMPLATE_DIR = "frontend/templates"
-STATIC_DIR = "frontend/static"
+TEST_DIR = Path(__file__).resolve().parent
+PROJECT_DIR = TEST_DIR.parent.parent
+TEMPLATE_DIR = PROJECT_DIR / "frontend" / "templates"
+STATIC_DIR = PROJECT_DIR / "frontend" / "static"
 DETAIL_FILES = [
     "leads/detail_view.html",
     "contacts/detail_view.html",
@@ -20,7 +24,7 @@ DETAIL_FILES = [
 @pytest.mark.parametrize("file_path", DETAIL_FILES)
 def test_pencil_icon_existence(file_path):
     """Verify that sf-pencil-icon exists in the detail view templates."""
-    full_path = os.path.join(TEMPLATE_DIR, file_path)
+    full_path = TEMPLATE_DIR / file_path
     assert os.path.exists(full_path), f"{full_path} does not exist"
     
     with open(full_path, 'r') as f:
@@ -33,7 +37,7 @@ def test_pencil_icon_existence(file_path):
 @pytest.mark.parametrize("file_path", DETAIL_FILES)
 def test_pencil_icon_structure(file_path):
     """Verify that sf-pencil-icon is correctly placed inside sf-editable-field."""
-    full_path = os.path.join(TEMPLATE_DIR, file_path)
+    full_path = TEMPLATE_DIR / file_path
     with open(full_path, 'r') as f:
         content = f.read()
         
@@ -48,7 +52,7 @@ def test_pencil_icon_structure(file_path):
 
 def test_interactions_css_hides_pencil():
     """Verify that interactions.css has the rule to hide pencil when editing."""
-    css_path = "frontend/static/css/interactions.css"
+    css_path = STATIC_DIR / "css" / "interactions.css"
     with open(css_path, 'r') as f:
         content = f.read()
         assert '.sf-editing .sf-pencil-icon' in content
@@ -56,7 +60,7 @@ def test_interactions_css_hides_pencil():
 
 def test_base_html_has_editing_class():
     """Verify that base.html adds/removes the sf-editing class."""
-    base_path = "frontend/templates/base.html"
+    base_path = TEMPLATE_DIR / "base.html"
     with open(base_path, 'r') as f:
         content = f.read()
         assert "document.body.classList.add('sf-editing')" in content
@@ -64,7 +68,7 @@ def test_base_html_has_editing_class():
 
 def test_save_batch_edit_handles_multiple_fields():
     """Verify that saveBatchEdit gathers multiple fields."""
-    base_path = "frontend/templates/base.html"
+    base_path = TEMPLATE_DIR / "base.html"
     with open(base_path, 'r') as f:
         content = f.read()
         # Check for the loop that gathers updates
@@ -73,7 +77,7 @@ def test_save_batch_edit_handles_multiple_fields():
 
 def test_send_message_bulk_delete_ui():
     """Verify that Send Message has the bulk delete UI for templates."""
-    path = "frontend/templates/send_message.html"
+    path = TEMPLATE_DIR / "send_message.html"
     with open(path, 'r') as f:
         content = f.read()
         assert "template-bulk-delete-modal" in content

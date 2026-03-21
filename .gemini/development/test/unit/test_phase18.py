@@ -8,9 +8,11 @@ from backend.app.services.contact_service import ContactService
 from backend.app.services.vehicle_spec_service import VehicleSpecService
 from datetime import datetime
 import time
+from pathlib import Path
 
 # Setup test database
-SQLALCHEMY_DATABASE_URL = "sqlite:///./db/test_runs/test_phase18.db"
+TEST_DB_PATH = Path(__file__).resolve().parents[1] / "databases" / "test_phase18.db"
+SQLALCHEMY_DATABASE_URL = f"sqlite:///{TEST_DB_PATH}"
 engine = create_engine(SQLALCHEMY_DATABASE_URL, connect_args={"check_same_thread": False})
 TestingSessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 
