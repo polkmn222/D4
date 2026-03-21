@@ -17,7 +17,6 @@ DETAIL_FILES = [
     "messages/detail_view.html",
     "message/detail_view.html",      # Note: 'message'
     "message_templates/detail_view.html",
-    "tasks/detail_view.html",
     "common/detail_view.html"
 ]
 

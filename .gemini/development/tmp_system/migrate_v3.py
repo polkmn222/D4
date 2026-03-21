@@ -71,12 +71,7 @@ def migrate():
         rename_safe("assets", "brand_id", "brand")
         rename_safe("assets", "model_id", "model")
 
-        # 8. tasks: account_id -> account, opportunity_id -> opportunity, message_id -> message
-        rename_safe("tasks", "account_id", "account")
-        rename_safe("tasks", "opportunity_id", "opportunity")
-        rename_safe("tasks", "message_id", "message")
-
-        # 9. messages: contact_id -> contact, account_id -> account, template_id -> template
+        # 8. messages: contact_id -> contact, account_id -> account, template_id -> template
         rename_safe("messages", "contact_id", "contact")
         rename_safe("messages", "account_id", "account")
         rename_safe("messages", "template_id", "template")

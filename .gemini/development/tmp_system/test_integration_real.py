@@ -27,7 +27,7 @@ if __name__ == "__main__":
         "show me some leads",
         "list my opportunities",
         "who are you?",
-        "create a task: test task",
+        "create a contact named Test User",
         "invalid_request_xyz"
     ]
     for q in queries:

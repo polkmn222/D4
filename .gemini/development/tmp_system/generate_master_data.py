@@ -151,15 +151,6 @@ def generate_master_data():
                     (msid, cid, tid, f"System Message notification {i+1}", "Outbound", "Sent", now, now))
         message_ids.append(msid)
         
-    # 12. Tasks
-    for i in range(50):
-        tsid = get_id("Task")
-        aid = random.choice(account_ids)
-        oid = random.choice(opportunity_ids)
-        msid = random.choice(message_ids) if random.random() > 0.5 else None
-        cur.execute("INSERT INTO tasks (id, account_id, opportunity_id, message_id, subject, status, priority, created_at, updated_at) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)",
-                    (tsid, aid, oid, msid, f"Operational Task {i+1}", "Not Started", "Normal", now, now))
-    
     conn.commit()
     conn.close()
     print("Master data generation complete.")

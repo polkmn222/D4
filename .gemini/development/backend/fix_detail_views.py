@@ -3,14 +3,12 @@ import re
 
 files = [
     'app/templates/assets/detail_view.html',
-    'app/templates/task/detail_view.html',
     'app/templates/vehicle_spec/detail_view.html',
     'app/templates/lead/detail_view.html',
     'app/templates/common/detail_view.html',
     'app/templates/product/detail_view.html',
     'app/templates/message/detail_view.html',
     'app/templates/asset/detail_view.html',
-    'app/templates/tasks/detail_view.html',
     'app/templates/contact/detail_view.html',
     'app/templates/opportunity/detail_view.html'
 ]
