@@ -77,3 +77,19 @@ def test_get_access_token_refreshes_and_persists(db, monkeypatch):
     assert stored_token.access_token == "fresh-token"
     assert stored_token.expires_at is not None
     mock_post.assert_called_once()
+
+
+def test_debug_auth_status_reports_missing_credentials(db, monkeypatch):
+    monkeypatch.delenv("SUREM_AUTH_URL", raising=False)
+    monkeypatch.delenv("SUREM_USER_CODE", raising=False)
+    monkeypatch.delenv("SUREM_SECRET_KEY", raising=False)
+    monkeypatch.delenv("SUREM_ACCESS_TOKEN", raising=False)
+    monkeypatch.delenv("SUREM_TOKEN_EXPIRES_AT", raising=False)
+
+    result = SureMService.debug_auth_status(db)
+
+    assert result["status"] == "error"
+    assert result["error"] == "missing_credentials"
+    assert result["auth_url_present"] is False
+    assert result["user_code_present"] is False
+    assert result["secret_key_present"] is False

@@ -278,11 +278,11 @@ async def test_surem_auth(db: Session = Depends(get_db)):
     from backend.app.services.surem_service import SureMService
     try:
         logger.info("Testing SureM Authentication...")
-        token = SureMService.get_access_token(db)
+        result = SureMService.debug_auth_status(db)
+        token = SureMService.get_access_token(db) if result.get("status") == "success" else None
         if token:
-            return {"status": "success", "message": "Authentication successful.", "token": token[:10] + "..." + token[-10:] if len(token) > 20 else token}
-        else:
-            return {"status": "error", "message": "Failed to retrieve access token. Check logs."}
+            result["token_preview"] = token[:10] + "..." + token[-10:] if len(token) > 20 else token
+        return result
     except Exception as e:
         logger.error(f"Error during SureM auth test: {e}")
         return {"status": "error", "message": str(e)}

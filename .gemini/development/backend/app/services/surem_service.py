@@ -1,7 +1,7 @@
 import logging
 import os
 from datetime import datetime, timedelta, timezone
-from typing import Optional
+from typing import Any, Dict, Optional, Tuple
 
 import requests
 from sqlalchemy import text
@@ -66,14 +66,20 @@ class SureMService:
         row.expires_at = SureMService._normalize_expires_at(expires_at)
 
     @staticmethod
-    def _request_new_access_token() -> tuple[Optional[str], Optional[datetime]]:
+    def _request_new_access_token() -> Tuple[Optional[str], Optional[datetime], Dict[str, Any]]:
         user_code = os.getenv("SUREM_USER_CODE")
         secret_key = os.getenv("SUREM_SECRET_KEY")
         auth_url = os.getenv("SUREM_AUTH_URL")
+        diagnostics = {
+            "auth_url_present": bool(auth_url),
+            "user_code_present": bool(user_code),
+            "secret_key_present": bool(secret_key),
+        }
 
         if not all([user_code, secret_key, auth_url]):
             logger.error("SureM credentials missing in environment variables.")
-            return None, None
+            diagnostics["error"] = "missing_credentials"
+            return None, None, diagnostics
 
         logger.info("Fetching new SureM access token.")
         try:
@@ -85,25 +91,36 @@ class SureMService:
             )
             if response.status_code != 200:
                 logger.error(f"SureM Auth HTTP Error: {response.status_code} - {response.text}")
-                return None, None
+                diagnostics["error"] = "auth_http_error"
+                diagnostics["status_code"] = response.status_code
+                diagnostics["response_text"] = response.text[:300]
+                return None, None, diagnostics
 
             data = response.json()
             if data.get("code") != "A0000":
                 logger.error(f"SureM Auth Error: Code {data.get('code')}, {data}")
-                return None, None
+                diagnostics["error"] = "auth_code_error"
+                diagnostics["code"] = data.get("code")
+                diagnostics["message"] = data.get("message")
+                return None, None, diagnostics
 
             new_token = data.get("data", {}).get("accessToken")
             expires_in_seconds = data.get("data", {}).get("expiresIn", 3600)
             if not new_token:
                 logger.error(f"SureM Auth response missing accessToken: {data}")
-                return None, None
+                diagnostics["error"] = "missing_access_token"
+                return None, None, diagnostics
 
             new_expires_at = datetime.now(timezone.utc) + timedelta(seconds=expires_in_seconds)
             logger.info(f"Successfully refreshed SureM token. Expires at: {new_expires_at.isoformat()}")
-            return new_token, new_expires_at
+            diagnostics["source"] = "fresh_auth"
+            diagnostics["expires_at"] = new_expires_at.isoformat()
+            return new_token, new_expires_at, diagnostics
         except Exception as e:
             logger.error(f"Failed to fetch SureM token: {e}")
-            return None, None
+            diagnostics["error"] = "request_exception"
+            diagnostics["exception"] = str(e)
+            return None, None, diagnostics
 
     @staticmethod
     def get_access_token(db: Session) -> Optional[str]:
@@ -129,7 +146,7 @@ class SureMService:
                 except ValueError:
                     logger.warning(f"Invalid SUREM_TOKEN_EXPIRES_AT format: {env_expires_at}")
 
-            new_token, new_expires_at = SureMService._request_new_access_token()
+            new_token, new_expires_at, _ = SureMService._request_new_access_token()
             if not new_token:
                 return None
 
@@ -145,6 +162,57 @@ class SureMService:
                 SureMService._release_lock(db)
             except Exception as unlock_error:
                 logger.warning(f"Failed to release SureM advisory lock: {unlock_error}")
+
+    @staticmethod
+    def debug_auth_status(db: Session) -> Dict[str, Any]:
+        token_row = db.query(ServiceToken).filter(ServiceToken.service_name == SureMService.TOKEN_SERVICE_NAME).first()
+        env_access_token = os.getenv("SUREM_ACCESS_TOKEN")
+        env_expires_at = os.getenv("SUREM_TOKEN_EXPIRES_AT")
+
+        result: Dict[str, Any] = {
+            "status": "error",
+            "auth_url_present": bool(os.getenv("SUREM_AUTH_URL")),
+            "user_code_present": bool(os.getenv("SUREM_USER_CODE")),
+            "secret_key_present": bool(os.getenv("SUREM_SECRET_KEY")),
+            "env_token_present": bool(env_access_token),
+            "env_token_expires_at_present": bool(env_expires_at),
+            "db_token_present": bool(token_row and token_row.access_token),
+            "db_token_expires_at": token_row.expires_at.isoformat() if token_row and token_row.expires_at else None,
+        }
+
+        if token_row and SureMService._token_is_valid(token_row.access_token, token_row.expires_at, SureMService.TOKEN_REFRESH_MARGIN):
+            result.update({
+                "status": "success",
+                "message": "Authentication successful using cached database token.",
+                "source": "database",
+            })
+            return result
+
+        if env_access_token:
+            try:
+                parsed_env_expiry = SureMService._parse_timestamp(env_expires_at)
+                if SureMService._token_is_valid(env_access_token, parsed_env_expiry, SureMService.TOKEN_REFRESH_MARGIN):
+                    result.update({
+                        "status": "success",
+                        "message": "Authentication successful using environment token.",
+                        "source": "environment",
+                        "env_token_expires_at": parsed_env_expiry.isoformat() if parsed_env_expiry else None,
+                    })
+                    return result
+            except ValueError:
+                result["env_token_error"] = "invalid_timestamp"
+
+        _, _, diagnostics = SureMService._request_new_access_token()
+        result.update(diagnostics)
+        if diagnostics.get("source") == "fresh_auth":
+            result.update({
+                "status": "success",
+                "message": "Authentication successful using a freshly issued token.",
+                "source": "fresh_auth",
+            })
+        else:
+            result.setdefault("message", "Failed to retrieve access token.")
+        return result
 
     @staticmethod
     def _get_persisted_image_key(db: Session, filename: str) -> Optional[dict[str, str]]:
