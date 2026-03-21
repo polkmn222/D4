@@ -1,0 +1,1 @@
+.gemini/development/backend/run_crm.sh
