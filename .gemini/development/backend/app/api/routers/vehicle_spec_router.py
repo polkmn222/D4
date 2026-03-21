@@ -21,7 +21,7 @@ logger = logging.getLogger(__name__)
 @router.get("/vehicle_specifications/new", response_class=HTMLResponse)
 @handle_agent_errors
 async def new_vehicle_spec_form(request: Request):
-    return templates.TemplateResponse("brands/create_edit.html", {
+    return templates.TemplateResponse(request, "brands/create_edit.html", {
         "request": request,
         "object_type": "Brand",
         "plural_type": "vehicle_specifications",
@@ -52,7 +52,7 @@ async def vehicle_spec_detail(request: Request, spec_id: str, db: Session = Depe
             "items": [{"name": m.name, "description": m.description if m.description else ""} for m in models_list]
         })
 
-    return templates.TemplateResponse("brands/detail_view.html", {
+    return templates.TemplateResponse(request, "brands/detail_view.html", {
         "request": request,
         "object_type": "Brand",
         "plural_type": "vehicle_specifications",
@@ -78,7 +78,7 @@ async def list_specs(request: Request, db: Session = Depends(get_db)):
             "edit_url": f"/vehicle_specifications/new?type={s.record_type}&id={s.id}"
         })
     columns = ["name", "type", "description"]
-    return templates.TemplateResponse("brands/list_view.html", {
+    return templates.TemplateResponse(request, "brands/list_view.html", {
         "request": request,
         "object_type": "Brand",
         "plural_type": "vehicle_specifications",
@@ -146,7 +146,7 @@ async def model_detail(request: Request, model_id: str, db: Session = Depends(ge
             "Description": model.description if model.description else ""
         }
 
-        return templates.TemplateResponse("models/detail_view.html", {
+        return templates.TemplateResponse(request, "models/detail_view.html", {
             "request": request, "object_type": "Model", "plural_type": "models",
             "record_id": model_id, "record_name": model.name if model.name else "",
             "details": details, "created_at": model.created_at,
@@ -171,7 +171,7 @@ async def list_models(request: Request, db: Session = Depends(get_db)):
                 "edit_url": f"/models/new-modal?id={m.id}"
             })
         columns = ["name", "brand", "description"]
-        return templates.TemplateResponse("list_view.html", {
+        return templates.TemplateResponse(request, "list_view.html", {
             "request": request, "object_type": "Model", "plural_type": "models",
             "items": items, "columns": columns
         })

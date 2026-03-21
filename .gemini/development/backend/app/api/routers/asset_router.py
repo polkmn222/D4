@@ -23,7 +23,7 @@ async def new_asset_form(request: Request, contact_id: str = None, db: Session =
     if not is_feature_enabled("assets"):
         return RedirectResponse(url="/?error=Coming+Soon")
     
-    return templates.TemplateResponse("assets/create_edit_modal.html", {
+    return templates.TemplateResponse(request, "assets/create_edit_modal.html", {
         "request": request,
         "object_type": "Asset",
         "is_new": True,
@@ -60,7 +60,7 @@ async def asset_detail(request: Request, asset_id: str, db: Session = Depends(ge
             "Product": prod.name if prod else "",
             "Product_Hidden_Ref": asset.product if asset.product else ""
         }
-        return templates.TemplateResponse("detail_view.html", {
+        return templates.TemplateResponse(request, "detail_view.html", {
             "request": request, "object_type": "Asset", "plural_type": "assets",
             "record_id": asset_id, "record_name": asset.name if asset.name else "",
             "details": details, "created_at": asset.created_at, "updated_at": asset.updated_at,
@@ -88,7 +88,7 @@ async def list_assets(request: Request, db: Session = Depends(get_db)):
                 "edit_url": f"/assets/new-modal?id={a.id}"
             })
         columns = ["name", "vin", "price", "status"]
-        return templates.TemplateResponse("list_view.html", {
+        return templates.TemplateResponse(request, "list_view.html", {
             "request": request, 
             "object_type": "Asset", 
             "plural_type": "assets",

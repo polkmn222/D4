@@ -36,7 +36,7 @@ async def list_templates(request: Request, db: Session = Depends(get_db)):
                 "edit_url": f"/message_templates/new-modal?id={t.id}"
             })
         columns = ["name", "subject", "content", "type"]
-        return templates.TemplateResponse("message_templates/list_view.html", {
+        return templates.TemplateResponse(request, "message_templates/list_view.html", {
             "request": request, "object_type": "MessageTemplate", "plural_type": "message_templates",
             "items": items, "columns": columns
         })
@@ -64,7 +64,7 @@ async def template_detail(request: Request, template_id: str, db: Session = Depe
         # No related_lists for attachments anymore in templates (Atomization)
         related_lists = []
 
-        return templates.TemplateResponse("message_templates/detail_view.html", {
+        return templates.TemplateResponse(request, "message_templates/detail_view.html", {
             "request": request, "object_type": "MessageTemplate", "plural_type": "message_templates",
             "record_id": template_id, "record_name": t.name if t.name else "", "details": details,
             "created_at": t.created_at, "updated_at": t.updated_at, "related_lists": related_lists

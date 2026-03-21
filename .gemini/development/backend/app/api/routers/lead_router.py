@@ -53,7 +53,7 @@ async def lead_detail(request: Request, lead_id: str, db: Session = Depends(get_
         if is_active: found_active = True
         path.append({"label": s.value, "active": is_active, "completed": is_completed})
 
-    return templates.TemplateResponse("leads/detail_view.html", {
+    return templates.TemplateResponse(request, "leads/detail_view.html", {
         "request": request,
         "object_type": "Lead",
         "plural_type": "leads",
@@ -88,7 +88,7 @@ async def list_leads(request: Request, db: Session = Depends(get_db)):
         })
 
     columns = ["name", "phone", "model", "status", "created"]
-    return templates.TemplateResponse("leads/list_view.html", {
+    return templates.TemplateResponse(request, "leads/list_view.html", {
         "request": request, 
         "object_type": "Lead", 
         "plural_type": "leads",
@@ -99,7 +99,7 @@ async def list_leads(request: Request, db: Session = Depends(get_db)):
 @router.get("/new", response_class=HTMLResponse)
 @handle_agent_errors
 async def new_lead_form(request: Request):
-    return templates.TemplateResponse("leads/create_edit_modal.html", {
+    return templates.TemplateResponse(request, "leads/create_edit_modal.html", {
         "request": request,
         "object_type": "Lead",
         "is_new": True
@@ -196,7 +196,7 @@ async def convert_lead_modal(request: Request, lead_id: str, db: Session = Depen
     lead = LeadService.get_lead(db, lead_id)
     if not lead:
         return RedirectResponse(url="/leads?error=Lead+not+found")
-    return templates.TemplateResponse("leads/lead_convert_modal.html", {
+    return templates.TemplateResponse(request, "leads/lead_convert_modal.html", {
         "request": request,
         "lead": lead
     })
@@ -218,7 +218,7 @@ async def convert_lead(
             opportunity_name, dont_create_opp, converted_status
         )
         if result and "contact" in result:
-            return templates.TemplateResponse("leads/lead_convert_success.html", {
+            return templates.TemplateResponse(request, "leads/lead_convert_success.html", {
                 "request": request,
                 "contact": result["contact"],
                 "opportunity": result["opportunity"]

@@ -36,7 +36,7 @@ async def list_messages(request: Request, db: Session = Depends(get_db)):
             "created_at": m.created_at.strftime("%Y-%m-%d %H:%M") if m.created_at else ""
         })
     columns = ["name", "direction", "status", "created_at"]
-    return templates.TemplateResponse("messages/list_view.html", {
+    return templates.TemplateResponse(request, "messages/list_view.html", {
         "request": request,
         "object_type": "Message",
         "plural_type": "messages",
@@ -62,4 +62,4 @@ async def send_message(
 @handle_agent_errors
 async def list_templates(request: Request, db: Session = Depends(get_db)):
     tmpls = MessageTemplateService.get_templates(db)
-    return templates.TemplateResponse("messages/templates_list.html", {"request": request, "items": tmpls})
+    return templates.TemplateResponse(request, "messages/templates_list.html", {"request": request, "items": tmpls})

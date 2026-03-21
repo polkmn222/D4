@@ -36,7 +36,7 @@ async def test_list_templates_includes_content(db, request_mock):
         # Verify
         assert mock_render.called
         args, kwargs = mock_render.call_args
-        context = args[1]
+        context = args[2]
         
         assert "items" in context
         assert "columns" in context

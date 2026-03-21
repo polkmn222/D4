@@ -58,7 +58,15 @@ class Lead(BaseModel):
     status = Column(String, default=LeadStatus.NEW) # New, Follow Up, Qualified, Lost
     is_converted = Column(Boolean, default=False)
     converted_contact = Column(String(18), ForeignKey("contacts.id"), nullable=True)
-    converted_opportunity = Column(String(18), ForeignKey("opportunities.id"), nullable=True)
+    converted_opportunity = Column(
+        String(18),
+        ForeignKey(
+            "opportunities.id",
+            use_alter=True,
+            name="fk_leads_converted_opportunity",
+        ),
+        nullable=True,
+    )
     brand = Column(String(18), ForeignKey("vehicle_specifications.id"), nullable=True)
     model = Column(String(18), ForeignKey("models.id"), nullable=True)
     product = Column(String(18), ForeignKey("products.id"), nullable=True)
@@ -82,7 +90,15 @@ class Opportunity(BaseModel):
     id = Column(String(18), primary_key=True, index=True)
     contact = Column(String(18), ForeignKey("contacts.id"), nullable=True)
     product = Column(String(18), ForeignKey("products.id"), nullable=True)
-    lead = Column(String(18), ForeignKey("leads.id"), nullable=True)
+    lead = Column(
+        String(18),
+        ForeignKey(
+            "leads.id",
+            use_alter=True,
+            name="fk_opportunities_lead",
+        ),
+        nullable=True,
+    )
     brand = Column(String(18), ForeignKey("vehicle_specifications.id"), nullable=True)
     model = Column(String(18), ForeignKey("models.id"), nullable=True)
     asset = Column(String(18), ForeignKey("assets.id"), nullable=True)

@@ -19,7 +19,7 @@ async def dashboard_view(request: Request, db: Session = Depends(get_db)):
         logger.debug("Entering dashboard endpoint")
         data = DashboardService.get_dashboard_data(db)
         
-        return templates.TemplateResponse("dashboard/dashboard.html", {
+        return templates.TemplateResponse(request, "dashboard/dashboard.html", {
             "request": request, 
             **data
         })
@@ -39,7 +39,7 @@ async def get_ai_recommendations(request: Request, db: Session = Depends(get_db)
             model = ModelService.get_model(db, opp.model) if opp.model else None
             opp.model_name = model.name if model else "-"
             
-        return templates.TemplateResponse("dashboard/dashboard_ai_recommend_fragment.html", {
+        return templates.TemplateResponse(request, "dashboard/dashboard_ai_recommend_fragment.html", {
             "request": request,
             "recommended_opportunities": recommended_opps
         })
@@ -66,7 +66,7 @@ async def global_search(request: Request, q: str = "", type: str = "all", db: Se
     try:
         logger.debug(f"Entering global_search endpoint with query: {q}, type: {type}")
         results = SearchService.global_search(db, q, type)
-        return templates.TemplateResponse("search_results.html", {"request": request, "query": q, "results": results})
+        return templates.TemplateResponse(request, "search_results.html", {"request": request, "query": q, "results": results})
     except Exception as e:
         logger.error(f"Global search error: {e}")
-        return templates.TemplateResponse("search_results.html", {"request": request, "query": q, "results": [], "error": str(e)})
+        return templates.TemplateResponse(request, "search_results.html", {"request": request, "query": q, "results": [], "error": str(e)})

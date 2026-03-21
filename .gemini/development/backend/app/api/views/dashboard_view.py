@@ -1,4 +1,4 @@
-from fastapi import APIRouter, Depends
+from fastapi import APIRouter, Depends, Request
 from fastapi.templating import Jinja2Templates
 from sqlalchemy.orm import Session
 from db.database import get_db
@@ -8,6 +8,6 @@ router = APIRouter()
 templates = Jinja2Templates(directory="app/templates")
 
 @router.get("/")
-async def dashboard(db: Session = Depends(get_db)):
+async def dashboard(request: Request, db: Session = Depends(get_db)):
     contacts = ContactService.get_contacts(db)
-    return templates.TemplateResponse("dashboard.html", {"request": {}, "contacts": contacts})
+    return templates.TemplateResponse(request, "dashboard.html", {"request": request, "contacts": contacts})

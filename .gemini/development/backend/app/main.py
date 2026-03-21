@@ -1,4 +1,6 @@
 import os
+from contextlib import asynccontextmanager
+
 from fastapi import FastAPI, Request
 from fastapi.staticfiles import StaticFiles
 from fastapi.responses import RedirectResponse, HTMLResponse, JSONResponse
@@ -9,7 +11,13 @@ import logging
 
 from backend.app.core.toggles import FEATURE_TOGGLES
 
-app = FastAPI(title="AI Ready CRM")
+
+@asynccontextmanager
+async def lifespan(_: FastAPI):
+    Base.metadata.create_all(bind=engine)
+    yield
+
+app = FastAPI(title="AI Ready CRM", lifespan=lifespan)
 
 logger = logging.getLogger(__name__)
 
@@ -40,10 +48,6 @@ except ImportError as e:
     logger.error(f"Failed to import AI Agent sub-app: {e}")
 except Exception as e:
     logger.error(f"Failed to mount AI Agent sub-app: {e}")
-
-@app.on_event("startup")
-def on_startup():
-    Base.metadata.create_all(bind=engine)
 
 @app.exception_handler(Exception)
 async def global_exception_handler(request: Request, exc: Exception):

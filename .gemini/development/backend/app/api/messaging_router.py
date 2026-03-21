@@ -130,7 +130,7 @@ async def messaging_ui(request: Request, db: Session = Depends(get_db)):
                 "image_url": t.image_url
             })
         
-        return templates.TemplateResponse("send_message.html", {
+        return templates.TemplateResponse(request, "send_message.html", {
             "request": request,
             "contacts": opp_contacts,
             "opportunities": opportunities_data,

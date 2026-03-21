@@ -48,7 +48,7 @@ async def new_contact_modal(request: Request, id: str = None, db: Session = Depe
                     "tier": contact.tier,
                     "description": contact.description
                 }
-        return templates.TemplateResponse("templates/sf_form_modal.html", {
+        return templates.TemplateResponse(request, "templates/sf_form_modal.html", {
             "request": request, "object_type": "Contact", "plural_type": "contacts",
             "fields": fields, "initial_values": initial_values
         })
@@ -64,7 +64,7 @@ async def lead_convert_modal(request: Request, lead_id: str, db: Session = Depen
         lead = LeadService.get_lead(db, lead_id)
         if not lead:
             return {"status": "error", "message": "Lead not found"}
-        return templates.TemplateResponse("leads/lead_convert_modal.html", {
+        return templates.TemplateResponse(request, "leads/lead_convert_modal.html", {
             "request": request, "lead": lead
         })
     except Exception as e:
@@ -93,7 +93,7 @@ async def new_lead_modal(request: Request, id: str = None, db: Session = Depends
                     "product": lead.product, "product_name": prod.name if prod else "",
                     "description": lead.description
                 }
-        return templates.TemplateResponse("templates/sf_form_modal.html", {
+        return templates.TemplateResponse(request, "templates/sf_form_modal.html", {
             "request": request, "object_type": "Lead", "plural_type": "leads",
             "brands": brands, "models": models, "fields": fields, "initial_values": initial_values
         })
@@ -135,7 +135,7 @@ async def new_opportunity_modal(request: Request, id: str = None, db: Session = 
                     "asset": opp.asset, "asset_name": asset.name if asset else "",
                     "probability": opp.probability
                 }
-        return templates.TemplateResponse("templates/sf_form_modal.html", {
+        return templates.TemplateResponse(request, "templates/sf_form_modal.html", {
             "request": request, "object_type": "Opportunity", "plural_type": "opportunities",
             "fields": fields, "initial_values": initial_values
         })
@@ -147,7 +147,7 @@ async def new_opportunity_modal(request: Request, id: str = None, db: Session = 
 @router.get("/vehicle_specifications/record_type")
 async def spec_record_type(request: Request):
     try:
-        return templates.TemplateResponse("brands/spec_record_type.html", {"request": request})
+        return templates.TemplateResponse(request, "brands/spec_record_type.html", {"request": request})
     except Exception as e:
         logger.error(f"Error in spec record type: {e}")
         return RedirectResponse(url="/vehicle_specifications?error=Error+loading+page")
@@ -180,7 +180,7 @@ async def new_spec_modal(request: Request, type: str = "Brand", id: str = None, 
                 if type == "Model" and "parent" not in fields:
                     fields.append("parent")
                     
-        return templates.TemplateResponse("templates/sf_form_modal.html", {
+        return templates.TemplateResponse(request, "templates/sf_form_modal.html", {
             "request": request, "object_type": "VehicleSpecification", "plural_type": "vehicle_specifications",
             "record_type": type, "fields": fields, "initial_values": initial_values
         })
@@ -212,7 +212,7 @@ async def new_model_modal(request: Request, id: str = None, db: Session = Depend
                     "id": model.id, "name": model.name, "description": model.description,
                     "brand": model.brand, "brand_name": brand.name if brand else ""
                 }
-        return templates.TemplateResponse("templates/sf_form_modal.html", {
+        return templates.TemplateResponse(request, "templates/sf_form_modal.html", {
             "request": request, "object_type": "Model", "plural_type": "models",
             "fields": fields, "initial_values": initial_values
         })
@@ -246,7 +246,7 @@ async def new_product_modal(request: Request, id: str = None, db: Session = Depe
                     "model": prod.model, "model_name": model.name if model else "",
                     "category": prod.category, "base_price": prod.base_price, "description": prod.description
                 }
-        return templates.TemplateResponse("templates/sf_form_modal.html", {
+        return templates.TemplateResponse(request, "templates/sf_form_modal.html", {
             "request": request, "object_type": "Product", "plural_type": "products",
             "fields": fields, "initial_values": initial_values
         })
@@ -282,7 +282,7 @@ async def new_asset_modal(request: Request, id: str = None, db: Session = Depend
                     "model": asset.model, "model_name": model.name if model else "",
                     "name": asset.name, "vin": asset.vin, "status": asset.status, "price": asset.price
                 }
-        return templates.TemplateResponse("templates/sf_form_modal.html", {
+        return templates.TemplateResponse(request, "templates/sf_form_modal.html", {
             "request": request, "object_type": "Asset", "plural_type": "assets",
             "fields": fields, "initial_values": initial_values
         })
@@ -315,7 +315,7 @@ async def new_message_modal(request: Request, id: str = None, db: Session = Depe
                     "template": msg.template, "template_name": template.name if template else "",
                     "direction": msg.direction, "content": msg.content, "status": msg.status
                 }
-        return templates.TemplateResponse("templates/sf_form_modal.html", {
+        return templates.TemplateResponse(request, "templates/sf_form_modal.html", {
             "request": request, "object_type": "MessageSend", "plural_type": "messages",
             "fields": fields, "initial_values": initial_values
         })
@@ -362,7 +362,7 @@ async def new_template_modal(request: Request, id: str = None, db: Session = Dep
                     "subject": t.subject,
                     "content": t.content
                 }
-        return templates.TemplateResponse("templates/sf_form_modal.html", {
+        return templates.TemplateResponse(request, "templates/sf_form_modal.html", {
             "request": request, "object_type": "MessageTemplate", "plural_type": "message_templates",
             "fields": fields, "initial_values": initial_values
         })

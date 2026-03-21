@@ -40,7 +40,7 @@ async def product_detail(request: Request, product_id: str, db: Session = Depend
             "Price": product.base_price if product.base_price else 0,
             "Description": product.description if product.description else ""
         }
-        return templates.TemplateResponse("products/detail_view.html", {
+        return templates.TemplateResponse(request, "products/detail_view.html", {
             "request": request, "object_type": "Product", "plural_type": "products",
             "record_id": product_id, "record_name": product.name if product.name else "",
             "details": details, "created_at": product.created_at, "updated_at": product.updated_at,
@@ -71,7 +71,7 @@ async def list_products(request: Request, db: Session = Depends(get_db)):
                 "edit_url": f"/products/new-modal?id={p.id}"
             })
         columns = ["name", "brand", "model", "base_price", "category"]
-        return templates.TemplateResponse("products/list_view.html", {
+        return templates.TemplateResponse(request, "products/list_view.html", {
             "request": request, 
             "object_type": "Product", 
             "plural_type": "products",

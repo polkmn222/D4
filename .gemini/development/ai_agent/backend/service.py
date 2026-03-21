@@ -9,10 +9,6 @@ from sqlalchemy import text
 from typing import Dict, Any, List, Optional
 from dotenv import load_dotenv
 
-# SDK Imports for ensemble
-import openai
-import google.generativeai as genai
-
 # Import services from the main app
 from backend.app.services.lead_service import LeadService
 from backend.app.services.contact_service import ContactService
@@ -33,10 +29,6 @@ CEREBRAS_API_KEY = os.getenv("CELEBRACE_API_KEY")
 GROQ_API_KEY = os.getenv("GROQ_API_KEY")
 GEMINI_API_KEY = os.getenv("GEMINI_API_KEY") or os.getenv("Gemini_API_Key")
 OPENAI_API_KEY = os.getenv("OPENAI_API_KEY") or os.getenv("ChatGPT_API_Key")
-
-# Configure SDKs
-if GEMINI_API_KEY:
-    genai.configure(api_key=GEMINI_API_KEY)
 
 # Skills directory is 3 levels up from this file
 SKILLS_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
@@ -123,11 +115,11 @@ class AiAgentService:
         q_low = user_query.lower()
         if "ai recommend" in q_low or "추천" in q_low:
             agent_output["intent"] = "RECOMMEND"
-        elif "table format" in q_low or "테이블 형식" in q_low or "테이블 모양" in q_low:
+        elif "table format" in q_low or "테이블 형식" in q_low or "테이블 모양" in q_low or "change ai recommend table" in q_low or "compact style" in q_low or "modern style" in q_low or "default style" in q_low:
              agent_output["intent"] = "MODIFY_UI"
         elif "send message" in q_low or "메시지 보내" in q_low:
-             agent_output["intent"] = "CHAT"
-             agent_output["text"] = "To send messages, please go to the [Send Messages] page. I can help you find templates or contacts to message here!"
+             agent_output["intent"] = "SEND_MESSAGE"
+             agent_output["text"] = "Redirecting you to the messaging page..."
 
         # ROBUST EXTRACTION: Fallback for "Manage [object] [record_id]"
         if "manage" in user_query.lower() and (not agent_output.get("record_id") or agent_output.get("record_id") == "ID_HERE"):
@@ -213,10 +205,37 @@ class AiAgentService:
     @classmethod
     async def _call_gemini(cls, query, system) -> Dict[str, Any]:
         try:
-            model = genai.GenerativeModel('gemini-1.5-flash')
+            if not GEMINI_API_KEY:
+                return {}
+
             full_prompt = f"{system}\n\nUser Query: {query}\nResponse must be JSON."
-            response = await asyncio.to_thread(model.generate_content, full_prompt)
-            text = response.text
+            async with httpx.AsyncClient() as client:
+                response = await client.post(
+                    "https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent",
+                    params={"key": GEMINI_API_KEY},
+                    headers={"Content-Type": "application/json"},
+                    json={
+                        "contents": [
+                            {
+                                "parts": [
+                                    {"text": full_prompt}
+                                ]
+                            }
+                        ],
+                        "generationConfig": {
+                            "response_mime_type": "application/json"
+                        }
+                    },
+                    timeout=15.0,
+                )
+                payload = response.json()
+
+            text = (
+                payload.get("candidates", [{}])[0]
+                .get("content", {})
+                .get("parts", [{}])[0]
+                .get("text", "")
+            )
             match = re.search(r'\{.*\}', text, re.DOTALL)
             if match:
                 return json.loads(match.group())
@@ -279,8 +298,19 @@ class AiAgentService:
         if intent == "CHAT": return agent_output
 
         if intent == "MODIFY_UI":
-            # JS side handles the actual styling, backend just confirms
-            agent_output["text"] = "I've applied the new UI layout for you."
+            # Check if a specific style is already requested in the query
+            q_low = user_query.lower()
+            if any(word in q_low for word in ["compact", "축소", "작게"]):
+                agent_output["text"] = "I've updated the table to the **Compact** style for you."
+            elif any(word in q_low for word in ["modern", "모던", "깔끔"]):
+                agent_output["text"] = "I've applied the **Modern** grid style to the table."
+            elif any(word in q_low for word in ["default", "기본", "원래"]):
+                agent_output["text"] = "I've restored the table to the **Default** Salesforce style."
+            else:
+                # If no style specified, ask the user
+                agent_output["intent"] = "CHAT"
+                agent_output["text"] = "Sure! How would you like to change the table format? You can choose [Compact], [Modern], or [Default] style. Or just describe how you want it to look!"
+            
             return agent_output
 
         if intent == "RECOMMEND":

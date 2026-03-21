@@ -65,7 +65,7 @@ async def opportunity_detail(request: Request, opp_id: str, db: Session = Depend
             if is_active: found_active = True
             path.append({"label": s, "active": is_active, "completed": is_completed})
     
-        return templates.TemplateResponse("opportunities/detail_view.html", {
+        return templates.TemplateResponse(request, "opportunities/detail_view.html", {
             "request": request,
             "object_type": "Opportunity",
             "plural_type": "opportunities",
@@ -113,7 +113,7 @@ async def list_opportunities(request: Request, db: Session = Depends(get_db)):
                 "edit_url": f"/opportunities/new-modal?id={o.id}"
             })
         columns = ["name", "amount", "stage", "model", "created"]
-        return templates.TemplateResponse("opportunities/list_view.html", {
+        return templates.TemplateResponse(request, "opportunities/list_view.html", {
             "request": request, 
             "object_type": "Opportunity", 
             "plural_type": "opportunities",

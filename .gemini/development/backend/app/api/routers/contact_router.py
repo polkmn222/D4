@@ -42,7 +42,7 @@ async def contact_detail(request: Request, contact_id: str, db: Session = Depend
             "items": [{"name": a.name, "vin": a.vin, "status": a.status} for a in assets]
         })
 
-    return templates.TemplateResponse("contacts/detail_view.html", {
+    return templates.TemplateResponse(request, "contacts/detail_view.html", {
         "request": request, "object_type": "Contact", "plural_type": "contacts",
         "record_id": contact_id, "record_name": f"{contact.first_name if contact.first_name else ''} {contact.last_name if contact.last_name else ''}",
         "details": details, "created_at": contact.created_at,
@@ -64,7 +64,7 @@ async def list_contacts(request: Request, db: Session = Depends(get_db)):
             "edit_url": f"/contacts/new?id={c.id}"
         })
     columns = ["name", "email", "phone", "created"]
-    return templates.TemplateResponse("contacts/list_view.html", {
+    return templates.TemplateResponse(request, "contacts/list_view.html", {
         "request": request, 
         "object_type": "Contact", 
         "plural_type": "contacts",
