@@ -1,35 +1,27 @@
 import pytest
-from sqlalchemy import create_engine
-from sqlalchemy.orm import sessionmaker
-from db.database import Base
+import uuid
+from db.database import Base, engine, SessionLocal
 from backend.app.services.lead_service import LeadService
 from backend.app.services.opportunity_service import OpportunityService
 from db.models import Lead, Opportunity
-from pathlib import Path
-
-# Use a separate test database file
-TEST_DB_PATH = Path(__file__).resolve().parents[1] / "databases" / "test_phase16.db"
-SQLALCHEMY_DATABASE_URL = f"sqlite:///{TEST_DB_PATH}"
-engine = create_engine(SQLALCHEMY_DATABASE_URL, connect_args={"check_same_thread": False})
-TestingSessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 
 @pytest.fixture
 def db():
     Base.metadata.create_all(bind=engine)
-    session = TestingSessionLocal()
+    session = SessionLocal()
     try:
         yield session
     finally:
         session.close()
-        Base.metadata.drop_all(bind=engine)
 
 def test_lead_atomic_operations(db):
+    suffix = uuid.uuid4().hex[:6]
     # Create lead
     lead = LeadService.create_lead(
         db, 
         first_name="Atomic", 
-        last_name="Lead", 
-        email="atomic@example.com",
+        last_name=f"Lead_{suffix}", 
+        email=f"atomic_{suffix}@example.com",
         status="New"
     )
     assert lead.id is not None
@@ -49,11 +41,12 @@ def test_lead_atomic_operations(db):
     assert lead.is_followed is False
 
 def test_opportunity_atomic_operations(db):
+    suffix = uuid.uuid4().hex[:6]
     # Create opportunity
     opp = OpportunityService.create_opportunity(
         db, 
-        contact="CON_123", 
-        name="Atomic Deal", 
+        contact=None, 
+        name=f"Atomic Deal {suffix}", 
         amount=1000000, 
         stage="Prospecting"
     )

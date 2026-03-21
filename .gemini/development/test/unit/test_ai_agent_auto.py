@@ -1,32 +1,26 @@
 import pytest
-from sqlalchemy import create_engine
-from sqlalchemy.orm import sessionmaker
+import uuid
 from unittest.mock import patch, AsyncMock, MagicMock
-from pathlib import Path
 
-from db.database import Base
+from db.database import Base, engine, SessionLocal
 from ai_agent.backend.service import AiAgentService
 from db.models import Asset, Product, VehicleSpecification, Model
-
-# Setup Test Database
-TEST_DB_PATH = Path(__file__).resolve().parents[1] / "databases" / "test_ai_agent_auto.db"
-SQLALCHEMY_DATABASE_URL = f"sqlite:///{TEST_DB_PATH}"
-engine = create_engine(SQLALCHEMY_DATABASE_URL, connect_args={"check_same_thread": False})
-TestingSessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 
 @pytest.fixture
 def db():
     Base.metadata.create_all(bind=engine)
-    session = TestingSessionLocal()
+    session = SessionLocal()
     try:
         yield session
     finally:
         session.close()
-        Base.metadata.drop_all(bind=engine)
 
 @pytest.mark.asyncio
 async def test_ai_agent_create_asset_conversational(db):
     """Test that the agent handles asset creation with conversation."""
+    unique_id = uuid.uuid4().hex[:8]
+    test_vin = f"VIN-{unique_id}"
+
     # 1. User says "I want to register a new car"
     mock_llm_ask = {
         "intent": "CHAT",
@@ -45,7 +39,7 @@ async def test_ai_agent_create_asset_conversational(db):
         "intent": "CREATE",
         "object_type": "asset",
         "data": {
-            "vin": "VIN123456789",
+            "vin": test_vin,
             "status": "In Stock"
         },
         "score": 1.0
@@ -53,30 +47,34 @@ async def test_ai_agent_create_asset_conversational(db):
     
     with patch.object(AiAgentService, '_call_multi_llm_ensemble', new_callable=AsyncMock) as mock_ensemble:
         mock_ensemble.return_value = mock_llm_create
-        res = await AiAgentService.process_query(db, "VIN번호는 VIN123456789 야")
+        res = await AiAgentService.process_query(db, f"VIN번호는 {test_vin} 야")
         assert res["intent"] == "CREATE"
         
         # Verify in DB
-        asset = db.query(Asset).filter(Asset.vin == "VIN123456789").first()
+        asset = db.query(Asset).filter(Asset.vin == test_vin).first()
         assert asset is not None
 
 @pytest.mark.asyncio
 async def test_ai_agent_query_automotive(db):
     """Test that the agent can query brands and products."""
+    unique_id = uuid.uuid4().hex[:8]
+    test_brand_name = f"Tesla-{unique_id}"
+    test_brand_id = f"brand-{unique_id}"
+
     # Seed a brand
-    brand = VehicleSpecification(id="avS-brand-1", name="Tesla", record_type="Brand")
+    brand = VehicleSpecification(id=test_brand_id, name=test_brand_name, record_type="Brand")
     db.add(brand)
     db.commit()
 
     mock_llm_query = {
         "intent": "QUERY",
         "object_type": "brand",
-        "sql": "SELECT * FROM vehicle_specifications WHERE record_type = 'Brand' AND name LIKE '%Tesla%'",
+        "sql": f"SELECT * FROM vehicle_specifications WHERE record_type = 'Brand' AND name LIKE '%{test_brand_name}%'",
         "score": 0.95
     }
     
     with patch.object(AiAgentService, '_call_multi_llm_ensemble', new_callable=AsyncMock) as mock_ensemble:
         mock_ensemble.return_value = mock_llm_query
-        res = await AiAgentService.process_query(db, "테슬라 브랜드 찾아줘")
+        res = await AiAgentService.process_query(db, f"{test_brand_name} 브랜드 찾아줘")
         assert len(res["results"]) > 0
-        assert res["results"][0]["name"] == "Tesla"
+        assert res["results"][0]["name"] == test_brand_name

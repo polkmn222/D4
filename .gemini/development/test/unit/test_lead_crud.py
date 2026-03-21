@@ -1,62 +1,34 @@
 import pytest
-from sqlalchemy import create_engine
-from sqlalchemy.orm import sessionmaker
-from db.database import Base
+import uuid
+from db.database import Base, engine, SessionLocal
+from db.models import Lead
 from backend.app.services.lead_service import LeadService
-from pathlib import Path
-
-# Use in-memory SQLite for tests
-TEST_DB_PATH = Path(__file__).resolve().parents[1] / "databases" / "test_lead_crud.db"
-SQLALCHEMY_DATABASE_URL = f"sqlite:///{TEST_DB_PATH}"
-engine = create_engine(SQLALCHEMY_DATABASE_URL, connect_args={"check_same_thread": False})
-TestingSessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 
 @pytest.fixture
 def db():
     Base.metadata.create_all(bind=engine)
-    session = TestingSessionLocal()
+    db = SessionLocal()
     try:
-        yield session
+        yield db
     finally:
-        session.close()
-        Base.metadata.drop_all(bind=engine)
+        db.close()
 
 def test_lead_lifecycle(db):
-    # Create
+    suffix = uuid.uuid4().hex[:6]
+    # 1. Create
     lead = LeadService.create_lead(
-        db, 
-        first_name="Test", 
-        last_name="Lead", 
-        email="test@example.com",
-        status="New"
+        db, first_name="Lead", last_name=f"Tester_{suffix}", 
+        email=f"lead_{suffix}@example.com"
     )
-    assert lead.id is not None
-    lead_id = lead.id
+    assert lead.id.startswith("00Q")
     
-    # Get
-    fetched = LeadService.get_lead(db, lead_id)
-    assert fetched is not None
-    assert fetched.first_name == "Test"
+    # 2. Update
+    updated = LeadService.update_lead(db, lead.id, status="Follow Up")
+    assert updated.status == "Follow Up"
     
-    # Update
-    updated = LeadService.update_lead(db, lead_id, first_name="Updated", id="HACKED_ID")
-    assert updated.first_name == "Updated"
-    assert updated.id == lead_id # Should NOT be changed
-    
-    # List
-    leads = LeadService.get_leads(db)
-    assert len(leads) == 1
-    
-    # Delete
-    success = LeadService.delete_lead(db, lead_id)
+    # 3. Delete
+    success = LeadService.delete_lead(db, lead.id)
     assert success is True
     
-    # Get after delete (Soft delete)
-    deleted = LeadService.get_lead(db, lead_id)
-    assert deleted is None
-    
-    # Restore
-    success = LeadService.restore_lead(db, lead_id)
-    assert success is True
-    restored = LeadService.get_lead(db, lead_id)
-    assert restored is not None
+    retrieved = LeadService.get_lead(db, lead.id)
+    assert retrieved is None

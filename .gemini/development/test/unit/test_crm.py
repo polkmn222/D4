@@ -1,28 +1,18 @@
 import pytest
-from sqlalchemy import create_engine
-from sqlalchemy.orm import sessionmaker
-from db.database import Base
+from db.database import Base, engine, SessionLocal
 from db.models import Contact, Lead, Opportunity
 from backend.app.services.lead_service import LeadService
 from backend.app.services.contact_service import ContactService
 from backend.app.utils.sf_id import get_id
-from pathlib import Path
-
-# Setup test database
-TEST_DB_PATH = Path(__file__).resolve().parents[1] / "databases" / "test.db"
-SQLALCHEMY_DATABASE_URL = f"sqlite:///{TEST_DB_PATH}"
-engine = create_engine(SQLALCHEMY_DATABASE_URL, connect_args={"check_same_thread": False})
-TestingSessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 
 @pytest.fixture
 def db():
     Base.metadata.create_all(bind=engine)
-    db = TestingSessionLocal()
+    db = SessionLocal()
     try:
         yield db
     finally:
         db.close()
-        Base.metadata.drop_all(bind=engine)
 
 def test_sf_id_generation():
     contact_id = get_id("Contact")
@@ -34,18 +24,23 @@ def test_sf_id_generation():
     assert opp_id.startswith("006")
 
 def test_lead_conversion(db):
-    # 1. Create a Lead (Company removed in Phase 10)
+    import uuid
+    suffix = uuid.uuid4().hex[:6]
+    first_name = f"John_{suffix}"
+    last_name = "Doe"
+    
+    # 1. Create a Lead
     lead = LeadService.create_lead(
-        db, first_name="John", last_name="Doe", 
-        email="john@tesla.com", gender="Male"
+        db, first_name=first_name, last_name=last_name, 
+        email=f"john_{suffix}@test.com", gender="Male"
     )
     assert lead.id.startswith("00Q")
     
     # 2. Convert Lead
-    LeadService.convert_lead(db, lead.id)
+    LeadService.convert_lead_advanced(db, lead.id, name=f"{first_name} {last_name}")
     
     # 3. Verify Contact and Opportunity
-    contact = db.query(Contact).filter(Contact.name == "John Doe").first()
+    contact = db.query(Contact).filter(Contact.name == f"{first_name} {last_name}").first()
     assert contact is not None
     assert contact.id.startswith("003")
     

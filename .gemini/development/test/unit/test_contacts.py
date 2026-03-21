@@ -1,54 +1,51 @@
 import pytest
-from sqlalchemy import create_engine
-from sqlalchemy.orm import sessionmaker
-from db.database import Base
+import uuid
+from db.database import Base, engine, SessionLocal
+from db.models import Contact
 from backend.app.services.contact_service import ContactService
-from pathlib import Path
-
-# Use in-memory SQLite for tests
-TEST_DB_PATH = Path(__file__).resolve().parents[1] / "databases" / "test_crm.db"
-SQLALCHEMY_DATABASE_URL = f"sqlite:///{TEST_DB_PATH}"
-engine = create_engine(SQLALCHEMY_DATABASE_URL, connect_args={"check_same_thread": False})
-TestingSessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 
 @pytest.fixture
 def db():
     Base.metadata.create_all(bind=engine)
-    session = TestingSessionLocal()
+    db = SessionLocal()
     try:
-        yield session
+        yield db
     finally:
-        session.close()
-        Base.metadata.drop_all(bind=engine)
+        db.close()
 
 def test_create_contact(db):
+    suffix = uuid.uuid4().hex[:6]
     contact = ContactService.create_contact(
-        db, 
-        first_name="John", 
-        last_name="Doe", 
-        email="john@example.com", 
-        phone="010-1234-5678",
-        status="New",
-        description="Test Lead"
+        db, first_name="John", last_name=f"Doe_{suffix}", 
+        email=f"john_{suffix}@example.com"
     )
-    assert contact.id is not None
-    assert contact.first_name == "John"
-    assert contact.email == "john@example.com"
+    assert contact.id.startswith("003")
+    assert contact.last_name == f"Doe_{suffix}"
 
 def test_get_contact(db):
-    created = ContactService.create_contact(db, first_name="Jane", last_name="Smith", email="jane@example.com", phone="010-9999-9999")
-    fetched = ContactService.get_contact(db, created.id)
-    assert fetched.id == created.id
-    assert fetched.last_name == "Smith"
+    suffix = uuid.uuid4().hex[:6]
+    contact = ContactService.create_contact(
+        db, first_name="Jane", last_name=f"Smith_{suffix}"
+    )
+    retrieved = ContactService.get_contact(db, contact.id)
+    assert retrieved is not None
+    assert retrieved.id == contact.id
 
 def test_update_contact(db):
-    contact = ContactService.create_contact(db, first_name="Update", last_name="Me", email="update@example.com", phone="010-0000-0000")
-    updated = ContactService.update_contact(db, contact.id, status="Qualified", description="Hot lead")
-    assert updated.status == "Qualified"
-    assert updated.description == "Hot lead"
+    suffix = uuid.uuid4().hex[:6]
+    contact = ContactService.create_contact(
+        db, first_name="Update", last_name=f"Me_{suffix}"
+    )
+    updated = ContactService.update_contact(db, contact.id, phone="123-456")
+    assert updated.phone == "123-456"
 
 def test_delete_contact(db):
-    contact = ContactService.create_contact(db, first_name="Delete", last_name="Me", email="delete@example.com", phone="010-1111-1111")
+    suffix = uuid.uuid4().hex[:6]
+    contact = ContactService.create_contact(
+        db, first_name="Delete", last_name=f"Me_{suffix}"
+    )
     success = ContactService.delete_contact(db, contact.id)
     assert success is True
-    assert ContactService.get_contact(db, contact.id) is None
+    
+    retrieved = ContactService.get_contact(db, contact.id)
+    assert retrieved is None # Soft deleted

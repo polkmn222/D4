@@ -1,28 +1,22 @@
 import pytest
-from sqlalchemy import create_engine
-from sqlalchemy.orm import sessionmaker
+import uuid
+from sqlalchemy.orm import Session
 from unittest.mock import patch, AsyncMock
 from pathlib import Path
 
-from db.database import Base
+from db.database import Base, engine, SessionLocal
 from ai_agent.backend.service import AiAgentService
 from db.models import Lead, Contact, Opportunity, Asset, Product, VehicleSpecification, Model, MessageTemplate
 
-# Setup Test Database
-TEST_DB_PATH = Path(__file__).resolve().parents[1] / "databases" / "test_ai_comprehensive_crud.db"
-SQLALCHEMY_DATABASE_URL = f"sqlite:///{TEST_DB_PATH}"
-engine = create_engine(SQLALCHEMY_DATABASE_URL, connect_args={"check_same_thread": False})
-TestingSessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
-
 @pytest.fixture
 def db():
+    # Ensure tables exist in PostgreSQL
     Base.metadata.create_all(bind=engine)
-    session = TestingSessionLocal()
+    session = SessionLocal()
     try:
         yield session
     finally:
         session.close()
-        Base.metadata.drop_all(bind=engine)
 
 async def run_crud_test(db, obj_type, create_data, update_data, search_query):
     """Generic helper to test CRUD for any object type."""
@@ -40,23 +34,23 @@ async def run_crud_test(db, obj_type, create_data, update_data, search_query):
         res = await AiAgentService.process_query(db, f"Create {obj_type}")
         assert "Success" in res["text"]
         
-    # Get ID from DB
+    # Get ID from DB - Filter by deleted_at is None to get the active record
     if obj_type == "brand":
-        record = db.query(VehicleSpecification).first()
+        record = db.query(VehicleSpecification).filter(VehicleSpecification.deleted_at == None).order_by(VehicleSpecification.created_at.desc()).first()
     elif obj_type == "message_template":
-        record = db.query(MessageTemplate).first()
+        record = db.query(MessageTemplate).filter(MessageTemplate.deleted_at == None).order_by(MessageTemplate.created_at.desc()).first()
     elif obj_type == "lead":
-        record = db.query(Lead).first()
+        record = db.query(Lead).filter(Lead.deleted_at == None).order_by(Lead.created_at.desc()).first()
     elif obj_type == "contact":
-        record = db.query(Contact).first()
+        record = db.query(Contact).filter(Contact.deleted_at == None).order_by(Contact.created_at.desc()).first()
     elif obj_type == "opportunity":
-        record = db.query(Opportunity).first()
+        record = db.query(Opportunity).filter(Opportunity.deleted_at == None).order_by(Opportunity.created_at.desc()).first()
     elif obj_type == "asset":
-        record = db.query(Asset).first()
+        record = db.query(Asset).filter(Asset.deleted_at == None).order_by(Asset.created_at.desc()).first()
     elif obj_type == "product":
-        record = db.query(Product).first()
+        record = db.query(Product).filter(Product.deleted_at == None).order_by(Product.created_at.desc()).first()
     elif obj_type == "model":
-        record = db.query(Model).first()
+        record = db.query(Model).filter(Model.deleted_at == None).order_by(Model.created_at.desc()).first()
     else:
         pytest.fail(f"Unsupported object type in test: {obj_type}")
     
@@ -110,14 +104,14 @@ async def run_crud_test(db, obj_type, create_data, update_data, search_query):
 async def test_all_objects_crud(db):
     # Test cases for each object
     test_cases = [
-        ("lead", {"last_name": "TestLead", "status": "New"}, {"status": "Qualified"}, "Show me TestLead"),
-        ("contact", {"last_name": "TestContact", "email": "c@test.com"}, {"phone": "123"}, "Find TestContact"),
-        ("opportunity", {"name": "TestOpp", "amount": 100}, {"amount": 200}, "Show TestOpp"),
-        ("brand", {"name": "TestBrand", "record_type": "Brand"}, {"name": "UpdatedBrand"}, "Search TestBrand"),
-        ("model", {"name": "TestModel"}, {"description": "Nice car"}, "Find TestModel"),
-        ("product", {"name": "TestProduct"}, {"base_price": 500}, "List TestProduct"),
-        ("asset", {"vin": "TESTVIN123"}, {"status": "Sold"}, "Show VIN TESTVIN123"),
-        ("message_template", {"name": "TestTemp", "content": "Hi"}, {"subject": "Hello"}, "Show TestTemp"),
+        ("lead", {"last_name": f"TLead_{uuid.uuid4().hex[:4]}", "status": "New"}, {"status": "Qualified"}, "Show me TestLead"),
+        ("contact", {"last_name": f"TCont_{uuid.uuid4().hex[:4]}", "email": "c@test.com"}, {"phone": "123"}, "Find TestContact"),
+        ("opportunity", {"name": f"TOpp_{uuid.uuid4().hex[:4]}", "amount": 100}, {"amount": 200}, "Show TestOpp"),
+        ("brand", {"name": f"TBrand_{uuid.uuid4().hex[:4]}", "record_type": "Brand"}, {"name": "UpdatedBrand"}, "Search TestBrand"),
+        ("model", {"name": f"TModel_{uuid.uuid4().hex[:4]}"}, {"description": "Nice car"}, "Find TestModel"),
+        ("product", {"name": f"TProd_{uuid.uuid4().hex[:4]}"}, {"base_price": 500}, "List TestProduct"),
+        ("asset", {"vin": f"VIN_{uuid.uuid4().hex[:8]}"}, {"status": "Sold"}, "Show VIN TESTVIN123"),
+        ("message_template", {"name": f"TTemp_{uuid.uuid4().hex[:4]}", "content": "Hi"}, {"subject": "Hello"}, "Show TestTemp"),
     ]
     
     for obj_type, c_data, u_data, s_query in test_cases:

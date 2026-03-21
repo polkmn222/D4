@@ -1,46 +1,39 @@
 import pytest
-from sqlalchemy import create_engine
-from sqlalchemy.orm import sessionmaker
+import uuid
 from unittest.mock import patch, AsyncMock
-from pathlib import Path
-
-from db.database import Base
+from db.database import Base, engine, SessionLocal
 from ai_agent.backend.service import AiAgentService
 from db.models import Contact, Opportunity
-
-# Setup Test Database
-TEST_DB_PATH = Path(__file__).resolve().parents[1] / "databases" / "test_ai_opp_contact_crud.db"
-SQLALCHEMY_DATABASE_URL = f"sqlite:///{TEST_DB_PATH}"
-engine = create_engine(SQLALCHEMY_DATABASE_URL, connect_args={"check_same_thread": False})
-TestingSessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 
 @pytest.fixture
 def db():
     Base.metadata.create_all(bind=engine)
-    session = TestingSessionLocal()
+    session = SessionLocal()
     try:
         yield session
     finally:
         session.close()
-        Base.metadata.drop_all(bind=engine)
 
 @pytest.mark.asyncio
 async def test_ai_contact_crud_flow(db):
     """Test full CRUD lifecycle for Contact via AI Agent."""
+    unique_id = uuid.uuid4().hex[:8]
+    test_last_name = f"Kim-{unique_id}"
+    test_email = f"kim-{unique_id}@test.com"
     
     # 1. CREATE
     mock_create = {
         "intent": "CREATE",
         "object_type": "contact",
-        "data": {"last_name": "Kim", "first_name": "Chul-su", "email": "kim@test.com"},
-        "text": "Creating contact Kim Chul-su.",
+        "data": {"last_name": test_last_name, "first_name": "Chul-su", "email": test_email},
+        "text": f"Creating contact {test_last_name} Chul-su.",
         "score": 1.0
     }
     with patch.object(AiAgentService, '_call_multi_llm_ensemble', new_callable=AsyncMock) as mock_ensemble:
         mock_ensemble.return_value = mock_create
-        res = await AiAgentService.process_query(db, "Create contact Kim Chul-su")
+        res = await AiAgentService.process_query(db, f"Create contact {test_last_name} Chul-su")
         assert "Success" in res["text"]
-        contact = db.query(Contact).filter(Contact.last_name == "Kim").first()
+        contact = db.query(Contact).filter(Contact.last_name == test_last_name).first()
         assert contact is not None
         contact_id = contact.id
 
@@ -54,9 +47,9 @@ async def test_ai_contact_crud_flow(db):
     }
     with patch.object(AiAgentService, '_call_multi_llm_ensemble', new_callable=AsyncMock) as mock_ensemble:
         mock_ensemble.return_value = mock_query
-        res = await AiAgentService.process_query(db, "Find contact Kim")
+        res = await AiAgentService.process_query(db, f"Find contact {test_last_name}")
         assert len(res["results"]) > 0
-        assert res["results"][0]["last_name"] == "Kim"
+        assert res["results"][0]["last_name"] == test_last_name
 
     # 3. UPDATE
     mock_update = {
@@ -93,20 +86,22 @@ async def test_ai_contact_crud_flow(db):
 @pytest.mark.asyncio
 async def test_ai_opportunity_crud_flow(db):
     """Test full CRUD lifecycle for Opportunity via AI Agent."""
+    unique_id = uuid.uuid4().hex[:8]
+    test_opp_name = f"Solar-{unique_id}"
     
     # 1. CREATE
     mock_create = {
         "intent": "CREATE",
         "object_type": "opportunity",
-        "data": {"name": "New Solar Project", "amount": 5000000, "stage": "Prospecting"},
+        "data": {"name": test_opp_name, "amount": 5000000, "stage": "Prospecting"},
         "text": "Creating opportunity.",
         "score": 1.0
     }
     with patch.object(AiAgentService, '_call_multi_llm_ensemble', new_callable=AsyncMock) as mock_ensemble:
         mock_ensemble.return_value = mock_create
-        res = await AiAgentService.process_query(db, "Create opportunity New Solar Project for 5 million")
+        res = await AiAgentService.process_query(db, f"Create opportunity {test_opp_name} for 5 million")
         assert "Success" in res["text"]
-        opp = db.query(Opportunity).filter(Opportunity.name == "New Solar Project").first()
+        opp = db.query(Opportunity).filter(Opportunity.name == test_opp_name).first()
         assert opp is not None
         opp_id = opp.id
 
@@ -120,8 +115,8 @@ async def test_ai_opportunity_crud_flow(db):
     }
     with patch.object(AiAgentService, '_call_multi_llm_ensemble', new_callable=AsyncMock) as mock_ensemble:
         mock_ensemble.return_value = mock_query
-        res = await AiAgentService.process_query(db, "Show me Solar project")
-        assert res["results"][0]["name"] == "New Solar Project"
+        res = await AiAgentService.process_query(db, f"Show me {test_opp_name}")
+        assert res["results"][0]["name"] == test_opp_name
 
     # 3. UPDATE
     mock_update = {

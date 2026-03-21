@@ -1,8 +1,8 @@
 import pytest
+import uuid
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
-from db.database import Base
-from pathlib import Path
+from db.database import Base, engine, SessionLocal
 
 # Import all models to ensure test coverage
 from db.models import (
@@ -21,26 +21,20 @@ from backend.app.services.vehicle_spec_service import VehicleSpecService
 from backend.app.services.message_service import MessageService
 from backend.app.services.message_template_service import MessageTemplateService
 
-# Setup test database
-TEST_DB_PATH = Path(__file__).resolve().parents[1] / "databases" / "test_deletion.db"
-SQLALCHEMY_DATABASE_URL = f"sqlite:///{TEST_DB_PATH}"
-engine = create_engine(SQLALCHEMY_DATABASE_URL, connect_args={"check_same_thread": False})
-TestingSessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
-
 @pytest.fixture
 def db():
     Base.metadata.create_all(bind=engine)
-    db = TestingSessionLocal()
+    session = SessionLocal()
     try:
-        yield db
+        yield session
     finally:
-        db.close()
-        Base.metadata.drop_all(bind=engine)
+        session.close()
 
 def test_contact_soft_delete(db):
     """Test that Contact soft deletes and orphaned Opportunities are unaffected."""
-    contact = ContactService.create(db, first_name="John", last_name="Doe", email="delete@me.com")
-    opp = OpportunityService.create(db, contact=contact.id, name="Test Opp")
+    unique_id = uuid.uuid4().hex[:8]
+    contact = ContactService.create(db, first_name="John", last_name=f"Doe-{unique_id}", email=f"delete-{unique_id}@me.com")
+    opp = OpportunityService.create(db, contact=contact.id, name=f"Test Opp-{unique_id}")
     
     assert contact.deleted_at is None
     
@@ -59,14 +53,16 @@ def test_contact_soft_delete(db):
     assert opp.contact == contact.id
 
 def test_lead_soft_delete(db):
-    lead = LeadService.create(db, first_name="Jane", last_name="Doe")
+    unique_id = uuid.uuid4().hex[:8]
+    lead = LeadService.create(db, first_name="Jane", last_name=f"Doe-{unique_id}")
     LeadService.delete(db, lead.id)
     db.refresh(lead)
     assert lead.deleted_at is not None
 
 def test_product_and_asset_soft_delete(db):
-    product = ProductService.create(db, name="Test Vehicle")
-    asset = AssetService.create(db, product=product.id, name="Test Asset VIN")
+    unique_id = uuid.uuid4().hex[:8]
+    product = ProductService.create(db, name=f"Test Vehicle-{unique_id}")
+    asset = AssetService.create(db, product=product.id, name=f"Test Asset VIN-{unique_id}")
     
     ProductService.delete(db, product.id)
     AssetService.delete(db, asset.id)
@@ -78,8 +74,9 @@ def test_product_and_asset_soft_delete(db):
     assert asset.deleted_at is not None
 
 def test_vehicle_spec_and_model_soft_delete(db):
-    spec = VehicleSpecService.create(db, name="Test Brand")
-    model = ModelService.create(db, name="Test Model", brand=spec.id)
+    unique_id = uuid.uuid4().hex[:8]
+    spec = VehicleSpecService.create(db, name=f"Test Brand-{unique_id}")
+    model = ModelService.create(db, name=f"Test Model-{unique_id}", brand=spec.id)
     
     VehicleSpecService.delete(db, spec.id)
     ModelService.delete(db, model.id)
@@ -91,7 +88,8 @@ def test_vehicle_spec_and_model_soft_delete(db):
     assert model.deleted_at is not None
 
 def test_messaging_soft_delete(db):
-    template = MessageTemplateService.create(db, name="Generic Template")
+    unique_id = uuid.uuid4().hex[:8]
+    template = MessageTemplateService.create(db, name=f"Generic Template-{unique_id}")
     msg = MessageService.create(db, template=template.id, content="Hello")
     
     MessageTemplateService.delete(db, template.id)
@@ -102,5 +100,3 @@ def test_messaging_soft_delete(db):
     
     assert template.deleted_at is not None
     assert msg.deleted_at is not None
-
-

@@ -1,44 +1,36 @@
 import pytest
-from sqlalchemy import create_engine
-from sqlalchemy.orm import sessionmaker
+import uuid
 from unittest.mock import patch, AsyncMock
-from pathlib import Path
-
-from db.database import Base
+from db.database import Base, engine, SessionLocal
 from ai_agent.backend.service import AiAgentService
 from db.models import MessageTemplate, MessageSend, Contact
-
-TEST_DB_PATH = Path(__file__).resolve().parents[1] / "databases" / "test_ai_messaging_crud.db"
-SQLALCHEMY_DATABASE_URL = f"sqlite:///{TEST_DB_PATH}"
-engine = create_engine(SQLALCHEMY_DATABASE_URL, connect_args={"check_same_thread": False})
-TestingSessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
-
 
 @pytest.fixture
 def db():
     Base.metadata.create_all(bind=engine)
-    session = TestingSessionLocal()
+    session = SessionLocal()
     try:
         yield session
     finally:
         session.close()
-        Base.metadata.drop_all(bind=engine)
-
 
 @pytest.mark.asyncio
 async def test_ai_message_template_crud_flow(db):
+    unique_id = uuid.uuid4().hex[:8]
+    test_template_name = f"Welcome SMS-{unique_id}"
+
     mock_create_template = {
         "intent": "CREATE",
         "object_type": "message_template",
-        "data": {"name": "Welcome SMS", "subject": "Welcome", "content": "Hello, welcome!"},
+        "data": {"name": test_template_name, "subject": "Welcome", "content": "Hello, welcome!"},
         "text": "Creating template.",
         "score": 1.0,
     }
     with patch.object(AiAgentService, "_call_multi_llm_ensemble", new_callable=AsyncMock) as mock_ensemble:
         mock_ensemble.return_value = mock_create_template
-        res = await AiAgentService.process_query(db, "Create template Welcome SMS with content Hello, welcome!")
+        res = await AiAgentService.process_query(db, f"Create template {test_template_name} with content Hello, welcome!")
         assert "Success! Created Template" in res["text"]
-        template = db.query(MessageTemplate).filter(MessageTemplate.name == "Welcome SMS").first()
+        template = db.query(MessageTemplate).filter(MessageTemplate.name == test_template_name).first()
         assert template is not None
         template_id = template.id
 
@@ -53,7 +45,7 @@ async def test_ai_message_template_crud_flow(db):
         mock_ensemble.return_value = mock_query_template
         res = await AiAgentService.process_query(db, f"Show me template {template_id}")
         assert len(res["results"]) > 0
-        assert res["results"][0]["name"] == "Welcome SMS"
+        assert res["results"][0]["name"] == test_template_name
 
     mock_update_template = {
         "intent": "UPDATE",
@@ -85,16 +77,20 @@ async def test_ai_message_template_crud_flow(db):
         assert deleted_template is not None
         assert deleted_template.deleted_at is not None
 
-
 @pytest.mark.asyncio
 async def test_ai_message_send_query(db):
-    contact = Contact(id="CNT-001", first_name="Jane", last_name="Doe", email="jane@example.com")
-    template = MessageTemplate(id="MT-001", name="Test Temp", subject="Hi", content="Test content")
+    unique_id = uuid.uuid4().hex[:8]
+    contact_id = f"CNT-{unique_id}"
+    template_id = f"MT-{unique_id}"
+    msg_send_id = f"MS-{unique_id}"
+
+    contact = Contact(id=contact_id, first_name="Jane", last_name="Doe", email=f"jane-{unique_id}@example.com")
+    template = MessageTemplate(id=template_id, name=f"Test Temp-{unique_id}", subject="Hi", content="Test content")
     db.add_all([contact, template])
     db.commit()
 
     msg_send = MessageSend(
-        id="MS-001",
+        id=msg_send_id,
         contact=contact.id,
         template=template.id,
         content="Test message",
