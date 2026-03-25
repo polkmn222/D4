@@ -6,6 +6,8 @@ python-dotenv
 jinja2
 pytest
 httpx
+requests
 python-multipart
 pytest-asyncio
 pydantic
+opik

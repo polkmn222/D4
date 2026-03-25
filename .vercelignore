@@ -19,6 +19,8 @@ __pycache__/
 .pytest_cache/
 .ipynb_checkpoints/
 .DS_Store
+.git/
+.vscode/
 
-# Exclude source of truth and metadata if not used by runtime
-.gemini/development/metadata.json
+# Keep metadata.json as it's used by the AI Agent service at runtime
+# .gemini/development/metadata.json
