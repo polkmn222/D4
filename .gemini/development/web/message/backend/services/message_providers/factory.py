@@ -2,7 +2,7 @@ import os
 
 from .base import BaseMessageProvider
 from .mock_provider import MockMessageProvider
-from .slack_provider import SlackMessageProvider
+from .slack_notifier import SlackMessageProvider
 from .solapi_provider import SolapiMessageProvider
 
 
