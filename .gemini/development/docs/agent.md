@@ -136,7 +136,7 @@ This document is the primary entry point for the active D4 workspace. It absorbs
 - Update `docs/agent.md`, `docs/skill.md`, `docs/architecture.md`, and `docs/deployment.md` when runtime behavior changes.
 - Do not reintroduce retired `GEMINI.md` guidance as a parallel source of truth.
 - Use the next unused phase number across `task/`, `Implementation/`, `Walkthrough/`, and `backups/` before writing artifacts.
-- Store a full codebase backup inside a dedicated grouped range folder such as `.gemini/development/backups/001_100/phaseN/` or `.gemini/development/backups/101_199/phaseN/`; do not leave phase backups as loose files at the backups root.
+- Store a full codebase backup inside a dedicated grouped range folder such as `backups/001_100/phaseN/` or `backups/101_199/phaseN/`; do not leave phase backups as loose files at the backups root.
 - Create new project-level markdown files under `.gemini/development/docs/` by default.
 - Keep root-level markdown files out of the repository root unless the file is a required phase artifact in `task/`, `Implementation/`, or `Walkthrough/`, or a folder-local README that documents a specific subtree.
 - Read and follow all active markdown files under `.gemini/development/docs/` before making project changes, but use this priority order when the volume is large: `docs/*.md` -> `docs/testing/*.md` -> D4-specific skill guides -> imported agency skill docs.

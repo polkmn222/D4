@@ -2,7 +2,7 @@ import logging
 import os
 from typing import Any, Dict, List, Optional
 
-import requests
+import httpx
 
 from .base import BaseMessageProvider, MessageDispatchPayload
 
@@ -92,11 +92,12 @@ class SlackMessageProvider(BaseMessageProvider):
             }
         )
 
-        response = requests.post(
-            webhook_url,
-            json={"text": header, "blocks": blocks},
-            timeout=10,
-        )
+        with httpx.Client() as client:
+            response = client.post(
+                webhook_url,
+                json={"text": header, "blocks": blocks},
+                timeout=10,
+            )
         if response.status_code >= 400:
             logger.error("Slack provider send failed: %s %s", response.status_code, response.text)
             return {
