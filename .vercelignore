@@ -1,0 +1,24 @@
+# .vercelignore for D4
+
+# Exclude historical backups (Largest contributor to bundle size)
+.gemini/development/backups/
+backups/
+
+# Exclude documentation and implementation notes (Not needed at runtime)
+Implementation/
+Walkthrough/
+task/
+.gemini/development/docs/
+
+# Exclude unit tests (Not needed in production bundle)
+.gemini/development/test/
+
+# Exclude local logs and caches
+*.log
+__pycache__/
+.pytest_cache/
+.ipynb_checkpoints/
+.DS_Store
+
+# Exclude source of truth and metadata if not used by runtime
+.gemini/development/metadata.json
