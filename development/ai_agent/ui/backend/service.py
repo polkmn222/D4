@@ -86,6 +86,44 @@ class AiAgentService:
     GENERIC_UPDATE_ACTIONS = LEAD_UPDATE_ACTIONS | LEAD_EDIT_ACTIONS
     GENERIC_QUERY_ACTIONS = set(IntentPreClassifier.ACTION_QUERY) | {"recent"}
     GENERIC_READ_ACTIONS = LEAD_READ_ACTIONS
+    RECENT_QUERY_MARKERS = {
+        "recent",
+        "latest",
+        "newest",
+        "most recent",
+        "just created",
+        "recently created",
+        "방금 생성",
+        "방금 생성한",
+        "방금 만든",
+        "최근",
+        "최근 생성",
+        "최근 만든",
+    }
+    ORDINAL_MARKERS = (
+        ("first one", 0),
+        ("1st one", 0),
+        ("first record", 0),
+        ("first", 0),
+        ("latest one", 0),
+        ("newest one", 0),
+        ("most recent one", 0),
+        ("latest", 0),
+        ("newest", 0),
+        ("most recent", 0),
+        ("second one", 1),
+        ("2nd one", 1),
+        ("second", 1),
+        ("third one", 2),
+        ("3rd one", 2),
+        ("third", 2),
+        ("fourth one", 3),
+        ("4th one", 3),
+        ("fourth", 3),
+        ("fifth one", 4),
+        ("5th one", 4),
+        ("fifth", 4),
+    )
     CONTACT_STATUS_OPTIONS = ["New", "Contacted", "Qualified", "Junk"]
     OPPORTUNITY_STAGE_OPTIONS = [
         OpportunityStage.PROSPECTING.value,
@@ -723,10 +761,11 @@ class AiAgentService:
         has_update = IntentPreClassifier._contains_action(normalized, list(cls.GENERIC_UPDATE_ACTIONS))
         has_query = IntentPreClassifier._contains_action(normalized, list(cls.GENERIC_QUERY_ACTIONS))
         has_read = IntentPreClassifier._contains_action(normalized, list(cls.GENERIC_READ_ACTIONS))
+        has_recent_query = any(marker in normalized for marker in cls.RECENT_QUERY_MARKERS)
 
         if has_query and object_type in cls.PHASE1_OBJECTS:
-            if "all" in normalized or "show all" in normalized or "list" in normalized or object_type == "opportunity":
-                query_data = {"query_mode": "recent"} if object_type == "opportunity" and "recent" in normalized else {}
+            if "all" in normalized or "show all" in normalized or "list" in normalized or object_type == "opportunity" or has_recent_query:
+                query_data = {"query_mode": "recent"} if has_recent_query else {}
                 return {
                     "intent": "QUERY",
                     "object_type": object_type,
@@ -798,6 +837,111 @@ class AiAgentService:
             }
 
         return None
+
+    @classmethod
+    def _extract_ranked_query_index(cls, user_query: str) -> Optional[int]:
+        normalized = IntentPreClassifier.normalize(user_query)
+        for marker, index in cls.ORDINAL_MARKERS:
+            if marker in normalized:
+                return index
+        return None
+
+    @classmethod
+    def _resolve_contextual_query_reference(
+        cls,
+        user_query: str,
+        conversation_id: Optional[str],
+    ) -> Optional[Dict[str, Any]]:
+        normalized = IntentPreClassifier.normalize(user_query)
+        ranked_index = cls._extract_ranked_query_index(user_query)
+        if ranked_index is None:
+            return None
+        follow_up_markers = (
+            "one",
+            "record",
+            "result",
+            "item",
+            "that",
+            "this",
+            "it",
+            "them",
+            "those",
+            "그",
+            "이",
+            "해당",
+        )
+        explicit_ordinal_markers = (
+            "first",
+            "1st",
+            "second",
+            "2nd",
+            "third",
+            "3rd",
+            "fourth",
+            "4th",
+            "fifth",
+            "5th",
+        )
+        if not any(marker in normalized for marker in follow_up_markers) and not any(
+            marker in normalized for marker in explicit_ordinal_markers
+        ):
+            return None
+
+        manage_markers = list(cls.GENERIC_READ_ACTIONS | cls.GENERIC_UPDATE_ACTIONS)
+        if not IntentPreClassifier._contains_action(normalized, manage_markers):
+            return None
+
+        explicit_objects = [
+            value for key, value in IntentPreClassifier.OBJECT_MAP.items()
+            if value in cls.PHASE1_OBJECTS and key in normalized
+        ]
+        desired_object_type = explicit_objects[0] if explicit_objects else None
+        query_context = ConversationContextStore.get_query_results(conversation_id)
+        query_object_type = query_context.get("object_type")
+        ranked_results = list(query_context.get("results") or [])
+
+        if query_object_type not in cls.PHASE1_OBJECTS or not ranked_results:
+            object_hint = desired_object_type or "record"
+            return {
+                "intent": "CHAT",
+                "object_type": desired_object_type,
+                "text": (
+                    f"I need a recent {object_hint} list first. Try `show recent {object_hint}s` "
+                    "or `show all contacts`, then tell me which one to open or edit."
+                ),
+                "score": 1.0,
+            }
+
+        if desired_object_type and desired_object_type != query_object_type:
+            return {
+                "intent": "CHAT",
+                "object_type": desired_object_type,
+                "text": (
+                    f"Your most recent list shows {query_object_type}s, not {desired_object_type}s. "
+                    f"Show {desired_object_type}s first, then tell me which one to open or edit."
+                ),
+                "score": 1.0,
+            }
+
+        if ranked_index >= len(ranked_results):
+            return {
+                "intent": "CHAT",
+                "object_type": query_object_type,
+                "text": (
+                    f"I only have {len(ranked_results)} {query_object_type} result"
+                    f"{'' if len(ranked_results) == 1 else 's'} in the most recent list. "
+                    "Tell me a valid position or show a longer list first."
+                ),
+                "score": 1.0,
+            }
+
+        chosen = ranked_results[ranked_index]
+        return {
+            "intent": "MANAGE",
+            "object_type": query_object_type,
+            "record_id": chosen["record_id"],
+            "score": 1.0,
+        }
 
     @classmethod
     def _extract_lead_fields_from_text(cls, user_query: str, allow_loose_last_name: bool = True) -> Dict[str, Any]:
@@ -1919,6 +2063,20 @@ class AiAgentService:
                 return await cls._execute_intent(db, delete_resolution, user_query, conversation_id=conversation_id, page=page, per_page=per_page)
             return delete_resolution
 
+        contextual_query_resolution = cls._resolve_contextual_query_reference(user_query, conversation_id)
+        if contextual_query_resolution:
+            if contextual_query_resolution.get("intent") == "CHAT":
+                return contextual_query_resolution
+            contextual_query_resolution["language_preference"] = language_preference
+            return await cls._execute_intent(
+                db,
+                contextual_query_resolution,
+                user_query,
+                conversation_id=conversation_id,
+                page=page,
+                per_page=per_page,
+            )
+
         explicit_manage_resolution = cls._resolve_explicit_manage_request(user_query)
         if explicit_manage_resolution:
             explicit_manage_resolution["language_preference"] = language_preference
@@ -2507,6 +2665,7 @@ class AiAgentService:
                     agent_output["original_query"] = user_query
                     agent_output["text"] = agent_output.get("text") or cls._default_query_text(obj, paged["pagination"])
                     ConversationContextStore.remember_object(conversation_id, obj, intent)
+                    ConversationContextStore.remember_query_results(conversation_id, obj, paged["results"])
                     return agent_output
                 except Exception as e:
                     logger.error(f"SQL Error: {str(e)}")

@@ -40,6 +40,47 @@ class ConversationContextStore:
             context["last_record_id"] = record_id
 
     @classmethod
+    def remember_query_results(
+        cls,
+        conversation_id: Optional[str],
+        object_type: Optional[str],
+        results: Optional[list[Dict[str, Any]]],
+    ) -> None:
+        if not conversation_id or not object_type:
+            return
+        context = cls._store.setdefault(conversation_id, {})
+        ranked_results = []
+        for row in list(results or [])[:10]:
+            record_id = row.get("id")
+            if not record_id:
+                continue
+            label = (
+                row.get("display_name")
+                or row.get("name")
+                or row.get("contact_display_name")
+                or row.get("phone")
+                or str(record_id)
+            )
+            ranked_results.append(
+                {
+                    "record_id": str(record_id),
+                    "label": str(label),
+                }
+            )
+        context["last_query_object"] = object_type
+        context["last_query_results"] = ranked_results
+
+    @classmethod
+    def get_query_results(cls, conversation_id: Optional[str]) -> Dict[str, Any]:
+        if not conversation_id:
+            return {}
+        context = cls._store.setdefault(conversation_id, {})
+        return {
+            "object_type": context.get("last_query_object"),
+            "results": list(context.get("last_query_results") or []),
+        }
+
+    @classmethod
     def remember_pending_delete(
         cls,
         conversation_id: Optional[str],
