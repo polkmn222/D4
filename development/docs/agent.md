@@ -1,4 +1,4 @@
-# D4 Agent Guide
+# Agent Guide
 
 ## Purpose
 
