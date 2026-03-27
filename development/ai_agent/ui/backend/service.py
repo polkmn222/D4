@@ -177,6 +177,30 @@ class AiAgentService:
                         {"value": Gender.UNKNOWN.value, "label": Gender.UNKNOWN.value},
                     ],
                 },
+                {
+                    "name": "product",
+                    "label": "Product",
+                    "control": "lookup",
+                    "lookup_object": "Product",
+                    "default": "",
+                    "placeholder": "Search Product...",
+                },
+                {
+                    "name": "model",
+                    "label": "Model",
+                    "control": "lookup",
+                    "lookup_object": "Model",
+                    "default": "",
+                    "placeholder": "Search Model...",
+                },
+                {
+                    "name": "brand",
+                    "label": "Brand",
+                    "control": "lookup",
+                    "lookup_object": "Brand",
+                    "default": "",
+                    "placeholder": "Search Brand...",
+                },
                 {"name": "description", "label": "Description", "control": "textarea", "default": ""},
             ],
         },
@@ -286,12 +310,37 @@ class AiAgentService:
                 values[name] = field.get("default", "")
         return values
 
+    @staticmethod
+    def _safe_lookup_display(fetcher, db: Optional[Session], record_id: Optional[str], attr: str = "name") -> str:
+        if not record_id:
+            return ""
+        try:
+            record = fetcher(db, record_id)
+        except Exception:
+            return ""
+        return str(getattr(record, attr, "") or "")
+
+    @classmethod
+    def _lead_lookup_display_values(
+        cls,
+        db: Optional[Session],
+        values: Dict[str, Any],
+    ) -> Dict[str, str]:
+        from web.backend.app.services.product_service import ProductService
+
+        return {
+            "product": cls._safe_lookup_display(ProductService.get_product, db, values.get("product")),
+            "model": cls._safe_lookup_display(ModelService.get_model, db, values.get("model")),
+            "brand": cls._safe_lookup_display(VehicleSpecService.get_vehicle_spec, db, values.get("brand")),
+        }
+
     @classmethod
     def _build_chat_native_form_response(
         cls,
         *,
         object_type: str,
         mode: str,
+        db: Optional[Session] = None,
         language_preference: Optional[str],
         record: Optional[Any] = None,
         record_id: Optional[str] = None,
@@ -311,6 +360,7 @@ class AiAgentService:
             if is_korean else
             f"I opened the {object_type.replace('_', ' ')} {mode} form here in chat."
         )
+        lookup_display_values = cls._lead_lookup_display_values(db, values) if object_type == "lead" else {}
         schema_fields: List[Dict[str, Any]] = []
         for field in config["fields"]:
             schema_field = {
@@ -324,6 +374,9 @@ class AiAgentService:
                 schema_field["placeholder"] = field["placeholder"]
             if "options" in field:
                 schema_field["options"] = field["options"]
+            if field["control"] == "lookup":
+                schema_field["lookup_object"] = field.get("lookup_object")
+                schema_field["display_value"] = lookup_display_values.get(field["name"], "")
             if field_errors and field["name"] in field_errors:
                 schema_field["error"] = field_errors[field["name"]]
             schema_fields.append(schema_field)
@@ -424,6 +477,7 @@ class AiAgentService:
             return cls._build_chat_native_form_response(
                 object_type=object_type,
                 mode=mode,
+                db=db,
                 record=target_record,
                 record_id=record_id,
                 submitted_values=values,
@@ -439,6 +493,7 @@ class AiAgentService:
             return cls._build_chat_native_form_response(
                 object_type=object_type,
                 mode=mode,
+                db=db,
                 record=target_record,
                 record_id=record_id,
                 submitted_values=cleaned_values,
@@ -462,6 +517,7 @@ class AiAgentService:
                 return cls._build_chat_native_form_response(
                     object_type=object_type,
                     mode=mode,
+                    db=db,
                     submitted_values=cleaned_values,
                     form_error=f"I couldn't create that {object_type}.",
                     conversation_id=conversation_id,
@@ -712,12 +768,14 @@ class AiAgentService:
         object_type: str,
         record: Any,
         language_preference: Optional[str],
+        db: Optional[Session] = None,
     ) -> Dict[str, Any]:
         record_id = str(getattr(record, "id", ""))
         if object_type in cls.CHAT_NATIVE_FORM_OBJECTS:
             return cls._build_chat_native_form_response(
                 object_type=object_type,
                 mode="edit",
+                db=db,
                 record=record,
                 record_id=record_id,
                 conversation_id=None,
@@ -1231,6 +1289,7 @@ class AiAgentService:
                 "lead",
                 lead,
                 language_preference,
+                db=db,
             )
 
         return None
@@ -2016,6 +2075,7 @@ class AiAgentService:
                              "lead",
                              lead,
                              language_preference,
+                             db=db,
                          )
 
             pending_edit_resolution["language_preference"] = language_preference
@@ -2110,6 +2170,7 @@ class AiAgentService:
                         phase1_resolution["object_type"],
                         record,
                         language_preference,
+                        db=db,
                     )
                 return cls._build_chat_native_form_response(
                     object_type=phase1_resolution["object_type"],
@@ -2552,6 +2613,7 @@ class AiAgentService:
                         obj,
                         record,
                         agent_output.get("language_preference"),
+                        db=db,
                     )
                 return cls._build_phase1_open_record_response(
                     db,
@@ -2584,6 +2646,7 @@ class AiAgentService:
                             "lead",
                             lead,
                             agent_output.get("language_preference"),
+                            db=db,
                         )
                     return cls._build_lead_open_record_response(
                         db,

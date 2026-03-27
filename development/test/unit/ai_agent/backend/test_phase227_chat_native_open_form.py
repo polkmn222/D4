@@ -23,6 +23,24 @@ async def test_incomplete_create_lead_returns_chat_native_open_form():
 
 
 @pytest.mark.asyncio
+async def test_incomplete_create_lead_includes_lookup_fields():
+    response = await AiAgentService.process_query(
+        db=None,
+        user_query="create lead",
+        conversation_id="phase233-lead-lookups",
+    )
+
+    fields = {field["name"]: field for field in response["form"]["fields"]}
+
+    assert fields["product"]["control"] == "lookup"
+    assert fields["product"]["lookup_object"] == "Product"
+    assert fields["model"]["control"] == "lookup"
+    assert fields["model"]["lookup_object"] == "Model"
+    assert fields["brand"]["control"] == "lookup"
+    assert fields["brand"]["lookup_object"] == "Brand"
+
+
+@pytest.mark.asyncio
 async def test_partial_create_contact_prefills_chat_native_form():
     response = await AiAgentService.process_query(
         db=None,
@@ -100,6 +118,100 @@ async def test_submit_chat_native_lead_create_returns_open_record():
     assert response["intent"] == "OPEN_RECORD"
     assert response["object_type"] == "lead"
     assert response["record_id"] == "LEAD227"
+
+
+@pytest.mark.asyncio
+async def test_edit_lead_chat_native_form_preloads_lookup_display_values():
+    lead = SimpleNamespace(
+        id="LEAD233",
+        first_name="Ada",
+        last_name="Kim",
+        email="ada@example.com",
+        phone="01012345678",
+        status="New",
+        gender="Female",
+        product="01t000000000001AAA",
+        model="a0M000000000001AAA",
+        brand="a0B000000000001AAA",
+        description="Priority lead",
+    )
+
+    with patch("web.backend.app.services.lead_service.LeadService.get_lead", return_value=lead), patch(
+        "web.backend.app.services.product_service.ProductService.get_product",
+        return_value=SimpleNamespace(id="01t000000000001AAA", name="Premium Plan"),
+    ), patch(
+        "ai_agent.ui.backend.service.ModelService.get_model",
+        return_value=SimpleNamespace(id="a0M000000000001AAA", name="Sonata"),
+    ), patch(
+        "ai_agent.ui.backend.service.VehicleSpecService.get_vehicle_spec",
+        return_value=SimpleNamespace(id="a0B000000000001AAA", name="Hyundai"),
+    ):
+        response = await AiAgentService.process_query(
+            db=None,
+            user_query="edit lead LEAD233",
+            conversation_id="phase233-lead-edit",
+        )
+
+    fields = {field["name"]: field for field in response["form"]["fields"]}
+    assert fields["product"]["value"] == "01t000000000001AAA"
+    assert fields["product"]["display_value"] == "Premium Plan"
+    assert fields["model"]["value"] == "a0M000000000001AAA"
+    assert fields["model"]["display_value"] == "Sonata"
+    assert fields["brand"]["value"] == "a0B000000000001AAA"
+    assert fields["brand"]["display_value"] == "Hyundai"
+
+
+@pytest.mark.asyncio
+async def test_submit_chat_native_lead_create_passes_lookup_ids():
+    lead = SimpleNamespace(
+        id="LEAD233C",
+        first_name="Ada",
+        last_name="Kim",
+        email="ada@example.com",
+        phone="01012345678",
+        status="New",
+        gender="Female",
+        product="01t000000000001AAA",
+        model="a0M000000000001AAA",
+        brand="a0B000000000001AAA",
+        description="Priority lead",
+    )
+
+    with patch("web.backend.app.services.lead_service.LeadService.create_lead", return_value=lead) as create_lead, patch(
+        "ai_agent.ui.backend.service.VehicleSpecService.get_vehicle_spec",
+        return_value=SimpleNamespace(id="a0B000000000001AAA", name="Hyundai"),
+    ), patch(
+        "ai_agent.ui.backend.service.ModelService.get_model",
+        return_value=SimpleNamespace(id="a0M000000000001AAA", name="Sonata"),
+    ), patch(
+        "web.backend.app.services.product_service.ProductService.get_product",
+        return_value=SimpleNamespace(id="01t000000000001AAA", name="Premium Plan"),
+    ):
+        response = await AiAgentService.submit_chat_native_form(
+            db=None,
+            object_type="lead",
+            mode="create",
+            values={
+                "first_name": "Ada",
+                "last_name": "Kim",
+                "email": "ada@example.com",
+                "phone": "01012345678",
+                "status": "New",
+                "gender": "Female",
+                "product": "01t000000000001AAA",
+                "model": "a0M000000000001AAA",
+                "brand": "a0B000000000001AAA",
+                "description": "Priority lead",
+            },
+            conversation_id="phase233-submit-create",
+            language_preference="eng",
+        )
+
+    assert response["intent"] == "OPEN_RECORD"
+    kwargs = create_lead.call_args.kwargs
+    assert kwargs["product"] == "01t000000000001AAA"
+    assert kwargs["model"] == "a0M000000000001AAA"
+    assert kwargs["brand"] == "a0B000000000001AAA"
 
 
 @pytest.mark.asyncio
@@ -232,3 +344,21 @@ def test_ai_agent_frontend_renders_open_record_feedback_before_workspace_fetch()
     assert "appendChatMessage('agent', data.text" in branch
     assert "requestAnimationFrame(() => openAgentWorkspace(targetUrl, workspaceTitle));" in branch
     assert branch.index("appendChatMessage('agent', data.text") < branch.index("requestAnimationFrame(() => openAgentWorkspace(targetUrl, workspaceTitle));")
+
+
+def test_ai_agent_frontend_renders_and_initializes_lead_lookup_controls():
+    source = Path("development/ai_agent/ui/frontend/static/js/ai_agent.js").read_text(encoding="utf-8")
+
+    assert "if (field.control === 'lookup') {" in source
+    assert "class=\"agent-chat-lookup-id\"" in source
+    assert "agent-chat-lookup-input" in source
+    assert "class=\"agent-chat-lookup-clear\"" in source
+    assert "function initAgentChatLookupFields(root) {" in source
+    assert "fetch(`/lookups/search?q=${encodeURIComponent(query || '')}&type=${encodeURIComponent(lookupObject)}`)" in source
+
+
+def test_ai_agent_frontend_initializes_lookup_controls_on_render_and_validation_refresh():
+    source = Path("development/ai_agent/ui/frontend/static/js/ai_agent.js").read_text(encoding="utf-8")
+
+    assert "initAgentChatLookupFields(msgDiv);" in source
+    assert "initAgentChatLookupFields(replacementCard);" in source

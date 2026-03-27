@@ -1062,6 +1062,7 @@ function appendAgentSchemaFormMessage(text, formSchema) {
         </div>
     `;
     body.appendChild(msgDiv);
+    initAgentChatLookupFields(msgDiv);
     scrollAgentSchemaFormIntoView(msgDiv);
 }
 
@@ -1290,6 +1291,118 @@ function escapeAgentHtml(value) {
         .replace(/'/g, '&#39;');
 }
 
+const agentLookupSearchTimers = {};
+
+function closeAgentLookupDropdowns(exceptNode = null) {
+    document.querySelectorAll('.agent-chat-lookup').forEach(wrapper => {
+        if (exceptNode && wrapper === exceptNode) return;
+        wrapper.classList.remove('is-open');
+    });
+}
+
+async function fetchAgentLookupResults(lookupObject, query) {
+    const response = await fetch(`/lookups/search?q=${encodeURIComponent(query || '')}&type=${encodeURIComponent(lookupObject)}`);
+    const data = await response.json();
+    return Array.isArray(data.results) ? data.results : [];
+}
+
+function renderAgentLookupResults(wrapper, items) {
+    const dropdown = wrapper?.querySelector('.agent-chat-lookup-dropdown');
+    if (!dropdown) return;
+    if (!Array.isArray(items) || items.length === 0) {
+        dropdown.innerHTML = '<div class="agent-chat-lookup-empty">No results found</div>';
+        wrapper.classList.add('is-open');
+        return;
+    }
+    dropdown.innerHTML = items.map(item => `
+        <button
+            type="button"
+            class="agent-chat-lookup-option"
+            data-lookup-id="${escapeAgentHtml(item.id)}"
+            data-lookup-name="${escapeAgentHtml(item.name)}"
+        >${escapeAgentHtml(item.name)}</button>
+    `).join('');
+    wrapper.classList.add('is-open');
+}
+
+function clearAgentLookupSelection(wrapper) {
+    if (!wrapper) return;
+    const hiddenInput = wrapper.querySelector('.agent-chat-lookup-id');
+    const textInput = wrapper.querySelector('.agent-chat-lookup-input');
+    if (hiddenInput) hiddenInput.value = '';
+    if (textInput) textInput.value = '';
+    wrapper.dataset.displayValue = '';
+    wrapper.classList.remove('has-value');
+    closeAgentLookupDropdowns();
+}
+
+function setAgentLookupSelection(wrapper, item) {
+    if (!wrapper || !item) return;
+    const hiddenInput = wrapper.querySelector('.agent-chat-lookup-id');
+    const textInput = wrapper.querySelector('.agent-chat-lookup-input');
+    if (hiddenInput) hiddenInput.value = item.id || '';
+    if (textInput) textInput.value = item.name || '';
+    wrapper.dataset.displayValue = item.name || '';
+    wrapper.classList.toggle('has-value', !!(item.name || item.id));
+    closeAgentLookupDropdowns();
+}
+
+function initAgentChatLookupFields(root) {
+    if (!root) return;
+    root.querySelectorAll('.agent-chat-lookup').forEach(wrapper => {
+        if (wrapper.dataset.lookupEnhanced === 'true') return;
+        wrapper.dataset.lookupEnhanced = 'true';
+        const lookupObject = wrapper.dataset.lookupObject || 'Product';
+        const lookupField = wrapper.dataset.lookupField || '';
+        const textInput = wrapper.querySelector('.agent-chat-lookup-input');
+        const clearButton = wrapper.querySelector('.agent-chat-lookup-clear');
+        const hiddenInput = wrapper.querySelector('.agent-chat-lookup-id');
+        const currentDisplay = wrapper.dataset.displayValue || '';
+
+        wrapper.classList.toggle('has-value', !!(currentDisplay || hiddenInput?.value));
+
+        const queueSearch = (query) => {
+            clearTimeout(agentLookupSearchTimers[lookupField]);
+            agentLookupSearchTimers[lookupField] = setTimeout(async () => {
+                const items = await fetchAgentLookupResults(lookupObject, query);
+                renderAgentLookupResults(wrapper, items);
+            }, 200);
+        };
+
+        textInput?.addEventListener('focus', () => {
+            closeAgentLookupDropdowns(wrapper);
+            queueSearch(textInput.value.trim());
+        });
+
+        textInput?.addEventListener('input', () => {
+            if (hiddenInput && textInput.value.trim() !== (wrapper.dataset.displayValue || '')) {
+                hiddenInput.value = '';
+            }
+            wrapper.classList.toggle('has-value', !!textInput.value.trim());
+            queueSearch(textInput.value.trim());
+        });
+
+        clearButton?.addEventListener('click', () => clearAgentLookupSelection(wrapper));
+
+        wrapper.addEventListener('click', event => {
+            const option = event.target.closest('.agent-chat-lookup-option');
+            if (!option) return;
+            setAgentLookupSelection(wrapper, {
+                id: option.dataset.lookupId || '',
+                name: option.dataset.lookupName || '',
+            });
+        });
+    });
+}
+
+if (!window.__agentLookupOutsideClickBound) {
+    document.addEventListener('click', event => {
+        const lookupWrapper = event.target.closest('.agent-chat-lookup');
+        closeAgentLookupDropdowns(lookupWrapper);
+    });
+    window.__agentLookupOutsideClickBound = true;
+}
+
 function renderAgentInlineSchemaField(field) {
     if (!field) return '';
     const name = escapeAgentHtml(field.name || '');
@@ -1317,6 +1430,35 @@ function renderAgentInlineSchemaField(field) {
             <label class="agent-chat-form-field">
                 <span class="agent-chat-form-label">${label}${required}</span>
                 <select name="${name}" class="agent-chat-form-select">${optionsHtml}</select>
+                ${error}
+            </label>
+        `;
+    }
+
+    if (field.control === 'lookup') {
+        const displayValue = field.display_value ?? '';
+        return `
+            <label class="agent-chat-form-field agent-chat-form-field-full">
+                <span class="agent-chat-form-label">${label}${required}</span>
+                <div
+                    class="agent-chat-lookup ${displayValue || value ? 'has-value' : ''}"
+                    data-lookup-field="${name}"
+                    data-lookup-object="${escapeAgentHtml(field.lookup_object || 'Product')}"
+                    data-display-value="${escapeAgentHtml(displayValue)}"
+                >
+                    <input type="hidden" name="${name}" class="agent-chat-lookup-id" value="${escapeAgentHtml(value)}">
+                    <div class="agent-chat-lookup-input-row">
+                        <input
+                            type="text"
+                            class="agent-chat-form-input agent-chat-lookup-input"
+                            value="${escapeAgentHtml(displayValue)}"
+                            placeholder="${escapeAgentHtml(field.placeholder || `Search ${field.lookup_object || label}...`)}"
+                            autocomplete="off"
+                        >
+                        <button type="button" class="agent-chat-lookup-clear">Clear</button>
+                    </div>
+                    <div class="agent-chat-lookup-dropdown"></div>
+                </div>
                 ${error}
             </label>
         `;
@@ -1428,6 +1570,7 @@ async function submitAgentChatForm(event) {
             const replacementCard = wrapper.firstElementChild;
             if (replacementCard) {
                 card.replaceWith(replacementCard);
+                initAgentChatLookupFields(replacementCard);
                 scrollAgentSchemaFormIntoView(replacementCard);
             } else {
                 card.outerHTML = renderAgentInlineSchemaForm(data.form);

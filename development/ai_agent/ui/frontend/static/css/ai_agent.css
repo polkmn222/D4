@@ -1406,6 +1406,72 @@
     animation: dots 1.5s steps(5, end) infinite;
 }
 
+.agent-chat-lookup {
+    position: relative;
+}
+
+.agent-chat-lookup-input-row {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+.agent-chat-lookup-clear {
+    border: 1px solid #d7deeb;
+    background: #fff;
+    color: #445066;
+    border-radius: 10px;
+    padding: 8px 10px;
+    font-size: 0.78rem;
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+.agent-chat-lookup:not(.has-value) .agent-chat-lookup-clear {
+    visibility: hidden;
+}
+
+.agent-chat-lookup-dropdown {
+    display: none;
+    position: absolute;
+    top: calc(100% + 6px);
+    left: 0;
+    right: 0;
+    background: #fff;
+    border: 1px solid #d7deeb;
+    border-radius: 12px;
+    box-shadow: 0 16px 30px rgba(15, 23, 42, 0.12);
+    overflow: hidden;
+    z-index: 20;
+}
+
+.agent-chat-lookup.is-open .agent-chat-lookup-dropdown {
+    display: block;
+}
+
+.agent-chat-lookup-option,
+.agent-chat-lookup-empty {
+    display: block;
+    width: 100%;
+    border: 0;
+    background: #fff;
+    text-align: left;
+    padding: 10px 12px;
+    font-size: 0.85rem;
+}
+
+.agent-chat-lookup-option {
+    cursor: pointer;
+}
+
+.agent-chat-lookup-option:hover {
+    background: #f6f8fb;
+}
+
+.agent-chat-lookup-empty {
+    color: #68758d;
+}
+
 @keyframes dots {
     0%, 20% { content: '.'; }
     40% { content: '..'; }
