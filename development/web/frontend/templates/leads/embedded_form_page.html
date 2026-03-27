@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lead Workspace</title>
+    <link rel="stylesheet" href="{{ url_for('static', path='/css/base.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', path='/css/objects.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', path='/css/interactions.css') }}">
+    <style>
+        body {
+            margin: 0;
+            background: #ffffff;
+            color: #181818;
+            font-family: 'Inter', -apple-system, system-ui, sans-serif;
+        }
+
+        .embedded-form-shell {
+            min-height: 100vh;
+            background: #ffffff;
+        }
+    </style>
+    <script src="/static/js/lookup.js"></script>
+</head>
+<body>
+    <div class="embedded-form-shell">
+        {% include "templates/sf_form_modal.html" %}
+    </div>
+</body>
+</html>

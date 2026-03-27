@@ -2,8 +2,8 @@ services:
   - type: web
     name: d4-app
     runtime: python
-    rootDir: .gemini/development
-    buildCommand: pip install -r ../../requirements.txt
+    rootDir: development
+    buildCommand: pip install -r ../requirements.txt
     startCommand: uvicorn web.backend.app.main:app --host 0.0.0.0 --port $PORT
     healthCheckPath: /docs
     envVars:
@@ -13,7 +13,29 @@ services:
         sync: false
       - key: MESSAGE_PROVIDER
         sync: false
+      - key: RELAY_MESSAGE_TOKEN
+        sync: false
+      - key: RELAY_TARGET_PROVIDER
+        sync: false
+      - key: SOLAPI_API_KEY
+        sync: false
+      - key: SOLAPI_API_SECRET
+        sync: false
+      - key: SOLAPI_SENDER_NUMBER
+        sync: false
+      - key: SOLAPI_FORCE_TO_NUMBER
+        sync: false
+      - key: SOLAPI_ALLOWED_IP
+        sync: false
       - key: SLACK_MESSAGE_WEBHOOK_URL
+        sync: false
+      - key: CLOUDINARY_CLOUD_NAME
+        sync: false
+      - key: CLOUDINARY_API_KEY
+        sync: false
+      - key: CLOUDINARY_API_SECRET
+        sync: false
+      - key: CLOUDINARY_UNSIGNED_UPLOAD_PRESET
         sync: false
       - key: APP_BASE_URL
         sync: false

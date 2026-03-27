@@ -1,0 +1,205 @@
+#ops-pilot-root {
+    position: relative;
+    z-index: 30;
+}
+
+.ops-pilot-window {
+    position: fixed;
+    inset: 12px;
+    background: rgba(15, 23, 31, 0.18);
+    backdrop-filter: blur(6px);
+    display: flex;
+    align-items: stretch;
+    justify-content: center;
+}
+
+.ops-pilot-shell {
+    width: min(1480px, calc(100vw - 24px));
+    height: calc(100vh - 24px);
+    background: linear-gradient(180deg, #f7f4ee 0%, #fefdf9 100%);
+    border-radius: 28px;
+    border: 1px solid rgba(62, 82, 63, 0.18);
+    box-shadow: 0 24px 60px rgba(33, 44, 39, 0.22);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.ops-pilot-shell-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.1rem 1.4rem;
+    border-bottom: 1px solid rgba(62, 82, 63, 0.12);
+    background: rgba(255, 255, 255, 0.66);
+}
+
+.ops-pilot-shell-kicker {
+    margin: 0 0 0.2rem;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #627062;
+}
+
+.ops-pilot-shell-header h2 {
+    margin: 0;
+    font-size: 1.35rem;
+    color: #223128;
+}
+
+.ops-pilot-close {
+    border: none;
+    background: #223128;
+    color: #fff;
+    padding: 0.7rem 1rem;
+    border-radius: 999px;
+    cursor: pointer;
+    font-weight: 700;
+}
+
+.ops-pilot-layout {
+    flex: 1;
+    min-height: 0;
+    display: grid;
+    grid-template-columns: 320px minmax(0, 1fr);
+}
+
+.ops-pilot-sidebar {
+    border-right: 1px solid rgba(62, 82, 63, 0.12);
+    padding: 1rem;
+    overflow-y: auto;
+    background: rgba(244, 239, 229, 0.72);
+}
+
+.ops-pilot-sidebar-block + .ops-pilot-sidebar-block {
+    margin-top: 1rem;
+}
+
+.ops-pilot-label {
+    margin: 0 0 0.55rem;
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: #50604e;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.ops-pilot-command-row {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 0.5rem;
+}
+
+.ops-pilot-command-input {
+    width: 100%;
+    border: 1px solid #c7d0c2;
+    border-radius: 16px;
+    padding: 0.85rem 0.95rem;
+    font: inherit;
+    background: #fff;
+}
+
+.ops-pilot-status {
+    margin: 0.55rem 0 0;
+    font-size: 0.82rem;
+    color: #61705f;
+}
+
+.ops-pilot-object-buttons,
+.ops-pilot-prompt-list,
+.agent-example-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.ops-pilot-object-btn,
+.ops-pilot-chip {
+    border: 1px solid #c7d0c2;
+    background: #fff;
+    color: #243429;
+    border-radius: 999px;
+    padding: 0.55rem 0.8rem;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.ops-pilot-main {
+    min-width: 0;
+    display: grid;
+    grid-template-columns: 400px minmax(0, 1fr);
+    min-height: 0;
+}
+
+.ops-pilot-transcript {
+    min-width: 0;
+    padding: 1rem;
+    overflow-y: auto;
+    border-right: 1px solid rgba(62, 82, 63, 0.12);
+    background: rgba(255, 251, 244, 0.74);
+}
+
+.ops-pilot-workspace {
+    min-width: 0;
+    min-height: 0;
+    padding: 1rem;
+    background: linear-gradient(180deg, #fcfcf8 0%, #f4f7f0 100%);
+}
+
+.ops-pilot-frame {
+    width: 100%;
+    height: 100%;
+    min-height: 520px;
+    border: 1px solid rgba(62, 82, 63, 0.12);
+    border-radius: 22px;
+    background: #fff;
+}
+
+.agent-paste-card {
+    background: #fff;
+    border: 1px solid rgba(62, 82, 63, 0.12);
+    border-radius: 22px;
+    padding: 1rem;
+    box-shadow: 0 12px 30px rgba(35, 47, 37, 0.08);
+}
+
+.agent-paste-card + .agent-paste-card {
+    margin-top: 0.8rem;
+}
+
+.agent-paste-card-user {
+    background: #223128;
+    color: #fff;
+}
+
+.agent-paste-eyebrow {
+    margin: 0 0 0.45rem;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #6d7a6b;
+}
+
+.agent-paste-card-user .agent-paste-eyebrow {
+    color: rgba(255, 255, 255, 0.72);
+}
+
+@media (max-width: 1100px) {
+    .ops-pilot-layout,
+    .ops-pilot-main {
+        grid-template-columns: 1fr;
+    }
+
+    .ops-pilot-sidebar,
+    .ops-pilot-transcript {
+        border-right: none;
+        border-bottom: 1px solid rgba(62, 82, 63, 0.12);
+    }
+
+    .ops-pilot-frame {
+        min-height: 420px;
+    }
+}

@@ -3,7 +3,7 @@
 set -euo pipefail
 
 PROJECT_ROOT="$(cd "$(dirname "$0")" && pwd)"
-APP_ROOT="$PROJECT_ROOT/.gemini/development"
+APP_ROOT="$PROJECT_ROOT/development"
 HOST="0.0.0.0"
 PORT="${PORT:-8000}"
 LOG_FILE="$APP_ROOT/crm.log"
@@ -18,7 +18,7 @@ cleanup() {
 
 trap cleanup EXIT INT TERM
 
-echo "Initializing D4 CRM..."
+echo "Initializing D5 CRM..."
 
 if [ -d "$PROJECT_ROOT/.pytest_cache" ] && [ ! -d "$APP_ROOT/.pytest_cache" ]; then
     mkdir -p "$APP_ROOT/.pytest_cache"
@@ -52,7 +52,7 @@ done
 
 echo "D4 CRM is live at http://127.0.0.1:$PORT"
 if command -v open >/dev/null 2>&1; then
-    open "http://127.0.0.1:$PORT"
+    open "http://127.0.0.1:$PORT" >/dev/null 2>&1 || true
 fi
 
 wait "$SERVER_PID"
