@@ -38,7 +38,7 @@ def slow_query_threshold_ms() -> float:
 
 
 def should_profile_path(path: str) -> bool:
-    return not path.startswith(("/ai-agent", "/agent", "/agent-gem", "/static"))
+    return not path.startswith(("/ai-agent", "/static"))
 
 
 @dataclass

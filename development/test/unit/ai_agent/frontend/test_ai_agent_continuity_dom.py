@@ -1063,6 +1063,100 @@ def test_lead_non_submit_open_record_appends_latest_chat_result_and_preserves_ch
     )
 
 
+def test_lead_chat_form_submit_open_record_removes_submitting_state_and_skips_workspace_open():
+    _run_node_dom_test(
+        """
+        const workspaceCalls = [];
+        context.openAgentWorkspace = (url, title, options = {}) => {
+            workspaceCalls.push({ url, title, options });
+        };
+        context.submitAiAgentFormResponse = async () => ({
+            intent: 'OPEN_RECORD',
+            object_type: 'lead',
+            record_id: 'LEAD1',
+            redirect_url: '/leads/LEAD1',
+            text: 'Lead **Ada Kim** has been updated. The refreshed record is open below.',
+            chat_card: { title: 'Ada Kim' },
+        });
+
+        const card = new context.__FakeElement('div');
+        card.classList.add('agent-chat-form-card');
+        const form = new context.__FakeElement('form');
+        form.dataset.formId = 'lead:edit:LEAD1';
+        form.dataset.objectType = 'lead';
+        form.dataset.mode = 'edit';
+        form.dataset.recordId = 'LEAD1';
+        form.closest = (selector) => selector === '.agent-chat-form-card' ? card : null;
+        form.querySelector = (selector) => {
+            if (selector === 'button[type="submit"]') return submitButton;
+            return null;
+        };
+        form.querySelectorAll = () => [statusField];
+
+        const submitButton = new context.__FakeElement('button');
+        submitButton.disabled = false;
+        submitButton.type = 'submit';
+        const statusField = new context.__FakeElement('input');
+        statusField.name = 'status';
+        statusField.value = 'Qualified';
+        const workspaceLoading = context.document.getElementById('ai-agent-workspace-loading');
+        workspaceLoading.classList.remove('agent-hidden');
+        const globalLoading = new context.__FakeElement('div', 'sf-global-loading');
+        globalLoading.style.display = 'flex';
+        context.__elements.set('sf-global-loading', globalLoading);
+
+        card.remove = () => {
+            card.__removed = true;
+        };
+
+        const event = {
+            preventDefault() {},
+            target: form,
+        };
+
+        const result = await context.submitAgentChatForm(event);
+
+        if (result !== false) {
+            throw new Error(`expected submitAgentChatForm to return false, got ${result}`);
+        }
+        if (card.__removed !== true) {
+            throw new Error('expected lead chat form card to be removed after OPEN_RECORD response');
+        }
+        if (card.classList.contains('is-submitting')) {
+            throw new Error('expected lead chat form submitting state to be cleared');
+        }
+        if (submitButton.disabled !== false) {
+            throw new Error('expected lead submit button to be re-enabled');
+        }
+        if (!workspaceLoading.classList.contains('agent-hidden')) {
+            throw new Error('expected lingering workspace loading indicator to be hidden after lead save');
+        }
+        if (globalLoading.style.display !== 'none') {
+            throw new Error('expected lingering global saving overlay to be hidden after lead save');
+        }
+        if (workspaceCalls.length !== 0) {
+            throw new Error(`expected lead chat form submit to skip workspace open, got ${workspaceCalls.length}`);
+        }
+
+        const body = context.document.getElementById('ai-agent-body');
+        if (body.children.length !== 1) {
+            throw new Error(`expected one appended agent message after lead save, got ${body.children.length}`);
+        }
+
+        const latest = body.children[0];
+        if (latest.className !== 'msg-agent') {
+            throw new Error(`expected lead save result to append an agent message, got ${latest.className}`);
+        }
+        if (!latest.innerHTML.includes('Lead **Ada Kim** has been updated.')) {
+            throw new Error('expected lead save result text to be appended in chat');
+        }
+        if (latest.scrollIntoViewCalls.length !== 1) {
+            throw new Error('expected lead save result to keep attention on the latest chat area');
+        }
+        """
+    )
+
+
 def test_contact_non_submit_open_record_appends_latest_chat_result_and_preserves_chat_focus():
     _run_node_dom_test(
         """

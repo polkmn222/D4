@@ -1322,6 +1322,7 @@
 .input-wrapper {
     display: flex;
     align-items: center;
+    gap: 10px;
     background: #f7fafc;
     border: 2px solid #e2e8f0;
     border-radius: 16px;
@@ -1339,6 +1340,7 @@
 
 #ai-agent-input {
     flex-grow: 1;
+    min-width: 0;
     border: none;
     background: transparent;
     padding: 16px 0;
@@ -1346,6 +1348,58 @@
     outline: none;
     color: #2d3748;
     font-weight: 500;
+}
+
+.composer-action-btn {
+    border: none;
+    background: white;
+    width: 46px;
+    height: 46px;
+    border-radius: 14px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: #4b5563;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow: inset 0 0 0 1px rgba(148, 163, 184, 0.35);
+}
+
+.composer-action-btn:hover {
+    background: #f8fafc;
+    color: #0f172a;
+}
+
+.composer-action-btn:disabled,
+.send-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
+.ai-agent-input-clear {
+    opacity: 0;
+    pointer-events: none;
+    transform: scale(0.92);
+}
+
+.ai-agent-input-clear.is-visible {
+    opacity: 1;
+    pointer-events: auto;
+    transform: scale(1);
+}
+
+.ai-agent-mic-btn.is-recording {
+    background: #fef2f2;
+    color: #b91c1c;
+    box-shadow: inset 0 0 0 1px rgba(239, 68, 68, 0.35);
+}
+
+.ai-agent-mic-btn.is-busy {
+    background: #eff6ff;
+    color: var(--slds-brand);
+    box-shadow: inset 0 0 0 1px rgba(1, 118, 211, 0.28);
 }
 
 .send-btn {

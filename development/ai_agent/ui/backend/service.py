@@ -21,6 +21,7 @@ from web.message.backend.services.message_template_service import MessageTemplat
 from web.message.backend.services.message_service import MessageService
 from web.backend.app.utils.error_handler import handle_agent_errors
 from ai_agent.llm.backend.recommendations import AIRecommendationService
+from ai_agent.debug import debug_event
 from ai_agent.llm.backend.intent_preclassifier import IntentPreClassifier
 from ai_agent.llm.backend.conversation_context import ConversationContextStore
 from ai_agent.llm.backend.intent_reasoner import IntentReasoner
@@ -37,7 +38,7 @@ load_dotenv()
 logger = logging.getLogger(__name__)
 
 # API Keys from .env
-CEREBRAS_API_KEY = os.getenv("CELEBRACE_API_KEY")
+CEREBRAS_API_KEY = os.getenv("CELEBRACE_API_KEY") or os.getenv("CEREBRAS_API_KEY")
 GROQ_API_KEY = os.getenv("GROQ_API_KEY")
 GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
 OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
@@ -47,8 +48,22 @@ SKILLS_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__f
 METADATA_PATH = os.path.join(SKILLS_DIR, "backend", "metadata.json")
 
 class AiAgentService:
+    STT_MAX_BYTES = 10 * 1024 * 1024
+    STT_ALLOWED_CONTENT_TYPES = {
+        "audio/webm",
+        "audio/wav",
+        "audio/x-wav",
+        "audio/mpeg",
+        "audio/mp3",
+        "audio/mp4",
+        "audio/x-m4a",
+        "audio/m4a",
+        "audio/ogg",
+    }
     PHASE1_OBJECTS = {"lead", "contact", "opportunity"}
     CHAT_NATIVE_FORM_OBJECTS = {"lead", "contact", "opportunity"}
+    FAST_FORM_CREATE_OBJECTS = {"product", "asset", "brand", "model", "message_template"}
+    DETERMINISTIC_CRUD_OBJECTS = PHASE1_OBJECTS | FAST_FORM_CREATE_OBJECTS
     LEAD_STATUS_ALIASES = {
         "new": "New",
         "follow up": "Follow Up",
@@ -77,15 +92,58 @@ class AiAgentService:
     }
 
     LEAD_EDIT_CONTEXT_INTENTS = {"CREATE", "MANAGE", "UPDATE"}
-    LEAD_READ_ACTIONS = {"show", "open", "view", "read", "details", "manage", "보여", "보여줘", "열어", "열어줘", "상세", "관리"}
+    LEAD_READ_ACTIONS = {"show", "open", "view", "read", "details", "manage", "보여", "보여줘", "보여주라", "열어", "열어줘", "열어봐", "상세", "관리"}
     LEAD_EDIT_ACTIONS = {"edit", "수정"}
-    LEAD_UPDATE_ACTIONS = {"update", "change", "modify", "변경", "바꿔"}
+    LEAD_UPDATE_ACTIONS = {"update", "change", "modify", "save", "변경", "바꿔", "바까", "저장"}
     LEAD_DELETE_ACTIONS = {"delete", "remove", "erase", "삭제"}
-    LEAD_CREATE_ACTIONS = {"create", "add", "new", "make", "build", "생성", "만들", "등록", "추가"}
+    LEAD_CREATE_ACTIONS = {"create", "add", "new", "make", "build", "생성", "만들", "맹글", "맨들", "등록", "추가"}
     GENERIC_CREATE_ACTIONS = LEAD_CREATE_ACTIONS
     GENERIC_UPDATE_ACTIONS = LEAD_UPDATE_ACTIONS | LEAD_EDIT_ACTIONS
     GENERIC_QUERY_ACTIONS = set(IntentPreClassifier.ACTION_QUERY) | {"recent"}
     GENERIC_READ_ACTIONS = LEAD_READ_ACTIONS
+    FAST_OBJECT_FIELD_ALIASES = {
+        "brand": {
+            "name": ["name", "brand name"],
+            "description": ["description", "desc", "note"],
+        },
+        "model": {
+            "name": ["name", "model name"],
+            "brand": ["brand", "parent"],
+            "description": ["description", "desc", "note"],
+        },
+        "product": {
+            "name": ["name", "product name"],
+            "brand": ["brand"],
+            "model": ["model"],
+            "category": ["category"],
+            "base_price": ["base price", "base_price", "price"],
+            "description": ["description", "desc", "note"],
+        },
+        "asset": {
+            "name": ["name", "asset name"],
+            "vin": ["vin"],
+            "status": ["status"],
+            "price": ["price"],
+            "brand": ["brand"],
+            "model": ["model"],
+            "product": ["product"],
+            "contact": ["contact"],
+        },
+        "message_template": {
+            "name": ["name", "template name"],
+            "subject": ["subject"],
+            "content": ["content", "body"],
+            "record_type": ["type", "record type", "record_type"],
+            "image_url": ["image", "image url", "image_url"],
+        },
+    }
+    FAST_OBJECT_REQUIRED_FIELDS = {
+        "brand": ["name"],
+        "model": ["name", "brand"],
+        "product": ["name", "base_price"],
+        "asset": ["vin"],
+        "message_template": ["name", "content"],
+    }
     RECENT_QUERY_MARKERS = {
         "recent",
         "latest",
@@ -99,6 +157,127 @@ class AiAgentService:
         "최근",
         "최근 생성",
         "최근 만든",
+    }
+    D5_SCOPE_KEYWORDS = {
+        "crm",
+        "d5",
+        "lead",
+        "contact",
+        "opportunity",
+        "product",
+        "asset",
+        "brand",
+        "model",
+        "template",
+        "message",
+        "recommend",
+        "dashboard",
+        "workspace",
+        "record",
+        "리드",
+        "연락처",
+        "기회",
+        "상품",
+        "자산",
+        "브랜드",
+        "모델",
+        "템플릿",
+        "메시지",
+        "추천",
+    }
+    POSSIBLE_LLM_CRUD_ACTION_HINTS = {
+        "set",
+        "mark",
+        "rename",
+        "close",
+        "reopen",
+        "assign",
+        "qualify",
+        "save",
+        "update",
+        "edit",
+        "change",
+        "modify",
+        "delete",
+        "remove",
+        "open",
+        "show",
+        "pull",
+        "fetch",
+        "view",
+        "read",
+        "create",
+        "add",
+        "make",
+    }
+    CRM_CONTEXT_MARKERS = (
+        "this",
+        "that",
+        "it",
+        "those",
+        "them",
+        "selected",
+        "last",
+        "recent",
+        "before",
+        "one",
+        "from the list",
+        "from before",
+        "just added",
+        "just created",
+        "we were just looking at",
+    )
+    CRM_VALUE_HINTS = {
+        "qualified",
+        "contacted",
+        "junk",
+        "follow up",
+        "follow-up",
+        "closed won",
+        "closed lost",
+        "prospecting",
+        "qualification",
+        "test drive",
+        "value proposition",
+        "negotiation",
+        "proposal",
+        "new",
+        "warm",
+        "hot",
+        "cold",
+        "gold",
+        "silver",
+        "bronze",
+        "mms",
+        "lms",
+        "sms",
+    }
+    CRM_FIELD_HINTS = {
+        "email",
+        "phone",
+        "mobile",
+        "vin",
+        "plate",
+        "probability",
+        "amount",
+        "price",
+        "base price",
+        "base_price",
+        "subject",
+        "content",
+        "body",
+        "type",
+        "record type",
+        "record_type",
+        "image",
+        "template",
+        "brand",
+        "model",
+        "product",
+        "asset",
+        "contact",
+        "opportunity",
+        "lead",
     }
     ORDINAL_MARKERS = (
         ("first one", 0),
@@ -609,6 +788,14 @@ class AiAgentService:
         language_preference: Optional[str] = None,
         record_id: Optional[str] = None,
     ) -> Dict[str, Any]:
+        debug_event(
+            "service.submit_chat_native_form.start",
+            conversation_id=conversation_id,
+            object_type=object_type,
+            mode=mode,
+            record_id=record_id,
+            field_names=sorted((values or {}).keys()),
+        )
         if object_type not in cls.CHAT_NATIVE_FORM_OBJECTS:
             return {"intent": "CHAT", "text": f"{object_type} chat forms are not supported in this phase."}
         if mode not in {"create", "edit"}:
@@ -617,6 +804,13 @@ class AiAgentService:
         try:
             cleaned_values = cls._coerce_chat_form_values(object_type, values)
         except (TypeError, ValueError):
+            debug_event(
+                "service.submit_chat_native_form.validation_error",
+                conversation_id=conversation_id,
+                object_type=object_type,
+                mode=mode,
+                reason="coerce_failed",
+            )
             target_record = cls._get_phase1_record(db, object_type, record_id) if mode == "edit" and record_id else None
             return cls._build_chat_native_form_response(
                 object_type=object_type,
@@ -633,6 +827,14 @@ class AiAgentService:
 
         field_errors = cls._validate_chat_form_submission(object_type, cleaned_values)
         if field_errors:
+            debug_event(
+                "service.submit_chat_native_form.validation_error",
+                conversation_id=conversation_id,
+                object_type=object_type,
+                mode=mode,
+                reason="field_errors",
+                field_errors=field_errors,
+            )
             target_record = cls._get_phase1_record(db, object_type, record_id) if mode == "edit" and record_id else None
             return cls._build_chat_native_form_response(
                 object_type=object_type,
@@ -658,6 +860,12 @@ class AiAgentService:
             else:
                 record = OpportunityService.create_opportunity(db, **cleaned_values)
             if not record:
+                debug_event(
+                    "service.submit_chat_native_form.create_failed",
+                    conversation_id=conversation_id,
+                    object_type=object_type,
+                    mode=mode,
+                )
                 return cls._build_chat_native_form_response(
                     object_type=object_type,
                     mode=mode,
@@ -667,7 +875,7 @@ class AiAgentService:
                     conversation_id=conversation_id,
                     language_preference=language_preference,
                 )
-            return cls._build_phase1_open_record_response(
+            response = cls._build_phase1_open_record_response(
                 db,
                 object_type,
                 record,
@@ -675,6 +883,15 @@ class AiAgentService:
                 "create",
                 language_preference,
             )
+            debug_event(
+                "service.submit_chat_native_form.complete",
+                conversation_id=conversation_id,
+                object_type=object_type,
+                mode=mode,
+                intent=response.get("intent"),
+                record_id=response.get("record_id"),
+            )
+            return response
 
         if not record_id:
             return {"intent": "CHAT", "text": f"I need the {object_type} record ID before I can save changes."}
@@ -687,8 +904,15 @@ class AiAgentService:
             record = OpportunityService.update_opportunity(db, record_id, **cleaned_values)
 
         if not record:
+            debug_event(
+                "service.submit_chat_native_form.update_failed",
+                conversation_id=conversation_id,
+                object_type=object_type,
+                mode=mode,
+                record_id=record_id,
+            )
             return {"intent": "CHAT", "text": f"I couldn't find that {object_type} record."}
-        return cls._build_phase1_open_record_response(
+        response = cls._build_phase1_open_record_response(
             db,
             object_type,
             record,
@@ -696,12 +920,28 @@ class AiAgentService:
             "update",
             language_preference,
         )
+        debug_event(
+            "service.submit_chat_native_form.complete",
+            conversation_id=conversation_id,
+            object_type=object_type,
+            mode=mode,
+            intent=response.get("intent"),
+            record_id=response.get("record_id"),
+        )
+        return response
 
     @classmethod
     def _resolve_phase1_object(cls, normalized_query: str) -> Optional[str]:
         for key, value in IntentPreClassifier.OBJECT_MAP.items():
             if value in cls.PHASE1_OBJECTS and key in normalized_query:
                 return value
+        return None
+
+    @classmethod
+    def _resolve_supported_object(cls, normalized_query: str) -> Optional[str]:
+        explicit_objects = IntentPreClassifier.detect_object_mentions(normalized_query)
+        if len(explicit_objects) == 1 and explicit_objects[0] in cls.DETERMINISTIC_CRUD_OBJECTS:
+            return explicit_objects[0]
         return None
 
     @staticmethod
@@ -719,7 +959,43 @@ class AiAgentService:
         alias_pattern = "|".join(sorted((re.escape(alias) for alias in alias_candidates), key=len, reverse=True))
         match = re.search(rf"(?:{alias_pattern})\s+([A-Za-z][A-Za-z0-9-]{{3,}})", user_query, re.IGNORECASE)
         if match:
-            return match.group(1)
+            candidate = match.group(1)
+            blocked_keywords = {
+                "add",
+                "build",
+                "change",
+                "create",
+                "delete",
+                "description",
+                "edit",
+                "email",
+                "firstname",
+                "first",
+                "for",
+                "last",
+                "lastname",
+                "make",
+                "modify",
+                "name",
+                "new",
+                "phone",
+                "remove",
+                "save",
+                "status",
+                "surname",
+                "update",
+                "만들",
+                "변경",
+                "생성",
+                "삭제",
+                "상태",
+                "성",
+                "수정",
+                "이름",
+                "저장",
+            }
+            if candidate.lower() not in blocked_keywords:
+                return candidate
         return None
 
     @staticmethod
@@ -804,6 +1080,8 @@ class AiAgentService:
             return cls._extract_contact_fields_from_text(user_query)
         if object_type == "opportunity":
             return cls._extract_opportunity_fields_from_text(user_query)
+        if object_type in cls.FAST_OBJECT_FIELD_ALIASES:
+            return cls._extract_fast_object_fields_from_text(object_type, user_query)
         return {}
 
     @classmethod
@@ -813,6 +1091,8 @@ class AiAgentService:
             "contact": ["last_name", "status"],
             "opportunity": ["name", "stage", "amount"],
         }
+        if object_type in cls.FAST_OBJECT_REQUIRED_FIELDS:
+            return cls.FAST_OBJECT_REQUIRED_FIELDS[object_type]
         return mapping.get(object_type, [])
 
     @classmethod
@@ -842,7 +1122,54 @@ class AiAgentService:
             return False
         if object_type == "opportunity":
             return any(hint in normalized or hint in user_query for hint in ["name", "stage", "amount", "probability", "status", ":"])
+        if object_type in cls.FAST_OBJECT_FIELD_ALIASES:
+            hints = {
+                alias
+                for aliases in cls.FAST_OBJECT_FIELD_ALIASES[object_type].values()
+                for alias in aliases
+            }
+            if any(hint in normalized or hint in user_query for hint in hints):
+                return True
+            if object_type in {"product", "asset"} and re.search(r"\b\d[\d,]*\b", user_query):
+                return True
+            return ":" in user_query
         return False
+
+    @classmethod
+    def _extract_fast_object_fields_from_text(cls, object_type: str, user_query: str) -> Dict[str, Any]:
+        data: Dict[str, Any] = {}
+        aliases = cls.FAST_OBJECT_FIELD_ALIASES.get(object_type, {})
+        stop_words = [alias for values in aliases.values() for alias in values]
+
+        for field, field_aliases in aliases.items():
+            alias_pattern = "|".join(re.escape(alias) for alias in field_aliases)
+            if field in {"base_price", "price"}:
+                match = re.search(rf"(?:{alias_pattern})\s*(?:is|to|=|:)?\s*[₩$]?\s*([\d,]+)", user_query, re.IGNORECASE)
+                if match:
+                    data[field] = int(match.group(1).replace(",", ""))
+                continue
+            if field in {"description", "content"}:
+                match = re.search(rf"(?:{alias_pattern})\s*(?:is|to|=|:)?\s*(.+)", user_query, re.IGNORECASE)
+                if match:
+                    value = match.group(1).strip().strip(".,")
+                    if value:
+                        data[field] = value
+                continue
+            value = cls._match_field_value(user_query, field_aliases, stop_words)
+            if value:
+                data[field] = value
+
+        if object_type == "brand" and "name" not in data:
+            match = re.search(r"brand\s+(?:name\s+)?([A-Za-z0-9가-힣][A-Za-z0-9가-힣\s-]*)", user_query, re.IGNORECASE)
+            if match:
+                candidate = match.group(1).strip().strip(".,")
+                if candidate and not cls._extract_record_id(candidate):
+                    data["name"] = candidate
+
+        if object_type == "message_template" and "record_type" in data:
+            data["record_type"] = str(data["record_type"]).upper()
+
+        return data
 
     @classmethod
     def _phase1_form_url(cls, object_type: str, record_id: Optional[str] = None) -> str:
@@ -855,6 +1182,68 @@ class AiAgentService:
         return f"{base}?id={record_id}" if record_id else base
 
     @classmethod
+    def _fast_edit_form_url(cls, object_type: str, record_id: str) -> Optional[str]:
+        mapping = {
+            "product": f"/products/new-modal?id={record_id}",
+            "asset": f"/assets/new-modal?id={record_id}",
+            "brand": f"/vehicle_specifications/new-modal?type=Brand&id={record_id}",
+            "model": f"/models/new-modal?id={record_id}",
+            "message_template": f"/message_templates/new-modal?id={record_id}",
+        }
+        return mapping.get(object_type)
+
+    @classmethod
+    def _fast_create_form_url(cls, object_type: str) -> Optional[str]:
+        mapping = {
+            "product": "/products/new-modal",
+            "asset": "/assets/new-modal",
+            "brand": "/vehicle_specifications/new-modal?type=Brand",
+            "model": "/models/new-modal",
+            "message_template": "/message_templates/new-modal",
+        }
+        return mapping.get(object_type)
+
+    @classmethod
+    def _resolve_fast_create_form_request(
+        cls,
+        user_query: str,
+        language_preference: Optional[str],
+    ) -> Optional[Dict[str, Any]]:
+        normalized = IntentPreClassifier.normalize(user_query)
+        if not IntentPreClassifier._contains_action(normalized, list(cls.GENERIC_CREATE_ACTIONS)):
+            return None
+
+        explicit_objects = IntentPreClassifier.detect_object_mentions(user_query)
+        if len(explicit_objects) != 1:
+            return None
+
+        object_type = explicit_objects[0]
+        if object_type in cls.PHASE1_OBJECTS or object_type not in cls.FAST_FORM_CREATE_OBJECTS:
+            return None
+        if cls._has_explicit_phase1_field_hints(object_type, user_query):
+            return None
+
+        form_url = cls._fast_create_form_url(object_type)
+        if not form_url:
+            return None
+
+        object_label = object_type.replace("_", " ")
+        is_korean = (language_preference or "").lower() == "kor"
+        return {
+            "intent": "OPEN_FORM",
+            "object_type": object_type,
+            "form_url": form_url,
+            "form_title": f"Create {object_label.title()}",
+            "form_kind": f"{object_type}_create",
+            "text": (
+                f"I've opened the new {object_label} form for you below."
+                if not is_korean else
+                f"새 {object_label} 생성 폼을 아래에 열었습니다."
+            ),
+            "score": 1.0,
+        }
+
+    @classmethod
     def _phase1_display_title(cls, object_type: str, record: Any) -> str:
         if object_type == "lead":
             return cls._lead_name(record)
@@ -865,6 +1254,20 @@ class AiAgentService:
             return name or getattr(record, "name", None) or str(getattr(record, "id", "Unnamed Contact"))
         if object_type == "opportunity":
             return getattr(record, "name", None) or str(getattr(record, "id", "Unnamed Opportunity"))
+        if object_type == "product":
+            return cls._display_value(getattr(record, "name", None)) or str(getattr(record, "id", "Unnamed Product"))
+        if object_type == "asset":
+            return (
+                cls._display_value(getattr(record, "name", None))
+                or cls._display_value(getattr(record, "vin", None))
+                or str(getattr(record, "id", "Unnamed Asset"))
+            )
+        if object_type == "brand":
+            return cls._display_value(getattr(record, "name", None)) or str(getattr(record, "id", "Unnamed Brand"))
+        if object_type == "model":
+            return cls._display_value(getattr(record, "name", None)) or str(getattr(record, "id", "Unnamed Model"))
+        if object_type == "message_template":
+            return cls._display_value(getattr(record, "name", None)) or str(getattr(record, "id", "Unnamed Template"))
         return str(getattr(record, "id", "Record"))
 
     @classmethod
@@ -1103,12 +1506,27 @@ class AiAgentService:
         redirect_url = {
             "contact": f"/contacts/{record_id}",
             "opportunity": f"/opportunities/{record_id}",
+            "product": f"/products/{record_id}",
+            "asset": f"/assets/{record_id}",
+            "brand": f"/vehicle_specifications/{record_id}",
+            "model": f"/models/{record_id}",
+            "message_template": f"/message_templates/{record_id}",
         }[object_type]
         chat_card = None
         if object_type == "contact":
             chat_card = cls._build_contact_chat_card(record)
         elif object_type == "opportunity":
             chat_card = cls._build_opportunity_chat_card(record)
+        elif object_type == "product":
+            chat_card = cls._build_product_chat_card(db, record)
+        elif object_type == "asset":
+            chat_card = cls._build_asset_chat_card(db, record)
+        elif object_type == "brand":
+            chat_card = cls._build_brand_chat_card(db, record)
+        elif object_type == "model":
+            chat_card = cls._build_model_chat_card(db, record)
+        elif object_type == "message_template":
+            chat_card = cls._build_message_template_chat_card(record)
 
         return build_object_open_record_response(
             object_type=object_type,
@@ -1140,6 +1558,14 @@ class AiAgentService:
                 conversation_id=None,
                 language_preference=language_preference,
             )
+        if object_type in cls.FAST_FORM_CREATE_OBJECTS:
+            return build_object_edit_form_response(
+                object_type=object_type,
+                record_id=record_id,
+                form_url=cls._fast_edit_form_url(object_type, record_id),
+                title=f"Edit {cls._phase1_display_title(object_type, record)}",
+                language_preference=language_preference,
+            )
         return build_object_edit_form_response(
             object_type=object_type,
             record_id=record_id,
@@ -1156,6 +1582,18 @@ class AiAgentService:
             return ContactService.get_contact(db, record_id)
         if object_type == "opportunity":
             return OpportunityService.get_opportunity(db, record_id)
+        if object_type == "brand":
+            return VehicleSpecService.get_vehicle_spec(db, record_id)
+        if object_type == "model":
+            return ModelService.get_model(db, record_id)
+        if object_type == "product":
+            from web.backend.app.services.product_service import ProductService
+            return ProductService.get_product(db, record_id)
+        if object_type == "asset":
+            from web.backend.app.services.asset_service import AssetService
+            return AssetService.get_asset(db, record_id)
+        if object_type == "message_template":
+            return MessageTemplateService.get_template(db, record_id)
         return None
 
     @classmethod
@@ -1167,7 +1605,7 @@ class AiAgentService:
         language_preference: Optional[str],
     ) -> Optional[Dict[str, Any]]:
         normalized = IntentPreClassifier.normalize(user_query)
-        object_type = cls._resolve_phase1_object(normalized)
+        object_type = cls._resolve_supported_object(normalized)
         if not object_type:
             return None
 
@@ -1178,7 +1616,46 @@ class AiAgentService:
         has_read = IntentPreClassifier._contains_action(normalized, list(cls.GENERIC_READ_ACTIONS))
         has_recent_query = any(marker in normalized for marker in cls.RECENT_QUERY_MARKERS)
 
-        if has_query and object_type in cls.PHASE1_OBJECTS:
+        if object_type == "message_template":
+            object_label = object_type.replace("_", " ")
+            if has_create:
+                return {
+                    "intent": "OPEN_FORM",
+                    "object_type": object_type,
+                    "form_url": cls._fast_create_form_url(object_type),
+                    "form_title": f"Create {object_label.title()}",
+                    "form_kind": f"{object_type}_create",
+                    "text": f"I've opened the new {object_label} form for you below.",
+                    "score": 1.0,
+                }
+            if has_update and explicit_record_id:
+                if db is not None:
+                    record = cls._get_phase1_record(db, object_type, explicit_record_id)
+                    if not record:
+                        return {
+                            "intent": "CHAT",
+                            "object_type": object_type,
+                            "text": f"I couldn't find that {object_label} record.",
+                            "score": 1.0,
+                        }
+                    return cls._build_phase1_edit_form_response(
+                        object_type,
+                        record,
+                        language_preference,
+                        db=db,
+                    )
+                return {
+                    "intent": "OPEN_FORM",
+                    "object_type": object_type,
+                    "record_id": explicit_record_id,
+                    "form_url": cls._fast_edit_form_url(object_type, explicit_record_id),
+                    "form_title": f"Edit {object_label.title()}",
+                    "form_kind": f"{object_type}_edit",
+                    "text": f"I've opened the {object_label} edit form for you below.",
+                    "score": 1.0,
+                }
+
+        if has_query and object_type in cls.DETERMINISTIC_CRUD_OBJECTS:
             if "all" in normalized or "show all" in normalized or "list" in normalized or object_type == "opportunity" or has_recent_query:
                 query_data = {"query_mode": "recent"} if has_recent_query else {}
                 return {
@@ -1188,8 +1665,18 @@ class AiAgentService:
                     "score": 1.0,
                 }
 
-        if has_create and object_type in cls.PHASE1_OBJECTS:
+        if has_create and object_type in cls.DETERMINISTIC_CRUD_OBJECTS:
             if not cls._has_explicit_phase1_field_hints(object_type, user_query):
+                if object_type in cls.FAST_FORM_CREATE_OBJECTS:
+                    return {
+                        "intent": "OPEN_FORM",
+                        "object_type": object_type,
+                        "form_url": cls._fast_create_form_url(object_type),
+                        "form_title": f"Create {object_type.replace('_', ' ').title()}",
+                        "form_kind": f"{object_type}_create",
+                        "text": f"I've opened the new {object_type.replace('_', ' ')} form for you below.",
+                        "score": 1.0,
+                    }
                 return cls._build_chat_native_form_response(
                     object_type=object_type,
                     mode="create",
@@ -1207,6 +1694,16 @@ class AiAgentService:
                     "score": 1.0,
                     "language_preference": language_preference,
                 }
+            if object_type in cls.FAST_FORM_CREATE_OBJECTS:
+                return {
+                    "intent": "OPEN_FORM",
+                    "object_type": object_type,
+                    "form_url": cls._fast_create_form_url(object_type),
+                    "form_title": f"Create {object_type.replace('_', ' ').title()}",
+                    "form_kind": f"{object_type}_create",
+                    "text": f"I've opened the new {object_type.replace('_', ' ')} form for you below.",
+                    "score": 1.0,
+                }
             return cls._build_chat_native_form_response(
                 object_type=object_type,
                 mode="create",
@@ -1215,7 +1712,7 @@ class AiAgentService:
                 language_preference=language_preference,
             )
 
-        if (has_update or has_read) and object_type in cls.PHASE1_OBJECTS and explicit_record_id:
+        if (has_update or has_read) and object_type in cls.DETERMINISTIC_CRUD_OBJECTS and explicit_record_id:
             if has_update:
                 data = cls._extract_phase1_fields(object_type, user_query)
                 if data:
@@ -1249,7 +1746,7 @@ class AiAgentService:
                 "language_preference": language_preference,
             }
 
-        if has_update and object_type in cls.PHASE1_OBJECTS:
+        if has_update and object_type in cls.DETERMINISTIC_CRUD_OBJECTS:
             return {
                 "intent": "CHAT",
                 "object_type": object_type,
@@ -1280,6 +1777,72 @@ class AiAgentService:
             }
 
         return None
+
+    @classmethod
+    def _looks_like_possible_llm_crud_request(
+        cls,
+        user_query: str,
+        conversation_id: Optional[str],
+        selection: Optional[Dict[str, Any]] = None,
+    ) -> bool:
+        normalized = IntentPreClassifier.normalize(user_query)
+        if not normalized:
+            return False
+
+        action_hints = set(cls.GENERIC_CREATE_ACTIONS | cls.GENERIC_UPDATE_ACTIONS | cls.GENERIC_READ_ACTIONS | cls.LEAD_DELETE_ACTIONS | cls.GENERIC_QUERY_ACTIONS)
+        has_known_action = IntentPreClassifier._contains_action(normalized, list(action_hints))
+        has_llm_action_hint = any(
+            phrase in normalized if " " in phrase else re.search(rf"\b{re.escape(phrase)}\b", normalized)
+            for phrase in cls.POSSIBLE_LLM_CRUD_ACTION_HINTS
+        )
+        if not has_known_action and not has_llm_action_hint:
+            return False
+
+        has_context_marker = any(marker in normalized for marker in cls.CRM_CONTEXT_MARKERS)
+        has_crm_value_hint = any(value in normalized for value in cls.CRM_VALUE_HINTS)
+        has_crm_field_hint = any(field in normalized for field in cls.CRM_FIELD_HINTS)
+        has_record_like_token = re.search(r"\b[A-Z0-9]{6,}\b", user_query) is not None
+        reasoning_context = ConversationContextStore.build_reasoning_context(conversation_id, selection)
+        has_context_records = bool(
+            (reasoning_context.get("last_created") or {}).get("record_id")
+            or (reasoning_context.get("last_record") or {}).get("record_id")
+            or (reasoning_context.get("selection") or {}).get("record_ids")
+            or (reasoning_context.get("query_results") or {}).get("results")
+        )
+
+        if has_record_like_token and (has_crm_field_hint or has_known_action):
+            return True
+        if has_context_records and has_context_marker:
+            return True
+        if has_context_marker and (has_crm_field_hint or has_crm_value_hint):
+            return True
+        if has_crm_field_hint and has_crm_value_hint:
+            return True
+        return False
+
+    @classmethod
+    def _resolve_out_of_scope_request(
+        cls,
+        user_query: str,
+        conversation_id: Optional[str] = None,
+        selection: Optional[Dict[str, Any]] = None,
+    ) -> Optional[Dict[str, Any]]:
+        normalized = IntentPreClassifier.normalize(user_query)
+        if not normalized:
+            return None
+
+        if IntentPreClassifier.detect_object_mentions(user_query):
+            return None
+        if any(keyword in normalized or keyword in user_query for keyword in cls.D5_SCOPE_KEYWORDS):
+            return None
+        if cls._looks_like_possible_llm_crud_request(user_query, conversation_id, selection):
+            return None
+
+        return {
+            "intent": "CHAT",
+            "text": "I can only help with D5 CRM work. Ask me about leads, contacts, opportunities, products, assets, brands, models, templates, messages, or other D5 tasks.",
+            "score": 1.0,
+        }
 
     @classmethod
     def _extract_ranked_query_index(cls, user_query: str) -> Optional[int]:
@@ -1521,6 +2084,8 @@ class AiAgentService:
         ]
         if explicit_objects and "lead" not in explicit_objects:
             return None
+        if cls._is_lead_create_like_request(user_query):
+            return None
 
         data = cls._extract_lead_update_fields_from_text(user_query)
         if not data:
@@ -1533,6 +2098,66 @@ class AiAgentService:
             "data": data,
             "score": 1.0,
         }
+
+    @classmethod
+    def _is_lead_create_like_request(cls, user_query: str) -> bool:
+        normalized_query = IntentPreClassifier.normalize(user_query)
+        explicit_objects = [
+            value for key, value in IntentPreClassifier.OBJECT_MAP.items()
+            if key in normalized_query
+        ]
+        if explicit_objects and "lead" not in explicit_objects:
+            return False
+        if "lead" not in normalized_query and "리드" not in user_query:
+            return False
+        if cls._extract_phase1_record_id(user_query, "lead"):
+            return False
+
+        has_create_action = any(token in normalized_query for token in cls.LEAD_CREATE_ACTIONS)
+        if has_create_action:
+            return True
+
+        has_save_action = any(token in normalized_query for token in {"save", "저장"})
+        if not has_save_action:
+            return False
+
+        follow_up_markers = ("this", "that", "it", "current", "selected", "해당", "이 ", "그 ")
+        if any(marker in normalized_query or marker in user_query for marker in follow_up_markers):
+            return False
+
+        return bool(cls._extract_lead_fields_from_text(user_query))
+
+    @classmethod
+    def _resolve_lead_create_request(
+        cls,
+        user_query: str,
+        conversation_id: Optional[str],
+        language_preference: Optional[str],
+    ) -> Optional[Dict[str, Any]]:
+        if not cls._is_lead_create_like_request(user_query):
+            return None
+
+        data = cls._extract_lead_fields_from_text(user_query)
+        required_fields = cls._phase1_required_fields("lead")
+        if all(field in data and data[field] not in (None, "") for field in required_fields):
+            return {
+                "intent": "CREATE",
+                "object_type": "lead",
+                "data": data,
+                "score": 1.0,
+                "language_preference": language_preference,
+            }
+
+        if not data:
+            return cls._build_lead_create_form_response(language_preference)
+
+        return cls._build_chat_native_form_response(
+            object_type="lead",
+            mode="create",
+            submitted_values=data,
+            conversation_id=conversation_id,
+            language_preference=language_preference,
+        )
 
     @classmethod
     def _apply_contextual_record_id(cls, agent_output: Dict[str, Any], conversation_id: Optional[str]) -> Dict[str, Any]:
@@ -1786,6 +2411,23 @@ class AiAgentService:
         for field in ("brand", "model", "product"):
             if field in normalized:
                 normalized[field] = cls._resolve_lookup_name_to_id(db, field, normalized.get(field))
+        return normalized
+
+    @classmethod
+    def _normalize_supported_lookup_inputs(cls, db: Session, object_type: str, data: Optional[Dict[str, Any]]) -> Dict[str, Any]:
+        normalized = dict(data or {})
+        lookup_fields = {
+            "lead": ("brand", "model", "product"),
+            "opportunity": ("brand", "model", "product"),
+            "product": ("brand", "model"),
+            "asset": ("brand", "model", "product"),
+            "model": ("brand",),
+        }
+        for field in lookup_fields.get(object_type, ()):
+            if field in normalized:
+                normalized[field] = cls._resolve_lookup_name_to_id(db, field, normalized.get(field))
+        if object_type == "brand":
+            normalized["record_type"] = "Brand"
         return normalized
 
     @staticmethod
@@ -2052,16 +2694,27 @@ class AiAgentService:
     ) -> Dict[str, Any]:
         safe_page, safe_per_page, offset = cls._sanitize_pagination(page, per_page)
         clean_sql = sql.strip().rstrip(";")
+        preview_limit = safe_per_page + 1
+        paged_sql = f"SELECT * FROM ({clean_sql}) AS agent_query_page LIMIT {preview_limit} OFFSET {offset}"
+        preview_result = db.execute(text(paged_sql))
+        preview_rows = [dict(row._mapping) for row in preview_result]
 
-        count_result = db.execute(text(f"SELECT COUNT(*) AS total_count FROM ({clean_sql}) AS agent_query_count"))
-        total = int(count_result.scalar() or 0)
-        paged_sql = f"SELECT * FROM ({clean_sql}) AS agent_query_page LIMIT {safe_per_page} OFFSET {offset}"
-        result = db.execute(text(paged_sql))
-        total_pages = max(1, (total + safe_per_page - 1) // safe_per_page)
+        has_more = len(preview_rows) > safe_per_page
+        rows = preview_rows[:safe_per_page]
+
+        if safe_page == 1 and not has_more:
+            total = len(rows)
+            total_pages = 1
+            final_sql = f"SELECT * FROM ({clean_sql}) AS agent_query_page LIMIT {safe_per_page} OFFSET {offset}"
+        else:
+            count_result = db.execute(text(f"SELECT COUNT(*) AS total_count FROM ({clean_sql}) AS agent_query_count"))
+            total = int(count_result.scalar() or 0)
+            total_pages = max(1, (total + safe_per_page - 1) // safe_per_page)
+            final_sql = f"SELECT * FROM ({clean_sql}) AS agent_query_page LIMIT {safe_per_page} OFFSET {offset}"
 
         return {
-            "results": [dict(row._mapping) for row in result],
-            "sql": paged_sql,
+            "results": rows,
+            "sql": final_sql,
             "pagination": {
                 "page": safe_page,
                 "per_page": safe_per_page,
@@ -2391,6 +3044,15 @@ class AiAgentService:
         selection: Optional[Dict[str, Any]] = None,
         language_preference: Optional[str] = None,
     ) -> Dict[str, Any]:
+        debug_event(
+            "service.process_query.start",
+            conversation_id=conversation_id,
+            user_query=user_query,
+            page=page,
+            per_page=per_page,
+            has_selection=bool(selection),
+            language_preference=language_preference,
+        )
         ConversationContextStore.remember_selection(conversation_id, selection)
 
         if "attachment" in user_query.lower():
@@ -2417,11 +3079,13 @@ class AiAgentService:
                         "data": {"search_term": match.group(2).strip()},
                         "score": 1.0
                     }
+                    debug_event("service.process_query.search_shortcut", conversation_id=conversation_id, agent_output=agent_output)
                     return await cls._execute_intent(db, agent_output, user_query, conversation_id=conversation_id, page=page, per_page=per_page)
 
         pending_create_resolution = cls._resolve_pending_create(user_query, conversation_id, language_preference)
         if pending_create_resolution:
             pending_create_resolution["language_preference"] = language_preference
+            debug_event("service.process_query.pending_create_resolution", conversation_id=conversation_id, resolution=pending_create_resolution)
             return await cls._execute_intent(
                 db,
                 pending_create_resolution,
@@ -2437,6 +3101,7 @@ class AiAgentService:
             language_preference,
         )
         if explicit_lead_record_resolution:
+            debug_event("service.process_query.explicit_lead_record_resolution", conversation_id=conversation_id, resolution=explicit_lead_record_resolution)
             if explicit_lead_record_resolution["intent"] == "OPEN_FORM":
                 lead = LeadService.get_lead(db, explicit_lead_record_resolution["record_id"])
                 if not lead:
@@ -2455,8 +3120,25 @@ class AiAgentService:
                 per_page=per_page,
             )
 
+        explicit_lead_create_resolution = cls._resolve_lead_create_request(
+            user_query,
+            conversation_id,
+            language_preference,
+        )
+        if explicit_lead_create_resolution:
+            debug_event("service.process_query.explicit_lead_create_resolution", conversation_id=conversation_id, resolution=explicit_lead_create_resolution)
+            return await cls._execute_intent(
+                db,
+                explicit_lead_create_resolution,
+                user_query,
+                conversation_id=conversation_id,
+                page=page,
+                per_page=per_page,
+            )
+
         pending_edit_resolution = cls._resolve_pending_lead_edit(user_query, conversation_id)
         if pending_edit_resolution:
+            debug_event("service.process_query.pending_edit_resolution", conversation_id=conversation_id, resolution=pending_edit_resolution)
             # Phase 177: If the query is an explicit "edit lead {id}", open the form directly
             if "edit" in user_query.lower() or "수정" in user_query:
                 record_id = pending_edit_resolution.get("record_id")
@@ -2487,7 +3169,16 @@ class AiAgentService:
             language_preference,
         )
         if quick_lead_form_resolution:
+            debug_event("service.process_query.quick_lead_form_resolution", conversation_id=conversation_id, resolution=quick_lead_form_resolution)
             return quick_lead_form_resolution
+
+        fast_create_form_resolution = cls._resolve_fast_create_form_request(
+            user_query,
+            language_preference,
+        )
+        if fast_create_form_resolution:
+            debug_event("service.process_query.fast_create_form_resolution", conversation_id=conversation_id, resolution=fast_create_form_resolution)
+            return fast_create_form_resolution
 
         send_message_resolution = cls._resolve_send_message_request(
             user_query,
@@ -2496,6 +3187,7 @@ class AiAgentService:
             language_preference=language_preference,
         )
         if send_message_resolution:
+            debug_event("service.process_query.send_message_resolution", conversation_id=conversation_id, resolution=send_message_resolution)
             return await cls._execute_intent(
                 db,
                 send_message_resolution,
@@ -2507,6 +3199,7 @@ class AiAgentService:
 
         delete_resolution = cls._resolve_delete_confirmation(user_query, conversation_id, selection)
         if delete_resolution:
+            debug_event("service.process_query.delete_resolution", conversation_id=conversation_id, resolution=delete_resolution)
             # Phase 177 Fix: If the resolution is already a final intent (DELETE), execute it immediately
             if delete_resolution.get("intent") == "DELETE":
                 return await cls._execute_intent(db, delete_resolution, user_query, conversation_id=conversation_id, page=page, per_page=per_page)
@@ -2514,6 +3207,7 @@ class AiAgentService:
 
         contextual_query_resolution = cls._resolve_contextual_query_reference(user_query, conversation_id)
         if contextual_query_resolution:
+            debug_event("service.process_query.contextual_query_resolution", conversation_id=conversation_id, resolution=contextual_query_resolution)
             if contextual_query_resolution.get("intent") == "CHAT":
                 return contextual_query_resolution
             contextual_query_resolution["language_preference"] = language_preference
@@ -2529,11 +3223,13 @@ class AiAgentService:
         explicit_manage_resolution = cls._resolve_explicit_manage_request(user_query)
         if explicit_manage_resolution:
             explicit_manage_resolution["language_preference"] = language_preference
+            debug_event("service.process_query.explicit_manage_resolution", conversation_id=conversation_id, resolution=explicit_manage_resolution)
             return await cls._execute_intent(db, explicit_manage_resolution, user_query, conversation_id=conversation_id, page=page, per_page=per_page)
 
         contextual_response = cls._resolve_contextual_record_reference(user_query, conversation_id, selection)
         if contextual_response:
             contextual_response["language_preference"] = language_preference
+            debug_event("service.process_query.contextual_record_resolution", conversation_id=conversation_id, resolution=contextual_response)
             return await cls._execute_intent(db, contextual_response, user_query, conversation_id=conversation_id, page=page, per_page=per_page)
 
         phase1_resolution = cls._resolve_phase1_deterministic_request(
@@ -2543,6 +3239,7 @@ class AiAgentService:
             language_preference,
         )
         if phase1_resolution:
+            debug_event("service.process_query.phase1_resolution", conversation_id=conversation_id, resolution=phase1_resolution)
             if phase1_resolution.get("intent") == "CHAT":
                 return phase1_resolution
             if (
@@ -2583,6 +3280,7 @@ class AiAgentService:
         send_history_resolution = cls._resolve_send_history_query_request(user_query)
         if send_history_resolution:
             send_history_resolution["language_preference"] = language_preference
+            debug_event("service.process_query.send_history_resolution", conversation_id=conversation_id, resolution=send_history_resolution)
             return await cls._execute_intent(
                 db,
                 send_history_resolution,
@@ -2594,11 +3292,13 @@ class AiAgentService:
 
         clarification = IntentReasoner.clarify_if_needed(user_query)
         if clarification:
+            debug_event("service.process_query.reasoner_clarification", conversation_id=conversation_id, clarification=clarification)
             return clarification
 
         # ---- Phase 49: Hybrid Intent Pre-Classification ----
         rule_based = IntentPreClassifier.detect(user_query)
         if rule_based:
+            debug_event("service.process_query.preclassifier_resolution", conversation_id=conversation_id, resolution=rule_based)
             normalized_query = IntentPreClassifier.normalize(user_query)
             if (
                 rule_based.get("intent") == "CHAT"
@@ -2607,6 +3307,15 @@ class AiAgentService:
             ):
                 return cls._build_lead_create_form_response(language_preference)
             return await cls._execute_intent(db, rule_based, user_query, conversation_id=conversation_id, page=page, per_page=per_page)
+
+        out_of_scope_resolution = cls._resolve_out_of_scope_request(
+            user_query,
+            conversation_id=conversation_id,
+            selection=selection,
+        )
+        if out_of_scope_resolution:
+            debug_event("service.process_query.out_of_scope_resolution", conversation_id=conversation_id, resolution=out_of_scope_resolution)
+            return out_of_scope_resolution
 
         metadata = cls._get_metadata()
         reasoning_context = ConversationContextStore.build_reasoning_context(conversation_id, selection)
@@ -2617,6 +3326,7 @@ class AiAgentService:
         )
 
         # Call Multi-LLM Ensemble
+        debug_event("service.process_query.llm_fallback_start", conversation_id=conversation_id, user_query=user_query)
         agent_output = await cls._call_multi_llm_ensemble(user_query, system_prompt)
         
         # MANUAL OVERRIDE: Check for specific keyword triggers
@@ -2657,6 +3367,7 @@ class AiAgentService:
             reasoning_context,
         )
         agent_output = cls._apply_contextual_record_id(agent_output, conversation_id)
+        debug_event("service.process_query.llm_fallback_result", conversation_id=conversation_id, agent_output=agent_output)
 
         agent_output["language_preference"] = language_preference
         try:
@@ -2668,6 +3379,7 @@ class AiAgentService:
     @classmethod
     async def _call_multi_llm_ensemble(cls, user_query: str, system_prompt: str) -> Dict[str, Any]:
         """Calls multiple LLMs in parallel and picks the best response based on a score."""
+        debug_event("service.llm_ensemble.start", user_query=user_query)
         tasks = []
         
         if CEREBRAS_API_KEY:
@@ -2680,9 +3392,11 @@ class AiAgentService:
             tasks.append(cls._call_openai(user_query, system_prompt))
 
         if not tasks:
+            debug_event("service.llm_ensemble.no_api_keys", user_query=user_query)
             return {"intent": "CHAT", "text": "No AI API Keys configured."}
 
         responses = await asyncio.gather(*tasks, return_exceptions=True)
+        debug_event("service.llm_ensemble.responses", response_count=len(responses))
         
         valid_responses = []
         for res in responses:
@@ -2692,10 +3406,12 @@ class AiAgentService:
                 logger.error(f"Ensemble member failed: {res}")
 
         if not valid_responses:
+            debug_event("service.llm_ensemble.failed", user_query=user_query)
             return {"intent": "CHAT", "text": "All AI models failed to respond."}
 
         # Pick the best response based on 'score'
         valid_responses.sort(key=lambda x: x.get("score", 0), reverse=True)
+        debug_event("service.llm_ensemble.best_response", best_response=valid_responses[0])
         return valid_responses[0]
 
     @classmethod
@@ -2818,6 +3534,152 @@ class AiAgentService:
         return cleaned
 
     @classmethod
+    def _stt_language_code(cls, language_preference: Optional[str]) -> str:
+        return "ko" if (language_preference or "").lower() == "kor" else "en"
+
+    @classmethod
+    async def _call_groq_audio_transcription(
+        cls,
+        file_bytes: bytes,
+        filename: str,
+        content_type: str,
+        language_preference: Optional[str] = None,
+    ) -> str:
+        if not GROQ_API_KEY:
+            return ""
+
+        prompt = (
+            "This is a D5 CRM voice command. Keep CRM object names, IDs, statuses, and names exact. "
+            "Do not invent missing words."
+        )
+        async with httpx.AsyncClient() as client:
+            response = await client.post(
+                "https://api.groq.com/openai/v1/audio/transcriptions",
+                headers={"Authorization": f"Bearer {GROQ_API_KEY}"},
+                data={
+                    "model": "whisper-large-v3",
+                    "response_format": "json",
+                    "temperature": "0",
+                    "language": cls._stt_language_code(language_preference),
+                    "prompt": prompt,
+                },
+                files={"file": (filename, file_bytes, content_type)},
+                timeout=20.0,
+            )
+            response.raise_for_status()
+            payload = response.json()
+        return str(payload.get("text") or "").strip()
+
+    @classmethod
+    async def _validate_transcript_with_cerebras(
+        cls,
+        transcript: str,
+        language_preference: Optional[str] = None,
+    ) -> Dict[str, Any]:
+        if not transcript:
+            return {"text": ""}
+        if not CEREBRAS_API_KEY:
+            return {"text": transcript, "validator": None}
+
+        system_prompt = (
+            "You validate speech-to-text output for the D5 CRM assistant.\n"
+            "Rules:\n"
+            "- Preserve meaning exactly.\n"
+            "- Do not add facts, names, IDs, or fields that are not already present.\n"
+            "- Only fix obvious punctuation, spacing, and clear CRM term mistakes.\n"
+            "- If unsure, return the original text unchanged.\n"
+            "- Output strict JSON: {\"text\":\"...\",\"changed\":true|false}."
+        )
+        user_prompt = (
+            f"Language preference: {language_preference or 'eng'}\n"
+            f"Transcript: {transcript}"
+        )
+        async with httpx.AsyncClient() as client:
+            response = await client.post(
+                "https://api.cerebras.ai/v1/chat/completions",
+                headers={"Authorization": f"Bearer {CEREBRAS_API_KEY}", "Content-Type": "application/json"},
+                json={
+                    "model": "llama3.1-8b",
+                    "messages": [
+                        {"role": "system", "content": system_prompt},
+                        {"role": "user", "content": user_prompt},
+                    ],
+                    "response_format": {"type": "json_object"},
+                },
+                timeout=12.0,
+            )
+            response.raise_for_status()
+            content = response.json()["choices"][0]["message"]["content"]
+            payload = json.loads(content)
+        validated_text = str(payload.get("text") or transcript).strip() or transcript
+        return {
+            "text": validated_text,
+            "validator": "cerebras",
+            "changed": bool(payload.get("changed")) and validated_text != transcript,
+        }
+
+    @classmethod
+    async def transcribe_audio_bytes(
+        cls,
+        file_bytes: bytes,
+        filename: str,
+        content_type: str,
+        language_preference: Optional[str] = None,
+    ) -> Dict[str, Any]:
+        safe_filename = filename or "ai-agent-voice.webm"
+        safe_type = (content_type or "application/octet-stream").lower()
+        if not file_bytes:
+            return {"status": "error", "text": "No audio was received.", "provider": "groq", "validator": None}
+        if len(file_bytes) > cls.STT_MAX_BYTES:
+            return {"status": "error", "text": "Audio is too large. Keep voice input under 10MB.", "provider": "groq", "validator": None}
+        if safe_type not in cls.STT_ALLOWED_CONTENT_TYPES:
+            return {"status": "error", "text": "Unsupported audio format. Use webm, wav, mp3, m4a, mp4, or ogg.", "provider": "groq", "validator": None}
+        if not GROQ_API_KEY:
+            return {"status": "error", "text": "Voice input is not configured right now.", "provider": "groq", "validator": None}
+
+        debug_event(
+            "service.stt.start",
+            filename=safe_filename,
+            content_type=safe_type,
+            bytes=len(file_bytes),
+            language_preference=language_preference,
+        )
+
+        try:
+            transcript = await cls._call_groq_audio_transcription(
+                file_bytes=file_bytes,
+                filename=safe_filename,
+                content_type=safe_type,
+                language_preference=language_preference,
+            )
+            if not transcript:
+                return {"status": "error", "text": "I could not hear a usable command in that audio.", "provider": "groq", "validator": None}
+
+            validation = await cls._validate_transcript_with_cerebras(
+                transcript,
+                language_preference=language_preference,
+            )
+            final_text = str(validation.get("text") or transcript).strip() or transcript
+            response = {
+                "status": "ok",
+                "text": final_text,
+                "raw_text": transcript,
+                "provider": "groq",
+                "validator": validation.get("validator"),
+            }
+            debug_event(
+                "service.stt.complete",
+                provider=response["provider"],
+                validator=response.get("validator"),
+                raw_length=len(transcript),
+                final_length=len(final_text),
+            )
+            return response
+        except Exception as exc:
+            logger.error(f"STT Error: {exc}")
+            return {"status": "error", "text": "Voice transcription failed. Please try again.", "provider": "groq", "validator": None}
+
+    @classmethod
     @handle_agent_errors
     async def _execute_intent(
         cls,
@@ -2836,6 +3698,14 @@ class AiAgentService:
         sql = agent_output.get("sql")
 
         if record_id == "ID_HERE": record_id = None
+        debug_event(
+            "service.execute_intent.start",
+            conversation_id=conversation_id,
+            intent=intent,
+            object_type=obj,
+            record_id=record_id,
+            field_names=sorted((data or {}).keys()),
+        )
 
         if intent == "CHAT":
             ConversationContextStore.remember_object(conversation_id, obj, intent)
@@ -3155,7 +4025,7 @@ class AiAgentService:
         
         if intent == "CREATE":
             if obj == "lead":
-                data = cls._normalize_lead_lookup_inputs(db, data)
+                data = cls._normalize_supported_lookup_inputs(db, obj, data)
                 res = LeadService.create_lead(db, **data)
                 if not res:
                     return {"intent": "CHAT", "text": "I encountered an error while creating the lead. Please try again or check the required fields."}
@@ -3191,48 +4061,76 @@ class AiAgentService:
                     agent_output.get("language_preference"),
                 )
             elif obj == "brand":
-                data["record_type"] = "Brand"
+                data = cls._normalize_supported_lookup_inputs(db, obj, data)
                 res = VehicleSpecService.create_spec(db, **data)
                 if not res:
                     return {"intent": "CHAT", "text": "I encountered an error while creating the brand."}
-                agent_output["text"] = f"Success! Created Brand {res.name} (ID: {res.id})."
-                ConversationContextStore.remember_created(conversation_id, obj, str(res.id))
-                return agent_output
+                return cls._build_phase1_open_record_response(
+                    db,
+                    "brand",
+                    res,
+                    conversation_id,
+                    "create",
+                    agent_output.get("language_preference"),
+                )
             elif obj == "model":
+                data = cls._normalize_supported_lookup_inputs(db, obj, data)
                 res = ModelService.create_model(db, **data)
                 if not res:
                     return {"intent": "CHAT", "text": "I encountered an error while creating the model."}
-                agent_output["text"] = f"Success! Created Model {res.name} (ID: {res.id})."
-                ConversationContextStore.remember_created(conversation_id, obj, str(res.id))
-                return agent_output
+                return cls._build_phase1_open_record_response(
+                    db,
+                    "model",
+                    res,
+                    conversation_id,
+                    "create",
+                    agent_output.get("language_preference"),
+                )
             elif obj == "product":
                 from web.backend.app.services.product_service import ProductService
+                data = cls._normalize_supported_lookup_inputs(db, obj, data)
                 res = ProductService.create_product(db, **data)
                 if not res:
                     return {"intent": "CHAT", "text": "I encountered an error while creating the product."}
-                agent_output["text"] = f"Success! Created Product {res.name} (ID: {res.id})."
-                ConversationContextStore.remember_created(conversation_id, obj, str(res.id))
-                return agent_output
+                return cls._build_phase1_open_record_response(
+                    db,
+                    "product",
+                    res,
+                    conversation_id,
+                    "create",
+                    agent_output.get("language_preference"),
+                )
             elif obj == "asset":
                 from web.backend.app.services.asset_service import AssetService
+                data = cls._normalize_supported_lookup_inputs(db, obj, data)
                 res = AssetService.create_asset(db, **data)
                 if not res:
                     return {"intent": "CHAT", "text": "I encountered an error while creating the asset."}
-                agent_output["text"] = f"Success! Registered Asset with VIN {res.vin} (ID: {res.id})."
-                ConversationContextStore.remember_created(conversation_id, obj, str(res.id))
-                return agent_output
+                return cls._build_phase1_open_record_response(
+                    db,
+                    "asset",
+                    res,
+                    conversation_id,
+                    "create",
+                    agent_output.get("language_preference"),
+                )
             elif obj in ["message_template", "template"]:
                 name = data.pop("name", "New Template")
                 res = MessageTemplateService.create_template(db, name=name, **data)
                 if not res:
                     return {"intent": "CHAT", "text": "I encountered an error while creating the message template."}
-                agent_output["text"] = f"Success! Created Template: {res.name} (ID: {res.id})."
-                ConversationContextStore.remember_created(conversation_id, "message_template", str(res.id))
-                return agent_output
+                return cls._build_phase1_open_record_response(
+                    db,
+                    "message_template",
+                    res,
+                    conversation_id,
+                    "create",
+                    agent_output.get("language_preference"),
+                )
 
         if intent == "UPDATE" and record_id:
             if obj == "lead":
-                data = cls._normalize_lead_lookup_inputs(db, data)
+                data = cls._normalize_supported_lookup_inputs(db, obj, data)
                 res = LeadService.update_lead(db, record_id, **data)
                 if res:
                     refreshed = LeadService.get_lead(db, record_id)
@@ -3283,26 +4181,85 @@ class AiAgentService:
                     agent_output["text"] = f"Opportunity {record_id} not found."
                 return agent_output
             elif obj == "brand":
+                data = cls._normalize_supported_lookup_inputs(db, obj, data)
                 res = VehicleSpecService.update_vehicle_spec(db, record_id, **data)
-                agent_output["text"] = f"Success! Updated Brand {record_id}." if res else f"Brand {record_id} not found."
+                if res:
+                    refreshed = VehicleSpecService.get_vehicle_spec(db, record_id)
+                    if refreshed:
+                        return cls._build_phase1_open_record_response(
+                            db,
+                            "brand",
+                            refreshed,
+                            conversation_id,
+                            "update",
+                            agent_output.get("language_preference"),
+                        )
+                agent_output["text"] = f"Brand {record_id} not found."
                 return agent_output
             elif obj == "model":
+                data = cls._normalize_supported_lookup_inputs(db, obj, data)
                 res = ModelService.update_model(db, record_id, **data)
-                agent_output["text"] = f"Success! Updated Model {record_id}." if res else f"Model {record_id} not found."
+                if res:
+                    refreshed = ModelService.get_model(db, record_id)
+                    if refreshed:
+                        return cls._build_phase1_open_record_response(
+                            db,
+                            "model",
+                            refreshed,
+                            conversation_id,
+                            "update",
+                            agent_output.get("language_preference"),
+                        )
+                agent_output["text"] = f"Model {record_id} not found."
                 return agent_output
             elif obj == "product":
                 from web.backend.app.services.product_service import ProductService
+                data = cls._normalize_supported_lookup_inputs(db, obj, data)
                 res = ProductService.update_product(db, record_id, **data)
-                agent_output["text"] = f"Success! Updated Product {record_id}." if res else f"Product {record_id} not found."
+                if res:
+                    refreshed = ProductService.get_product(db, record_id)
+                    if refreshed:
+                        return cls._build_phase1_open_record_response(
+                            db,
+                            "product",
+                            refreshed,
+                            conversation_id,
+                            "update",
+                            agent_output.get("language_preference"),
+                        )
+                agent_output["text"] = f"Product {record_id} not found."
                 return agent_output
             elif obj == "asset":
                 from web.backend.app.services.asset_service import AssetService
+                data = cls._normalize_supported_lookup_inputs(db, obj, data)
                 res = AssetService.update_asset(db, record_id, **data)
-                agent_output["text"] = f"Success! Updated Asset {record_id}." if res else f"Asset {record_id} not found."
+                if res:
+                    refreshed = AssetService.get_asset(db, record_id)
+                    if refreshed:
+                        return cls._build_phase1_open_record_response(
+                            db,
+                            "asset",
+                            refreshed,
+                            conversation_id,
+                            "update",
+                            agent_output.get("language_preference"),
+                        )
+                agent_output["text"] = f"Asset {record_id} not found."
                 return agent_output
             elif obj in ["message_template", "template"]:
                 res = MessageTemplateService.update_template(db, record_id, **data)
-                agent_output["text"] = f"Success! Updated Template {record_id}." if res else f"Template {record_id} not found."
+                if res:
+                    refreshed = MessageTemplateService.get_template(db, record_id)
+                    if refreshed:
+                        return cls._build_phase1_open_record_response(
+                            db,
+                            "message_template",
+                            refreshed,
+                            conversation_id,
+                            "update",
+                            agent_output.get("language_preference"),
+                        )
+                agent_output["text"] = f"Template {record_id} not found."
                 return agent_output
 
         if intent == "DELETE":

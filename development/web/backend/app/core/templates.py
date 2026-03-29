@@ -11,15 +11,11 @@ BASE_DIR = Path(__file__).resolve().parents[3]
 FRONTEND_TEMPLATES = BASE_DIR / "frontend" / "templates"
 MESSAGE_TEMPLATES = BASE_DIR / "message" / "frontend" / "templates"
 AI_AGENT_TEMPLATES = BASE_DIR.parent / "ai_agent" / "ui" / "frontend" / "templates"
-AGENT_TEMPLATES = BASE_DIR.parent / "agent" / "ui" / "frontend" / "templates"
-AGENT_GEM_TEMPLATES = BASE_DIR.parent / "agent_gem" / "frontend" / "templates"
 
 search_paths = [
     str(FRONTEND_TEMPLATES),
     str(MESSAGE_TEMPLATES),
     str(AI_AGENT_TEMPLATES),
-    str(AGENT_TEMPLATES),
-    str(AGENT_GEM_TEMPLATES),
 ]
 
 templates = Jinja2Templates(directory=search_paths)

@@ -1,55 +1,74 @@
 import re
 from typing import Dict, Any, Optional
 
+from ai_agent.debug import debug_event
+
 
 class IntentPreClassifier:
 
     TYPO_MAP = {
         "laed": "lead",
+        "leed": "lead",
         "leda": "lead",
         "contcat": "contact",
         "contax": "contact",
+        "cntact": "contact",
         "oportunity": "opportunity",
+        "oppty": "opportunity",
         "opp": "opportunity",
         "opps": "opportunity",
         "templt": "message_template",
         "templat": "message_template",
         "lds": "lead",
         "prodcut": "product",
+        "brnad": "brand",
+        "modle": "model",
+        "aseet": "asset",
     }
 
-    ACTION_CREATE = ["create", "add", "make", "build", "snag", "만들", "생성", "등록", "추가"]
-    ACTION_READ = ["open", "show", "view", "read", "details", "grab", "fetch", "열어", "보여", "보기", "상세"]
-    ACTION_UPDATE = ["edit", "update", "change", "modify", "tweak", "fix", "수정", "변경", "바꿔"]
+    ACTION_CREATE = ["create", "add", "make", "build", "snag", "만들", "맹글", "맨들", "생성", "등록", "추가"]
+    ACTION_READ = ["open", "show", "view", "read", "details", "grab", "fetch", "열어", "열어봐", "보여", "보여주라", "보기", "상세"]
+    ACTION_UPDATE = ["edit", "update", "change", "modify", "save", "tweak", "fix", "수정", "변경", "바꿔", "바까", "저장"]
     ACTION_DELETE = ["delete", "remove", "erase", "nuke", "dump", "삭제"]
     ACTION_QUERY = ["show", "list", "all", "every", "전체", "목록", "보여", "불러", "조회"]
 
     OBJECT_MAP = {
         "lead": "lead",
         "leads": "lead",
+        "leed": "lead",
+        "laed": "lead",
         "리드": "lead",
         "리드를": "lead",
         "contact": "contact",
         "contacts": "contact",
+        "contax": "contact",
+        "contcat": "contact",
+        "cntact": "contact",
         "연락처": "contact",
         "연락처를": "contact",
         "opportunity": "opportunity",
         "opportunities": "opportunity",
+        "oppty": "opportunity",
+        "oportunity": "opportunity",
         "기회": "opportunity",
         "기회를": "opportunity",
         "product": "product",
         "products": "product",
+        "prodcut": "product",
         "상품": "product",
         "상품을": "product",
         "asset": "asset",
         "assets": "asset",
+        "aseet": "asset",
         "자산": "asset",
         "자산을": "asset",
         "brand": "brand",
         "brands": "brand",
+        "brnad": "brand",
         "브랜드": "brand",
         "model": "model",
         "models": "model",
+        "modle": "model",
         "모델": "model",
         "template": "message_template",
         "templates": "message_template",
@@ -131,6 +150,7 @@ class IntentPreClassifier:
 
         # Too long → likely complex sentence → send to LLM
         if len(tokens) > 7:
+            debug_event("preclassifier.skip_long_query", query=text, token_count=len(tokens))
             return None
 
         # Contains time/date/condition keywords → likely complex query
@@ -146,12 +166,14 @@ class IntentPreClassifier:
                     recent_object = value
                     break
             if recent_object and cls._contains_action(normalized, cls.ACTION_QUERY):
-                return {
+                result = {
                     "intent": "QUERY",
                     "object_type": recent_object,
                     "sql": None,
                     "score": 0.99,
                 }
+                debug_event("preclassifier.detect", query=text, normalized=normalized, result=result)
+                return result
             return None
 
         detected_object = None
@@ -189,46 +211,57 @@ class IntentPreClassifier:
             plural = detected_object + "s" if not detected_object.endswith("s") else detected_object
             if detected_object == "message_template": plural = "message_templates"
             
-            return {
+            result = {
                 "intent": "OPEN_FORM",
                 "object_type": detected_object,
                 "form_url": f"/{plural}/new-modal",
                 "text": f"I've opened the new {detected_object} form for you below.",
                 "score": 0.99,
             }
+            debug_event("preclassifier.detect", query=text, normalized=normalized, result=result)
+            return result
 
         if is_query or normalized.strip() == detected_key:
-            return {
+            result = {
                 "intent": "QUERY",
                 "object_type": detected_object,
                 "sql": None,
                 "score": 0.99,
             }
+            debug_event("preclassifier.detect", query=text, normalized=normalized, result=result)
+            return result
 
         if cls._contains_action(normalized, cls.ACTION_READ):
-            return {
+            result = {
                 "intent": "CHAT",
                 "object_type": detected_object,
                 "text": f"I can help you open a {detected_object}. Try `show all {detected_object}s`, `show recent {detected_object}s`, or mention the name you want to open.",
                 "score": 0.95,
             }
+            debug_event("preclassifier.detect", query=text, normalized=normalized, result=result)
+            return result
 
         if cls._contains_action(normalized, cls.ACTION_UPDATE):
             # Phase 177: If explicit ID or "it" is mentioned, handled by Service or send to LLM
             # but for generic "edit lead", let's suggest selecting one first
-            return {
+            result = {
                 "intent": "CHAT",
                 "object_type": detected_object,
                 "text": f"I can help update a {detected_object}. First show the record you want, select it, then tell me what to change. Or type `edit {detected_object} [ID]`.",
                 "score": 0.95,
             }
+            debug_event("preclassifier.detect", query=text, normalized=normalized, result=result)
+            return result
 
         if cls._contains_action(normalized, cls.ACTION_DELETE):
-            return {
+            result = {
                 "intent": "CHAT",
                 "object_type": detected_object,
                 "text": f"I can help delete a {detected_object}. First show the record you want, select it, and then confirm the delete action.",
                 "score": 0.95,
             }
+            debug_event("preclassifier.detect", query=text, normalized=normalized, result=result)
+            return result
 
+        debug_event("preclassifier.no_match", query=text, normalized=normalized)
         return None

@@ -114,8 +114,19 @@
 
     <div id="ai-agent-footer">
         <div class="input-wrapper">
-            <input type="text" id="ai-agent-input" placeholder="Type a message or command..." onkeypress="if(event.key === 'Enter') sendAiMessage()">
-            <button class="send-btn" onclick="sendAiMessage()">
+            <input type="text" id="ai-agent-input" placeholder="Type a message or command..." oninput="updateAiAgentComposerState()" onkeypress="if(event.key === 'Enter') sendAiMessage()">
+            <button id="ai-agent-input-clear" class="composer-action-btn ai-agent-input-clear" type="button" onclick="clearAiAgentInput()" aria-label="Clear input" title="Clear input">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            <button id="ai-agent-mic-btn" class="composer-action-btn ai-agent-mic-btn" type="button" onclick="toggleAiAgentVoiceRecording()" aria-label="Start voice input" title="Start voice input">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M12 3a3 3 0 0 1 3 3v6a3 3 0 0 1-6 0V6a3 3 0 0 1 3-3z"></path>
+                    <path d="M19 10a7 7 0 0 1-14 0"></path>
+                    <path d="M12 19v3"></path>
+                    <path d="M8 22h8"></path>
+                </svg>
+            </button>
+            <button id="ai-agent-send-btn" class="send-btn" type="button" onclick="sendAiMessage()" aria-label="Send message" title="Send message">
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
             </button>
         </div>

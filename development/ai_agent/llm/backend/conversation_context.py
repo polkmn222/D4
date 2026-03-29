@@ -1,5 +1,7 @@
 from typing import Any, Dict, Optional, cast
 
+from ai_agent.debug import debug_event
+
 
 class ConversationContextStore:
     _store: Dict[str, Dict[str, Any]] = {}
@@ -8,7 +10,16 @@ class ConversationContextStore:
     def get_context(cls, conversation_id: Optional[str]) -> Dict[str, Any]:
         if not conversation_id:
             return {}
-        return cls._store.setdefault(conversation_id, {})
+        context = cls._store.setdefault(conversation_id, {})
+        debug_event(
+            "context.get",
+            conversation_id=conversation_id,
+            keys=sorted(context.keys()),
+            last_object=context.get("last_object"),
+            last_record_id=context.get("last_record_id"),
+            last_intent=context.get("last_intent"),
+        )
+        return context
 
     @classmethod
     def remember_created(cls, conversation_id: Optional[str], object_type: str, record_id: Optional[str]) -> None:
@@ -19,6 +30,7 @@ class ConversationContextStore:
         context["last_object"] = object_type
         context["last_record_id"] = record_id
         context["last_intent"] = "CREATE"
+        debug_event("context.remember_created", conversation_id=conversation_id, object_type=object_type, record_id=record_id)
 
     @classmethod
     def remember_object(
@@ -38,6 +50,13 @@ class ConversationContextStore:
             context["last_query_object"] = object_type
         if record_id:
             context["last_record_id"] = record_id
+        debug_event(
+            "context.remember_object",
+            conversation_id=conversation_id,
+            object_type=object_type,
+            intent=intent,
+            record_id=record_id,
+        )
 
     @classmethod
     def remember_query_results(
@@ -69,6 +88,13 @@ class ConversationContextStore:
             )
         context["last_query_object"] = object_type
         context["last_query_results"] = ranked_results
+        debug_event(
+            "context.remember_query_results",
+            conversation_id=conversation_id,
+            object_type=object_type,
+            count=len(ranked_results),
+            record_ids=[row["record_id"] for row in ranked_results],
+        )
 
     @classmethod
     def get_query_results(cls, conversation_id: Optional[str]) -> Dict[str, Any]:
@@ -160,6 +186,7 @@ class ConversationContextStore:
         if labels:
             payload["labels"] = list(labels)
         context["pending_delete"] = payload
+        debug_event("context.remember_pending_delete", conversation_id=conversation_id, payload=payload)
 
     @classmethod
     def get_pending_delete(cls, conversation_id: Optional[str]) -> Dict[str, Any]:
@@ -173,6 +200,7 @@ class ConversationContextStore:
             return
         context = cls._store.setdefault(conversation_id, {})
         context.pop("pending_delete", None)
+        debug_event("context.clear_pending_delete", conversation_id=conversation_id)
 
     @classmethod
     def remember_selection(cls, conversation_id: Optional[str], selection: Optional[Dict[str, Any]]) -> None:
@@ -183,6 +211,13 @@ class ConversationContextStore:
         labels = selection.get("labels") or []
         context = cls._store.setdefault(conversation_id, {})
         context["selection"] = {"object_type": object_type, "ids": list(ids), "labels": list(labels)}
+        debug_event(
+            "context.remember_selection",
+            conversation_id=conversation_id,
+            object_type=object_type,
+            ids=list(ids),
+            labels=list(labels),
+        )
 
     @classmethod
     def remember_pending_create(cls, conversation_id: Optional[str], object_type: str, data: Optional[Dict[str, Any]] = None) -> None:
@@ -190,6 +225,12 @@ class ConversationContextStore:
             return
         context = cls._store.setdefault(conversation_id, {})
         context["pending_create"] = {"object_type": object_type, "data": dict(data or {})}
+        debug_event(
+            "context.remember_pending_create",
+            conversation_id=conversation_id,
+            object_type=object_type,
+            fields=sorted((data or {}).keys()),
+        )
 
     @classmethod
     def get_pending_create(cls, conversation_id: Optional[str]) -> Dict[str, Any]:
@@ -203,6 +244,7 @@ class ConversationContextStore:
             return
         context = cls._store.setdefault(conversation_id, {})
         context.pop("pending_create", None)
+        debug_event("context.clear_pending_create", conversation_id=conversation_id)
 
     @classmethod
     def get_selection(cls, conversation_id: Optional[str]) -> Dict[str, Any]:
@@ -214,3 +256,4 @@ class ConversationContextStore:
     def clear(cls, conversation_id: Optional[str]) -> None:
         if conversation_id and conversation_id in cls._store:
             del cls._store[conversation_id]
+            debug_event("context.clear", conversation_id=conversation_id)

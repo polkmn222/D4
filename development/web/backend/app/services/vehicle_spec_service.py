@@ -33,6 +33,20 @@ class VehicleSpecService:
 
     @staticmethod
     @handle_agent_errors
+    def update_vehicle_spec(db: Session, spec_id: str, **kwargs) -> Optional[VehicleSpecification]:
+        spec = VehicleSpecService.get_vehicle_spec(db, spec_id)
+        if not spec:
+            return None
+        for key, value in kwargs.items():
+            if hasattr(spec, key):
+                setattr(spec, key, value)
+        spec.updated_at = get_kst_now_naive()
+        db.commit()
+        db.refresh(spec)
+        return spec
+
+    @staticmethod
+    @handle_agent_errors
     def delete_vehicle_spec(db: Session, spec_id: str, hard_delete: bool = False) -> bool:
         spec = db.query(VehicleSpecification).filter(VehicleSpecification.id == spec_id).first()
         if not spec: return False

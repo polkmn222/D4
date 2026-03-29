@@ -56,21 +56,6 @@ try:
 except ImportError as e:
     logger.error(f"Failed to import AI Agent sub-app: {e}")
 
-try:
-    from agent.ui.backend.main import app as ops_agent_app
-    app.mount("/agent", ops_agent_app)
-    logger.info("Ops Pilot sub-app mounted at /agent")
-except ImportError as e:
-    logger.error(f"Failed to import Ops Pilot sub-app: {e}")
-
-# Mount Agent Gem Sub-app
-try:
-    from agent_gem.backend.main import app as agent_gem_app
-    app.mount("/agent-gem", agent_gem_app)
-    logger.info("Agent Gem sub-app mounted at /agent-gem")
-except ImportError as e:
-    logger.error(f"Failed to import Agent Gem sub-app: {e}")
-
 # Exception Handlers
 @app.exception_handler(Exception)
 async def global_exception_handler(request: Request, exc: Exception):

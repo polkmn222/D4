@@ -32,3 +32,10 @@ def test_pytest_cache_uses_development_root():
 
     assert "cache_dir = development/.pytest_cache" in content
     assert ".gemini/development" not in content
+
+
+def test_main_app_no_longer_mounts_removed_agent_apps():
+    content = (PROJECT_ROOT / "development" / "web" / "backend" / "app" / "main.py").read_text()
+
+    assert 'app.mount("/agent",' not in content
+    assert 'app.mount("/agent-gem",' not in content

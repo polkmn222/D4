@@ -61,12 +61,6 @@ async def get_ai_agent_panel(request: Request):
     return templates.TemplateResponse(request, "ai_agent_panel.html", {"request": request})
 
 
-@router.get("/agent-panel", response_class=HTMLResponse)
-@handle_agent_errors
-async def get_ops_agent_panel(request: Request):
-    return templates.TemplateResponse(request, "agent_panel.html", {"request": request})
-
-
 @router.post("/api/recommendations/mode")
 @handle_agent_errors
 async def set_ai_recommendation_mode(request: Request):

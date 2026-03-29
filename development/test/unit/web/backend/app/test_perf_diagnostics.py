@@ -12,7 +12,7 @@ def test_should_profile_path_skips_static_and_agent_mounts():
     assert perf_diagnostics.should_profile_path("/leads") is True
     assert perf_diagnostics.should_profile_path("/static/js/app.js") is False
     assert perf_diagnostics.should_profile_path("/ai-agent/api/chat") is False
-    assert perf_diagnostics.should_profile_path("/agent/panel") is False
+    assert perf_diagnostics.should_profile_path("/agent/panel") is True
 
 
 def test_request_summary_includes_total_and_db_metrics():

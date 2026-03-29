@@ -157,6 +157,9 @@
             if (!element) {
                 return true;
             }
+            if (element.closest('#ai-agent-window')) {
+                return true;
+            }
             if (element.closest('[data-no-loading="true"]')) {
                 return true;
             }

@@ -48,6 +48,14 @@ class TestGKDesignSystem:
         assert 'aria-label="Global search"' in html
         assert 'role="listbox"' in html
 
+    def test_dashboard_template_no_longer_references_removed_agent_apps(self):
+        html = _read("development/web/frontend/templates/dashboard/dashboard.html")
+        assert '/agent/static/css/app.css' not in html
+        assert '/agent/static/js/app.js' not in html
+        assert "Open Agent Gem" not in html
+        assert "Open Ops Pilot" not in html
+        assert 'id="ops-pilot-root"' not in html
+
     def test_js_list_views_has_propagation_fix(self):
         js = _read(JS_LIST_VIEWS_PATH)
         assert 'event.stopPropagation(); window.${removeFilterFunctionName}(this)' in js

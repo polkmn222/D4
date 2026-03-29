@@ -11,6 +11,11 @@ let aiAgentLanguagePreference = localStorage.getItem('aiAgentLanguagePreference'
 let aiAgentDebugEnabled = localStorage.getItem('aiAgentDebugEnabled');
 aiAgentDebugEnabled = aiAgentDebugEnabled === '1';
 let aiAgentDebugEntries = [];
+let aiAgentMediaRecorder = null;
+let aiAgentRecorderChunks = [];
+let aiAgentRecorderStream = null;
+let aiAgentVoiceRecording = false;
+let aiAgentVoiceTranscribing = false;
 const AI_AGENT_DEFAULT_BODY_HTML = `
     <div style="text-align: center; color: #706e6b; font-size: 0.75rem; margin-bottom: 20px; font-weight: 500;">CONVERSATION STARTED</div>
     <div class="msg-agent">
@@ -281,6 +286,7 @@ function applyAiAgentLanguageUi() {
     document.getElementById('ai-agent-lang-eng')?.classList.toggle('is-active', aiAgentLanguagePreference === 'eng');
     document.getElementById('ai-agent-lang-kor')?.classList.toggle('is-active', aiAgentLanguagePreference === 'kor');
     syncAiAgentDebugUi();
+    updateAiAgentComposerState();
 }
 
 function formatAiAgentDebugValue(value) {
@@ -659,6 +665,25 @@ function closeAgentWorkspace() {
     if (loading) loading.classList.add('agent-hidden');
 }
 
+function clearAiAgentTransientLoadingState() {
+    const workspaceLoading = document.getElementById('ai-agent-workspace-loading');
+    const globalLoading = document.getElementById('sf-global-loading');
+    if (workspaceLoading) workspaceLoading.classList.add('agent-hidden');
+    if (typeof resetGlobalLoadingState === 'function') {
+        resetGlobalLoadingState();
+    } else if (globalLoading) {
+        globalLoading.style.display = 'none';
+    }
+
+    document.querySelectorAll('.agent-chat-form-card.is-submitting').forEach(card => {
+        card.classList.remove('is-submitting');
+    });
+
+    document.querySelectorAll('.agent-chat-form button[type="submit"]').forEach(button => {
+        button.disabled = false;
+    });
+}
+
 function openAgentImagePreview(url, title = 'Template Image') {
     const modal = document.getElementById('ai-agent-image-modal');
     const image = document.getElementById('ai-agent-image-preview');
@@ -811,6 +836,8 @@ async function resetAiAgent() {
 
     body.innerHTML = AI_AGENT_DEFAULT_BODY_HTML;
     if (input) input.value = '';
+    stopAiAgentVoiceRecording({ discard: true });
+    aiAgentVoiceTranscribing = false;
 
     aiAgentConversationId = createConversationId();
     aiAgentSelectionState = {};
@@ -820,6 +847,187 @@ async function resetAiAgent() {
     applyAiAgentLanguageUi();
     recordAiAgentDebug('agent-reset', { conversationId: aiAgentConversationId });
     updateSelectionBar();
+}
+
+function updateAiAgentComposerState() {
+    const input = document.getElementById('ai-agent-input');
+    const clearBtn = document.getElementById('ai-agent-input-clear');
+    const micBtn = document.getElementById('ai-agent-mic-btn');
+    const sendBtn = document.getElementById('ai-agent-send-btn');
+    const hasText = Boolean((input?.value || '').trim());
+
+    if (clearBtn) {
+        clearBtn.classList.toggle('is-visible', hasText);
+        clearBtn.disabled = aiAgentVoiceRecording || aiAgentVoiceTranscribing;
+        clearBtn.setAttribute('aria-hidden', hasText ? 'false' : 'true');
+    }
+
+    if (micBtn) {
+        micBtn.classList.toggle('is-recording', aiAgentVoiceRecording);
+        micBtn.classList.toggle('is-busy', aiAgentVoiceTranscribing);
+        micBtn.disabled = aiAgentVoiceTranscribing;
+        micBtn.setAttribute('aria-label', aiAgentVoiceRecording ? 'Stop voice input' : 'Start voice input');
+        micBtn.setAttribute('title', aiAgentVoiceRecording ? 'Stop voice input' : (aiAgentVoiceTranscribing ? 'Transcribing audio...' : 'Start voice input'));
+    }
+
+    if (sendBtn) {
+        sendBtn.disabled = aiAgentVoiceTranscribing;
+        sendBtn.setAttribute('title', aiAgentVoiceTranscribing ? 'Transcribing audio...' : 'Send message');
+    }
+}
+
+function clearAiAgentInput() {
+    const input = document.getElementById('ai-agent-input');
+    if (!input) return;
+    input.value = '';
+    updateAiAgentComposerState();
+    if (typeof input.focus === 'function') input.focus();
+}
+
+function applyAiAgentTranscript(text) {
+    const input = document.getElementById('ai-agent-input');
+    if (!input) return;
+    input.value = String(text || '').trim();
+    updateAiAgentComposerState();
+    if (typeof input.focus === 'function') input.focus();
+}
+
+function stopAiAgentRecorderStream() {
+    if (!aiAgentRecorderStream || typeof aiAgentRecorderStream.getTracks !== 'function') return;
+    aiAgentRecorderStream.getTracks().forEach(track => {
+        if (track && typeof track.stop === 'function') {
+            track.stop();
+        }
+    });
+    aiAgentRecorderStream = null;
+}
+
+async function transcribeAiAgentAudioBlob(audioBlob) {
+    if (!audioBlob) return;
+    aiAgentVoiceTranscribing = true;
+    updateAiAgentComposerState();
+    recordAiAgentDebug('voice-transcribe-request', {
+        size: audioBlob.size || 0,
+        type: audioBlob.type || 'application/octet-stream',
+        conversationId: aiAgentConversationId,
+    });
+
+    try {
+        const payload = new FormData();
+        payload.append('audio', audioBlob, audioBlob.name || 'ai-agent-voice.webm');
+        payload.append('conversation_id', aiAgentConversationId);
+        payload.append('language_preference', aiAgentLanguagePreference);
+
+        const response = await fetch('/ai-agent/api/stt', {
+            method: 'POST',
+            body: payload,
+        });
+        const data = await response.json();
+        recordAiAgentDebug('voice-transcribe-response', {
+            status: response.status,
+            ok: response.ok,
+            provider: data.provider,
+            validator: data.validator,
+            textLength: (data.text || '').length,
+        });
+
+        if (!response.ok || data.status === 'error' || !data.text) {
+            throw new Error(data.text || data.error || 'Unable to transcribe audio right now.');
+        }
+
+        applyAiAgentTranscript(data.text);
+    } catch (error) {
+        recordAiAgentDebug('voice-transcribe-error', {
+            message: error.message || String(error),
+        });
+        appendChatMessage('agent', error.message || 'Voice input is unavailable right now.');
+    } finally {
+        aiAgentVoiceTranscribing = false;
+        updateAiAgentComposerState();
+    }
+}
+
+async function startAiAgentVoiceRecording() {
+    if (aiAgentVoiceRecording || aiAgentVoiceTranscribing) return;
+    if (!navigator?.mediaDevices?.getUserMedia || typeof MediaRecorder === 'undefined') {
+        appendChatMessage('agent', 'Voice input is not supported in this browser.');
+        return;
+    }
+
+    try {
+        aiAgentRecorderStream = await navigator.mediaDevices.getUserMedia({ audio: true });
+        aiAgentRecorderChunks = [];
+        aiAgentMediaRecorder = new MediaRecorder(aiAgentRecorderStream);
+        aiAgentMediaRecorder.addEventListener('dataavailable', (event) => {
+            if (event.data && event.data.size) {
+                aiAgentRecorderChunks.push(event.data);
+            }
+        });
+        aiAgentMediaRecorder.addEventListener('stop', async () => {
+            const audioType = aiAgentRecorderChunks[0]?.type || 'audio/webm';
+            const audioBlob = new Blob(aiAgentRecorderChunks, { type: audioType });
+            stopAiAgentRecorderStream();
+            aiAgentRecorderChunks = [];
+            await transcribeAiAgentAudioBlob(audioBlob);
+        });
+        aiAgentMediaRecorder.start();
+        aiAgentVoiceRecording = true;
+        updateAiAgentComposerState();
+        recordAiAgentDebug('voice-recording-started', { conversationId: aiAgentConversationId });
+    } catch (error) {
+        stopAiAgentRecorderStream();
+        aiAgentMediaRecorder = null;
+        aiAgentVoiceRecording = false;
+        updateAiAgentComposerState();
+        appendChatMessage('agent', error.message || 'Microphone access is unavailable.');
+    }
+}
+
+function stopAiAgentVoiceRecording(options = {}) {
+    const discard = options.discard === true;
+    if (!aiAgentMediaRecorder) {
+        aiAgentVoiceRecording = false;
+        stopAiAgentRecorderStream();
+        updateAiAgentComposerState();
+        return;
+    }
+
+    const recorder = aiAgentMediaRecorder;
+    aiAgentMediaRecorder = null;
+    aiAgentVoiceRecording = false;
+    updateAiAgentComposerState();
+    recordAiAgentDebug('voice-recording-stopped', { discard });
+
+    if (discard) {
+        recorder.onstop = null;
+        aiAgentRecorderChunks = [];
+        try {
+            if (recorder.state && recorder.state !== 'inactive') recorder.stop();
+        } catch (error) {
+            console.warn(error);
+        }
+        stopAiAgentRecorderStream();
+        return;
+    }
+
+    try {
+        if (!recorder.state || recorder.state !== 'inactive') {
+            recorder.stop();
+        } else {
+            stopAiAgentRecorderStream();
+        }
+    } catch (error) {
+        stopAiAgentRecorderStream();
+        appendChatMessage('agent', error.message || 'Voice input stopped unexpectedly.');
+    }
+}
+
+function toggleAiAgentVoiceRecording() {
+    if (aiAgentVoiceRecording) {
+        stopAiAgentVoiceRecording();
+        return;
+    }
+    startAiAgentVoiceRecording();
 }
 
 function minimizeAiAgent(event) {
@@ -853,6 +1061,12 @@ function maximizeAiAgent(event) {
 }
 
 async function fetchAiAgentResponse(query, pageOverride = 1) {
+    recordAiAgentDebug('chat-request', {
+        query,
+        page: pageOverride,
+        conversationId: aiAgentConversationId,
+        selectionObject: aiAgentActiveSelectionObject,
+    });
     const response = await fetch('/ai-agent/api/chat', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -865,10 +1079,24 @@ async function fetchAiAgentResponse(query, pageOverride = 1) {
             language_preference: aiAgentLanguagePreference,
         })
     });
-    return response.json();
+    const data = await response.json();
+    recordAiAgentDebug('chat-response', {
+        query,
+        status: response.status,
+        intent: data.intent,
+        objectType: data.object_type,
+        recordId: data.record_id,
+    });
+    return data;
 }
 
 async function submitAiAgentFormResponse(payload) {
+    recordAiAgentDebug('chat-form-request', {
+        objectType: payload.object_type,
+        mode: payload.mode,
+        recordId: payload.record_id,
+        fieldNames: Object.keys(payload.values || {}),
+    });
     const response = await fetch('/ai-agent/api/form-submit', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -878,7 +1106,14 @@ async function submitAiAgentFormResponse(payload) {
             language_preference: aiAgentLanguagePreference,
         }),
     });
-    return response.json();
+    const data = await response.json();
+    recordAiAgentDebug('chat-form-response', {
+        status: response.status,
+        intent: data.intent,
+        objectType: data.object_type,
+        recordId: data.record_id,
+    });
+    return data;
 }
 
 async function sendAiMessage(queryOverride = null, pageOverride = 1) {
@@ -889,6 +1124,7 @@ async function sendAiMessage(queryOverride = null, pageOverride = 1) {
     if (!queryOverride) {
         appendChatMessage('user', query);
         input.value = '';
+        updateAiAgentComposerState();
     }
 
     const loadingId = 'loading-' + Date.now();
@@ -896,6 +1132,11 @@ async function sendAiMessage(queryOverride = null, pageOverride = 1) {
 
     try {
         const data = await fetchAiAgentResponse(query, pageOverride);
+        recordAiAgentDebug('chat-handle-intent', {
+            intent: data.intent,
+            objectType: data.object_type,
+            recordId: data.record_id,
+        });
         
         const loadingIndicator = document.getElementById(loadingId);
         if (loadingIndicator) loadingIndicator.remove();
@@ -929,6 +1170,12 @@ async function sendAiMessage(queryOverride = null, pageOverride = 1) {
             }
             if (targetUrl) {
                 const workspaceTitle = data.chat_card?.title || data.form_title || 'Record View';
+                recordAiAgentDebug('chat-open-record', {
+                    objectType: data.object_type,
+                    recordId: data.record_id,
+                    targetUrl,
+                    preserveChatFocus,
+                });
                 if (preserveChatFocus) {
                     requestAnimationFrame(() => openAgentWorkspace(targetUrl, workspaceTitle, { preserveChatFocus }));
                 } else {
@@ -1322,6 +1569,7 @@ function sendQuickMessage(text) {
         return;
     }
     input.value = text;
+    updateAiAgentComposerState();
     sendAiMessage();
 }
 
@@ -1331,7 +1579,10 @@ function sendAiMessageWithDisplay(displayText, actualQuery) {
     sendAiMessage(actualQuery);
 }
 
-document.addEventListener('DOMContentLoaded', applyAiAgentLanguageUi);
+document.addEventListener('DOMContentLoaded', () => {
+    applyAiAgentLanguageUi();
+    updateAiAgentComposerState();
+});
 
 function escapeAgentHtml(value) {
     return String(value ?? '')
@@ -1600,6 +1851,12 @@ async function submitAgentChatForm(event) {
         });
 
         if (data.intent === 'OPEN_RECORD') {
+            recordAiAgentDebug('chat-form-open-record', {
+                objectType: data.object_type,
+                recordId: data.record_id,
+                redirectUrl: data.redirect_url,
+            });
+            clearAiAgentTransientLoadingState();
             if (card) card.remove();
             const fallbackDetailUrl = data.object_type && data.record_id
                 ? getAgentObjectRoute(data.object_type, data.record_id, 'detail')
@@ -1621,6 +1878,12 @@ async function submitAgentChatForm(event) {
         }
 
         if (data.intent === 'OPEN_FORM' && data.form?.fields && card) {
+            recordAiAgentDebug('chat-form-reopen', {
+                objectType: data.object_type,
+                mode: data.form?.mode,
+                fieldCount: (data.form?.fields || []).length,
+            });
+            clearAiAgentTransientLoadingState();
             const wrapper = document.createElement('div');
             wrapper.innerHTML = renderAgentInlineSchemaForm(data.form);
             const replacementCard = wrapper.firstElementChild;
@@ -1634,9 +1897,22 @@ async function submitAgentChatForm(event) {
             return false;
         }
 
+        recordAiAgentDebug('chat-form-chat-response', {
+            intent: data.intent,
+            objectType: data.object_type,
+            recordId: data.record_id,
+        });
+        clearAiAgentTransientLoadingState();
         appendChatMessage('agent', data.text || 'I could not save the form.');
     } catch (error) {
         console.error(error);
+        recordAiAgentDebug('chat-form-submit-error', {
+            message: error.message || String(error),
+            objectType,
+            mode,
+            recordId,
+        });
+        clearAiAgentTransientLoadingState();
         appendChatMessage('agent', 'Failed to save the form.');
     } finally {
         if (submitButton) submitButton.disabled = false;

@@ -19,6 +19,20 @@ def test_shared_modal_template_uses_exact_create_route_pattern():
     assert 'accept="image/jpeg,image/jpg"' in source
 
 
+def test_shared_modal_template_keeps_message_template_type_switch_contract():
+    source = Path("development/web/frontend/templates/templates/sf_form_modal.html").read_text(encoding="utf-8")
+
+    assert "const typeSelect = document.querySelector('select[name=\"record_type\"]');" in source
+    assert "const subjectWrapper = document.querySelector('.sf-field-wrapper[data-field=\"subject\"]');" in source
+    assert "const imageWrapper = document.querySelector('.sf-field-wrapper[data-field=\"image\"]');" in source
+    assert "if (type === 'SMS' && bytes > 90) {" in source
+    assert "typeSelect.value = 'LMS';" in source
+    assert "subjectWrapper.style.display = (type === 'SMS') ? 'none' : 'flex';" in source
+    assert "imageWrapper.style.display = (type === 'MMS') ? 'flex' : 'none';" in source
+    assert "byteCounter.textContent = `${bytes} / ${limit} bytes (${type})`;" in source
+    assert "saveBtn.disabled = true;" in source
+
+
 def test_lead_modal_embedded_mode_contract_keeps_lookup_inputs_and_removes_modal_close():
     router_source = Path("development/web/backend/app/api/form_router.py").read_text(encoding="utf-8")
     template_source = Path("development/web/frontend/templates/templates/sf_form_modal.html").read_text(encoding="utf-8")
