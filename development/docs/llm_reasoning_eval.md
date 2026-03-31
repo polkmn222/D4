@@ -31,6 +31,62 @@ Use `clarification_required` when the safe response should explicitly ask the us
 
 Use `safe_non_executable_fallback` when the expected behavior should stay conservative and non-executable without assuming safe execution.
 
+## Relationship To `learning/eval_dataset_expanded.jsonl`
+
+This document is a compact reasoning reference set. It is not identical to the larger JSONL dataset used by the local decision eval runner.
+
+The JSONL dataset currently uses a separate comparison label vocabulary:
+
+- `QUERY`
+- `OPEN_FORM`
+- `OPEN_RECORD`
+- `CREATE`
+- `UPDATE`
+- `ASK_CLARIFICATION`
+- `RETRIEVE_AND_ANSWER`
+- `REFUSE`
+
+That dataset also adds tool-style labels such as:
+
+- `crm_query`
+- `crm_write`
+- `vector_retrieval`
+- `message_history_query`
+- `none`
+
+Those labels should be interpreted as eval categories rather than guaranteed literal runtime fields.
+
+## Current Eval Review Rule
+
+When reviewing mismatches from the JSONL eval runner, separate them into at least three buckets:
+
+1. runtime defect
+2. eval-label or eval-mapping defect
+3. intentional product-policy mismatch
+
+Do not treat every mismatch as proof that the reasoning layer is wrong. The current dataset includes labels that are stricter, broader, or simply different from the live runtime contract.
+
+## Current High-Risk Mismatch Areas
+
+The following categories need special caution during eval review because dataset labels and runtime behavior may diverge without implying a product bug:
+
+- `CHAT` runtime responses that the eval layer maps to `ASK_CLARIFICATION`
+- refusal-style `CHAT` responses that the eval layer maps to `REFUSE`
+- record-opening runtime responses that use `MANAGE` internally but are reviewed as eval `OPEN_RECORD`
+- retrieval-oriented dataset labels such as `RETRIEVE_AND_ANSWER` when the live service does not yet expose one explicit runtime intent with that exact name
+- tool labels inferred by the eval adapter rather than returned directly from the live service payload
+
+## Recommended Review Cadence
+
+For practical local review, prefer fixed-size batches such as 100 rows at a time.
+
+For each batch:
+
+- record pass cases
+- record meaningful runtime mismatches
+- record dataset-label or mapping mismatches
+- update docs when the mismatch reveals that the eval contract and runtime contract are drifting apart
+
 ## Clean Requests
 
 | id | user_input | category | expected_safe_outcome | short_rationale |
@@ -94,3 +150,4 @@ Use `safe_non_executable_fallback` when the expected behavior should stay conser
 - Prefer English-first additions unless a later phase explicitly broadens language coverage.
 - If the current safe model cannot justify execution, label the case conservatively.
 - Do not reinterpret this set as a permission list for broader behavior.
+- Keep the compact markdown set, the larger JSONL dataset, and the live runtime contract aligned enough that reviewers can explain mismatches clearly.

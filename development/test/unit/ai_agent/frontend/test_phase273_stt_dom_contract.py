@@ -5,6 +5,7 @@ from pathlib import Path
 
 BASE_DIR = Path(__file__).resolve().parents[4]
 JS_PATH = BASE_DIR / "ai_agent" / "ui" / "frontend" / "static" / "js" / "ai_agent.js"
+CSS_PATH = BASE_DIR / "ai_agent" / "ui" / "frontend" / "static" / "css" / "ai_agent.css"
 TEMPLATE_PATH = BASE_DIR / "ai_agent" / "ui" / "frontend" / "templates" / "ai_agent_panel.html"
 
 
@@ -191,6 +192,7 @@ def test_template_exposes_clear_and_mic_buttons():
 
     assert 'id="ai-agent-input-clear"' in markup
     assert 'id="ai-agent-mic-btn"' in markup
+    assert 'id="ai-agent-jump-btn"' in markup
     assert 'onclick="toggleAiAgentVoiceRecording()"' in markup
 
 
@@ -198,9 +200,31 @@ def test_js_source_wires_stt_fetch_and_composer_state():
     source = JS_PATH.read_text()
 
     assert "fetch('/ai-agent/api/stt'" in source
+    assert "const AI_AGENT_FETCH_TIMEOUT_MS = 15000;" in source
+    assert "const AI_AGENT_WORKSPACE_TIMEOUT_MS = 12000;" in source
+    assert "function fetchAiAgentWithTimeout(resource, options = {}, timeoutMs = AI_AGENT_FETCH_TIMEOUT_MS) {" in source
+    assert "function scrollAiAgentBodyToBottom() {" in source
+    assert "function getLatestAgentMessageNode() {" in source
+    assert "const distanceFromBottom = Math.max(scrollHeight - scrollTop - clientHeight, 0);" in source
+    assert "class=\"agent-table-search-clear ${pagination?.search_term ? 'is-visible' : ''}\"" in source
+    assert "details class=\"agent-sql-details\"" in source
     assert "function clearAiAgentInput()" in source
     assert "function toggleAiAgentVoiceRecording()" in source
     assert "function updateAiAgentComposerState()" in source
+    assert "function jumpToLatestAgentMessage()" in source
+    assert "function clearAgentFormField(button)" in source
+
+
+def test_lookup_visual_contract_matches_web_style_badges():
+    js_source = JS_PATH.read_text()
+    css_source = CSS_PATH.read_text()
+
+    assert "const AGENT_LOOKUP_VISUALS = {" in js_source
+    assert 'class="agent-chat-lookup-badge' in js_source
+    assert 'class="agent-chat-lookup-option-icon"' in js_source
+    assert ".agent-chat-lookup-badge {" in css_source
+    assert ".agent-chat-lookup-option-icon {" in css_source
+    assert "padding-left: 42px;" in css_source
 
 
 def test_composer_clear_button_tracks_input_value():

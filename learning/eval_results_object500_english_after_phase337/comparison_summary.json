@@ -1,0 +1,52 @@
+{
+  "brand": {
+    "before": {
+      "full_match": 215,
+      "object_match": 261,
+      "action_match": 264,
+      "tool_match": 316,
+      "retrieval_match": 430,
+      "total": 500
+    },
+    "after": {
+      "full_match": 325,
+      "object_match": 433,
+      "action_match": 368,
+      "tool_match": 392,
+      "retrieval_match": 430,
+      "total": 500
+    },
+    "delta": {
+      "full_match": 110,
+      "object_match": 172,
+      "action_match": 104,
+      "tool_match": 76,
+      "retrieval_match": 0
+    }
+  },
+  "product": {
+    "before": {
+      "full_match": 223,
+      "object_match": 272,
+      "action_match": 278,
+      "tool_match": 326,
+      "retrieval_match": 430,
+      "total": 500
+    },
+    "after": {
+      "full_match": 323,
+      "object_match": 431,
+      "action_match": 368,
+      "tool_match": 392,
+      "retrieval_match": 430,
+      "total": 500
+    },
+    "delta": {
+      "full_match": 100,
+      "object_match": 159,
+      "action_match": 90,
+      "tool_match": 66,
+      "retrieval_match": 0
+    }
+  }
+}

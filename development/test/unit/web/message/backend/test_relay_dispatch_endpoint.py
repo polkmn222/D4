@@ -35,14 +35,14 @@ def test_relay_dispatch_forwards_to_target_provider():
         "os.environ",
         {
             "RELAY_MESSAGE_TOKEN": "expected-token",
-            "RELAY_TARGET_PROVIDER": "solapi",
+            "RELAY_TARGET_PROVIDER": "surem",
         },
         clear=False,
     ), patch(
         "web.message.backend.router.MessagingService._dispatch_payload",
         return_value={
             "status": "success",
-            "provider": "solapi",
+            "provider": "surem",
             "provider_message_id": "group-123",
             "message": "accepted",
         },
@@ -61,10 +61,10 @@ def test_relay_dispatch_forwards_to_target_provider():
     assert response.status_code == 200
     body = response.json()
     assert body["status"] == "success"
-    assert body["data"]["provider"] == "solapi"
+    assert body["data"]["provider"] == "surem"
     _, kwargs = mock_dispatch.call_args
     payload = mock_dispatch.call_args.args[1]
     assert payload.contact_id == "C1"
     assert payload.record_type == "MMS"
     assert payload.image_url == "https://demo.example.com/image.jpg"
-    assert kwargs["provider_name_override"] == "solapi"
+    assert kwargs["provider_name_override"] == "surem"

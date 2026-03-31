@@ -14,6 +14,7 @@ ENV_PATH = Path(__file__).resolve().parents[1] / ".env"
 load_dotenv(ENV_PATH)
 logger = logging.getLogger("web.perf")
 _bootstrap_started_at = time.perf_counter()
+_runtime_initialized = False
 
 def normalize_database_url(raw_url: str) -> str:
     if not raw_url:
@@ -65,9 +66,10 @@ AUDIT_COLUMN_TABLES = [
 ]
 
 
-def ensure_runtime_columns() -> None:
-    inspector = inspect(engine)
-    with engine.begin() as connection:
+def ensure_runtime_columns(target_engine=None) -> None:
+    active_engine = target_engine or engine
+    inspector = inspect(active_engine)
+    with active_engine.begin() as connection:
         for table_name in AUDIT_COLUMN_TABLES:
             try:
                 columns = {column["name"] for column in inspector.get_columns(table_name)}
@@ -78,14 +80,28 @@ def ensure_runtime_columns() -> None:
                 connection.execute(text(f"ALTER TABLE {table_name} ADD COLUMN created_by VARCHAR"))
             if "updated_by" not in columns:
                 connection.execute(text(f"ALTER TABLE {table_name} ADD COLUMN updated_by VARCHAR"))
+            if table_name == "message_sends":
+                if "subject" not in columns:
+                    connection.execute(text("ALTER TABLE message_sends ADD COLUMN subject VARCHAR"))
+                if "record_type" not in columns:
+                    connection.execute(text("ALTER TABLE message_sends ADD COLUMN record_type VARCHAR"))
+                if "image_url" not in columns:
+                    connection.execute(text("ALTER TABLE message_sends ADD COLUMN image_url VARCHAR"))
+                if "attachment_id" not in columns:
+                    connection.execute(text("ALTER TABLE message_sends ADD COLUMN attachment_id VARCHAR(18)"))
 
 
-ensure_runtime_columns()
-if diagnostics_enabled():
-    logger.info(
-        "web_perf_startup component=db_bootstrap duration_ms=%.2f",
-        (time.perf_counter() - _bootstrap_started_at) * 1000,
-    )
+def initialize_database_runtime(target_engine=None) -> None:
+    global _runtime_initialized
+    if _runtime_initialized:
+        return
+    ensure_runtime_columns(target_engine or engine)
+    _runtime_initialized = True
+    if diagnostics_enabled():
+        logger.info(
+            "web_perf_startup component=db_bootstrap duration_ms=%.2f",
+            (time.perf_counter() - _bootstrap_started_at) * 1000,
+        )
 
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 

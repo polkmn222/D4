@@ -1,0 +1,6315 @@
+{
+  "generated_at": "2026-03-31T02:02:55.704553+00:00",
+  "dataset_path": "/var/folders/zg/z6kl4gjn3lj8l400kylykqm40000gp/T/tmp7oainda5.jsonl",
+  "output_path": "learning/eval_results/batch_1501_1600.json",
+  "summary": {
+    "rows": 100,
+    "full_match_rows": 13,
+    "field_matches": {
+      "expected_object": 79,
+      "expected_action": 13,
+      "expected_tool": 13,
+      "expected_retrieval_needed": 100
+    }
+  },
+  "results": [
+    {
+      "dataset_row": {
+        "id": "4oewqys98pmk9fn496",
+        "user_input": "Quickly add an asset called Q3 Upsell, stage is Negotiation, amount is 120000.",
+        "expected_object": "asset",
+        "expected_action": "CREATE",
+        "expected_tool": "crm_write",
+        "expected_retrieval_needed": false,
+        "source_file": "expanded_dataset_v1",
+        "phase": "phase306",
+        "context": "After a search query",
+        "difficulty": "hard",
+        "notes": "Expanded synthetic data for CREATE variation"
+      },
+      "actual": {
+        "raw_intent": "OPEN_FORM",
+        "normalized_action": "OPEN_FORM",
+        "object_type": "asset",
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "OPEN_FORM",
+          "object_type": "asset",
+          "form_url": "/assets/new-modal",
+          "form_title": "Create Asset",
+          "form_kind": "asset_create",
+          "text": "I've opened the new asset form for you below.",
+          "score": 1.0
+        }
+      },
+      "comparison": {
+        "row_id": "4oewqys98pmk9fn496",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "asset",
+            "actual": "asset",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "CREATE",
+            "actual": "OPEN_FORM",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "crm_write",
+            "actual": "none",
+            "match": false
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "4v2ybrolytiayiv1dx",
+        "user_input": "Add brand for Acme Corp with an amount of 50000.",
+        "expected_object": "brand",
+        "expected_action": "CREATE",
+        "expected_tool": "crm_write",
+        "expected_retrieval_needed": false,
+        "source_file": "expanded_dataset_v1",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Expanded synthetic data for CREATE variation"
+      },
+      "actual": {
+        "raw_intent": "OPEN_FORM",
+        "normalized_action": "OPEN_FORM",
+        "object_type": "brand",
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "direct_response",
+        "raw_output": {
+          "intent": "OPEN_FORM",
+          "object_type": "brand",
+          "form_url": "/vehicle_specifications/new-modal?type=Brand",
+          "form_title": "Create Brand",
+          "form_kind": "brand_create",
+          "text": "I've opened the new brand form for you below.",
+          "score": 1.0
+        }
+      },
+      "comparison": {
+        "row_id": "4v2ybrolytiayiv1dx",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "brand",
+            "actual": "brand",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "CREATE",
+            "actual": "OPEN_FORM",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "crm_write",
+            "actual": "none",
+            "match": false
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "gjl7gyctcwwm787guv",
+        "user_input": "Create a new asset named Sarah Smith with status New.",
+        "expected_object": "asset",
+        "expected_action": "CREATE",
+        "expected_tool": "crm_write",
+        "expected_retrieval_needed": false,
+        "source_file": "expanded_dataset_v1",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Expanded synthetic data for CREATE variation"
+      },
+      "actual": {
+        "raw_intent": "OPEN_FORM",
+        "normalized_action": "OPEN_FORM",
+        "object_type": "asset",
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "OPEN_FORM",
+          "object_type": "asset",
+          "form_url": "/assets/new-modal",
+          "form_title": "Create Asset",
+          "form_kind": "asset_create",
+          "text": "I've opened the new asset form for you below.",
+          "score": 1.0
+        }
+      },
+      "comparison": {
+        "row_id": "gjl7gyctcwwm787guv",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "asset",
+            "actual": "asset",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "CREATE",
+            "actual": "OPEN_FORM",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "crm_write",
+            "actual": "none",
+            "match": false
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "lgowq2i9y0abkteon5",
+        "user_input": "please create a asset for john doe from techflow, set the status to qualified.",
+        "expected_object": "asset",
+        "expected_action": "CREATE",
+        "expected_tool": "crm_write",
+        "expected_retrieval_needed": false,
+        "source_file": "expanded_dataset_v1",
+        "phase": "phase306",
+        "context": "Following up on a previous task",
+        "difficulty": "hard",
+        "notes": "Expanded synthetic data for CREATE variation"
+      },
+      "actual": {
+        "raw_intent": "OPEN_FORM",
+        "normalized_action": "OPEN_FORM",
+        "object_type": "asset",
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "OPEN_FORM",
+          "object_type": "asset",
+          "form_url": "/assets/new-modal",
+          "form_title": "Create Asset",
+          "form_kind": "asset_create",
+          "text": "I've opened the new asset form for you below.",
+          "score": 1.0
+        }
+      },
+      "comparison": {
+        "row_id": "lgowq2i9y0abkteon5",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "asset",
+            "actual": "asset",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "CREATE",
+            "actual": "OPEN_FORM",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "crm_write",
+            "actual": "none",
+            "match": false
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "7vdpzo5q99053m29w1",
+        "user_input": "please create a asset for john doe from techflow, set the status to qualified.",
+        "expected_object": "asset",
+        "expected_action": "CREATE",
+        "expected_tool": "crm_write",
+        "expected_retrieval_needed": false,
+        "source_file": "expanded_dataset_v1",
+        "phase": "phase306",
+        "context": "After a search query",
+        "difficulty": "hard",
+        "notes": "Expanded synthetic data for CREATE variation"
+      },
+      "actual": {
+        "raw_intent": "OPEN_FORM",
+        "normalized_action": "OPEN_FORM",
+        "object_type": "asset",
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "OPEN_FORM",
+          "object_type": "asset",
+          "form_url": "/assets/new-modal",
+          "form_title": "Create Asset",
+          "form_kind": "asset_create",
+          "text": "I've opened the new asset form for you below.",
+          "score": 1.0
+        }
+      },
+      "comparison": {
+        "row_id": "7vdpzo5q99053m29w1",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "asset",
+            "actual": "asset",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "CREATE",
+            "actual": "OPEN_FORM",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "crm_write",
+            "actual": "none",
+            "match": false
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "crynjh61c59jlg0cpr",
+        "user_input": "Register asset Model X, status Active.",
+        "expected_object": "asset",
+        "expected_action": "CREATE",
+        "expected_tool": "crm_write",
+        "expected_retrieval_needed": false,
+        "source_file": "expanded_dataset_v1",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Expanded synthetic data for CREATE variation"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": null,
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "missing_response",
+        "raw_output": {
+          "intent": "CHAT",
+          "text": "Eval runner could not capture a runtime decision."
+        }
+      },
+      "comparison": {
+        "row_id": "crynjh61c59jlg0cpr",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "asset",
+            "actual": null,
+            "match": false
+          },
+          "expected_action": {
+            "expected": "CREATE",
+            "actual": "ASK_CLARIFICATION",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "crm_write",
+            "actual": "none",
+            "match": false
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "m1ntwtxf7v6e58ur76",
+        "user_input": "Register model Model X, status Active.",
+        "expected_object": "model",
+        "expected_action": "CREATE",
+        "expected_tool": "crm_write",
+        "expected_retrieval_needed": false,
+        "source_file": "expanded_dataset_v1",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Expanded synthetic data for CREATE variation"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": null,
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "missing_response",
+        "raw_output": {
+          "intent": "CHAT",
+          "text": "Eval runner could not capture a runtime decision."
+        }
+      },
+      "comparison": {
+        "row_id": "m1ntwtxf7v6e58ur76",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "model",
+            "actual": null,
+            "match": false
+          },
+          "expected_action": {
+            "expected": "CREATE",
+            "actual": "ASK_CLARIFICATION",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "crm_write",
+            "actual": "none",
+            "match": false
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "shdsda7f8aax4db4m4",
+        "user_input": "Create a new message template named Sarah Smith with status New.",
+        "expected_object": "message_template",
+        "expected_action": "CREATE",
+        "expected_tool": "crm_write",
+        "expected_retrieval_needed": false,
+        "source_file": "expanded_dataset_v1",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Expanded synthetic data for CREATE variation"
+      },
+      "actual": {
+        "raw_intent": "OPEN_FORM",
+        "normalized_action": "OPEN_FORM",
+        "object_type": "message_template",
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "OPEN_FORM",
+          "object_type": "message_template",
+          "form_url": "/message_templates/new-modal",
+          "form_title": "Create Message Template",
+          "form_kind": "message_template_create",
+          "text": "I've opened the new message template form for you below.",
+          "score": 1.0
+        }
+      },
+      "comparison": {
+        "row_id": "shdsda7f8aax4db4m4",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "message_template",
+            "actual": "message_template",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "CREATE",
+            "actual": "OPEN_FORM",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "crm_write",
+            "actual": "none",
+            "match": false
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "337ttlqeuvdqqx8i1a",
+        "user_input": "Create a new brand named Sarah Smith with status New. please.",
+        "expected_object": "brand",
+        "expected_action": "CREATE",
+        "expected_tool": "crm_write",
+        "expected_retrieval_needed": false,
+        "source_file": "expanded_dataset_v1",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Expanded synthetic data for CREATE variation"
+      },
+      "actual": {
+        "raw_intent": "CREATE",
+        "normalized_action": "CREATE",
+        "object_type": "brand",
+        "tool": "crm_write",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "CREATE",
+          "object_type": "brand",
+          "data": {
+            "name": "d Sarah Smith with status New. please"
+          },
+          "score": 1.0,
+          "language_preference": "eng"
+        }
+      },
+      "comparison": {
+        "row_id": "337ttlqeuvdqqx8i1a",
+        "all_match": true,
+        "comparisons": {
+          "expected_object": {
+            "expected": "brand",
+            "actual": "brand",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "CREATE",
+            "actual": "CREATE",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "crm_write",
+            "actual": "crm_write",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "j98v05qqmww29lv5kc",
+        "user_input": "Quickly add an model called Q3 Upsell, stage is Negotiation, amount is 120000.",
+        "expected_object": "model",
+        "expected_action": "CREATE",
+        "expected_tool": "crm_write",
+        "expected_retrieval_needed": false,
+        "source_file": "expanded_dataset_v1",
+        "phase": "phase306",
+        "context": "Looking at a specific record",
+        "difficulty": "hard",
+        "notes": "Expanded synthetic data for CREATE variation"
+      },
+      "actual": {
+        "raw_intent": "OPEN_FORM",
+        "normalized_action": "OPEN_FORM",
+        "object_type": "model",
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "direct_response",
+        "raw_output": {
+          "intent": "OPEN_FORM",
+          "object_type": "model",
+          "form_url": "/models/new-modal",
+          "form_title": "Create Model",
+          "form_kind": "model_create",
+          "text": "I've opened the new model form for you below.",
+          "score": 1.0
+        }
+      },
+      "comparison": {
+        "row_id": "j98v05qqmww29lv5kc",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "model",
+            "actual": "model",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "CREATE",
+            "actual": "OPEN_FORM",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "crm_write",
+            "actual": "none",
+            "match": false
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "xe1b5ogjlyswhod680",
+        "user_input": "Quickly add an message template called Q3 Upsell, stage is Negotiation, amount is 120000. please.",
+        "expected_object": "message_template",
+        "expected_action": "CREATE",
+        "expected_tool": "crm_write",
+        "expected_retrieval_needed": false,
+        "source_file": "expanded_dataset_v1",
+        "phase": "phase306",
+        "context": "After a search query",
+        "difficulty": "hard",
+        "notes": "Expanded synthetic data for CREATE variation"
+      },
+      "actual": {
+        "raw_intent": "OPEN_FORM",
+        "normalized_action": "OPEN_FORM",
+        "object_type": "message_template",
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "direct_response",
+        "raw_output": {
+          "intent": "OPEN_FORM",
+          "object_type": "message_template",
+          "form_url": "/message_templates/new-modal",
+          "form_title": "Create Message Template",
+          "form_kind": "message_template_create",
+          "text": "I've opened the new message template form for you below.",
+          "score": 1.0
+        }
+      },
+      "comparison": {
+        "row_id": "xe1b5ogjlyswhod680",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "message_template",
+            "actual": "message_template",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "CREATE",
+            "actual": "OPEN_FORM",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "crm_write",
+            "actual": "none",
+            "match": false
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "fnhyb82vh83gxv7gsg",
+        "user_input": "Quickly add an lead called Q3 Upsell, stage is Negotiation, amount is 120000.",
+        "expected_object": "lead",
+        "expected_action": "CREATE",
+        "expected_tool": "crm_write",
+        "expected_retrieval_needed": false,
+        "source_file": "expanded_dataset_v1",
+        "phase": "phase306",
+        "context": "Following up on a previous task",
+        "difficulty": "hard",
+        "notes": "Expanded synthetic data for CREATE variation"
+      },
+      "actual": {
+        "raw_intent": "OPEN_FORM",
+        "normalized_action": "OPEN_FORM",
+        "object_type": "lead",
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "direct_response",
+        "raw_output": {
+          "intent": "OPEN_FORM",
+          "object_type": "lead",
+          "record_id": null,
+          "form_url": "/leads/new-modal",
+          "form_title": "Create Lead",
+          "form_kind": "lead_create",
+          "text": "I opened the lead create form here in chat. Fill in the fields you want, then save it.",
+          "form": {
+            "version": "v1",
+            "form_id": "lead:create:decision-eval-fnhyb82vh83gxv7gsg-12",
+            "object_type": "lead",
+            "mode": "create",
+            "title": "Create Lead",
+            "submit_label": "Create Lead",
+            "cancel_label": "Cancel",
+            "required_fields": [
+              "last_name",
+              "status"
+            ],
+            "fields": [
+              {
+                "name": "first_name",
+                "label": "First Name",
+                "control": "text",
+                "required": false,
+                "value": "",
+                "layout": "half"
+              },
+              {
+                "name": "last_name",
+                "label": "Last Name",
+                "control": "text",
+                "required": true,
+                "value": "",
+                "layout": "half"
+              },
+              {
+                "name": "email",
+                "label": "Email",
+                "control": "email",
+                "required": false,
+                "value": "",
+                "layout": "half"
+              },
+              {
+                "name": "phone",
+                "label": "Phone",
+                "control": "tel",
+                "required": false,
+                "value": "",
+                "layout": "half"
+              },
+              {
+                "name": "status",
+                "label": "Status",
+                "control": "select",
+                "required": true,
+                "value": "New",
+                "layout": "half",
+                "options": [
+                  {
+                    "value": "New",
+                    "label": "New"
+                  },
+                  {
+                    "value": "Follow Up",
+                    "label": "Follow Up"
+                  },
+                  {
+                    "value": "Qualified",
+                    "label": "Qualified"
+                  },
+                  {
+                    "value": "Lost",
+                    "label": "Lost"
+                  }
+                ]
+              },
+              {
+                "name": "gender",
+                "label": "Gender",
+                "control": "select",
+                "required": false,
+                "value": "",
+                "layout": "half",
+                "options": [
+                  {
+                    "value": "",
+                    "label": "Unspecified"
+                  },
+                  {
+                    "value": "Male",
+                    "label": "Male"
+                  },
+                  {
+                    "value": "Female",
+                    "label": "Female"
+                  },
+                  {
+                    "value": "Other",
+                    "label": "Other"
+                  },
+                  {
+                    "value": "Unknown",
+                    "label": "Unknown"
+                  }
+                ]
+              },
+              {
+                "name": "product",
+                "label": "Product",
+                "control": "lookup",
+                "required": false,
+                "value": "",
+                "layout": "half",
+                "placeholder": "Search Product...",
+                "lookup_object": "Product",
+                "display_value": ""
+              },
+              {
+                "name": "model",
+                "label": "Model",
+                "control": "lookup",
+                "required": false,
+                "value": "",
+                "layout": "half",
+                "placeholder": "Search Model...",
+                "lookup_object": "Model",
+                "display_value": ""
+              },
+              {
+                "name": "brand",
+                "label": "Brand",
+                "control": "lookup",
+                "required": false,
+                "value": "",
+                "layout": "half",
+                "placeholder": "Search Brand...",
+                "lookup_object": "Brand",
+                "display_value": ""
+              },
+              {
+                "name": "description",
+                "label": "Description",
+                "control": "textarea",
+                "required": false,
+                "value": "",
+                "layout": "full"
+              }
+            ],
+            "state": {
+              "status": "ready"
+            },
+            "submit": {
+              "endpoint": "/ai-agent/api/form-submit",
+              "method": "POST"
+            },
+            "description": "Fill in the fields below, then save."
+          },
+          "score": 1.0
+        }
+      },
+      "comparison": {
+        "row_id": "fnhyb82vh83gxv7gsg",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "lead",
+            "actual": "lead",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "CREATE",
+            "actual": "OPEN_FORM",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "crm_write",
+            "actual": "none",
+            "match": false
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "sxrb35aypg178arifh",
+        "user_input": "Please create a message template for John Doe from TechFlow, set the status to Qualified.",
+        "expected_object": "message_template",
+        "expected_action": "CREATE",
+        "expected_tool": "crm_write",
+        "expected_retrieval_needed": false,
+        "source_file": "expanded_dataset_v1",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "hard",
+        "notes": "Expanded synthetic data for CREATE variation"
+      },
+      "actual": {
+        "raw_intent": "OPEN_FORM",
+        "normalized_action": "OPEN_FORM",
+        "object_type": "message_template",
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "direct_response",
+        "raw_output": {
+          "intent": "OPEN_FORM",
+          "object_type": "message_template",
+          "form_url": "/message_templates/new-modal",
+          "form_title": "Create Message Template",
+          "form_kind": "message_template_create",
+          "text": "I've opened the new message template form for you below.",
+          "score": 1.0
+        }
+      },
+      "comparison": {
+        "row_id": "sxrb35aypg178arifh",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "message_template",
+            "actual": "message_template",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "CREATE",
+            "actual": "OPEN_FORM",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "crm_write",
+            "actual": "none",
+            "match": false
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "55xbgffinwhq987yf0",
+        "user_input": "Register model Model X, status Active. please.",
+        "expected_object": "model",
+        "expected_action": "CREATE",
+        "expected_tool": "crm_write",
+        "expected_retrieval_needed": false,
+        "source_file": "expanded_dataset_v1",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Expanded synthetic data for CREATE variation"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": null,
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "missing_response",
+        "raw_output": {
+          "intent": "CHAT",
+          "text": "Eval runner could not capture a runtime decision."
+        }
+      },
+      "comparison": {
+        "row_id": "55xbgffinwhq987yf0",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "model",
+            "actual": null,
+            "match": false
+          },
+          "expected_action": {
+            "expected": "CREATE",
+            "actual": "ASK_CLARIFICATION",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "crm_write",
+            "actual": "none",
+            "match": false
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "plkmlhgrh36cbjhy2w",
+        "user_input": "Please create a opportunity for John Doe from TechFlow, set the status to Qualified.",
+        "expected_object": "opportunity",
+        "expected_action": "CREATE",
+        "expected_tool": "crm_write",
+        "expected_retrieval_needed": false,
+        "source_file": "expanded_dataset_v1",
+        "phase": "phase306",
+        "context": "Following up on a previous task",
+        "difficulty": "hard",
+        "notes": "Expanded synthetic data for CREATE variation"
+      },
+      "actual": {
+        "raw_intent": "OPEN_FORM",
+        "normalized_action": "OPEN_FORM",
+        "object_type": "opportunity",
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "direct_response",
+        "raw_output": {
+          "intent": "OPEN_FORM",
+          "object_type": "opportunity",
+          "record_id": null,
+          "form_url": "/opportunities/new-modal",
+          "form_title": "Create Opportunity",
+          "form_kind": "opportunity_create",
+          "text": "I opened the opportunity create form here in chat. Fill in the fields you want, then save it.",
+          "form": {
+            "version": "v1",
+            "form_id": "opportunity:create:decision-eval-plkmlhgrh36cbjhy2w-15",
+            "object_type": "opportunity",
+            "mode": "create",
+            "title": "Create Opportunity",
+            "submit_label": "Create Opportunity",
+            "cancel_label": "Cancel",
+            "required_fields": [
+              "contact",
+              "name",
+              "stage"
+            ],
+            "fields": [
+              {
+                "name": "contact",
+                "label": "Contact",
+                "control": "lookup",
+                "required": true,
+                "value": "",
+                "layout": "half",
+                "placeholder": "Search Contact...",
+                "lookup_object": "Contact",
+                "display_value": ""
+              },
+              {
+                "name": "name",
+                "label": "Name",
+                "control": "text",
+                "required": true,
+                "value": "",
+                "layout": "half"
+              },
+              {
+                "name": "amount",
+                "label": "Amount",
+                "control": "number",
+                "required": false,
+                "value": "",
+                "layout": "half"
+              },
+              {
+                "name": "stage",
+                "label": "Stage",
+                "control": "select",
+                "required": true,
+                "value": "Prospecting",
+                "layout": "half",
+                "options": [
+                  {
+                    "value": "Prospecting",
+                    "label": "Prospecting"
+                  },
+                  {
+                    "value": "Qualification",
+                    "label": "Qualification"
+                  },
+                  {
+                    "value": "Test Drive",
+                    "label": "Test Drive"
+                  },
+                  {
+                    "value": "Value Proposition",
+                    "label": "Value Proposition"
+                  },
+                  {
+                    "value": "Negotiation/Review",
+                    "label": "Negotiation/Review"
+                  },
+                  {
+                    "value": "Proposal/Price Quote",
+                    "label": "Proposal/Price Quote"
+                  },
+                  {
+                    "value": "Closed Won",
+                    "label": "Closed Won"
+                  },
+                  {
+                    "value": "Closed Lost",
+                    "label": "Closed Lost"
+                  }
+                ]
+              },
+              {
+                "name": "brand",
+                "label": "Brand",
+                "control": "lookup",
+                "required": false,
+                "value": "",
+                "layout": "half",
+                "placeholder": "Search Brand...",
+                "lookup_object": "Brand",
+                "display_value": ""
+              },
+              {
+                "name": "model",
+                "label": "Model",
+                "control": "lookup",
+                "required": false,
+                "value": "",
+                "layout": "half",
+                "placeholder": "Search Model...",
+                "lookup_object": "Model",
+                "display_value": ""
+              },
+              {
+                "name": "product",
+                "label": "Product",
+                "control": "lookup",
+                "required": false,
+                "value": "",
+                "layout": "half",
+                "placeholder": "Search Product...",
+                "lookup_object": "Product",
+                "display_value": ""
+              },
+              {
+                "name": "asset",
+                "label": "Asset",
+                "control": "lookup",
+                "required": false,
+                "value": "",
+                "layout": "half",
+                "placeholder": "Search Asset...",
+                "lookup_object": "Asset",
+                "display_value": ""
+              },
+              {
+                "name": "probability",
+                "label": "Probability",
+                "control": "number",
+                "required": false,
+                "value": 10,
+                "layout": "half"
+              }
+            ],
+            "state": {
+              "status": "ready"
+            },
+            "submit": {
+              "endpoint": "/ai-agent/api/form-submit",
+              "method": "POST"
+            },
+            "description": "Fill in the fields below, then save."
+          },
+          "score": 1.0
+        }
+      },
+      "comparison": {
+        "row_id": "plkmlhgrh36cbjhy2w",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "opportunity",
+            "actual": "opportunity",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "CREATE",
+            "actual": "OPEN_FORM",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "crm_write",
+            "actual": "none",
+            "match": false
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "144yrhjdqcdcbjq5v9",
+        "user_input": "Create a new opportunity named Sarah Smith with status New.",
+        "expected_object": "opportunity",
+        "expected_action": "CREATE",
+        "expected_tool": "crm_write",
+        "expected_retrieval_needed": false,
+        "source_file": "expanded_dataset_v1",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Expanded synthetic data for CREATE variation"
+      },
+      "actual": {
+        "raw_intent": "OPEN_FORM",
+        "normalized_action": "OPEN_FORM",
+        "object_type": "opportunity",
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "direct_response",
+        "raw_output": {
+          "intent": "OPEN_FORM",
+          "object_type": "opportunity",
+          "record_id": null,
+          "form_url": "/opportunities/new-modal",
+          "form_title": "Create Opportunity",
+          "form_kind": "opportunity_create",
+          "text": "I opened the opportunity create form here in chat. Fill in the fields you want, then save it.",
+          "form": {
+            "version": "v1",
+            "form_id": "opportunity:create:decision-eval-144yrhjdqcdcbjq5v9-16",
+            "object_type": "opportunity",
+            "mode": "create",
+            "title": "Create Opportunity",
+            "submit_label": "Create Opportunity",
+            "cancel_label": "Cancel",
+            "required_fields": [
+              "contact",
+              "name",
+              "stage"
+            ],
+            "fields": [
+              {
+                "name": "contact",
+                "label": "Contact",
+                "control": "lookup",
+                "required": true,
+                "value": "",
+                "layout": "half",
+                "placeholder": "Search Contact...",
+                "lookup_object": "Contact",
+                "display_value": ""
+              },
+              {
+                "name": "name",
+                "label": "Name",
+                "control": "text",
+                "required": true,
+                "value": "d Sarah Smith with",
+                "layout": "half"
+              },
+              {
+                "name": "amount",
+                "label": "Amount",
+                "control": "number",
+                "required": false,
+                "value": "",
+                "layout": "half"
+              },
+              {
+                "name": "stage",
+                "label": "Stage",
+                "control": "select",
+                "required": true,
+                "value": "Prospecting",
+                "layout": "half",
+                "options": [
+                  {
+                    "value": "Prospecting",
+                    "label": "Prospecting"
+                  },
+                  {
+                    "value": "Qualification",
+                    "label": "Qualification"
+                  },
+                  {
+                    "value": "Test Drive",
+                    "label": "Test Drive"
+                  },
+                  {
+                    "value": "Value Proposition",
+                    "label": "Value Proposition"
+                  },
+                  {
+                    "value": "Negotiation/Review",
+                    "label": "Negotiation/Review"
+                  },
+                  {
+                    "value": "Proposal/Price Quote",
+                    "label": "Proposal/Price Quote"
+                  },
+                  {
+                    "value": "Closed Won",
+                    "label": "Closed Won"
+                  },
+                  {
+                    "value": "Closed Lost",
+                    "label": "Closed Lost"
+                  }
+                ]
+              },
+              {
+                "name": "brand",
+                "label": "Brand",
+                "control": "lookup",
+                "required": false,
+                "value": "",
+                "layout": "half",
+                "placeholder": "Search Brand...",
+                "lookup_object": "Brand",
+                "display_value": ""
+              },
+              {
+                "name": "model",
+                "label": "Model",
+                "control": "lookup",
+                "required": false,
+                "value": "",
+                "layout": "half",
+                "placeholder": "Search Model...",
+                "lookup_object": "Model",
+                "display_value": ""
+              },
+              {
+                "name": "product",
+                "label": "Product",
+                "control": "lookup",
+                "required": false,
+                "value": "",
+                "layout": "half",
+                "placeholder": "Search Product...",
+                "lookup_object": "Product",
+                "display_value": ""
+              },
+              {
+                "name": "asset",
+                "label": "Asset",
+                "control": "lookup",
+                "required": false,
+                "value": "",
+                "layout": "half",
+                "placeholder": "Search Asset...",
+                "lookup_object": "Asset",
+                "display_value": ""
+              },
+              {
+                "name": "probability",
+                "label": "Probability",
+                "control": "number",
+                "required": false,
+                "value": 10,
+                "layout": "half"
+              }
+            ],
+            "state": {
+              "status": "ready"
+            },
+            "submit": {
+              "endpoint": "/ai-agent/api/form-submit",
+              "method": "POST"
+            },
+            "description": "Fill in the fields below, then save."
+          },
+          "score": 1.0
+        }
+      },
+      "comparison": {
+        "row_id": "144yrhjdqcdcbjq5v9",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "opportunity",
+            "actual": "opportunity",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "CREATE",
+            "actual": "OPEN_FORM",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "crm_write",
+            "actual": "none",
+            "match": false
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "k0pcpc0buujptuax6o",
+        "user_input": "Create a new opportunity named Sarah Smith with status New.",
+        "expected_object": "opportunity",
+        "expected_action": "CREATE",
+        "expected_tool": "crm_write",
+        "expected_retrieval_needed": false,
+        "source_file": "expanded_dataset_v1",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Expanded synthetic data for CREATE variation"
+      },
+      "actual": {
+        "raw_intent": "OPEN_FORM",
+        "normalized_action": "OPEN_FORM",
+        "object_type": "opportunity",
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "direct_response",
+        "raw_output": {
+          "intent": "OPEN_FORM",
+          "object_type": "opportunity",
+          "record_id": null,
+          "form_url": "/opportunities/new-modal",
+          "form_title": "Create Opportunity",
+          "form_kind": "opportunity_create",
+          "text": "I opened the opportunity create form here in chat. Fill in the fields you want, then save it.",
+          "form": {
+            "version": "v1",
+            "form_id": "opportunity:create:decision-eval-k0pcpc0buujptuax6o-17",
+            "object_type": "opportunity",
+            "mode": "create",
+            "title": "Create Opportunity",
+            "submit_label": "Create Opportunity",
+            "cancel_label": "Cancel",
+            "required_fields": [
+              "contact",
+              "name",
+              "stage"
+            ],
+            "fields": [
+              {
+                "name": "contact",
+                "label": "Contact",
+                "control": "lookup",
+                "required": true,
+                "value": "",
+                "layout": "half",
+                "placeholder": "Search Contact...",
+                "lookup_object": "Contact",
+                "display_value": ""
+              },
+              {
+                "name": "name",
+                "label": "Name",
+                "control": "text",
+                "required": true,
+                "value": "d Sarah Smith with",
+                "layout": "half"
+              },
+              {
+                "name": "amount",
+                "label": "Amount",
+                "control": "number",
+                "required": false,
+                "value": "",
+                "layout": "half"
+              },
+              {
+                "name": "stage",
+                "label": "Stage",
+                "control": "select",
+                "required": true,
+                "value": "Prospecting",
+                "layout": "half",
+                "options": [
+                  {
+                    "value": "Prospecting",
+                    "label": "Prospecting"
+                  },
+                  {
+                    "value": "Qualification",
+                    "label": "Qualification"
+                  },
+                  {
+                    "value": "Test Drive",
+                    "label": "Test Drive"
+                  },
+                  {
+                    "value": "Value Proposition",
+                    "label": "Value Proposition"
+                  },
+                  {
+                    "value": "Negotiation/Review",
+                    "label": "Negotiation/Review"
+                  },
+                  {
+                    "value": "Proposal/Price Quote",
+                    "label": "Proposal/Price Quote"
+                  },
+                  {
+                    "value": "Closed Won",
+                    "label": "Closed Won"
+                  },
+                  {
+                    "value": "Closed Lost",
+                    "label": "Closed Lost"
+                  }
+                ]
+              },
+              {
+                "name": "brand",
+                "label": "Brand",
+                "control": "lookup",
+                "required": false,
+                "value": "",
+                "layout": "half",
+                "placeholder": "Search Brand...",
+                "lookup_object": "Brand",
+                "display_value": ""
+              },
+              {
+                "name": "model",
+                "label": "Model",
+                "control": "lookup",
+                "required": false,
+                "value": "",
+                "layout": "half",
+                "placeholder": "Search Model...",
+                "lookup_object": "Model",
+                "display_value": ""
+              },
+              {
+                "name": "product",
+                "label": "Product",
+                "control": "lookup",
+                "required": false,
+                "value": "",
+                "layout": "half",
+                "placeholder": "Search Product...",
+                "lookup_object": "Product",
+                "display_value": ""
+              },
+              {
+                "name": "asset",
+                "label": "Asset",
+                "control": "lookup",
+                "required": false,
+                "value": "",
+                "layout": "half",
+                "placeholder": "Search Asset...",
+                "lookup_object": "Asset",
+                "display_value": ""
+              },
+              {
+                "name": "probability",
+                "label": "Probability",
+                "control": "number",
+                "required": false,
+                "value": 10,
+                "layout": "half"
+              }
+            ],
+            "state": {
+              "status": "ready"
+            },
+            "submit": {
+              "endpoint": "/ai-agent/api/form-submit",
+              "method": "POST"
+            },
+            "description": "Fill in the fields below, then save."
+          },
+          "score": 1.0
+        }
+      },
+      "comparison": {
+        "row_id": "k0pcpc0buujptuax6o",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "opportunity",
+            "actual": "opportunity",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "CREATE",
+            "actual": "OPEN_FORM",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "crm_write",
+            "actual": "none",
+            "match": false
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "2s1ahgdz87ezs2ifjg",
+        "user_input": "Add model for Acme Corp with an amount of 50000.",
+        "expected_object": "model",
+        "expected_action": "CREATE",
+        "expected_tool": "crm_write",
+        "expected_retrieval_needed": false,
+        "source_file": "expanded_dataset_v1",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Expanded synthetic data for CREATE variation"
+      },
+      "actual": {
+        "raw_intent": "OPEN_FORM",
+        "normalized_action": "OPEN_FORM",
+        "object_type": "model",
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "direct_response",
+        "raw_output": {
+          "intent": "OPEN_FORM",
+          "object_type": "model",
+          "form_url": "/models/new-modal",
+          "form_title": "Create Model",
+          "form_kind": "model_create",
+          "text": "I've opened the new model form for you below.",
+          "score": 1.0
+        }
+      },
+      "comparison": {
+        "row_id": "2s1ahgdz87ezs2ifjg",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "model",
+            "actual": "model",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "CREATE",
+            "actual": "OPEN_FORM",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "crm_write",
+            "actual": "none",
+            "match": false
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "1v0unwdmxiehvfv7g4",
+        "user_input": "create a new contact named sarah smith with status new.",
+        "expected_object": "contact",
+        "expected_action": "CREATE",
+        "expected_tool": "crm_write",
+        "expected_retrieval_needed": false,
+        "source_file": "expanded_dataset_v1",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Expanded synthetic data for CREATE variation"
+      },
+      "actual": {
+        "raw_intent": "OPEN_FORM",
+        "normalized_action": "OPEN_FORM",
+        "object_type": "contact",
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "direct_response",
+        "raw_output": {
+          "intent": "OPEN_FORM",
+          "object_type": "contact",
+          "record_id": null,
+          "form_url": "/contacts/new-modal",
+          "form_title": "Create Contact",
+          "form_kind": "contact_create",
+          "text": "I opened the contact create form here in chat. Fill in the fields you want, then save it.",
+          "form": {
+            "version": "v1",
+            "form_id": "contact:create:decision-eval-1v0unwdmxiehvfv7g4-19",
+            "object_type": "contact",
+            "mode": "create",
+            "title": "Create Contact",
+            "submit_label": "Create Contact",
+            "cancel_label": "Cancel",
+            "required_fields": [
+              "last_name"
+            ],
+            "fields": [
+              {
+                "name": "first_name",
+                "label": "First Name",
+                "control": "text",
+                "required": false,
+                "value": "",
+                "layout": "half"
+              },
+              {
+                "name": "last_name",
+                "label": "Last Name",
+                "control": "text",
+                "required": true,
+                "value": "",
+                "layout": "half"
+              },
+              {
+                "name": "email",
+                "label": "Email",
+                "control": "email",
+                "required": false,
+                "value": "",
+                "layout": "half"
+              },
+              {
+                "name": "phone",
+                "label": "Phone",
+                "control": "tel",
+                "required": false,
+                "value": "",
+                "layout": "half"
+              },
+              {
+                "name": "gender",
+                "label": "Gender",
+                "control": "select",
+                "required": false,
+                "value": "",
+                "layout": "half",
+                "options": [
+                  {
+                    "value": "",
+                    "label": "Unspecified"
+                  },
+                  {
+                    "value": "Male",
+                    "label": "Male"
+                  },
+                  {
+                    "value": "Female",
+                    "label": "Female"
+                  },
+                  {
+                    "value": "Other",
+                    "label": "Other"
+                  },
+                  {
+                    "value": "Unknown",
+                    "label": "Unknown"
+                  }
+                ]
+              },
+              {
+                "name": "website",
+                "label": "Website",
+                "control": "text",
+                "required": false,
+                "value": "",
+                "layout": "half"
+              },
+              {
+                "name": "tier",
+                "label": "Tier",
+                "control": "select",
+                "required": false,
+                "value": "Bronze",
+                "layout": "half",
+                "options": [
+                  {
+                    "value": "Bronze",
+                    "label": "Bronze"
+                  },
+                  {
+                    "value": "Silver",
+                    "label": "Silver"
+                  },
+                  {
+                    "value": "Gold",
+                    "label": "Gold"
+                  },
+                  {
+                    "value": "Platinum",
+                    "label": "Platinum"
+                  }
+                ]
+              },
+              {
+                "name": "description",
+                "label": "Description",
+                "control": "textarea",
+                "required": false,
+                "value": "",
+                "layout": "full"
+              }
+            ],
+            "state": {
+              "status": "ready"
+            },
+            "submit": {
+              "endpoint": "/ai-agent/api/form-submit",
+              "method": "POST"
+            },
+            "description": "Fill in the fields below, then save."
+          },
+          "score": 1.0
+        }
+      },
+      "comparison": {
+        "row_id": "1v0unwdmxiehvfv7g4",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "contact",
+            "actual": "contact",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "CREATE",
+            "actual": "OPEN_FORM",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "crm_write",
+            "actual": "none",
+            "match": false
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "eqnphuhnh5ojwhoam9",
+        "user_input": "Register lead Model X, status Active.",
+        "expected_object": "lead",
+        "expected_action": "CREATE",
+        "expected_tool": "crm_write",
+        "expected_retrieval_needed": false,
+        "source_file": "expanded_dataset_v1",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Expanded synthetic data for CREATE variation"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": null,
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "missing_response",
+        "raw_output": {
+          "intent": "CHAT",
+          "text": "Eval runner could not capture a runtime decision."
+        }
+      },
+      "comparison": {
+        "row_id": "eqnphuhnh5ojwhoam9",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "lead",
+            "actual": null,
+            "match": false
+          },
+          "expected_action": {
+            "expected": "CREATE",
+            "actual": "ASK_CLARIFICATION",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "crm_write",
+            "actual": "none",
+            "match": false
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "h3xhma278wdd46krkq",
+        "user_input": "Change the phone number for model to 555-0199.",
+        "expected_object": "model",
+        "expected_action": "UPDATE",
+        "expected_tool": "crm_write",
+        "expected_retrieval_needed": false,
+        "source_file": "expanded_dataset_v1",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Expanded synthetic data for UPDATE variation"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": "model",
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "direct_response",
+        "raw_output": {
+          "intent": "CHAT",
+          "object_type": "model",
+          "text": "I can update that model, but I need the record ID first.",
+          "score": 1.0
+        }
+      },
+      "comparison": {
+        "row_id": "h3xhma278wdd46krkq",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "model",
+            "actual": "model",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "UPDATE",
+            "actual": "ASK_CLARIFICATION",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "crm_write",
+            "actual": "none",
+            "match": false
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "l96w8dhw5a9tdh6ss3",
+        "user_input": "For the message template named TechFlow Deal, update the stage to Won and set the close date to today.",
+        "expected_object": "message_template",
+        "expected_action": "UPDATE",
+        "expected_tool": "crm_write",
+        "expected_retrieval_needed": false,
+        "source_file": "expanded_dataset_v1",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "hard",
+        "notes": "Expanded synthetic data for UPDATE variation"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": "message_template",
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "direct_response",
+        "raw_output": {
+          "intent": "CHAT",
+          "object_type": "message_template",
+          "text": "I couldn't find that message template record.",
+          "score": 1.0
+        }
+      },
+      "comparison": {
+        "row_id": "l96w8dhw5a9tdh6ss3",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "message_template",
+            "actual": "message_template",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "UPDATE",
+            "actual": "ASK_CLARIFICATION",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "crm_write",
+            "actual": "none",
+            "match": false
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "21kqmz6pe21s061hhn",
+        "user_input": "For the opportunity named TechFlow Deal, update the stage to Won and set the close date to today.",
+        "expected_object": "opportunity",
+        "expected_action": "UPDATE",
+        "expected_tool": "crm_write",
+        "expected_retrieval_needed": false,
+        "source_file": "expanded_dataset_v1",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "hard",
+        "notes": "Expanded synthetic data for UPDATE variation"
+      },
+      "actual": {
+        "raw_intent": "UPDATE",
+        "normalized_action": "UPDATE",
+        "object_type": "opportunity",
+        "tool": "crm_write",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "UPDATE",
+          "object_type": "opportunity",
+          "record_id": "named",
+          "data": {
+            "name": "d TechFlow Deal",
+            "stage": "Won and set the close date to today"
+          },
+          "score": 1.0,
+          "language_preference": "eng"
+        }
+      },
+      "comparison": {
+        "row_id": "21kqmz6pe21s061hhn",
+        "all_match": true,
+        "comparisons": {
+          "expected_object": {
+            "expected": "opportunity",
+            "actual": "opportunity",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "UPDATE",
+            "actual": "UPDATE",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "crm_write",
+            "actual": "crm_write",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "31stn49xwyvcnmxpbx",
+        "user_input": "Change the phone number for opportunity to 555-0199.",
+        "expected_object": "opportunity",
+        "expected_action": "UPDATE",
+        "expected_tool": "crm_write",
+        "expected_retrieval_needed": false,
+        "source_file": "expanded_dataset_v1",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Expanded synthetic data for UPDATE variation"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": "opportunity",
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "direct_response",
+        "raw_output": {
+          "intent": "CHAT",
+          "object_type": "opportunity",
+          "text": "I can update that opportunity, but I need the record ID first.",
+          "score": 1.0
+        }
+      },
+      "comparison": {
+        "row_id": "31stn49xwyvcnmxpbx",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "opportunity",
+            "actual": "opportunity",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "UPDATE",
+            "actual": "ASK_CLARIFICATION",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "crm_write",
+            "actual": "none",
+            "match": false
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "5cl88pyfy19vi41qs5",
+        "user_input": "Can you change the primary contact email on the contact we are looking at to admin@test.com? please.",
+        "expected_object": "contact",
+        "expected_action": "UPDATE",
+        "expected_tool": "crm_write",
+        "expected_retrieval_needed": false,
+        "source_file": "expanded_dataset_v1",
+        "phase": "phase306",
+        "context": "Following up on a previous task",
+        "difficulty": "hard",
+        "notes": "Expanded synthetic data for UPDATE variation"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": "contact",
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "direct_response",
+        "raw_output": {
+          "intent": "CHAT",
+          "object_type": "contact",
+          "text": "I can update that contact, but I need the record ID first.",
+          "score": 1.0
+        }
+      },
+      "comparison": {
+        "row_id": "5cl88pyfy19vi41qs5",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "contact",
+            "actual": "contact",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "UPDATE",
+            "actual": "ASK_CLARIFICATION",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "crm_write",
+            "actual": "none",
+            "match": false
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "zafgxsai24d2yzuhal",
+        "user_input": "For the contact named TechFlow Deal, update the stage to Won and set the close date to today. please.",
+        "expected_object": "contact",
+        "expected_action": "UPDATE",
+        "expected_tool": "crm_write",
+        "expected_retrieval_needed": false,
+        "source_file": "expanded_dataset_v1",
+        "phase": "phase306",
+        "context": "Following up on a previous task",
+        "difficulty": "hard",
+        "notes": "Expanded synthetic data for UPDATE variation"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": "contact",
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "direct_response",
+        "raw_output": {
+          "intent": "CHAT",
+          "object_type": "contact",
+          "text": "I couldn't find that contact record.",
+          "score": 1.0
+        }
+      },
+      "comparison": {
+        "row_id": "zafgxsai24d2yzuhal",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "contact",
+            "actual": "contact",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "UPDATE",
+            "actual": "ASK_CLARIFICATION",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "crm_write",
+            "actual": "none",
+            "match": false
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "qmwe0gyuq1m5dhlj0f",
+        "user_input": "change the phone number for brand to 555-0199.",
+        "expected_object": "brand",
+        "expected_action": "UPDATE",
+        "expected_tool": "crm_write",
+        "expected_retrieval_needed": false,
+        "source_file": "expanded_dataset_v1",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Expanded synthetic data for UPDATE variation"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": "brand",
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "direct_response",
+        "raw_output": {
+          "intent": "CHAT",
+          "object_type": "brand",
+          "text": "I can update that brand, but I need the record ID first.",
+          "score": 1.0
+        }
+      },
+      "comparison": {
+        "row_id": "qmwe0gyuq1m5dhlj0f",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "brand",
+            "actual": "brand",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "UPDATE",
+            "actual": "ASK_CLARIFICATION",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "crm_write",
+            "actual": "none",
+            "match": false
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "9y8rbigm8hmmrydm8n",
+        "user_input": "Edit the amount on the current product to 75000.",
+        "expected_object": "product",
+        "expected_action": "UPDATE",
+        "expected_tool": "crm_write",
+        "expected_retrieval_needed": false,
+        "source_file": "expanded_dataset_v1",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Expanded synthetic data for UPDATE variation"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": "product",
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "direct_response",
+        "raw_output": {
+          "intent": "CHAT",
+          "object_type": "product",
+          "text": "I can update that product, but I need the record ID first.",
+          "score": 1.0
+        }
+      },
+      "comparison": {
+        "row_id": "9y8rbigm8hmmrydm8n",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "product",
+            "actual": "product",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "UPDATE",
+            "actual": "ASK_CLARIFICATION",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "crm_write",
+            "actual": "none",
+            "match": false
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "cccq6dtic2vik5tev2",
+        "user_input": "update the status of this brand to closed.",
+        "expected_object": "brand",
+        "expected_action": "UPDATE",
+        "expected_tool": "crm_write",
+        "expected_retrieval_needed": false,
+        "source_file": "expanded_dataset_v1",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Expanded synthetic data for UPDATE variation"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": "brand",
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "direct_response",
+        "raw_output": {
+          "intent": "CHAT",
+          "object_type": "brand",
+          "text": "I can update that brand, but I need the record ID first.",
+          "score": 1.0
+        }
+      },
+      "comparison": {
+        "row_id": "cccq6dtic2vik5tev2",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "brand",
+            "actual": "brand",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "UPDATE",
+            "actual": "ASK_CLARIFICATION",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "crm_write",
+            "actual": "none",
+            "match": false
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "5e4sxkxkehd3wby49w",
+        "user_input": "Can you change the primary contact email on the brand we are looking at to admin@test.com?",
+        "expected_object": "brand",
+        "expected_action": "UPDATE",
+        "expected_tool": "crm_write",
+        "expected_retrieval_needed": false,
+        "source_file": "expanded_dataset_v1",
+        "phase": "phase306",
+        "context": "Looking at a specific record",
+        "difficulty": "hard",
+        "notes": "Expanded synthetic data for UPDATE variation"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": null,
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "direct_response",
+        "raw_output": {
+          "intent": "CHAT",
+          "text": "I found multiple objects in your request (contact, brand). Which one would you like to work with?",
+          "score": 1.0
+        }
+      },
+      "comparison": {
+        "row_id": "5e4sxkxkehd3wby49w",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "brand",
+            "actual": null,
+            "match": false
+          },
+          "expected_action": {
+            "expected": "UPDATE",
+            "actual": "ASK_CLARIFICATION",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "crm_write",
+            "actual": "none",
+            "match": false
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "ovyepfejrx01dw1est",
+        "user_input": "Edit the amount on the current brand to 75000.",
+        "expected_object": "brand",
+        "expected_action": "UPDATE",
+        "expected_tool": "crm_write",
+        "expected_retrieval_needed": false,
+        "source_file": "expanded_dataset_v1",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Expanded synthetic data for UPDATE variation"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": "brand",
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "direct_response",
+        "raw_output": {
+          "intent": "CHAT",
+          "object_type": "brand",
+          "text": "I can update that brand, but I need the record ID first.",
+          "score": 1.0
+        }
+      },
+      "comparison": {
+        "row_id": "ovyepfejrx01dw1est",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "brand",
+            "actual": "brand",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "UPDATE",
+            "actual": "ASK_CLARIFICATION",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "crm_write",
+            "actual": "none",
+            "match": false
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "i1ba9hkbh6tketodu1",
+        "user_input": "Change the phone number for lead to 555-0199.",
+        "expected_object": "lead",
+        "expected_action": "UPDATE",
+        "expected_tool": "crm_write",
+        "expected_retrieval_needed": false,
+        "source_file": "expanded_dataset_v1",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Expanded synthetic data for UPDATE variation"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": "lead",
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "direct_response",
+        "raw_output": {
+          "intent": "CHAT",
+          "object_type": "lead",
+          "text": "I can update that lead, but I need the record ID first.",
+          "score": 1.0
+        }
+      },
+      "comparison": {
+        "row_id": "i1ba9hkbh6tketodu1",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "lead",
+            "actual": "lead",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "UPDATE",
+            "actual": "ASK_CLARIFICATION",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "crm_write",
+            "actual": "none",
+            "match": false
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "s6bi5c7jyw14ceufmf",
+        "user_input": "Edit the amount on the current lead to 75000.",
+        "expected_object": "lead",
+        "expected_action": "UPDATE",
+        "expected_tool": "crm_write",
+        "expected_retrieval_needed": false,
+        "source_file": "expanded_dataset_v1",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Expanded synthetic data for UPDATE variation"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": "lead",
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "direct_response",
+        "raw_output": {
+          "intent": "CHAT",
+          "object_type": "lead",
+          "text": "I can update that lead, but I need the record ID first.",
+          "score": 1.0
+        }
+      },
+      "comparison": {
+        "row_id": "s6bi5c7jyw14ceufmf",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "lead",
+            "actual": "lead",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "UPDATE",
+            "actual": "ASK_CLARIFICATION",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "crm_write",
+            "actual": "none",
+            "match": false
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "uw71bqwi4sv7ib4vup",
+        "user_input": "edit the amount on the current contact to 75000.",
+        "expected_object": "contact",
+        "expected_action": "UPDATE",
+        "expected_tool": "crm_write",
+        "expected_retrieval_needed": false,
+        "source_file": "expanded_dataset_v1",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Expanded synthetic data for UPDATE variation"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": "contact",
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "direct_response",
+        "raw_output": {
+          "intent": "CHAT",
+          "object_type": "contact",
+          "text": "I can update that contact, but I need the record ID first.",
+          "score": 1.0
+        }
+      },
+      "comparison": {
+        "row_id": "uw71bqwi4sv7ib4vup",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "contact",
+            "actual": "contact",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "UPDATE",
+            "actual": "ASK_CLARIFICATION",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "crm_write",
+            "actual": "none",
+            "match": false
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "sw7rewaoadrs090tqx",
+        "user_input": "Can you change the primary contact email on the asset we are looking at to admin@test.com?",
+        "expected_object": "asset",
+        "expected_action": "UPDATE",
+        "expected_tool": "crm_write",
+        "expected_retrieval_needed": false,
+        "source_file": "expanded_dataset_v1",
+        "phase": "phase306",
+        "context": "After a search query",
+        "difficulty": "hard",
+        "notes": "Expanded synthetic data for UPDATE variation"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": null,
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "direct_response",
+        "raw_output": {
+          "intent": "CHAT",
+          "text": "I found multiple objects in your request (contact, asset). Which one would you like to work with?",
+          "score": 1.0
+        }
+      },
+      "comparison": {
+        "row_id": "sw7rewaoadrs090tqx",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "asset",
+            "actual": null,
+            "match": false
+          },
+          "expected_action": {
+            "expected": "UPDATE",
+            "actual": "ASK_CLARIFICATION",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "crm_write",
+            "actual": "none",
+            "match": false
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "3vlsb6kb86pxvvwois",
+        "user_input": "Edit the amount on the current asset to 75000.",
+        "expected_object": "asset",
+        "expected_action": "UPDATE",
+        "expected_tool": "crm_write",
+        "expected_retrieval_needed": false,
+        "source_file": "expanded_dataset_v1",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Expanded synthetic data for UPDATE variation"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": "asset",
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "direct_response",
+        "raw_output": {
+          "intent": "CHAT",
+          "object_type": "asset",
+          "text": "I can update that asset, but I need the record ID first.",
+          "score": 1.0
+        }
+      },
+      "comparison": {
+        "row_id": "3vlsb6kb86pxvvwois",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "asset",
+            "actual": "asset",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "UPDATE",
+            "actual": "ASK_CLARIFICATION",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "crm_write",
+            "actual": "none",
+            "match": false
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "3a2lj09yagfdy7t29a",
+        "user_input": "can you change the primary contact email on the asset we are looking at to admin@test.com?",
+        "expected_object": "asset",
+        "expected_action": "UPDATE",
+        "expected_tool": "crm_write",
+        "expected_retrieval_needed": false,
+        "source_file": "expanded_dataset_v1",
+        "phase": "phase306",
+        "context": "After a search query",
+        "difficulty": "hard",
+        "notes": "Expanded synthetic data for UPDATE variation"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": null,
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "direct_response",
+        "raw_output": {
+          "intent": "CHAT",
+          "text": "I found multiple objects in your request (contact, asset). Which one would you like to work with?",
+          "score": 1.0
+        }
+      },
+      "comparison": {
+        "row_id": "3a2lj09yagfdy7t29a",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "asset",
+            "actual": null,
+            "match": false
+          },
+          "expected_action": {
+            "expected": "UPDATE",
+            "actual": "ASK_CLARIFICATION",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "crm_write",
+            "actual": "none",
+            "match": false
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "850jiz9u3ehaahkxzt",
+        "user_input": "Can you change the primary contact email on the product we are looking at to admin@test.com?",
+        "expected_object": "product",
+        "expected_action": "UPDATE",
+        "expected_tool": "crm_write",
+        "expected_retrieval_needed": false,
+        "source_file": "expanded_dataset_v1",
+        "phase": "phase306",
+        "context": "Following up on a previous task",
+        "difficulty": "hard",
+        "notes": "Expanded synthetic data for UPDATE variation"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": null,
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "direct_response",
+        "raw_output": {
+          "intent": "CHAT",
+          "text": "I found multiple objects in your request (contact, product). Which one would you like to work with?",
+          "score": 1.0
+        }
+      },
+      "comparison": {
+        "row_id": "850jiz9u3ehaahkxzt",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "product",
+            "actual": null,
+            "match": false
+          },
+          "expected_action": {
+            "expected": "UPDATE",
+            "actual": "ASK_CLARIFICATION",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "crm_write",
+            "actual": "none",
+            "match": false
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "zhy4sqhb1295kvlgoe",
+        "user_input": "Update the status of this message template to Closed.",
+        "expected_object": "message_template",
+        "expected_action": "UPDATE",
+        "expected_tool": "crm_write",
+        "expected_retrieval_needed": false,
+        "source_file": "expanded_dataset_v1",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Expanded synthetic data for UPDATE variation"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": "message_template",
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "direct_response",
+        "raw_output": {
+          "intent": "CHAT",
+          "object_type": "message_template",
+          "text": "I can update that message_template, but I need the record ID first.",
+          "score": 1.0
+        }
+      },
+      "comparison": {
+        "row_id": "zhy4sqhb1295kvlgoe",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "message_template",
+            "actual": "message_template",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "UPDATE",
+            "actual": "ASK_CLARIFICATION",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "crm_write",
+            "actual": "none",
+            "match": false
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "bas7d5wy1b4t0xakv1",
+        "user_input": "Can you change the primary contact email on the opportunity we are looking at to admin@test.com?",
+        "expected_object": "opportunity",
+        "expected_action": "UPDATE",
+        "expected_tool": "crm_write",
+        "expected_retrieval_needed": false,
+        "source_file": "expanded_dataset_v1",
+        "phase": "phase306",
+        "context": "After a search query",
+        "difficulty": "hard",
+        "notes": "Expanded synthetic data for UPDATE variation"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": null,
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "direct_response",
+        "raw_output": {
+          "intent": "CHAT",
+          "text": "I found multiple objects in your request (contact, opportunity). Which one would you like to work with?",
+          "score": 1.0
+        }
+      },
+      "comparison": {
+        "row_id": "bas7d5wy1b4t0xakv1",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "opportunity",
+            "actual": null,
+            "match": false
+          },
+          "expected_action": {
+            "expected": "UPDATE",
+            "actual": "ASK_CLARIFICATION",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "crm_write",
+            "actual": "none",
+            "match": false
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "cxcrxtwmb9tqqxmnqt",
+        "user_input": "Update the status of this model to Closed.",
+        "expected_object": "model",
+        "expected_action": "UPDATE",
+        "expected_tool": "crm_write",
+        "expected_retrieval_needed": false,
+        "source_file": "expanded_dataset_v1",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Expanded synthetic data for UPDATE variation"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": "model",
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "direct_response",
+        "raw_output": {
+          "intent": "CHAT",
+          "object_type": "model",
+          "text": "I can update that model, but I need the record ID first.",
+          "score": 1.0
+        }
+      },
+      "comparison": {
+        "row_id": "cxcrxtwmb9tqqxmnqt",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "model",
+            "actual": "model",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "UPDATE",
+            "actual": "ASK_CLARIFICATION",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "crm_write",
+            "actual": "none",
+            "match": false
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "ppnikvyfvpu7x87qek",
+        "user_input": "Update the status of this model to Closed.",
+        "expected_object": "model",
+        "expected_action": "UPDATE",
+        "expected_tool": "crm_write",
+        "expected_retrieval_needed": false,
+        "source_file": "expanded_dataset_v1",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Expanded synthetic data for UPDATE variation"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": "model",
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "direct_response",
+        "raw_output": {
+          "intent": "CHAT",
+          "object_type": "model",
+          "text": "I can update that model, but I need the record ID first.",
+          "score": 1.0
+        }
+      },
+      "comparison": {
+        "row_id": "ppnikvyfvpu7x87qek",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "model",
+            "actual": "model",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "UPDATE",
+            "actual": "ASK_CLARIFICATION",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "crm_write",
+            "actual": "none",
+            "match": false
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "yazcn5bmzftu5wcweo",
+        "user_input": "For the message template named TechFlow Deal, update the stage to Won and set the close date to today.",
+        "expected_object": "message_template",
+        "expected_action": "UPDATE",
+        "expected_tool": "crm_write",
+        "expected_retrieval_needed": false,
+        "source_file": "expanded_dataset_v1",
+        "phase": "phase306",
+        "context": "Following up on a previous task",
+        "difficulty": "hard",
+        "notes": "Expanded synthetic data for UPDATE variation"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": "message_template",
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "direct_response",
+        "raw_output": {
+          "intent": "CHAT",
+          "object_type": "message_template",
+          "text": "I couldn't find that message template record.",
+          "score": 1.0
+        }
+      },
+      "comparison": {
+        "row_id": "yazcn5bmzftu5wcweo",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "message_template",
+            "actual": "message_template",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "UPDATE",
+            "actual": "ASK_CLARIFICATION",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "crm_write",
+            "actual": "none",
+            "match": false
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "u9qsxfzp0hqkhs3wbl",
+        "user_input": "Change the phone number for product to 555-0199.",
+        "expected_object": "product",
+        "expected_action": "UPDATE",
+        "expected_tool": "crm_write",
+        "expected_retrieval_needed": false,
+        "source_file": "expanded_dataset_v1",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Expanded synthetic data for UPDATE variation"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": "product",
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "direct_response",
+        "raw_output": {
+          "intent": "CHAT",
+          "object_type": "product",
+          "text": "I can update that product, but I need the record ID first.",
+          "score": 1.0
+        }
+      },
+      "comparison": {
+        "row_id": "u9qsxfzp0hqkhs3wbl",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "product",
+            "actual": "product",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "UPDATE",
+            "actual": "ASK_CLARIFICATION",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "crm_write",
+            "actual": "none",
+            "match": false
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "v1m3bgc88sm6xoloub",
+        "user_input": "change the phone number for lead to 555-0199.",
+        "expected_object": "lead",
+        "expected_action": "UPDATE",
+        "expected_tool": "crm_write",
+        "expected_retrieval_needed": false,
+        "source_file": "expanded_dataset_v1",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Expanded synthetic data for UPDATE variation"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": "lead",
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "direct_response",
+        "raw_output": {
+          "intent": "CHAT",
+          "object_type": "lead",
+          "text": "I can update that lead, but I need the record ID first.",
+          "score": 1.0
+        }
+      },
+      "comparison": {
+        "row_id": "v1m3bgc88sm6xoloub",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "lead",
+            "actual": "lead",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "UPDATE",
+            "actual": "ASK_CLARIFICATION",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "crm_write",
+            "actual": "none",
+            "match": false
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "oc2xnxruvv43pyderm",
+        "user_input": "Can you change the primary contact email on the lead we are looking at to admin@test.com?",
+        "expected_object": "lead",
+        "expected_action": "UPDATE",
+        "expected_tool": "crm_write",
+        "expected_retrieval_needed": false,
+        "source_file": "expanded_dataset_v1",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "hard",
+        "notes": "Expanded synthetic data for UPDATE variation"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": null,
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "direct_response",
+        "raw_output": {
+          "intent": "CHAT",
+          "text": "I found multiple objects in your request (lead, contact). Which one would you like to work with?",
+          "score": 1.0
+        }
+      },
+      "comparison": {
+        "row_id": "oc2xnxruvv43pyderm",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "lead",
+            "actual": null,
+            "match": false
+          },
+          "expected_action": {
+            "expected": "UPDATE",
+            "actual": "ASK_CLARIFICATION",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "crm_write",
+            "actual": "none",
+            "match": false
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "jczwt8kywixm04ikyc",
+        "user_input": "Change the phone number for brand to 555-0199.",
+        "expected_object": "brand",
+        "expected_action": "UPDATE",
+        "expected_tool": "crm_write",
+        "expected_retrieval_needed": false,
+        "source_file": "expanded_dataset_v1",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Expanded synthetic data for UPDATE variation"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": "brand",
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "direct_response",
+        "raw_output": {
+          "intent": "CHAT",
+          "object_type": "brand",
+          "text": "I can update that brand, but I need the record ID first.",
+          "score": 1.0
+        }
+      },
+      "comparison": {
+        "row_id": "jczwt8kywixm04ikyc",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "brand",
+            "actual": "brand",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "UPDATE",
+            "actual": "ASK_CLARIFICATION",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "crm_write",
+            "actual": "none",
+            "match": false
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "mu10idwwdhwuy5qws5",
+        "user_input": "For the model named TechFlow Deal, update the stage to Won and set the close date to today.",
+        "expected_object": "model",
+        "expected_action": "UPDATE",
+        "expected_tool": "crm_write",
+        "expected_retrieval_needed": false,
+        "source_file": "expanded_dataset_v1",
+        "phase": "phase306",
+        "context": "Looking at a specific record",
+        "difficulty": "hard",
+        "notes": "Expanded synthetic data for UPDATE variation"
+      },
+      "actual": {
+        "raw_intent": "UPDATE",
+        "normalized_action": "UPDATE",
+        "object_type": "model",
+        "tool": "crm_write",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "UPDATE",
+          "object_type": "model",
+          "record_id": "named",
+          "data": {
+            "name": "d TechFlow Deal"
+          },
+          "score": 1.0,
+          "language_preference": "eng"
+        }
+      },
+      "comparison": {
+        "row_id": "mu10idwwdhwuy5qws5",
+        "all_match": true,
+        "comparisons": {
+          "expected_object": {
+            "expected": "model",
+            "actual": "model",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "UPDATE",
+            "actual": "UPDATE",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "crm_write",
+            "actual": "crm_write",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "x38ygyz2jgj2ulq8v8",
+        "user_input": "Change the phone number for brand to 555-0199.",
+        "expected_object": "brand",
+        "expected_action": "UPDATE",
+        "expected_tool": "crm_write",
+        "expected_retrieval_needed": false,
+        "source_file": "expanded_dataset_v1",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Expanded synthetic data for UPDATE variation"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": "brand",
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "direct_response",
+        "raw_output": {
+          "intent": "CHAT",
+          "object_type": "brand",
+          "text": "I can update that brand, but I need the record ID first.",
+          "score": 1.0
+        }
+      },
+      "comparison": {
+        "row_id": "x38ygyz2jgj2ulq8v8",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "brand",
+            "actual": "brand",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "UPDATE",
+            "actual": "ASK_CLARIFICATION",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "crm_write",
+            "actual": "none",
+            "match": false
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "60luwat13nvreih5yv",
+        "user_input": "edit the amount on the current message template to 75000.",
+        "expected_object": "message_template",
+        "expected_action": "UPDATE",
+        "expected_tool": "crm_write",
+        "expected_retrieval_needed": false,
+        "source_file": "expanded_dataset_v1",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Expanded synthetic data for UPDATE variation"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": "message_template",
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "direct_response",
+        "raw_output": {
+          "intent": "CHAT",
+          "object_type": "message_template",
+          "text": "I can update that message_template, but I need the record ID first.",
+          "score": 1.0
+        }
+      },
+      "comparison": {
+        "row_id": "60luwat13nvreih5yv",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "message_template",
+            "actual": "message_template",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "UPDATE",
+            "actual": "ASK_CLARIFICATION",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "crm_write",
+            "actual": "none",
+            "match": false
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "0zmg8jxcgcc3eb73ho",
+        "user_input": "Edit the amount on the current opportunity to 75000.",
+        "expected_object": "opportunity",
+        "expected_action": "UPDATE",
+        "expected_tool": "crm_write",
+        "expected_retrieval_needed": false,
+        "source_file": "expanded_dataset_v1",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Expanded synthetic data for UPDATE variation"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": "opportunity",
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "direct_response",
+        "raw_output": {
+          "intent": "CHAT",
+          "object_type": "opportunity",
+          "text": "I can update that opportunity, but I need the record ID first.",
+          "score": 1.0
+        }
+      },
+      "comparison": {
+        "row_id": "0zmg8jxcgcc3eb73ho",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "opportunity",
+            "actual": "opportunity",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "UPDATE",
+            "actual": "ASK_CLARIFICATION",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "crm_write",
+            "actual": "none",
+            "match": false
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "lan49sadgaxgp6oj8n",
+        "user_input": "Edit the amount on the current opportunity to 75000.",
+        "expected_object": "opportunity",
+        "expected_action": "UPDATE",
+        "expected_tool": "crm_write",
+        "expected_retrieval_needed": false,
+        "source_file": "expanded_dataset_v1",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Expanded synthetic data for UPDATE variation"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": "opportunity",
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "direct_response",
+        "raw_output": {
+          "intent": "CHAT",
+          "object_type": "opportunity",
+          "text": "I can update that opportunity, but I need the record ID first.",
+          "score": 1.0
+        }
+      },
+      "comparison": {
+        "row_id": "lan49sadgaxgp6oj8n",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "opportunity",
+            "actual": "opportunity",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "UPDATE",
+            "actual": "ASK_CLARIFICATION",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "crm_write",
+            "actual": "none",
+            "match": false
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "dbjug2wqgtwd88vbly",
+        "user_input": "Change the phone number for product to 555-0199.",
+        "expected_object": "product",
+        "expected_action": "UPDATE",
+        "expected_tool": "crm_write",
+        "expected_retrieval_needed": false,
+        "source_file": "expanded_dataset_v1",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Expanded synthetic data for UPDATE variation"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": "product",
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "direct_response",
+        "raw_output": {
+          "intent": "CHAT",
+          "object_type": "product",
+          "text": "I can update that product, but I need the record ID first.",
+          "score": 1.0
+        }
+      },
+      "comparison": {
+        "row_id": "dbjug2wqgtwd88vbly",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "product",
+            "actual": "product",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "UPDATE",
+            "actual": "ASK_CLARIFICATION",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "crm_write",
+            "actual": "none",
+            "match": false
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "qwi2gyoozemea8jy5c",
+        "user_input": "For the product named TechFlow Deal, update the stage to Won and set the close date to today.",
+        "expected_object": "product",
+        "expected_action": "UPDATE",
+        "expected_tool": "crm_write",
+        "expected_retrieval_needed": false,
+        "source_file": "expanded_dataset_v1",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "hard",
+        "notes": "Expanded synthetic data for UPDATE variation"
+      },
+      "actual": {
+        "raw_intent": "UPDATE",
+        "normalized_action": "UPDATE",
+        "object_type": "product",
+        "tool": "crm_write",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "UPDATE",
+          "object_type": "product",
+          "record_id": "named",
+          "data": {
+            "name": "d TechFlow Deal"
+          },
+          "score": 1.0,
+          "language_preference": "eng"
+        }
+      },
+      "comparison": {
+        "row_id": "qwi2gyoozemea8jy5c",
+        "all_match": true,
+        "comparisons": {
+          "expected_object": {
+            "expected": "product",
+            "actual": "product",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "UPDATE",
+            "actual": "UPDATE",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "crm_write",
+            "actual": "crm_write",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "coul7ggi298b6aczih",
+        "user_input": "Update the status of this lead to Closed.",
+        "expected_object": "lead",
+        "expected_action": "UPDATE",
+        "expected_tool": "crm_write",
+        "expected_retrieval_needed": false,
+        "source_file": "expanded_dataset_v1",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Expanded synthetic data for UPDATE variation"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": "lead",
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "CHAT",
+          "object_type": "lead",
+          "text": "I need a specific lead record first. Open one or select one, then try again.",
+          "score": 1.0,
+          "language_preference": "eng"
+        }
+      },
+      "comparison": {
+        "row_id": "coul7ggi298b6aczih",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "lead",
+            "actual": "lead",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "UPDATE",
+            "actual": "ASK_CLARIFICATION",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "crm_write",
+            "actual": "none",
+            "match": false
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "w7ns8elwsgolvy9mbm",
+        "user_input": "edit the amount on the current model to 75000.",
+        "expected_object": "model",
+        "expected_action": "UPDATE",
+        "expected_tool": "crm_write",
+        "expected_retrieval_needed": false,
+        "source_file": "expanded_dataset_v1",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Expanded synthetic data for UPDATE variation"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": "model",
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "direct_response",
+        "raw_output": {
+          "intent": "CHAT",
+          "object_type": "model",
+          "text": "I can update that model, but I need the record ID first.",
+          "score": 1.0
+        }
+      },
+      "comparison": {
+        "row_id": "w7ns8elwsgolvy9mbm",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "model",
+            "actual": "model",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "UPDATE",
+            "actual": "ASK_CLARIFICATION",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "crm_write",
+            "actual": "none",
+            "match": false
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "4cpvyl4oa193fhziir",
+        "user_input": "Can you change the primary contact email on the lead we are looking at to admin@test.com?",
+        "expected_object": "lead",
+        "expected_action": "UPDATE",
+        "expected_tool": "crm_write",
+        "expected_retrieval_needed": false,
+        "source_file": "expanded_dataset_v1",
+        "phase": "phase306",
+        "context": "After a search query",
+        "difficulty": "hard",
+        "notes": "Expanded synthetic data for UPDATE variation"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": null,
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "direct_response",
+        "raw_output": {
+          "intent": "CHAT",
+          "text": "I found multiple objects in your request (lead, contact). Which one would you like to work with?",
+          "score": 1.0
+        }
+      },
+      "comparison": {
+        "row_id": "4cpvyl4oa193fhziir",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "lead",
+            "actual": null,
+            "match": false
+          },
+          "expected_action": {
+            "expected": "UPDATE",
+            "actual": "ASK_CLARIFICATION",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "crm_write",
+            "actual": "none",
+            "match": false
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "kke5fedqfnzaqzfheh",
+        "user_input": "Can you change the primary contact email on the asset we are looking at to admin@test.com?",
+        "expected_object": "asset",
+        "expected_action": "UPDATE",
+        "expected_tool": "crm_write",
+        "expected_retrieval_needed": false,
+        "source_file": "expanded_dataset_v1",
+        "phase": "phase306",
+        "context": "Following up on a previous task",
+        "difficulty": "hard",
+        "notes": "Expanded synthetic data for UPDATE variation"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": null,
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "direct_response",
+        "raw_output": {
+          "intent": "CHAT",
+          "text": "I found multiple objects in your request (contact, asset). Which one would you like to work with?",
+          "score": 1.0
+        }
+      },
+      "comparison": {
+        "row_id": "kke5fedqfnzaqzfheh",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "asset",
+            "actual": null,
+            "match": false
+          },
+          "expected_action": {
+            "expected": "UPDATE",
+            "actual": "ASK_CLARIFICATION",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "crm_write",
+            "actual": "none",
+            "match": false
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "8lc8up2w8ye78vs11f",
+        "user_input": "update the status of this lead to closed.",
+        "expected_object": "lead",
+        "expected_action": "UPDATE",
+        "expected_tool": "crm_write",
+        "expected_retrieval_needed": false,
+        "source_file": "expanded_dataset_v1",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Expanded synthetic data for UPDATE variation"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": "lead",
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "CHAT",
+          "object_type": "lead",
+          "text": "I need a specific lead record first. Open one or select one, then try again.",
+          "score": 1.0,
+          "language_preference": "eng"
+        }
+      },
+      "comparison": {
+        "row_id": "8lc8up2w8ye78vs11f",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "lead",
+            "actual": "lead",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "UPDATE",
+            "actual": "ASK_CLARIFICATION",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "crm_write",
+            "actual": "none",
+            "match": false
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "81j2tp0rh7p7tmh741",
+        "user_input": "Can you change the primary contact email on the lead we are looking at to admin@test.com?",
+        "expected_object": "lead",
+        "expected_action": "UPDATE",
+        "expected_tool": "crm_write",
+        "expected_retrieval_needed": false,
+        "source_file": "expanded_dataset_v1",
+        "phase": "phase306",
+        "context": "Following up on a previous task",
+        "difficulty": "hard",
+        "notes": "Expanded synthetic data for UPDATE variation"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": null,
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "direct_response",
+        "raw_output": {
+          "intent": "CHAT",
+          "text": "I found multiple objects in your request (lead, contact). Which one would you like to work with?",
+          "score": 1.0
+        }
+      },
+      "comparison": {
+        "row_id": "81j2tp0rh7p7tmh741",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "lead",
+            "actual": null,
+            "match": false
+          },
+          "expected_action": {
+            "expected": "UPDATE",
+            "actual": "ASK_CLARIFICATION",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "crm_write",
+            "actual": "none",
+            "match": false
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "vrw5cxpehn3irqq331",
+        "user_input": "For the product named TechFlow Deal, update the stage to Won and set the close date to today.",
+        "expected_object": "product",
+        "expected_action": "UPDATE",
+        "expected_tool": "crm_write",
+        "expected_retrieval_needed": false,
+        "source_file": "expanded_dataset_v1",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "hard",
+        "notes": "Expanded synthetic data for UPDATE variation"
+      },
+      "actual": {
+        "raw_intent": "UPDATE",
+        "normalized_action": "UPDATE",
+        "object_type": "product",
+        "tool": "crm_write",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "UPDATE",
+          "object_type": "product",
+          "record_id": "named",
+          "data": {
+            "name": "d TechFlow Deal"
+          },
+          "score": 1.0,
+          "language_preference": "eng"
+        }
+      },
+      "comparison": {
+        "row_id": "vrw5cxpehn3irqq331",
+        "all_match": true,
+        "comparisons": {
+          "expected_object": {
+            "expected": "product",
+            "actual": "product",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "UPDATE",
+            "actual": "UPDATE",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "crm_write",
+            "actual": "crm_write",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "qjcigojusgybj9navt",
+        "user_input": "Can you change the primary contact email on the brand we are looking at to admin@test.com?",
+        "expected_object": "brand",
+        "expected_action": "UPDATE",
+        "expected_tool": "crm_write",
+        "expected_retrieval_needed": false,
+        "source_file": "expanded_dataset_v1",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "hard",
+        "notes": "Expanded synthetic data for UPDATE variation"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": null,
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "direct_response",
+        "raw_output": {
+          "intent": "CHAT",
+          "text": "I found multiple objects in your request (contact, brand). Which one would you like to work with?",
+          "score": 1.0
+        }
+      },
+      "comparison": {
+        "row_id": "qjcigojusgybj9navt",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "brand",
+            "actual": null,
+            "match": false
+          },
+          "expected_action": {
+            "expected": "UPDATE",
+            "actual": "ASK_CLARIFICATION",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "crm_write",
+            "actual": "none",
+            "match": false
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "k9uzsgiwfjsfby4giz",
+        "user_input": "change the phone number for contact to 555-0199.",
+        "expected_object": "contact",
+        "expected_action": "UPDATE",
+        "expected_tool": "crm_write",
+        "expected_retrieval_needed": false,
+        "source_file": "expanded_dataset_v1",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Expanded synthetic data for UPDATE variation"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": "contact",
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "direct_response",
+        "raw_output": {
+          "intent": "CHAT",
+          "object_type": "contact",
+          "text": "I can update that contact, but I need the record ID first.",
+          "score": 1.0
+        }
+      },
+      "comparison": {
+        "row_id": "k9uzsgiwfjsfby4giz",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "contact",
+            "actual": "contact",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "UPDATE",
+            "actual": "ASK_CLARIFICATION",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "crm_write",
+            "actual": "none",
+            "match": false
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "sqiuj3izvuxdyogbvn",
+        "user_input": "For the model named TechFlow Deal, update the stage to Won and set the close date to today.",
+        "expected_object": "model",
+        "expected_action": "UPDATE",
+        "expected_tool": "crm_write",
+        "expected_retrieval_needed": false,
+        "source_file": "expanded_dataset_v1",
+        "phase": "phase306",
+        "context": "Looking at a specific record",
+        "difficulty": "hard",
+        "notes": "Expanded synthetic data for UPDATE variation"
+      },
+      "actual": {
+        "raw_intent": "UPDATE",
+        "normalized_action": "UPDATE",
+        "object_type": "model",
+        "tool": "crm_write",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "UPDATE",
+          "object_type": "model",
+          "record_id": "named",
+          "data": {
+            "name": "d TechFlow Deal"
+          },
+          "score": 1.0,
+          "language_preference": "eng"
+        }
+      },
+      "comparison": {
+        "row_id": "sqiuj3izvuxdyogbvn",
+        "all_match": true,
+        "comparisons": {
+          "expected_object": {
+            "expected": "model",
+            "actual": "model",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "UPDATE",
+            "actual": "UPDATE",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "crm_write",
+            "actual": "crm_write",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "embwrp9ahnh7m8i3ri",
+        "user_input": "Can you change the primary contact email on the product we are looking at to admin@test.com?",
+        "expected_object": "product",
+        "expected_action": "UPDATE",
+        "expected_tool": "crm_write",
+        "expected_retrieval_needed": false,
+        "source_file": "expanded_dataset_v1",
+        "phase": "phase306",
+        "context": "After a search query",
+        "difficulty": "hard",
+        "notes": "Expanded synthetic data for UPDATE variation"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": null,
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "direct_response",
+        "raw_output": {
+          "intent": "CHAT",
+          "text": "I found multiple objects in your request (contact, product). Which one would you like to work with?",
+          "score": 1.0
+        }
+      },
+      "comparison": {
+        "row_id": "embwrp9ahnh7m8i3ri",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "product",
+            "actual": null,
+            "match": false
+          },
+          "expected_action": {
+            "expected": "UPDATE",
+            "actual": "ASK_CLARIFICATION",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "crm_write",
+            "actual": "none",
+            "match": false
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "5sg7kuviod7xiz8bm0",
+        "user_input": "Edit the amount on the current contact to 75000.",
+        "expected_object": "contact",
+        "expected_action": "UPDATE",
+        "expected_tool": "crm_write",
+        "expected_retrieval_needed": false,
+        "source_file": "expanded_dataset_v1",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Expanded synthetic data for UPDATE variation"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": "contact",
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "direct_response",
+        "raw_output": {
+          "intent": "CHAT",
+          "object_type": "contact",
+          "text": "I can update that contact, but I need the record ID first.",
+          "score": 1.0
+        }
+      },
+      "comparison": {
+        "row_id": "5sg7kuviod7xiz8bm0",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "contact",
+            "actual": "contact",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "UPDATE",
+            "actual": "ASK_CLARIFICATION",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "crm_write",
+            "actual": "none",
+            "match": false
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "p1tiwtvbh5g2wizeyt",
+        "user_input": "For the brand named TechFlow Deal, update the stage to Won and set the close date to today.",
+        "expected_object": "brand",
+        "expected_action": "UPDATE",
+        "expected_tool": "crm_write",
+        "expected_retrieval_needed": false,
+        "source_file": "expanded_dataset_v1",
+        "phase": "phase306",
+        "context": "After a search query",
+        "difficulty": "hard",
+        "notes": "Expanded synthetic data for UPDATE variation"
+      },
+      "actual": {
+        "raw_intent": "UPDATE",
+        "normalized_action": "UPDATE",
+        "object_type": "brand",
+        "tool": "crm_write",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "UPDATE",
+          "object_type": "brand",
+          "record_id": "named",
+          "data": {
+            "name": "d TechFlow Deal"
+          },
+          "score": 1.0,
+          "language_preference": "eng"
+        }
+      },
+      "comparison": {
+        "row_id": "p1tiwtvbh5g2wizeyt",
+        "all_match": true,
+        "comparisons": {
+          "expected_object": {
+            "expected": "brand",
+            "actual": "brand",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "UPDATE",
+            "actual": "UPDATE",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "crm_write",
+            "actual": "crm_write",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "gg1vbjau0og1t4rknx",
+        "user_input": "For the brand named TechFlow Deal, update the stage to Won and set the close date to today.",
+        "expected_object": "brand",
+        "expected_action": "UPDATE",
+        "expected_tool": "crm_write",
+        "expected_retrieval_needed": false,
+        "source_file": "expanded_dataset_v1",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "hard",
+        "notes": "Expanded synthetic data for UPDATE variation"
+      },
+      "actual": {
+        "raw_intent": "UPDATE",
+        "normalized_action": "UPDATE",
+        "object_type": "brand",
+        "tool": "crm_write",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "UPDATE",
+          "object_type": "brand",
+          "record_id": "named",
+          "data": {
+            "name": "d TechFlow Deal"
+          },
+          "score": 1.0,
+          "language_preference": "eng"
+        }
+      },
+      "comparison": {
+        "row_id": "gg1vbjau0og1t4rknx",
+        "all_match": true,
+        "comparisons": {
+          "expected_object": {
+            "expected": "brand",
+            "actual": "brand",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "UPDATE",
+            "actual": "UPDATE",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "crm_write",
+            "actual": "crm_write",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "uog4lfcc5sm1vdku0g",
+        "user_input": "Edit the amount on the current asset to 75000.",
+        "expected_object": "asset",
+        "expected_action": "UPDATE",
+        "expected_tool": "crm_write",
+        "expected_retrieval_needed": false,
+        "source_file": "expanded_dataset_v1",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Expanded synthetic data for UPDATE variation"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": "asset",
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "direct_response",
+        "raw_output": {
+          "intent": "CHAT",
+          "object_type": "asset",
+          "text": "I can update that asset, but I need the record ID first.",
+          "score": 1.0
+        }
+      },
+      "comparison": {
+        "row_id": "uog4lfcc5sm1vdku0g",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "asset",
+            "actual": "asset",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "UPDATE",
+            "actual": "ASK_CLARIFICATION",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "crm_write",
+            "actual": "none",
+            "match": false
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "b7529cesa7tjv1rr5p",
+        "user_input": "Edit the amount on the current contact to 75000.",
+        "expected_object": "contact",
+        "expected_action": "UPDATE",
+        "expected_tool": "crm_write",
+        "expected_retrieval_needed": false,
+        "source_file": "expanded_dataset_v1",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Expanded synthetic data for UPDATE variation"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": "contact",
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "direct_response",
+        "raw_output": {
+          "intent": "CHAT",
+          "object_type": "contact",
+          "text": "I can update that contact, but I need the record ID first.",
+          "score": 1.0
+        }
+      },
+      "comparison": {
+        "row_id": "b7529cesa7tjv1rr5p",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "contact",
+            "actual": "contact",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "UPDATE",
+            "actual": "ASK_CLARIFICATION",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "crm_write",
+            "actual": "none",
+            "match": false
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "g6wrd6jb5w1kh6y8in",
+        "user_input": "For the model named TechFlow Deal, update the stage to Won and set the close date to today.",
+        "expected_object": "model",
+        "expected_action": "UPDATE",
+        "expected_tool": "crm_write",
+        "expected_retrieval_needed": false,
+        "source_file": "expanded_dataset_v1",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "hard",
+        "notes": "Expanded synthetic data for UPDATE variation"
+      },
+      "actual": {
+        "raw_intent": "UPDATE",
+        "normalized_action": "UPDATE",
+        "object_type": "model",
+        "tool": "crm_write",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "UPDATE",
+          "object_type": "model",
+          "record_id": "named",
+          "data": {
+            "name": "d TechFlow Deal"
+          },
+          "score": 1.0,
+          "language_preference": "eng"
+        }
+      },
+      "comparison": {
+        "row_id": "g6wrd6jb5w1kh6y8in",
+        "all_match": true,
+        "comparisons": {
+          "expected_object": {
+            "expected": "model",
+            "actual": "model",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "UPDATE",
+            "actual": "UPDATE",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "crm_write",
+            "actual": "crm_write",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "t0gq54250qfzomxr3p",
+        "user_input": "For the product named TechFlow Deal, update the stage to Won and set the close date to today.",
+        "expected_object": "product",
+        "expected_action": "UPDATE",
+        "expected_tool": "crm_write",
+        "expected_retrieval_needed": false,
+        "source_file": "expanded_dataset_v1",
+        "phase": "phase306",
+        "context": "Looking at a specific record",
+        "difficulty": "hard",
+        "notes": "Expanded synthetic data for UPDATE variation"
+      },
+      "actual": {
+        "raw_intent": "UPDATE",
+        "normalized_action": "UPDATE",
+        "object_type": "product",
+        "tool": "crm_write",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "UPDATE",
+          "object_type": "product",
+          "record_id": "named",
+          "data": {
+            "name": "d TechFlow Deal"
+          },
+          "score": 1.0,
+          "language_preference": "eng"
+        }
+      },
+      "comparison": {
+        "row_id": "t0gq54250qfzomxr3p",
+        "all_match": true,
+        "comparisons": {
+          "expected_object": {
+            "expected": "product",
+            "actual": "product",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "UPDATE",
+            "actual": "UPDATE",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "crm_write",
+            "actual": "crm_write",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "78ozexiy5t1m9mkv08",
+        "user_input": "Change the phone number for brand to 555-0199.",
+        "expected_object": "brand",
+        "expected_action": "UPDATE",
+        "expected_tool": "crm_write",
+        "expected_retrieval_needed": false,
+        "source_file": "expanded_dataset_v1",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Expanded synthetic data for UPDATE variation"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": "brand",
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "direct_response",
+        "raw_output": {
+          "intent": "CHAT",
+          "object_type": "brand",
+          "text": "I can update that brand, but I need the record ID first.",
+          "score": 1.0
+        }
+      },
+      "comparison": {
+        "row_id": "78ozexiy5t1m9mkv08",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "brand",
+            "actual": "brand",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "UPDATE",
+            "actual": "ASK_CLARIFICATION",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "crm_write",
+            "actual": "none",
+            "match": false
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "z2mzsbyzv5p59b2o1y",
+        "user_input": "Change the phone number for message template to 555-0199.",
+        "expected_object": "message_template",
+        "expected_action": "UPDATE",
+        "expected_tool": "crm_write",
+        "expected_retrieval_needed": false,
+        "source_file": "expanded_dataset_v1",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Expanded synthetic data for UPDATE variation"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": "message_template",
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "direct_response",
+        "raw_output": {
+          "intent": "CHAT",
+          "object_type": "message_template",
+          "text": "I can update that message_template, but I need the record ID first.",
+          "score": 1.0
+        }
+      },
+      "comparison": {
+        "row_id": "z2mzsbyzv5p59b2o1y",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "message_template",
+            "actual": "message_template",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "UPDATE",
+            "actual": "ASK_CLARIFICATION",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "crm_write",
+            "actual": "none",
+            "match": false
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "gdk21cwjc9uopm5b5t",
+        "user_input": "For the opportunity named TechFlow Deal, update the stage to Won and set the close date to today.",
+        "expected_object": "opportunity",
+        "expected_action": "UPDATE",
+        "expected_tool": "crm_write",
+        "expected_retrieval_needed": false,
+        "source_file": "expanded_dataset_v1",
+        "phase": "phase306",
+        "context": "After a search query",
+        "difficulty": "hard",
+        "notes": "Expanded synthetic data for UPDATE variation"
+      },
+      "actual": {
+        "raw_intent": "UPDATE",
+        "normalized_action": "UPDATE",
+        "object_type": "opportunity",
+        "tool": "crm_write",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "UPDATE",
+          "object_type": "opportunity",
+          "record_id": "named",
+          "data": {
+            "name": "d TechFlow Deal",
+            "stage": "Won and set the close date to today"
+          },
+          "score": 1.0,
+          "language_preference": "eng"
+        }
+      },
+      "comparison": {
+        "row_id": "gdk21cwjc9uopm5b5t",
+        "all_match": true,
+        "comparisons": {
+          "expected_object": {
+            "expected": "opportunity",
+            "actual": "opportunity",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "UPDATE",
+            "actual": "UPDATE",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "crm_write",
+            "actual": "crm_write",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "sdys6cfpjkfmvq0ngr",
+        "user_input": "update the status of this product to closed.",
+        "expected_object": "product",
+        "expected_action": "UPDATE",
+        "expected_tool": "crm_write",
+        "expected_retrieval_needed": false,
+        "source_file": "expanded_dataset_v1",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Expanded synthetic data for UPDATE variation"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": "product",
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "direct_response",
+        "raw_output": {
+          "intent": "CHAT",
+          "object_type": "product",
+          "text": "I can update that product, but I need the record ID first.",
+          "score": 1.0
+        }
+      },
+      "comparison": {
+        "row_id": "sdys6cfpjkfmvq0ngr",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "product",
+            "actual": "product",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "UPDATE",
+            "actual": "ASK_CLARIFICATION",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "crm_write",
+            "actual": "none",
+            "match": false
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "zpdrau0cqxzg5io2r3",
+        "user_input": "edit the amount on the current opportunity to 75000.",
+        "expected_object": "opportunity",
+        "expected_action": "UPDATE",
+        "expected_tool": "crm_write",
+        "expected_retrieval_needed": false,
+        "source_file": "expanded_dataset_v1",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Expanded synthetic data for UPDATE variation"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": "opportunity",
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "direct_response",
+        "raw_output": {
+          "intent": "CHAT",
+          "object_type": "opportunity",
+          "text": "I can update that opportunity, but I need the record ID first.",
+          "score": 1.0
+        }
+      },
+      "comparison": {
+        "row_id": "zpdrau0cqxzg5io2r3",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "opportunity",
+            "actual": "opportunity",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "UPDATE",
+            "actual": "ASK_CLARIFICATION",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "crm_write",
+            "actual": "none",
+            "match": false
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "yyg84g93o02ibzw7yq",
+        "user_input": "Change the phone number for contact to 555-0199.",
+        "expected_object": "contact",
+        "expected_action": "UPDATE",
+        "expected_tool": "crm_write",
+        "expected_retrieval_needed": false,
+        "source_file": "expanded_dataset_v1",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Expanded synthetic data for UPDATE variation"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": "contact",
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "direct_response",
+        "raw_output": {
+          "intent": "CHAT",
+          "object_type": "contact",
+          "text": "I can update that contact, but I need the record ID first.",
+          "score": 1.0
+        }
+      },
+      "comparison": {
+        "row_id": "yyg84g93o02ibzw7yq",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "contact",
+            "actual": "contact",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "UPDATE",
+            "actual": "ASK_CLARIFICATION",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "crm_write",
+            "actual": "none",
+            "match": false
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "nupzkr2koay2ogqfkm",
+        "user_input": "Can you change the primary contact email on the contact we are looking at to admin@test.com?",
+        "expected_object": "contact",
+        "expected_action": "UPDATE",
+        "expected_tool": "crm_write",
+        "expected_retrieval_needed": false,
+        "source_file": "expanded_dataset_v1",
+        "phase": "phase306",
+        "context": "Following up on a previous task",
+        "difficulty": "hard",
+        "notes": "Expanded synthetic data for UPDATE variation"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": "contact",
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "direct_response",
+        "raw_output": {
+          "intent": "CHAT",
+          "object_type": "contact",
+          "text": "I can update that contact, but I need the record ID first.",
+          "score": 1.0
+        }
+      },
+      "comparison": {
+        "row_id": "nupzkr2koay2ogqfkm",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "contact",
+            "actual": "contact",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "UPDATE",
+            "actual": "ASK_CLARIFICATION",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "crm_write",
+            "actual": "none",
+            "match": false
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "686b92w78mr35ffkux",
+        "user_input": "Can you change the primary contact email on the brand we are looking at to admin@test.com?",
+        "expected_object": "brand",
+        "expected_action": "UPDATE",
+        "expected_tool": "crm_write",
+        "expected_retrieval_needed": false,
+        "source_file": "expanded_dataset_v1",
+        "phase": "phase306",
+        "context": "Looking at a specific record",
+        "difficulty": "hard",
+        "notes": "Expanded synthetic data for UPDATE variation"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": null,
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "direct_response",
+        "raw_output": {
+          "intent": "CHAT",
+          "text": "I found multiple objects in your request (contact, brand). Which one would you like to work with?",
+          "score": 1.0
+        }
+      },
+      "comparison": {
+        "row_id": "686b92w78mr35ffkux",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "brand",
+            "actual": null,
+            "match": false
+          },
+          "expected_action": {
+            "expected": "UPDATE",
+            "actual": "ASK_CLARIFICATION",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "crm_write",
+            "actual": "none",
+            "match": false
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "rcd0dbyzoprzw0dcly",
+        "user_input": "update the status of this lead to closed.",
+        "expected_object": "lead",
+        "expected_action": "UPDATE",
+        "expected_tool": "crm_write",
+        "expected_retrieval_needed": false,
+        "source_file": "expanded_dataset_v1",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Expanded synthetic data for UPDATE variation"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": "lead",
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "CHAT",
+          "object_type": "lead",
+          "text": "I need a specific lead record first. Open one or select one, then try again.",
+          "score": 1.0,
+          "language_preference": "eng"
+        }
+      },
+      "comparison": {
+        "row_id": "rcd0dbyzoprzw0dcly",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "lead",
+            "actual": "lead",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "UPDATE",
+            "actual": "ASK_CLARIFICATION",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "crm_write",
+            "actual": "none",
+            "match": false
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "o5yalvm7n246xue9ag",
+        "user_input": "For the product named TechFlow Deal, update the stage to Won and set the close date to today.",
+        "expected_object": "product",
+        "expected_action": "UPDATE",
+        "expected_tool": "crm_write",
+        "expected_retrieval_needed": false,
+        "source_file": "expanded_dataset_v1",
+        "phase": "phase306",
+        "context": "Looking at a specific record",
+        "difficulty": "hard",
+        "notes": "Expanded synthetic data for UPDATE variation"
+      },
+      "actual": {
+        "raw_intent": "UPDATE",
+        "normalized_action": "UPDATE",
+        "object_type": "product",
+        "tool": "crm_write",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "UPDATE",
+          "object_type": "product",
+          "record_id": "named",
+          "data": {
+            "name": "d TechFlow Deal"
+          },
+          "score": 1.0,
+          "language_preference": "eng"
+        }
+      },
+      "comparison": {
+        "row_id": "o5yalvm7n246xue9ag",
+        "all_match": true,
+        "comparisons": {
+          "expected_object": {
+            "expected": "product",
+            "actual": "product",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "UPDATE",
+            "actual": "UPDATE",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "crm_write",
+            "actual": "crm_write",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "k1fw3b0rt5myda88v5",
+        "user_input": "Change the phone number for brand to 555-0199.",
+        "expected_object": "brand",
+        "expected_action": "UPDATE",
+        "expected_tool": "crm_write",
+        "expected_retrieval_needed": false,
+        "source_file": "expanded_dataset_v1",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Expanded synthetic data for UPDATE variation"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": "brand",
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "direct_response",
+        "raw_output": {
+          "intent": "CHAT",
+          "object_type": "brand",
+          "text": "I can update that brand, but I need the record ID first.",
+          "score": 1.0
+        }
+      },
+      "comparison": {
+        "row_id": "k1fw3b0rt5myda88v5",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "brand",
+            "actual": "brand",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "UPDATE",
+            "actual": "ASK_CLARIFICATION",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "crm_write",
+            "actual": "none",
+            "match": false
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "4hdcjdotj1omhyepcl",
+        "user_input": "Can you change the primary contact email on the model we are looking at to admin@test.com?",
+        "expected_object": "model",
+        "expected_action": "UPDATE",
+        "expected_tool": "crm_write",
+        "expected_retrieval_needed": false,
+        "source_file": "expanded_dataset_v1",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "hard",
+        "notes": "Expanded synthetic data for UPDATE variation"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": null,
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "direct_response",
+        "raw_output": {
+          "intent": "CHAT",
+          "text": "I found multiple objects in your request (contact, model). Which one would you like to work with?",
+          "score": 1.0
+        }
+      },
+      "comparison": {
+        "row_id": "4hdcjdotj1omhyepcl",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "model",
+            "actual": null,
+            "match": false
+          },
+          "expected_action": {
+            "expected": "UPDATE",
+            "actual": "ASK_CLARIFICATION",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "crm_write",
+            "actual": "none",
+            "match": false
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "7zipwpcljr7bhtnxqn",
+        "user_input": "Edit the amount on the current product to 75000.",
+        "expected_object": "product",
+        "expected_action": "UPDATE",
+        "expected_tool": "crm_write",
+        "expected_retrieval_needed": false,
+        "source_file": "expanded_dataset_v1",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Expanded synthetic data for UPDATE variation"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": "product",
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "direct_response",
+        "raw_output": {
+          "intent": "CHAT",
+          "object_type": "product",
+          "text": "I can update that product, but I need the record ID first.",
+          "score": 1.0
+        }
+      },
+      "comparison": {
+        "row_id": "7zipwpcljr7bhtnxqn",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "product",
+            "actual": "product",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "UPDATE",
+            "actual": "ASK_CLARIFICATION",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "crm_write",
+            "actual": "none",
+            "match": false
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "q3wlk0pscvoofyau1v",
+        "user_input": "edit the amount on the current product to 75000.",
+        "expected_object": "product",
+        "expected_action": "UPDATE",
+        "expected_tool": "crm_write",
+        "expected_retrieval_needed": false,
+        "source_file": "expanded_dataset_v1",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Expanded synthetic data for UPDATE variation"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": "product",
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "direct_response",
+        "raw_output": {
+          "intent": "CHAT",
+          "object_type": "product",
+          "text": "I can update that product, but I need the record ID first.",
+          "score": 1.0
+        }
+      },
+      "comparison": {
+        "row_id": "q3wlk0pscvoofyau1v",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "product",
+            "actual": "product",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "UPDATE",
+            "actual": "ASK_CLARIFICATION",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "crm_write",
+            "actual": "none",
+            "match": false
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "we1q8ti3qn3l7tqnee",
+        "user_input": "Change the phone number for product to 555-0199. please.",
+        "expected_object": "product",
+        "expected_action": "UPDATE",
+        "expected_tool": "crm_write",
+        "expected_retrieval_needed": false,
+        "source_file": "expanded_dataset_v1",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Expanded synthetic data for UPDATE variation"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": "product",
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "direct_response",
+        "raw_output": {
+          "intent": "CHAT",
+          "object_type": "product",
+          "text": "I can update that product, but I need the record ID first.",
+          "score": 1.0
+        }
+      },
+      "comparison": {
+        "row_id": "we1q8ti3qn3l7tqnee",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "product",
+            "actual": "product",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "UPDATE",
+            "actual": "ASK_CLARIFICATION",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "crm_write",
+            "actual": "none",
+            "match": false
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "abkt2zf5qot3fd5xmi",
+        "user_input": "For the message template named TechFlow Deal, update the stage to Won and set the close date to today.",
+        "expected_object": "message_template",
+        "expected_action": "UPDATE",
+        "expected_tool": "crm_write",
+        "expected_retrieval_needed": false,
+        "source_file": "expanded_dataset_v1",
+        "phase": "phase306",
+        "context": "Following up on a previous task",
+        "difficulty": "hard",
+        "notes": "Expanded synthetic data for UPDATE variation"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": "message_template",
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "direct_response",
+        "raw_output": {
+          "intent": "CHAT",
+          "object_type": "message_template",
+          "text": "I couldn't find that message template record.",
+          "score": 1.0
+        }
+      },
+      "comparison": {
+        "row_id": "abkt2zf5qot3fd5xmi",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "message_template",
+            "actual": "message_template",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "UPDATE",
+            "actual": "ASK_CLARIFICATION",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "crm_write",
+            "actual": "none",
+            "match": false
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "75ox1f1q83y1kbhim1",
+        "user_input": "Can you change the primary contact email on the model we are looking at to admin@test.com?",
+        "expected_object": "model",
+        "expected_action": "UPDATE",
+        "expected_tool": "crm_write",
+        "expected_retrieval_needed": false,
+        "source_file": "expanded_dataset_v1",
+        "phase": "phase306",
+        "context": "Looking at a specific record",
+        "difficulty": "hard",
+        "notes": "Expanded synthetic data for UPDATE variation"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": null,
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "direct_response",
+        "raw_output": {
+          "intent": "CHAT",
+          "text": "I found multiple objects in your request (contact, model). Which one would you like to work with?",
+          "score": 1.0
+        }
+      },
+      "comparison": {
+        "row_id": "75ox1f1q83y1kbhim1",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "model",
+            "actual": null,
+            "match": false
+          },
+          "expected_action": {
+            "expected": "UPDATE",
+            "actual": "ASK_CLARIFICATION",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "crm_write",
+            "actual": "none",
+            "match": false
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "2psjsviwo94nqmc5ki",
+        "user_input": "Update the status of this asset to Closed.",
+        "expected_object": "asset",
+        "expected_action": "UPDATE",
+        "expected_tool": "crm_write",
+        "expected_retrieval_needed": false,
+        "source_file": "expanded_dataset_v1",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Expanded synthetic data for UPDATE variation"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": "asset",
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "direct_response",
+        "raw_output": {
+          "intent": "CHAT",
+          "object_type": "asset",
+          "text": "I can update that asset, but I need the record ID first.",
+          "score": 1.0
+        }
+      },
+      "comparison": {
+        "row_id": "2psjsviwo94nqmc5ki",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "asset",
+            "actual": "asset",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "UPDATE",
+            "actual": "ASK_CLARIFICATION",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "crm_write",
+            "actual": "none",
+            "match": false
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "n06sl0vkllqkbrknoy",
+        "user_input": "Update the status of this contact to Closed.",
+        "expected_object": "contact",
+        "expected_action": "UPDATE",
+        "expected_tool": "crm_write",
+        "expected_retrieval_needed": false,
+        "source_file": "expanded_dataset_v1",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Expanded synthetic data for UPDATE variation"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": "contact",
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "CHAT",
+          "object_type": "contact",
+          "text": "I need a specific contact record first. Open one or select one, then try again.",
+          "score": 1.0,
+          "language_preference": "eng"
+        }
+      },
+      "comparison": {
+        "row_id": "n06sl0vkllqkbrknoy",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "contact",
+            "actual": "contact",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "UPDATE",
+            "actual": "ASK_CLARIFICATION",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "crm_write",
+            "actual": "none",
+            "match": false
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "viw2ayfaghu4aen9dr",
+        "user_input": "Edit the amount on the current message template to 75000.",
+        "expected_object": "message_template",
+        "expected_action": "UPDATE",
+        "expected_tool": "crm_write",
+        "expected_retrieval_needed": false,
+        "source_file": "expanded_dataset_v1",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Expanded synthetic data for UPDATE variation"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": "message_template",
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "direct_response",
+        "raw_output": {
+          "intent": "CHAT",
+          "object_type": "message_template",
+          "text": "I can update that message_template, but I need the record ID first.",
+          "score": 1.0
+        }
+      },
+      "comparison": {
+        "row_id": "viw2ayfaghu4aen9dr",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "message_template",
+            "actual": "message_template",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "UPDATE",
+            "actual": "ASK_CLARIFICATION",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "crm_write",
+            "actual": "none",
+            "match": false
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "o4huldems6f8qi0wk7",
+        "user_input": "For the message template named TechFlow Deal, update the stage to Won and set the close date to today. please.",
+        "expected_object": "message_template",
+        "expected_action": "UPDATE",
+        "expected_tool": "crm_write",
+        "expected_retrieval_needed": false,
+        "source_file": "expanded_dataset_v1",
+        "phase": "phase306",
+        "context": "Following up on a previous task",
+        "difficulty": "hard",
+        "notes": "Expanded synthetic data for UPDATE variation"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": "message_template",
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "direct_response",
+        "raw_output": {
+          "intent": "CHAT",
+          "object_type": "message_template",
+          "text": "I couldn't find that message template record.",
+          "score": 1.0
+        }
+      },
+      "comparison": {
+        "row_id": "o4huldems6f8qi0wk7",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "message_template",
+            "actual": "message_template",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "UPDATE",
+            "actual": "ASK_CLARIFICATION",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "crm_write",
+            "actual": "none",
+            "match": false
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "zdnp8yrp6jhat56p4w",
+        "user_input": "Update the status of this contact to Closed.",
+        "expected_object": "contact",
+        "expected_action": "UPDATE",
+        "expected_tool": "crm_write",
+        "expected_retrieval_needed": false,
+        "source_file": "expanded_dataset_v1",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Expanded synthetic data for UPDATE variation"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": "contact",
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "CHAT",
+          "object_type": "contact",
+          "text": "I need a specific contact record first. Open one or select one, then try again.",
+          "score": 1.0,
+          "language_preference": "eng"
+        }
+      },
+      "comparison": {
+        "row_id": "zdnp8yrp6jhat56p4w",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "contact",
+            "actual": "contact",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "UPDATE",
+            "actual": "ASK_CLARIFICATION",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "crm_write",
+            "actual": "none",
+            "match": false
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "f1l76mbdn15opne9sq",
+        "user_input": "for the opportunity named techflow deal, update the stage to won and set the close date to today. please.",
+        "expected_object": "opportunity",
+        "expected_action": "UPDATE",
+        "expected_tool": "crm_write",
+        "expected_retrieval_needed": false,
+        "source_file": "expanded_dataset_v1",
+        "phase": "phase306",
+        "context": "After a search query",
+        "difficulty": "hard",
+        "notes": "Expanded synthetic data for UPDATE variation"
+      },
+      "actual": {
+        "raw_intent": "UPDATE",
+        "normalized_action": "UPDATE",
+        "object_type": "opportunity",
+        "tool": "crm_write",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "UPDATE",
+          "object_type": "opportunity",
+          "record_id": "named",
+          "data": {
+            "name": "d techflow deal",
+            "stage": "won and set the close date to today. please"
+          },
+          "score": 1.0,
+          "language_preference": "eng"
+        }
+      },
+      "comparison": {
+        "row_id": "f1l76mbdn15opne9sq",
+        "all_match": true,
+        "comparisons": {
+          "expected_object": {
+            "expected": "opportunity",
+            "actual": "opportunity",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "UPDATE",
+            "actual": "UPDATE",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "crm_write",
+            "actual": "crm_write",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "l8dl6h8n4kdrkyjo4y",
+        "user_input": "Can you change the primary contact email on the model we are looking at to admin@test.com? please.",
+        "expected_object": "model",
+        "expected_action": "UPDATE",
+        "expected_tool": "crm_write",
+        "expected_retrieval_needed": false,
+        "source_file": "expanded_dataset_v1",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "hard",
+        "notes": "Expanded synthetic data for UPDATE variation"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": null,
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "direct_response",
+        "raw_output": {
+          "intent": "CHAT",
+          "text": "I found multiple objects in your request (contact, model). Which one would you like to work with?",
+          "score": 1.0
+        }
+      },
+      "comparison": {
+        "row_id": "l8dl6h8n4kdrkyjo4y",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "model",
+            "actual": null,
+            "match": false
+          },
+          "expected_action": {
+            "expected": "UPDATE",
+            "actual": "ASK_CLARIFICATION",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "crm_write",
+            "actual": "none",
+            "match": false
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "jyfu7zjklvhkbwtd2g",
+        "user_input": "Update the status of this asset to Closed.",
+        "expected_object": "asset",
+        "expected_action": "UPDATE",
+        "expected_tool": "crm_write",
+        "expected_retrieval_needed": false,
+        "source_file": "expanded_dataset_v1",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Expanded synthetic data for UPDATE variation"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": "asset",
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "direct_response",
+        "raw_output": {
+          "intent": "CHAT",
+          "object_type": "asset",
+          "text": "I can update that asset, but I need the record ID first.",
+          "score": 1.0
+        }
+      },
+      "comparison": {
+        "row_id": "jyfu7zjklvhkbwtd2g",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "asset",
+            "actual": "asset",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "UPDATE",
+            "actual": "ASK_CLARIFICATION",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "crm_write",
+            "actual": "none",
+            "match": false
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "sls6f3bpfa4eafm598",
+        "user_input": "update the status of this contact to closed. please.",
+        "expected_object": "contact",
+        "expected_action": "UPDATE",
+        "expected_tool": "crm_write",
+        "expected_retrieval_needed": false,
+        "source_file": "expanded_dataset_v1",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Expanded synthetic data for UPDATE variation"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": "contact",
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "CHAT",
+          "object_type": "contact",
+          "text": "I need a specific contact record first. Open one or select one, then try again.",
+          "score": 1.0,
+          "language_preference": "eng"
+        }
+      },
+      "comparison": {
+        "row_id": "sls6f3bpfa4eafm598",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "contact",
+            "actual": "contact",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "UPDATE",
+            "actual": "ASK_CLARIFICATION",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "crm_write",
+            "actual": "none",
+            "match": false
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "igpiipn8xaec16vhdk",
+        "user_input": "Can you change the primary contact email on the opportunity we are looking at to admin@test.com?",
+        "expected_object": "opportunity",
+        "expected_action": "UPDATE",
+        "expected_tool": "crm_write",
+        "expected_retrieval_needed": false,
+        "source_file": "expanded_dataset_v1",
+        "phase": "phase306",
+        "context": "Looking at a specific record",
+        "difficulty": "hard",
+        "notes": "Expanded synthetic data for UPDATE variation"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": null,
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "direct_response",
+        "raw_output": {
+          "intent": "CHAT",
+          "text": "I found multiple objects in your request (contact, opportunity). Which one would you like to work with?",
+          "score": 1.0
+        }
+      },
+      "comparison": {
+        "row_id": "igpiipn8xaec16vhdk",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "opportunity",
+            "actual": null,
+            "match": false
+          },
+          "expected_action": {
+            "expected": "UPDATE",
+            "actual": "ASK_CLARIFICATION",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "crm_write",
+            "actual": "none",
+            "match": false
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "8pv4vkoyjyo1kkq3g5",
+        "user_input": "Can you change the primary contact email on the lead we are looking at to admin@test.com?",
+        "expected_object": "lead",
+        "expected_action": "UPDATE",
+        "expected_tool": "crm_write",
+        "expected_retrieval_needed": false,
+        "source_file": "expanded_dataset_v1",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "hard",
+        "notes": "Expanded synthetic data for UPDATE variation"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": null,
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "direct_response",
+        "raw_output": {
+          "intent": "CHAT",
+          "text": "I found multiple objects in your request (lead, contact). Which one would you like to work with?",
+          "score": 1.0
+        }
+      },
+      "comparison": {
+        "row_id": "8pv4vkoyjyo1kkq3g5",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "lead",
+            "actual": null,
+            "match": false
+          },
+          "expected_action": {
+            "expected": "UPDATE",
+            "actual": "ASK_CLARIFICATION",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "crm_write",
+            "actual": "none",
+            "match": false
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    }
+  ]
+}

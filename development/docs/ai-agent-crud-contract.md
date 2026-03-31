@@ -37,6 +37,7 @@ Deterministic handling should be attempted before LLM fallback.
 - Prefer object-by-object completion over tiny feature slices spread across many objects.
 - When improving chat-native UX, finish the next smallest coherent gap for the current object before broadening to another object.
 - Keep phases narrow, but prioritize user-visible completeness for the active object path.
+- Preserve a unified UI and a unified CRUD flow across all supported objects. If one object supports a user-visible pattern such as `OPEN_RECORD` continuity, inline web-form ordering, table actions, delete confirmation style, or success-copy behavior, the same pattern should be the default target for every other supported object unless the user explicitly approves a deliberate exception.
 
 ## Service Reuse Rule
 
@@ -112,6 +113,8 @@ At minimum:
 
 For approved chat-native objects, continuity should prefer the latest active chat area first and preserve workspace compatibility without letting the workspace steal visible focus.
 
+When both `form` and `form_url` are present in an `OPEN_FORM` response, the frontend should prefer the inline web form loaded from `form_url`. This keeps AI Agent create/edit surfaces aligned with the web modal field order, lookup styling, and object-specific validation rules.
+
 ## Ambiguous Or Unsupported Requests
 
 If the request is ambiguous, unsupported, or too complex for deterministic handling:
@@ -122,6 +125,13 @@ If the request is ambiguous, unsupported, or too complex for deterministic handl
 - return a safe explanatory response or use LLM fallback only when appropriate
 
 If the user intent cannot be safely resolved, the agent should ask for clarification or return a constrained safe response.
+
+## Ambiguity Escalation Rule
+
+- Quick actions and explicitly deterministic commands may stay on the deterministic path.
+- For non-quick-action conversational requests, if the CRUD intent, target object, or target record is even slightly ambiguous, do not force a deterministic CRUD action.
+- In those cases, route through LLM reasoning first, then validate the result against the deterministic safety rules before executing anything.
+- If the LLM result is still ambiguous or conflicts with the deterministic validator, ask a narrow clarification instead of guessing.
 
 ## Object-Specific Expectations
 
@@ -141,8 +151,9 @@ If the user intent cannot be safely resolved, the agent should ask for clarifica
 - `all contacts` returns list-view-style results
 - incomplete requests such as `create contact` use `OPEN_FORM` by design
 - deterministic create requires `last_name` and `status`
+- create and edit forms should render with the same web modal field order inside chat
 - current chat-first continuity rollout includes submit-path continuity, non-submit `OPEN_RECORD` continuity, and selection `Open` continuity
-- current contact chat cards expose `Open Record`, `Edit`, `Delete`, and `Send Message`
+- current contact chat cards expose `Edit`, `Delete`, and `Send Message`
 
 ### Opportunity
 
@@ -151,43 +162,49 @@ If the user intent cannot be safely resolved, the agent should ask for clarifica
 - `recent opportunities` and `all opportunities` return list-view-style results
 - incomplete requests such as `create opportunity` use `OPEN_FORM` by design
 - deterministic create requires `name`, `stage`, and `amount`
+- create and edit forms should render with the same web modal field order inside chat
 - current chat-first continuity rollout includes submit-path continuity, non-submit `OPEN_RECORD` continuity, and selection `Open` continuity
-- current opportunity chat cards expose `Open Record`, `Edit`, `Delete`, and `Send Message`
+- current opportunity chat cards expose `Edit`, `Delete`, and `Send Message`
 
 ### Product
 
 - create success opens the new product record
 - update success opens the refreshed product record
 - `all products` returns list-view-style results
-- current grouped-object rollout starts with product non-submit `OPEN_RECORD` continuity and selection `Open` continuity
+- create and edit requests should open the inline web form in chat
+- current grouped-object rollout includes product non-submit `OPEN_RECORD` continuity, selection `Open` continuity, and delete success copy without raw IDs
 
 ### Asset
 
 - create success opens the new asset record
 - update success opens the refreshed asset record
 - `all assets` returns list-view-style results
-- current grouped-object rollout now includes asset non-submit `OPEN_RECORD` continuity and selection `Open` continuity
+- create and edit requests should open the inline web form in chat
+- current grouped-object rollout includes asset non-submit `OPEN_RECORD` continuity, selection `Open` continuity, delete success copy without raw IDs, and asset display fallback to `name` then `vin`
 
 ### Brand
 
 - create success opens the new brand record
 - update success opens the refreshed brand record
 - `all brands` returns list-view-style results
-- current grouped-object rollout now includes brand non-submit `OPEN_RECORD` continuity and selection `Open` continuity
+- create and edit requests should open the inline web form in chat
+- current grouped-object rollout includes brand non-submit `OPEN_RECORD` continuity, selection `Open` continuity, and delete success copy without raw IDs
 
 ### Model
 
 - create success opens the new model record
 - update success opens the refreshed model record
 - `all models` returns list-view-style results
-- current grouped-object rollout now includes model non-submit `OPEN_RECORD` continuity and selection `Open` continuity
+- create and edit requests should open the inline web form in chat
+- current grouped-object rollout includes model non-submit `OPEN_RECORD` continuity, selection `Open` continuity, and delete success copy without raw IDs
 
 ### Message Template
 
 - create success opens the new message template record
 - update success opens the refreshed message template record
 - `all message templates` returns list-view-style results
-- current grouped-object rollout now includes message-template non-submit `OPEN_RECORD` continuity, selection `Open` continuity, safe image preview in chat cards, and `Use In Send Message` handoff through the existing messaging path
+- create and edit requests should open the inline web form in chat
+- current grouped-object rollout includes message-template non-submit `OPEN_RECORD` continuity, selection `Open` continuity, delete success copy without raw IDs, safe image preview in chat cards, and `Use In Send Message` handoff through the existing messaging path
 
 ### Message Send
 
@@ -209,6 +226,18 @@ For approved lead, contact, and opportunity flows, the current continuity strate
 - non-submit `OPEN_RECORD` appends the newest result/card in chat first
 - workspace compatibility remains available downstream
 - selection-driven `Open` actions use chat-first continuity where rolled out for the object
+- jump-button visibility follows bottom proximity, while the jump action itself targets the latest agent reply start rather than forcing a raw bottom scroll
+
+## Cross-Object Consistency Rule
+
+The following user-visible behaviors should stay aligned across `lead`, `contact`, `opportunity`, `product`, `asset`, `brand`, `model`, and `message_template` unless the user explicitly approves an exception:
+
+- create success uses `OPEN_RECORD` continuity rather than a generic success toast
+- update success uses refreshed `OPEN_RECORD` continuity rather than a generic success toast
+- create/edit forms prefer the same inline web form field order and validation rules when those forms already exist in the web runtime
+- query result tables expose the same action set and action ordering for comparable objects
+- delete confirmation and delete success copy should prefer human-readable labels over raw IDs
+- table selection, jump-button behavior, and chat scroll behavior should follow one shared interaction model instead of object-specific drift
 
 For the current `SEND_MESSAGE` handoff flow, the continuity strategy is:
 

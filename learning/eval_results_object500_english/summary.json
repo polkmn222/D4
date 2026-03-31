@@ -1,0 +1,82 @@
+[
+  {
+    "file": "phase326_lead_results.json",
+    "rows": 500,
+    "full_match_rows": 259,
+    "full_match_rate": 0.518,
+    "expected_object": 367,
+    "expected_action": 303,
+    "expected_tool": 331,
+    "expected_retrieval_needed": 430
+  },
+  {
+    "file": "phase327_contact_results.json",
+    "rows": 500,
+    "full_match_rows": 257,
+    "full_match_rate": 0.514,
+    "expected_object": 351,
+    "expected_action": 309,
+    "expected_tool": 337,
+    "expected_retrieval_needed": 430
+  },
+  {
+    "file": "phase328_opportunity_results.json",
+    "rows": 500,
+    "full_match_rows": 236,
+    "full_match_rate": 0.472,
+    "expected_object": 358,
+    "expected_action": 280,
+    "expected_tool": 305,
+    "expected_retrieval_needed": 430
+  },
+  {
+    "file": "phase329_brand_results.json",
+    "rows": 500,
+    "full_match_rows": 221,
+    "full_match_rate": 0.442,
+    "expected_object": 275,
+    "expected_action": 266,
+    "expected_tool": 317,
+    "expected_retrieval_needed": 430
+  },
+  {
+    "file": "phase330_model_results.json",
+    "rows": 500,
+    "full_match_rows": 191,
+    "full_match_rate": 0.382,
+    "expected_object": 246,
+    "expected_action": 246,
+    "expected_tool": 293,
+    "expected_retrieval_needed": 430
+  },
+  {
+    "file": "phase331_product_results.json",
+    "rows": 500,
+    "full_match_rows": 225,
+    "full_match_rate": 0.45,
+    "expected_object": 281,
+    "expected_action": 278,
+    "expected_tool": 326,
+    "expected_retrieval_needed": 430
+  },
+  {
+    "file": "phase332_asset_results.json",
+    "rows": 500,
+    "full_match_rows": 192,
+    "full_match_rate": 0.384,
+    "expected_object": 256,
+    "expected_action": 244,
+    "expected_tool": 290,
+    "expected_retrieval_needed": 430
+  },
+  {
+    "file": "phase333_message_template_results.json",
+    "rows": 500,
+    "full_match_rows": 168,
+    "full_match_rate": 0.336,
+    "expected_object": 288,
+    "expected_action": 240,
+    "expected_tool": 268,
+    "expected_retrieval_needed": 430
+  }
+]

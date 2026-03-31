@@ -25,8 +25,7 @@ This review order is mandatory before planning or running unit tests.
 ## Integration Verification Commands
 
 - Slack dev/test provider verification: run an automated script or test with `MESSAGE_PROVIDER=slack` and confirm the send result is `Sent`.
-- Solapi carrier verification: run one forced-recipient MMS send only after confirming the runtime IP is allowlisted in Solapi.
-- If Solapi responds with `Forbidden` and an IP message, treat that as an environment issue, not an application regression.
+- SureM carrier verification: run one forced-recipient MMS send only after confirming the protected runtime is configured with the required SureM credentials.
 - Provider diagnostics endpoint: `GET /messaging/provider-status`
 
 These are integration checks, not manual testing.

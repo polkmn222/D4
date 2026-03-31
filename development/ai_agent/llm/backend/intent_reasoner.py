@@ -316,6 +316,20 @@ STRICT JSON SHAPE:
         intent = cls._normalize_intent(raw_intent)
         action = cls._normalize_action(raw_action) or cls.INTENT_TO_ACTION.get(intent)
         expected_action = cls.INTENT_TO_ACTION.get(intent)
+        if intent == "MODIFY_UI" and action == "recommend":
+            return {
+                "intent": "MODIFY_UI",
+                "action": "modify_ui",
+                "conflict": False,
+                "message": "",
+            }
+        if intent == "RECOMMEND" and action == "modify_ui":
+            return {
+                "intent": "RECOMMEND",
+                "action": "recommend",
+                "conflict": False,
+                "message": "",
+            }
         if raw_action and expected_action and action and action != expected_action:
             return {
                 "intent": "CHAT",

@@ -17,9 +17,9 @@ This handoff file records temporary operating context and should not replace the
 - Messaging-specific backend/services/templates now live under `.gemini/development/web/message/`.
 - Messaging now uses a provider-based architecture with `mock` as the safe default.
 - Slack webhook delivery can be enabled for free dev/test verification.
-- Solapi can be enabled for real carrier SMS/LMS/MMS delivery with HMAC-authenticated REST calls.
+- SureM can be enabled for real carrier SMS/LMS/MMS delivery through the current provider-based runtime.
 - Template image uploads default to local storage, and Cloudinary can be enabled for public MMS image hosting across Send Message and AI Agent flows.
-- In the current MMS flow, `Send Message` uploads land in D4-managed storage first and are uploaded to Solapi storage only when an MMS is actually sent.
+- In the current MMS flow, `Send Message` uploads land in D4-managed storage first and are uploaded to SureM only when an MMS is actually sent.
 
 ## Verified Locally
 - `PYTHONPATH=.gemini/development pytest --import-mode=importlib .gemini/development/test/unit`
@@ -41,7 +41,7 @@ This handoff file records temporary operating context and should not replace the
 - `SLACK_MESSAGE_WEBHOOK_URL` (only for Slack-based verification)
 - `APP_BASE_URL` (recommended only when local uploads need a public hostname or tunnel)
 - `CLOUDINARY_CLOUD_NAME` plus either signed credentials or an unsigned upload preset for public MMS image hosting
-- `SOLAPI_API_KEY`, `SOLAPI_API_SECRET`, and `SOLAPI_SENDER_NUMBER` when real carrier delivery is enabled
+- `SUREM_USER_CODE`, `SUREM_SECRET_KEY`, `SUREM_REQ_PHONE`, and `SUREM_FORCE_TO_NUMBER` when real carrier delivery is enabled
 
 ## Current Uncommitted Local Changes
 - `/.gemini/development/ai_agent/backend/recommendations.py`
@@ -56,4 +56,4 @@ This handoff file records temporary operating context and should not replace the
 ## Notes
 - Render auto-deploy was turned off to stop repeated failure emails.
 - Vercel auth protection was turned off earlier so public checks work.
-- Current recommendation is to keep draft/template uploads in D4-managed storage for better preview and provider-agnostic UX, then upload to Solapi only at final MMS send time.
+- Current recommendation is to keep draft/template uploads in D4-managed storage for better preview and provider-agnostic UX, then upload to SureM only at final MMS send time.

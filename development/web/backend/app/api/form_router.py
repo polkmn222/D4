@@ -14,6 +14,7 @@ from ..services.model_service import ModelService
 from web.message.backend.services.message_service import MessageService
 from web.message.backend.services.message_template_service import MessageTemplateService
 from ..core.templates import templates
+from ..core.enums import AssetStatus
 
 logger = logging.getLogger(__name__)
 router = APIRouter()
@@ -146,7 +147,7 @@ async def new_opportunity_modal_base(request: Request, id: str = None, contact: 
 @router.get("/opportunities/new")
 async def new_opportunity_modal(request: Request, id: str = None, contact: str = None, product: str = None, asset: str = None, brand: str = None, model: str = None, db: Session = Depends(get_db)):
     try:
-        fields = ["contact", "name", "amount", "stage", "status", "brand", "model", "product", "asset", "probability"]
+        fields = ["contact", "name", "amount", "stage", "brand", "model", "product", "asset", "probability"]
         initial_values = None
         if id:
             opp = OpportunityService.get_opportunity(db, id)
@@ -332,6 +333,13 @@ async def new_asset_modal_base(request: Request, id: str = None, brand: str = No
 async def new_asset_modal(request: Request, id: str = None, brand: str = None, model: str = None, db: Session = Depends(get_db)):
     try:
         fields = ["contact", "product", "brand", "model", "name", "vin", "status", "price"]
+        asset_status_options = [
+            AssetStatus.ACTIVE.value,
+            AssetStatus.AVAILABLE.value,
+            AssetStatus.SOLD.value,
+            AssetStatus.MAINTENANCE.value,
+            AssetStatus.INACTIVE.value,
+        ]
         initial_values = None
         if id:
             asset = AssetService.get_asset(db, id)
@@ -360,7 +368,7 @@ async def new_asset_modal(request: Request, id: str = None, brand: str = None, m
             }
         return templates.TemplateResponse(request, "templates/sf_form_modal.html", {
             "request": request, "object_type": "Asset", "plural_type": "assets",
-            "fields": fields, "initial_values": initial_values
+            "fields": fields, "initial_values": initial_values, "asset_status_options": asset_status_options
         })
     except Exception as e:
         logger.error(f"Error in asset modal: {e}")
@@ -389,7 +397,13 @@ async def new_message_modal(request: Request, id: str = None, contact: str = Non
                 initial_values = {
                     "id": msg.id, "contact": msg.contact, "contact_name": f"{contact.first_name} {contact.last_name}" if contact else "",
                     "template": msg.template, "template_name": template.name if template else "",
-                    "direction": msg.direction, "content": msg.content, "status": msg.status
+                    "direction": msg.direction,
+                    "content": msg.content,
+                    "status": msg.status,
+                    "record_type": getattr(msg, "record_type", None) or "SMS",
+                    "subject": getattr(msg, "subject", None) or "",
+                    "attachment_id": getattr(msg, "attachment_id", None) or "",
+                    "image": getattr(msg, "image_url", None) or "",
                 }
         elif any([contact, template]):
             contact_obj = ContactService.get_contact(db, contact) if contact else None

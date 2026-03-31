@@ -6,6 +6,7 @@ import pytest
 from starlette.datastructures import Headers, UploadFile
 
 from web.message.backend.routers.message_template_router import (
+    _resolve_template_image_url,
     clear_template_image,
     template_upload,
     update_template_route,
@@ -86,3 +87,50 @@ async def test_clear_template_image_resets_fields():
     assert template.image_url == ""
     assert template.file_path == ""
     assert template.attachment_id is None
+
+
+@pytest.mark.asyncio
+async def test_update_template_route_stages_image_removal_from_modal_flag():
+    db = MagicMock()
+    template = SimpleNamespace(id="TPL_4", attachment_id="ATT_OLD", image_url="/static/old.jpg", file_path="/static/old.jpg")
+
+    with patch("web.message.backend.routers.message_template_router.MessageTemplateService.get_template", return_value=template), \
+         patch("web.message.backend.routers.message_template_router.MessageTemplateService.update_template"), \
+         patch("web.message.backend.routers.message_template_router._remove_template_image") as mock_remove:
+        response = await update_template_route(
+            request=MagicMock(),
+            template_id="TPL_4",
+            name="Template",
+            subject="Subject",
+            content="Body",
+            description=None,
+            record_type="MMS",
+            remove_image="true",
+            image=None,
+            db=db,
+        )
+
+    assert response.status_code == 303
+    assert response.headers["location"] == "/message_templates/TPL_4?success=Record+updated+successfully"
+    mock_remove.assert_called_once_with(db, template)
+    assert template.image_url == ""
+    assert template.file_path == ""
+    assert template.attachment_id is None
+
+
+def test_resolve_template_image_url_normalizes_legacy_template_upload_path():
+    template = SimpleNamespace(attachment_id=None, image_url="/static/uploads/templates/legacy.jpg", file_path="/static/uploads/templates/legacy.jpg")
+
+    assert _resolve_template_image_url(template, MagicMock()) == "/static/uploads/message_templates/legacy.jpg"
+
+
+def test_resolve_template_image_url_falls_back_to_attachment_file_path():
+    template = SimpleNamespace(attachment_id="ATT_FALLBACK", image_url="", file_path="")
+    db = MagicMock()
+    attachment = SimpleNamespace(file_path="/static/uploads/message_templates/fallback.jpg")
+
+    with patch("web.message.backend.routers.message_template_router.AttachmentService.get_attachment", return_value=attachment) as get_attachment:
+        resolved = _resolve_template_image_url(template, db)
+
+    assert resolved == "/static/uploads/message_templates/fallback.jpg"
+    get_attachment.assert_called_once_with(db, "ATT_FALLBACK")

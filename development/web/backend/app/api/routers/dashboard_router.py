@@ -32,7 +32,7 @@ async def dashboard_view(request: Request, db: Session = Depends(get_db)):
 async def get_ai_recommendations(request: Request, db: Session = Depends(get_db)):
     try:
         from ai_agent.llm.backend.recommendations import AIRecommendationService
-        recommended_opps = AIRecommendationService.get_sendable_recommendations(db, limit=AIRecommendationService.SENDABLE_RECOMMENDATION_LIMIT)
+        recommended_opps = AIRecommendationService.get_sendable_recommendations(db)
         current_mode = AIRecommendationService.user_facing_mode_label(AIRecommendationService.get_recommendation_mode())
         
         # Pre-fetch model names for the fragment

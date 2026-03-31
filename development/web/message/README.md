@@ -31,8 +31,8 @@
 ## Attachment Notes
 
 - Template and upload guidance allows JPG images up to 500KB.
-- Real Solapi MMS sends are stricter and require JPG images at or under 200KB.
-- Keep upload-path rules and provider send-path rules distinct in docs and tests.
+- SureM MMS sends require JPG images and currently enforce the same 500KB limit as upload validation.
+- Keep upload-path rules and provider send-path rules aligned in docs and tests.
 
 ## Common Gotchas
 

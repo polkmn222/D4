@@ -85,7 +85,11 @@ async function requestLeadListView(url, method, payload) {
 
 function confirmLeadListAction(title, message, onConfirm) {
     if (typeof showConfirmModal === "function") {
-        showConfirmModal(title, message, onConfirm);
+        const normalizedTitle = String(title || "").toLowerCase();
+        const confirmLabel = normalizedTitle.includes("delete")
+            ? "Delete"
+            : (normalizedTitle.includes("create") || normalizedTitle.includes("clone") ? "Save" : "Confirm");
+        showConfirmModal(title, message, onConfirm, confirmLabel);
         return;
     }
 
@@ -125,6 +129,9 @@ function initializeObjectListView(config) {
     const saveViewButton = document.getElementById(config.saveViewButtonId);
     const deleteViewButton = document.getElementById(config.deleteViewButtonId);
     const setupMeta = document.getElementById(config.setupMetaId);
+    const saveNewButton = setupDropdown
+        ? Array.from(setupDropdown.querySelectorAll("button")).find((button) => (button.textContent || "").trim() === "Save as New")
+        : null;
     const listSkeleton = document.getElementById("gk-list-skeleton");
     const tableWrapper = table ? table.closest(".sf-table-wrapper") : null;
     const rows = tbody ? Array.from(tbody.querySelectorAll("tr")) : [];
@@ -149,6 +156,10 @@ function initializeObjectListView(config) {
         header.dataset.columnKey,
         header.dataset.columnLabel || header.textContent.trim(),
     ]));
+
+    function closeSetupDropdown() {
+        setupDropdown?.classList.remove("active");
+    }
     const fieldOptions = Array.isArray(config.fieldOptions) && config.fieldOptions.length
         ? config.fieldOptions
         : allColumnKeys.map((columnKey) => ({ value: columnKey, label: columnLabels.get(columnKey) || columnKey }));
@@ -296,7 +307,7 @@ function initializeObjectListView(config) {
             return;
         }
 
-        const normalizedConditions = conditions.length ? conditions : [defaultFilterCondition];
+        const normalizedConditions = conditions.length ? conditions : [];
         const filterFieldOptionsHtml = fieldOptions.map((option) => `<option value="${escapeLeadListViewHtml(option.value)}">${escapeLeadListViewHtml(option.label)}</option>`).join("");
         setupFilterList.innerHTML = normalizedConditions.map((condition) => `
             <div class="sf-list-view-filter-row">
@@ -367,11 +378,16 @@ function initializeObjectListView(config) {
 
         renderFilterConditions(activeView.filters.conditions);
 
+        if (saveNewButton) {
+            saveNewButton.style.display = "none";
+        }
         if (saveViewButton) {
-            saveViewButton.disabled = !activeView.editable;
+            saveViewButton.disabled = false;
+            saveViewButton.textContent = activeView.editable ? "Save Changes" : "Save as New";
         }
         if (deleteViewButton) {
             deleteViewButton.disabled = !activeView.editable;
+            deleteViewButton.style.display = activeView.editable ? "" : "none";
         }
         if (setupMeta) {
             setupMeta.textContent = activeView.editable
@@ -668,7 +684,7 @@ function initializeObjectListView(config) {
 
     window[addFilterFunctionName] = function addObjectListViewFilterCondition() {
         const activeFilters = getFilterConditionsFromForm();
-        activeFilters.push(defaultFilterCondition);
+        activeFilters.push({ ...defaultFilterCondition });
         renderFilterConditions(activeFilters);
     };
 
@@ -708,6 +724,7 @@ function initializeObjectListView(config) {
                 replaceView(data.view);
                 state.activeViewId = data.view.id;
                 renderView();
+                closeSetupDropdown();
                 if (typeof showToast === "function") {
                     showToast(`Saved ${label}.`);
                 }
@@ -722,9 +739,7 @@ function initializeObjectListView(config) {
     window[saveViewFunctionName] = function saveObjectListViewLayout() {
         const activeView = getActiveView();
         if (!activeView.editable) {
-            if (typeof showToast === "function") {
-                showToast("Clone this built-in view to create your own version.", true);
-            }
+            window[saveNewViewFunctionName]();
             return;
         }
 
@@ -751,6 +766,7 @@ function initializeObjectListView(config) {
                 replaceView(data.view);
                 state.activeViewId = data.view.id;
                 renderView();
+                closeSetupDropdown();
                 if (typeof showToast === "function") {
                     showToast(`Cloned ${activeView.label}.`);
                 }
@@ -777,6 +793,7 @@ function initializeObjectListView(config) {
                 state.savedViews = state.savedViews.filter((view) => view.id !== activeView.id);
                 state.activeViewId = "all";
                 renderView();
+                closeSetupDropdown();
                 if (typeof showToast === "function") {
                     showToast(`Deleted ${activeView.label}.`);
                 }
@@ -821,7 +838,6 @@ function initializeLeadListView(config) {
             { value: "status", label: "Status" },
             { value: "created", label: "Created" },
         ],
-        defaultFilterCondition: { field: "status", operator: "equals", value: "New" },
         ...config,
     });
 }
@@ -849,7 +865,6 @@ function initializeContactListView(config) {
             { value: "tier", label: "Tier" },
             { value: "created", label: "Created" },
         ],
-        defaultFilterCondition: { field: "tier", operator: "contains", value: "" },
         ...config,
     });
 }
@@ -877,7 +892,6 @@ function initializeOpportunityListView(config) {
             { value: "model", label: "Model" },
             { value: "created", label: "Created" },
         ],
-        defaultFilterCondition: { field: "stage", operator: "contains", value: "Prospecting" },
         ...config,
     });
 }
@@ -905,7 +919,6 @@ function initializeProductListView(config) {
             { value: "base_price", label: "Base Price" },
             { value: "category", label: "Category" },
         ],
-        defaultFilterCondition: { field: "category", operator: "contains", value: "" },
         ...config,
     });
 }
@@ -932,7 +945,6 @@ function initializeAssetListView(config) {
             { value: "price", label: "Price" },
             { value: "status", label: "Status" },
         ],
-        defaultFilterCondition: { field: "status", operator: "contains", value: "Active" },
         ...config,
     });
 }
@@ -958,7 +970,6 @@ function initializeBrandListView(config) {
             { value: "type", label: "Type" },
             { value: "description", label: "Description" },
         ],
-        defaultFilterCondition: { field: "type", operator: "contains", value: "Brand" },
         ...config,
     });
 }
@@ -984,7 +995,6 @@ function initializeModelListView(config) {
             { value: "brand", label: "Brand" },
             { value: "description", label: "Description" },
         ],
-        defaultFilterCondition: { field: "brand", operator: "contains", value: "" },
         ...config,
     });
 }
@@ -1011,7 +1021,6 @@ function initializeMessageListView(config) {
             { value: "status", label: "Status" },
             { value: "created_at", label: "Created At" },
         ],
-        defaultFilterCondition: { field: "status", operator: "contains", value: "Sent" },
         ...config,
     });
 }
@@ -1038,7 +1047,6 @@ function initializeMessageTemplateListView(config) {
             { value: "content", label: "Content" },
             { value: "type", label: "Type" },
         ],
-        defaultFilterCondition: { field: "type", operator: "contains", value: "SMS" },
         ...config,
     });
 }

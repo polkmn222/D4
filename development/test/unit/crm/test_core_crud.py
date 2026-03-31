@@ -1,5 +1,7 @@
 import pytest
 import uuid
+from types import SimpleNamespace
+from unittest.mock import patch
 from db.database import Base, engine, SessionLocal
 from db.models import Contact, Lead, Opportunity, Asset, Product, VehicleSpecification, Model, MessageSend, MessageTemplate
 from web.backend.app.services.contact_service import ContactService
@@ -11,6 +13,9 @@ from web.backend.app.services.vehicle_spec_service import VehicleSpecService
 from web.backend.app.services.model_service import ModelService
 from web.message.backend.services.message_service import MessageService
 from web.message.backend.services.message_template_service import MessageTemplateService
+
+pytestmark = pytest.mark.integration
+
 
 @pytest.fixture(scope="module")
 def db():
@@ -68,6 +73,33 @@ def test_opportunity_crud(db):
     success = OpportunityService.delete_opportunity(db, opp.id)
     assert success is True
     assert OpportunityService.get_opportunity(db, opp.id) is None
+
+
+def test_create_opportunity_strips_force_null_fields_before_model_ctor():
+    fake_db = SimpleNamespace(
+        add=lambda obj: None,
+        commit=lambda: None,
+        refresh=lambda obj: None,
+    )
+
+    captured = {}
+
+    def fake_opportunity_ctor(**kwargs):
+        captured.update(kwargs)
+        return SimpleNamespace(id=kwargs.get("id"), name=kwargs.get("name"))
+
+    with patch(
+        "web.backend.app.services.opportunity_service.OpportunityService._normalize_lookup_dependencies",
+        return_value={"name": "Opp Force Null", "_force_null_fields": ["brand"]},
+    ), patch(
+        "web.backend.app.services.opportunity_service.Opportunity",
+        side_effect=fake_opportunity_ctor,
+    ):
+        opp = OpportunityService.create_opportunity(fake_db, name="Opp Force Null")
+
+    assert opp.id is not None
+    assert captured["name"] == "Opp Force Null"
+    assert "_force_null_fields" not in captured
 
 def test_asset_crud(db):
     suffix = uuid.uuid4().hex[:6]

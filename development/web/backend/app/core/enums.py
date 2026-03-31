@@ -42,6 +42,13 @@ class OpportunityStatus(str, Enum):
     CLOSED_WON = "Closed Won"
     CLOSED_LOST = "Closed Lost"
 
+class AssetStatus(str, Enum):
+    ACTIVE = "Active"
+    AVAILABLE = "Available"
+    SOLD = "Sold"
+    MAINTENANCE = "Maintenance"
+    INACTIVE = "Inactive"
+
 class MessageDirection(str, Enum):
     INBOUND = "Inbound"
     OUTBOUND = "Outbound"

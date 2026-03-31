@@ -22,10 +22,19 @@ os.environ["DATABASE_URL"] = url.render_as_string(hide_password=False)
 
 ENGINE = create_engine(os.environ["DATABASE_URL"], pool_pre_ping=True, pool_recycle=300)
 
+from db.database import Base, initialize_database_runtime
+
 
 @pytest.fixture(scope="session")
 def postgres_engine():
     return ENGINE
+
+
+@pytest.fixture(scope="session", autouse=True)
+def initialize_postgres_schema(postgres_engine):
+    Base.metadata.create_all(bind=postgres_engine)
+    initialize_database_runtime(postgres_engine)
+    return postgres_engine
 
 
 @pytest.fixture

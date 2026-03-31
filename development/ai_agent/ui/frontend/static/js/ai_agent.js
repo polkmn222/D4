@@ -7,6 +7,8 @@ let aiAgentSelectionMeta = {};
 let aiAgentActiveSelectionObject = null;
 let aiAgentActiveSelectionContainer = null;
 let localAgentResultTables = {};
+let aiAgentSendComposerCounter = 0;
+const aiAgentSendComposerState = {};
 let aiAgentLanguagePreference = localStorage.getItem('aiAgentLanguagePreference') || 'eng';
 let aiAgentDebugEnabled = localStorage.getItem('aiAgentDebugEnabled');
 aiAgentDebugEnabled = aiAgentDebugEnabled === '1';
@@ -16,6 +18,10 @@ let aiAgentRecorderChunks = [];
 let aiAgentRecorderStream = null;
 let aiAgentVoiceRecording = false;
 let aiAgentVoiceTranscribing = false;
+const AI_AGENT_FETCH_TIMEOUT_MS = 15000;
+const AI_AGENT_WORKSPACE_TIMEOUT_MS = 12000;
+const AI_AGENT_QUICK_GUIDE_STORAGE_KEY = 'aiAgentQuickGuideActivity';
+const AI_AGENT_QUICK_GUIDE_MAX_ITEMS = 8;
 const AI_AGENT_DEFAULT_BODY_HTML = `
     <div style="text-align: center; color: #706e6b; font-size: 0.75rem; margin-bottom: 20px; font-weight: 500;">CONVERSATION STARTED</div>
     <div class="msg-agent">
@@ -40,7 +46,7 @@ const AI_AGENT_DEFAULT_BODY_HTML = `
         </div>
         <div class="selection-bar-actions">
             <button class="selection-action-btn" onclick="triggerSelectionOpen()">Open</button>
-            <button class="selection-action-btn" onclick="triggerSelectionEdit()">Edit</button>
+            <button class="selection-action-btn selection-action-edit" onclick="triggerSelectionEdit()">Edit</button>
             <button class="selection-action-btn selection-action-danger" onclick="triggerSelectionDelete()">Delete</button>
             <button class="selection-action-btn selection-action-primary" onclick="triggerSelectionMessaging()">Send Message</button>
         </div>
@@ -52,7 +58,7 @@ const AI_AGENT_DEFAULT_BODY_HTML = `
                 <strong id="ai-agent-workspace-title">Record View</strong>
             </div>
             <div style="display: flex; gap: 8px; align-items: center;">
-                <button class="control-btn" onclick="triggerWorkspaceEdit()" id="ai-agent-workspace-edit-btn" style="display: none;">Edit</button>
+                <button class="control-btn control-btn-edit" onclick="triggerWorkspaceEdit()" id="ai-agent-workspace-edit-btn" style="display: none;">Edit</button>
                 <button class="control-btn" onclick="triggerWorkspaceDelete()" id="ai-agent-workspace-delete-btn" style="display: none; color: var(--error);">Delete</button>
                 <button class="agent-workspace-close" onclick="closeAgentWorkspace()">&times;</button>
             </div>
@@ -65,7 +71,7 @@ const AI_AGENT_DEFAULT_BODY_HTML = `
 const AGENT_TABLE_SCHEMAS = {
     lead: ['display_name', 'phone', 'status', 'model', 'created_at'],
     contact: ['display_name', 'phone', 'email', 'tier', 'created_at'],
-    opportunity: ['name', 'contact_display_name', 'contact_phone', 'stage', 'amount', 'model'],
+    opportunity: ['name', 'amount', 'stage', 'temperature', 'created_at', 'contact_display_name', 'contact_phone', 'model'],
     product: ['name', 'brand', 'model', 'category', 'base_price'],
     asset: ['name', 'vin', 'status', 'brand', 'model'],
     brand: ['name', 'record_type', 'description'],
@@ -107,6 +113,135 @@ const AGENT_TABLE_LABELS = {
     has_image: 'Image',
 };
 
+const AGENT_LOOKUP_VISUALS = {
+    Lead: { color: '#49a5e1', text: 'LQ' },
+    Contact: { color: '#a094ed', text: 'C' },
+    Opportunity: { color: '#fcb95b', text: 'O' },
+    Asset: { color: '#3ba755', text: 'AS' },
+    Product: { color: '#b781d3', text: 'P' },
+    Brand: { color: '#54698d', text: 'B' },
+    VehicleSpecification: { color: '#54698d', text: 'B' },
+    Model: { color: '#e094ed', text: 'M' },
+    MessageSend: { color: '#00a1e0', text: 'MS' },
+    Message: { color: '#00a1e0', text: 'MS' },
+    MessageTemplate: { color: '#2e8b57', text: 'MT' },
+    Template: { color: '#2e8b57', text: 'MT' },
+};
+
+function getAgentLookupVisual(lookupObject) {
+    return AGENT_LOOKUP_VISUALS[lookupObject] || { color: '#54698d', text: 'R' };
+}
+
+function fetchAiAgentWithTimeout(resource, options = {}, timeoutMs = AI_AGENT_FETCH_TIMEOUT_MS) {
+    if (typeof AbortController !== 'function') {
+        return fetch(resource, options);
+    }
+    const controller = new AbortController();
+    const timer = setTimeout(() => controller.abort(), timeoutMs);
+    return fetch(resource, { ...options, signal: controller.signal })
+        .finally(() => {
+            clearTimeout(timer);
+        });
+}
+
+function loadQuickGuideActivity() {
+    try {
+        const raw = localStorage.getItem(AI_AGENT_QUICK_GUIDE_STORAGE_KEY);
+        const parsed = raw ? JSON.parse(raw) : [];
+        return Array.isArray(parsed) ? parsed : [];
+    } catch (_error) {
+        return [];
+    }
+}
+
+function saveQuickGuideActivity(items) {
+    localStorage.setItem(AI_AGENT_QUICK_GUIDE_STORAGE_KEY, JSON.stringify(Array.isArray(items) ? items : []));
+}
+
+function buildQuickGuideActivityEntry(query, label) {
+    const safeQuery = String(query || '').trim();
+    const safeLabel = String(label || safeQuery).trim();
+    return {
+        id: `quick-${safeQuery.toLowerCase()}`,
+        query: safeQuery,
+        label: safeLabel,
+        pinned: false,
+        last_used_at: Date.now(),
+    };
+}
+
+function recordQuickGuideActivity(query, label = null) {
+    const safeQuery = String(query || '').trim();
+    if (!safeQuery) return;
+    const nextEntry = buildQuickGuideActivityEntry(safeQuery, label || safeQuery);
+    const existingItems = loadQuickGuideActivity();
+    const previousEntry = existingItems.find(item => item && item.query === safeQuery);
+    const items = existingItems.filter(item => item && item.query !== safeQuery);
+    items.unshift({
+        ...nextEntry,
+        pinned: previousEntry?.pinned || false,
+    });
+    const pinnedItems = items.filter(item => item.pinned);
+    const recentItems = items.filter(item => !item.pinned).slice(0, AI_AGENT_QUICK_GUIDE_MAX_ITEMS);
+    saveQuickGuideActivity([...pinnedItems, ...recentItems]);
+    renderQuickGuideActivityList();
+}
+
+function toggleQuickGuidePin(id) {
+    const items = loadQuickGuideActivity();
+    const nextItems = items.map(item => item.id === id ? { ...item, pinned: !item.pinned } : item);
+    nextItems.sort((left, right) => {
+        if (Boolean(left.pinned) !== Boolean(right.pinned)) return left.pinned ? -1 : 1;
+        return Number(right.last_used_at || 0) - Number(left.last_used_at || 0);
+    });
+    saveQuickGuideActivity(nextItems);
+    renderQuickGuideActivityList();
+}
+
+function runQuickGuideActivity(id) {
+    const item = loadQuickGuideActivity().find(entry => entry.id === id);
+    if (!item) return;
+    recordQuickGuideActivity(item.query, item.label);
+    sendQuickMessage(item.query);
+}
+
+function renderQuickGuideActivityList() {
+    const container = document.getElementById('ai-agent-activity-list');
+    const empty = document.getElementById('ai-agent-activity-empty');
+    if (!container || !empty) return;
+    const copy = getAiAgentUiCopy();
+
+    const items = loadQuickGuideActivity()
+        .sort((left, right) => {
+            if (Boolean(left.pinned) !== Boolean(right.pinned)) return left.pinned ? -1 : 1;
+            return Number(right.last_used_at || 0) - Number(left.last_used_at || 0);
+        })
+        .slice(0, AI_AGENT_QUICK_GUIDE_MAX_ITEMS);
+
+    if (!items.length) {
+        container.innerHTML = '';
+        empty.style.display = 'block';
+        return;
+    }
+
+    empty.style.display = 'none';
+    container.innerHTML = items.map((item) => `
+        <div class="quick-guide-history-item${item.pinned ? ' is-pinned' : ''}">
+            <button type="button" class="quick-guide-history-run" onclick="runQuickGuideActivity('${escapeAgentQuery(item.id)}')">
+                <strong>${escapeAgentHtml(item.label || item.query)}</strong>
+                <small>${escapeAgentHtml(item.query)}</small>
+            </button>
+            <button
+                type="button"
+                class="quick-guide-history-pin${item.pinned ? ' is-active' : ''}"
+                onclick="toggleQuickGuidePin('${escapeAgentQuery(item.id)}')"
+                aria-label="${item.pinned ? copy.pinned : copy.pin}"
+                title="${item.pinned ? copy.pinned : copy.pin}"
+            >${item.pinned ? copy.pinned : copy.pin}</button>
+        </div>
+    `).join('');
+}
+
 function getAgentFieldValue(row, key) {
     if (key === 'display_name') {
         return row.display_name || [row.first_name, row.last_name].filter(Boolean).join(' ').trim() || row.name || '-';
@@ -135,6 +270,17 @@ function formatAgentFieldValue(key, value) {
         return value;
     }
     return value;
+}
+
+function agentTableRowMatches(row, objectType, term) {
+    const normalizedTerm = String(term || '').trim().toLowerCase();
+    if (!normalizedTerm) return true;
+    const schemaKeys = AGENT_TABLE_SCHEMAS[objectType] || Object.keys(row || {});
+    return schemaKeys.some((key) => {
+        const rawValue = getAgentFieldValue(row || {}, key);
+        const formatted = formatAgentFieldValue(key, rawValue);
+        return String(formatted ?? '').toLowerCase().includes(normalizedTerm);
+    });
 }
 
 function getAiAgentUiCopy() {
@@ -166,6 +312,11 @@ function getAiAgentUiCopy() {
             topDealsCopy: '핵심 기회 보기',
             myLeads: '내 리드',
             myLeadsCopy: '개인 리드 빠르게 보기',
+            historyTitle: '최근 및 고정',
+            historyCopy: '자주 쓰는 작업을 고정하고 최근 명령을 빠르게 다시 실행하세요.',
+            historyEmpty: '아직 최근 명령이 없습니다. 빠른 버튼이나 채팅 명령을 사용하면 여기에 표시됩니다.',
+            pin: '고정',
+            pinned: '고정됨',
             examples: '예시',
             examplesCopy: '`리드 생성해줘` · `전체 연락처 보여줘` · `방금 만든 리드 열어줘` · `그 연락처 삭제해줘`',
             welcome: "안녕하세요! 저는 AI Agent입니다. 자연어로 <strong>리드</strong>, <strong>연락처</strong>, <strong>기회</strong>, <strong>상품</strong> 등을 도와드릴게요.",
@@ -210,6 +361,11 @@ function getAiAgentUiCopy() {
         topDealsCopy: 'Ask for top-value opportunities',
         myLeads: 'My Leads',
         myLeadsCopy: 'Get a quick personal list',
+        historyTitle: 'Recent & Pinned',
+        historyCopy: 'Pin frequent actions and keep your latest commands close by.',
+        historyEmpty: 'No recent commands yet. Use a quick action or type a command to build your list.',
+        pin: 'Pin',
+        pinned: 'Pinned',
         examples: 'Examples',
         examplesCopy: '`create lead` · `show all contacts` · `show the lead I just created` · `delete that contact`',
         welcome: "Hello! I'm your AI Agent. I can help you manage <strong>Leads</strong>, <strong>Contacts</strong>, <strong>Opportunities</strong>, <strong>Products</strong>, and more with natural English commands.",
@@ -267,6 +423,9 @@ function applyAiAgentLanguageUi() {
     setText('[data-ai-guide-top-deals-copy]', copy.topDealsCopy);
     setText('[data-ai-guide-my-leads]', copy.myLeads);
     setText('[data-ai-guide-my-leads-copy]', copy.myLeadsCopy);
+    setText('[data-ai-guide-section-history]', copy.historyTitle);
+    setText('[data-ai-guide-history-copy]', copy.historyCopy);
+    setText('[data-ai-guide-history-empty]', copy.historyEmpty);
     setText('[data-ai-guide-examples]', copy.examples);
     setText('[data-ai-guide-examples-copy]', copy.examplesCopy);
     setText('[data-ai-selection-title]', copy.selectionTitle);
@@ -287,6 +446,7 @@ function applyAiAgentLanguageUi() {
     document.getElementById('ai-agent-lang-kor')?.classList.toggle('is-active', aiAgentLanguagePreference === 'kor');
     syncAiAgentDebugUi();
     updateAiAgentComposerState();
+    renderQuickGuideActivityList();
 }
 
 function formatAiAgentDebugValue(value) {
@@ -451,6 +611,9 @@ function extractAgentWorkspaceMarkup(doc, url) {
                 if (node) wrapper.appendChild(node.cloneNode(true));
             });
         }
+        Array.from(doc.body.children || [])
+            .filter(node => node.tagName === 'SCRIPT')
+            .forEach(script => wrapper.appendChild(script.cloneNode(true)));
         return wrapper.innerHTML || doc.body.innerHTML;
     }
 
@@ -515,13 +678,52 @@ function scrollAgentWorkspaceIntoView(panel, body) {
     const bodyTop = body.offsetTop;
     const nextScrollTop = Math.max(panelTop - bodyTop - 8, 0);
     body.scrollTo({ top: nextScrollTop, behavior: 'smooth' });
+    updateAiAgentJumpButtonVisibility();
 }
 
 function scrollAgentChatMessageIntoView(target) {
     if (!target) return;
-    setTimeout(() => {
+    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    requestAnimationFrame(() => {
+        updateAiAgentJumpButtonVisibility();
+    });
+}
+
+function scrollAiAgentBodyToBottom() {
+    const body = document.getElementById('ai-agent-body');
+    if (!body || typeof body.scrollTo !== 'function') return;
+    requestAnimationFrame(() => {
+        body.scrollTo({ top: Number(body.scrollHeight || 0), behavior: 'smooth' });
+        updateAiAgentJumpButtonVisibility();
+    });
+}
+
+function getLatestAgentMessageNode() {
+    const body = document.getElementById('ai-agent-body');
+    if (!body || typeof body.querySelectorAll !== 'function') return null;
+    const nodes = body.querySelectorAll('.msg-agent');
+    return nodes && nodes.length ? nodes[nodes.length - 1] : null;
+}
+
+function updateAiAgentJumpButtonVisibility() {
+    const body = document.getElementById('ai-agent-body');
+    const button = document.getElementById('ai-agent-jump-btn');
+    if (!body || !button) return;
+    const scrollHeight = Number(body.scrollHeight || 0);
+    const scrollTop = Number(body.scrollTop || 0);
+    const clientHeight = Number(body.clientHeight || 0);
+    const distanceFromBottom = Math.max(scrollHeight - scrollTop - clientHeight, 0);
+    button.classList.toggle('is-visible', distanceFromBottom > 80);
+}
+
+function jumpToLatestAgentMessage() {
+    const target = getLatestAgentMessageNode();
+    if (target && typeof target.scrollIntoView === 'function') {
         target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }, 60);
+    } else {
+        scrollAiAgentBodyToBottom();
+    }
+    updateAiAgentJumpButtonVisibility();
 }
 
 function renderAgentWorkspaceFrame(content, url, title) {
@@ -554,6 +756,9 @@ function openAgentWorkspace(url, title, options = {}) {
     });
 
     placeAgentWorkspaceProminently(panel, body);
+    panel.dataset.recordTitle = title || 'Record View';
+    panel.dataset.recordObjectType = getAiAgentObjectTypeFromPath(url) || '';
+    panel.dataset.recordId = getAiAgentRecordIdFromPath(url) || '';
 
     heading.textContent = title || 'Record View';
     panel.classList.remove('agent-hidden');
@@ -575,7 +780,15 @@ function openAgentWorkspace(url, title, options = {}) {
         renderAgentWorkspaceFrame(content, url, title || 'Form');
         const frame = content.querySelector('.agent-workspace-frame');
         if (frame) {
+            const frameTimeout = setTimeout(() => {
+                loading.classList.add('agent-hidden');
+                recordAiAgentDebug('workspace-frame-timeout', {
+                    url,
+                    title: title || 'Form',
+                });
+            }, AI_AGENT_WORKSPACE_TIMEOUT_MS);
             frame.addEventListener('load', () => {
+                clearTimeout(frameTimeout);
                 loading.classList.add('agent-hidden');
                 recordAiAgentDebug('workspace-frame-load', {
                     url,
@@ -592,7 +805,7 @@ function openAgentWorkspace(url, title, options = {}) {
         });
         return;
     }
-    fetch(url)
+    fetchAiAgentWithTimeout(url, {}, AI_AGENT_WORKSPACE_TIMEOUT_MS)
         .then(async response => {
             const html = await response.text();
             recordAiAgentDebug('workspace-fetch', {
@@ -717,8 +930,16 @@ function closeAgentImagePreview() {
 }
 
 function completeAgentSendMessageHandoff(redirectUrl, messageText, templateId = null, selection = null) {
-    if (selection) {
+    const hasSelection = !!(selection && Array.isArray(selection.ids) && selection.ids.length);
+    if (hasSelection) {
         sessionStorage.setItem('aiAgentMessageSelection', JSON.stringify(selection));
+        sessionStorage.removeItem('aiAgentMessageGuidance');
+    } else {
+        sessionStorage.removeItem('aiAgentMessageSelection');
+        sessionStorage.setItem('aiAgentMessageGuidance', JSON.stringify({
+            source: 'ai_agent',
+            steps: ['Choose recipients', 'Select a template or type your content', 'Review the preview and send'],
+        }));
     }
     if (templateId) {
         sessionStorage.setItem('aiAgentMessageTemplate', templateId);
@@ -730,20 +951,417 @@ function completeAgentSendMessageHandoff(redirectUrl, messageText, templateId = 
     if (messageText) {
         appendedMessage = appendChatMessage('agent', messageText);
     }
-    if (appendedMessage) {
-        scrollAgentChatMessageIntoView(appendedMessage);
-    }
     if (redirectUrl) {
         requestAnimationFrame(() => openAgentWorkspace(redirectUrl, 'Send Message', { preserveChatFocus: true }));
     }
 }
 
+function getAiAgentSendComposerState(composerId) {
+    return aiAgentSendComposerState[composerId];
+}
+
+function setAiAgentSendComposerState(composerId, nextState) {
+    aiAgentSendComposerState[composerId] = nextState;
+}
+
+function buildAgentMessageRecipientRows(rows, state) {
+    const activeRows = Array.isArray(rows) ? rows : [];
+    if (!activeRows.length) {
+        return '<tr><td colspan="5" style="text-align:center;color:#7b8ba1;padding:18px;">No recipients found.</td></tr>';
+    }
+    return activeRows.map((item) => {
+        const rowKey = String(item.id || item.contact_id || '');
+        const checked = state.selectedContactIds.has(String(item.contact_id || ''));
+        return `
+            <tr>
+                <td><input type="checkbox" ${checked ? 'checked' : ''} onchange="toggleAgentSendRecipient('${state.composerId}', '${String(item.contact_id || '')}', this.checked)"></td>
+                <td><strong style="color:#16325c;">${escapeAgentHtml(item.contact?.name || '-')}</strong></td>
+                <td>${escapeAgentHtml(item.contact?.phone || '-')}</td>
+                <td>${escapeAgentHtml(item.stage || '-')}</td>
+                <td>${escapeAgentHtml(item.model?.name || '-')}</td>
+            </tr>
+        `;
+    }).join('');
+}
+
+function renderAgentSendPreview(state) {
+    const bubbleText = state.messageType === 'SMS'
+        ? (state.content || 'Your message preview will appear here.')
+        : `${state.subject ? `${state.subject}\n\n` : ''}${state.content || 'Your message preview will appear here.'}`;
+
+    return `
+        <div class="agent-send-preview-panel">
+            <div class="agent-send-panel-title">Mobile Preview</div>
+            <div class="agent-send-preview-phone">
+                <div class="agent-send-preview-notch"></div>
+                <div class="agent-send-preview-screen">
+                    <div class="agent-send-preview-header">
+                        <div class="agent-send-preview-avatar">GK</div>
+                        <div style="font-size:0.8rem;font-weight:700;color:#333;">GK CRM Support</div>
+                    </div>
+                    <div class="agent-send-preview-body">
+                        <div class="agent-send-preview-bubble">${escapeAgentHtml(bubbleText)}</div>
+                    </div>
+                    <div class="agent-send-preview-footer">
+                        <div class="agent-send-preview-input"></div>
+                        <div class="agent-send-preview-dot"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    `;
+}
+
+function renderAgentSendComposerContent(state) {
+    const selectedCount = state.selectedContactIds.size;
+    const sourceRows = state.useRecommendations ? state.recommendedRecipients : state.defaultRecipients;
+    const term = (state.searchTerm || '').toLowerCase().trim();
+    const visibleRows = term
+        ? sourceRows.filter((item) => JSON.stringify(item || {}).toLowerCase().includes(term))
+        : sourceRows;
+    const templateOptions = ['<option value="">-- Select Template --</option>']
+        .concat(state.templates.map((tpl) => `<option value="${escapeAgentHtml(tpl.id)}" ${state.templateId === tpl.id ? 'selected' : ''}>${escapeAgentHtml(tpl.name)}</option>`))
+        .join('');
+    const isSms = state.messageType === 'SMS';
+    const requiresMmsAsset = state.messageType === 'MMS' && !state.attachmentId;
+    const hasMessageBody = Boolean((state.content || '').trim()) || Boolean(state.templateId);
+    const canSaveRecipients = selectedCount > 0 && hasMessageBody;
+    const canSend = selectedCount > 0 && hasMessageBody && !requiresMmsAsset;
+    const guidanceText = requiresMmsAsset
+        ? 'MMS needs an image-backed template in AI Agent. Choose an MMS template before sending.'
+        : 'Choose recipients, save the current selection if needed, then select a template or write your message.';
+
+    return `
+        <div class="agent-send-composer-grid">
+            <div style="display:flex;flex-direction:column;gap:18px;">
+                <div class="agent-send-panel">
+                    <div class="agent-send-panel-title">Recipients</div>
+                    <div class="agent-send-toolbar">
+                        <button type="button" class="agent-send-toggle ${state.useRecommendations ? 'is-active' : ''}" onclick="toggleAgentSendRecommendationMode('${state.composerId}', this)">${state.recommendationsLoading ? 'Loading...' : 'AI Recommend'}</button>
+                        <input type="text" class="agent-send-search" value="${escapeAgentHtml(state.searchTerm || '')}" placeholder="Search recipients..." oninput="filterAgentSendRecipients('${state.composerId}', this.value)">
+                    </div>
+                    <div class="agent-send-recipient-wrap">
+                        <table class="agent-send-recipient-table">
+                            <thead>
+                                <tr>
+                                    <th style="width:36px;"><input type="checkbox" ${visibleRows.length && visibleRows.every((item) => state.selectedContactIds.has(String(item.contact_id || ''))) ? 'checked' : ''} onchange="toggleAllAgentSendRecipients('${state.composerId}', this.checked)"></th>
+                                    <th>Name</th>
+                                    <th>Phone</th>
+                                    <th>Stage</th>
+                                    <th>Model</th>
+                                </tr>
+                            </thead>
+                            <tbody>${buildAgentMessageRecipientRows(visibleRows, state)}</tbody>
+                        </table>
+                    </div>
+                    <div class="agent-send-status">${selectedCount} recipient(s) selected${state.useRecommendations ? ' · AI Recommend mode' : ''}</div>
+                </div>
+                <div class="agent-send-panel">
+                    <div class="agent-send-panel-title">Compose</div>
+                    <div class="agent-send-field">
+                        <label>Template</label>
+                        <select onchange="applyAgentSendTemplate('${state.composerId}', this.value)">${templateOptions}</select>
+                    </div>
+                    <div class="agent-send-radio-row">
+                        ${['SMS', 'LMS', 'MMS'].map((type) => `<label><input type="radio" name="agent-send-type-${state.composerId}" value="${type}" ${state.messageType === type ? 'checked' : ''} onchange="setAgentSendType('${state.composerId}', '${type}')"> ${type}</label>`).join('')}
+                    </div>
+                    <div class="agent-send-field agent-send-subject ${isSms ? 'is-hidden' : ''}">
+                        <label>Subject</label>
+                        <input type="text" value="${escapeAgentHtml(state.subject || '')}" oninput="setAgentSendSubject('${state.composerId}', this.value)">
+                    </div>
+                    <div class="agent-send-field">
+                        <label>Content</label>
+                        <textarea oninput="setAgentSendContent('${state.composerId}', this.value)">${escapeAgentHtml(state.content || '')}</textarea>
+                    </div>
+                    <div class="agent-send-actions">
+                        <div class="agent-send-guidance">${escapeAgentHtml(guidanceText)}</div>
+                        <div class="agent-send-action-stack">
+                            <button type="button" class="agent-send-secondary agent-send-secondary-accent" ${canSaveRecipients ? '' : 'disabled'} onclick="saveAgentSendRecipients('${state.composerId}')">Save Recipients</button>
+                            <button type="button" class="agent-send-secondary" onclick="clearAgentSendComposer('${state.composerId}')">Clear All</button>
+                            <button type="button" class="agent-send-submit" ${canSend ? '' : 'disabled'} onclick="submitAgentSendComposer('${state.composerId}', this)">Send Message</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            ${state.showPreview ? renderAgentSendPreview(state) : ''}
+        </div>
+    `;
+}
+
+function refreshAgentSendComposer(composerId) {
+    const state = getAiAgentSendComposerState(composerId);
+    if (!state) return;
+    const shell = document.querySelector(`.agent-send-composer-shell[data-composer-id="${composerId}"]`);
+    if (!shell) return;
+    shell.innerHTML = renderAgentSendComposerContent(state);
+}
+
+async function loadAgentSendComposer(composerId) {
+    const shell = document.querySelector(`.agent-send-composer-shell[data-composer-id="${composerId}"]`);
+    const state = getAiAgentSendComposerState(composerId);
+    if (!shell || !state) return;
+    shell.innerHTML = '<div class="agent-send-composer-loading">Loading Send Message composer...</div>';
+    try {
+        const response = await fetchAiAgentWithTimeout('/messaging/ai-agent-compose-data', {}, AI_AGENT_WORKSPACE_TIMEOUT_MS);
+        const payload = await response.json();
+        if (!response.ok || payload.status === 'error') {
+            throw new Error(payload.message || 'Failed to load Send Message data.');
+        }
+        state.defaultRecipients = Array.isArray(payload.default_recipients) ? payload.default_recipients : [];
+        state.recommendedRecipients = [];
+        state.templates = Array.isArray(payload.templates) ? payload.templates : [];
+        if (state.templateId && !state.templates.some((tpl) => tpl.id === state.templateId)) {
+            state.templateId = '';
+        }
+        if (state.selection && Array.isArray(state.selection.ids) && state.selection.ids.length) {
+            const selectedIds = state.selection.ids.map((item) => String(item));
+            const compareByOpportunity = state.selection.object_type === 'opportunity';
+            state.defaultRecipients.forEach((row) => {
+                const candidate = String(compareByOpportunity ? row.id : row.contact_id);
+                if (selectedIds.includes(candidate)) state.selectedContactIds.add(String(row.contact_id));
+            });
+            state.recommendedRecipients.forEach((row) => {
+                const candidate = String(compareByOpportunity ? row.id : row.contact_id);
+                if (selectedIds.includes(candidate)) state.selectedContactIds.add(String(row.contact_id));
+            });
+        }
+        if (state.templateId) {
+            const template = state.templates.find((tpl) => tpl.id === state.templateId);
+            if (template) {
+                state.content = template.content || state.content;
+                state.subject = template.subject || '';
+                state.messageType = template.record_type || state.messageType;
+                state.attachmentId = template.attachment_id || '';
+            }
+        }
+        refreshAgentSendComposer(composerId);
+    } catch (error) {
+        console.error(error);
+        shell.innerHTML = `<div class="agent-send-composer-error">${escapeAgentHtml(error.message || 'Unable to load Send Message composer.')}</div>`;
+    }
+}
+
+function appendAgentSendMessageComposer(text, payload = {}) {
+    const body = document.getElementById('ai-agent-body');
+    if (!body) return;
+    const composerId = `agent-send-${Date.now()}-${++aiAgentSendComposerCounter}`;
+    setAiAgentSendComposerState(composerId, {
+        composerId,
+        selection: payload.selection || null,
+        templateId: payload.templateId || '',
+        searchTerm: '',
+        useRecommendations: false,
+        recommendationsLoaded: false,
+        recommendationsLoading: false,
+        defaultRecipients: [],
+        recommendedRecipients: [],
+        templates: [],
+        selectedContactIds: new Set(),
+        messageType: 'SMS',
+        subject: '',
+        content: '',
+        attachmentId: '',
+        showPreview: isAiAgentMaximized,
+    });
+
+    const msgDiv = document.createElement('div');
+    msgDiv.className = 'msg-agent';
+    msgDiv.innerHTML = `
+        <div class="msg-agent-header">
+            <div class="msg-agent-icon">🤖</div>
+            <span style="font-size: 0.8rem; font-weight: 700; color: #3e3e3c;">AI AGENT</span>
+        </div>
+        <div class="msg-agent-content">
+            <div class="msg-agent-text">${escapeAgentHtml(text || 'I opened Send Message for you in chat.')}</div>
+            <div class="agent-send-composer-card">
+                <div class="agent-send-composer-shell" data-composer-id="${composerId}"></div>
+            </div>
+        </div>
+    `;
+    body.appendChild(msgDiv);
+    loadAgentSendComposer(composerId);
+    scrollAgentChatMessageIntoView(msgDiv);
+}
+
+async function toggleAgentSendRecommendationMode(composerId, btn) {
+    const state = getAiAgentSendComposerState(composerId);
+    if (!state) return;
+    if (!state.recommendationsLoaded && !state.useRecommendations) {
+        state.recommendationsLoading = true;
+        refreshAgentSendComposer(composerId);
+        try {
+            const response = await fetchAiAgentWithTimeout('/messaging/recommendations', {}, AI_AGENT_WORKSPACE_TIMEOUT_MS);
+            const payload = await response.json();
+            if (!response.ok) {
+                throw new Error('Failed to load AI recommended recipients.');
+            }
+            state.recommendedRecipients = Array.isArray(payload) ? payload : [];
+            state.recommendationsLoaded = true;
+        } catch (error) {
+            appendChatMessage('agent', error.message || 'Failed to load AI recommended recipients.');
+            state.recommendationsLoading = false;
+            refreshAgentSendComposer(composerId);
+            return;
+        }
+        state.recommendationsLoading = false;
+    }
+    state.useRecommendations = !state.useRecommendations;
+    refreshAgentSendComposer(composerId);
+}
+
+function filterAgentSendRecipients(composerId, term) {
+    const state = getAiAgentSendComposerState(composerId);
+    if (!state) return;
+    state.searchTerm = term || '';
+    refreshAgentSendComposer(composerId);
+}
+
+function toggleAgentSendRecipient(composerId, contactId, checked) {
+    const state = getAiAgentSendComposerState(composerId);
+    if (!state) return;
+    if (checked) state.selectedContactIds.add(String(contactId));
+    else state.selectedContactIds.delete(String(contactId));
+    refreshAgentSendComposer(composerId);
+}
+
+function toggleAllAgentSendRecipients(composerId, checked) {
+    const state = getAiAgentSendComposerState(composerId);
+    if (!state) return;
+    const sourceRows = state.useRecommendations ? state.recommendedRecipients : state.defaultRecipients;
+    const term = (state.searchTerm || '').toLowerCase().trim();
+    const visibleRows = term
+        ? sourceRows.filter((item) => JSON.stringify(item || {}).toLowerCase().includes(term))
+        : sourceRows;
+    visibleRows.forEach((row) => {
+        const contactId = String(row.contact_id || '');
+        if (!contactId) return;
+        if (checked) state.selectedContactIds.add(contactId);
+        else state.selectedContactIds.delete(contactId);
+    });
+    refreshAgentSendComposer(composerId);
+}
+
+function applyAgentSendTemplate(composerId, templateId) {
+    const state = getAiAgentSendComposerState(composerId);
+    if (!state) return;
+    state.templateId = templateId || '';
+    const template = state.templates.find((tpl) => tpl.id === state.templateId);
+    if (template) {
+        state.messageType = template.record_type || 'SMS';
+        state.subject = template.subject || '';
+        state.content = template.content || '';
+        state.attachmentId = template.attachment_id || '';
+    } else {
+        state.attachmentId = '';
+    }
+    refreshAgentSendComposer(composerId);
+}
+
+function saveAgentSendRecipients(composerId) {
+    const state = getAiAgentSendComposerState(composerId);
+    if (!state) return;
+    const selectedCount = state.selectedContactIds.size;
+    if (!selectedCount) {
+        appendChatMessage('agent', 'Select one or more recipients before saving them.');
+        return;
+    }
+    if (!Boolean((state.content || '').trim()) && !Boolean(state.templateId)) {
+        appendChatMessage('agent', 'Choose a template or enter message content before saving recipients.');
+        return;
+    }
+    const sourceRows = state.useRecommendations ? state.recommendedRecipients : state.defaultRecipients;
+    const selectedRows = sourceRows.filter((row) => state.selectedContactIds.has(String(row.contact_id || '')));
+    const names = selectedRows.map((row) => (row.contact || {}).name || 'Recipient');
+    const template = state.templates.find((tpl) => tpl.id === state.templateId);
+    const templateName = template?.name || 'Custom';
+    const recipientPreview = names.slice(0, 3).join(', ');
+    const extraCount = Math.max(names.length - 3, 0);
+    const recipientLabel = extraCount > 0 ? `${recipientPreview} and ${extraCount} more` : recipientPreview;
+    appendChatMessage('agent', `Saved recipients: ${recipientLabel}. Template: ${templateName}. Type: ${state.messageType || 'SMS'}.`);
+}
+
+function clearAgentSendComposer(composerId) {
+    const state = getAiAgentSendComposerState(composerId);
+    if (!state) return;
+    state.searchTerm = '';
+    state.useRecommendations = false;
+    state.selectedContactIds = new Set();
+    state.templateId = '';
+    state.messageType = 'SMS';
+    state.subject = '';
+    state.content = '';
+    state.attachmentId = '';
+    refreshAgentSendComposer(composerId);
+}
+
+function setAgentSendType(composerId, type) {
+    const state = getAiAgentSendComposerState(composerId);
+    if (!state) return;
+    state.messageType = type;
+    if (type === 'SMS') state.subject = '';
+    refreshAgentSendComposer(composerId);
+}
+
+function setAgentSendSubject(composerId, subject) {
+    const state = getAiAgentSendComposerState(composerId);
+    if (!state) return;
+    state.subject = subject || '';
+}
+
+function setAgentSendContent(composerId, content) {
+    const state = getAiAgentSendComposerState(composerId);
+    if (!state) return;
+    state.content = content || '';
+}
+
+async function submitAgentSendComposer(composerId, btn) {
+    const state = getAiAgentSendComposerState(composerId);
+    if (!state || !state.selectedContactIds.size) return;
+    if (!state.templateId && !(state.content || '').trim()) {
+        appendChatMessage('agent', 'Choose a template or enter message content before sending.');
+        return;
+    }
+    if (state.messageType === 'MMS' && !state.attachmentId) {
+        appendChatMessage('agent', 'MMS requires an image-backed template in AI Agent. Choose an MMS template first.');
+        return;
+    }
+    const selectedIds = Array.from(state.selectedContactIds);
+    if (btn) btn.disabled = true;
+    try {
+        const availabilityResponse = await fetchAiAgentWithTimeout('/messaging/demo-availability', {}, AI_AGENT_WORKSPACE_TIMEOUT_MS);
+        const availabilityPayload = await availabilityResponse.json();
+        if (!availabilityResponse.ok || !availabilityPayload.available) {
+            throw new Error(availabilityPayload.message || '메시지 서비스에 연결할 수 없습니다. 관리자에게 문의해주세요!');
+        }
+        const response = await fetchAiAgentWithTimeout('/messaging/bulk-send', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                contact_ids: selectedIds,
+                template_id: state.templateId || null,
+                content: state.content || '',
+                record_type: state.messageType || 'SMS',
+                attachment_id: state.attachmentId || null,
+                subject: state.messageType === 'SMS' ? null : (state.subject || ''),
+            }),
+        }, AI_AGENT_WORKSPACE_TIMEOUT_MS);
+        const payload = await response.json();
+        if (!response.ok || payload.status === 'error') {
+            throw new Error(payload.message || 'Failed to send messages.');
+        }
+        appendChatMessage('agent', `Sent ${payload.sent_count || selectedIds.length} message(s) from AI Agent.`);
+    } catch (error) {
+        appendChatMessage('agent', error.message || 'Failed to send messages.');
+    } finally {
+        if (btn) btn.disabled = false;
+    }
+}
+
 function startTemplateSendFromAgent(templateId) {
     if (!templateId) return;
-    completeAgentSendMessageHandoff(
-        '/messaging/ui?sourceObject=message_template',
+    appendAgentSendMessageComposer(
         `Template prepared for Send Message. I'll open the messaging screen with template \`${templateId}\` ready.`,
-        templateId
+        { templateId }
     );
 }
 
@@ -808,6 +1426,13 @@ function syncAiAgentWindowState() {
         maximizeBtn.setAttribute('aria-label', isAiAgentMaximized ? 'Restore AI Agent size' : 'Maximize AI Agent');
         maximizeBtn.setAttribute('title', isAiAgentMaximized ? 'Restore AI Agent size' : 'Maximize AI Agent');
     }
+
+    Object.keys(aiAgentSendComposerState).forEach((composerId) => {
+        const state = getAiAgentSendComposerState(composerId);
+        if (!state) return;
+        state.showPreview = isAiAgentMaximized;
+        refreshAgentSendComposer(composerId);
+    });
 }
 
 function closeAiAgent() {
@@ -1067,7 +1692,7 @@ async function fetchAiAgentResponse(query, pageOverride = 1) {
         conversationId: aiAgentConversationId,
         selectionObject: aiAgentActiveSelectionObject,
     });
-    const response = await fetch('/ai-agent/api/chat', {
+    const response = await fetchAiAgentWithTimeout('/ai-agent/api/chat', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -1097,7 +1722,7 @@ async function submitAiAgentFormResponse(payload) {
         recordId: payload.record_id,
         fieldNames: Object.keys(payload.values || {}),
     });
-    const response = await fetch('/ai-agent/api/form-submit', {
+    const response = await fetchAiAgentWithTimeout('/ai-agent/api/form-submit', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -1116,12 +1741,140 @@ async function submitAiAgentFormResponse(payload) {
     return data;
 }
 
+function getInlineAiCrudContext(sourceUrl) {
+    const pathname = sourceUrl?.pathname || '';
+    const recordId = sourceUrl?.searchParams?.get('id') || null;
+    if (pathname === '/leads/new-modal') {
+        return { objectType: 'lead', mode: recordId ? 'edit' : 'create', recordId };
+    }
+    if (pathname === '/contacts/new-modal') {
+        return { objectType: 'contact', mode: recordId ? 'edit' : 'create', recordId };
+    }
+    if (pathname === '/opportunities/new-modal') {
+        return { objectType: 'opportunity', mode: recordId ? 'edit' : 'create', recordId };
+    }
+    if (pathname === '/assets/new-modal') {
+        return { objectType: 'asset', mode: recordId ? 'edit' : 'create', recordId };
+    }
+    if (pathname === '/models/new-modal') {
+        return { objectType: 'model', mode: recordId ? 'edit' : 'create', recordId };
+    }
+    if (pathname === '/message_templates/new-modal') {
+        return { objectType: 'message_template', mode: recordId ? 'edit' : 'create', recordId };
+    }
+    if (pathname === '/vehicle_specifications/new-modal' && sourceUrl?.searchParams?.get('type') === 'Brand') {
+        return { objectType: 'brand', mode: recordId ? 'edit' : 'create', recordId };
+    }
+    return null;
+}
+
+function hasSelectedInlineFileForAiManagedSubmit(form) {
+    if (!form || typeof form.querySelectorAll !== 'function') return false;
+    return Array.from(form.querySelectorAll('input[type="file"]')).some((input) => input?.files && input.files.length > 0);
+}
+
+function hasPendingInlineImageRemoval(form) {
+    if (!form || typeof form.querySelector !== 'function') return false;
+    return form.querySelector('input[name="remove_image"]')?.value === 'true';
+}
+
+function collectInlineFormValues(form) {
+    const formData = new FormData(form);
+    const values = {};
+    for (const [key, rawValue] of formData.entries()) {
+        if (!key || key === 'id') continue;
+        if (typeof rawValue !== 'string') continue;
+        values[key] = rawValue;
+    }
+    return values;
+}
+
+async function handleAiManagedInlineFormSubmit(container, sourceUrl, submitMode, closeHandler) {
+    const context = getInlineAiCrudContext(sourceUrl);
+    if (!context) return false;
+    const form = container.querySelector('form');
+    if (hasSelectedInlineFileForAiManagedSubmit(form)) {
+        return false;
+    }
+    if (context.objectType === 'message_template' && hasPendingInlineImageRemoval(form)) {
+        return false;
+    }
+
+    const data = await submitAiAgentFormResponse({
+        form_id: `${context.objectType}:${context.mode}:${context.recordId || 'session'}`,
+        object_type: context.objectType,
+        mode: context.mode,
+        record_id: context.recordId,
+        values: collectInlineFormValues(form),
+    });
+
+    if (data.intent === 'OPEN_RECORD') {
+        closeHandler();
+        if (data.text) {
+            appendChatMessage('agent', data.text, null, data.sql, data.results, data.object_type, data.pagination, data.original_query, data.chat_card);
+        }
+
+        if (submitMode === 'save-new') {
+            sourceUrl.searchParams.delete('id');
+            await appendAgentInlineFormMessage(`I opened the ${context.objectType} create form here in chat. Fill in the fields you want, then save it.`, `${sourceUrl.pathname}${sourceUrl.search}`, `Create ${context.objectType}`);
+            return true;
+        }
+        return true;
+    }
+
+    if (data.intent === 'OPEN_FORM' && data.form?.fields) {
+        closeHandler();
+        appendAgentSchemaFormMessage(data.text || 'Review the highlighted fields and try again.', data.form);
+        return true;
+    }
+
+    if (data.text) {
+        appendChatMessage('agent', data.text);
+        return true;
+    }
+
+    return false;
+}
+
+function getAiAgentObjectTypeFromPath(pathname) {
+    const mappings = [
+        ['/leads/', 'lead'],
+        ['/contacts/', 'contact'],
+        ['/opportunities/', 'opportunity'],
+        ['/products/', 'product'],
+        ['/assets/', 'asset'],
+        ['/vehicle_specifications/', 'brand'],
+        ['/models/', 'model'],
+        ['/message_templates/', 'message_template'],
+    ];
+    const match = mappings.find(([prefix]) => String(pathname || '').startsWith(prefix));
+    return match ? match[1] : null;
+}
+
+function getAiAgentRecordIdFromPath(pathname) {
+    const parts = String(pathname || '').split('/').filter(Boolean);
+    return parts.length >= 2 ? parts[1] : null;
+}
+
+async function resolveAgentOpenRecordFromRedirect(finalUrl) {
+    const objectType = getAiAgentObjectTypeFromPath(finalUrl?.pathname);
+    const recordId = getAiAgentRecordIdFromPath(finalUrl?.pathname);
+    if (!objectType || !recordId) return null;
+    try {
+        const data = await fetchAiAgentResponse(`Manage ${objectType} ${recordId}`);
+        return data?.intent === 'OPEN_RECORD' ? data : null;
+    } catch (_error) {
+        return null;
+    }
+}
+
 async function sendAiMessage(queryOverride = null, pageOverride = 1) {
     const input = document.getElementById('ai-agent-input');
     const query = (queryOverride ?? input.value).trim();
     if (!query) return;
 
     if (!queryOverride) {
+        recordQuickGuideActivity(query, query);
         appendChatMessage('user', query);
         input.value = '';
         updateAiAgentComposerState();
@@ -1165,9 +1918,6 @@ async function sendAiMessage(queryOverride = null, pageOverride = 1) {
             if (preserveChatFocus && data.text) {
                 appendedMessage = appendChatMessage('agent', data.text, null, data.sql, data.results, data.object_type, data.pagination, data.original_query, data.chat_card);
             }
-            if (preserveChatFocus && appendedMessage) {
-                scrollAgentChatMessageIntoView(appendedMessage);
-            }
             if (targetUrl) {
                 const workspaceTitle = data.chat_card?.title || data.form_title || 'Record View';
                 recordAiAgentDebug('chat-open-record', {
@@ -1190,12 +1940,24 @@ async function sendAiMessage(queryOverride = null, pageOverride = 1) {
 
         // Handle Send Message intent
         if (data.intent === 'SEND_MESSAGE') {
-            completeAgentSendMessageHandoff(
-                data.redirect_url,
+            appendAgentSendMessageComposer(
                 data.text,
-                data.template_id,
-                data.selection
+                {
+                    redirectUrl: data.redirect_url,
+                    templateId: data.template_id,
+                    selection: data.selection,
+                }
             );
+            return;
+        }
+
+        if (data.intent === 'OPEN_FORM' && data.form_url) {
+            recordAiAgentDebug('intent-open-form', {
+                objectType: data.object_type,
+                formUrl: data.form_url,
+                title: data.form_title || 'Form',
+            });
+            appendAgentInlineFormMessage(data.text || 'I opened the form for you.', data.form_url, data.form_title || 'Form');
             return;
         }
 
@@ -1206,17 +1968,6 @@ async function sendAiMessage(queryOverride = null, pageOverride = 1) {
                 formId: data.form.form_id,
             });
             appendAgentSchemaFormMessage(data.text || 'I opened the form for you.', data.form);
-            return;
-        }
-
-        if (data.intent === 'OPEN_FORM' && data.form_url) {
-            recordAiAgentDebug('intent-open-form', {
-                objectType: data.object_type,
-                formUrl: data.form_url,
-                title: data.form_title || 'Form',
-            });
-            appendChatMessage('agent', data.text || 'I opened the form for you.');
-            openAgentWorkspace(data.form_url, data.form_title || 'Form');
             return;
         }
 
@@ -1236,6 +1987,7 @@ async function sendAiMessage(queryOverride = null, pageOverride = 1) {
         console.error("AI Agent Error:", error);
         const loadingIndicator = document.getElementById(loadingId);
         if (loadingIndicator) loadingIndicator.remove();
+        clearAiAgentTransientLoadingState();
         appendChatMessage('agent', "Sorry, I encountered an error connecting to the AI service.");
     }
 }
@@ -1303,7 +2055,12 @@ function appendChatMessage(role, text, id = null, sql = null, results = null, ob
         `;
 
         if (sql) {
-            innerHTML += `<div class="sql-block">${sql}</div>`;
+            innerHTML += `
+                <details class="agent-sql-details">
+                    <summary class="agent-sql-summary">SQL</summary>
+                    <div class="sql-block">${sql}</div>
+                </details>
+            `;
         }
 
         if (results && results.length > 0) {
@@ -1320,6 +2077,7 @@ function appendChatMessage(role, text, id = null, sql = null, results = null, ob
 
     body.appendChild(msgDiv);
     updateSelectionBar();
+    scrollAgentChatMessageIntoView(msgDiv);
     return msgDiv;
 }
 
@@ -1333,9 +2091,7 @@ function removeExistingAgentSchemaForms() {
 
 function scrollAgentSchemaFormIntoView(target) {
     if (!target) return;
-    setTimeout(() => {
-        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }, 150);
+    scrollAgentChatMessageIntoView(target);
 }
 
 function appendAgentSchemaFormMessage(text, formSchema) {
@@ -1357,6 +2113,7 @@ function appendAgentSchemaFormMessage(text, formSchema) {
         </div>
     `;
     body.appendChild(msgDiv);
+    initAgentFormClearButtons(msgDiv);
     initAgentChatLookupFields(msgDiv);
     scrollAgentSchemaFormIntoView(msgDiv);
 }
@@ -1388,17 +2145,14 @@ function appendAgentInlineFormMessage(text, formUrl, formTitle) {
         loadAgentInlineForm(shell, formUrl, formTitle);
     }
 
-    // Scroll to the form start so user sees it immediately
-    setTimeout(() => {
-        msgDiv.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }, 150);
+    scrollAgentChatMessageIntoView(msgDiv);
 }
 
 async function loadAgentInlineForm(shell, formUrl, formTitle) {
     if (!shell || !formUrl) return;
 
     try {
-        const response = await fetch(formUrl);
+        const response = await fetchAiAgentWithTimeout(formUrl, {}, AI_AGENT_WORKSPACE_TIMEOUT_MS);
         const html = await response.text();
         recordAiAgentDebug('inline-form-fetch', {
             formUrl,
@@ -1424,12 +2178,129 @@ async function loadAgentInlineForm(shell, formUrl, formTitle) {
     }
 }
 
+function initializeAiAgentTemplateModalUi(container) {
+    if (!container || typeof container.querySelector !== 'function') return;
+    const form = container.querySelector('form');
+    if (!form) return;
+    const typeSelect = form.querySelector('select[name="record_type"]');
+    const contentTextarea = form.querySelector('textarea[name="content"]');
+    const subjectWrapper = form.querySelector('.sf-field-wrapper[data-field="subject"]');
+    const imageWrapper = form.querySelector('.sf-field-wrapper[data-field="image"]');
+    const byteCounter = form.querySelector('#byte-counter');
+    const saveBtn = form.querySelector('button.btn-primary');
+    const imageInput = form.querySelector('#modal-form-image-input');
+    const removeImageInput = form.querySelector('#modal-form-remove-image');
+
+    if (!typeSelect || !contentTextarea || !subjectWrapper || !imageWrapper || !byteCounter || !saveBtn) {
+        return;
+    }
+
+    function getByteLength(str) {
+        let len = 0;
+        for (let i = 0; i < str.length; i++) {
+            len += str.charCodeAt(i) > 127 ? 2 : 1;
+        }
+        return len;
+    }
+
+    function renderScopedTemplateImageState() {
+        const emptyState = form.querySelector('#modal-form-image-empty');
+        const previewWrap = form.querySelector('#modal-form-image-preview-wrap');
+        const preview = form.querySelector('#modal-form-image-preview');
+        const meta = form.querySelector('#modal-form-image-meta');
+        const helper = form.querySelector('#modal-form-image-helper');
+        const error = form.querySelector('#modal-form-image-error');
+        const removeRequested = removeImageInput?.value === 'true';
+        const currentUrl = removeRequested ? '' : (imageInput?.dataset?.currentUrl || '');
+        const activeUrl = imageInput?.dataset?.previewUrl || currentUrl;
+
+        if (error) {
+            error.style.display = 'none';
+            error.textContent = '';
+        }
+        if (!emptyState || !previewWrap || !preview || !meta) return;
+        if (typeSelect.value !== 'MMS') {
+            emptyState.style.display = 'none';
+            previewWrap.style.display = 'none';
+            preview.src = '';
+            meta.textContent = '';
+            if (helper) helper.textContent = '';
+            return;
+        }
+        if (activeUrl) {
+            emptyState.style.display = 'none';
+            previewWrap.style.display = 'block';
+            preview.src = activeUrl;
+            meta.textContent = imageInput?.dataset?.previewName || (currentUrl ? 'Current template image' : 'Selected JPG image');
+            if (helper) {
+                helper.textContent = imageInput?.dataset?.previewUrl
+                    ? 'Image selected. Click Save to apply it.'
+                    : '';
+            }
+            return;
+        }
+        emptyState.style.display = 'block';
+        previewWrap.style.display = 'none';
+        preview.src = '';
+        meta.textContent = '';
+        if (helper) {
+            helper.textContent = removeRequested ? 'Image removal staged. Click Save to apply it.' : '';
+        }
+    }
+
+    function updateScopedTemplateUi() {
+        const type = typeSelect.value || 'SMS';
+        const content = contentTextarea.value || '';
+        const bytes = getByteLength(content);
+        const limit = type === 'SMS' ? 90 : 2000;
+
+        if (type === 'SMS' && bytes > 90) {
+            typeSelect.value = 'LMS';
+            updateScopedTemplateUi();
+            return;
+        }
+
+        subjectWrapper.style.display = type === 'SMS' ? 'none' : 'flex';
+        imageWrapper.style.display = type === 'MMS' ? 'flex' : 'none';
+        renderScopedTemplateImageState();
+
+        byteCounter.textContent = `${bytes} / ${limit} bytes (${typeSelect.value})`;
+        if (bytes > limit) {
+            byteCounter.style.color = '#ea001e';
+            saveBtn.disabled = true;
+            saveBtn.style.opacity = '0.5';
+        } else {
+            byteCounter.style.color = '';
+            saveBtn.disabled = false;
+            saveBtn.style.opacity = '1';
+        }
+    }
+
+    if (imageInput) {
+        imageInput.dataset.currentUrl = imageInput.dataset.currentUrl || '';
+        imageInput.dataset.previewUrl = imageInput.dataset.previewUrl || '';
+        imageInput.dataset.previewName = imageInput.dataset.previewName || '';
+    }
+    if (typeSelect.dataset.aiAgentTemplateBound === 'true') {
+        updateScopedTemplateUi();
+        return;
+    }
+    typeSelect.dataset.aiAgentTemplateBound = 'true';
+    typeSelect.addEventListener('change', updateScopedTemplateUi);
+    contentTextarea.addEventListener('input', updateScopedTemplateUi);
+    updateScopedTemplateUi();
+}
+
 function wireAgentFormContainer(container, formUrl, options = {}) {
     if (!container) return;
     const mode = options.mode || 'inline';
     const closeHandler = typeof options.onClose === 'function'
         ? options.onClose
         : (() => container.remove());
+
+    if (String(formUrl || '').includes('/message_templates/new-modal')) {
+        initializeAiAgentTemplateModalUi(container);
+    }
 
     container.querySelectorAll('script').forEach(script => {
         const replacement = document.createElement('script');
@@ -1473,7 +2344,12 @@ function wireAgentFormContainer(container, formUrl, options = {}) {
             });
 
             try {
-                const response = await fetch(form.action || formUrl, {
+                const aiManaged = await handleAiManagedInlineFormSubmit(container, sourceUrl, submitMode, closeHandler);
+                if (aiManaged) {
+                    return;
+                }
+
+                const response = await fetchAiAgentWithTimeout(form.action || formUrl, {
                     method: (form.method || 'POST').toUpperCase(),
                     body: new FormData(form),
                     headers: { 'Accept': 'text/html,application/json' },
@@ -1518,16 +2394,24 @@ function wireAgentFormContainer(container, formUrl, options = {}) {
                         return;
                     }
 
-                    closeHandler();
-                    appendChatMessage('agent', successMsg);
-
                     // Open the saved record directly instead of relying on a second chat turn.
-                    const objectPathMatch = finalUrl.pathname.match(/^\/([a-z_]+)\/([^/?#]+)/);
-                    if (objectPathMatch) {
-                        const urlObject = objectPathMatch[1]; // e.g. 'leads', 'contacts'
-                        const urlRecordId = objectPathMatch[2];
-                        const workspaceTitle = container.dataset.formTitle || `${urlObject.replace(/_/g, ' ')} ${urlRecordId}`;
-                        openAgentWorkspace(finalUrl.pathname, workspaceTitle);
+                    // Legacy workspace fallback reference: openAgentWorkspace(finalUrl.pathname, workspaceTitle);
+                    const managedOpenRecord = await resolveAgentOpenRecordFromRedirect(finalUrl);
+                    closeHandler();
+                    if (managedOpenRecord?.text) {
+                        appendChatMessage(
+                            'agent',
+                            managedOpenRecord.text,
+                            null,
+                            managedOpenRecord.sql,
+                            managedOpenRecord.results,
+                            managedOpenRecord.object_type,
+                            managedOpenRecord.pagination,
+                            managedOpenRecord.original_query,
+                            managedOpenRecord.chat_card,
+                        );
+                    } else {
+                        appendChatMessage('agent', successMsg);
                     }
                     return;
                 }
@@ -1558,11 +2442,9 @@ function sendQuickMessage(text) {
     if (!input) return;
     const deleteShortcut = consumePendingDeleteShortcut(text);
     if (deleteShortcut) {
-        const deleteMessage = appendChatMessage('user', deleteShortcut.displayText);
-        scrollAgentChatMessageIntoView(deleteMessage);
+        appendChatMessage('user', deleteShortcut.displayText);
         if (deleteShortcut.cancelOnly) {
-            const cancelledMessage = appendChatMessage('agent', 'Delete request cancelled.');
-            scrollAgentChatMessageIntoView(cancelledMessage);
+            appendChatMessage('agent', 'Delete request cancelled.');
             return;
         }
         sendAiMessage(deleteShortcut.actualQuery);
@@ -1574,14 +2456,19 @@ function sendQuickMessage(text) {
 }
 
 function sendAiMessageWithDisplay(displayText, actualQuery) {
-    const message = appendChatMessage('user', displayText);
-    scrollAgentChatMessageIntoView(message);
+    recordQuickGuideActivity(actualQuery, displayText);
+    appendChatMessage('user', displayText);
     sendAiMessage(actualQuery);
 }
 
 document.addEventListener('DOMContentLoaded', () => {
     applyAiAgentLanguageUi();
     updateAiAgentComposerState();
+    const body = document.getElementById('ai-agent-body');
+    body?.addEventListener('scroll', updateAiAgentJumpButtonVisibility);
+    window.addEventListener('resize', updateAiAgentJumpButtonVisibility);
+    updateAiAgentJumpButtonVisibility();
+    renderQuickGuideActivityList();
 });
 
 function escapeAgentHtml(value) {
@@ -1611,6 +2498,8 @@ async function fetchAgentLookupResults(lookupObject, query) {
 function renderAgentLookupResults(wrapper, items) {
     const dropdown = wrapper?.querySelector('.agent-chat-lookup-dropdown');
     if (!dropdown) return;
+    const lookupObject = wrapper?.dataset?.lookupObject || 'Product';
+    const visual = getAgentLookupVisual(lookupObject);
     if (!Array.isArray(items) || items.length === 0) {
         dropdown.innerHTML = '<div class="agent-chat-lookup-empty">No results found</div>';
         wrapper.classList.add('is-open');
@@ -1622,7 +2511,12 @@ function renderAgentLookupResults(wrapper, items) {
             class="agent-chat-lookup-option"
             data-lookup-id="${escapeAgentHtml(item.id)}"
             data-lookup-name="${escapeAgentHtml(item.name)}"
-        >${escapeAgentHtml(item.name)}</button>
+        >
+            <span class="agent-chat-lookup-option-icon" style="background:${escapeAgentHtml(visual.color)}">${escapeAgentHtml(visual.text)}</span>
+            <span class="agent-chat-lookup-option-copy">
+                <span class="agent-chat-lookup-option-name">${escapeAgentHtml(item.name)}</span>
+            </span>
+        </button>
     `).join('');
     wrapper.classList.add('is-open');
 }
@@ -1635,7 +2529,41 @@ function clearAgentLookupSelection(wrapper) {
     if (textInput) textInput.value = '';
     wrapper.dataset.displayValue = '';
     wrapper.classList.remove('has-value');
+    const badge = wrapper.querySelector('.agent-chat-lookup-badge');
+    if (badge) badge.classList.remove('is-visible');
     closeAgentLookupDropdowns();
+}
+
+function updateAgentFormClearableState(field) {
+    const wrapper = field?.closest?.('.agent-chat-form-clearable');
+    if (!wrapper) return;
+    const hasValue = Boolean(String(field.value || '').trim());
+    wrapper.classList.toggle('is-has-value', hasValue);
+}
+
+function clearAgentFormField(button) {
+    const wrapper = button?.closest?.('.agent-chat-form-clearable');
+    const field = wrapper?.querySelector?.('input, textarea');
+    if (!field) return;
+    field.value = '';
+    updateAgentFormClearableState(field);
+    if (typeof field.dispatchEvent === 'function' && typeof Event === 'function') {
+        field.dispatchEvent(new Event('input', { bubbles: true }));
+    }
+    field.focus?.();
+}
+
+function initAgentFormClearButtons(root) {
+    if (!root) return;
+    root.querySelectorAll('.agent-chat-form-clearable input, .agent-chat-form-clearable textarea').forEach(field => {
+        if (field.dataset.clearEnhanced === 'true') {
+            updateAgentFormClearableState(field);
+            return;
+        }
+        field.dataset.clearEnhanced = 'true';
+        field.addEventListener('input', () => updateAgentFormClearableState(field));
+        updateAgentFormClearableState(field);
+    });
 }
 
 function setAgentLookupSelection(wrapper, item) {
@@ -1646,6 +2574,13 @@ function setAgentLookupSelection(wrapper, item) {
     if (textInput) textInput.value = item.name || '';
     wrapper.dataset.displayValue = item.name || '';
     wrapper.classList.toggle('has-value', !!(item.name || item.id));
+    const badge = wrapper.querySelector('.agent-chat-lookup-badge');
+    if (badge) {
+        const visual = getAgentLookupVisual(wrapper.dataset.lookupObject || 'Product');
+        badge.textContent = visual.text;
+        badge.style.background = visual.color;
+        badge.classList.add('is-visible');
+    }
     closeAgentLookupDropdowns();
 }
 
@@ -1660,6 +2595,13 @@ function initAgentChatLookupFields(root) {
         const clearButton = wrapper.querySelector('.agent-chat-lookup-clear');
         const hiddenInput = wrapper.querySelector('.agent-chat-lookup-id');
         const currentDisplay = wrapper.dataset.displayValue || '';
+        const badge = wrapper.querySelector('.agent-chat-lookup-badge');
+        if (badge) {
+            const visual = getAgentLookupVisual(lookupObject);
+            badge.textContent = visual.text;
+            badge.style.background = visual.color;
+            badge.classList.toggle('is-visible', !!(currentDisplay || hiddenInput?.value));
+        }
 
         wrapper.classList.toggle('has-value', !!(currentDisplay || hiddenInput?.value));
 
@@ -1681,6 +2623,7 @@ function initAgentChatLookupFields(root) {
                 hiddenInput.value = '';
             }
             wrapper.classList.toggle('has-value', !!textInput.value.trim());
+            badge?.classList.toggle('is-visible', !!textInput.value.trim());
             queueSearch(textInput.value.trim());
         });
 
@@ -1712,12 +2655,16 @@ function renderAgentInlineSchemaField(field) {
     const required = field.required ? '<span class="agent-chat-form-required">*</span>' : '';
     const error = field.error ? `<div class="agent-chat-form-field-error">${escapeAgentHtml(field.error)}</div>` : '';
     const value = field.value ?? '';
+    const layoutClass = field.layout === 'full' ? 'agent-chat-form-field-full' : '';
 
     if (field.control === 'textarea') {
         return `
-            <label class="agent-chat-form-field agent-chat-form-field-full">
+            <label class="agent-chat-form-field ${layoutClass || 'agent-chat-form-field-full'}">
                 <span class="agent-chat-form-label">${label}${required}</span>
-                <textarea name="${name}" class="agent-chat-form-textarea" rows="4" placeholder="${escapeAgentHtml(field.placeholder || '')}">${escapeAgentHtml(value)}</textarea>
+                <div class="agent-chat-form-clearable agent-chat-form-clearable-textarea ${String(value).trim() ? 'is-has-value' : ''}">
+                    <textarea name="${name}" class="agent-chat-form-textarea" rows="4" placeholder="${escapeAgentHtml(field.placeholder || '')}">${escapeAgentHtml(value)}</textarea>
+                    <button type="button" class="agent-chat-form-clear" onclick="clearAgentFormField(this)" aria-label="Clear field" title="Clear field">&times;</button>
+                </div>
                 ${error}
             </label>
         `;
@@ -1729,7 +2676,7 @@ function renderAgentInlineSchemaField(field) {
             <option value="${escapeAgentHtml(option.value)}" ${String(option.value) === String(value ?? '') ? 'selected' : ''}>${escapeAgentHtml(option.label)}</option>
         `).join('');
         return `
-            <label class="agent-chat-form-field">
+            <label class="agent-chat-form-field ${layoutClass}">
                 <span class="agent-chat-form-label">${label}${required}</span>
                 <select name="${name}" class="agent-chat-form-select">${optionsHtml}</select>
                 ${error}
@@ -1740,7 +2687,7 @@ function renderAgentInlineSchemaField(field) {
     if (field.control === 'lookup') {
         const displayValue = field.display_value ?? '';
         return `
-            <label class="agent-chat-form-field agent-chat-form-field-full">
+            <label class="agent-chat-form-field ${layoutClass}">
                 <span class="agent-chat-form-label">${label}${required}</span>
                 <div
                     class="agent-chat-lookup ${displayValue || value ? 'has-value' : ''}"
@@ -1750,6 +2697,7 @@ function renderAgentInlineSchemaField(field) {
                 >
                     <input type="hidden" name="${name}" class="agent-chat-lookup-id" value="${escapeAgentHtml(value)}">
                     <div class="agent-chat-lookup-input-row">
+                        <span class="agent-chat-lookup-badge ${(displayValue || value) ? 'is-visible' : ''}" style="background:${escapeAgentHtml(getAgentLookupVisual(field.lookup_object || 'Product').color)}">${escapeAgentHtml(getAgentLookupVisual(field.lookup_object || 'Product').text)}</span>
                         <input
                             type="text"
                             class="agent-chat-form-input agent-chat-lookup-input"
@@ -1757,7 +2705,7 @@ function renderAgentInlineSchemaField(field) {
                             placeholder="${escapeAgentHtml(field.placeholder || `Search ${field.lookup_object || label}...`)}"
                             autocomplete="off"
                         >
-                        <button type="button" class="agent-chat-lookup-clear">Clear</button>
+                        <button type="button" class="agent-chat-form-clear agent-chat-lookup-clear" aria-label="Clear lookup" title="Clear lookup">&times;</button>
                     </div>
                     <div class="agent-chat-lookup-dropdown"></div>
                 </div>
@@ -1768,16 +2716,19 @@ function renderAgentInlineSchemaField(field) {
 
     const inputType = field.control === 'number' ? 'number' : field.control === 'email' ? 'email' : field.control === 'tel' ? 'tel' : 'text';
     return `
-        <label class="agent-chat-form-field">
+        <label class="agent-chat-form-field ${layoutClass}">
             <span class="agent-chat-form-label">${label}${required}</span>
-            <input
-                type="${inputType}"
-                name="${name}"
-                class="agent-chat-form-input"
-                value="${escapeAgentHtml(value)}"
-                placeholder="${escapeAgentHtml(field.placeholder || '')}"
-                ${field.control === 'number' && field.name === 'probability' ? 'min="0" max="100"' : ''}
-            >
+            <div class="agent-chat-form-clearable ${String(value).trim() ? 'is-has-value' : ''}">
+                <input
+                    type="${inputType}"
+                    name="${name}"
+                    class="agent-chat-form-input"
+                    value="${escapeAgentHtml(value)}"
+                    placeholder="${escapeAgentHtml(field.placeholder || '')}"
+                    ${field.control === 'number' && field.name === 'probability' ? 'min="0" max="100"' : ''}
+                >
+                <button type="button" class="agent-chat-form-clear" onclick="clearAgentFormField(this)" aria-label="Clear field" title="Clear field">&times;</button>
+            </div>
             ${error}
         </label>
     `;
@@ -1867,9 +2818,6 @@ async function submitAgentChatForm(event) {
             if (data.text) {
                 appendedMessage = appendChatMessage('agent', data.text, null, data.sql, data.results, data.object_type, data.pagination, data.original_query, data.chat_card);
             }
-            if (skipWorkspaceOpen && appendedMessage) {
-                scrollAgentChatMessageIntoView(appendedMessage);
-            }
             if (targetUrl && !skipWorkspaceOpen) {
                 const workspaceTitle = data.chat_card?.title || data.form_title || 'Record View';
                 requestAnimationFrame(() => openAgentWorkspace(targetUrl, workspaceTitle));
@@ -1889,6 +2837,7 @@ async function submitAgentChatForm(event) {
             const replacementCard = wrapper.firstElementChild;
             if (replacementCard) {
                 card.replaceWith(replacementCard);
+                initAgentFormClearButtons(replacementCard);
                 initAgentChatLookupFields(replacementCard);
                 scrollAgentSchemaFormIntoView(replacementCard);
             } else {
@@ -1951,16 +2900,21 @@ function renderAgentChatCard(card) {
     // Render action buttons dynamically from backend-provided actions array
     let actionButtonsHtml = '';
     if (recordId && Array.isArray(card.actions) && card.actions.length > 0) {
-        const buttons = card.actions.map(act => {
+        const buttons = card.actions.filter(act => act.action !== 'open').map(act => {
             const label = escapeAgentHtml(act.label || '');
             const tone = act.tone || 'default';
-            const btnClass = tone === 'danger'
+            const btnClass = act.action === 'edit'
+                ? 'agent-paste-action-btn agent-paste-action-edit'
+                : tone === 'danger'
                 ? 'agent-paste-action-btn agent-paste-action-danger'
                 : tone === 'secondary'
                     ? 'agent-paste-action-btn agent-paste-action-secondary'
                     : 'agent-paste-action-btn';
 
             if (act.action === 'edit') {
+                if (shouldUseDirectAgentEditForm(objectType)) {
+                    return `<button class="${btnClass}" onclick="openAgentEditFormDirect('${escapeAgentQuery(objectType)}', '${escapeAgentQuery(recordId)}', '${escapeAgentHtml(displayName)}')">${label}</button>`;
+                }
                 const editQuery = `Manage ${escapeAgentQuery(objectType)} ${escapeAgentQuery(recordId)} edit`;
                 return `<button class="${btnClass}" onclick="sendAiMessageWithDisplay('Edit ${escapeAgentHtml(displayName)}', '${editQuery}')">${label}</button>`;
             }
@@ -1969,10 +2923,6 @@ function renderAgentChatCard(card) {
             }
             if (act.action === 'send_message') {
                 return `<button class="${btnClass}" onclick="triggerLeadCardSendMessage('${escapeAgentQuery(objectType)}', '${escapeAgentQuery(recordId)}', '${escapeAgentHtml(displayName)}')">${label}</button>`;
-            }
-            if (act.action === 'open' && (objectType === 'asset' || objectType === 'brand' || objectType === 'model' || objectType === 'message_template')) {
-                const openQuery = `Manage ${escapeAgentQuery(objectType)} ${escapeAgentQuery(recordId)}`;
-                return `<button class="${btnClass}" onclick="sendAiMessageWithDisplay('Open ${escapeAgentHtml(displayName)}', '${openQuery}')">${label}</button>`;
             }
             if (act.action === 'preview_image' && act.url) {
                 return `<button class="${btnClass}" onclick="openAgentImagePreview('${escapeAgentQuery(act.url)}', 'Template Preview')">${label}</button>`;
@@ -1986,9 +2936,12 @@ function renderAgentChatCard(card) {
     } else if (recordId) {
         // Fallback: legacy hardcoded Edit/Delete if no actions array
         const editQuery = `Manage ${objectType} ${recordId} edit`;
+        const editClick = shouldUseDirectAgentEditForm(objectType)
+            ? `openAgentEditFormDirect('${escapeAgentQuery(objectType)}', '${escapeAgentQuery(recordId)}', '${escapeAgentHtml(displayName)}')`
+            : `sendAiMessageWithDisplay('Edit ${escapeAgentHtml(displayName)}', '${escapeAgentQuery(editQuery)}')`;
         actionButtonsHtml = `
             <div class="agent-paste-actions">
-                <button class="agent-paste-action-btn" onclick="sendAiMessageWithDisplay('Edit ${escapeAgentHtml(displayName)}', '${escapeAgentQuery(editQuery)}')">Edit</button>
+                <button class="agent-paste-action-btn" onclick="${editClick}">Edit</button>
                 <button class="agent-paste-action-btn agent-paste-action-danger" onclick="triggerSnapshotDelete('${escapeAgentQuery(objectType)}', '${escapeAgentQuery(recordId)}', '${escapeAgentHtml(displayName)}')">Delete</button>
             </div>
         `;
@@ -2024,8 +2977,7 @@ function triggerLeadCardSendMessage(objectType, recordId, displayName) {
 
 function triggerSnapshotDelete(objectType, recordId, displayName) {
     if (!objectType || !recordId) return;
-    const confirmationMessage = appendChatMessage('agent', `Are you sure you want to delete **${displayName}**?\n[Yes] [Cancel]\n<!--delete-confirm|${objectType}|${recordId}|${displayName}-->`);
-    scrollAgentChatMessageIntoView(confirmationMessage);
+    appendChatMessage('agent', `Are you sure you want to delete **${displayName}**?\n[Yes] [Cancel]\n<!--delete-confirm|${objectType}|${recordId}|${displayName}-->`);
 
     // Store pending deletion context on the window so Yes/Cancel handlers can pick it up
     window._agentPendingDelete = { objectType, recordId, displayName };
@@ -2036,19 +2988,27 @@ function shouldUseAgentChatPaste(objectType) {
 }
 
 function shouldUseAgentChatForm(objectType) {
-    return objectType === 'lead' || objectType === 'contact' || objectType === 'opportunity';
+    return objectType === 'lead'
+        || objectType === 'contact'
+        || objectType === 'opportunity'
+        || objectType === 'product'
+        || objectType === 'asset'
+        || objectType === 'brand'
+        || objectType === 'model'
+        || objectType === 'message_template';
 }
 
 function renderResultsTable(results, objectType, pagination = null, originalQuery = null) {
     if (!results || results.length === 0) return "";
-    if (!pagination && results.length > 30) {
+    if ((pagination && pagination.mode === 'local') || (!pagination && results.length > 30)) {
         const localKey = `agent-local-${Date.now()}-${Math.random().toString(16).slice(2)}`;
         localAgentResultTables[localKey] = {
             results,
             objectType,
             originalQuery,
+            searchTerm: pagination?.search_term || '',
         };
-        return renderLocalResultsTable(localKey, 1);
+        return renderLocalResultsTable(localKey, pagination?.page || 1);
     }
 
     return renderAgentResultsMarkup(results, objectType, pagination, originalQuery);
@@ -2060,16 +3020,18 @@ function renderLocalResultsTable(tableKey, page) {
 
     const perPage = 30;
     const safePage = Math.max(page, 1);
+    const activeResults = Array.isArray(tableState.filteredResults) ? tableState.filteredResults : tableState.results;
     const start = (safePage - 1) * perPage;
-    const pagedResults = tableState.results.slice(start, start + perPage);
+    const pagedResults = activeResults.slice(start, start + perPage);
     const pagination = {
         page: safePage,
         per_page: perPage,
-        total: tableState.results.length,
-        total_pages: Math.max(1, Math.ceil(tableState.results.length / perPage)),
+        total: activeResults.length,
+        total_pages: Math.max(1, Math.ceil(activeResults.length / perPage)),
         object_type: tableState.objectType,
         mode: 'local',
         table_key: tableKey,
+        search_term: tableState.searchTerm || '',
     };
 
     return renderAgentResultsMarkup(pagedResults, tableState.objectType, pagination, tableState.originalQuery);
@@ -2087,12 +3049,15 @@ function renderAgentResultsMarkup(results, objectType, pagination = null, origin
             <div class="table-controls">
                 <div class="table-controls-instruction">Select records to take action.</div>
                 <div class="table-controls-search-row">
-                    <input type="text" class="agent-table-search" placeholder="Search in table..." oninput="filterAgentTable(this)" onkeydown="handleAgentTableSearch(event, this, '${objectType}')" aria-label="Search in table">
-                    <div style="font-size: 0.7rem; color: #8a94a6; margin-top: 4px;">Press Enter to search all records.</div>
+                    <div class="agent-table-search-wrap">
+                        <input type="text" class="agent-table-search" value="${escapeAgentHtml(pagination?.search_term || '')}" placeholder="Search..." oninput="filterAgentTable(this)" onkeydown="handleAgentTableSearch(event, this, '${objectType}')" aria-label="Search in table">
+                        <button type="button" class="agent-table-search-clear ${pagination?.search_term ? 'is-visible' : ''}" onclick="clearAgentTableSearch(this)" aria-label="Clear table search" title="Clear table search">&times;</button>
+                    </div>
                 </div>
                 <div class="table-controls-btn-row">
                     <button class="control-btn btn-icon" onclick="selectAllAgentRows(this, '${objectType}')" title="Select All"><span style="font-size:1rem; line-height:1;">✓</span></button>
                     <button class="control-btn btn-icon" onclick="clearAllAgentRows(this, '${objectType}')" title="Clear All"><span style="font-size:1rem; line-height:1;">✕</span></button>
+                    <button class="control-btn control-btn-action" onclick="triggerCreateFromTable(this, '${objectType}')">New</button>
                     <button class="control-btn control-btn-action" onclick="triggerSelectionOpenFromTable(this, '${objectType}')">Open</button>
                     <button class="control-btn control-btn-edit" onclick="triggerSelectionEditFromTable(this, '${objectType}')">Edit</button>
                     <button class="control-btn control-btn-danger" onclick="triggerSelectionDeleteFromTable(this, '${objectType}')">Delete</button>
@@ -2151,12 +3116,12 @@ function renderAgentResultsMarkup(results, objectType, pagination = null, origin
     
     html += '</tbody></table></div>';
 
-    if (pagination && pagination.total_pages > 1 && originalQuery) {
+    if (pagination && pagination.total_pages > 1) {
         html += `
             <div class="agent-pagination">
-                <button class="control-btn" ${pagination.page <= 1 ? 'disabled' : ''} onclick="${pagination.mode === 'local' ? `requestLocalAgentPage('${pagination.table_key}', ${pagination.page - 1})` : `requestAgentPage('${escapeAgentQuery(originalQuery)}', ${pagination.page - 1})`}">Previous</button>
+                <button class="control-btn" ${pagination.page <= 1 ? 'disabled' : ''} onclick="${pagination.mode === 'local' ? `requestLocalAgentPage('${pagination.table_key}', ${pagination.page - 1})` : `requestAgentPage('${escapeAgentQuery(originalQuery || '')}', ${pagination.page - 1})`}">Previous</button>
                 <span class="agent-pagination-label">Page ${pagination.page} of ${pagination.total_pages} · ${pagination.total} records${pagination.mode === 'local' ? ' · Local' : ''}</span>
-                <button class="control-btn" ${pagination.page >= pagination.total_pages ? 'disabled' : ''} onclick="${pagination.mode === 'local' ? `requestLocalAgentPage('${pagination.table_key}', ${pagination.page + 1})` : `requestAgentPage('${escapeAgentQuery(originalQuery)}', ${pagination.page + 1})`}">Next</button>
+                <button class="control-btn" ${pagination.page >= pagination.total_pages ? 'disabled' : ''} onclick="${pagination.mode === 'local' ? `requestLocalAgentPage('${pagination.table_key}', ${pagination.page + 1})` : `requestAgentPage('${escapeAgentQuery(originalQuery || '')}', ${pagination.page + 1})`}">Next</button>
             </div>
         `;
     }
@@ -2170,6 +3135,23 @@ function filterAgentTable(input) {
     const container = input.closest('.results-container');
     if (!container) return;
     const term = input.value.toLowerCase().trim();
+    const clearBtn = input.parentElement?.querySelector?.('.agent-table-search-clear');
+    clearBtn?.classList.toggle('is-visible', Boolean(term));
+    const tableKey = container.dataset.tableKey;
+    if (tableKey && localAgentResultTables[tableKey]) {
+        const tableState = localAgentResultTables[tableKey];
+        tableState.searchTerm = term;
+        tableState.filteredResults = term
+            ? tableState.results.filter(row => agentTableRowMatches(row, tableState.objectType, term))
+            : tableState.results.slice();
+        requestLocalAgentPage(tableKey, 1, {
+            focusSearch: true,
+            value: input.value,
+            selectionStart: typeof input.selectionStart === 'number' ? input.selectionStart : input.value.length,
+            selectionEnd: typeof input.selectionEnd === 'number' ? input.selectionEnd : input.value.length,
+        });
+        return;
+    }
     const rows = container.querySelectorAll('table tbody tr');
     rows.forEach(row => {
         const text = row.textContent.toLowerCase();
@@ -2179,11 +3161,18 @@ function filterAgentTable(input) {
 
 function handleAgentTableSearch(event, input, objectType) {
     if (event.key === 'Enter') {
-        const term = input.value.trim();
-        if (term) {
-            requestAgentSearch(term, objectType);
-        }
+        event.preventDefault();
+        filterAgentTable(input);
     }
+}
+
+function clearAgentTableSearch(button) {
+    const wrapper = button?.closest?.('.agent-table-search-wrap');
+    const input = wrapper?.querySelector?.('.agent-table-search');
+    if (!input) return;
+    input.value = '';
+    filterAgentTable(input);
+    input.focus?.();
 }
 
 async function requestAgentSearch(term, objectType) {
@@ -2242,17 +3231,35 @@ function triggerSelectionDeleteFromTable(btn, objectType) {
     triggerSelectionDelete();
 }
 
+function triggerCreateFromTable(btn, objectType) {
+    const normalized = String(objectType || '').trim();
+    if (!normalized) return;
+    sendAiMessageWithDisplay(`Create ${normalized}`, `create ${normalized}`);
+}
+
 function _setActiveSelectionFromContainer(container, objectType) {
     aiAgentActiveSelectionObject = objectType;
     aiAgentActiveSelectionContainer = container;
 }
 
-function requestLocalAgentPage(tableKey, page) {
+function requestLocalAgentPage(tableKey, page, searchState = null) {
     const container = document.querySelector(`.results-container[data-table-key="${tableKey}"]`);
     const markup = renderLocalResultsTable(tableKey, page);
     if (container && markup) {
         container.outerHTML = markup;
+        if (searchState?.focusSearch) {
+            const nextContainer = document.querySelector(`.results-container[data-table-key="${tableKey}"]`);
+            const nextInput = nextContainer?.querySelector?.('.agent-table-search');
+            if (nextInput) {
+                nextInput.focus();
+                nextInput.value = searchState.value || '';
+                if (typeof nextInput.setSelectionRange === 'function') {
+                    nextInput.setSelectionRange(searchState.selectionStart || 0, searchState.selectionEnd || 0);
+                }
+            }
+        }
     }
+    updateAiAgentJumpButtonVisibility();
 }
 
 function escapeAgentQuery(value) {
@@ -2288,10 +3295,32 @@ function getAgentObjectRoute(objectType, recordId, action = 'detail') {
         product: { detail: `/products/${recordId}`, edit: `/products/new-modal?id=${recordId}` },
         asset: { detail: `/assets/${recordId}`, edit: `/assets/new-modal?id=${recordId}` },
         model: { detail: `/models/${recordId}`, edit: `/models/new-modal?id=${recordId}` },
-        brand: { detail: `/vehicle_specifications/${recordId}`, edit: `/vehicle_specifications/new-modal?id=${recordId}` },
-        message_template: { detail: `/message_templates/${recordId}`, edit: null },
+        brand: { detail: `/vehicle_specifications/${recordId}`, edit: `/vehicle_specifications/new-modal?type=Brand&id=${recordId}` },
+        message_template: { detail: `/message_templates/${recordId}`, edit: `/message_templates/new-modal?id=${recordId}` },
     };
     return routes[objectType]?.[action] || null;
+}
+
+function shouldUseDirectAgentEditForm(objectType) {
+    return objectType === 'asset'
+        || objectType === 'brand'
+        || objectType === 'model'
+        || objectType === 'message_template';
+}
+
+function buildAgentEditIntro(objectType, displayName = '') {
+    const objectLabel = String(objectType || '').replace(/_/g, ' ').trim() || 'record';
+    const target = String(displayName || '').trim();
+    const suffix = target ? ` for **${target}**` : '';
+    return `I opened the ${objectLabel} edit form${suffix} here in chat. Update the fields you want, then save your changes.`;
+}
+
+function openAgentEditFormDirect(objectType, recordId, displayName = '') {
+    if (!objectType || !recordId) return false;
+    const url = getAgentObjectRoute(objectType, recordId, 'edit');
+    if (!url) return false;
+    appendAgentInlineFormMessage(buildAgentEditIntro(objectType, displayName), url, `Edit ${displayName || objectType}`);
+    return true;
 }
 
 function ensureSelectionBucket(objectType) {
@@ -2487,6 +3516,10 @@ function triggerSelectionEdit() {
         return;
     }
     const label = selection.labels?.[0] || selection.ids[0];
+    if (shouldUseDirectAgentEditForm(selection.object_type)) {
+        openAgentEditFormDirect(selection.object_type, selection.ids[0], label);
+        return;
+    }
     if (shouldUseAgentChatForm(selection.object_type)) {
         sendAiMessageWithDisplay(`Edit ${label}`, `Manage ${selection.object_type} ${selection.ids[0]} edit`);
         return;
@@ -2499,6 +3532,22 @@ function triggerSelectionEdit() {
     sendAiMessageWithDisplay(`Edit ${label}`, `Manage ${selection.object_type} ${selection.ids[0]}`);
 }
 
+function triggerWorkspaceEdit() {
+    const panel = document.getElementById('ai-agent-workspace');
+    const objectType = panel?.dataset?.recordObjectType || '';
+    const recordId = panel?.dataset?.recordId || '';
+    const title = panel?.dataset?.recordTitle || recordId;
+    if (!objectType || !recordId) {
+        appendChatMessage('agent', 'Open a single record first, then choose Edit.');
+        return;
+    }
+    if (shouldUseDirectAgentEditForm(objectType)) {
+        openAgentEditFormDirect(objectType, recordId, title);
+        return;
+    }
+    sendAiMessageWithDisplay(`Edit ${title}`, `Manage ${objectType} ${recordId} edit`);
+}
+
 function triggerSelectionDelete() {
     const selection = buildSelectionPayload();
     if (!selection) {
@@ -2509,8 +3558,7 @@ function triggerSelectionDelete() {
     const subject = selection.ids.length === 1
         ? `**${firstLabel}**`
         : `**${selection.ids.length}** ${normalizeObjectLabel(selection.object_type, selection.ids.length)}`;
-    const confirmationMessage = appendChatMessage('agent', `Are you sure you want to delete ${subject}?\n[Yes] [Cancel]`);
-    scrollAgentChatMessageIntoView(confirmationMessage);
+    appendChatMessage('agent', `Are you sure you want to delete ${subject}?\n[Yes] [Cancel]`);
     // Store pending deletion so the Yes handler can resolve it
     window._agentPendingDelete = {
         objectType: selection.object_type,

@@ -81,6 +81,11 @@ class RecordDeleteService:
             attachment.id
             for attachment in db.query(Attachment).filter(Attachment.parent_id == template.id).all()
         )
+        if attachment_ids:
+            template.attachment_id = None
+            template.image_url = ""
+            template.file_path = ""
+            db.flush()
         for attachment_id in attachment_ids:
             attachment = db.query(Attachment).filter(Attachment.id == attachment_id).first()
             if not attachment:

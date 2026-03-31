@@ -133,7 +133,7 @@ This file tracks tests that are known to have special behavior, skip conditions,
 ## Current Provider Verification Note
 
 - Slack provider verification succeeded for an automated MMS-style send path in phase 190.
-- Solapi MMS carrier verification is currently blocked by Solapi IP allowlist rejection until the active runtime egress IP is registered.
+- SureM carrier verification depends on protected-runtime credentials plus the current fixed-recipient configuration.
 - Runtime provider diagnostics are now exposed through `/messaging/provider-status` for deployment verification.
 
 ## Current State

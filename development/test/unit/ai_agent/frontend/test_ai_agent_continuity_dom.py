@@ -260,6 +260,148 @@ def _run_node_dom_test(test_body: str) -> None:
     assert completed.returncode == 0, completed.stderr or completed.stdout
 
 
+def test_inline_web_form_submit_uses_ai_managed_bridge_for_supported_objects():
+    source = JS_PATH.read_text()
+    assert "const aiManaged = await handleAiManagedInlineFormSubmit(container, sourceUrl, submitMode, closeHandler);" in source
+    assert "if (aiManaged) {" in source
+    assert "const managedOpenRecord = await resolveAgentOpenRecordFromRedirect(finalUrl);" in source
+    assert "if (pathname === '/assets/new-modal') {" in source
+    assert "if (pathname === '/models/new-modal') {" in source
+    assert "if (pathname === '/message_templates/new-modal') {" in source
+    assert "if (pathname === '/vehicle_specifications/new-modal' && sourceUrl?.searchParams?.get('type') === 'Brand') {" in source
+    assert "function hasSelectedInlineFileForAiManagedSubmit(form) {" in source
+    assert "if (hasSelectedInlineFileForAiManagedSubmit(form)) {" in source
+
+
+def test_grouped_object_edit_actions_use_direct_inline_form_path():
+    source = JS_PATH.read_text()
+    assert "function shouldUseDirectAgentEditForm(objectType) {" in source
+    assert "function openAgentEditFormDirect(objectType, recordId, displayName = '') {" in source
+    assert "appendAgentInlineFormMessage(buildAgentEditIntro(objectType, displayName), url, `Edit ${displayName || objectType}`);" in source
+    assert "if (shouldUseDirectAgentEditForm(selection.object_type)) {" in source
+    assert "openAgentEditFormDirect(selection.object_type, selection.ids[0], label);" in source
+    assert "onclick=\"openAgentEditFormDirect('${escapeAgentQuery(objectType)}', '${escapeAgentQuery(recordId)}', '${escapeAgentHtml(displayName)}')\"" in source
+
+
+def test_workspace_edit_uses_inline_form_path_for_grouped_objects():
+    source = JS_PATH.read_text()
+    assert "function triggerWorkspaceEdit() {" in source
+    assert "panel.dataset.recordObjectType = getAiAgentObjectTypeFromPath(url) || '';" in source
+    assert "panel.dataset.recordId = getAiAgentRecordIdFromPath(url) || '';" in source
+    assert "if (shouldUseDirectAgentEditForm(objectType)) {" in source
+    assert "openAgentEditFormDirect(objectType, recordId, title);" in source
+
+
+def test_ai_agent_initializes_scoped_template_modal_visibility_for_inline_forms():
+    source = JS_PATH.read_text()
+    assert "function initializeAiAgentTemplateModalUi(container) {" in source
+    assert "const form = container.querySelector('form');" in source
+    assert "const typeSelect = form.querySelector('select[name=\"record_type\"]');" in source
+    assert "const subjectWrapper = form.querySelector('.sf-field-wrapper[data-field=\"subject\"]');" in source
+    assert "const imageWrapper = form.querySelector('.sf-field-wrapper[data-field=\"image\"]');" in source
+    assert "if (String(formUrl || '').includes('/message_templates/new-modal')) {" in source
+    assert "initializeAiAgentTemplateModalUi(container);" in source
+    assert "typeSelect.addEventListener('change', updateScopedTemplateUi);" in source
+
+
+def test_results_table_includes_new_action_button():
+    source = JS_PATH.read_text()
+    assert """onclick="triggerCreateFromTable(this, '${objectType}')">New</button>""" in source
+    assert "function triggerCreateFromTable(btn, objectType) {" in source
+
+
+def test_grouped_object_edit_routes_are_not_missing_for_brand_and_template():
+    source = JS_PATH.read_text()
+    assert "brand: { detail: `/vehicle_specifications/${recordId}`, edit: `/vehicle_specifications/new-modal?type=Brand&id=${recordId}` }" in source
+    assert "message_template: { detail: `/message_templates/${recordId}`, edit: `/message_templates/new-modal?id=${recordId}` }" in source
+
+
+def test_ai_agent_window_uses_ninety_percent_zoom():
+    css_source = Path("development/ai_agent/ui/frontend/static/css/ai_agent.css").read_text()
+    assert "#ai-agent-window {" in css_source
+    assert "zoom: 0.9;" in css_source
+    assert "width: clamp(440px, 96vw, 1080px);" in css_source
+    assert "height: clamp(600px, 95vh, 900px);" in css_source
+    assert "#ai-agent-window.agent-maximized {" in css_source
+    assert "zoom: 0.95;" in css_source
+
+
+def test_send_message_handoff_without_selection_seeds_guidance_state():
+    source = Path("development/ai_agent/ui/frontend/static/js/ai_agent.js").read_text(encoding="utf-8")
+    start = source.index("function completeAgentSendMessageHandoff(")
+    end = source.index("function startTemplateSendFromAgent(", start)
+    branch = source[start:end]
+
+    assert "const hasSelection = !!(selection && Array.isArray(selection.ids) && selection.ids.length);" in branch
+    assert "sessionStorage.setItem('aiAgentMessageGuidance', JSON.stringify({" in branch
+    assert "sessionStorage.removeItem('aiAgentMessageSelection');" in branch
+
+
+def test_send_message_intent_uses_ai_native_composer_instead_of_workspace_handoff():
+    source = Path("development/ai_agent/ui/frontend/static/js/ai_agent.js").read_text(encoding="utf-8")
+    start = source.index("if (data.intent === 'SEND_MESSAGE') {")
+    end = source.index("if (data.intent === 'OPEN_FORM' && data.form_url) {", start)
+    branch = source[start:end]
+
+    assert "appendAgentSendMessageComposer(" in branch
+    assert "redirectUrl: data.redirect_url" in branch
+    assert "selection: data.selection" in branch
+
+
+def test_agent_send_message_composer_fetches_base_compose_data_then_lazy_loads_recommendations():
+    source = Path("development/ai_agent/ui/frontend/static/js/ai_agent.js").read_text(encoding="utf-8")
+
+    assert "fetchAiAgentWithTimeout('/messaging/ai-agent-compose-data'" in source
+    assert "fetchAiAgentWithTimeout('/messaging/recommendations'" in source
+    assert "fetchAiAgentWithTimeout('/messaging/demo-availability'" in source
+    assert "async function submitAgentSendComposer(composerId, btn) {" in source
+    assert "fetchAiAgentWithTimeout('/messaging/bulk-send'" in source
+    assert "Choose a template or enter message content before sending." in source
+    assert "MMS requires an image-backed template in AI Agent. Choose an MMS template first." in source
+    assert "Save Recipients" in source
+    assert "Clear All" in source
+    assert "class=\"agent-send-action-stack\"" in source
+    assert "Saved recipients:" in source
+
+
+def test_agent_send_message_preview_only_renders_in_maximized_mode():
+    source = Path("development/ai_agent/ui/frontend/static/js/ai_agent.js").read_text(encoding="utf-8")
+    css_source = Path("development/ai_agent/ui/frontend/static/css/ai_agent.css").read_text(encoding="utf-8")
+
+    assert "showPreview: isAiAgentMaximized" in source
+    assert "${state.showPreview ? renderAgentSendPreview(state) : ''}" in source
+    assert "#ai-agent-window.agent-maximized .agent-send-composer-grid {" in css_source
+    assert ".agent-send-preview-panel {" in css_source
+    assert ".agent-send-action-stack {" in css_source
+    assert ".agent-send-secondary-accent {" in css_source
+
+
+def test_new_modal_workspace_extraction_keeps_trailing_modal_scripts():
+    source = Path("development/ai_agent/ui/frontend/static/js/ai_agent.js").read_text(encoding="utf-8")
+
+    assert "Array.from(doc.body.children || [])" in source
+    assert ".filter(node => node.tagName === 'SCRIPT')" in source
+    assert ".forEach(script => wrapper.appendChild(script.cloneNode(true)));" in source
+
+
+def test_local_results_table_search_uses_visible_schema_fields_only():
+    source = Path("development/ai_agent/ui/frontend/static/js/ai_agent.js").read_text(encoding="utf-8")
+
+    assert "function agentTableRowMatches(row, objectType, term) {" in source
+    assert "const schemaKeys = AGENT_TABLE_SCHEMAS[objectType] || Object.keys(row || {});" in source
+    assert "tableState.results.filter(row => agentTableRowMatches(row, tableState.objectType, term))" in source
+
+
+def test_local_results_table_search_restores_focus_after_rerender():
+    source = Path("development/ai_agent/ui/frontend/static/js/ai_agent.js").read_text(encoding="utf-8")
+
+    assert "requestLocalAgentPage(tableKey, 1, {" in source
+    assert "focusSearch: true," in source
+    assert "const nextInput = nextContainer?.querySelector?.('.agent-table-search');" in source
+    assert "nextInput.focus();" in source
+    assert "nextInput.setSelectionRange(searchState.selectionStart || 0, searchState.selectionEnd || 0);" in source
+
+
 def test_send_ai_message_with_display_appends_latest_user_message_and_scrolls_it_into_view():
     _run_node_dom_test(
         """
@@ -291,6 +433,22 @@ def test_send_ai_message_with_display_appends_latest_user_message_and_scrolls_it
     )
 
 
+def test_append_chat_message_scrolls_latest_message_anchor_into_view():
+    _run_node_dom_test(
+        """
+        const body = context.document.getElementById('ai-agent-body');
+        const appended = context.appendChatMessage('agent', 'Latest response');
+
+        if (body.scrollToCalls.length !== 0) {
+            throw new Error(`expected appendChatMessage not to force bottom scrolling, got ${body.scrollToCalls.length}`);
+        }
+        if (!appended || appended.scrollIntoViewCalls.length !== 1) {
+            throw new Error('expected appendChatMessage to scroll the latest message anchor into view');
+        }
+        """
+    )
+
+
 def test_send_ai_message_with_display_keeps_contact_prompt_action_in_latest_chat_area():
     _run_node_dom_test(
         """
@@ -313,6 +471,37 @@ def test_send_ai_message_with_display_keeps_contact_prompt_action_in_latest_chat
         }
         """
     )
+
+
+def test_send_ai_message_clears_workspace_loading_when_chat_request_fails():
+    _run_node_dom_test(
+        """
+        const loading = context.document.getElementById('ai-agent-workspace-loading');
+        loading.classList.remove('agent-hidden');
+        context.fetch = async () => { throw new Error('network down'); };
+
+        await context.sendAiMessage('show all leads');
+
+        if (!loading.classList.contains('agent-hidden')) {
+            throw new Error('expected failed AI Agent request to clear lingering workspace loading');
+        }
+        """
+    )
+
+
+def test_ai_agent_window_controls_contract_keeps_debug_toggle_and_uses_viewport_maximize():
+    panel_source = (BASE_DIR / "ai_agent" / "ui" / "frontend" / "templates" / "ai_agent_panel.html").read_text(encoding="utf-8")
+    js_source = JS_PATH.read_text(encoding="utf-8")
+    css_source = (BASE_DIR / "ai_agent" / "ui" / "frontend" / "static" / "css" / "ai_agent.css").read_text(encoding="utf-8")
+
+    assert 'id="ai-agent-debug-toggle"' in panel_source
+    assert "let aiAgentDebugEnabled = localStorage.getItem('aiAgentDebugEnabled');" in js_source
+    assert "aiAgentDebugEnabled = aiAgentDebugEnabled === '1';" in js_source
+    assert "#ai-agent-window.agent-maximized {" in css_source
+    assert "left: 16px;" in css_source
+    assert "width: auto;" in css_source
+    assert "max-width: none;" in css_source
+    assert "#ai-agent-window.agent-minimized #ai-agent-debug-toggle {" in css_source
 
 
 def test_contact_selection_open_routes_through_chat_and_skips_direct_workspace_open():
@@ -382,6 +571,9 @@ def test_contact_chat_card_renders_send_message_and_reuses_existing_chat_native_
 
         if (!markup.includes('Send Message')) {
             throw new Error('expected contact chat card markup to include Send Message');
+        }
+        if (markup.includes('Open Record')) {
+            throw new Error('expected open-record button to be omitted from already-open chat cards');
         }
         if (!markup.includes("triggerLeadCardSendMessage('contact', 'CONTACT1', 'Ada Kim')")) {
             throw new Error('expected contact chat card Send Message action to reuse the existing card handler');
@@ -458,6 +650,9 @@ def test_opportunity_chat_card_renders_send_message_and_reuses_existing_chat_nat
 
         if (!markup.includes('Send Message')) {
             throw new Error('expected opportunity chat card markup to include Send Message');
+        }
+        if (markup.includes('Open Record')) {
+            throw new Error('expected open-record button to be omitted from already-open chat cards');
         }
         if (!markup.includes("triggerLeadCardSendMessage('opportunity', 'OPP1', 'Fleet Renewal')")) {
             throw new Error('expected opportunity chat card Send Message action to reuse the existing card handler');
@@ -1243,13 +1438,9 @@ def test_opportunity_non_submit_open_record_appends_latest_chat_result_and_prese
     )
 
 
-def test_asset_chat_card_open_record_uses_display_first_chat_routing():
+def test_asset_chat_card_omits_redundant_open_record_button():
     _run_node_dom_test(
         """
-        context.sendAiMessage = (query) => {
-            context.__sentQuery = query;
-        };
-
         const markup = context.renderAgentChatCard({
             type: 'record_paste',
             object_type: 'asset',
@@ -1264,41 +1455,16 @@ def test_asset_chat_card_open_record_uses_display_first_chat_routing():
             ],
         });
 
-        if (!markup.includes("sendAiMessageWithDisplay('Open Executive Demo', 'Manage asset ASSET1')")) {
-            throw new Error('expected asset chat card Open Record to use display-first Manage routing');
-        }
-
-        context.sendAiMessageWithDisplay('Open Executive Demo', 'Manage asset ASSET1');
-
-        const body = context.document.getElementById('ai-agent-body');
-        if (body.children.length !== 1) {
-            throw new Error(`expected one latest chat message, got ${body.children.length}`);
-        }
-
-        const latest = body.children[0];
-        if (latest.className !== 'msg-user') {
-            throw new Error(`expected asset card open to append a user chat message, got ${latest.className}`);
-        }
-        if (!latest.innerHTML.includes('Open Executive Demo')) {
-            throw new Error('expected asset card open to render the display text in chat');
-        }
-        if (latest.scrollIntoViewCalls.length !== 1) {
-            throw new Error('expected asset card open to scroll the latest chat area into view');
-        }
-        if (context.__sentQuery !== 'Manage asset ASSET1') {
-            throw new Error(`expected asset card open to send Manage query, got ${context.__sentQuery}`);
+        if (markup.includes('Open Record')) {
+            throw new Error('expected asset chat card to omit the redundant open-record button');
         }
         """
     )
 
 
-def test_brand_chat_card_open_record_uses_display_first_chat_routing():
+def test_brand_chat_card_omits_redundant_open_record_button():
     _run_node_dom_test(
         """
-        context.sendAiMessage = (query) => {
-            context.__sentQuery = query;
-        };
-
         const markup = context.renderAgentChatCard({
             type: 'record_paste',
             object_type: 'brand',
@@ -1313,41 +1479,16 @@ def test_brand_chat_card_open_record_uses_display_first_chat_routing():
             ],
         });
 
-        if (!markup.includes("sendAiMessageWithDisplay('Open Hyundai', 'Manage brand BRAND1')")) {
-            throw new Error('expected brand chat card Open Record to use display-first Manage routing');
-        }
-
-        context.sendAiMessageWithDisplay('Open Hyundai', 'Manage brand BRAND1');
-
-        const body = context.document.getElementById('ai-agent-body');
-        if (body.children.length !== 1) {
-            throw new Error(`expected one latest chat message, got ${body.children.length}`);
-        }
-
-        const latest = body.children[0];
-        if (latest.className !== 'msg-user') {
-            throw new Error(`expected brand card open to append a user chat message, got ${latest.className}`);
-        }
-        if (!latest.innerHTML.includes('Open Hyundai')) {
-            throw new Error('expected brand card open to render the display text in chat');
-        }
-        if (latest.scrollIntoViewCalls.length !== 1) {
-            throw new Error('expected brand card open to scroll the latest chat area into view');
-        }
-        if (context.__sentQuery !== 'Manage brand BRAND1') {
-            throw new Error(`expected brand card open to send Manage query, got ${context.__sentQuery}`);
+        if (markup.includes('Open Record')) {
+            throw new Error('expected brand chat card to omit the redundant open-record button');
         }
         """
     )
 
 
-def test_model_chat_card_open_record_uses_display_first_chat_routing():
+def test_model_chat_card_omits_redundant_open_record_button():
     _run_node_dom_test(
         """
-        context.sendAiMessage = (query) => {
-            context.__sentQuery = query;
-        };
-
         const markup = context.renderAgentChatCard({
             type: 'record_paste',
             object_type: 'model',
@@ -1362,29 +1503,8 @@ def test_model_chat_card_open_record_uses_display_first_chat_routing():
             ],
         });
 
-        if (!markup.includes("sendAiMessageWithDisplay('Open Sonata', 'Manage model MODEL1')")) {
-            throw new Error('expected model chat card Open Record to use display-first Manage routing');
-        }
-
-        context.sendAiMessageWithDisplay('Open Sonata', 'Manage model MODEL1');
-
-        const body = context.document.getElementById('ai-agent-body');
-        if (body.children.length !== 1) {
-            throw new Error(`expected one latest chat message, got ${body.children.length}`);
-        }
-
-        const latest = body.children[0];
-        if (latest.className !== 'msg-user') {
-            throw new Error(`expected model card open to append a user chat message, got ${latest.className}`);
-        }
-        if (!latest.innerHTML.includes('Open Sonata')) {
-            throw new Error('expected model card open to render the display text in chat');
-        }
-        if (latest.scrollIntoViewCalls.length !== 1) {
-            throw new Error('expected model card open to scroll the latest chat area into view');
-        }
-        if (context.__sentQuery !== 'Manage model MODEL1') {
-            throw new Error(`expected model card open to send Manage query, got ${context.__sentQuery}`);
+        if (markup.includes('Open Record')) {
+            throw new Error('expected model chat card to omit the redundant open-record button');
         }
         """
     )
@@ -1445,9 +1565,9 @@ def test_message_template_chat_card_use_in_send_message_reuses_existing_handoff_
         };
         context.sessionStorage.getItem = (key) => session[key] || null;
 
-        const workspaceCalls = [];
-        context.openAgentWorkspace = (url, title, options = {}) => {
-            workspaceCalls.push({ url, title, options });
+        const composerCalls = [];
+        context.appendAgentSendMessageComposer = (text, payload = {}) => {
+            composerCalls.push({ text, payload });
         };
 
         const markup = context.renderAgentChatCard({
@@ -1469,35 +1589,26 @@ def test_message_template_chat_card_use_in_send_message_reuses_existing_handoff_
 
         context.startTemplateSendFromAgent('TEMPLATE1');
 
-        if (session.aiAgentMessageTemplate !== 'TEMPLATE1') {
-            throw new Error(`expected handoff to seed template selection, got ${session.aiAgentMessageTemplate}`);
+        if (composerCalls.length !== 1) {
+            throw new Error(`expected one AI-native send composer call, got ${composerCalls.length}`);
         }
-        if (workspaceCalls.length !== 1) {
-            throw new Error(`expected one messaging workspace open call, got ${workspaceCalls.length}`);
+        if (composerCalls[0].payload.templateId !== 'TEMPLATE1') {
+            throw new Error(`expected template handoff to preserve template id, got ${composerCalls[0].payload.templateId}`);
         }
-        if (workspaceCalls[0].url !== '/messaging/ui?sourceObject=message_template') {
-            throw new Error(`expected existing messaging handoff url, got ${workspaceCalls[0].url}`);
-        }
-        const body = context.document.getElementById('ai-agent-body');
-        if (body.children.length !== 1 || !body.children[0].innerHTML.includes('Template prepared for Send Message')) {
-            throw new Error('expected existing template handoff confirmation message to be appended in chat');
+        if (!composerCalls[0].text.includes('Template prepared for Send Message')) {
+            throw new Error('expected template send action to explain the composer handoff');
         }
         """
     )
 
 
-def test_send_message_intent_appends_chat_feedback_before_workspace_open_and_preserves_focus():
+def test_send_message_intent_appends_ai_native_composer():
     _run_node_dom_test(
         """
-        const session = {};
-        context.sessionStorage.setItem = (key, value) => {
-            session[key] = value;
+        const composerCalls = [];
+        context.appendAgentSendMessageComposer = (text, payload = {}) => {
+            composerCalls.push({ text, payload });
         };
-        context.sessionStorage.removeItem = (key) => {
-            delete session[key];
-        };
-
-        const workspaceCalls = [];
         context.fetchAiAgentResponse = async () => ({
             intent: 'SEND_MESSAGE',
             text: 'Opening the messaging flow for 1 selected contact record(s).',
@@ -1505,59 +1616,36 @@ def test_send_message_intent_appends_chat_feedback_before_workspace_open_and_pre
             template_id: 'TEMPLATE1',
             selection: { object_type: 'contact', ids: ['CONTACT1'] },
         });
-        context.openAgentWorkspace = (url, title, options = {}) => {
-            workspaceCalls.push({ url, title, options });
-        };
 
         await context.sendAiMessage('Send Message');
 
-        const body = context.document.getElementById('ai-agent-body');
-        if (body.children.length !== 1) {
-            throw new Error(`expected one agent send-handoff message, got ${body.children.length}`);
+        if (composerCalls.length !== 1) {
+            throw new Error(`expected one composer handoff, got ${composerCalls.length}`);
         }
-
-        const latest = body.children[0];
-        if (latest.className !== 'msg-agent') {
-            throw new Error(`expected latest send handoff message to be agent chat, got ${latest.className}`);
+        if (composerCalls[0].payload.templateId !== 'TEMPLATE1') {
+            throw new Error(`expected composer handoff to keep template id, got ${composerCalls[0].payload.templateId}`);
         }
-        if (!latest.innerHTML.includes('Opening the messaging flow for 1 selected contact record(s).')) {
-            throw new Error('expected send handoff confirmation to be appended in chat');
-        }
-        if (latest.scrollIntoViewCalls.length !== 1) {
-            throw new Error('expected send handoff confirmation to scroll the latest chat area into view');
-        }
-        if (workspaceCalls.length !== 1) {
-            throw new Error(`expected one messaging workspace open call, got ${workspaceCalls.length}`);
-        }
-        if (workspaceCalls[0].options.preserveChatFocus !== true) {
-            throw new Error('expected send handoff workspace open to preserve chat focus');
-        }
-        if (session.aiAgentMessageTemplate !== 'TEMPLATE1') {
-            throw new Error(`expected send handoff to keep template id, got ${session.aiAgentMessageTemplate}`);
-        }
-        if (session.aiAgentMessageSelection !== JSON.stringify({ object_type: 'contact', ids: ['CONTACT1'] })) {
-            throw new Error(`expected send handoff to keep selection payload, got ${session.aiAgentMessageSelection}`);
+        if (JSON.stringify(composerCalls[0].payload.selection) !== JSON.stringify({ object_type: 'contact', ids: ['CONTACT1'] })) {
+            throw new Error(`expected composer handoff to keep selection payload, got ${JSON.stringify(composerCalls[0].payload.selection)}`);
         }
         """
     )
 
 
-def test_selection_triggered_send_message_appends_latest_confirmation_and_opens_after_it():
+def test_selection_triggered_send_message_routes_into_ai_native_composer():
     _run_node_dom_test(
         """
-        const workspaceCalls = [];
-        context.openAgentWorkspace = (url, title, options = {}) => {
-            workspaceCalls.push({ url, title, options });
+        const composerCalls = [];
+        context.appendAgentSendMessageComposer = (text, payload = {}) => {
+            composerCalls.push({ text, payload });
         };
         context.sendQuickMessage = (text) => {
             if (text !== 'Send Message') {
                 throw new Error(`expected triggerSelectionMessaging to request Send Message, got ${text}`);
             }
-            context.completeAgentSendMessageHandoff(
-                '/messaging/ui?sourceObject=contact&count=1',
+            context.appendAgentSendMessageComposer(
                 'Opening the messaging flow for 1 selected contact record(s).',
-                null,
-                context.buildSelectionPayload()
+                { selection: context.buildSelectionPayload() }
             );
         };
 
@@ -1567,22 +1655,92 @@ def test_selection_triggered_send_message_appends_latest_confirmation_and_opens_
 
         context.triggerSelectionMessaging();
 
-        const body = context.document.getElementById('ai-agent-body');
-        if (body.children.length !== 1) {
-            throw new Error(`expected one agent send confirmation, got ${body.children.length}`);
+        if (composerCalls.length !== 1) {
+            throw new Error(`expected one composer handoff, got ${composerCalls.length}`);
         }
-        const latest = Array.from(body.children).find(node =>
-            node.className === 'msg-agent' &&
-            node.innerHTML.includes('Opening the messaging flow for 1 selected contact record(s).')
-        );
-        if (!latest) {
-            throw new Error('expected send confirmation after selection-triggered send');
-        }
-        if (latest.scrollIntoViewCalls.length !== 1) {
-            throw new Error('expected selection-triggered send confirmation to scroll into view');
-        }
-        if (workspaceCalls.length !== 1 || workspaceCalls[0].options.preserveChatFocus !== true) {
-            throw new Error('expected selection-triggered send to open messaging workspace with preserved chat focus');
+        if (JSON.stringify(composerCalls[0].payload.selection) !== JSON.stringify({ object_type: 'contact', ids: ['CONTACT1'], labels: ['Ada Kim'] })) {
+            throw new Error(`expected selection-triggered send to preserve selection payload, got ${JSON.stringify(composerCalls[0].payload.selection)}`);
         }
         """
     )
+
+
+def test_jump_button_is_visible_when_user_is_not_near_bottom_and_hides_at_bottom():
+    _run_node_dom_test(
+        """
+        const body = context.document.getElementById('ai-agent-body');
+        const jump = new context.__FakeElement('button', 'ai-agent-jump-btn');
+        context.__elements.set('ai-agent-jump-btn', jump);
+
+        body.scrollHeight = 1600;
+        body.clientHeight = 600;
+        body.scrollTop = 200;
+        context.updateAiAgentJumpButtonVisibility();
+
+        if (!jump.classList.contains('is-visible')) {
+            throw new Error('expected jump button to appear when user is scrolled away from the latest reply');
+        }
+
+        body.scrollTop = 1010;
+        context.updateAiAgentJumpButtonVisibility();
+
+        if (jump.classList.contains('is-visible')) {
+            throw new Error('expected jump button to hide when user is already at the bottom');
+        }
+        """
+    )
+
+
+def test_jump_button_scrolls_to_latest_agent_message_start_not_forced_bottom():
+    _run_node_dom_test(
+        """
+        const body = context.document.getElementById('ai-agent-body');
+        const latest = new context.__FakeElement('div');
+        latest.className = 'msg-agent';
+        body.querySelectorAll = (selector) => selector === '.msg-agent' ? [latest] : [];
+
+        context.jumpToLatestAgentMessage();
+
+        if (latest.scrollIntoViewCalls.length !== 1) {
+            throw new Error('expected jump button to scroll the latest agent message into view');
+        }
+        if (body.scrollToCalls.length !== 0) {
+            throw new Error('expected jump button not to force a raw bottom scroll when a latest agent node exists');
+        }
+        """
+    )
+
+
+def test_maximize_ai_agent_preserves_existing_scroll_position():
+    _run_node_dom_test(
+        """
+        const win = context.document.createElement('div');
+        win.id = 'ai-agent-window';
+        context.__elements.set('ai-agent-window', win);
+
+        const body = context.document.getElementById('ai-agent-body');
+        body.scrollTop = 640;
+
+        context.maximizeAiAgent();
+
+        if (!win.classList.contains('agent-maximized')) {
+            throw new Error('expected maximizeAiAgent to toggle the maximized class');
+        }
+        if (body.scrollToCalls.length !== 0) {
+            throw new Error('expected maximizeAiAgent not to force-scroll the chat body to the top');
+        }
+        if (body.scrollTop !== 640) {
+            throw new Error(`expected maximizeAiAgent to preserve existing scrollTop, got ${body.scrollTop}`);
+        }
+        """
+    )
+
+
+def test_message_template_modal_respects_staged_image_removal_in_ai_agent():
+    source = JS_PATH.read_text(encoding="utf-8")
+
+    assert "function hasPendingInlineImageRemoval(form) {" in source
+    assert "if (context.objectType === 'message_template' && hasPendingInlineImageRemoval(form)) {" in source
+    assert "const removeImageInput = form.querySelector('#modal-form-remove-image');" in source
+    assert "const removeRequested = removeImageInput?.value === 'true';" in source
+    assert "helper.textContent = removeRequested ? 'Image removal staged. Click Save to apply it.' : '';" in source

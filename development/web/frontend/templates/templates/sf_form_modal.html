@@ -117,6 +117,18 @@
                         <option value="{{ s }}" {% if val == s %}selected{% endif %}>{{ s }}</option>
                         {% endfor %}
                     </select>
+                    {% elif field == 'status' and object_type == 'Asset' %}
+                    <select name="status" class="sf-inline-input">
+                        {% for s in asset_status_options|default(["Active", "Available", "Sold", "Maintenance", "Inactive"], true) %}
+                        <option value="{{ s }}" {% if val == s %}selected{% endif %}>{{ s }}</option>
+                        {% endfor %}
+                    </select>
+                    {% elif field == 'status' and object_type == 'Opportunity' %}
+                    <select name="status" class="sf-inline-input">
+                        {% for s in ["Open", "Closed Won", "Closed Lost"] %}
+                        <option value="{{ s }}" {% if val == s %}selected{% endif %}>{{ s }}</option>
+                        {% endfor %}
+                    </select>
                     {% elif field == 'stage' %}
                     <select name="stage" class="sf-inline-input">
                         {% for s in ["Prospecting", "Qualification", "Test drive", "Value Proposition", "Closed Won", "Closed Lost"] %}
@@ -129,13 +141,27 @@
                     <div id="byte-counter" style="font-size: 0.75rem; color: var(--text-label); margin-top: 0.25rem; text-align: right;">0 / 90 bytes (SMS)</div>
                     {% endif %}
                     {% elif field == 'image' and (object_type == 'MessageTemplate' or object_type == 'MessageSend') %}
-                    <input type="file" name="image" class="sf-inline-input" accept="image/jpeg,image/jpg" style="padding: 4px 0;">
-                    {% if val %}
-                    <div style="margin-top: 0.5rem; font-size: 0.75rem;">
-                        <span style="color: var(--text-label);">Current Image:</span>
-                        <a href="{{ val }}" target="_blank" style="color: var(--nav-blue); text-decoration: none;">View File</a>
+                    <div class="sf-template-image-field">
+                        <input type="file" id="modal-form-image-input" name="image" class="sf-inline-input" accept="image/jpeg,image/jpg" style="display: none;" onchange="handleModalTemplateImageSelection(this)">
+                        <input type="hidden" id="modal-form-remove-image" name="remove_image" value="false">
+                        <div id="modal-form-image-panel" style="display: flex; flex-direction: column; gap: 0.75rem;">
+                            <div id="modal-form-image-empty" style="display: none; border: 2px dashed var(--border); border-radius: 10px; padding: 1rem; text-align: center; color: var(--text-label); background: #fafbfc;">
+                                <div style="font-size: 1.35rem; margin-bottom: 0.45rem;">🖼️</div>
+                                <div style="font-size: 0.78rem; margin-bottom: 0.8rem;">Upload a JPG image for MMS templates.</div>
+                                <button type="button" class="btn" onclick="openModalTemplateImagePicker(this)">Upload Image</button>
+                            </div>
+                            <div id="modal-form-image-preview-wrap" style="display: none; border: 1px solid var(--border); border-radius: 10px; padding: 0.9rem; background: #fbfcfe;">
+                                <img id="modal-form-image-preview" alt="Template image preview" style="display: block; width: 100%; max-height: 220px; object-fit: contain; border-radius: 8px; background: #fff;">
+                                <div id="modal-form-image-meta" style="margin-top: 0.65rem; font-size: 0.76rem; color: #5d6c84;"></div>
+                                <div style="display: flex; gap: 0.5rem; margin-top: 0.75rem;">
+                                    <button type="button" class="btn" onclick="openModalTemplateImagePicker(this)">Replace Image</button>
+                                    <button type="button" class="btn btn-inline-cancel" style="color: var(--error);" onclick="clearModalTemplateImageSelection(this)">Clear Image</button>
+                                </div>
+                            </div>
+                            <div id="modal-form-image-helper" style="font-size: 0.76rem; color: #35506b;"></div>
+                            <div id="modal-form-image-error" style="display: none; font-size: 0.76rem; color: var(--error);"></div>
+                        </div>
                     </div>
-                    {% endif %}
                     {% else %}
                         {% if field in ['amount', 'price', 'base_price', 'probability'] %}
                         <input type="number" name="{{ field }}" class="sf-inline-input" value="{{ val | replace(',', '') }}">
@@ -162,6 +188,142 @@
 </form>
 
 <script>
+    const modalTemplateExistingImageUrl = {{ (initial_values.get("image", "") if initial_values else "")|tojson }};
+    let modalTemplatePendingPreviewUrl = null;
+
+    function revokeModalTemplatePreviewUrl() {
+        if (modalTemplatePendingPreviewUrl) {
+            URL.revokeObjectURL(modalTemplatePendingPreviewUrl);
+            modalTemplatePendingPreviewUrl = null;
+        }
+    }
+
+    function getModalTemplateImageElements(trigger) {
+        const form = trigger?.closest?.('form') || document.getElementById('objectForm');
+        if (!form) return {};
+        return {
+            form,
+            typeSelect: form.querySelector('select[name="record_type"]'),
+            emptyState: form.querySelector('#modal-form-image-empty'),
+            previewWrap: form.querySelector('#modal-form-image-preview-wrap'),
+            preview: form.querySelector('#modal-form-image-preview'),
+            meta: form.querySelector('#modal-form-image-meta'),
+            helper: form.querySelector('#modal-form-image-helper'),
+            error: form.querySelector('#modal-form-image-error'),
+            imageInput: form.querySelector('#modal-form-image-input'),
+            removeInput: form.querySelector('#modal-form-remove-image'),
+        };
+    }
+
+    function openModalTemplateImagePicker(trigger) {
+        const { imageInput } = getModalTemplateImageElements(trigger);
+        if (imageInput) imageInput.click();
+    }
+
+    function renderModalTemplateImageState(trigger = null) {
+        const {
+            typeSelect,
+            emptyState,
+            previewWrap,
+            preview,
+            meta,
+            helper,
+            error,
+            imageInput,
+            removeInput,
+        } = getModalTemplateImageElements(trigger);
+        const selectedType = typeSelect ? typeSelect.value : 'SMS';
+        const removeRequested = removeInput?.value === 'true';
+        const currentUrl = removeRequested ? '' : (imageInput?.dataset.currentUrl || '');
+        const activeUrl = imageInput?.dataset.previewUrl || currentUrl;
+
+        if (error) {
+            error.style.display = 'none';
+            error.textContent = '';
+        }
+        if (!emptyState || !previewWrap || !preview || !meta) return;
+        if (selectedType !== 'MMS') {
+            emptyState.style.display = 'none';
+            previewWrap.style.display = 'none';
+            preview.src = '';
+            meta.textContent = '';
+            if (helper) helper.textContent = '';
+            return;
+        }
+        if (activeUrl) {
+            emptyState.style.display = 'none';
+            previewWrap.style.display = 'block';
+            preview.src = activeUrl;
+            meta.textContent = imageInput?.dataset.previewName || (currentUrl ? 'Current template image' : 'Selected JPG image');
+            if (helper) {
+                helper.textContent = imageInput?.dataset.previewUrl
+                    ? 'Image selected. Click Save to apply it.'
+                    : '';
+            }
+            return;
+        }
+        emptyState.style.display = 'block';
+        previewWrap.style.display = 'none';
+        preview.src = '';
+        meta.textContent = '';
+        if (helper) {
+            helper.textContent = removeRequested ? 'Image removal staged. Click Save to apply it.' : '';
+        }
+    }
+
+    function clearModalTemplateImageSelection(trigger = null) {
+        const { imageInput, error, removeInput } = getModalTemplateImageElements(trigger);
+        revokeModalTemplatePreviewUrl();
+        if (!imageInput) return;
+        imageInput.value = '';
+        imageInput.dataset.previewUrl = '';
+        imageInput.dataset.previewName = '';
+        if (removeInput) {
+            removeInput.value = imageInput.dataset.currentUrl ? 'true' : 'false';
+        }
+        if (error) {
+            error.style.display = 'none';
+            error.textContent = '';
+        }
+        renderModalTemplateImageState(trigger);
+    }
+
+    function handleModalTemplateImageSelection(input) {
+        if (!input) return;
+        const file = input.files && input.files[0];
+        const { error, removeInput } = getModalTemplateImageElements(input);
+        if (error) {
+            error.style.display = 'none';
+            error.textContent = '';
+        }
+        if (!file) {
+            renderModalTemplateImageState(input);
+            return;
+        }
+        if (file.type !== 'image/jpeg' && file.type !== 'image/jpg') {
+            input.value = '';
+            if (error) {
+                error.style.display = 'block';
+                error.textContent = 'Only JPG images are allowed.';
+            }
+            return;
+        }
+        if (file.size > 500 * 1024) {
+            input.value = '';
+            if (error) {
+                error.style.display = 'block';
+                error.textContent = 'The image must be 500KB or smaller.';
+            }
+            return;
+        }
+        revokeModalTemplatePreviewUrl();
+        modalTemplatePendingPreviewUrl = URL.createObjectURL(file);
+        input.dataset.previewUrl = modalTemplatePendingPreviewUrl;
+        input.dataset.previewName = `${file.name} · ${Math.round(file.size / 1024)} KB`;
+        if (removeInput) removeInput.value = 'false';
+        renderModalTemplateImageState(input);
+    }
+
     function validateForm(form) {
         const errorBanner = document.getElementById('form-error');
         const inputs = form.querySelectorAll('input[required], select[required]');
@@ -185,9 +347,12 @@
         if ('{{ object_type }}' === 'MessageTemplate' || '{{ object_type }}' === 'MessageSend') {
             const typeSelect = form.querySelector('select[name="record_type"]');
             const imageInput = form.querySelector('input[name="image"]');
-            const currentImageLink = form.querySelector('.sf-field-wrapper[data-field="image"] a');
+            const removeImageInput = form.querySelector('input[name="remove_image"]');
             const selectedType = typeSelect ? typeSelect.value : 'SMS';
-            if (selectedType === 'MMS' && !currentImageLink && (!imageInput || !imageInput.files || imageInput.files.length === 0)) {
+            const hasCurrentImage = Boolean(imageInput && imageInput.dataset && imageInput.dataset.currentUrl) && removeImageInput?.value !== 'true';
+            const hasPreviewImage = Boolean(imageInput && imageInput.dataset && imageInput.dataset.previewUrl);
+            const hasPendingRemoval = removeImageInput?.value === 'true';
+            if (selectedType === 'MMS' && !hasCurrentImage && !hasPreviewImage && !hasPendingRemoval && (!imageInput || !imageInput.files || imageInput.files.length === 0)) {
                 errorBanner.textContent = 'MMS requires a JPG image upload before saving.';
                 errorBanner.style.display = 'block';
                 document.querySelector('.sf-modal-body').scrollTop = 0;
@@ -246,6 +411,7 @@
             if (imageWrapper) {
                 imageWrapper.style.display = (type === 'MMS') ? 'flex' : 'none';
             }
+            renderModalTemplateImageState();
 
             // 3. Byte Counter & Validation
             byteCounter.textContent = `${bytes} / ${limit} bytes (${type})`;
@@ -261,6 +427,16 @@
         }
 
         if (typeSelect && contentTextarea) {
+            const imageInput = document.getElementById('modal-form-image-input');
+            if (imageInput) {
+                imageInput.dataset.currentUrl = modalTemplateExistingImageUrl || '';
+                imageInput.dataset.previewUrl = '';
+                imageInput.dataset.previewName = '';
+            }
+            const removeImageInput = document.getElementById('modal-form-remove-image');
+            if (removeImageInput) {
+                removeImageInput.value = 'false';
+            }
             typeSelect.addEventListener('change', updateUI);
             contentTextarea.addEventListener('input', updateUI);
             updateUI(); // Initial run

@@ -24,7 +24,7 @@ def test_demo_availability_reports_unavailable_when_relay_endpoint_missing():
     body = response.json()
     assert body["available"] is False
     assert body["reason"] == "relay_endpoint_not_configured"
-    assert "Contact the administrator" in body["message"]
+    assert "관리자에게 문의해주세요" in body["message"]
 
 
 def test_demo_availability_reports_available_when_remote_health_succeeds():
@@ -42,7 +42,7 @@ def test_demo_availability_reports_available_when_remote_health_succeeds():
             "available": True,
             "message": "",
             "reason": None,
-            "provider": "solapi",
+            "provider": "surem",
             "mode": "relay",
         },
     ):
@@ -52,7 +52,7 @@ def test_demo_availability_reports_available_when_remote_health_succeeds():
     body = response.json()
     assert body["available"] is True
     assert body["mode"] == "relay"
-    assert body["provider"] == "solapi"
+    assert body["provider"] == "surem"
 
 
 def test_demo_relay_health_rejects_invalid_token():
@@ -60,10 +60,11 @@ def test_demo_relay_health_rejects_invalid_token():
         "os.environ",
         {
             "RELAY_MESSAGE_TOKEN": "expected-token",
-            "RELAY_TARGET_PROVIDER": "solapi",
-            "SOLAPI_API_KEY": "key",
-            "SOLAPI_API_SECRET": "secret",
-            "SOLAPI_SENDER_NUMBER": "01012341234",
+            "RELAY_TARGET_PROVIDER": "surem",
+            "SUREM_AUTH_userCode": "user",
+            "SUREM_AUTH_secretKey": "secret",
+            "SUREM_reqPhone": "15884640",
+            "SUREM_TO": "01000000000",
         },
         clear=False,
     ):
@@ -83,10 +84,11 @@ def test_demo_relay_health_reports_missing_provider_env():
         "os.environ",
         {
             "RELAY_MESSAGE_TOKEN": "expected-token",
-            "RELAY_TARGET_PROVIDER": "solapi",
-            "SOLAPI_API_KEY": "",
-            "SOLAPI_API_SECRET": "",
-            "SOLAPI_SENDER_NUMBER": "",
+            "RELAY_TARGET_PROVIDER": "surem",
+            "SUREM_AUTH_userCode": "",
+            "SUREM_AUTH_secretKey": "",
+            "SUREM_reqPhone": "",
+            "SUREM_TO": "",
         },
         clear=False,
     ):
@@ -106,10 +108,11 @@ def test_demo_relay_health_reports_ready_when_local_target_provider_is_configure
         "os.environ",
         {
             "RELAY_MESSAGE_TOKEN": "expected-token",
-            "RELAY_TARGET_PROVIDER": "solapi",
-            "SOLAPI_API_KEY": "key",
-            "SOLAPI_API_SECRET": "secret",
-            "SOLAPI_SENDER_NUMBER": "01012341234",
+            "RELAY_TARGET_PROVIDER": "surem",
+            "SUREM_AUTH_userCode": "user",
+            "SUREM_AUTH_secretKey": "secret",
+            "SUREM_reqPhone": "15884640",
+            "SUREM_TO": "01000000000",
         },
         clear=False,
     ):
@@ -121,4 +124,4 @@ def test_demo_relay_health_reports_ready_when_local_target_provider_is_configure
     assert response.status_code == 200
     body = response.json()
     assert body["available"] is True
-    assert body["provider"] == "solapi"
+    assert body["provider"] == "surem"

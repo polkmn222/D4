@@ -1,0 +1,22 @@
+{
+  "english_mismatches": 1340,
+  "bucket_counts": {
+    "deterministic": 413,
+    "llm_clarification": 559,
+    "safety_hold": 112,
+    "review": 256
+  },
+  "reason_counts": {
+    "retrieval_or_explanatory_request": 312,
+    "unclassified": 200,
+    "under_normalized_crm_request": 131,
+    "destructive_or_refusal_path": 112,
+    "ambiguous_update_wording": 110,
+    "question_shaped_candidate_ranking": 106,
+    "recent_record_resolution": 98,
+    "short_command_normalization": 97,
+    "create_vs_form_threshold": 87,
+    "dataset_vs_runtime_policy_gap": 56,
+    "tool_mapping_gap": 31
+  }
+}

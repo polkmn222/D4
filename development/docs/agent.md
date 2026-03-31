@@ -64,6 +64,7 @@ This document is the primary entry point for the active D4 workspace. It absorbs
 
 - Install dependencies from the repository root with `pip install -r requirements.txt`.
 - Set `DATABASE_URL` before starting the app. PostgreSQL is mandatory for the active runtime.
+- Set `OPENAI_API_KEY`, `QDRANT_ENDPOINT`, and `QDRANT_API_KEY` before running the message-policy vector sync or live policy retrieval path.
 - Run the Vercel-style entry from the repository root with `uvicorn api.index:app --reload`.
 - Run the app directly from `development` with `uvicorn web.backend.app.main:app --reload`.
 
@@ -71,18 +72,21 @@ This document is the primary entry point for the active D4 workspace. It absorbs
 
 - The `Send Message` screen is served by `/messaging/ui` and sends through the provider-based backend under `web/message/backend/`.
 - `MessagingService.send_message()` resolves content, subject, template, and attachment metadata first, then dispatches through the active provider selected by `MESSAGE_PROVIDER`.
-- `mock` is the safe local fallback, `slack` is the dev/test notification path, and `solapi` is the real carrier delivery path.
+- `mock` is the safe local fallback, `slack` is the dev/test notification path, `surem` is the direct carrier delivery path, and `relay` forwards delivery to a protected runtime.
 - For developer verification, `slack` is the safest real external-delivery check because it exercises the outbound provider path without carrier-side allowlist risk.
-- MMS images are stored in D4-managed storage first for preview, draft, and template reuse; when the active provider is Solapi, the image is uploaded to Solapi storage at final send time to obtain the carrier-facing `imageId`.
+- MMS images are stored in D4-managed storage first for preview, draft, and template reuse; when the active provider is SureM, the image is uploaded to SureM at final send time to obtain the carrier-facing image key.
 - Every successful or failed send attempt writes a `MessageSend` history record so outbound activity remains visible in CRM history even when the provider rejects the message.
 - Bulk send uses the same provider flow one contact at a time and records each attempt through the shared messaging service.
 - SMS templates and SMS compose flows do not use a subject.
 - Template/send content supports merge placeholders like `{Name}` and `{Model}`.
 - SMS content over 90 bytes auto-upgrades to LMS at send time.
 - LMS and MMS content must stay at or under 2000 bytes.
-- D4 upload validation accepts JPG images up to 500KB for template and compose flows, but Solapi carrier upload still rejects MMS images over 200KB at final send time.
+- D4 upload validation accepts JPG images up to 500KB for template and compose flows, and the active SureM MMS runtime uses that same 500KB ceiling.
 - Messaging templates and message-send pages live under `web/message/frontend/templates/`, not under the shared `web/frontend/templates/` tree.
 - `web/message/frontend/templates/messages/detail_view.html` avoids shared inline-pencil editing in the current runtime; use its object-level `Edit` / `Delete` actions instead of assuming every detail page exposes the shared inline edit affordances.
+- Message-policy questions in the AI Agent now use a narrow vector-retrieval path backed by Qdrant and `learning/message_sending_rules_qdrant.json`.
+- That policy knowledge path is retrieval-only. It does not replace the existing send-message action flow or broaden CRUD behavior.
+- The policy index is designed for explicit sync through `MessagePolicyRetrievalService.sync_source_documents()` rather than boot-time auto-indexing, which keeps Vercel cold starts lighter and avoids hidden startup writes.
 
 ## Recommendation Runtime Notes
 
@@ -109,6 +113,9 @@ This document is the primary entry point for the active D4 workspace. It absorbs
 - AI Agent debug instrumentation may be enabled from the header during testing, but it defaults to off and should remain an opt-in diagnostic aid rather than permanent visual noise.
 - AI Agent code organization is moving toward strict `llm` (reasoning) and `ui` (orchestration) separation so intelligence engines and interactive flows can evolve with less cross-terminal conflict.
 - Non-lead objects can still use the workspace fetch path when that remains the more natural UI.
+- For AI Agent inline web-form flows, `brand`, `model`, `asset`, and `message_template` edit saves now follow the same AI-managed submit continuity pattern as the rolled-out chat surfaces, while still reusing the existing web form UI and validation rules.
+- For AI Agent grouped-object chat cards and selection actions, `brand`, `model`, `asset`, and `message_template` `Edit` now opens the inline edit form directly instead of routing back through the generic open/manage path.
+- AI Agent inline `message_template` forms apply a container-scoped type-visibility pass so `subject` and `image` fields follow the same SMS/LMS/MMS visibility rules even when the shared web modal script would otherwise bind too broadly.
 
 ## Ops Pilot Runtime Notes
 

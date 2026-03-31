@@ -137,9 +137,13 @@ class MessageSend(BaseModel):
     contact = Column(String(18), ForeignKey("contacts.id"), nullable=True)
     template = Column(String(18), ForeignKey("message_templates.id"), nullable=True)
     direction = Column(String, nullable=True)
+    subject = Column(String, nullable=True)
     content = Column(Text, nullable=True)
+    record_type = Column(String, default="SMS")
     status = Column(String, default=MessageStatus.PENDING)
     provider_message_id = Column(String, nullable=True)
+    image_url = Column(String, nullable=True)
+    attachment_id = Column(String(18), ForeignKey("attachments.id"), nullable=True)
     sent_at = Column(DateTime(timezone=True), server_default=func.now())
 
     __table_args__ = (
@@ -192,3 +196,24 @@ class LeadListView(BaseModel):
     filters_json = Column(Text, nullable=False, default="{}")
     is_system = Column(Boolean, nullable=False, default=False)
     is_pinned = Column(Boolean, nullable=False, default=False)
+
+
+class AiIntentPattern(BaseModel):
+    __tablename__ = "ai_intent_patterns"
+
+    id = Column(String(18), primary_key=True, index=True)
+    raw_prompt = Column(Text, nullable=False, unique=True)
+    mapped_intent = Column(String, nullable=False)
+    object_type = Column(String, nullable=True)
+    is_best_case = Column(Boolean, default=True)
+    hit_count = Column(Integer, default=0)
+    is_active = Column(Boolean, default=True)
+
+
+class AiSynonym(BaseModel):
+    __tablename__ = "ai_synonyms"
+
+    id = Column(String(18), primary_key=True, index=True)
+    synonym_term = Column(String, nullable=False, index=True)
+    normalized_term = Column(String, nullable=False)
+    category = Column(String, nullable=True) # Object, Action, Field

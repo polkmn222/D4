@@ -1,0 +1,5861 @@
+{
+  "generated_at": "2026-03-31T02:01:03.336089+00:00",
+  "dataset_path": "/var/folders/zg/z6kl4gjn3lj8l400kylykqm40000gp/T/tmprmu34nzz.jsonl",
+  "output_path": "learning/eval_results/batch_0501_0600.json",
+  "summary": {
+    "rows": 100,
+    "full_match_rows": 33,
+    "field_matches": {
+      "expected_object": 57,
+      "expected_action": 47,
+      "expected_tool": 55,
+      "expected_retrieval_needed": 76
+    }
+  },
+  "results": [
+    {
+      "dataset_row": {
+        "id": "x7haefkjiokhfwk61a",
+        "user_input": "Show all Products",
+        "expected_object": "product",
+        "expected_action": "QUERY",
+        "expected_tool": "crm_query",
+        "expected_retrieval_needed": false,
+        "source_file": "phase5_cycle3_final_results.md",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "easy",
+        "notes": "Gold standard mapping for QUERY"
+      },
+      "actual": {
+        "raw_intent": "QUERY",
+        "normalized_action": "QUERY",
+        "object_type": "product",
+        "tool": "crm_query",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "QUERY",
+          "object_type": "product",
+          "data": {},
+          "score": 1.0
+        }
+      },
+      "comparison": {
+        "row_id": "x7haefkjiokhfwk61a",
+        "all_match": true,
+        "comparisons": {
+          "expected_object": {
+            "expected": "product",
+            "actual": "product",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "QUERY",
+            "actual": "QUERY",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "crm_query",
+            "actual": "crm_query",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "8jxftbhxkx8a3o562d",
+        "user_input": "Can you Show all Products?",
+        "expected_object": "product",
+        "expected_action": "QUERY",
+        "expected_tool": "crm_query",
+        "expected_retrieval_needed": false,
+        "source_file": "phase5_cycle3_final_results.md",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Gold standard mapping for QUERY"
+      },
+      "actual": {
+        "raw_intent": "QUERY",
+        "normalized_action": "QUERY",
+        "object_type": "product",
+        "tool": "crm_query",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "QUERY",
+          "object_type": "product",
+          "data": {},
+          "score": 1.0
+        }
+      },
+      "comparison": {
+        "row_id": "8jxftbhxkx8a3o562d",
+        "all_match": true,
+        "comparisons": {
+          "expected_object": {
+            "expected": "product",
+            "actual": "product",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "QUERY",
+            "actual": "QUERY",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "crm_query",
+            "actual": "crm_query",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "vf44vxhvzx4uls4b5a",
+        "user_input": "List Products",
+        "expected_object": "product",
+        "expected_action": "QUERY",
+        "expected_tool": "crm_query",
+        "expected_retrieval_needed": false,
+        "source_file": "phase5_cycle3_final_results.md",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "easy",
+        "notes": "Gold standard mapping for QUERY"
+      },
+      "actual": {
+        "raw_intent": "QUERY",
+        "normalized_action": "QUERY",
+        "object_type": "product",
+        "tool": "crm_query",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "QUERY",
+          "object_type": "product",
+          "data": {},
+          "score": 1.0
+        }
+      },
+      "comparison": {
+        "row_id": "vf44vxhvzx4uls4b5a",
+        "all_match": true,
+        "comparisons": {
+          "expected_object": {
+            "expected": "product",
+            "actual": "product",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "QUERY",
+            "actual": "QUERY",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "crm_query",
+            "actual": "crm_query",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "mvdhq91jd3ixkktam4",
+        "user_input": "Can you List Products?",
+        "expected_object": "product",
+        "expected_action": "QUERY",
+        "expected_tool": "crm_query",
+        "expected_retrieval_needed": false,
+        "source_file": "phase5_cycle3_final_results.md",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Gold standard mapping for QUERY"
+      },
+      "actual": {
+        "raw_intent": "QUERY",
+        "normalized_action": "QUERY",
+        "object_type": "product",
+        "tool": "crm_query",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "QUERY",
+          "object_type": "product",
+          "data": {},
+          "score": 1.0
+        }
+      },
+      "comparison": {
+        "row_id": "mvdhq91jd3ixkktam4",
+        "all_match": true,
+        "comparisons": {
+          "expected_object": {
+            "expected": "product",
+            "actual": "product",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "QUERY",
+            "actual": "QUERY",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "crm_query",
+            "actual": "crm_query",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "n0tyikgrs14jvfkr5q",
+        "user_input": "View recent Products",
+        "expected_object": "product",
+        "expected_action": "ASK_CLARIFICATION",
+        "expected_tool": "none",
+        "expected_retrieval_needed": false,
+        "source_file": "phase5_cycle3_final_results.md",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Gold standard mapping for ASK_CLARIFICATION"
+      },
+      "actual": {
+        "raw_intent": "QUERY",
+        "normalized_action": "QUERY",
+        "object_type": "product",
+        "tool": "crm_query",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "QUERY",
+          "object_type": "product",
+          "data": {
+            "query_mode": "recent"
+          },
+          "score": 1.0
+        }
+      },
+      "comparison": {
+        "row_id": "n0tyikgrs14jvfkr5q",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "product",
+            "actual": "product",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "ASK_CLARIFICATION",
+            "actual": "QUERY",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "none",
+            "actual": "crm_query",
+            "match": false
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "lmg1ppxxnx7r3qbil2",
+        "user_input": "Can you View recent Products?",
+        "expected_object": "product",
+        "expected_action": "ASK_CLARIFICATION",
+        "expected_tool": "none",
+        "expected_retrieval_needed": false,
+        "source_file": "phase5_cycle3_final_results.md",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Gold standard mapping for ASK_CLARIFICATION"
+      },
+      "actual": {
+        "raw_intent": "QUERY",
+        "normalized_action": "QUERY",
+        "object_type": "product",
+        "tool": "crm_query",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "QUERY",
+          "object_type": "product",
+          "data": {
+            "query_mode": "recent"
+          },
+          "score": 1.0
+        }
+      },
+      "comparison": {
+        "row_id": "lmg1ppxxnx7r3qbil2",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "product",
+            "actual": "product",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "ASK_CLARIFICATION",
+            "actual": "QUERY",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "none",
+            "actual": "crm_query",
+            "match": false
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "lxcdpgg0iug176xphy",
+        "user_input": "Find a Product",
+        "expected_object": "product",
+        "expected_action": "QUERY",
+        "expected_tool": "crm_query",
+        "expected_retrieval_needed": false,
+        "source_file": "phase5_cycle3_final_results.md",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "easy",
+        "notes": "Gold standard mapping for QUERY"
+      },
+      "actual": {
+        "raw_intent": "QUERY",
+        "normalized_action": "QUERY",
+        "object_type": "product",
+        "tool": "crm_query",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "id": "000QgO0ibTCquYCIRZ",
+          "prompt": "find product",
+          "intent": "QUERY",
+          "object_type": "product",
+          "score": 0.8666667
+        }
+      },
+      "comparison": {
+        "row_id": "lxcdpgg0iug176xphy",
+        "all_match": true,
+        "comparisons": {
+          "expected_object": {
+            "expected": "product",
+            "actual": "product",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "QUERY",
+            "actual": "QUERY",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "crm_query",
+            "actual": "crm_query",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "470zsvsudosrj9pvsr",
+        "user_input": "Can you Find a Product?",
+        "expected_object": "product",
+        "expected_action": "QUERY",
+        "expected_tool": "crm_query",
+        "expected_retrieval_needed": false,
+        "source_file": "phase5_cycle3_final_results.md",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Gold standard mapping for QUERY"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": null,
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "direct_response",
+        "raw_output": {
+          "intent": "CHAT",
+          "is_suggestion": true,
+          "suggestion_prompt": "Can you Add a Product?",
+          "text": "I think you might want to **open form** for **product**. Is that correct? (Suggested: \"Can you Add a Product?\")",
+          "score": 0.6923077,
+          "options": [
+            {
+              "label": "Yes, do that",
+              "value": "Can you Add a Product?"
+            },
+            {
+              "label": "No, something else",
+              "value": "help"
+            }
+          ]
+        }
+      },
+      "comparison": {
+        "row_id": "470zsvsudosrj9pvsr",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "product",
+            "actual": null,
+            "match": false
+          },
+          "expected_action": {
+            "expected": "QUERY",
+            "actual": "ASK_CLARIFICATION",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "crm_query",
+            "actual": "none",
+            "match": false
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "3hg82q0vofzqbjyjoq",
+        "user_input": "Search for Product",
+        "expected_object": "product",
+        "expected_action": "QUERY",
+        "expected_tool": "crm_query",
+        "expected_retrieval_needed": false,
+        "source_file": "phase5_cycle3_final_results.md",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "easy",
+        "notes": "Gold standard mapping for QUERY"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": null,
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "direct_response",
+        "raw_output": {
+          "intent": "CHAT",
+          "is_suggestion": true,
+          "suggestion_prompt": "Search for Sarah.",
+          "text": "I think you might want to **query** for **lead**. Is that correct? (Suggested: \"Search for Sarah.\")",
+          "score": 0.45833334,
+          "options": [
+            {
+              "label": "Yes, do that",
+              "value": "Search for Sarah."
+            },
+            {
+              "label": "No, something else",
+              "value": "help"
+            }
+          ]
+        }
+      },
+      "comparison": {
+        "row_id": "3hg82q0vofzqbjyjoq",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "product",
+            "actual": null,
+            "match": false
+          },
+          "expected_action": {
+            "expected": "QUERY",
+            "actual": "ASK_CLARIFICATION",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "crm_query",
+            "actual": "none",
+            "match": false
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "21lsakh5y1g2546ds6",
+        "user_input": "Can you Search for Product?",
+        "expected_object": "product",
+        "expected_action": "QUERY",
+        "expected_tool": "crm_query",
+        "expected_retrieval_needed": false,
+        "source_file": "phase5_cycle3_final_results.md",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Gold standard mapping for QUERY"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": null,
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "direct_response",
+        "raw_output": {
+          "intent": "CHAT",
+          "is_suggestion": true,
+          "suggestion_prompt": "Can you Add a Product?",
+          "text": "I think you might want to **open form** for **product**. Is that correct? (Suggested: \"Can you Add a Product?\")",
+          "score": 0.5,
+          "options": [
+            {
+              "label": "Yes, do that",
+              "value": "Can you Add a Product?"
+            },
+            {
+              "label": "No, something else",
+              "value": "help"
+            }
+          ]
+        }
+      },
+      "comparison": {
+        "row_id": "21lsakh5y1g2546ds6",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "product",
+            "actual": null,
+            "match": false
+          },
+          "expected_action": {
+            "expected": "QUERY",
+            "actual": "ASK_CLARIFICATION",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "crm_query",
+            "actual": "none",
+            "match": false
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "klyf92nm1xxumhh17p",
+        "user_input": "Create new Product",
+        "expected_object": "product",
+        "expected_action": "OPEN_FORM",
+        "expected_tool": "none",
+        "expected_retrieval_needed": false,
+        "source_file": "phase5_cycle3_final_results.md",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "easy",
+        "notes": "Gold standard mapping for OPEN_FORM"
+      },
+      "actual": {
+        "raw_intent": "OPEN_FORM",
+        "normalized_action": "OPEN_FORM",
+        "object_type": "product",
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "direct_response",
+        "raw_output": {
+          "intent": "OPEN_FORM",
+          "object_type": "product",
+          "form_url": "/products/new-modal",
+          "form_title": "Create Product",
+          "form_kind": "product_create",
+          "text": "I've opened the new product form for you below.",
+          "score": 1.0
+        }
+      },
+      "comparison": {
+        "row_id": "klyf92nm1xxumhh17p",
+        "all_match": true,
+        "comparisons": {
+          "expected_object": {
+            "expected": "product",
+            "actual": "product",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "OPEN_FORM",
+            "actual": "OPEN_FORM",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "none",
+            "actual": "none",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "qbxs2lc302r8nvpawg",
+        "user_input": "Can you Create new Product?",
+        "expected_object": "product",
+        "expected_action": "OPEN_FORM",
+        "expected_tool": "none",
+        "expected_retrieval_needed": false,
+        "source_file": "phase5_cycle3_final_results.md",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Gold standard mapping for OPEN_FORM"
+      },
+      "actual": {
+        "raw_intent": "OPEN_FORM",
+        "normalized_action": "OPEN_FORM",
+        "object_type": "product",
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "direct_response",
+        "raw_output": {
+          "intent": "OPEN_FORM",
+          "object_type": "product",
+          "form_url": "/products/new-modal",
+          "form_title": "Create Product",
+          "form_kind": "product_create",
+          "text": "I've opened the new product form for you below.",
+          "score": 1.0
+        }
+      },
+      "comparison": {
+        "row_id": "qbxs2lc302r8nvpawg",
+        "all_match": true,
+        "comparisons": {
+          "expected_object": {
+            "expected": "product",
+            "actual": "product",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "OPEN_FORM",
+            "actual": "OPEN_FORM",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "none",
+            "actual": "none",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "ekuxqpxhads0e7df0i",
+        "user_input": "Add a Product",
+        "expected_object": "product",
+        "expected_action": "OPEN_FORM",
+        "expected_tool": "none",
+        "expected_retrieval_needed": false,
+        "source_file": "phase5_cycle3_final_results.md",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "easy",
+        "notes": "Gold standard mapping for OPEN_FORM"
+      },
+      "actual": {
+        "raw_intent": "OPEN_FORM",
+        "normalized_action": "OPEN_FORM",
+        "object_type": "product",
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "direct_response",
+        "raw_output": {
+          "intent": "OPEN_FORM",
+          "object_type": "product",
+          "form_url": "/products/new-modal",
+          "form_title": "Create Product",
+          "form_kind": "product_create",
+          "text": "I've opened the new product form for you below.",
+          "score": 1.0
+        }
+      },
+      "comparison": {
+        "row_id": "ekuxqpxhads0e7df0i",
+        "all_match": true,
+        "comparisons": {
+          "expected_object": {
+            "expected": "product",
+            "actual": "product",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "OPEN_FORM",
+            "actual": "OPEN_FORM",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "none",
+            "actual": "none",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "a6jp2erw0q1www1t60",
+        "user_input": "Can you Add a Product?",
+        "expected_object": "product",
+        "expected_action": "OPEN_FORM",
+        "expected_tool": "none",
+        "expected_retrieval_needed": false,
+        "source_file": "phase5_cycle3_final_results.md",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Gold standard mapping for OPEN_FORM"
+      },
+      "actual": {
+        "raw_intent": "OPEN_FORM",
+        "normalized_action": "OPEN_FORM",
+        "object_type": "product",
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "direct_response",
+        "raw_output": {
+          "intent": "OPEN_FORM",
+          "object_type": "product",
+          "form_url": "/products/new-modal",
+          "form_title": "Create Product",
+          "form_kind": "product_create",
+          "text": "I've opened the new product form for you below.",
+          "score": 1.0
+        }
+      },
+      "comparison": {
+        "row_id": "a6jp2erw0q1www1t60",
+        "all_match": true,
+        "comparisons": {
+          "expected_object": {
+            "expected": "product",
+            "actual": "product",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "OPEN_FORM",
+            "actual": "OPEN_FORM",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "none",
+            "actual": "none",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "34gdl6jgkoq69nwlrd",
+        "user_input": "Open Product form",
+        "expected_object": "product",
+        "expected_action": "ASK_CLARIFICATION",
+        "expected_tool": "none",
+        "expected_retrieval_needed": false,
+        "source_file": "phase5_cycle3_final_results.md",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Gold standard mapping for ASK_CLARIFICATION"
+      },
+      "actual": {
+        "raw_intent": "MANAGE",
+        "normalized_action": "OPEN_RECORD",
+        "object_type": "product",
+        "tool": "crm_query",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "MANAGE",
+          "object_type": "product",
+          "record_id": "form",
+          "score": 1.0,
+          "language_preference": "eng"
+        }
+      },
+      "comparison": {
+        "row_id": "34gdl6jgkoq69nwlrd",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "product",
+            "actual": "product",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "ASK_CLARIFICATION",
+            "actual": "OPEN_RECORD",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "none",
+            "actual": "crm_query",
+            "match": false
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "l78il68e7mln0q44tj",
+        "user_input": "Can you Open Product form?",
+        "expected_object": "product",
+        "expected_action": "ASK_CLARIFICATION",
+        "expected_tool": "none",
+        "expected_retrieval_needed": false,
+        "source_file": "phase5_cycle3_final_results.md",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Gold standard mapping for ASK_CLARIFICATION"
+      },
+      "actual": {
+        "raw_intent": "MANAGE",
+        "normalized_action": "OPEN_RECORD",
+        "object_type": "product",
+        "tool": "crm_query",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "MANAGE",
+          "object_type": "product",
+          "record_id": "form",
+          "score": 1.0,
+          "language_preference": "eng"
+        }
+      },
+      "comparison": {
+        "row_id": "l78il68e7mln0q44tj",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "product",
+            "actual": "product",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "ASK_CLARIFICATION",
+            "actual": "OPEN_RECORD",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "none",
+            "actual": "crm_query",
+            "match": false
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "r5zv34zub1bws42iwd",
+        "user_input": "I want to create a Product",
+        "expected_object": "product",
+        "expected_action": "OPEN_FORM",
+        "expected_tool": "none",
+        "expected_retrieval_needed": false,
+        "source_file": "phase5_cycle3_final_results.md",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Gold standard mapping for OPEN_FORM"
+      },
+      "actual": {
+        "raw_intent": "OPEN_FORM",
+        "normalized_action": "OPEN_FORM",
+        "object_type": "product",
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "direct_response",
+        "raw_output": {
+          "intent": "OPEN_FORM",
+          "object_type": "product",
+          "form_url": "/products/new-modal",
+          "form_title": "Create Product",
+          "form_kind": "product_create",
+          "text": "I've opened the new product form for you below.",
+          "score": 1.0
+        }
+      },
+      "comparison": {
+        "row_id": "r5zv34zub1bws42iwd",
+        "all_match": true,
+        "comparisons": {
+          "expected_object": {
+            "expected": "product",
+            "actual": "product",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "OPEN_FORM",
+            "actual": "OPEN_FORM",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "none",
+            "actual": "none",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "epac3whnkktb72tjc6",
+        "user_input": "Can you I want to create a Product?",
+        "expected_object": "product",
+        "expected_action": "OPEN_FORM",
+        "expected_tool": "none",
+        "expected_retrieval_needed": false,
+        "source_file": "phase5_cycle3_final_results.md",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Gold standard mapping for OPEN_FORM"
+      },
+      "actual": {
+        "raw_intent": "OPEN_FORM",
+        "normalized_action": "OPEN_FORM",
+        "object_type": "product",
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "direct_response",
+        "raw_output": {
+          "intent": "OPEN_FORM",
+          "object_type": "product",
+          "form_url": "/products/new-modal",
+          "form_title": "Create Product",
+          "form_kind": "product_create",
+          "text": "I've opened the new product form for you below.",
+          "score": 1.0
+        }
+      },
+      "comparison": {
+        "row_id": "epac3whnkktb72tjc6",
+        "all_match": true,
+        "comparisons": {
+          "expected_object": {
+            "expected": "product",
+            "actual": "product",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "OPEN_FORM",
+            "actual": "OPEN_FORM",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "none",
+            "actual": "none",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "mhastrssdddofwzz3t",
+        "user_input": "Show me Product table",
+        "expected_object": "product",
+        "expected_action": "QUERY",
+        "expected_tool": "crm_query",
+        "expected_retrieval_needed": false,
+        "source_file": "phase5_cycle3_final_results.md",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Gold standard mapping for QUERY"
+      },
+      "actual": {
+        "raw_intent": "MANAGE",
+        "normalized_action": "OPEN_RECORD",
+        "object_type": "product",
+        "tool": "crm_query",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "MANAGE",
+          "object_type": "product",
+          "record_id": "table",
+          "score": 1.0,
+          "language_preference": "eng"
+        }
+      },
+      "comparison": {
+        "row_id": "mhastrssdddofwzz3t",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "product",
+            "actual": "product",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "QUERY",
+            "actual": "OPEN_RECORD",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "crm_query",
+            "actual": "crm_query",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "ihwzpis35k1yy8efd5",
+        "user_input": "Can you Show me Product table?",
+        "expected_object": "product",
+        "expected_action": "QUERY",
+        "expected_tool": "crm_query",
+        "expected_retrieval_needed": false,
+        "source_file": "phase5_cycle3_final_results.md",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Gold standard mapping for QUERY"
+      },
+      "actual": {
+        "raw_intent": "MANAGE",
+        "normalized_action": "OPEN_RECORD",
+        "object_type": "product",
+        "tool": "crm_query",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "MANAGE",
+          "object_type": "product",
+          "record_id": "table",
+          "score": 1.0,
+          "language_preference": "eng"
+        }
+      },
+      "comparison": {
+        "row_id": "ihwzpis35k1yy8efd5",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "product",
+            "actual": "product",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "QUERY",
+            "actual": "OPEN_RECORD",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "crm_query",
+            "actual": "crm_query",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "14h7w3zl6rp6hnuvp2",
+        "user_input": "Open Product list",
+        "expected_object": "product",
+        "expected_action": "QUERY",
+        "expected_tool": "crm_query",
+        "expected_retrieval_needed": false,
+        "source_file": "phase5_cycle3_final_results.md",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "easy",
+        "notes": "Gold standard mapping for QUERY"
+      },
+      "actual": {
+        "raw_intent": "QUERY",
+        "normalized_action": "QUERY",
+        "object_type": "product",
+        "tool": "crm_query",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "QUERY",
+          "object_type": "product",
+          "data": {},
+          "score": 1.0
+        }
+      },
+      "comparison": {
+        "row_id": "14h7w3zl6rp6hnuvp2",
+        "all_match": true,
+        "comparisons": {
+          "expected_object": {
+            "expected": "product",
+            "actual": "product",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "QUERY",
+            "actual": "QUERY",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "crm_query",
+            "actual": "crm_query",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "e2mirs3bow6wnmphmz",
+        "user_input": "Can you Open Product list?",
+        "expected_object": "product",
+        "expected_action": "QUERY",
+        "expected_tool": "crm_query",
+        "expected_retrieval_needed": false,
+        "source_file": "phase5_cycle3_final_results.md",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Gold standard mapping for QUERY"
+      },
+      "actual": {
+        "raw_intent": "QUERY",
+        "normalized_action": "QUERY",
+        "object_type": "product",
+        "tool": "crm_query",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "QUERY",
+          "object_type": "product",
+          "data": {},
+          "score": 1.0
+        }
+      },
+      "comparison": {
+        "row_id": "e2mirs3bow6wnmphmz",
+        "all_match": true,
+        "comparisons": {
+          "expected_object": {
+            "expected": "product",
+            "actual": "product",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "QUERY",
+            "actual": "QUERY",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "crm_query",
+            "actual": "crm_query",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "8e42vwb4hlj8bhpn22",
+        "user_input": "Find the latest Product",
+        "expected_object": "product",
+        "expected_action": "OPEN_RECORD",
+        "expected_tool": "crm_query",
+        "expected_retrieval_needed": false,
+        "source_file": "phase5_cycle3_final_results.md",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Gold standard mapping for OPEN_RECORD"
+      },
+      "actual": {
+        "raw_intent": "QUERY",
+        "normalized_action": "QUERY",
+        "object_type": "product",
+        "tool": "crm_query",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "QUERY",
+          "object_type": "product",
+          "data": {
+            "query_mode": "recent"
+          },
+          "score": 1.0
+        }
+      },
+      "comparison": {
+        "row_id": "8e42vwb4hlj8bhpn22",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "product",
+            "actual": "product",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "OPEN_RECORD",
+            "actual": "QUERY",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "crm_query",
+            "actual": "crm_query",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "75mffqtbz9b71r4dn9",
+        "user_input": "Can you Find the latest Product?",
+        "expected_object": "product",
+        "expected_action": "OPEN_RECORD",
+        "expected_tool": "crm_query",
+        "expected_retrieval_needed": false,
+        "source_file": "phase5_cycle3_final_results.md",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Gold standard mapping for OPEN_RECORD"
+      },
+      "actual": {
+        "raw_intent": "QUERY",
+        "normalized_action": "QUERY",
+        "object_type": "product",
+        "tool": "crm_query",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "QUERY",
+          "object_type": "product",
+          "data": {
+            "query_mode": "recent"
+          },
+          "score": 1.0
+        }
+      },
+      "comparison": {
+        "row_id": "75mffqtbz9b71r4dn9",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "product",
+            "actual": "product",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "OPEN_RECORD",
+            "actual": "QUERY",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "crm_query",
+            "actual": "crm_query",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "7at0h3z9v3tf2cmo77",
+        "user_input": "Who is the last Product?",
+        "expected_object": "product",
+        "expected_action": "OPEN_RECORD",
+        "expected_tool": "crm_query",
+        "expected_retrieval_needed": false,
+        "source_file": "phase5_cycle3_final_results.md",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Gold standard mapping for OPEN_RECORD"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": null,
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "direct_response",
+        "raw_output": {
+          "intent": "CHAT",
+          "is_suggestion": true,
+          "suggestion_prompt": "Who is the last Lead?",
+          "text": "I think you might want to **query** for **lead**. Is that correct? (Suggested: \"Who is the last Lead?\")",
+          "score": 0.5714286,
+          "options": [
+            {
+              "label": "Yes, do that",
+              "value": "Who is the last Lead?"
+            },
+            {
+              "label": "No, something else",
+              "value": "help"
+            }
+          ]
+        }
+      },
+      "comparison": {
+        "row_id": "7at0h3z9v3tf2cmo77",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "product",
+            "actual": null,
+            "match": false
+          },
+          "expected_action": {
+            "expected": "OPEN_RECORD",
+            "actual": "ASK_CLARIFICATION",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "crm_query",
+            "actual": "none",
+            "match": false
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "66ocsbjpt4nbkhy4zl",
+        "user_input": "Can you Who is the last Product??",
+        "expected_object": "product",
+        "expected_action": "OPEN_RECORD",
+        "expected_tool": "crm_query",
+        "expected_retrieval_needed": false,
+        "source_file": "phase5_cycle3_final_results.md",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Gold standard mapping for OPEN_RECORD"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": null,
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "direct_response",
+        "raw_output": {
+          "intent": "CHAT",
+          "is_suggestion": true,
+          "suggestion_prompt": "Who is the last Lead?",
+          "text": "I think you might want to **query** for **lead**. Is that correct? (Suggested: \"Who is the last Lead?\")",
+          "score": 0.44444445,
+          "options": [
+            {
+              "label": "Yes, do that",
+              "value": "Who is the last Lead?"
+            },
+            {
+              "label": "No, something else",
+              "value": "help"
+            }
+          ]
+        }
+      },
+      "comparison": {
+        "row_id": "66ocsbjpt4nbkhy4zl",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "product",
+            "actual": null,
+            "match": false
+          },
+          "expected_action": {
+            "expected": "OPEN_RECORD",
+            "actual": "ASK_CLARIFICATION",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "crm_query",
+            "actual": "none",
+            "match": false
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "pf76vjse3hiqen5knr",
+        "user_input": "Show Product from today",
+        "expected_object": "product",
+        "expected_action": "QUERY",
+        "expected_tool": "crm_query",
+        "expected_retrieval_needed": false,
+        "source_file": "phase5_cycle3_final_results.md",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Gold standard mapping for QUERY"
+      },
+      "actual": {
+        "raw_intent": "MANAGE",
+        "normalized_action": "OPEN_RECORD",
+        "object_type": "product",
+        "tool": "crm_query",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "MANAGE",
+          "object_type": "product",
+          "record_id": "from",
+          "score": 1.0,
+          "language_preference": "eng"
+        }
+      },
+      "comparison": {
+        "row_id": "pf76vjse3hiqen5knr",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "product",
+            "actual": "product",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "QUERY",
+            "actual": "OPEN_RECORD",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "crm_query",
+            "actual": "crm_query",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "hwj51ry7obeiv0ukd4",
+        "user_input": "Can you Show Product from today?",
+        "expected_object": "product",
+        "expected_action": "QUERY",
+        "expected_tool": "crm_query",
+        "expected_retrieval_needed": false,
+        "source_file": "phase5_cycle3_final_results.md",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Gold standard mapping for QUERY"
+      },
+      "actual": {
+        "raw_intent": "MANAGE",
+        "normalized_action": "OPEN_RECORD",
+        "object_type": "product",
+        "tool": "crm_query",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "MANAGE",
+          "object_type": "product",
+          "record_id": "from",
+          "score": 1.0,
+          "language_preference": "eng"
+        }
+      },
+      "comparison": {
+        "row_id": "hwj51ry7obeiv0ukd4",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "product",
+            "actual": "product",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "QUERY",
+            "actual": "OPEN_RECORD",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "crm_query",
+            "actual": "crm_query",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "b6jgn66ii81ajaaaiq",
+        "user_input": "Any new Products?",
+        "expected_object": "product",
+        "expected_action": "OPEN_FORM",
+        "expected_tool": "none",
+        "expected_retrieval_needed": false,
+        "source_file": "phase5_cycle3_final_results.md",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "easy",
+        "notes": "Gold standard mapping for OPEN_FORM"
+      },
+      "actual": {
+        "raw_intent": "OPEN_FORM",
+        "normalized_action": "OPEN_FORM",
+        "object_type": "product",
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "direct_response",
+        "raw_output": {
+          "intent": "OPEN_FORM",
+          "object_type": "product",
+          "form_url": "/products/new-modal",
+          "form_title": "Create Product",
+          "form_kind": "product_create",
+          "text": "I've opened the new product form for you below.",
+          "score": 1.0
+        }
+      },
+      "comparison": {
+        "row_id": "b6jgn66ii81ajaaaiq",
+        "all_match": true,
+        "comparisons": {
+          "expected_object": {
+            "expected": "product",
+            "actual": "product",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "OPEN_FORM",
+            "actual": "OPEN_FORM",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "none",
+            "actual": "none",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "hx3oqsvvbuwntyswvb",
+        "user_input": "Can you Any new Products??",
+        "expected_object": "product",
+        "expected_action": "OPEN_FORM",
+        "expected_tool": "none",
+        "expected_retrieval_needed": false,
+        "source_file": "phase5_cycle3_final_results.md",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Gold standard mapping for OPEN_FORM"
+      },
+      "actual": {
+        "raw_intent": "OPEN_FORM",
+        "normalized_action": "OPEN_FORM",
+        "object_type": "product",
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "direct_response",
+        "raw_output": {
+          "intent": "OPEN_FORM",
+          "object_type": "product",
+          "form_url": "/products/new-modal",
+          "form_title": "Create Product",
+          "form_kind": "product_create",
+          "text": "I've opened the new product form for you below.",
+          "score": 1.0
+        }
+      },
+      "comparison": {
+        "row_id": "hx3oqsvvbuwntyswvb",
+        "all_match": true,
+        "comparisons": {
+          "expected_object": {
+            "expected": "product",
+            "actual": "product",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "OPEN_FORM",
+            "actual": "OPEN_FORM",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "none",
+            "actual": "none",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "1av9gpfbswftgpivgl",
+        "user_input": "Pull Product data",
+        "expected_object": "product",
+        "expected_action": "QUERY",
+        "expected_tool": "crm_query",
+        "expected_retrieval_needed": false,
+        "source_file": "phase5_cycle3_final_results.md",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "easy",
+        "notes": "Gold standard mapping for QUERY"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": null,
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "direct_response",
+        "raw_output": {
+          "intent": "CHAT",
+          "is_suggestion": true,
+          "suggestion_prompt": "Pull Lead data",
+          "text": "I think you might want to **query** for **lead**. Is that correct? (Suggested: \"Pull Lead data\")",
+          "score": 0.45454547,
+          "options": [
+            {
+              "label": "Yes, do that",
+              "value": "Pull Lead data"
+            },
+            {
+              "label": "No, something else",
+              "value": "help"
+            }
+          ]
+        }
+      },
+      "comparison": {
+        "row_id": "1av9gpfbswftgpivgl",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "product",
+            "actual": null,
+            "match": false
+          },
+          "expected_action": {
+            "expected": "QUERY",
+            "actual": "ASK_CLARIFICATION",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "crm_query",
+            "actual": "none",
+            "match": false
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "qezreboi81erp79pva",
+        "user_input": "Can you Pull Product data?",
+        "expected_object": "product",
+        "expected_action": "QUERY",
+        "expected_tool": "crm_query",
+        "expected_retrieval_needed": false,
+        "source_file": "phase5_cycle3_final_results.md",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Gold standard mapping for QUERY"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": null,
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "direct_response",
+        "raw_output": {
+          "intent": "CHAT",
+          "is_suggestion": true,
+          "suggestion_prompt": "Can you Pull Lead data?",
+          "text": "I think you might want to **query** for **lead**. Is that correct? (Suggested: \"Can you Pull Lead data?\")",
+          "score": 0.6,
+          "options": [
+            {
+              "label": "Yes, do that",
+              "value": "Can you Pull Lead data?"
+            },
+            {
+              "label": "No, something else",
+              "value": "help"
+            }
+          ]
+        }
+      },
+      "comparison": {
+        "row_id": "qezreboi81erp79pva",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "product",
+            "actual": null,
+            "match": false
+          },
+          "expected_action": {
+            "expected": "QUERY",
+            "actual": "ASK_CLARIFICATION",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "crm_query",
+            "actual": "none",
+            "match": false
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "14qg5yta5s64ddl0am",
+        "user_input": "Manage Products",
+        "expected_object": "product",
+        "expected_action": "ASK_CLARIFICATION",
+        "expected_tool": "none",
+        "expected_retrieval_needed": false,
+        "source_file": "phase5_cycle3_final_results.md",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Gold standard mapping for ASK_CLARIFICATION"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": null,
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "missing_response",
+        "raw_output": {
+          "intent": "CHAT",
+          "text": "Eval runner could not capture a runtime decision."
+        }
+      },
+      "comparison": {
+        "row_id": "14qg5yta5s64ddl0am",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "product",
+            "actual": null,
+            "match": false
+          },
+          "expected_action": {
+            "expected": "ASK_CLARIFICATION",
+            "actual": "ASK_CLARIFICATION",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "none",
+            "actual": "none",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "kwg7i3moo35v2xjtq3",
+        "user_input": "Can you Manage Products?",
+        "expected_object": "product",
+        "expected_action": "ASK_CLARIFICATION",
+        "expected_tool": "none",
+        "expected_retrieval_needed": false,
+        "source_file": "phase5_cycle3_final_results.md",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Gold standard mapping for ASK_CLARIFICATION"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": null,
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "direct_response",
+        "raw_output": {
+          "intent": "CHAT",
+          "is_suggestion": true,
+          "suggestion_prompt": "Can you Any new Products??",
+          "text": "I think you might want to **open form** for **product**. Is that correct? (Suggested: \"Can you Any new Products??\")",
+          "score": 0.53125,
+          "options": [
+            {
+              "label": "Yes, do that",
+              "value": "Can you Any new Products??"
+            },
+            {
+              "label": "No, something else",
+              "value": "help"
+            }
+          ]
+        }
+      },
+      "comparison": {
+        "row_id": "kwg7i3moo35v2xjtq3",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "product",
+            "actual": null,
+            "match": false
+          },
+          "expected_action": {
+            "expected": "ASK_CLARIFICATION",
+            "actual": "ASK_CLARIFICATION",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "none",
+            "actual": "none",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "pj6p51p097cf1elqov",
+        "user_input": "Edit latest Product",
+        "expected_object": "product",
+        "expected_action": "OPEN_RECORD",
+        "expected_tool": "crm_query",
+        "expected_retrieval_needed": false,
+        "source_file": "phase5_cycle3_final_results.md",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Gold standard mapping for OPEN_RECORD"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": null,
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "direct_response",
+        "raw_output": {
+          "intent": "CHAT",
+          "object_type": null,
+          "text": "I need a recent record list first. Try `show recent records` or `show all contacts`, then tell me which one to open or edit.",
+          "score": 1.0
+        }
+      },
+      "comparison": {
+        "row_id": "pj6p51p097cf1elqov",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "product",
+            "actual": null,
+            "match": false
+          },
+          "expected_action": {
+            "expected": "OPEN_RECORD",
+            "actual": "ASK_CLARIFICATION",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "crm_query",
+            "actual": "none",
+            "match": false
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "n4l774sod2su7ag5ja",
+        "user_input": "Can you Edit latest Product?",
+        "expected_object": "product",
+        "expected_action": "OPEN_RECORD",
+        "expected_tool": "crm_query",
+        "expected_retrieval_needed": false,
+        "source_file": "phase5_cycle3_final_results.md",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Gold standard mapping for OPEN_RECORD"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": null,
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "direct_response",
+        "raw_output": {
+          "intent": "CHAT",
+          "object_type": null,
+          "text": "I need a recent record list first. Try `show recent records` or `show all contacts`, then tell me which one to open or edit.",
+          "score": 1.0
+        }
+      },
+      "comparison": {
+        "row_id": "n4l774sod2su7ag5ja",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "product",
+            "actual": null,
+            "match": false
+          },
+          "expected_action": {
+            "expected": "OPEN_RECORD",
+            "actual": "ASK_CLARIFICATION",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "crm_query",
+            "actual": "none",
+            "match": false
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "xiianppyifvojg6gs3",
+        "user_input": "Update Product status",
+        "expected_object": "product",
+        "expected_action": "UPDATE",
+        "expected_tool": "crm_write",
+        "expected_retrieval_needed": false,
+        "source_file": "phase5_cycle3_final_results.md",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "hard",
+        "notes": "Gold standard mapping for UPDATE"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": "product",
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "direct_response",
+        "raw_output": {
+          "intent": "CHAT",
+          "object_type": "product",
+          "text": "I can update that product, but I need the record ID first.",
+          "score": 1.0
+        }
+      },
+      "comparison": {
+        "row_id": "xiianppyifvojg6gs3",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "product",
+            "actual": "product",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "UPDATE",
+            "actual": "ASK_CLARIFICATION",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "crm_write",
+            "actual": "none",
+            "match": false
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "nu48mmjs0awx56i88r",
+        "user_input": "Can you Update Product status?",
+        "expected_object": "product",
+        "expected_action": "UPDATE",
+        "expected_tool": "crm_write",
+        "expected_retrieval_needed": false,
+        "source_file": "phase5_cycle3_final_results.md",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "hard",
+        "notes": "Gold standard mapping for UPDATE"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": "product",
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "direct_response",
+        "raw_output": {
+          "intent": "CHAT",
+          "object_type": "product",
+          "text": "I can update that product, but I need the record ID first.",
+          "score": 1.0
+        }
+      },
+      "comparison": {
+        "row_id": "nu48mmjs0awx56i88r",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "product",
+            "actual": "product",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "UPDATE",
+            "actual": "ASK_CLARIFICATION",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "crm_write",
+            "actual": "none",
+            "match": false
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "vn8ekj73jys2fcuw0t",
+        "user_input": "Delete this Product",
+        "expected_object": "product",
+        "expected_action": "ASK_CLARIFICATION",
+        "expected_tool": "none",
+        "expected_retrieval_needed": false,
+        "source_file": "phase5_cycle3_final_results.md",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Gold standard mapping for ASK_CLARIFICATION"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": "product",
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "CHAT",
+          "object_type": "product",
+          "text": "I can help delete a product. First show the record you want, select it, and then confirm the delete action.",
+          "score": 0.95
+        }
+      },
+      "comparison": {
+        "row_id": "vn8ekj73jys2fcuw0t",
+        "all_match": true,
+        "comparisons": {
+          "expected_object": {
+            "expected": "product",
+            "actual": "product",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "ASK_CLARIFICATION",
+            "actual": "ASK_CLARIFICATION",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "none",
+            "actual": "none",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "7xsl27bzlls4jvm739",
+        "user_input": "Can you Delete this Product?",
+        "expected_object": "product",
+        "expected_action": "ASK_CLARIFICATION",
+        "expected_tool": "none",
+        "expected_retrieval_needed": false,
+        "source_file": "phase5_cycle3_final_results.md",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Gold standard mapping for ASK_CLARIFICATION"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": "product",
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "CHAT",
+          "object_type": "product",
+          "text": "I can help delete a product. First show the record you want, select it, and then confirm the delete action.",
+          "score": 0.95
+        }
+      },
+      "comparison": {
+        "row_id": "7xsl27bzlls4jvm739",
+        "all_match": true,
+        "comparisons": {
+          "expected_object": {
+            "expected": "product",
+            "actual": "product",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "ASK_CLARIFICATION",
+            "actual": "ASK_CLARIFICATION",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "none",
+            "actual": "none",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "s2fcva4ivs57n1o3lk",
+        "user_input": "Remove Product",
+        "expected_object": "product",
+        "expected_action": "ASK_CLARIFICATION",
+        "expected_tool": "none",
+        "expected_retrieval_needed": false,
+        "source_file": "phase5_cycle3_final_results.md",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Gold standard mapping for ASK_CLARIFICATION"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": "product",
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "CHAT",
+          "object_type": "product",
+          "text": "I can help delete a product. First show the record you want, select it, and then confirm the delete action.",
+          "score": 0.95
+        }
+      },
+      "comparison": {
+        "row_id": "s2fcva4ivs57n1o3lk",
+        "all_match": true,
+        "comparisons": {
+          "expected_object": {
+            "expected": "product",
+            "actual": "product",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "ASK_CLARIFICATION",
+            "actual": "ASK_CLARIFICATION",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "none",
+            "actual": "none",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "lmxtdsiysr23upa82c",
+        "user_input": "Can you Remove Product?",
+        "expected_object": "product",
+        "expected_action": "ASK_CLARIFICATION",
+        "expected_tool": "none",
+        "expected_retrieval_needed": false,
+        "source_file": "phase5_cycle3_final_results.md",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Gold standard mapping for ASK_CLARIFICATION"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": "product",
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "CHAT",
+          "object_type": "product",
+          "text": "I can help delete a product. First show the record you want, select it, and then confirm the delete action.",
+          "score": 0.95
+        }
+      },
+      "comparison": {
+        "row_id": "lmxtdsiysr23upa82c",
+        "all_match": true,
+        "comparisons": {
+          "expected_object": {
+            "expected": "product",
+            "actual": "product",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "ASK_CLARIFICATION",
+            "actual": "ASK_CLARIFICATION",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "none",
+            "actual": "none",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "mecbi7ah00nrvva9qx",
+        "user_input": "Check Product details",
+        "expected_object": "product",
+        "expected_action": "OPEN_RECORD",
+        "expected_tool": "crm_query",
+        "expected_retrieval_needed": false,
+        "source_file": "phase4_refined_results.md",
+        "phase": "phase305",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Gold standard mapping for OPEN_RECORD"
+      },
+      "actual": {
+        "raw_intent": "MANAGE",
+        "normalized_action": "OPEN_RECORD",
+        "object_type": "product",
+        "tool": "crm_query",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "MANAGE",
+          "object_type": "product",
+          "record_id": "details",
+          "score": 1.0,
+          "language_preference": "eng"
+        }
+      },
+      "comparison": {
+        "row_id": "mecbi7ah00nrvva9qx",
+        "all_match": true,
+        "comparisons": {
+          "expected_object": {
+            "expected": "product",
+            "actual": "product",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "OPEN_RECORD",
+            "actual": "OPEN_RECORD",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "crm_query",
+            "actual": "crm_query",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "ggjdsmoowm0aywwujg",
+        "user_input": "Can you Check Product details?",
+        "expected_object": "product",
+        "expected_action": "OPEN_RECORD",
+        "expected_tool": "crm_query",
+        "expected_retrieval_needed": false,
+        "source_file": "phase4_refined_results.md",
+        "phase": "phase305",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Gold standard mapping for OPEN_RECORD"
+      },
+      "actual": {
+        "raw_intent": "MANAGE",
+        "normalized_action": "OPEN_RECORD",
+        "object_type": "product",
+        "tool": "crm_query",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "MANAGE",
+          "object_type": "product",
+          "record_id": "details",
+          "score": 1.0,
+          "language_preference": "eng"
+        }
+      },
+      "comparison": {
+        "row_id": "ggjdsmoowm0aywwujg",
+        "all_match": true,
+        "comparisons": {
+          "expected_object": {
+            "expected": "product",
+            "actual": "product",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "OPEN_RECORD",
+            "actual": "OPEN_RECORD",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "crm_query",
+            "actual": "crm_query",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "uri0n8emp1ii57ip57",
+        "user_input": "Show Product summary",
+        "expected_object": "product",
+        "expected_action": "RETRIEVE_AND_ANSWER",
+        "expected_tool": "vector_retrieval",
+        "expected_retrieval_needed": true,
+        "source_file": "phase4_refined_results.md",
+        "phase": "phase305",
+        "context": "",
+        "difficulty": "hard",
+        "notes": "Gold standard mapping for RETRIEVE_AND_ANSWER"
+      },
+      "actual": {
+        "raw_intent": "MANAGE",
+        "normalized_action": "OPEN_RECORD",
+        "object_type": "product",
+        "tool": "crm_query",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "MANAGE",
+          "object_type": "product",
+          "record_id": "summary",
+          "score": 1.0,
+          "language_preference": "eng"
+        }
+      },
+      "comparison": {
+        "row_id": "uri0n8emp1ii57ip57",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "product",
+            "actual": "product",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "RETRIEVE_AND_ANSWER",
+            "actual": "OPEN_RECORD",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "vector_retrieval",
+            "actual": "crm_query",
+            "match": false
+          },
+          "expected_retrieval_needed": {
+            "expected": true,
+            "actual": false,
+            "match": false
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "36wnr9n3dsvq308iax",
+        "user_input": "Can you Show Product summary?",
+        "expected_object": "product",
+        "expected_action": "RETRIEVE_AND_ANSWER",
+        "expected_tool": "vector_retrieval",
+        "expected_retrieval_needed": true,
+        "source_file": "phase4_refined_results.md",
+        "phase": "phase305",
+        "context": "",
+        "difficulty": "hard",
+        "notes": "Gold standard mapping for RETRIEVE_AND_ANSWER"
+      },
+      "actual": {
+        "raw_intent": "MANAGE",
+        "normalized_action": "OPEN_RECORD",
+        "object_type": "product",
+        "tool": "crm_query",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "MANAGE",
+          "object_type": "product",
+          "record_id": "summary",
+          "score": 1.0,
+          "language_preference": "eng"
+        }
+      },
+      "comparison": {
+        "row_id": "36wnr9n3dsvq308iax",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "product",
+            "actual": "product",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "RETRIEVE_AND_ANSWER",
+            "actual": "OPEN_RECORD",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "vector_retrieval",
+            "actual": "crm_query",
+            "match": false
+          },
+          "expected_retrieval_needed": {
+            "expected": true,
+            "actual": false,
+            "match": false
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "ybvuo2db37ozahcdue",
+        "user_input": "Get info on Product",
+        "expected_object": "product",
+        "expected_action": "ASK_CLARIFICATION",
+        "expected_tool": "none",
+        "expected_retrieval_needed": false,
+        "source_file": "phase4_refined_results.md",
+        "phase": "phase305",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Gold standard mapping for ASK_CLARIFICATION"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": null,
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "missing_response",
+        "raw_output": {
+          "intent": "CHAT",
+          "text": "Eval runner could not capture a runtime decision."
+        }
+      },
+      "comparison": {
+        "row_id": "ybvuo2db37ozahcdue",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "product",
+            "actual": null,
+            "match": false
+          },
+          "expected_action": {
+            "expected": "ASK_CLARIFICATION",
+            "actual": "ASK_CLARIFICATION",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "none",
+            "actual": "none",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "e7mjit71ds29b3k95v",
+        "user_input": "Can you Get info on Product?",
+        "expected_object": "product",
+        "expected_action": "ASK_CLARIFICATION",
+        "expected_tool": "none",
+        "expected_retrieval_needed": false,
+        "source_file": "phase4_refined_results.md",
+        "phase": "phase305",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Gold standard mapping for ASK_CLARIFICATION"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": null,
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "direct_response",
+        "raw_output": {
+          "intent": "CHAT",
+          "is_suggestion": true,
+          "suggestion_prompt": "Can you Add a Product?",
+          "text": "I think you might want to **open form** for **product**. Is that correct? (Suggested: \"Can you Add a Product?\")",
+          "score": 0.4848485,
+          "options": [
+            {
+              "label": "Yes, do that",
+              "value": "Can you Add a Product?"
+            },
+            {
+              "label": "No, something else",
+              "value": "help"
+            }
+          ]
+        }
+      },
+      "comparison": {
+        "row_id": "e7mjit71ds29b3k95v",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "product",
+            "actual": null,
+            "match": false
+          },
+          "expected_action": {
+            "expected": "ASK_CLARIFICATION",
+            "actual": "ASK_CLARIFICATION",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "none",
+            "actual": "none",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "vjyk7d21gjv2pnzwud",
+        "user_input": "I need a Product report",
+        "expected_object": "product",
+        "expected_action": "RETRIEVE_AND_ANSWER",
+        "expected_tool": "vector_retrieval",
+        "expected_retrieval_needed": true,
+        "source_file": "phase4_refined_results.md",
+        "phase": "phase305",
+        "context": "",
+        "difficulty": "hard",
+        "notes": "Gold standard mapping for RETRIEVE_AND_ANSWER"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": null,
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "missing_response",
+        "raw_output": {
+          "intent": "CHAT",
+          "text": "Eval runner could not capture a runtime decision."
+        }
+      },
+      "comparison": {
+        "row_id": "vjyk7d21gjv2pnzwud",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "product",
+            "actual": null,
+            "match": false
+          },
+          "expected_action": {
+            "expected": "RETRIEVE_AND_ANSWER",
+            "actual": "ASK_CLARIFICATION",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "vector_retrieval",
+            "actual": "none",
+            "match": false
+          },
+          "expected_retrieval_needed": {
+            "expected": true,
+            "actual": false,
+            "match": false
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "y7kuplsa7vriqaaakv",
+        "user_input": "Can you I need a Product report?",
+        "expected_object": "product",
+        "expected_action": "RETRIEVE_AND_ANSWER",
+        "expected_tool": "vector_retrieval",
+        "expected_retrieval_needed": true,
+        "source_file": "phase4_refined_results.md",
+        "phase": "phase305",
+        "context": "",
+        "difficulty": "hard",
+        "notes": "Gold standard mapping for RETRIEVE_AND_ANSWER"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": null,
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "direct_response",
+        "raw_output": {
+          "intent": "CHAT",
+          "is_suggestion": true,
+          "suggestion_prompt": "Can you Add a Product?",
+          "text": "I think you might want to **open form** for **product**. Is that correct? (Suggested: \"Can you Add a Product?\")",
+          "score": 0.51428574,
+          "options": [
+            {
+              "label": "Yes, do that",
+              "value": "Can you Add a Product?"
+            },
+            {
+              "label": "No, something else",
+              "value": "help"
+            }
+          ]
+        }
+      },
+      "comparison": {
+        "row_id": "y7kuplsa7vriqaaakv",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "product",
+            "actual": null,
+            "match": false
+          },
+          "expected_action": {
+            "expected": "RETRIEVE_AND_ANSWER",
+            "actual": "ASK_CLARIFICATION",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "vector_retrieval",
+            "actual": "none",
+            "match": false
+          },
+          "expected_retrieval_needed": {
+            "expected": true,
+            "actual": false,
+            "match": false
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "278ujdcxr51bpjo825",
+        "user_input": "Show me top Products",
+        "expected_object": "product",
+        "expected_action": "QUERY",
+        "expected_tool": "crm_query",
+        "expected_retrieval_needed": false,
+        "source_file": "phase4_refined_results.md",
+        "phase": "phase305",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Gold standard mapping for QUERY"
+      },
+      "actual": {
+        "raw_intent": "QUERY",
+        "normalized_action": "QUERY",
+        "object_type": "product",
+        "tool": "crm_query",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "QUERY",
+          "object_type": "product",
+          "sql": null,
+          "score": 0.99
+        }
+      },
+      "comparison": {
+        "row_id": "278ujdcxr51bpjo825",
+        "all_match": true,
+        "comparisons": {
+          "expected_object": {
+            "expected": "product",
+            "actual": "product",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "QUERY",
+            "actual": "QUERY",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "crm_query",
+            "actual": "crm_query",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "e96je98ukd89u5ptls",
+        "user_input": "Can you Show me top Products?",
+        "expected_object": "product",
+        "expected_action": "QUERY",
+        "expected_tool": "crm_query",
+        "expected_retrieval_needed": false,
+        "source_file": "phase4_refined_results.md",
+        "phase": "phase305",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Gold standard mapping for QUERY"
+      },
+      "actual": {
+        "raw_intent": "QUERY",
+        "normalized_action": "QUERY",
+        "object_type": "product",
+        "tool": "crm_query",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "QUERY",
+          "object_type": "product",
+          "sql": null,
+          "score": 0.99
+        }
+      },
+      "comparison": {
+        "row_id": "e96je98ukd89u5ptls",
+        "all_match": true,
+        "comparisons": {
+          "expected_object": {
+            "expected": "product",
+            "actual": "product",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "QUERY",
+            "actual": "QUERY",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "crm_query",
+            "actual": "crm_query",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "q7lfgp1ovnra8ysahv",
+        "user_input": "Which Product is hot?",
+        "expected_object": "product",
+        "expected_action": "RETRIEVE_AND_ANSWER",
+        "expected_tool": "vector_retrieval",
+        "expected_retrieval_needed": true,
+        "source_file": "phase4_refined_results.md",
+        "phase": "phase305",
+        "context": "",
+        "difficulty": "hard",
+        "notes": "Gold standard mapping for RETRIEVE_AND_ANSWER"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": "product",
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "CHAT",
+          "object_type": "product",
+          "text": "What do you mean by 'hot'? Are you looking for a product with high sales or popularity?",
+          "score": 0.5,
+          "reasoning": {
+            "context_reference": {
+              "kind": null,
+              "index": 0,
+              "object_type": "product"
+            },
+            "resolved_reference": {},
+            "confidence": 0.4,
+            "confidence_band": "medium"
+          },
+          "language_preference": "eng"
+        }
+      },
+      "comparison": {
+        "row_id": "q7lfgp1ovnra8ysahv",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "product",
+            "actual": "product",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "RETRIEVE_AND_ANSWER",
+            "actual": "ASK_CLARIFICATION",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "vector_retrieval",
+            "actual": "none",
+            "match": false
+          },
+          "expected_retrieval_needed": {
+            "expected": true,
+            "actual": false,
+            "match": false
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "c2ad1m6ultrsgjbvve",
+        "user_input": "Can you Which Product is hot??",
+        "expected_object": "product",
+        "expected_action": "RETRIEVE_AND_ANSWER",
+        "expected_tool": "vector_retrieval",
+        "expected_retrieval_needed": true,
+        "source_file": "phase4_refined_results.md",
+        "phase": "phase305",
+        "context": "",
+        "difficulty": "hard",
+        "notes": "Gold standard mapping for RETRIEVE_AND_ANSWER"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": null,
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "direct_response",
+        "raw_output": {
+          "intent": "CHAT",
+          "is_suggestion": true,
+          "suggestion_prompt": "Can you Add a Product?",
+          "text": "I think you might want to **open form** for **product**. Is that correct? (Suggested: \"Can you Add a Product?\")",
+          "score": 0.47058824,
+          "options": [
+            {
+              "label": "Yes, do that",
+              "value": "Can you Add a Product?"
+            },
+            {
+              "label": "No, something else",
+              "value": "help"
+            }
+          ]
+        }
+      },
+      "comparison": {
+        "row_id": "c2ad1m6ultrsgjbvve",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "product",
+            "actual": null,
+            "match": false
+          },
+          "expected_action": {
+            "expected": "RETRIEVE_AND_ANSWER",
+            "actual": "ASK_CLARIFICATION",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "vector_retrieval",
+            "actual": "none",
+            "match": false
+          },
+          "expected_retrieval_needed": {
+            "expected": true,
+            "actual": false,
+            "match": false
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "gtdc48g3heoibzcl54",
+        "user_input": "Follow up on Product",
+        "expected_object": "product",
+        "expected_action": "RETRIEVE_AND_ANSWER",
+        "expected_tool": "vector_retrieval",
+        "expected_retrieval_needed": true,
+        "source_file": "phase4_refined_results.md",
+        "phase": "phase305",
+        "context": "",
+        "difficulty": "hard",
+        "notes": "Gold standard mapping for RETRIEVE_AND_ANSWER"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": null,
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "missing_response",
+        "raw_output": {
+          "intent": "CHAT",
+          "text": "Eval runner could not capture a runtime decision."
+        }
+      },
+      "comparison": {
+        "row_id": "gtdc48g3heoibzcl54",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "product",
+            "actual": null,
+            "match": false
+          },
+          "expected_action": {
+            "expected": "RETRIEVE_AND_ANSWER",
+            "actual": "ASK_CLARIFICATION",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "vector_retrieval",
+            "actual": "none",
+            "match": false
+          },
+          "expected_retrieval_needed": {
+            "expected": true,
+            "actual": false,
+            "match": false
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "usim1aau02i8iq3ecc",
+        "user_input": "Can you Follow up on Product?",
+        "expected_object": "product",
+        "expected_action": "RETRIEVE_AND_ANSWER",
+        "expected_tool": "vector_retrieval",
+        "expected_retrieval_needed": true,
+        "source_file": "phase4_refined_results.md",
+        "phase": "phase305",
+        "context": "",
+        "difficulty": "hard",
+        "notes": "Gold standard mapping for RETRIEVE_AND_ANSWER"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": null,
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "direct_response",
+        "raw_output": {
+          "intent": "CHAT",
+          "is_suggestion": true,
+          "suggestion_prompt": "Can you Add a Product?",
+          "text": "I think you might want to **open form** for **product**. Is that correct? (Suggested: \"Can you Add a Product?\")",
+          "score": 0.47058824,
+          "options": [
+            {
+              "label": "Yes, do that",
+              "value": "Can you Add a Product?"
+            },
+            {
+              "label": "No, something else",
+              "value": "help"
+            }
+          ]
+        }
+      },
+      "comparison": {
+        "row_id": "usim1aau02i8iq3ecc",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "product",
+            "actual": null,
+            "match": false
+          },
+          "expected_action": {
+            "expected": "RETRIEVE_AND_ANSWER",
+            "actual": "ASK_CLARIFICATION",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "vector_retrieval",
+            "actual": "none",
+            "match": false
+          },
+          "expected_retrieval_needed": {
+            "expected": true,
+            "actual": false,
+            "match": false
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "xg5asvieqjqawr2uzv",
+        "user_input": "Remind me about Product",
+        "expected_object": "product",
+        "expected_action": "RETRIEVE_AND_ANSWER",
+        "expected_tool": "vector_retrieval",
+        "expected_retrieval_needed": true,
+        "source_file": "phase4_refined_results.md",
+        "phase": "phase305",
+        "context": "",
+        "difficulty": "hard",
+        "notes": "Gold standard mapping for RETRIEVE_AND_ANSWER"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": null,
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "missing_response",
+        "raw_output": {
+          "intent": "CHAT",
+          "text": "Eval runner could not capture a runtime decision."
+        }
+      },
+      "comparison": {
+        "row_id": "xg5asvieqjqawr2uzv",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "product",
+            "actual": null,
+            "match": false
+          },
+          "expected_action": {
+            "expected": "RETRIEVE_AND_ANSWER",
+            "actual": "ASK_CLARIFICATION",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "vector_retrieval",
+            "actual": "none",
+            "match": false
+          },
+          "expected_retrieval_needed": {
+            "expected": true,
+            "actual": false,
+            "match": false
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "duk5vevh2nbl313bnn",
+        "user_input": "Can you Remind me about Product?",
+        "expected_object": "product",
+        "expected_action": "RETRIEVE_AND_ANSWER",
+        "expected_tool": "vector_retrieval",
+        "expected_retrieval_needed": true,
+        "source_file": "phase4_refined_results.md",
+        "phase": "phase305",
+        "context": "",
+        "difficulty": "hard",
+        "notes": "Gold standard mapping for RETRIEVE_AND_ANSWER"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": null,
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "direct_response",
+        "raw_output": {
+          "intent": "CHAT",
+          "is_suggestion": true,
+          "suggestion_prompt": "Can you Add a Product?",
+          "text": "I think you might want to **open form** for **product**. Is that correct? (Suggested: \"Can you Add a Product?\")",
+          "score": 0.4722222,
+          "options": [
+            {
+              "label": "Yes, do that",
+              "value": "Can you Add a Product?"
+            },
+            {
+              "label": "No, something else",
+              "value": "help"
+            }
+          ]
+        }
+      },
+      "comparison": {
+        "row_id": "duk5vevh2nbl313bnn",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "product",
+            "actual": null,
+            "match": false
+          },
+          "expected_action": {
+            "expected": "RETRIEVE_AND_ANSWER",
+            "actual": "ASK_CLARIFICATION",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "vector_retrieval",
+            "actual": "none",
+            "match": false
+          },
+          "expected_retrieval_needed": {
+            "expected": true,
+            "actual": false,
+            "match": false
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "z4bn2oc87memeuhleu",
+        "user_input": "Is there any Product for Tesla?",
+        "expected_object": "product",
+        "expected_action": "RETRIEVE_AND_ANSWER",
+        "expected_tool": "vector_retrieval",
+        "expected_retrieval_needed": true,
+        "source_file": "phase4_refined_results.md",
+        "phase": "phase305",
+        "context": "",
+        "difficulty": "hard",
+        "notes": "Gold standard mapping for RETRIEVE_AND_ANSWER"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": null,
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "missing_response",
+        "raw_output": {
+          "intent": "CHAT",
+          "text": "Eval runner could not capture a runtime decision."
+        }
+      },
+      "comparison": {
+        "row_id": "z4bn2oc87memeuhleu",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "product",
+            "actual": null,
+            "match": false
+          },
+          "expected_action": {
+            "expected": "RETRIEVE_AND_ANSWER",
+            "actual": "ASK_CLARIFICATION",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "vector_retrieval",
+            "actual": "none",
+            "match": false
+          },
+          "expected_retrieval_needed": {
+            "expected": true,
+            "actual": false,
+            "match": false
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "xbjftq39mzzfqhljfw",
+        "user_input": "Can you Is there any Product for Tesla??",
+        "expected_object": "product",
+        "expected_action": "RETRIEVE_AND_ANSWER",
+        "expected_tool": "vector_retrieval",
+        "expected_retrieval_needed": true,
+        "source_file": "phase4_refined_results.md",
+        "phase": "phase305",
+        "context": "",
+        "difficulty": "hard",
+        "notes": "Gold standard mapping for RETRIEVE_AND_ANSWER"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": null,
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "direct_response",
+        "raw_output": {
+          "intent": "CHAT",
+          "is_suggestion": true,
+          "suggestion_prompt": "Can you Any new Products??",
+          "text": "I think you might want to **open form** for **product**. Is that correct? (Suggested: \"Can you Any new Products??\")",
+          "score": 0.4318182,
+          "options": [
+            {
+              "label": "Yes, do that",
+              "value": "Can you Any new Products??"
+            },
+            {
+              "label": "No, something else",
+              "value": "help"
+            }
+          ]
+        }
+      },
+      "comparison": {
+        "row_id": "xbjftq39mzzfqhljfw",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "product",
+            "actual": null,
+            "match": false
+          },
+          "expected_action": {
+            "expected": "RETRIEVE_AND_ANSWER",
+            "actual": "ASK_CLARIFICATION",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "vector_retrieval",
+            "actual": "none",
+            "match": false
+          },
+          "expected_retrieval_needed": {
+            "expected": true,
+            "actual": false,
+            "match": false
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "xcrd8v6oj6tdf8azmt",
+        "user_input": "Find Product named John",
+        "expected_object": "product",
+        "expected_action": "OPEN_RECORD",
+        "expected_tool": "crm_query",
+        "expected_retrieval_needed": false,
+        "source_file": "phase4_refined_results.md",
+        "phase": "phase305",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Gold standard mapping for OPEN_RECORD"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": null,
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "direct_response",
+        "raw_output": {
+          "intent": "CHAT",
+          "is_suggestion": true,
+          "suggestion_prompt": "find product",
+          "text": "I think you might want to **query** for **product**. Is that correct? (Suggested: \"find product\")",
+          "score": 0.5416667,
+          "options": [
+            {
+              "label": "Yes, do that",
+              "value": "find product"
+            },
+            {
+              "label": "No, something else",
+              "value": "help"
+            }
+          ]
+        }
+      },
+      "comparison": {
+        "row_id": "xcrd8v6oj6tdf8azmt",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "product",
+            "actual": null,
+            "match": false
+          },
+          "expected_action": {
+            "expected": "OPEN_RECORD",
+            "actual": "ASK_CLARIFICATION",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "crm_query",
+            "actual": "none",
+            "match": false
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "d4rvffecgapggks82o",
+        "user_input": "Can you Find Product named John?",
+        "expected_object": "product",
+        "expected_action": "OPEN_RECORD",
+        "expected_tool": "crm_query",
+        "expected_retrieval_needed": false,
+        "source_file": "phase4_refined_results.md",
+        "phase": "phase305",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Gold standard mapping for OPEN_RECORD"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": null,
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "direct_response",
+        "raw_output": {
+          "intent": "CHAT",
+          "is_suggestion": true,
+          "suggestion_prompt": "Can you Add a Product?",
+          "text": "I think you might want to **open form** for **product**. Is that correct? (Suggested: \"Can you Add a Product?\")",
+          "score": 0.43243244,
+          "options": [
+            {
+              "label": "Yes, do that",
+              "value": "Can you Add a Product?"
+            },
+            {
+              "label": "No, something else",
+              "value": "help"
+            }
+          ]
+        }
+      },
+      "comparison": {
+        "row_id": "d4rvffecgapggks82o",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "product",
+            "actual": null,
+            "match": false
+          },
+          "expected_action": {
+            "expected": "OPEN_RECORD",
+            "actual": "ASK_CLARIFICATION",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "crm_query",
+            "actual": "none",
+            "match": false
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "1st09k6mwvrgecl1p2",
+        "user_input": "Show Product for BMW",
+        "expected_object": "product",
+        "expected_action": "QUERY",
+        "expected_tool": "crm_query",
+        "expected_retrieval_needed": false,
+        "source_file": "phase4_refined_results.md",
+        "phase": "phase305",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Gold standard mapping for QUERY"
+      },
+      "actual": {
+        "raw_intent": "QUERY",
+        "normalized_action": "QUERY",
+        "object_type": "product",
+        "tool": "crm_query",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "QUERY",
+          "object_type": "product",
+          "sql": null,
+          "score": 0.99
+        }
+      },
+      "comparison": {
+        "row_id": "1st09k6mwvrgecl1p2",
+        "all_match": true,
+        "comparisons": {
+          "expected_object": {
+            "expected": "product",
+            "actual": "product",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "QUERY",
+            "actual": "QUERY",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "crm_query",
+            "actual": "crm_query",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "zgj1y5b3rzjtksu1f9",
+        "user_input": "Can you Show Product for BMW?",
+        "expected_object": "product",
+        "expected_action": "QUERY",
+        "expected_tool": "crm_query",
+        "expected_retrieval_needed": false,
+        "source_file": "phase4_refined_results.md",
+        "phase": "phase305",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Gold standard mapping for QUERY"
+      },
+      "actual": {
+        "raw_intent": "QUERY",
+        "normalized_action": "QUERY",
+        "object_type": "product",
+        "tool": "crm_query",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "QUERY",
+          "object_type": "product",
+          "sql": null,
+          "score": 0.99
+        }
+      },
+      "comparison": {
+        "row_id": "zgj1y5b3rzjtksu1f9",
+        "all_match": true,
+        "comparisons": {
+          "expected_object": {
+            "expected": "product",
+            "actual": "product",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "QUERY",
+            "actual": "QUERY",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "crm_query",
+            "actual": "crm_query",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "1us89eycmzqubi6yl2",
+        "user_input": "Search Product with high priority",
+        "expected_object": "product",
+        "expected_action": "QUERY",
+        "expected_tool": "crm_query",
+        "expected_retrieval_needed": false,
+        "source_file": "phase4_refined_results.md",
+        "phase": "phase305",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Gold standard mapping for QUERY"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": null,
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "missing_response",
+        "raw_output": {
+          "intent": "CHAT",
+          "text": "Eval runner could not capture a runtime decision."
+        }
+      },
+      "comparison": {
+        "row_id": "1us89eycmzqubi6yl2",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "product",
+            "actual": null,
+            "match": false
+          },
+          "expected_action": {
+            "expected": "QUERY",
+            "actual": "ASK_CLARIFICATION",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "crm_query",
+            "actual": "none",
+            "match": false
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "g9ft5miw0zmarlrt97",
+        "user_input": "Can you Search Product with high priority?",
+        "expected_object": "product",
+        "expected_action": "QUERY",
+        "expected_tool": "crm_query",
+        "expected_retrieval_needed": false,
+        "source_file": "phase4_refined_results.md",
+        "phase": "phase305",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Gold standard mapping for QUERY"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": null,
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "missing_response",
+        "raw_output": {
+          "intent": "CHAT",
+          "text": "Eval runner could not capture a runtime decision."
+        }
+      },
+      "comparison": {
+        "row_id": "g9ft5miw0zmarlrt97",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "product",
+            "actual": null,
+            "match": false
+          },
+          "expected_action": {
+            "expected": "QUERY",
+            "actual": "ASK_CLARIFICATION",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "crm_query",
+            "actual": "none",
+            "match": false
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "vr4fdgpx22swn1j0uh",
+        "user_input": "List all pending Products",
+        "expected_object": "product",
+        "expected_action": "QUERY",
+        "expected_tool": "crm_query",
+        "expected_retrieval_needed": false,
+        "source_file": "phase4_refined_results.md",
+        "phase": "phase305",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Gold standard mapping for QUERY"
+      },
+      "actual": {
+        "raw_intent": "QUERY",
+        "normalized_action": "QUERY",
+        "object_type": "product",
+        "tool": "crm_query",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "QUERY",
+          "object_type": "product",
+          "data": {},
+          "score": 1.0
+        }
+      },
+      "comparison": {
+        "row_id": "vr4fdgpx22swn1j0uh",
+        "all_match": true,
+        "comparisons": {
+          "expected_object": {
+            "expected": "product",
+            "actual": "product",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "QUERY",
+            "actual": "QUERY",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "crm_query",
+            "actual": "crm_query",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "dj97uwbair0mpi3ka7",
+        "user_input": "Can you List all pending Products?",
+        "expected_object": "product",
+        "expected_action": "QUERY",
+        "expected_tool": "crm_query",
+        "expected_retrieval_needed": false,
+        "source_file": "phase4_refined_results.md",
+        "phase": "phase305",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Gold standard mapping for QUERY"
+      },
+      "actual": {
+        "raw_intent": "QUERY",
+        "normalized_action": "QUERY",
+        "object_type": "product",
+        "tool": "crm_query",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "QUERY",
+          "object_type": "product",
+          "data": {},
+          "score": 1.0
+        }
+      },
+      "comparison": {
+        "row_id": "dj97uwbair0mpi3ka7",
+        "all_match": true,
+        "comparisons": {
+          "expected_object": {
+            "expected": "product",
+            "actual": "product",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "QUERY",
+            "actual": "QUERY",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "crm_query",
+            "actual": "crm_query",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "c4u6clryig6rejnglo",
+        "user_input": "Open the Product create screen",
+        "expected_object": "product",
+        "expected_action": "OPEN_FORM",
+        "expected_tool": "none",
+        "expected_retrieval_needed": false,
+        "source_file": "phase4_refined_results.md",
+        "phase": "phase305",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Gold standard mapping for OPEN_FORM"
+      },
+      "actual": {
+        "raw_intent": "OPEN_FORM",
+        "normalized_action": "OPEN_FORM",
+        "object_type": "product",
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "direct_response",
+        "raw_output": {
+          "intent": "OPEN_FORM",
+          "object_type": "product",
+          "form_url": "/products/new-modal",
+          "form_title": "Create Product",
+          "form_kind": "product_create",
+          "text": "I've opened the new product form for you below.",
+          "score": 1.0
+        }
+      },
+      "comparison": {
+        "row_id": "c4u6clryig6rejnglo",
+        "all_match": true,
+        "comparisons": {
+          "expected_object": {
+            "expected": "product",
+            "actual": "product",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "OPEN_FORM",
+            "actual": "OPEN_FORM",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "none",
+            "actual": "none",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "0t3l8qtysf8bbyqudu",
+        "user_input": "Can you Open the Product create screen?",
+        "expected_object": "product",
+        "expected_action": "OPEN_FORM",
+        "expected_tool": "none",
+        "expected_retrieval_needed": false,
+        "source_file": "phase4_refined_results.md",
+        "phase": "phase305",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Gold standard mapping for OPEN_FORM"
+      },
+      "actual": {
+        "raw_intent": "OPEN_FORM",
+        "normalized_action": "OPEN_FORM",
+        "object_type": "product",
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "direct_response",
+        "raw_output": {
+          "intent": "OPEN_FORM",
+          "object_type": "product",
+          "form_url": "/products/new-modal",
+          "form_title": "Create Product",
+          "form_kind": "product_create",
+          "text": "I've opened the new product form for you below.",
+          "score": 1.0
+        }
+      },
+      "comparison": {
+        "row_id": "0t3l8qtysf8bbyqudu",
+        "all_match": true,
+        "comparisons": {
+          "expected_object": {
+            "expected": "product",
+            "actual": "product",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "OPEN_FORM",
+            "actual": "OPEN_FORM",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "none",
+            "actual": "none",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "77rfbcy1sdroamt105",
+        "user_input": "Can you show my Products?",
+        "expected_object": "product",
+        "expected_action": "QUERY",
+        "expected_tool": "crm_query",
+        "expected_retrieval_needed": false,
+        "source_file": "phase4_refined_results.md",
+        "phase": "phase305",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Gold standard mapping for QUERY"
+      },
+      "actual": {
+        "raw_intent": "QUERY",
+        "normalized_action": "QUERY",
+        "object_type": "product",
+        "tool": "crm_query",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "QUERY",
+          "object_type": "product",
+          "sql": null,
+          "score": 0.99
+        }
+      },
+      "comparison": {
+        "row_id": "77rfbcy1sdroamt105",
+        "all_match": true,
+        "comparisons": {
+          "expected_object": {
+            "expected": "product",
+            "actual": "product",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "QUERY",
+            "actual": "QUERY",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "crm_query",
+            "actual": "crm_query",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "l0kqvij48ljm4zjari",
+        "user_input": "Can you Can you show my Products??",
+        "expected_object": "product",
+        "expected_action": "QUERY",
+        "expected_tool": "crm_query",
+        "expected_retrieval_needed": false,
+        "source_file": "phase4_refined_results.md",
+        "phase": "phase305",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Gold standard mapping for QUERY"
+      },
+      "actual": {
+        "raw_intent": "QUERY",
+        "normalized_action": "QUERY",
+        "object_type": "product",
+        "tool": "crm_query",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "QUERY",
+          "object_type": "product",
+          "sql": null,
+          "score": 0.99
+        }
+      },
+      "comparison": {
+        "row_id": "l0kqvij48ljm4zjari",
+        "all_match": true,
+        "comparisons": {
+          "expected_object": {
+            "expected": "product",
+            "actual": "product",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "QUERY",
+            "actual": "QUERY",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "crm_query",
+            "actual": "crm_query",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "lngjcwtxs0ue10v62y",
+        "user_input": "Where are the Products?",
+        "expected_object": "product",
+        "expected_action": "ASK_CLARIFICATION",
+        "expected_tool": "none",
+        "expected_retrieval_needed": false,
+        "source_file": "phase4_refined_results.md",
+        "phase": "phase305",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Gold standard mapping for ASK_CLARIFICATION"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": null,
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "missing_response",
+        "raw_output": {
+          "intent": "CHAT",
+          "text": "Eval runner could not capture a runtime decision."
+        }
+      },
+      "comparison": {
+        "row_id": "lngjcwtxs0ue10v62y",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "product",
+            "actual": null,
+            "match": false
+          },
+          "expected_action": {
+            "expected": "ASK_CLARIFICATION",
+            "actual": "ASK_CLARIFICATION",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "none",
+            "actual": "none",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "5fc4svnss9bmwi8ood",
+        "user_input": "Can you Where are the Products??",
+        "expected_object": "product",
+        "expected_action": "ASK_CLARIFICATION",
+        "expected_tool": "none",
+        "expected_retrieval_needed": false,
+        "source_file": "phase4_refined_results.md",
+        "phase": "phase305",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Gold standard mapping for ASK_CLARIFICATION"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": null,
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "direct_response",
+        "raw_output": {
+          "intent": "CHAT",
+          "is_suggestion": true,
+          "suggestion_prompt": "Can you Any new Products??",
+          "text": "I think you might want to **open form** for **product**. Is that correct? (Suggested: \"Can you Any new Products??\")",
+          "score": 0.4864865,
+          "options": [
+            {
+              "label": "Yes, do that",
+              "value": "Can you Any new Products??"
+            },
+            {
+              "label": "No, something else",
+              "value": "help"
+            }
+          ]
+        }
+      },
+      "comparison": {
+        "row_id": "5fc4svnss9bmwi8ood",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "product",
+            "actual": null,
+            "match": false
+          },
+          "expected_action": {
+            "expected": "ASK_CLARIFICATION",
+            "actual": "ASK_CLARIFICATION",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "none",
+            "actual": "none",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "lq1loy220cphaihsh8",
+        "user_input": "Help with Product flow",
+        "expected_object": "product",
+        "expected_action": "RETRIEVE_AND_ANSWER",
+        "expected_tool": "vector_retrieval",
+        "expected_retrieval_needed": true,
+        "source_file": "phase4_refined_results.md",
+        "phase": "phase305",
+        "context": "",
+        "difficulty": "hard",
+        "notes": "Gold standard mapping for RETRIEVE_AND_ANSWER"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": null,
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "missing_response",
+        "raw_output": {
+          "intent": "CHAT",
+          "text": "Eval runner could not capture a runtime decision."
+        }
+      },
+      "comparison": {
+        "row_id": "lq1loy220cphaihsh8",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "product",
+            "actual": null,
+            "match": false
+          },
+          "expected_action": {
+            "expected": "RETRIEVE_AND_ANSWER",
+            "actual": "ASK_CLARIFICATION",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "vector_retrieval",
+            "actual": "none",
+            "match": false
+          },
+          "expected_retrieval_needed": {
+            "expected": true,
+            "actual": false,
+            "match": false
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "im43yx60o2o57ae8a1",
+        "user_input": "Can you Help with Product flow?",
+        "expected_object": "product",
+        "expected_action": "RETRIEVE_AND_ANSWER",
+        "expected_tool": "vector_retrieval",
+        "expected_retrieval_needed": true,
+        "source_file": "phase4_refined_results.md",
+        "phase": "phase305",
+        "context": "",
+        "difficulty": "hard",
+        "notes": "Gold standard mapping for RETRIEVE_AND_ANSWER"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": null,
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "direct_response",
+        "raw_output": {
+          "intent": "CHAT",
+          "is_suggestion": true,
+          "suggestion_prompt": "Can you Add a Product?",
+          "text": "I think you might want to **open form** for **product**. Is that correct? (Suggested: \"Can you Add a Product?\")",
+          "score": 0.44444445,
+          "options": [
+            {
+              "label": "Yes, do that",
+              "value": "Can you Add a Product?"
+            },
+            {
+              "label": "No, something else",
+              "value": "help"
+            }
+          ]
+        }
+      },
+      "comparison": {
+        "row_id": "im43yx60o2o57ae8a1",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "product",
+            "actual": null,
+            "match": false
+          },
+          "expected_action": {
+            "expected": "RETRIEVE_AND_ANSWER",
+            "actual": "ASK_CLARIFICATION",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "vector_retrieval",
+            "actual": "none",
+            "match": false
+          },
+          "expected_retrieval_needed": {
+            "expected": true,
+            "actual": false,
+            "match": false
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "05dhwshsx6i9qx237t",
+        "user_input": "Guide me through Product creation",
+        "expected_object": "product",
+        "expected_action": "RETRIEVE_AND_ANSWER",
+        "expected_tool": "vector_retrieval",
+        "expected_retrieval_needed": true,
+        "source_file": "phase4_refined_results.md",
+        "phase": "phase305",
+        "context": "",
+        "difficulty": "hard",
+        "notes": "Gold standard mapping for RETRIEVE_AND_ANSWER"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": "product",
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "CHAT",
+          "object_type": "product",
+          "text": "What product details would you like to create, such as name, description, price, or brand?",
+          "score": 0.6,
+          "reasoning": {
+            "context_reference": {
+              "kind": null,
+              "index": 0,
+              "object_type": "product"
+            },
+            "resolved_reference": {},
+            "confidence": 0.6,
+            "confidence_band": "medium"
+          },
+          "language_preference": "eng"
+        }
+      },
+      "comparison": {
+        "row_id": "05dhwshsx6i9qx237t",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "product",
+            "actual": "product",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "RETRIEVE_AND_ANSWER",
+            "actual": "ASK_CLARIFICATION",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "vector_retrieval",
+            "actual": "none",
+            "match": false
+          },
+          "expected_retrieval_needed": {
+            "expected": true,
+            "actual": false,
+            "match": false
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "hbdtjqoibkf6s9m7h6",
+        "user_input": "Can you Guide me through Product creation?",
+        "expected_object": "product",
+        "expected_action": "RETRIEVE_AND_ANSWER",
+        "expected_tool": "vector_retrieval",
+        "expected_retrieval_needed": true,
+        "source_file": "phase4_refined_results.md",
+        "phase": "phase305",
+        "context": "",
+        "difficulty": "hard",
+        "notes": "Gold standard mapping for RETRIEVE_AND_ANSWER"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": null,
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "direct_response",
+        "raw_output": {
+          "intent": "CHAT",
+          "is_suggestion": true,
+          "suggestion_prompt": "Can you Create new Product?",
+          "text": "I think you might want to **open form** for **product**. Is that correct? (Suggested: \"Can you Create new Product?\")",
+          "score": 0.42553192,
+          "options": [
+            {
+              "label": "Yes, do that",
+              "value": "Can you Create new Product?"
+            },
+            {
+              "label": "No, something else",
+              "value": "help"
+            }
+          ]
+        }
+      },
+      "comparison": {
+        "row_id": "hbdtjqoibkf6s9m7h6",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "product",
+            "actual": null,
+            "match": false
+          },
+          "expected_action": {
+            "expected": "RETRIEVE_AND_ANSWER",
+            "actual": "ASK_CLARIFICATION",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "vector_retrieval",
+            "actual": "none",
+            "match": false
+          },
+          "expected_retrieval_needed": {
+            "expected": true,
+            "actual": false,
+            "match": false
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "o8fsi4ga4jtej0tw5x",
+        "user_input": "How many Products do we have?",
+        "expected_object": "product",
+        "expected_action": "RETRIEVE_AND_ANSWER",
+        "expected_tool": "vector_retrieval",
+        "expected_retrieval_needed": true,
+        "source_file": "phase4_refined_results.md",
+        "phase": "phase305",
+        "context": "",
+        "difficulty": "hard",
+        "notes": "Gold standard mapping for RETRIEVE_AND_ANSWER"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": null,
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "direct_response",
+        "raw_output": {
+          "intent": "CHAT",
+          "is_suggestion": true,
+          "suggestion_prompt": "Do we have any?",
+          "text": "I think you might want to **query** for **lead**. Is that correct? (Suggested: \"Do we have any?\")",
+          "score": 0.43333334,
+          "options": [
+            {
+              "label": "Yes, do that",
+              "value": "Do we have any?"
+            },
+            {
+              "label": "No, something else",
+              "value": "help"
+            }
+          ]
+        }
+      },
+      "comparison": {
+        "row_id": "o8fsi4ga4jtej0tw5x",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "product",
+            "actual": null,
+            "match": false
+          },
+          "expected_action": {
+            "expected": "RETRIEVE_AND_ANSWER",
+            "actual": "ASK_CLARIFICATION",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "vector_retrieval",
+            "actual": "none",
+            "match": false
+          },
+          "expected_retrieval_needed": {
+            "expected": true,
+            "actual": false,
+            "match": false
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "dwqpeoskvetvy68vfk",
+        "user_input": "Can you How many Products do we have??",
+        "expected_object": "product",
+        "expected_action": "RETRIEVE_AND_ANSWER",
+        "expected_tool": "vector_retrieval",
+        "expected_retrieval_needed": true,
+        "source_file": "phase4_refined_results.md",
+        "phase": "phase305",
+        "context": "",
+        "difficulty": "hard",
+        "notes": "Gold standard mapping for RETRIEVE_AND_ANSWER"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": null,
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "direct_response",
+        "raw_output": {
+          "intent": "CHAT",
+          "is_suggestion": true,
+          "suggestion_prompt": "Can you Any new Products??",
+          "text": "I think you might want to **open form** for **product**. Is that correct? (Suggested: \"Can you Any new Products??\")",
+          "score": 0.45238096,
+          "options": [
+            {
+              "label": "Yes, do that",
+              "value": "Can you Any new Products??"
+            },
+            {
+              "label": "No, something else",
+              "value": "help"
+            }
+          ]
+        }
+      },
+      "comparison": {
+        "row_id": "dwqpeoskvetvy68vfk",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "product",
+            "actual": null,
+            "match": false
+          },
+          "expected_action": {
+            "expected": "RETRIEVE_AND_ANSWER",
+            "actual": "ASK_CLARIFICATION",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "vector_retrieval",
+            "actual": "none",
+            "match": false
+          },
+          "expected_retrieval_needed": {
+            "expected": true,
+            "actual": false,
+            "match": false
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "19r582rhbwhyor004u",
+        "user_input": "Show Product history",
+        "expected_object": "product",
+        "expected_action": "RETRIEVE_AND_ANSWER",
+        "expected_tool": "message_history_query",
+        "expected_retrieval_needed": true,
+        "source_file": "phase4_refined_results.md",
+        "phase": "phase305",
+        "context": "",
+        "difficulty": "hard",
+        "notes": "Gold standard mapping for RETRIEVE_AND_ANSWER"
+      },
+      "actual": {
+        "raw_intent": "MANAGE",
+        "normalized_action": "OPEN_RECORD",
+        "object_type": "product",
+        "tool": "crm_query",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "MANAGE",
+          "object_type": "product",
+          "record_id": "history",
+          "score": 1.0,
+          "language_preference": "eng"
+        }
+      },
+      "comparison": {
+        "row_id": "19r582rhbwhyor004u",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "product",
+            "actual": "product",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "RETRIEVE_AND_ANSWER",
+            "actual": "OPEN_RECORD",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "message_history_query",
+            "actual": "crm_query",
+            "match": false
+          },
+          "expected_retrieval_needed": {
+            "expected": true,
+            "actual": false,
+            "match": false
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "aa8fs42wf9sjwz8zui",
+        "user_input": "Can you Show Product history?",
+        "expected_object": "product",
+        "expected_action": "RETRIEVE_AND_ANSWER",
+        "expected_tool": "message_history_query",
+        "expected_retrieval_needed": true,
+        "source_file": "phase4_refined_results.md",
+        "phase": "phase305",
+        "context": "",
+        "difficulty": "hard",
+        "notes": "Gold standard mapping for RETRIEVE_AND_ANSWER"
+      },
+      "actual": {
+        "raw_intent": "MANAGE",
+        "normalized_action": "OPEN_RECORD",
+        "object_type": "product",
+        "tool": "crm_query",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "MANAGE",
+          "object_type": "product",
+          "record_id": "history",
+          "score": 1.0,
+          "language_preference": "eng"
+        }
+      },
+      "comparison": {
+        "row_id": "aa8fs42wf9sjwz8zui",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "product",
+            "actual": "product",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "RETRIEVE_AND_ANSWER",
+            "actual": "OPEN_RECORD",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "message_history_query",
+            "actual": "crm_query",
+            "match": false
+          },
+          "expected_retrieval_needed": {
+            "expected": true,
+            "actual": false,
+            "match": false
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "tyi3r5z9nrrjax8xtn",
+        "user_input": "View Product analytics",
+        "expected_object": "product",
+        "expected_action": "RETRIEVE_AND_ANSWER",
+        "expected_tool": "vector_retrieval",
+        "expected_retrieval_needed": true,
+        "source_file": "phase4_refined_results.md",
+        "phase": "phase305",
+        "context": "",
+        "difficulty": "hard",
+        "notes": "Gold standard mapping for RETRIEVE_AND_ANSWER"
+      },
+      "actual": {
+        "raw_intent": "MANAGE",
+        "normalized_action": "OPEN_RECORD",
+        "object_type": "product",
+        "tool": "crm_query",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "MANAGE",
+          "object_type": "product",
+          "record_id": "analytics",
+          "score": 1.0,
+          "language_preference": "eng"
+        }
+      },
+      "comparison": {
+        "row_id": "tyi3r5z9nrrjax8xtn",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "product",
+            "actual": "product",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "RETRIEVE_AND_ANSWER",
+            "actual": "OPEN_RECORD",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "vector_retrieval",
+            "actual": "crm_query",
+            "match": false
+          },
+          "expected_retrieval_needed": {
+            "expected": true,
+            "actual": false,
+            "match": false
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "4xowr1f3wdxf8k85kd",
+        "user_input": "Can you View Product analytics?",
+        "expected_object": "product",
+        "expected_action": "RETRIEVE_AND_ANSWER",
+        "expected_tool": "vector_retrieval",
+        "expected_retrieval_needed": true,
+        "source_file": "phase4_refined_results.md",
+        "phase": "phase305",
+        "context": "",
+        "difficulty": "hard",
+        "notes": "Gold standard mapping for RETRIEVE_AND_ANSWER"
+      },
+      "actual": {
+        "raw_intent": "MANAGE",
+        "normalized_action": "OPEN_RECORD",
+        "object_type": "product",
+        "tool": "crm_query",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "MANAGE",
+          "object_type": "product",
+          "record_id": "analytics",
+          "score": 1.0,
+          "language_preference": "eng"
+        }
+      },
+      "comparison": {
+        "row_id": "4xowr1f3wdxf8k85kd",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "product",
+            "actual": "product",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "RETRIEVE_AND_ANSWER",
+            "actual": "OPEN_RECORD",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "vector_retrieval",
+            "actual": "crm_query",
+            "match": false
+          },
+          "expected_retrieval_needed": {
+            "expected": true,
+            "actual": false,
+            "match": false
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "bwunnakllg31kseute",
+        "user_input": "Export Product list",
+        "expected_object": "product",
+        "expected_action": "QUERY",
+        "expected_tool": "crm_query",
+        "expected_retrieval_needed": false,
+        "source_file": "phase4_refined_results.md",
+        "phase": "phase305",
+        "context": "",
+        "difficulty": "easy",
+        "notes": "Gold standard mapping for QUERY"
+      },
+      "actual": {
+        "raw_intent": "QUERY",
+        "normalized_action": "QUERY",
+        "object_type": "product",
+        "tool": "crm_query",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "QUERY",
+          "object_type": "product",
+          "data": {},
+          "score": 1.0
+        }
+      },
+      "comparison": {
+        "row_id": "bwunnakllg31kseute",
+        "all_match": true,
+        "comparisons": {
+          "expected_object": {
+            "expected": "product",
+            "actual": "product",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "QUERY",
+            "actual": "QUERY",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "crm_query",
+            "actual": "crm_query",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "5qixo2n6czzktl0n80",
+        "user_input": "Can you Export Product list?",
+        "expected_object": "product",
+        "expected_action": "QUERY",
+        "expected_tool": "crm_query",
+        "expected_retrieval_needed": false,
+        "source_file": "phase4_refined_results.md",
+        "phase": "phase305",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Gold standard mapping for QUERY"
+      },
+      "actual": {
+        "raw_intent": "QUERY",
+        "normalized_action": "QUERY",
+        "object_type": "product",
+        "tool": "crm_query",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "QUERY",
+          "object_type": "product",
+          "data": {},
+          "score": 1.0
+        }
+      },
+      "comparison": {
+        "row_id": "5qixo2n6czzktl0n80",
+        "all_match": true,
+        "comparisons": {
+          "expected_object": {
+            "expected": "product",
+            "actual": "product",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "QUERY",
+            "actual": "QUERY",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "crm_query",
+            "actual": "crm_query",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "35h9kr0p2gyd0dsllu",
+        "user_input": "Filter Products by date",
+        "expected_object": "product",
+        "expected_action": "ASK_CLARIFICATION",
+        "expected_tool": "none",
+        "expected_retrieval_needed": false,
+        "source_file": "phase4_refined_results.md",
+        "phase": "phase305",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Gold standard mapping for ASK_CLARIFICATION"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": null,
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "missing_response",
+        "raw_output": {
+          "intent": "CHAT",
+          "text": "Eval runner could not capture a runtime decision."
+        }
+      },
+      "comparison": {
+        "row_id": "35h9kr0p2gyd0dsllu",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "product",
+            "actual": null,
+            "match": false
+          },
+          "expected_action": {
+            "expected": "ASK_CLARIFICATION",
+            "actual": "ASK_CLARIFICATION",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "none",
+            "actual": "none",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "wpd1fs66nak07b6lse",
+        "user_input": "Can you Filter Products by date?",
+        "expected_object": "product",
+        "expected_action": "ASK_CLARIFICATION",
+        "expected_tool": "none",
+        "expected_retrieval_needed": false,
+        "source_file": "phase4_refined_results.md",
+        "phase": "phase305",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Gold standard mapping for ASK_CLARIFICATION"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": null,
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "direct_response",
+        "raw_output": {
+          "intent": "CHAT",
+          "is_suggestion": true,
+          "suggestion_prompt": "Can you Any new Products??",
+          "text": "I think you might want to **open form** for **product**. Is that correct? (Suggested: \"Can you Any new Products??\")",
+          "score": 0.425,
+          "options": [
+            {
+              "label": "Yes, do that",
+              "value": "Can you Any new Products??"
+            },
+            {
+              "label": "No, something else",
+              "value": "help"
+            }
+          ]
+        }
+      },
+      "comparison": {
+        "row_id": "wpd1fs66nak07b6lse",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "product",
+            "actual": null,
+            "match": false
+          },
+          "expected_action": {
+            "expected": "ASK_CLARIFICATION",
+            "actual": "ASK_CLARIFICATION",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "none",
+            "actual": "none",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "288oy4mw5gy3zpk6is",
+        "user_input": "Sort Products by name",
+        "expected_object": "product",
+        "expected_action": "ASK_CLARIFICATION",
+        "expected_tool": "none",
+        "expected_retrieval_needed": false,
+        "source_file": "phase4_refined_results.md",
+        "phase": "phase305",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Gold standard mapping for ASK_CLARIFICATION"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": null,
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "missing_response",
+        "raw_output": {
+          "intent": "CHAT",
+          "text": "Eval runner could not capture a runtime decision."
+        }
+      },
+      "comparison": {
+        "row_id": "288oy4mw5gy3zpk6is",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "product",
+            "actual": null,
+            "match": false
+          },
+          "expected_action": {
+            "expected": "ASK_CLARIFICATION",
+            "actual": "ASK_CLARIFICATION",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "none",
+            "actual": "none",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "2vku0u8ecv57isobbb",
+        "user_input": "Can you Sort Products by name?",
+        "expected_object": "product",
+        "expected_action": "ASK_CLARIFICATION",
+        "expected_tool": "none",
+        "expected_retrieval_needed": false,
+        "source_file": "phase4_refined_results.md",
+        "phase": "phase305",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Gold standard mapping for ASK_CLARIFICATION"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": null,
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "direct_response",
+        "raw_output": {
+          "intent": "CHAT",
+          "is_suggestion": true,
+          "suggestion_prompt": "Can you Any new Products??",
+          "text": "I think you might want to **open form** for **product**. Is that correct? (Suggested: \"Can you Any new Products??\")",
+          "score": 0.4864865,
+          "options": [
+            {
+              "label": "Yes, do that",
+              "value": "Can you Any new Products??"
+            },
+            {
+              "label": "No, something else",
+              "value": "help"
+            }
+          ]
+        }
+      },
+      "comparison": {
+        "row_id": "2vku0u8ecv57isobbb",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "product",
+            "actual": null,
+            "match": false
+          },
+          "expected_action": {
+            "expected": "ASK_CLARIFICATION",
+            "actual": "ASK_CLARIFICATION",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "none",
+            "actual": "none",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "d4oadl0ycbde2487rz",
+        "user_input": "Show me Product #123",
+        "expected_object": "product",
+        "expected_action": "OPEN_RECORD",
+        "expected_tool": "crm_query",
+        "expected_retrieval_needed": false,
+        "source_file": "phase4_refined_results.md",
+        "phase": "phase305",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Gold standard mapping for OPEN_RECORD"
+      },
+      "actual": {
+        "raw_intent": "QUERY",
+        "normalized_action": "QUERY",
+        "object_type": "product",
+        "tool": "crm_query",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "QUERY",
+          "object_type": "product",
+          "sql": null,
+          "score": 0.99
+        }
+      },
+      "comparison": {
+        "row_id": "d4oadl0ycbde2487rz",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "product",
+            "actual": "product",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "OPEN_RECORD",
+            "actual": "QUERY",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "crm_query",
+            "actual": "crm_query",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "idpmlk0pw7tze58kn6",
+        "user_input": "Can you Show me Product #123?",
+        "expected_object": "product",
+        "expected_action": "OPEN_RECORD",
+        "expected_tool": "crm_query",
+        "expected_retrieval_needed": false,
+        "source_file": "phase4_refined_results.md",
+        "phase": "phase305",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Gold standard mapping for OPEN_RECORD"
+      },
+      "actual": {
+        "raw_intent": "QUERY",
+        "normalized_action": "QUERY",
+        "object_type": "product",
+        "tool": "crm_query",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "QUERY",
+          "object_type": "product",
+          "sql": null,
+          "score": 0.99
+        }
+      },
+      "comparison": {
+        "row_id": "idpmlk0pw7tze58kn6",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "product",
+            "actual": "product",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "OPEN_RECORD",
+            "actual": "QUERY",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "crm_query",
+            "actual": "crm_query",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "mfe4wks75cdc2jeh2k",
+        "user_input": "Open record for Product",
+        "expected_object": "product",
+        "expected_action": "OPEN_RECORD",
+        "expected_tool": "crm_query",
+        "expected_retrieval_needed": false,
+        "source_file": "phase4_refined_results.md",
+        "phase": "phase305",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Gold standard mapping for OPEN_RECORD"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": "product",
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "CHAT",
+          "object_type": "product",
+          "text": "I can help you open a product. Try `show all products`, `show recent products`, or mention the name you want to open.",
+          "score": 0.95
+        }
+      },
+      "comparison": {
+        "row_id": "mfe4wks75cdc2jeh2k",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "product",
+            "actual": "product",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "OPEN_RECORD",
+            "actual": "ASK_CLARIFICATION",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "crm_query",
+            "actual": "none",
+            "match": false
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "1km6annuaukdghlo8k",
+        "user_input": "Can you Open record for Product?",
+        "expected_object": "product",
+        "expected_action": "OPEN_RECORD",
+        "expected_tool": "crm_query",
+        "expected_retrieval_needed": false,
+        "source_file": "phase4_refined_results.md",
+        "phase": "phase305",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Gold standard mapping for OPEN_RECORD"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": "product",
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "CHAT",
+          "object_type": "product",
+          "text": "I can help you open a product. Try `show all products`, `show recent products`, or mention the name you want to open.",
+          "score": 0.95
+        }
+      },
+      "comparison": {
+        "row_id": "1km6annuaukdghlo8k",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "product",
+            "actual": "product",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "OPEN_RECORD",
+            "actual": "ASK_CLARIFICATION",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "crm_query",
+            "actual": "none",
+            "match": false
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "pxkob5gprze0x3vg40",
+        "user_input": "What's the status of the Product?",
+        "expected_object": "product",
+        "expected_action": "ASK_CLARIFICATION",
+        "expected_tool": "none",
+        "expected_retrieval_needed": false,
+        "source_file": "phase4_refined_results.md",
+        "phase": "phase305",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Gold standard mapping for ASK_CLARIFICATION"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": null,
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "direct_response",
+        "raw_output": {
+          "intent": "CHAT",
+          "is_suggestion": true,
+          "suggestion_prompt": "What's the status?",
+          "text": "I think you might want to **query** for **lead**. Is that correct? (Suggested: \"What's the status?\")",
+          "score": 0.60714287,
+          "options": [
+            {
+              "label": "Yes, do that",
+              "value": "What's the status?"
+            },
+            {
+              "label": "No, something else",
+              "value": "help"
+            }
+          ]
+        }
+      },
+      "comparison": {
+        "row_id": "pxkob5gprze0x3vg40",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "product",
+            "actual": null,
+            "match": false
+          },
+          "expected_action": {
+            "expected": "ASK_CLARIFICATION",
+            "actual": "ASK_CLARIFICATION",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "none",
+            "actual": "none",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "b401tgv9j1e9vhcyeo",
+        "user_input": "Can you What's the status of the Product??",
+        "expected_object": "product",
+        "expected_action": "ASK_CLARIFICATION",
+        "expected_tool": "none",
+        "expected_retrieval_needed": false,
+        "source_file": "phase4_refined_results.md",
+        "phase": "phase305",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Gold standard mapping for ASK_CLARIFICATION"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": null,
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "direct_response",
+        "raw_output": {
+          "intent": "CHAT",
+          "is_suggestion": true,
+          "suggestion_prompt": "What's the status?",
+          "text": "I think you might want to **query** for **lead**. Is that correct? (Suggested: \"What's the status?\")",
+          "score": 0.4722222,
+          "options": [
+            {
+              "label": "Yes, do that",
+              "value": "What's the status?"
+            },
+            {
+              "label": "No, something else",
+              "value": "help"
+            }
+          ]
+        }
+      },
+      "comparison": {
+        "row_id": "b401tgv9j1e9vhcyeo",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "product",
+            "actual": null,
+            "match": false
+          },
+          "expected_action": {
+            "expected": "ASK_CLARIFICATION",
+            "actual": "ASK_CLARIFICATION",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "none",
+            "actual": "none",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "bhfw5octk1s3a1gab0",
+        "user_input": "Is the Product done?",
+        "expected_object": "product",
+        "expected_action": "ASK_CLARIFICATION",
+        "expected_tool": "none",
+        "expected_retrieval_needed": false,
+        "source_file": "phase4_refined_results.md",
+        "phase": "phase305",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Gold standard mapping for ASK_CLARIFICATION"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": null,
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "missing_response",
+        "raw_output": {
+          "intent": "CHAT",
+          "text": "Eval runner could not capture a runtime decision."
+        }
+      },
+      "comparison": {
+        "row_id": "bhfw5octk1s3a1gab0",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "product",
+            "actual": null,
+            "match": false
+          },
+          "expected_action": {
+            "expected": "ASK_CLARIFICATION",
+            "actual": "ASK_CLARIFICATION",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "none",
+            "actual": "none",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "rh8l4mjcyk693l2841",
+        "user_input": "Can you Is the Product done??",
+        "expected_object": "product",
+        "expected_action": "ASK_CLARIFICATION",
+        "expected_tool": "none",
+        "expected_retrieval_needed": false,
+        "source_file": "phase4_refined_results.md",
+        "phase": "phase305",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Gold standard mapping for ASK_CLARIFICATION"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": null,
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "direct_response",
+        "raw_output": {
+          "intent": "CHAT",
+          "is_suggestion": true,
+          "suggestion_prompt": "Can you Add a Product?",
+          "text": "I think you might want to **open form** for **product**. Is that correct? (Suggested: \"Can you Add a Product?\")",
+          "score": 0.4848485,
+          "options": [
+            {
+              "label": "Yes, do that",
+              "value": "Can you Add a Product?"
+            },
+            {
+              "label": "No, something else",
+              "value": "help"
+            }
+          ]
+        }
+      },
+      "comparison": {
+        "row_id": "rh8l4mjcyk693l2841",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "product",
+            "actual": null,
+            "match": false
+          },
+          "expected_action": {
+            "expected": "ASK_CLARIFICATION",
+            "actual": "ASK_CLARIFICATION",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "none",
+            "actual": "none",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "051gbjuddxdfryjac0",
+        "user_input": "Next steps for this Product",
+        "expected_object": "product",
+        "expected_action": "RETRIEVE_AND_ANSWER",
+        "expected_tool": "vector_retrieval",
+        "expected_retrieval_needed": true,
+        "source_file": "phase4_refined_results.md",
+        "phase": "phase305",
+        "context": "",
+        "difficulty": "hard",
+        "notes": "Gold standard mapping for RETRIEVE_AND_ANSWER"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": null,
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "missing_response",
+        "raw_output": {
+          "intent": "CHAT",
+          "text": "Eval runner could not capture a runtime decision."
+        }
+      },
+      "comparison": {
+        "row_id": "051gbjuddxdfryjac0",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "product",
+            "actual": null,
+            "match": false
+          },
+          "expected_action": {
+            "expected": "RETRIEVE_AND_ANSWER",
+            "actual": "ASK_CLARIFICATION",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "vector_retrieval",
+            "actual": "none",
+            "match": false
+          },
+          "expected_retrieval_needed": {
+            "expected": true,
+            "actual": false,
+            "match": false
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "q7mpa8601wj1d3vuqd",
+        "user_input": "Can you Next steps for this Product?",
+        "expected_object": "product",
+        "expected_action": "RETRIEVE_AND_ANSWER",
+        "expected_tool": "vector_retrieval",
+        "expected_retrieval_needed": true,
+        "source_file": "phase4_refined_results.md",
+        "phase": "phase305",
+        "context": "",
+        "difficulty": "hard",
+        "notes": "Gold standard mapping for RETRIEVE_AND_ANSWER"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": null,
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "direct_response",
+        "raw_output": {
+          "intent": "CHAT",
+          "is_suggestion": true,
+          "suggestion_prompt": "Can you Create new Product?",
+          "text": "I think you might want to **open form** for **product**. Is that correct? (Suggested: \"Can you Create new Product?\")",
+          "score": 0.4090909,
+          "options": [
+            {
+              "label": "Yes, do that",
+              "value": "Can you Create new Product?"
+            },
+            {
+              "label": "No, something else",
+              "value": "help"
+            }
+          ]
+        }
+      },
+      "comparison": {
+        "row_id": "q7mpa8601wj1d3vuqd",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "product",
+            "actual": null,
+            "match": false
+          },
+          "expected_action": {
+            "expected": "RETRIEVE_AND_ANSWER",
+            "actual": "ASK_CLARIFICATION",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "vector_retrieval",
+            "actual": "none",
+            "match": false
+          },
+          "expected_retrieval_needed": {
+            "expected": true,
+            "actual": false,
+            "match": false
+          }
+        }
+      }
+    }
+  ]
+}

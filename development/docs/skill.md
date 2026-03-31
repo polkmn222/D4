@@ -101,6 +101,7 @@ This document describes the practical implementation guidance for the four activ
 - Keep response contracts stable for the AI front-end experience.
 - For incomplete create requests, prefer `OPEN_FORM` over chat-first slot-filling.
 - Use deterministic direct create only when the minimum required fields are present with high confidence.
+- Keep narrow retrieval helpers, such as the message-policy Qdrant path, explicit and bounded instead of turning the AI agent into a general-purpose document-search layer.
 - Current deterministic create minimums are:
   - `lead`: `last_name` and `status`
   - `contact`: `last_name` and `status`

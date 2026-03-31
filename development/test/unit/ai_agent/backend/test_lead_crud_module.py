@@ -75,12 +75,11 @@ def test_ai_agent_lead_table_uses_display_name_before_fallback_fields():
     assert "return row.display_name || [row.first_name, row.last_name].filter(Boolean).join(' ').trim() || row.name || '-';" in source
 
 
-def test_ai_agent_open_form_uses_workspace_opening():
+def test_ai_agent_open_form_uses_inline_form_message_for_form_urls():
     source = Path("development/ai_agent/ui/frontend/static/js/ai_agent.js").read_text(encoding="utf-8")
 
     assert "if (data.intent === 'OPEN_FORM' && data.form_url) {" in source
-    assert "appendChatMessage('agent', data.text || 'I opened the form for you.');" in source
-    assert "openAgentWorkspace(data.form_url, data.form_title || 'Form');" in source
+    assert "appendAgentInlineFormMessage(data.text || 'I opened the form for you.', data.form_url, data.form_title || 'Form');" in source
 
 
 def test_ai_agent_default_body_keeps_workspace_markup_after_reset():

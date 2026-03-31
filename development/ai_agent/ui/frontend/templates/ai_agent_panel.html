@@ -9,7 +9,7 @@
             </div>
         </div>
         <div id="ai-agent-header-actions" style="display: flex; gap: 12px; align-items: center;">
-            <button id="ai-agent-debug-toggle" class="agent-reset-btn agent-debug-toggle" type="button" onclick="toggleAiAgentDebug()">Debug On</button>
+            <button id="ai-agent-debug-toggle" class="agent-reset-btn agent-debug-toggle" type="button" onclick="toggleAiAgentDebug()">Debug Off</button>
             <div class="agent-language-toggle" role="group" aria-label="AI Agent language">
                 <button id="ai-agent-lang-eng" class="agent-language-btn is-active" type="button" onclick="setAiAgentLanguage('eng')">ENG</button>
                 <button id="ai-agent-lang-kor" class="agent-language-btn" type="button" onclick="setAiAgentLanguage('kor')">KOR</button>
@@ -50,6 +50,13 @@
                 </div>
             </div>
 
+            <div class="quick-guide-section">
+                <div class="quick-guide-section-title" data-ai-guide-section-history>Recent & Pinned</div>
+                <div class="quick-guide-history-copy" data-ai-guide-history-copy>Pin frequent actions and keep your latest commands close by.</div>
+                <div id="ai-agent-activity-list" class="quick-guide-history-list"></div>
+                <div id="ai-agent-activity-empty" class="quick-guide-history-empty" data-ai-guide-history-empty>No recent commands yet. Use a quick action or type a command to build your list.</div>
+            </div>
+
             <div class="quick-guide-note">
                 <strong data-ai-guide-examples>Examples</strong>
                 <span data-ai-guide-examples-copy>`create lead` · `show all contacts` · `show the lead I just created` · `delete that contact`</span>
@@ -80,7 +87,7 @@
                 </div>
                 <div class="selection-bar-actions">
                     <button class="selection-action-btn" onclick="triggerSelectionOpen()" data-ai-selection-open>Open</button>
-                    <button class="selection-action-btn" onclick="triggerSelectionEdit()" data-ai-selection-edit>Edit</button>
+                    <button class="selection-action-btn selection-action-edit" onclick="triggerSelectionEdit()" data-ai-selection-edit>Edit</button>
                     <button class="selection-action-btn selection-action-danger" onclick="triggerSelectionDelete()" data-ai-selection-delete>Delete</button>
                     <button class="selection-action-btn selection-action-primary" onclick="triggerSelectionMessaging()" data-ai-selection-send>Send Message</button>
                 </div>
@@ -92,7 +99,7 @@
                         <strong id="ai-agent-workspace-title">Record View</strong>
                     </div>
                     <div style="display: flex; gap: 8px; align-items: center;">
-                        <button class="control-btn" onclick="triggerWorkspaceEdit()" id="ai-agent-workspace-edit-btn" style="display: none;">Edit</button>
+                        <button class="control-btn control-btn-edit" onclick="triggerWorkspaceEdit()" id="ai-agent-workspace-edit-btn" style="display: none;">Edit</button>
                         <button class="control-btn" onclick="triggerWorkspaceDelete()" id="ai-agent-workspace-delete-btn" style="display: none; color: var(--error);">Delete</button>
                         <button class="agent-workspace-close" onclick="closeAgentWorkspace()">&times;</button>
                     </div>
@@ -131,6 +138,7 @@
             </button>
         </div>
     </div>
+    <button id="ai-agent-jump-btn" class="ai-agent-jump-btn" type="button" onclick="jumpToLatestAgentMessage()" aria-label="Jump to latest agent response" title="Jump to latest agent response">↓</button>
 </div>
 
 <div id="ai-agent-image-modal" class="agent-image-modal agent-hidden">

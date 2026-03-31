@@ -86,7 +86,7 @@ Historical note: manual testing is forbidden in the active D5 workflow. This fil
 - `Message Template` detail supports edit and image-management actions where applicable.
 - `Message Send` detail opens with `Details` and `Related` tabs and remains read-only.
 - If MMS is in scope, verify JPG-only and 500KB upload guidance appears for the template/upload path.
-- If `MESSAGE_PROVIDER=solapi`, also verify operational guidance makes it clear that real Solapi sends require JPG images at or under 200KB.
+- If `MESSAGE_PROVIDER=surem`, also verify operational guidance makes it clear that real SureM sends require JPG images at or under 500KB.
 
 ## Manual Helper Notes
 

@@ -12,7 +12,6 @@ logger = logging.getLogger(__name__)
 class AIRecommendationService:
     # Global state for current preference (simple implementation)
     CURRENT_MODE = "Hot Deals" # Default mode
-    SENDABLE_RECOMMENDATION_LIMIT = 15
     AI_AGENT_USER = "AI Recommend" # Internal identifier for AI Agent updates
 
     @staticmethod
@@ -172,10 +171,17 @@ class AIRecommendationService:
             return []
 
     @classmethod
-    def get_sendable_recommendations(cls, db: Session, limit: int = SENDABLE_RECOMMENDATION_LIMIT, scan_limit: int = 50) -> List[Opportunity]:
+    def get_sendable_recommendations(
+        cls,
+        db: Session,
+        limit: Optional[int] = None,
+        scan_limit: Optional[int] = None,
+    ) -> List[Opportunity]:
         sendable: List[Opportunity] = []
-        for opp in cls.get_ai_recommendations(db, limit=max(limit, scan_limit)):
-            if len(sendable) >= limit:
+        fetch_limit = scan_limit or limit
+        source_rows = cls.get_ai_recommendations(db, limit=fetch_limit or 1000)
+        for opp in source_rows:
+            if limit is not None and len(sendable) >= limit:
                 break
 
             if not getattr(opp, "model", None):

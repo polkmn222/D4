@@ -3,6 +3,7 @@ from datetime import datetime, timedelta
 from typing import List, Optional
 import logging
 from db.models import Asset, Model, Opportunity, Product, Lead
+from web.backend.app.core.enums import OpportunityStatus
 from web.backend.app.utils.timezone import get_kst_now_naive, make_naive_kst
 from web.backend.app.utils.sf_id import get_id
 from web.backend.app.utils.error_handler import handle_agent_errors
@@ -70,9 +71,12 @@ class OpportunityService:
     @handle_agent_errors
     def create_opportunity(db: Session, **kwargs) -> Optional[Opportunity]:
         clean_kwargs = {k: v for k, v in kwargs.items() if not k.startswith('_')}
+        if not clean_kwargs.get("status"):
+            clean_kwargs["status"] = OpportunityStatus.OPEN.value
         
         # Apply normalization
         normalized_kwargs = OpportunityService._normalize_lookup_dependencies(db, None, clean_kwargs)
+        normalized_kwargs.pop("_force_null_fields", None)
         
         opp = Opportunity(id=get_id("Opportunity"), created_at=get_kst_now_naive(), updated_at=get_kst_now_naive(), **normalized_kwargs)
         db.add(opp)

@@ -32,6 +32,7 @@ async def bulk_delete(data: BulkDeleteRequest, db: Session = Depends(get_db)):
             "Model": Model,
             "Product": Product,
             "Asset": Asset,
+            "Message": MessageSend,
             "MessageTemplate": MessageTemplate,
             "MessageSend": MessageSend,
         }
@@ -58,4 +59,3 @@ async def bulk_delete(data: BulkDeleteRequest, db: Session = Depends(get_db)):
         db.rollback()
         logger.error(f"Bulk delete error: {str(e)}")
         return JSONResponse(status_code=500, content={"status": "error", "message": "Failed to delete items."})
-

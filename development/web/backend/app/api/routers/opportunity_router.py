@@ -38,6 +38,13 @@ def _contact_display_name(contact) -> str:
     return f"{contact.first_name if contact.first_name else ''} {contact.last_name if contact.last_name else ''}".strip() or contact.name or ""
 
 
+def _clean_opportunity_payload(**kwargs):
+    payload = {key: value for key, value in kwargs.items() if value is not None}
+    if not payload.get("status"):
+        payload["status"] = OpportunityStatus.OPEN.value
+    return payload
+
+
 @router.get("/views")
 @handle_agent_errors
 async def list_opportunity_views(db: Session = Depends(get_db)):
@@ -392,12 +399,19 @@ async def update_opportunity(
     db: Session = Depends(get_db)
 ):
     try:
-        OpportunityService.update_opportunity(
-            db, opp_id, contact=contact, name=name, amount=amount, 
-            stage=stage, status=status, probability=probability,
-            brand=brand, model=model,
-            asset=asset, product=product
+        payload = _clean_opportunity_payload(
+            contact=contact,
+            name=name,
+            amount=amount,
+            stage=stage,
+            status=status,
+            probability=probability,
+            brand=brand,
+            model=model,
+            asset=asset,
+            product=product,
         )
+        OpportunityService.update_opportunity(db, opp_id, **payload)
         return RedirectResponse(url=f"/opportunities/{opp_id}?success=Record+updated+successfully", status_code=303)
     except Exception as e:
         logger.error(f"Update Opportunity error: {e}")
@@ -518,12 +532,19 @@ async def create_opportunity(
     db: Session = Depends(get_db)
 ):
     try:
-        opp = OpportunityService.create_opportunity(
-            db, contact=contact, name=name, amount=amount, 
-            stage=stage, status=status, probability=probability,
-            brand=brand, model=model,
-            asset=asset, product=product
+        payload = _clean_opportunity_payload(
+            contact=contact,
+            name=name,
+            amount=amount,
+            stage=stage,
+            status=status,
+            probability=probability,
+            brand=brand,
+            model=model,
+            asset=asset,
+            product=product,
         )
+        opp = OpportunityService.create_opportunity(db, **payload)
         return RedirectResponse(url=f"/opportunities/{opp.id}?success=Record+created+successfully", status_code=303)
     except Exception as e:
         logger.error(f"Create Opportunity error: {e}")

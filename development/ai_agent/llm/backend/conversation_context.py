@@ -247,6 +247,28 @@ class ConversationContextStore:
         debug_event("context.clear_pending_create", conversation_id=conversation_id)
 
     @classmethod
+    def remember_pending_recommendation_mode(cls, conversation_id: Optional[str]) -> None:
+        if not conversation_id:
+            return
+        context = cls._store.setdefault(conversation_id, {})
+        context["pending_recommendation_mode"] = True
+        debug_event("context.remember_pending_recommendation_mode", conversation_id=conversation_id)
+
+    @classmethod
+    def has_pending_recommendation_mode(cls, conversation_id: Optional[str]) -> bool:
+        if not conversation_id:
+            return False
+        return bool(cls._store.setdefault(conversation_id, {}).get("pending_recommendation_mode"))
+
+    @classmethod
+    def clear_pending_recommendation_mode(cls, conversation_id: Optional[str]) -> None:
+        if not conversation_id:
+            return
+        context = cls._store.setdefault(conversation_id, {})
+        context.pop("pending_recommendation_mode", None)
+        debug_event("context.clear_pending_recommendation_mode", conversation_id=conversation_id)
+
+    @classmethod
     def get_selection(cls, conversation_id: Optional[str]) -> Dict[str, Any]:
         if not conversation_id:
             return {}

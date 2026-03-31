@@ -12,6 +12,29 @@ window.Messaging = (function() {
 
     // --- RECIPIENT MANAGEMENT ---
     const RecipientManager = {
+        getVisibleCheckboxes() {
+            if (window.__messagingRecipientApi?.getVisibleCheckboxes) {
+                return window.__messagingRecipientApi.getVisibleCheckboxes();
+            }
+            return Array.from(document.querySelectorAll('.recipient-row'))
+                .filter((row) => row.style.display !== 'none' && row.hidden !== true)
+                .map((row) => row.querySelector('input[name="selected_recipients"]'))
+                .filter(Boolean);
+        },
+
+        syncSelectAllState() {
+            if (window.__messagingRecipientApi?.syncSelectAllState) {
+                window.__messagingRecipientApi.syncSelectAllState();
+                return;
+            }
+            const selectAll = document.getElementById('select-all');
+            if (!selectAll) return;
+            const visibleCheckboxes = this.getVisibleCheckboxes();
+            const checkedCount = visibleCheckboxes.filter((checkbox) => checkbox.checked).length;
+            selectAll.checked = visibleCheckboxes.length > 0 && checkedCount === visibleCheckboxes.length;
+            selectAll.indeterminate = checkedCount > 0 && checkedCount < visibleCheckboxes.length;
+        },
+
         async toggleAIRecommendations() {
             const btn = document.getElementById('ai-recommend-toggle');
             aiRecommendActive = !aiRecommendActive;
@@ -79,7 +102,7 @@ window.Messaging = (function() {
                 const row = document.createElement('tr');
                 row.className = 'recipient-row';
                 row.innerHTML = `
-                    <td style="text-align: center;"><input type="checkbox" name="selected_recipients" value="${item.contact_id}" data-opp-id="${item.id}" data-name="${item.contact.name}"></td>
+                    <td style="text-align: center;"><input type="checkbox" name="selected_recipients" value="${item.contact_id}" data-selection-key="${item.id}" data-opp-id="${item.id}" data-name="${item.contact.name}" onclick="updateSelectionOrder(this)"></td>
                     <td class="search-field">${item.contact.name} (Deal: ${item.name})</td>
                     <td id="status-${item.id}" class="status-cell" style="font-size: 0.75rem; color: #1abc9c; font-weight: 600;"></td>
                     <td class="search-field">${item.contact.phone}</td>
@@ -90,20 +113,36 @@ window.Messaging = (function() {
             });
             
             document.getElementById('select-all').checked = false;
+            this.syncSelectAllState();
         },
 
         filter() {
+            if (window.__messagingRecipientApi?.filterRecipients) {
+                window.__messagingRecipientApi.filterRecipients();
+                return;
+            }
             const query = document.getElementById('recipient-search').value.toLowerCase();
             const rows = document.querySelectorAll('.recipient-row');
             rows.forEach(row => {
                 const text = row.innerText.toLowerCase();
                 row.style.display = text.includes(query) ? '' : 'none';
             });
+            this.syncSelectAllState();
         },
 
         toggleSelectAll(checkbox) {
-            const visibleCheckboxes = document.querySelectorAll('.recipient-row[style=""] input[name="selected_recipients"], .recipient-row:not([style]) input[name="selected_recipients"]');
-            visibleCheckboxes.forEach(cb => cb.checked = checkbox.checked);
+            if (window.__messagingRecipientApi?.toggleSelectAll) {
+                window.__messagingRecipientApi.toggleSelectAll(checkbox);
+                return;
+            }
+            const visibleCheckboxes = this.getVisibleCheckboxes();
+            visibleCheckboxes.forEach(cb => {
+                cb.checked = checkbox.checked;
+                if (typeof updateSelectionOrder === 'function') {
+                    updateSelectionOrder(cb);
+                }
+            });
+            this.syncSelectAllState();
         },
 
         resetToggleBtn() {

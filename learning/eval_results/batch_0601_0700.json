@@ -1,0 +1,5919 @@
+{
+  "generated_at": "2026-03-31T02:01:17.054877+00:00",
+  "dataset_path": "/var/folders/zg/z6kl4gjn3lj8l400kylykqm40000gp/T/tmp0v0h6mf3.jsonl",
+  "output_path": "learning/eval_results/batch_0601_0700.json",
+  "summary": {
+    "rows": 100,
+    "full_match_rows": 35,
+    "field_matches": {
+      "expected_object": 58,
+      "expected_action": 46,
+      "expected_tool": 54,
+      "expected_retrieval_needed": 76
+    }
+  },
+  "results": [
+    {
+      "dataset_row": {
+        "id": "xk0u8dr3h3rdi0mz99",
+        "user_input": "Show all Assets",
+        "expected_object": "asset",
+        "expected_action": "QUERY",
+        "expected_tool": "crm_query",
+        "expected_retrieval_needed": false,
+        "source_file": "phase4_refined_results.md",
+        "phase": "phase305",
+        "context": "",
+        "difficulty": "easy",
+        "notes": "Gold standard mapping for QUERY"
+      },
+      "actual": {
+        "raw_intent": "QUERY",
+        "normalized_action": "QUERY",
+        "object_type": "asset",
+        "tool": "crm_query",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "QUERY",
+          "object_type": "asset",
+          "data": {},
+          "score": 1.0
+        }
+      },
+      "comparison": {
+        "row_id": "xk0u8dr3h3rdi0mz99",
+        "all_match": true,
+        "comparisons": {
+          "expected_object": {
+            "expected": "asset",
+            "actual": "asset",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "QUERY",
+            "actual": "QUERY",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "crm_query",
+            "actual": "crm_query",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "6gno31heuovv1qr6wh",
+        "user_input": "Can you Show all Assets?",
+        "expected_object": "asset",
+        "expected_action": "QUERY",
+        "expected_tool": "crm_query",
+        "expected_retrieval_needed": false,
+        "source_file": "phase4_refined_results.md",
+        "phase": "phase305",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Gold standard mapping for QUERY"
+      },
+      "actual": {
+        "raw_intent": "QUERY",
+        "normalized_action": "QUERY",
+        "object_type": "asset",
+        "tool": "crm_query",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "QUERY",
+          "object_type": "asset",
+          "data": {},
+          "score": 1.0
+        }
+      },
+      "comparison": {
+        "row_id": "6gno31heuovv1qr6wh",
+        "all_match": true,
+        "comparisons": {
+          "expected_object": {
+            "expected": "asset",
+            "actual": "asset",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "QUERY",
+            "actual": "QUERY",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "crm_query",
+            "actual": "crm_query",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "cm8623j7xznyyymik1",
+        "user_input": "List Assets",
+        "expected_object": "asset",
+        "expected_action": "QUERY",
+        "expected_tool": "crm_query",
+        "expected_retrieval_needed": false,
+        "source_file": "phase4_refined_results.md",
+        "phase": "phase305",
+        "context": "",
+        "difficulty": "easy",
+        "notes": "Gold standard mapping for QUERY"
+      },
+      "actual": {
+        "raw_intent": "QUERY",
+        "normalized_action": "QUERY",
+        "object_type": "asset",
+        "tool": "crm_query",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "QUERY",
+          "object_type": "asset",
+          "data": {},
+          "score": 1.0
+        }
+      },
+      "comparison": {
+        "row_id": "cm8623j7xznyyymik1",
+        "all_match": true,
+        "comparisons": {
+          "expected_object": {
+            "expected": "asset",
+            "actual": "asset",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "QUERY",
+            "actual": "QUERY",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "crm_query",
+            "actual": "crm_query",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "pvtzgrruk0d30vv1kn",
+        "user_input": "Can you List Assets?",
+        "expected_object": "asset",
+        "expected_action": "QUERY",
+        "expected_tool": "crm_query",
+        "expected_retrieval_needed": false,
+        "source_file": "phase4_refined_results.md",
+        "phase": "phase305",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Gold standard mapping for QUERY"
+      },
+      "actual": {
+        "raw_intent": "QUERY",
+        "normalized_action": "QUERY",
+        "object_type": "asset",
+        "tool": "crm_query",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "QUERY",
+          "object_type": "asset",
+          "data": {},
+          "score": 1.0
+        }
+      },
+      "comparison": {
+        "row_id": "pvtzgrruk0d30vv1kn",
+        "all_match": true,
+        "comparisons": {
+          "expected_object": {
+            "expected": "asset",
+            "actual": "asset",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "QUERY",
+            "actual": "QUERY",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "crm_query",
+            "actual": "crm_query",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "h9pk8gf3q4i7xl58mm",
+        "user_input": "View recent Assets",
+        "expected_object": "asset",
+        "expected_action": "ASK_CLARIFICATION",
+        "expected_tool": "none",
+        "expected_retrieval_needed": false,
+        "source_file": "phase4_refined_results.md",
+        "phase": "phase305",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Gold standard mapping for ASK_CLARIFICATION"
+      },
+      "actual": {
+        "raw_intent": "QUERY",
+        "normalized_action": "QUERY",
+        "object_type": "asset",
+        "tool": "crm_query",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "QUERY",
+          "object_type": "asset",
+          "data": {
+            "query_mode": "recent"
+          },
+          "score": 1.0
+        }
+      },
+      "comparison": {
+        "row_id": "h9pk8gf3q4i7xl58mm",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "asset",
+            "actual": "asset",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "ASK_CLARIFICATION",
+            "actual": "QUERY",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "none",
+            "actual": "crm_query",
+            "match": false
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "ga67npc7kgt39mgvk9",
+        "user_input": "Can you View recent Assets?",
+        "expected_object": "asset",
+        "expected_action": "ASK_CLARIFICATION",
+        "expected_tool": "none",
+        "expected_retrieval_needed": false,
+        "source_file": "phase4_refined_results.md",
+        "phase": "phase305",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Gold standard mapping for ASK_CLARIFICATION"
+      },
+      "actual": {
+        "raw_intent": "QUERY",
+        "normalized_action": "QUERY",
+        "object_type": "asset",
+        "tool": "crm_query",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "QUERY",
+          "object_type": "asset",
+          "data": {
+            "query_mode": "recent"
+          },
+          "score": 1.0
+        }
+      },
+      "comparison": {
+        "row_id": "ga67npc7kgt39mgvk9",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "asset",
+            "actual": "asset",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "ASK_CLARIFICATION",
+            "actual": "QUERY",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "none",
+            "actual": "crm_query",
+            "match": false
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "w3vxkawa578yokmndg",
+        "user_input": "Find a Asset",
+        "expected_object": "asset",
+        "expected_action": "QUERY",
+        "expected_tool": "crm_query",
+        "expected_retrieval_needed": false,
+        "source_file": "phase4_refined_results.md",
+        "phase": "phase305",
+        "context": "",
+        "difficulty": "easy",
+        "notes": "Gold standard mapping for QUERY"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": null,
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "direct_response",
+        "raw_output": {
+          "intent": "CHAT",
+          "is_suggestion": true,
+          "suggestion_prompt": "Add a Asset",
+          "text": "I think you might want to **open form** for **asset**. Is that correct? (Suggested: \"Add a Asset\")",
+          "score": 0.46666667,
+          "options": [
+            {
+              "label": "Yes, do that",
+              "value": "Add a Asset"
+            },
+            {
+              "label": "No, something else",
+              "value": "help"
+            }
+          ]
+        }
+      },
+      "comparison": {
+        "row_id": "w3vxkawa578yokmndg",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "asset",
+            "actual": null,
+            "match": false
+          },
+          "expected_action": {
+            "expected": "QUERY",
+            "actual": "ASK_CLARIFICATION",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "crm_query",
+            "actual": "none",
+            "match": false
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "uqzeztus4cikp63iaj",
+        "user_input": "Can you Find a Asset?",
+        "expected_object": "asset",
+        "expected_action": "QUERY",
+        "expected_tool": "crm_query",
+        "expected_retrieval_needed": false,
+        "source_file": "phase4_refined_results.md",
+        "phase": "phase305",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Gold standard mapping for QUERY"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": null,
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "direct_response",
+        "raw_output": {
+          "intent": "CHAT",
+          "is_suggestion": true,
+          "suggestion_prompt": "Can you Add a Asset?",
+          "text": "I think you might want to **open form** for **asset**. Is that correct? (Suggested: \"Can you Add a Asset?\")",
+          "score": 0.65217394,
+          "options": [
+            {
+              "label": "Yes, do that",
+              "value": "Can you Add a Asset?"
+            },
+            {
+              "label": "No, something else",
+              "value": "help"
+            }
+          ]
+        }
+      },
+      "comparison": {
+        "row_id": "uqzeztus4cikp63iaj",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "asset",
+            "actual": null,
+            "match": false
+          },
+          "expected_action": {
+            "expected": "QUERY",
+            "actual": "ASK_CLARIFICATION",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "crm_query",
+            "actual": "none",
+            "match": false
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "iub8qtuuoldmvyfhh8",
+        "user_input": "Search for Asset",
+        "expected_object": "asset",
+        "expected_action": "QUERY",
+        "expected_tool": "crm_query",
+        "expected_retrieval_needed": false,
+        "source_file": "phase4_refined_results.md",
+        "phase": "phase305",
+        "context": "",
+        "difficulty": "easy",
+        "notes": "Gold standard mapping for QUERY"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": null,
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "direct_response",
+        "raw_output": {
+          "intent": "CHAT",
+          "is_suggestion": true,
+          "suggestion_prompt": "Search for Audi A6.",
+          "text": "I think you might want to **query** for **lead**. Is that correct? (Suggested: \"Search for Audi A6.\")",
+          "score": 0.5217391,
+          "options": [
+            {
+              "label": "Yes, do that",
+              "value": "Search for Audi A6."
+            },
+            {
+              "label": "No, something else",
+              "value": "help"
+            }
+          ]
+        }
+      },
+      "comparison": {
+        "row_id": "iub8qtuuoldmvyfhh8",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "asset",
+            "actual": null,
+            "match": false
+          },
+          "expected_action": {
+            "expected": "QUERY",
+            "actual": "ASK_CLARIFICATION",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "crm_query",
+            "actual": "none",
+            "match": false
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "yymf89iqf72hr1x9c9",
+        "user_input": "Can you Search for Asset?",
+        "expected_object": "asset",
+        "expected_action": "QUERY",
+        "expected_tool": "crm_query",
+        "expected_retrieval_needed": false,
+        "source_file": "phase4_refined_results.md",
+        "phase": "phase305",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Gold standard mapping for QUERY"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": null,
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "direct_response",
+        "raw_output": {
+          "intent": "CHAT",
+          "is_suggestion": true,
+          "suggestion_prompt": "Can you Add a Asset?",
+          "text": "I think you might want to **open form** for **asset**. Is that correct? (Suggested: \"Can you Add a Asset?\")",
+          "score": 0.4827586,
+          "options": [
+            {
+              "label": "Yes, do that",
+              "value": "Can you Add a Asset?"
+            },
+            {
+              "label": "No, something else",
+              "value": "help"
+            }
+          ]
+        }
+      },
+      "comparison": {
+        "row_id": "yymf89iqf72hr1x9c9",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "asset",
+            "actual": null,
+            "match": false
+          },
+          "expected_action": {
+            "expected": "QUERY",
+            "actual": "ASK_CLARIFICATION",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "crm_query",
+            "actual": "none",
+            "match": false
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "9a158kfiu1hwdkndpw",
+        "user_input": "Create new Asset",
+        "expected_object": "asset",
+        "expected_action": "OPEN_FORM",
+        "expected_tool": "none",
+        "expected_retrieval_needed": false,
+        "source_file": "phase4_refined_results.md",
+        "phase": "phase305",
+        "context": "",
+        "difficulty": "easy",
+        "notes": "Gold standard mapping for OPEN_FORM"
+      },
+      "actual": {
+        "raw_intent": "OPEN_FORM",
+        "normalized_action": "OPEN_FORM",
+        "object_type": "asset",
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "direct_response",
+        "raw_output": {
+          "intent": "OPEN_FORM",
+          "object_type": "asset",
+          "form_url": "/assets/new-modal",
+          "form_title": "Create Asset",
+          "form_kind": "asset_create",
+          "text": "I've opened the new asset form for you below.",
+          "score": 1.0
+        }
+      },
+      "comparison": {
+        "row_id": "9a158kfiu1hwdkndpw",
+        "all_match": true,
+        "comparisons": {
+          "expected_object": {
+            "expected": "asset",
+            "actual": "asset",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "OPEN_FORM",
+            "actual": "OPEN_FORM",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "none",
+            "actual": "none",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "ri8qgqlpkvw48g4np8",
+        "user_input": "Can you Create new Asset?",
+        "expected_object": "asset",
+        "expected_action": "OPEN_FORM",
+        "expected_tool": "none",
+        "expected_retrieval_needed": false,
+        "source_file": "phase4_refined_results.md",
+        "phase": "phase305",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Gold standard mapping for OPEN_FORM"
+      },
+      "actual": {
+        "raw_intent": "OPEN_FORM",
+        "normalized_action": "OPEN_FORM",
+        "object_type": "asset",
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "direct_response",
+        "raw_output": {
+          "intent": "OPEN_FORM",
+          "object_type": "asset",
+          "form_url": "/assets/new-modal",
+          "form_title": "Create Asset",
+          "form_kind": "asset_create",
+          "text": "I've opened the new asset form for you below.",
+          "score": 1.0
+        }
+      },
+      "comparison": {
+        "row_id": "ri8qgqlpkvw48g4np8",
+        "all_match": true,
+        "comparisons": {
+          "expected_object": {
+            "expected": "asset",
+            "actual": "asset",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "OPEN_FORM",
+            "actual": "OPEN_FORM",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "none",
+            "actual": "none",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "fpnriac9lcktsenuxf",
+        "user_input": "Add a Asset",
+        "expected_object": "asset",
+        "expected_action": "OPEN_FORM",
+        "expected_tool": "none",
+        "expected_retrieval_needed": false,
+        "source_file": "phase4_refined_results.md",
+        "phase": "phase305",
+        "context": "",
+        "difficulty": "easy",
+        "notes": "Gold standard mapping for OPEN_FORM"
+      },
+      "actual": {
+        "raw_intent": "OPEN_FORM",
+        "normalized_action": "OPEN_FORM",
+        "object_type": "asset",
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "direct_response",
+        "raw_output": {
+          "intent": "OPEN_FORM",
+          "object_type": "asset",
+          "form_url": "/assets/new-modal",
+          "form_title": "Create Asset",
+          "form_kind": "asset_create",
+          "text": "I've opened the new asset form for you below.",
+          "score": 1.0
+        }
+      },
+      "comparison": {
+        "row_id": "fpnriac9lcktsenuxf",
+        "all_match": true,
+        "comparisons": {
+          "expected_object": {
+            "expected": "asset",
+            "actual": "asset",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "OPEN_FORM",
+            "actual": "OPEN_FORM",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "none",
+            "actual": "none",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "cxz46pxwffx0uo6ycm",
+        "user_input": "Can you Add a Asset?",
+        "expected_object": "asset",
+        "expected_action": "OPEN_FORM",
+        "expected_tool": "none",
+        "expected_retrieval_needed": false,
+        "source_file": "phase4_refined_results.md",
+        "phase": "phase305",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Gold standard mapping for OPEN_FORM"
+      },
+      "actual": {
+        "raw_intent": "OPEN_FORM",
+        "normalized_action": "OPEN_FORM",
+        "object_type": "asset",
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "direct_response",
+        "raw_output": {
+          "intent": "OPEN_FORM",
+          "object_type": "asset",
+          "form_url": "/assets/new-modal",
+          "form_title": "Create Asset",
+          "form_kind": "asset_create",
+          "text": "I've opened the new asset form for you below.",
+          "score": 1.0
+        }
+      },
+      "comparison": {
+        "row_id": "cxz46pxwffx0uo6ycm",
+        "all_match": true,
+        "comparisons": {
+          "expected_object": {
+            "expected": "asset",
+            "actual": "asset",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "OPEN_FORM",
+            "actual": "OPEN_FORM",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "none",
+            "actual": "none",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "u8xkfzqmkg4rtvd2f0",
+        "user_input": "Open Asset form",
+        "expected_object": "asset",
+        "expected_action": "ASK_CLARIFICATION",
+        "expected_tool": "none",
+        "expected_retrieval_needed": false,
+        "source_file": "phase4_refined_results.md",
+        "phase": "phase305",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Gold standard mapping for ASK_CLARIFICATION"
+      },
+      "actual": {
+        "raw_intent": "MANAGE",
+        "normalized_action": "OPEN_RECORD",
+        "object_type": "asset",
+        "tool": "crm_query",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "MANAGE",
+          "object_type": "asset",
+          "record_id": "form",
+          "score": 1.0,
+          "language_preference": "eng"
+        }
+      },
+      "comparison": {
+        "row_id": "u8xkfzqmkg4rtvd2f0",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "asset",
+            "actual": "asset",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "ASK_CLARIFICATION",
+            "actual": "OPEN_RECORD",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "none",
+            "actual": "crm_query",
+            "match": false
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "2sexo1fmy5yo6vxyi2",
+        "user_input": "Can you Open Asset form?",
+        "expected_object": "asset",
+        "expected_action": "ASK_CLARIFICATION",
+        "expected_tool": "none",
+        "expected_retrieval_needed": false,
+        "source_file": "phase4_refined_results.md",
+        "phase": "phase305",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Gold standard mapping for ASK_CLARIFICATION"
+      },
+      "actual": {
+        "raw_intent": "MANAGE",
+        "normalized_action": "OPEN_RECORD",
+        "object_type": "asset",
+        "tool": "crm_query",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "MANAGE",
+          "object_type": "asset",
+          "record_id": "form",
+          "score": 1.0,
+          "language_preference": "eng"
+        }
+      },
+      "comparison": {
+        "row_id": "2sexo1fmy5yo6vxyi2",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "asset",
+            "actual": "asset",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "ASK_CLARIFICATION",
+            "actual": "OPEN_RECORD",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "none",
+            "actual": "crm_query",
+            "match": false
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "645tcxdnkdg41c762w",
+        "user_input": "I want to create a Asset",
+        "expected_object": "asset",
+        "expected_action": "OPEN_FORM",
+        "expected_tool": "none",
+        "expected_retrieval_needed": false,
+        "source_file": "phase4_refined_results.md",
+        "phase": "phase305",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Gold standard mapping for OPEN_FORM"
+      },
+      "actual": {
+        "raw_intent": "OPEN_FORM",
+        "normalized_action": "OPEN_FORM",
+        "object_type": "asset",
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "direct_response",
+        "raw_output": {
+          "intent": "OPEN_FORM",
+          "object_type": "asset",
+          "form_url": "/assets/new-modal",
+          "form_title": "Create Asset",
+          "form_kind": "asset_create",
+          "text": "I've opened the new asset form for you below.",
+          "score": 1.0
+        }
+      },
+      "comparison": {
+        "row_id": "645tcxdnkdg41c762w",
+        "all_match": true,
+        "comparisons": {
+          "expected_object": {
+            "expected": "asset",
+            "actual": "asset",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "OPEN_FORM",
+            "actual": "OPEN_FORM",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "none",
+            "actual": "none",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "qgwuyhxaxmxyyapct6",
+        "user_input": "Can you I want to create a Asset?",
+        "expected_object": "asset",
+        "expected_action": "OPEN_FORM",
+        "expected_tool": "none",
+        "expected_retrieval_needed": false,
+        "source_file": "phase4_refined_results.md",
+        "phase": "phase305",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Gold standard mapping for OPEN_FORM"
+      },
+      "actual": {
+        "raw_intent": "OPEN_FORM",
+        "normalized_action": "OPEN_FORM",
+        "object_type": "asset",
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "direct_response",
+        "raw_output": {
+          "intent": "OPEN_FORM",
+          "object_type": "asset",
+          "form_url": "/assets/new-modal",
+          "form_title": "Create Asset",
+          "form_kind": "asset_create",
+          "text": "I've opened the new asset form for you below.",
+          "score": 1.0
+        }
+      },
+      "comparison": {
+        "row_id": "qgwuyhxaxmxyyapct6",
+        "all_match": true,
+        "comparisons": {
+          "expected_object": {
+            "expected": "asset",
+            "actual": "asset",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "OPEN_FORM",
+            "actual": "OPEN_FORM",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "none",
+            "actual": "none",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "qjzmyokpxkbefxfexv",
+        "user_input": "Show me Asset table",
+        "expected_object": "asset",
+        "expected_action": "QUERY",
+        "expected_tool": "crm_query",
+        "expected_retrieval_needed": false,
+        "source_file": "phase4_refined_results.md",
+        "phase": "phase305",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Gold standard mapping for QUERY"
+      },
+      "actual": {
+        "raw_intent": "MANAGE",
+        "normalized_action": "OPEN_RECORD",
+        "object_type": "asset",
+        "tool": "crm_query",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "MANAGE",
+          "object_type": "asset",
+          "record_id": "table",
+          "score": 1.0,
+          "language_preference": "eng"
+        }
+      },
+      "comparison": {
+        "row_id": "qjzmyokpxkbefxfexv",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "asset",
+            "actual": "asset",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "QUERY",
+            "actual": "OPEN_RECORD",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "crm_query",
+            "actual": "crm_query",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "wcr9dfszmgz6o30t0p",
+        "user_input": "Can you Show me Asset table?",
+        "expected_object": "asset",
+        "expected_action": "QUERY",
+        "expected_tool": "crm_query",
+        "expected_retrieval_needed": false,
+        "source_file": "phase4_refined_results.md",
+        "phase": "phase305",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Gold standard mapping for QUERY"
+      },
+      "actual": {
+        "raw_intent": "MANAGE",
+        "normalized_action": "OPEN_RECORD",
+        "object_type": "asset",
+        "tool": "crm_query",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "MANAGE",
+          "object_type": "asset",
+          "record_id": "table",
+          "score": 1.0,
+          "language_preference": "eng"
+        }
+      },
+      "comparison": {
+        "row_id": "wcr9dfszmgz6o30t0p",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "asset",
+            "actual": "asset",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "QUERY",
+            "actual": "OPEN_RECORD",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "crm_query",
+            "actual": "crm_query",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "1jxa5sht5e5uot7xsd",
+        "user_input": "Open Asset list",
+        "expected_object": "asset",
+        "expected_action": "QUERY",
+        "expected_tool": "crm_query",
+        "expected_retrieval_needed": false,
+        "source_file": "phase4_refined_results.md",
+        "phase": "phase305",
+        "context": "",
+        "difficulty": "easy",
+        "notes": "Gold standard mapping for QUERY"
+      },
+      "actual": {
+        "raw_intent": "QUERY",
+        "normalized_action": "QUERY",
+        "object_type": "asset",
+        "tool": "crm_query",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "QUERY",
+          "object_type": "asset",
+          "data": {},
+          "score": 1.0
+        }
+      },
+      "comparison": {
+        "row_id": "1jxa5sht5e5uot7xsd",
+        "all_match": true,
+        "comparisons": {
+          "expected_object": {
+            "expected": "asset",
+            "actual": "asset",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "QUERY",
+            "actual": "QUERY",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "crm_query",
+            "actual": "crm_query",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "4f8ffj3zs846vl1r11",
+        "user_input": "Can you Open Asset list?",
+        "expected_object": "asset",
+        "expected_action": "QUERY",
+        "expected_tool": "crm_query",
+        "expected_retrieval_needed": false,
+        "source_file": "phase4_refined_results.md",
+        "phase": "phase305",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Gold standard mapping for QUERY"
+      },
+      "actual": {
+        "raw_intent": "QUERY",
+        "normalized_action": "QUERY",
+        "object_type": "asset",
+        "tool": "crm_query",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "QUERY",
+          "object_type": "asset",
+          "data": {},
+          "score": 1.0
+        }
+      },
+      "comparison": {
+        "row_id": "4f8ffj3zs846vl1r11",
+        "all_match": true,
+        "comparisons": {
+          "expected_object": {
+            "expected": "asset",
+            "actual": "asset",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "QUERY",
+            "actual": "QUERY",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "crm_query",
+            "actual": "crm_query",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "icrtjdgwt1ny3b1x3n",
+        "user_input": "Find the latest Asset",
+        "expected_object": "asset",
+        "expected_action": "OPEN_RECORD",
+        "expected_tool": "crm_query",
+        "expected_retrieval_needed": false,
+        "source_file": "phase4_refined_results.md",
+        "phase": "phase305",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Gold standard mapping for OPEN_RECORD"
+      },
+      "actual": {
+        "raw_intent": "QUERY",
+        "normalized_action": "QUERY",
+        "object_type": "asset",
+        "tool": "crm_query",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "QUERY",
+          "object_type": "asset",
+          "data": {
+            "query_mode": "recent"
+          },
+          "score": 1.0
+        }
+      },
+      "comparison": {
+        "row_id": "icrtjdgwt1ny3b1x3n",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "asset",
+            "actual": "asset",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "OPEN_RECORD",
+            "actual": "QUERY",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "crm_query",
+            "actual": "crm_query",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "yoyezqcaodnmj1lzs0",
+        "user_input": "Can you Find the latest Asset?",
+        "expected_object": "asset",
+        "expected_action": "OPEN_RECORD",
+        "expected_tool": "crm_query",
+        "expected_retrieval_needed": false,
+        "source_file": "phase4_refined_results.md",
+        "phase": "phase305",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Gold standard mapping for OPEN_RECORD"
+      },
+      "actual": {
+        "raw_intent": "QUERY",
+        "normalized_action": "QUERY",
+        "object_type": "asset",
+        "tool": "crm_query",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "QUERY",
+          "object_type": "asset",
+          "data": {
+            "query_mode": "recent"
+          },
+          "score": 1.0
+        }
+      },
+      "comparison": {
+        "row_id": "yoyezqcaodnmj1lzs0",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "asset",
+            "actual": "asset",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "OPEN_RECORD",
+            "actual": "QUERY",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "crm_query",
+            "actual": "crm_query",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "dhcge7hkxkqd3fiye7",
+        "user_input": "Who is the last Asset?",
+        "expected_object": "asset",
+        "expected_action": "OPEN_RECORD",
+        "expected_tool": "crm_query",
+        "expected_retrieval_needed": false,
+        "source_file": "phase4_refined_results.md",
+        "phase": "phase305",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Gold standard mapping for OPEN_RECORD"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": null,
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "direct_response",
+        "raw_output": {
+          "intent": "CHAT",
+          "is_suggestion": true,
+          "suggestion_prompt": "Who is the last Lead?",
+          "text": "I think you might want to **query** for **lead**. Is that correct? (Suggested: \"Who is the last Lead?\")",
+          "score": 0.61538464,
+          "options": [
+            {
+              "label": "Yes, do that",
+              "value": "Who is the last Lead?"
+            },
+            {
+              "label": "No, something else",
+              "value": "help"
+            }
+          ]
+        }
+      },
+      "comparison": {
+        "row_id": "dhcge7hkxkqd3fiye7",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "asset",
+            "actual": null,
+            "match": false
+          },
+          "expected_action": {
+            "expected": "OPEN_RECORD",
+            "actual": "ASK_CLARIFICATION",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "crm_query",
+            "actual": "none",
+            "match": false
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "3n1zmngsv1qz8jmsgu",
+        "user_input": "Can you Who is the last Asset??",
+        "expected_object": "asset",
+        "expected_action": "OPEN_RECORD",
+        "expected_tool": "crm_query",
+        "expected_retrieval_needed": false,
+        "source_file": "phase4_refined_results.md",
+        "phase": "phase305",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Gold standard mapping for OPEN_RECORD"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": null,
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "direct_response",
+        "raw_output": {
+          "intent": "CHAT",
+          "is_suggestion": true,
+          "suggestion_prompt": "Who is the last Lead?",
+          "text": "I think you might want to **query** for **lead**. Is that correct? (Suggested: \"Who is the last Lead?\")",
+          "score": 0.47058824,
+          "options": [
+            {
+              "label": "Yes, do that",
+              "value": "Who is the last Lead?"
+            },
+            {
+              "label": "No, something else",
+              "value": "help"
+            }
+          ]
+        }
+      },
+      "comparison": {
+        "row_id": "3n1zmngsv1qz8jmsgu",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "asset",
+            "actual": null,
+            "match": false
+          },
+          "expected_action": {
+            "expected": "OPEN_RECORD",
+            "actual": "ASK_CLARIFICATION",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "crm_query",
+            "actual": "none",
+            "match": false
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "y1574rj2jzgs5rgjb1",
+        "user_input": "Show Asset from today",
+        "expected_object": "asset",
+        "expected_action": "QUERY",
+        "expected_tool": "crm_query",
+        "expected_retrieval_needed": false,
+        "source_file": "phase4_refined_results.md",
+        "phase": "phase305",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Gold standard mapping for QUERY"
+      },
+      "actual": {
+        "raw_intent": "MANAGE",
+        "normalized_action": "OPEN_RECORD",
+        "object_type": "asset",
+        "tool": "crm_query",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "MANAGE",
+          "object_type": "asset",
+          "record_id": "from",
+          "score": 1.0,
+          "language_preference": "eng"
+        }
+      },
+      "comparison": {
+        "row_id": "y1574rj2jzgs5rgjb1",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "asset",
+            "actual": "asset",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "QUERY",
+            "actual": "OPEN_RECORD",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "crm_query",
+            "actual": "crm_query",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "27lzejf1kb2e812khu",
+        "user_input": "Can you Show Asset from today?",
+        "expected_object": "asset",
+        "expected_action": "QUERY",
+        "expected_tool": "crm_query",
+        "expected_retrieval_needed": false,
+        "source_file": "phase4_refined_results.md",
+        "phase": "phase305",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Gold standard mapping for QUERY"
+      },
+      "actual": {
+        "raw_intent": "MANAGE",
+        "normalized_action": "OPEN_RECORD",
+        "object_type": "asset",
+        "tool": "crm_query",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "MANAGE",
+          "object_type": "asset",
+          "record_id": "from",
+          "score": 1.0,
+          "language_preference": "eng"
+        }
+      },
+      "comparison": {
+        "row_id": "27lzejf1kb2e812khu",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "asset",
+            "actual": "asset",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "QUERY",
+            "actual": "OPEN_RECORD",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "crm_query",
+            "actual": "crm_query",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "x7n5l91y7u3z2pckxk",
+        "user_input": "Any new Assets?",
+        "expected_object": "asset",
+        "expected_action": "OPEN_FORM",
+        "expected_tool": "none",
+        "expected_retrieval_needed": false,
+        "source_file": "phase4_refined_results.md",
+        "phase": "phase305",
+        "context": "",
+        "difficulty": "easy",
+        "notes": "Gold standard mapping for OPEN_FORM"
+      },
+      "actual": {
+        "raw_intent": "OPEN_FORM",
+        "normalized_action": "OPEN_FORM",
+        "object_type": "asset",
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "direct_response",
+        "raw_output": {
+          "intent": "OPEN_FORM",
+          "object_type": "asset",
+          "form_url": "/assets/new-modal",
+          "form_title": "Create Asset",
+          "form_kind": "asset_create",
+          "text": "I've opened the new asset form for you below.",
+          "score": 1.0
+        }
+      },
+      "comparison": {
+        "row_id": "x7n5l91y7u3z2pckxk",
+        "all_match": true,
+        "comparisons": {
+          "expected_object": {
+            "expected": "asset",
+            "actual": "asset",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "OPEN_FORM",
+            "actual": "OPEN_FORM",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "none",
+            "actual": "none",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "1n8svnmhp4wt5lsvs4",
+        "user_input": "Can you Any new Assets??",
+        "expected_object": "asset",
+        "expected_action": "OPEN_FORM",
+        "expected_tool": "none",
+        "expected_retrieval_needed": false,
+        "source_file": "phase4_refined_results.md",
+        "phase": "phase305",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Gold standard mapping for OPEN_FORM"
+      },
+      "actual": {
+        "raw_intent": "OPEN_FORM",
+        "normalized_action": "OPEN_FORM",
+        "object_type": "asset",
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "direct_response",
+        "raw_output": {
+          "intent": "OPEN_FORM",
+          "object_type": "asset",
+          "form_url": "/assets/new-modal",
+          "form_title": "Create Asset",
+          "form_kind": "asset_create",
+          "text": "I've opened the new asset form for you below.",
+          "score": 1.0
+        }
+      },
+      "comparison": {
+        "row_id": "1n8svnmhp4wt5lsvs4",
+        "all_match": true,
+        "comparisons": {
+          "expected_object": {
+            "expected": "asset",
+            "actual": "asset",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "OPEN_FORM",
+            "actual": "OPEN_FORM",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "none",
+            "actual": "none",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "m1rdoqu1258q23mk2o",
+        "user_input": "Pull Asset data",
+        "expected_object": "asset",
+        "expected_action": "QUERY",
+        "expected_tool": "crm_query",
+        "expected_retrieval_needed": false,
+        "source_file": "phase4_refined_results.md",
+        "phase": "phase305",
+        "context": "",
+        "difficulty": "easy",
+        "notes": "Gold standard mapping for QUERY"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": null,
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "direct_response",
+        "raw_output": {
+          "intent": "CHAT",
+          "is_suggestion": true,
+          "suggestion_prompt": "Pull Lead data",
+          "text": "I think you might want to **query** for **lead**. Is that correct? (Suggested: \"Pull Lead data\")",
+          "score": 0.47619048,
+          "options": [
+            {
+              "label": "Yes, do that",
+              "value": "Pull Lead data"
+            },
+            {
+              "label": "No, something else",
+              "value": "help"
+            }
+          ]
+        }
+      },
+      "comparison": {
+        "row_id": "m1rdoqu1258q23mk2o",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "asset",
+            "actual": null,
+            "match": false
+          },
+          "expected_action": {
+            "expected": "QUERY",
+            "actual": "ASK_CLARIFICATION",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "crm_query",
+            "actual": "none",
+            "match": false
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "t3yjjogyln471q7ody",
+        "user_input": "Can you Pull Asset data?",
+        "expected_object": "asset",
+        "expected_action": "QUERY",
+        "expected_tool": "crm_query",
+        "expected_retrieval_needed": false,
+        "source_file": "phase4_refined_results.md",
+        "phase": "phase305",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Gold standard mapping for QUERY"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": null,
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "direct_response",
+        "raw_output": {
+          "intent": "CHAT",
+          "is_suggestion": true,
+          "suggestion_prompt": "Can you Pull Lead data?",
+          "text": "I think you might want to **query** for **lead**. Is that correct? (Suggested: \"Can you Pull Lead data?\")",
+          "score": 0.62068963,
+          "options": [
+            {
+              "label": "Yes, do that",
+              "value": "Can you Pull Lead data?"
+            },
+            {
+              "label": "No, something else",
+              "value": "help"
+            }
+          ]
+        }
+      },
+      "comparison": {
+        "row_id": "t3yjjogyln471q7ody",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "asset",
+            "actual": null,
+            "match": false
+          },
+          "expected_action": {
+            "expected": "QUERY",
+            "actual": "ASK_CLARIFICATION",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "crm_query",
+            "actual": "none",
+            "match": false
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "bkeujli4fu2u6tcglm",
+        "user_input": "Manage Assets",
+        "expected_object": "asset",
+        "expected_action": "ASK_CLARIFICATION",
+        "expected_tool": "none",
+        "expected_retrieval_needed": false,
+        "source_file": "phase4_refined_results.md",
+        "phase": "phase305",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Gold standard mapping for ASK_CLARIFICATION"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": "asset",
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "CHAT",
+          "object_type": "asset",
+          "text": "I need a specific asset record before I can open or manage it. Please give the asset name, ID, or a single clear selection.",
+          "score": 0.92,
+          "reasoning": {
+            "context_reference": {
+              "kind": null,
+              "index": 0,
+              "object_type": "asset"
+            },
+            "resolved_reference": {},
+            "confidence": 0.92,
+            "confidence_band": "high"
+          },
+          "language_preference": "eng"
+        }
+      },
+      "comparison": {
+        "row_id": "bkeujli4fu2u6tcglm",
+        "all_match": true,
+        "comparisons": {
+          "expected_object": {
+            "expected": "asset",
+            "actual": "asset",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "ASK_CLARIFICATION",
+            "actual": "ASK_CLARIFICATION",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "none",
+            "actual": "none",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "i0va9srji1tsus8ts7",
+        "user_input": "Can you Manage Assets?",
+        "expected_object": "asset",
+        "expected_action": "ASK_CLARIFICATION",
+        "expected_tool": "none",
+        "expected_retrieval_needed": false,
+        "source_file": "phase4_refined_results.md",
+        "phase": "phase305",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Gold standard mapping for ASK_CLARIFICATION"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": null,
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "direct_response",
+        "raw_output": {
+          "intent": "CHAT",
+          "is_suggestion": true,
+          "suggestion_prompt": "Can you Any new Assets??",
+          "text": "I think you might want to **open form** for **asset**. Is that correct? (Suggested: \"Can you Any new Assets??\")",
+          "score": 0.51724136,
+          "options": [
+            {
+              "label": "Yes, do that",
+              "value": "Can you Any new Assets??"
+            },
+            {
+              "label": "No, something else",
+              "value": "help"
+            }
+          ]
+        }
+      },
+      "comparison": {
+        "row_id": "i0va9srji1tsus8ts7",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "asset",
+            "actual": null,
+            "match": false
+          },
+          "expected_action": {
+            "expected": "ASK_CLARIFICATION",
+            "actual": "ASK_CLARIFICATION",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "none",
+            "actual": "none",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "lkf7uvyi1dfezzzmj3",
+        "user_input": "Edit latest Asset",
+        "expected_object": "asset",
+        "expected_action": "OPEN_RECORD",
+        "expected_tool": "crm_query",
+        "expected_retrieval_needed": false,
+        "source_file": "phase4_refined_results.md",
+        "phase": "phase305",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Gold standard mapping for OPEN_RECORD"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": null,
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "direct_response",
+        "raw_output": {
+          "intent": "CHAT",
+          "object_type": null,
+          "text": "I need a recent record list first. Try `show recent records` or `show all contacts`, then tell me which one to open or edit.",
+          "score": 1.0
+        }
+      },
+      "comparison": {
+        "row_id": "lkf7uvyi1dfezzzmj3",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "asset",
+            "actual": null,
+            "match": false
+          },
+          "expected_action": {
+            "expected": "OPEN_RECORD",
+            "actual": "ASK_CLARIFICATION",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "crm_query",
+            "actual": "none",
+            "match": false
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "k75lr54wu1tnkmruyz",
+        "user_input": "Can you Edit latest Asset?",
+        "expected_object": "asset",
+        "expected_action": "OPEN_RECORD",
+        "expected_tool": "crm_query",
+        "expected_retrieval_needed": false,
+        "source_file": "phase4_refined_results.md",
+        "phase": "phase305",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Gold standard mapping for OPEN_RECORD"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": null,
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "direct_response",
+        "raw_output": {
+          "intent": "CHAT",
+          "object_type": null,
+          "text": "I need a recent record list first. Try `show recent records` or `show all contacts`, then tell me which one to open or edit.",
+          "score": 1.0
+        }
+      },
+      "comparison": {
+        "row_id": "k75lr54wu1tnkmruyz",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "asset",
+            "actual": null,
+            "match": false
+          },
+          "expected_action": {
+            "expected": "OPEN_RECORD",
+            "actual": "ASK_CLARIFICATION",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "crm_query",
+            "actual": "none",
+            "match": false
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "fplu33gjj3lhp5ccnk",
+        "user_input": "Update Asset status",
+        "expected_object": "asset",
+        "expected_action": "UPDATE",
+        "expected_tool": "crm_write",
+        "expected_retrieval_needed": false,
+        "source_file": "phase4_refined_results.md",
+        "phase": "phase305",
+        "context": "",
+        "difficulty": "hard",
+        "notes": "Gold standard mapping for UPDATE"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": "asset",
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "direct_response",
+        "raw_output": {
+          "intent": "CHAT",
+          "object_type": "asset",
+          "text": "I can update that asset, but I need the record ID first.",
+          "score": 1.0
+        }
+      },
+      "comparison": {
+        "row_id": "fplu33gjj3lhp5ccnk",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "asset",
+            "actual": "asset",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "UPDATE",
+            "actual": "ASK_CLARIFICATION",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "crm_write",
+            "actual": "none",
+            "match": false
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "dzs7kcvfsbq6j0emma",
+        "user_input": "Can you Update Asset status?",
+        "expected_object": "asset",
+        "expected_action": "UPDATE",
+        "expected_tool": "crm_write",
+        "expected_retrieval_needed": false,
+        "source_file": "phase4_refined_results.md",
+        "phase": "phase305",
+        "context": "",
+        "difficulty": "hard",
+        "notes": "Gold standard mapping for UPDATE"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": "asset",
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "direct_response",
+        "raw_output": {
+          "intent": "CHAT",
+          "object_type": "asset",
+          "text": "I can update that asset, but I need the record ID first.",
+          "score": 1.0
+        }
+      },
+      "comparison": {
+        "row_id": "dzs7kcvfsbq6j0emma",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "asset",
+            "actual": "asset",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "UPDATE",
+            "actual": "ASK_CLARIFICATION",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "crm_write",
+            "actual": "none",
+            "match": false
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "dnc6y3f9d4oc27ak4r",
+        "user_input": "Delete this Asset",
+        "expected_object": "asset",
+        "expected_action": "ASK_CLARIFICATION",
+        "expected_tool": "none",
+        "expected_retrieval_needed": false,
+        "source_file": "phase4_refined_results.md",
+        "phase": "phase305",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Gold standard mapping for ASK_CLARIFICATION"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": "asset",
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "CHAT",
+          "object_type": "asset",
+          "text": "I can help delete a asset. First show the record you want, select it, and then confirm the delete action.",
+          "score": 0.95
+        }
+      },
+      "comparison": {
+        "row_id": "dnc6y3f9d4oc27ak4r",
+        "all_match": true,
+        "comparisons": {
+          "expected_object": {
+            "expected": "asset",
+            "actual": "asset",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "ASK_CLARIFICATION",
+            "actual": "ASK_CLARIFICATION",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "none",
+            "actual": "none",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "napxr8jjdcbxza824y",
+        "user_input": "Can you Delete this Asset?",
+        "expected_object": "asset",
+        "expected_action": "ASK_CLARIFICATION",
+        "expected_tool": "none",
+        "expected_retrieval_needed": false,
+        "source_file": "phase4_refined_results.md",
+        "phase": "phase305",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Gold standard mapping for ASK_CLARIFICATION"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": "asset",
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "CHAT",
+          "object_type": "asset",
+          "text": "I can help delete a asset. First show the record you want, select it, and then confirm the delete action.",
+          "score": 0.95
+        }
+      },
+      "comparison": {
+        "row_id": "napxr8jjdcbxza824y",
+        "all_match": true,
+        "comparisons": {
+          "expected_object": {
+            "expected": "asset",
+            "actual": "asset",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "ASK_CLARIFICATION",
+            "actual": "ASK_CLARIFICATION",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "none",
+            "actual": "none",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "q98x9z5vy6pawdm3f6",
+        "user_input": "Remove Asset",
+        "expected_object": "asset",
+        "expected_action": "ASK_CLARIFICATION",
+        "expected_tool": "none",
+        "expected_retrieval_needed": false,
+        "source_file": "phase4_refined_results.md",
+        "phase": "phase305",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Gold standard mapping for ASK_CLARIFICATION"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": "asset",
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "CHAT",
+          "object_type": "asset",
+          "text": "I can help delete a asset. First show the record you want, select it, and then confirm the delete action.",
+          "score": 0.95
+        }
+      },
+      "comparison": {
+        "row_id": "q98x9z5vy6pawdm3f6",
+        "all_match": true,
+        "comparisons": {
+          "expected_object": {
+            "expected": "asset",
+            "actual": "asset",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "ASK_CLARIFICATION",
+            "actual": "ASK_CLARIFICATION",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "none",
+            "actual": "none",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "ms7ez0lxpy6c7jl5kf",
+        "user_input": "Can you Remove Asset?",
+        "expected_object": "asset",
+        "expected_action": "ASK_CLARIFICATION",
+        "expected_tool": "none",
+        "expected_retrieval_needed": false,
+        "source_file": "phase4_refined_results.md",
+        "phase": "phase305",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Gold standard mapping for ASK_CLARIFICATION"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": "asset",
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "CHAT",
+          "object_type": "asset",
+          "text": "I can help delete a asset. First show the record you want, select it, and then confirm the delete action.",
+          "score": 0.95
+        }
+      },
+      "comparison": {
+        "row_id": "ms7ez0lxpy6c7jl5kf",
+        "all_match": true,
+        "comparisons": {
+          "expected_object": {
+            "expected": "asset",
+            "actual": "asset",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "ASK_CLARIFICATION",
+            "actual": "ASK_CLARIFICATION",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "none",
+            "actual": "none",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "kbg1132lmmtzk5vd63",
+        "user_input": "Check Asset details",
+        "expected_object": "asset",
+        "expected_action": "OPEN_RECORD",
+        "expected_tool": "crm_query",
+        "expected_retrieval_needed": false,
+        "source_file": "phase4_refined_results.md",
+        "phase": "phase305",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Gold standard mapping for OPEN_RECORD"
+      },
+      "actual": {
+        "raw_intent": "MANAGE",
+        "normalized_action": "OPEN_RECORD",
+        "object_type": "asset",
+        "tool": "crm_query",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "MANAGE",
+          "object_type": "asset",
+          "record_id": "details",
+          "score": 1.0,
+          "language_preference": "eng"
+        }
+      },
+      "comparison": {
+        "row_id": "kbg1132lmmtzk5vd63",
+        "all_match": true,
+        "comparisons": {
+          "expected_object": {
+            "expected": "asset",
+            "actual": "asset",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "OPEN_RECORD",
+            "actual": "OPEN_RECORD",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "crm_query",
+            "actual": "crm_query",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "da68p6s6y4ge6oo1er",
+        "user_input": "Can you Check Asset details?",
+        "expected_object": "asset",
+        "expected_action": "OPEN_RECORD",
+        "expected_tool": "crm_query",
+        "expected_retrieval_needed": false,
+        "source_file": "phase4_refined_results.md",
+        "phase": "phase305",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Gold standard mapping for OPEN_RECORD"
+      },
+      "actual": {
+        "raw_intent": "MANAGE",
+        "normalized_action": "OPEN_RECORD",
+        "object_type": "asset",
+        "tool": "crm_query",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "MANAGE",
+          "object_type": "asset",
+          "record_id": "details",
+          "score": 1.0,
+          "language_preference": "eng"
+        }
+      },
+      "comparison": {
+        "row_id": "da68p6s6y4ge6oo1er",
+        "all_match": true,
+        "comparisons": {
+          "expected_object": {
+            "expected": "asset",
+            "actual": "asset",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "OPEN_RECORD",
+            "actual": "OPEN_RECORD",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "crm_query",
+            "actual": "crm_query",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "0rz95r90ylvfangr6r",
+        "user_input": "Show Asset summary",
+        "expected_object": "asset",
+        "expected_action": "RETRIEVE_AND_ANSWER",
+        "expected_tool": "vector_retrieval",
+        "expected_retrieval_needed": true,
+        "source_file": "phase4_refined_results.md",
+        "phase": "phase305",
+        "context": "",
+        "difficulty": "hard",
+        "notes": "Gold standard mapping for RETRIEVE_AND_ANSWER"
+      },
+      "actual": {
+        "raw_intent": "MANAGE",
+        "normalized_action": "OPEN_RECORD",
+        "object_type": "asset",
+        "tool": "crm_query",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "MANAGE",
+          "object_type": "asset",
+          "record_id": "summary",
+          "score": 1.0,
+          "language_preference": "eng"
+        }
+      },
+      "comparison": {
+        "row_id": "0rz95r90ylvfangr6r",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "asset",
+            "actual": "asset",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "RETRIEVE_AND_ANSWER",
+            "actual": "OPEN_RECORD",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "vector_retrieval",
+            "actual": "crm_query",
+            "match": false
+          },
+          "expected_retrieval_needed": {
+            "expected": true,
+            "actual": false,
+            "match": false
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "03yygc0ymxz6jl4bk2",
+        "user_input": "Can you Show Asset summary?",
+        "expected_object": "asset",
+        "expected_action": "RETRIEVE_AND_ANSWER",
+        "expected_tool": "vector_retrieval",
+        "expected_retrieval_needed": true,
+        "source_file": "phase4_refined_results.md",
+        "phase": "phase305",
+        "context": "",
+        "difficulty": "hard",
+        "notes": "Gold standard mapping for RETRIEVE_AND_ANSWER"
+      },
+      "actual": {
+        "raw_intent": "MANAGE",
+        "normalized_action": "OPEN_RECORD",
+        "object_type": "asset",
+        "tool": "crm_query",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "MANAGE",
+          "object_type": "asset",
+          "record_id": "summary",
+          "score": 1.0,
+          "language_preference": "eng"
+        }
+      },
+      "comparison": {
+        "row_id": "03yygc0ymxz6jl4bk2",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "asset",
+            "actual": "asset",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "RETRIEVE_AND_ANSWER",
+            "actual": "OPEN_RECORD",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "vector_retrieval",
+            "actual": "crm_query",
+            "match": false
+          },
+          "expected_retrieval_needed": {
+            "expected": true,
+            "actual": false,
+            "match": false
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "e0h168j2ztvt7hc565",
+        "user_input": "Get info on Asset",
+        "expected_object": "asset",
+        "expected_action": "ASK_CLARIFICATION",
+        "expected_tool": "none",
+        "expected_retrieval_needed": false,
+        "source_file": "phase4_refined_results.md",
+        "phase": "phase305",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Gold standard mapping for ASK_CLARIFICATION"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": null,
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "direct_response",
+        "raw_output": {
+          "intent": "CHAT",
+          "is_suggestion": true,
+          "suggestion_prompt": "Get info on Robert's Audi.",
+          "text": "I think you might want to **query** for **lead**. Is that correct? (Suggested: \"Get info on Robert's Audi.\")",
+          "score": 0.43333334,
+          "options": [
+            {
+              "label": "Yes, do that",
+              "value": "Get info on Robert's Audi."
+            },
+            {
+              "label": "No, something else",
+              "value": "help"
+            }
+          ]
+        }
+      },
+      "comparison": {
+        "row_id": "e0h168j2ztvt7hc565",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "asset",
+            "actual": null,
+            "match": false
+          },
+          "expected_action": {
+            "expected": "ASK_CLARIFICATION",
+            "actual": "ASK_CLARIFICATION",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "none",
+            "actual": "none",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "xysuzi8aubaxwohkzy",
+        "user_input": "Can you Get info on Asset?",
+        "expected_object": "asset",
+        "expected_action": "ASK_CLARIFICATION",
+        "expected_tool": "none",
+        "expected_retrieval_needed": false,
+        "source_file": "phase4_refined_results.md",
+        "phase": "phase305",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Gold standard mapping for ASK_CLARIFICATION"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": null,
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "direct_response",
+        "raw_output": {
+          "intent": "CHAT",
+          "is_suggestion": true,
+          "suggestion_prompt": "Can you Add a Asset?",
+          "text": "I think you might want to **open form** for **asset**. Is that correct? (Suggested: \"Can you Add a Asset?\")",
+          "score": 0.4827586,
+          "options": [
+            {
+              "label": "Yes, do that",
+              "value": "Can you Add a Asset?"
+            },
+            {
+              "label": "No, something else",
+              "value": "help"
+            }
+          ]
+        }
+      },
+      "comparison": {
+        "row_id": "xysuzi8aubaxwohkzy",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "asset",
+            "actual": null,
+            "match": false
+          },
+          "expected_action": {
+            "expected": "ASK_CLARIFICATION",
+            "actual": "ASK_CLARIFICATION",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "none",
+            "actual": "none",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "ud8kwwv2znexdorq8o",
+        "user_input": "I need a Asset report",
+        "expected_object": "asset",
+        "expected_action": "RETRIEVE_AND_ANSWER",
+        "expected_tool": "vector_retrieval",
+        "expected_retrieval_needed": true,
+        "source_file": "phase4_refined_results.md",
+        "phase": "phase305",
+        "context": "",
+        "difficulty": "hard",
+        "notes": "Gold standard mapping for RETRIEVE_AND_ANSWER"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": null,
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "missing_response",
+        "raw_output": {
+          "intent": "CHAT",
+          "text": "Eval runner could not capture a runtime decision."
+        }
+      },
+      "comparison": {
+        "row_id": "ud8kwwv2znexdorq8o",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "asset",
+            "actual": null,
+            "match": false
+          },
+          "expected_action": {
+            "expected": "RETRIEVE_AND_ANSWER",
+            "actual": "ASK_CLARIFICATION",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "vector_retrieval",
+            "actual": "none",
+            "match": false
+          },
+          "expected_retrieval_needed": {
+            "expected": true,
+            "actual": false,
+            "match": false
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "j8o1t5r0vt55sbtw1o",
+        "user_input": "Can you I need a Asset report?",
+        "expected_object": "asset",
+        "expected_action": "RETRIEVE_AND_ANSWER",
+        "expected_tool": "vector_retrieval",
+        "expected_retrieval_needed": true,
+        "source_file": "phase4_refined_results.md",
+        "phase": "phase305",
+        "context": "",
+        "difficulty": "hard",
+        "notes": "Gold standard mapping for RETRIEVE_AND_ANSWER"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": null,
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "direct_response",
+        "raw_output": {
+          "intent": "CHAT",
+          "is_suggestion": true,
+          "suggestion_prompt": "Can you Add a Asset?",
+          "text": "I think you might want to **open form** for **asset**. Is that correct? (Suggested: \"Can you Add a Asset?\")",
+          "score": 0.46875,
+          "options": [
+            {
+              "label": "Yes, do that",
+              "value": "Can you Add a Asset?"
+            },
+            {
+              "label": "No, something else",
+              "value": "help"
+            }
+          ]
+        }
+      },
+      "comparison": {
+        "row_id": "j8o1t5r0vt55sbtw1o",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "asset",
+            "actual": null,
+            "match": false
+          },
+          "expected_action": {
+            "expected": "RETRIEVE_AND_ANSWER",
+            "actual": "ASK_CLARIFICATION",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "vector_retrieval",
+            "actual": "none",
+            "match": false
+          },
+          "expected_retrieval_needed": {
+            "expected": true,
+            "actual": false,
+            "match": false
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "pmdapxxp2skwtx0vr7",
+        "user_input": "Show me top Assets",
+        "expected_object": "asset",
+        "expected_action": "QUERY",
+        "expected_tool": "crm_query",
+        "expected_retrieval_needed": false,
+        "source_file": "phase4_refined_results.md",
+        "phase": "phase305",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Gold standard mapping for QUERY"
+      },
+      "actual": {
+        "raw_intent": "QUERY",
+        "normalized_action": "QUERY",
+        "object_type": "asset",
+        "tool": "crm_query",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "QUERY",
+          "object_type": "asset",
+          "sql": null,
+          "score": 0.99
+        }
+      },
+      "comparison": {
+        "row_id": "pmdapxxp2skwtx0vr7",
+        "all_match": true,
+        "comparisons": {
+          "expected_object": {
+            "expected": "asset",
+            "actual": "asset",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "QUERY",
+            "actual": "QUERY",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "crm_query",
+            "actual": "crm_query",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "miqfj4n4ks5sr16v3v",
+        "user_input": "Can you Show me top Assets?",
+        "expected_object": "asset",
+        "expected_action": "QUERY",
+        "expected_tool": "crm_query",
+        "expected_retrieval_needed": false,
+        "source_file": "phase4_refined_results.md",
+        "phase": "phase305",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Gold standard mapping for QUERY"
+      },
+      "actual": {
+        "raw_intent": "QUERY",
+        "normalized_action": "QUERY",
+        "object_type": "asset",
+        "tool": "crm_query",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "QUERY",
+          "object_type": "asset",
+          "sql": null,
+          "score": 0.99
+        }
+      },
+      "comparison": {
+        "row_id": "miqfj4n4ks5sr16v3v",
+        "all_match": true,
+        "comparisons": {
+          "expected_object": {
+            "expected": "asset",
+            "actual": "asset",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "QUERY",
+            "actual": "QUERY",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "crm_query",
+            "actual": "crm_query",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "fxwipiwwr04p7j0rtk",
+        "user_input": "Which Asset is hot?",
+        "expected_object": "asset",
+        "expected_action": "RETRIEVE_AND_ANSWER",
+        "expected_tool": "vector_retrieval",
+        "expected_retrieval_needed": true,
+        "source_file": "phase4_refined_results.md",
+        "phase": "phase305",
+        "context": "",
+        "difficulty": "hard",
+        "notes": "Gold standard mapping for RETRIEVE_AND_ANSWER"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": null,
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "missing_response",
+        "raw_output": {
+          "intent": "CHAT",
+          "text": "Eval runner could not capture a runtime decision."
+        }
+      },
+      "comparison": {
+        "row_id": "fxwipiwwr04p7j0rtk",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "asset",
+            "actual": null,
+            "match": false
+          },
+          "expected_action": {
+            "expected": "RETRIEVE_AND_ANSWER",
+            "actual": "ASK_CLARIFICATION",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "vector_retrieval",
+            "actual": "none",
+            "match": false
+          },
+          "expected_retrieval_needed": {
+            "expected": true,
+            "actual": false,
+            "match": false
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "vz9sbznb1ztc5wuy51",
+        "user_input": "Can you Which Asset is hot??",
+        "expected_object": "asset",
+        "expected_action": "RETRIEVE_AND_ANSWER",
+        "expected_tool": "vector_retrieval",
+        "expected_retrieval_needed": true,
+        "source_file": "phase4_refined_results.md",
+        "phase": "phase305",
+        "context": "",
+        "difficulty": "hard",
+        "notes": "Gold standard mapping for RETRIEVE_AND_ANSWER"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": null,
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "direct_response",
+        "raw_output": {
+          "intent": "CHAT",
+          "is_suggestion": true,
+          "suggestion_prompt": "Can you Add a Asset?",
+          "text": "I think you might want to **open form** for **asset**. Is that correct? (Suggested: \"Can you Add a Asset?\")",
+          "score": 0.4516129,
+          "options": [
+            {
+              "label": "Yes, do that",
+              "value": "Can you Add a Asset?"
+            },
+            {
+              "label": "No, something else",
+              "value": "help"
+            }
+          ]
+        }
+      },
+      "comparison": {
+        "row_id": "vz9sbznb1ztc5wuy51",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "asset",
+            "actual": null,
+            "match": false
+          },
+          "expected_action": {
+            "expected": "RETRIEVE_AND_ANSWER",
+            "actual": "ASK_CLARIFICATION",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "vector_retrieval",
+            "actual": "none",
+            "match": false
+          },
+          "expected_retrieval_needed": {
+            "expected": true,
+            "actual": false,
+            "match": false
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "y9u7b35c66mcirewra",
+        "user_input": "Follow up on Asset",
+        "expected_object": "asset",
+        "expected_action": "RETRIEVE_AND_ANSWER",
+        "expected_tool": "vector_retrieval",
+        "expected_retrieval_needed": true,
+        "source_file": "phase4_refined_results.md",
+        "phase": "phase305",
+        "context": "",
+        "difficulty": "hard",
+        "notes": "Gold standard mapping for RETRIEVE_AND_ANSWER"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": null,
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "missing_response",
+        "raw_output": {
+          "intent": "CHAT",
+          "text": "Eval runner could not capture a runtime decision."
+        }
+      },
+      "comparison": {
+        "row_id": "y9u7b35c66mcirewra",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "asset",
+            "actual": null,
+            "match": false
+          },
+          "expected_action": {
+            "expected": "RETRIEVE_AND_ANSWER",
+            "actual": "ASK_CLARIFICATION",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "vector_retrieval",
+            "actual": "none",
+            "match": false
+          },
+          "expected_retrieval_needed": {
+            "expected": true,
+            "actual": false,
+            "match": false
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "6bz0m29vmhualvc8dt",
+        "user_input": "Can you Follow up on Asset?",
+        "expected_object": "asset",
+        "expected_action": "RETRIEVE_AND_ANSWER",
+        "expected_tool": "vector_retrieval",
+        "expected_retrieval_needed": true,
+        "source_file": "phase4_refined_results.md",
+        "phase": "phase305",
+        "context": "",
+        "difficulty": "hard",
+        "notes": "Gold standard mapping for RETRIEVE_AND_ANSWER"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": null,
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "direct_response",
+        "raw_output": {
+          "intent": "CHAT",
+          "is_suggestion": true,
+          "suggestion_prompt": "Can you Add a Asset?",
+          "text": "I think you might want to **open form** for **asset**. Is that correct? (Suggested: \"Can you Add a Asset?\")",
+          "score": 0.4516129,
+          "options": [
+            {
+              "label": "Yes, do that",
+              "value": "Can you Add a Asset?"
+            },
+            {
+              "label": "No, something else",
+              "value": "help"
+            }
+          ]
+        }
+      },
+      "comparison": {
+        "row_id": "6bz0m29vmhualvc8dt",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "asset",
+            "actual": null,
+            "match": false
+          },
+          "expected_action": {
+            "expected": "RETRIEVE_AND_ANSWER",
+            "actual": "ASK_CLARIFICATION",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "vector_retrieval",
+            "actual": "none",
+            "match": false
+          },
+          "expected_retrieval_needed": {
+            "expected": true,
+            "actual": false,
+            "match": false
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "pj8g3g3pouidy66xqh",
+        "user_input": "Remind me about Asset",
+        "expected_object": "asset",
+        "expected_action": "RETRIEVE_AND_ANSWER",
+        "expected_tool": "vector_retrieval",
+        "expected_retrieval_needed": true,
+        "source_file": "phase4_refined_results.md",
+        "phase": "phase305",
+        "context": "",
+        "difficulty": "hard",
+        "notes": "Gold standard mapping for RETRIEVE_AND_ANSWER"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": null,
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "missing_response",
+        "raw_output": {
+          "intent": "CHAT",
+          "text": "Eval runner could not capture a runtime decision."
+        }
+      },
+      "comparison": {
+        "row_id": "pj8g3g3pouidy66xqh",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "asset",
+            "actual": null,
+            "match": false
+          },
+          "expected_action": {
+            "expected": "RETRIEVE_AND_ANSWER",
+            "actual": "ASK_CLARIFICATION",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "vector_retrieval",
+            "actual": "none",
+            "match": false
+          },
+          "expected_retrieval_needed": {
+            "expected": true,
+            "actual": false,
+            "match": false
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "oqxkayh3lhcj29p30g",
+        "user_input": "Can you Remind me about Asset?",
+        "expected_object": "asset",
+        "expected_action": "RETRIEVE_AND_ANSWER",
+        "expected_tool": "vector_retrieval",
+        "expected_retrieval_needed": true,
+        "source_file": "phase4_refined_results.md",
+        "phase": "phase305",
+        "context": "",
+        "difficulty": "hard",
+        "notes": "Gold standard mapping for RETRIEVE_AND_ANSWER"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": null,
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "direct_response",
+        "raw_output": {
+          "intent": "CHAT",
+          "is_suggestion": true,
+          "suggestion_prompt": "Can you Add a Asset?",
+          "text": "I think you might want to **open form** for **asset**. Is that correct? (Suggested: \"Can you Add a Asset?\")",
+          "score": 0.42424244,
+          "options": [
+            {
+              "label": "Yes, do that",
+              "value": "Can you Add a Asset?"
+            },
+            {
+              "label": "No, something else",
+              "value": "help"
+            }
+          ]
+        }
+      },
+      "comparison": {
+        "row_id": "oqxkayh3lhcj29p30g",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "asset",
+            "actual": null,
+            "match": false
+          },
+          "expected_action": {
+            "expected": "RETRIEVE_AND_ANSWER",
+            "actual": "ASK_CLARIFICATION",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "vector_retrieval",
+            "actual": "none",
+            "match": false
+          },
+          "expected_retrieval_needed": {
+            "expected": true,
+            "actual": false,
+            "match": false
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "et8t1n89vebq8syw1g",
+        "user_input": "Is there any Asset for Tesla?",
+        "expected_object": "asset",
+        "expected_action": "RETRIEVE_AND_ANSWER",
+        "expected_tool": "vector_retrieval",
+        "expected_retrieval_needed": true,
+        "source_file": "phase4_refined_results.md",
+        "phase": "phase305",
+        "context": "",
+        "difficulty": "hard",
+        "notes": "Gold standard mapping for RETRIEVE_AND_ANSWER"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": null,
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "missing_response",
+        "raw_output": {
+          "intent": "CHAT",
+          "text": "Eval runner could not capture a runtime decision."
+        }
+      },
+      "comparison": {
+        "row_id": "et8t1n89vebq8syw1g",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "asset",
+            "actual": null,
+            "match": false
+          },
+          "expected_action": {
+            "expected": "RETRIEVE_AND_ANSWER",
+            "actual": "ASK_CLARIFICATION",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "vector_retrieval",
+            "actual": "none",
+            "match": false
+          },
+          "expected_retrieval_needed": {
+            "expected": true,
+            "actual": false,
+            "match": false
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "9dp9vvfjssvxv6su1u",
+        "user_input": "Can you Is there any Asset for Tesla??",
+        "expected_object": "asset",
+        "expected_action": "RETRIEVE_AND_ANSWER",
+        "expected_tool": "vector_retrieval",
+        "expected_retrieval_needed": true,
+        "source_file": "phase4_refined_results.md",
+        "phase": "phase305",
+        "context": "",
+        "difficulty": "hard",
+        "notes": "Gold standard mapping for RETRIEVE_AND_ANSWER"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": null,
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "missing_response",
+        "raw_output": {
+          "intent": "CHAT",
+          "text": "Eval runner could not capture a runtime decision."
+        }
+      },
+      "comparison": {
+        "row_id": "9dp9vvfjssvxv6su1u",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "asset",
+            "actual": null,
+            "match": false
+          },
+          "expected_action": {
+            "expected": "RETRIEVE_AND_ANSWER",
+            "actual": "ASK_CLARIFICATION",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "vector_retrieval",
+            "actual": "none",
+            "match": false
+          },
+          "expected_retrieval_needed": {
+            "expected": true,
+            "actual": false,
+            "match": false
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "74pewzsrtu65o9h8d4",
+        "user_input": "Find Asset named John",
+        "expected_object": "asset",
+        "expected_action": "OPEN_RECORD",
+        "expected_tool": "crm_query",
+        "expected_retrieval_needed": false,
+        "source_file": "phase4_refined_results.md",
+        "phase": "phase305",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Gold standard mapping for OPEN_RECORD"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": null,
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "direct_response",
+        "raw_output": {
+          "intent": "CHAT",
+          "is_suggestion": true,
+          "suggestion_prompt": "Find John.",
+          "text": "I think you might want to **query** for **lead**. Is that correct? (Suggested: \"Find John.\")",
+          "score": 0.45454547,
+          "options": [
+            {
+              "label": "Yes, do that",
+              "value": "Find John."
+            },
+            {
+              "label": "No, something else",
+              "value": "help"
+            }
+          ]
+        }
+      },
+      "comparison": {
+        "row_id": "74pewzsrtu65o9h8d4",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "asset",
+            "actual": null,
+            "match": false
+          },
+          "expected_action": {
+            "expected": "OPEN_RECORD",
+            "actual": "ASK_CLARIFICATION",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "crm_query",
+            "actual": "none",
+            "match": false
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "9tkppyqcxqesuqsuuo",
+        "user_input": "Can you Find Asset named John?",
+        "expected_object": "asset",
+        "expected_action": "OPEN_RECORD",
+        "expected_tool": "crm_query",
+        "expected_retrieval_needed": false,
+        "source_file": "phase4_refined_results.md",
+        "phase": "phase305",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Gold standard mapping for OPEN_RECORD"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": null,
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "direct_response",
+        "raw_output": {
+          "intent": "CHAT",
+          "is_suggestion": true,
+          "suggestion_prompt": "Can you Add a Asset?",
+          "text": "I think you might want to **open form** for **asset**. Is that correct? (Suggested: \"Can you Add a Asset?\")",
+          "score": 0.4117647,
+          "options": [
+            {
+              "label": "Yes, do that",
+              "value": "Can you Add a Asset?"
+            },
+            {
+              "label": "No, something else",
+              "value": "help"
+            }
+          ]
+        }
+      },
+      "comparison": {
+        "row_id": "9tkppyqcxqesuqsuuo",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "asset",
+            "actual": null,
+            "match": false
+          },
+          "expected_action": {
+            "expected": "OPEN_RECORD",
+            "actual": "ASK_CLARIFICATION",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "crm_query",
+            "actual": "none",
+            "match": false
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "0fd14rhhbli5x02j45",
+        "user_input": "Show Asset for BMW",
+        "expected_object": "asset",
+        "expected_action": "QUERY",
+        "expected_tool": "crm_query",
+        "expected_retrieval_needed": false,
+        "source_file": "phase4_refined_results.md",
+        "phase": "phase305",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Gold standard mapping for QUERY"
+      },
+      "actual": {
+        "raw_intent": "QUERY",
+        "normalized_action": "QUERY",
+        "object_type": "asset",
+        "tool": "crm_query",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "QUERY",
+          "object_type": "asset",
+          "sql": null,
+          "score": 0.99
+        }
+      },
+      "comparison": {
+        "row_id": "0fd14rhhbli5x02j45",
+        "all_match": true,
+        "comparisons": {
+          "expected_object": {
+            "expected": "asset",
+            "actual": "asset",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "QUERY",
+            "actual": "QUERY",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "crm_query",
+            "actual": "crm_query",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "7cy007gc7t02sc42zj",
+        "user_input": "Can you Show Asset for BMW?",
+        "expected_object": "asset",
+        "expected_action": "QUERY",
+        "expected_tool": "crm_query",
+        "expected_retrieval_needed": false,
+        "source_file": "phase4_refined_results.md",
+        "phase": "phase305",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Gold standard mapping for QUERY"
+      },
+      "actual": {
+        "raw_intent": "QUERY",
+        "normalized_action": "QUERY",
+        "object_type": "asset",
+        "tool": "crm_query",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "QUERY",
+          "object_type": "asset",
+          "sql": null,
+          "score": 0.99
+        }
+      },
+      "comparison": {
+        "row_id": "7cy007gc7t02sc42zj",
+        "all_match": true,
+        "comparisons": {
+          "expected_object": {
+            "expected": "asset",
+            "actual": "asset",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "QUERY",
+            "actual": "QUERY",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "crm_query",
+            "actual": "crm_query",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "a8zqr3upgkzshw47kj",
+        "user_input": "Search Asset with high priority",
+        "expected_object": "asset",
+        "expected_action": "QUERY",
+        "expected_tool": "crm_query",
+        "expected_retrieval_needed": false,
+        "source_file": "phase4_refined_results.md",
+        "phase": "phase305",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Gold standard mapping for QUERY"
+      },
+      "actual": {
+        "raw_intent": "QUERY",
+        "normalized_action": "QUERY",
+        "object_type": "asset",
+        "tool": "crm_query",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "QUERY",
+          "object_type": "asset",
+          "text": "Search Asset with high priority",
+          "score": 0.85,
+          "reasoning": {
+            "filters": {
+              "priority": "high"
+            },
+            "fields_to_update": {},
+            "context_reference": {
+              "kind": null,
+              "index": 0,
+              "object_type": "asset"
+            },
+            "resolved_reference": {},
+            "confidence": 0.85,
+            "confidence_band": "high",
+            "action": "query",
+            "user_query": "Search Asset with high priority"
+          },
+          "data": {
+            "priority": "high"
+          },
+          "language_preference": "eng"
+        }
+      },
+      "comparison": {
+        "row_id": "a8zqr3upgkzshw47kj",
+        "all_match": true,
+        "comparisons": {
+          "expected_object": {
+            "expected": "asset",
+            "actual": "asset",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "QUERY",
+            "actual": "QUERY",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "crm_query",
+            "actual": "crm_query",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "gc2g87lhbxvskh0uh6",
+        "user_input": "Can you Search Asset with high priority?",
+        "expected_object": "asset",
+        "expected_action": "QUERY",
+        "expected_tool": "crm_query",
+        "expected_retrieval_needed": false,
+        "source_file": "phase4_refined_results.md",
+        "phase": "phase305",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Gold standard mapping for QUERY"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": null,
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "missing_response",
+        "raw_output": {
+          "intent": "CHAT",
+          "text": "Eval runner could not capture a runtime decision."
+        }
+      },
+      "comparison": {
+        "row_id": "gc2g87lhbxvskh0uh6",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "asset",
+            "actual": null,
+            "match": false
+          },
+          "expected_action": {
+            "expected": "QUERY",
+            "actual": "ASK_CLARIFICATION",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "crm_query",
+            "actual": "none",
+            "match": false
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "kkabsm5mixg0zjbo56",
+        "user_input": "List all pending Assets",
+        "expected_object": "asset",
+        "expected_action": "QUERY",
+        "expected_tool": "crm_query",
+        "expected_retrieval_needed": false,
+        "source_file": "phase4_refined_results.md",
+        "phase": "phase305",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Gold standard mapping for QUERY"
+      },
+      "actual": {
+        "raw_intent": "QUERY",
+        "normalized_action": "QUERY",
+        "object_type": "asset",
+        "tool": "crm_query",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "QUERY",
+          "object_type": "asset",
+          "data": {},
+          "score": 1.0
+        }
+      },
+      "comparison": {
+        "row_id": "kkabsm5mixg0zjbo56",
+        "all_match": true,
+        "comparisons": {
+          "expected_object": {
+            "expected": "asset",
+            "actual": "asset",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "QUERY",
+            "actual": "QUERY",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "crm_query",
+            "actual": "crm_query",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "pr8pstx1vbbleqa1xv",
+        "user_input": "Can you List all pending Assets?",
+        "expected_object": "asset",
+        "expected_action": "QUERY",
+        "expected_tool": "crm_query",
+        "expected_retrieval_needed": false,
+        "source_file": "phase4_refined_results.md",
+        "phase": "phase305",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Gold standard mapping for QUERY"
+      },
+      "actual": {
+        "raw_intent": "QUERY",
+        "normalized_action": "QUERY",
+        "object_type": "asset",
+        "tool": "crm_query",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "QUERY",
+          "object_type": "asset",
+          "data": {},
+          "score": 1.0
+        }
+      },
+      "comparison": {
+        "row_id": "pr8pstx1vbbleqa1xv",
+        "all_match": true,
+        "comparisons": {
+          "expected_object": {
+            "expected": "asset",
+            "actual": "asset",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "QUERY",
+            "actual": "QUERY",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "crm_query",
+            "actual": "crm_query",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "sru5f3gpxmycg199mm",
+        "user_input": "Open the Asset create screen",
+        "expected_object": "asset",
+        "expected_action": "OPEN_FORM",
+        "expected_tool": "none",
+        "expected_retrieval_needed": false,
+        "source_file": "phase4_refined_results.md",
+        "phase": "phase305",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Gold standard mapping for OPEN_FORM"
+      },
+      "actual": {
+        "raw_intent": "OPEN_FORM",
+        "normalized_action": "OPEN_FORM",
+        "object_type": "asset",
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "direct_response",
+        "raw_output": {
+          "intent": "OPEN_FORM",
+          "object_type": "asset",
+          "form_url": "/assets/new-modal",
+          "form_title": "Create Asset",
+          "form_kind": "asset_create",
+          "text": "I've opened the new asset form for you below.",
+          "score": 1.0
+        }
+      },
+      "comparison": {
+        "row_id": "sru5f3gpxmycg199mm",
+        "all_match": true,
+        "comparisons": {
+          "expected_object": {
+            "expected": "asset",
+            "actual": "asset",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "OPEN_FORM",
+            "actual": "OPEN_FORM",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "none",
+            "actual": "none",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "cwisuyxn8cs27ardse",
+        "user_input": "Can you Open the Asset create screen?",
+        "expected_object": "asset",
+        "expected_action": "OPEN_FORM",
+        "expected_tool": "none",
+        "expected_retrieval_needed": false,
+        "source_file": "phase4_refined_results.md",
+        "phase": "phase305",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Gold standard mapping for OPEN_FORM"
+      },
+      "actual": {
+        "raw_intent": "OPEN_FORM",
+        "normalized_action": "OPEN_FORM",
+        "object_type": "asset",
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "direct_response",
+        "raw_output": {
+          "intent": "OPEN_FORM",
+          "object_type": "asset",
+          "form_url": "/assets/new-modal",
+          "form_title": "Create Asset",
+          "form_kind": "asset_create",
+          "text": "I've opened the new asset form for you below.",
+          "score": 1.0
+        }
+      },
+      "comparison": {
+        "row_id": "cwisuyxn8cs27ardse",
+        "all_match": true,
+        "comparisons": {
+          "expected_object": {
+            "expected": "asset",
+            "actual": "asset",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "OPEN_FORM",
+            "actual": "OPEN_FORM",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "none",
+            "actual": "none",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "607t867yeti78izgbv",
+        "user_input": "Can you show my Assets?",
+        "expected_object": "asset",
+        "expected_action": "QUERY",
+        "expected_tool": "crm_query",
+        "expected_retrieval_needed": false,
+        "source_file": "phase4_refined_results.md",
+        "phase": "phase305",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Gold standard mapping for QUERY"
+      },
+      "actual": {
+        "raw_intent": "QUERY",
+        "normalized_action": "QUERY",
+        "object_type": "asset",
+        "tool": "crm_query",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "QUERY",
+          "object_type": "asset",
+          "sql": null,
+          "score": 0.99
+        }
+      },
+      "comparison": {
+        "row_id": "607t867yeti78izgbv",
+        "all_match": true,
+        "comparisons": {
+          "expected_object": {
+            "expected": "asset",
+            "actual": "asset",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "QUERY",
+            "actual": "QUERY",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "crm_query",
+            "actual": "crm_query",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "hmrobz08iflj612sls",
+        "user_input": "Can you Can you show my Assets??",
+        "expected_object": "asset",
+        "expected_action": "QUERY",
+        "expected_tool": "crm_query",
+        "expected_retrieval_needed": false,
+        "source_file": "phase4_refined_results.md",
+        "phase": "phase305",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Gold standard mapping for QUERY"
+      },
+      "actual": {
+        "raw_intent": "QUERY",
+        "normalized_action": "QUERY",
+        "object_type": "asset",
+        "tool": "crm_query",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "QUERY",
+          "object_type": "asset",
+          "sql": null,
+          "score": 0.99
+        }
+      },
+      "comparison": {
+        "row_id": "hmrobz08iflj612sls",
+        "all_match": true,
+        "comparisons": {
+          "expected_object": {
+            "expected": "asset",
+            "actual": "asset",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "QUERY",
+            "actual": "QUERY",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "crm_query",
+            "actual": "crm_query",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "l5mmon619i5dt93cxd",
+        "user_input": "Where are the Assets?",
+        "expected_object": "asset",
+        "expected_action": "ASK_CLARIFICATION",
+        "expected_tool": "none",
+        "expected_retrieval_needed": false,
+        "source_file": "phase4_refined_results.md",
+        "phase": "phase305",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Gold standard mapping for ASK_CLARIFICATION"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": "asset",
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "CHAT",
+          "object_type": "asset",
+          "text": "What kind of assets are you looking for?",
+          "score": 0.6,
+          "reasoning": {
+            "context_reference": {
+              "kind": null,
+              "index": 0,
+              "object_type": "asset"
+            },
+            "resolved_reference": {},
+            "confidence": 0.6,
+            "confidence_band": "medium"
+          },
+          "language_preference": "eng"
+        }
+      },
+      "comparison": {
+        "row_id": "l5mmon619i5dt93cxd",
+        "all_match": true,
+        "comparisons": {
+          "expected_object": {
+            "expected": "asset",
+            "actual": "asset",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "ASK_CLARIFICATION",
+            "actual": "ASK_CLARIFICATION",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "none",
+            "actual": "none",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "bxw9z8snl5xie7npha",
+        "user_input": "Can you Where are the Assets??",
+        "expected_object": "asset",
+        "expected_action": "ASK_CLARIFICATION",
+        "expected_tool": "none",
+        "expected_retrieval_needed": false,
+        "source_file": "phase4_refined_results.md",
+        "phase": "phase305",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Gold standard mapping for ASK_CLARIFICATION"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": null,
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "direct_response",
+        "raw_output": {
+          "intent": "CHAT",
+          "is_suggestion": true,
+          "suggestion_prompt": "Can you Any new Assets??",
+          "text": "I think you might want to **open form** for **asset**. Is that correct? (Suggested: \"Can you Any new Assets??\")",
+          "score": 0.44117647,
+          "options": [
+            {
+              "label": "Yes, do that",
+              "value": "Can you Any new Assets??"
+            },
+            {
+              "label": "No, something else",
+              "value": "help"
+            }
+          ]
+        }
+      },
+      "comparison": {
+        "row_id": "bxw9z8snl5xie7npha",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "asset",
+            "actual": null,
+            "match": false
+          },
+          "expected_action": {
+            "expected": "ASK_CLARIFICATION",
+            "actual": "ASK_CLARIFICATION",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "none",
+            "actual": "none",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "w9gu068efmv7m2x6cw",
+        "user_input": "Help with Asset flow",
+        "expected_object": "asset",
+        "expected_action": "RETRIEVE_AND_ANSWER",
+        "expected_tool": "vector_retrieval",
+        "expected_retrieval_needed": true,
+        "source_file": "phase4_refined_results.md",
+        "phase": "phase305",
+        "context": "",
+        "difficulty": "hard",
+        "notes": "Gold standard mapping for RETRIEVE_AND_ANSWER"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": null,
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "missing_response",
+        "raw_output": {
+          "intent": "CHAT",
+          "text": "Eval runner could not capture a runtime decision."
+        }
+      },
+      "comparison": {
+        "row_id": "w9gu068efmv7m2x6cw",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "asset",
+            "actual": null,
+            "match": false
+          },
+          "expected_action": {
+            "expected": "RETRIEVE_AND_ANSWER",
+            "actual": "ASK_CLARIFICATION",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "vector_retrieval",
+            "actual": "none",
+            "match": false
+          },
+          "expected_retrieval_needed": {
+            "expected": true,
+            "actual": false,
+            "match": false
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "2722vkfkzleo1jeg2q",
+        "user_input": "Can you Help with Asset flow?",
+        "expected_object": "asset",
+        "expected_action": "RETRIEVE_AND_ANSWER",
+        "expected_tool": "vector_retrieval",
+        "expected_retrieval_needed": true,
+        "source_file": "phase4_refined_results.md",
+        "phase": "phase305",
+        "context": "",
+        "difficulty": "hard",
+        "notes": "Gold standard mapping for RETRIEVE_AND_ANSWER"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": null,
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "direct_response",
+        "raw_output": {
+          "intent": "CHAT",
+          "is_suggestion": true,
+          "suggestion_prompt": "Can you Add a Asset?",
+          "text": "I think you might want to **open form** for **asset**. Is that correct? (Suggested: \"Can you Add a Asset?\")",
+          "score": 0.42424244,
+          "options": [
+            {
+              "label": "Yes, do that",
+              "value": "Can you Add a Asset?"
+            },
+            {
+              "label": "No, something else",
+              "value": "help"
+            }
+          ]
+        }
+      },
+      "comparison": {
+        "row_id": "2722vkfkzleo1jeg2q",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "asset",
+            "actual": null,
+            "match": false
+          },
+          "expected_action": {
+            "expected": "RETRIEVE_AND_ANSWER",
+            "actual": "ASK_CLARIFICATION",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "vector_retrieval",
+            "actual": "none",
+            "match": false
+          },
+          "expected_retrieval_needed": {
+            "expected": true,
+            "actual": false,
+            "match": false
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "cjvsfdatkvyv4r3faj",
+        "user_input": "Guide me through Asset creation",
+        "expected_object": "asset",
+        "expected_action": "RETRIEVE_AND_ANSWER",
+        "expected_tool": "vector_retrieval",
+        "expected_retrieval_needed": true,
+        "source_file": "phase4_refined_results.md",
+        "phase": "phase305",
+        "context": "",
+        "difficulty": "hard",
+        "notes": "Gold standard mapping for RETRIEVE_AND_ANSWER"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": null,
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "missing_response",
+        "raw_output": {
+          "intent": "CHAT",
+          "text": "Eval runner could not capture a runtime decision."
+        }
+      },
+      "comparison": {
+        "row_id": "cjvsfdatkvyv4r3faj",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "asset",
+            "actual": null,
+            "match": false
+          },
+          "expected_action": {
+            "expected": "RETRIEVE_AND_ANSWER",
+            "actual": "ASK_CLARIFICATION",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "vector_retrieval",
+            "actual": "none",
+            "match": false
+          },
+          "expected_retrieval_needed": {
+            "expected": true,
+            "actual": false,
+            "match": false
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "3x7yifhy9bd6v7v977",
+        "user_input": "Can you Guide me through Asset creation?",
+        "expected_object": "asset",
+        "expected_action": "RETRIEVE_AND_ANSWER",
+        "expected_tool": "vector_retrieval",
+        "expected_retrieval_needed": true,
+        "source_file": "phase4_refined_results.md",
+        "phase": "phase305",
+        "context": "",
+        "difficulty": "hard",
+        "notes": "Gold standard mapping for RETRIEVE_AND_ANSWER"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": null,
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "direct_response",
+        "raw_output": {
+          "intent": "CHAT",
+          "is_suggestion": true,
+          "suggestion_prompt": "Can you Create new Asset?",
+          "text": "I think you might want to **open form** for **asset**. Is that correct? (Suggested: \"Can you Create new Asset?\")",
+          "score": 0.4,
+          "options": [
+            {
+              "label": "Yes, do that",
+              "value": "Can you Create new Asset?"
+            },
+            {
+              "label": "No, something else",
+              "value": "help"
+            }
+          ]
+        }
+      },
+      "comparison": {
+        "row_id": "3x7yifhy9bd6v7v977",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "asset",
+            "actual": null,
+            "match": false
+          },
+          "expected_action": {
+            "expected": "RETRIEVE_AND_ANSWER",
+            "actual": "ASK_CLARIFICATION",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "vector_retrieval",
+            "actual": "none",
+            "match": false
+          },
+          "expected_retrieval_needed": {
+            "expected": true,
+            "actual": false,
+            "match": false
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "6q0paoqnxsmb8thmlj",
+        "user_input": "How many Assets do we have?",
+        "expected_object": "asset",
+        "expected_action": "RETRIEVE_AND_ANSWER",
+        "expected_tool": "vector_retrieval",
+        "expected_retrieval_needed": true,
+        "source_file": "phase4_refined_results.md",
+        "phase": "phase305",
+        "context": "",
+        "difficulty": "hard",
+        "notes": "Gold standard mapping for RETRIEVE_AND_ANSWER"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": null,
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "direct_response",
+        "raw_output": {
+          "intent": "CHAT",
+          "is_suggestion": true,
+          "suggestion_prompt": "Do we have any?",
+          "text": "I think you might want to **query** for **lead**. Is that correct? (Suggested: \"Do we have any?\")",
+          "score": 0.5185185,
+          "options": [
+            {
+              "label": "Yes, do that",
+              "value": "Do we have any?"
+            },
+            {
+              "label": "No, something else",
+              "value": "help"
+            }
+          ]
+        }
+      },
+      "comparison": {
+        "row_id": "6q0paoqnxsmb8thmlj",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "asset",
+            "actual": null,
+            "match": false
+          },
+          "expected_action": {
+            "expected": "RETRIEVE_AND_ANSWER",
+            "actual": "ASK_CLARIFICATION",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "vector_retrieval",
+            "actual": "none",
+            "match": false
+          },
+          "expected_retrieval_needed": {
+            "expected": true,
+            "actual": false,
+            "match": false
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "u61w1saklqnt507wvu",
+        "user_input": "Can you How many Assets do we have??",
+        "expected_object": "asset",
+        "expected_action": "RETRIEVE_AND_ANSWER",
+        "expected_tool": "vector_retrieval",
+        "expected_retrieval_needed": true,
+        "source_file": "phase4_refined_results.md",
+        "phase": "phase305",
+        "context": "",
+        "difficulty": "hard",
+        "notes": "Gold standard mapping for RETRIEVE_AND_ANSWER"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": null,
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "direct_response",
+        "raw_output": {
+          "intent": "CHAT",
+          "is_suggestion": true,
+          "suggestion_prompt": "Can you Any new Assets??",
+          "text": "I think you might want to **open form** for **asset**. Is that correct? (Suggested: \"Can you Any new Assets??\")",
+          "score": 0.43589744,
+          "options": [
+            {
+              "label": "Yes, do that",
+              "value": "Can you Any new Assets??"
+            },
+            {
+              "label": "No, something else",
+              "value": "help"
+            }
+          ]
+        }
+      },
+      "comparison": {
+        "row_id": "u61w1saklqnt507wvu",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "asset",
+            "actual": null,
+            "match": false
+          },
+          "expected_action": {
+            "expected": "RETRIEVE_AND_ANSWER",
+            "actual": "ASK_CLARIFICATION",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "vector_retrieval",
+            "actual": "none",
+            "match": false
+          },
+          "expected_retrieval_needed": {
+            "expected": true,
+            "actual": false,
+            "match": false
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "fixkr9qzgm60evjbis",
+        "user_input": "Show Asset history",
+        "expected_object": "asset",
+        "expected_action": "RETRIEVE_AND_ANSWER",
+        "expected_tool": "message_history_query",
+        "expected_retrieval_needed": true,
+        "source_file": "phase4_refined_results.md",
+        "phase": "phase305",
+        "context": "",
+        "difficulty": "hard",
+        "notes": "Gold standard mapping for RETRIEVE_AND_ANSWER"
+      },
+      "actual": {
+        "raw_intent": "MANAGE",
+        "normalized_action": "OPEN_RECORD",
+        "object_type": "asset",
+        "tool": "crm_query",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "MANAGE",
+          "object_type": "asset",
+          "record_id": "history",
+          "score": 1.0,
+          "language_preference": "eng"
+        }
+      },
+      "comparison": {
+        "row_id": "fixkr9qzgm60evjbis",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "asset",
+            "actual": "asset",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "RETRIEVE_AND_ANSWER",
+            "actual": "OPEN_RECORD",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "message_history_query",
+            "actual": "crm_query",
+            "match": false
+          },
+          "expected_retrieval_needed": {
+            "expected": true,
+            "actual": false,
+            "match": false
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "9ft6kadm27403h5j4p",
+        "user_input": "Can you Show Asset history?",
+        "expected_object": "asset",
+        "expected_action": "RETRIEVE_AND_ANSWER",
+        "expected_tool": "message_history_query",
+        "expected_retrieval_needed": true,
+        "source_file": "phase4_refined_results.md",
+        "phase": "phase305",
+        "context": "",
+        "difficulty": "hard",
+        "notes": "Gold standard mapping for RETRIEVE_AND_ANSWER"
+      },
+      "actual": {
+        "raw_intent": "MANAGE",
+        "normalized_action": "OPEN_RECORD",
+        "object_type": "asset",
+        "tool": "crm_query",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "MANAGE",
+          "object_type": "asset",
+          "record_id": "history",
+          "score": 1.0,
+          "language_preference": "eng"
+        }
+      },
+      "comparison": {
+        "row_id": "9ft6kadm27403h5j4p",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "asset",
+            "actual": "asset",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "RETRIEVE_AND_ANSWER",
+            "actual": "OPEN_RECORD",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "message_history_query",
+            "actual": "crm_query",
+            "match": false
+          },
+          "expected_retrieval_needed": {
+            "expected": true,
+            "actual": false,
+            "match": false
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "6dm85bg17bgk8vg18m",
+        "user_input": "View Asset analytics",
+        "expected_object": "asset",
+        "expected_action": "RETRIEVE_AND_ANSWER",
+        "expected_tool": "vector_retrieval",
+        "expected_retrieval_needed": true,
+        "source_file": "phase4_refined_results.md",
+        "phase": "phase305",
+        "context": "",
+        "difficulty": "hard",
+        "notes": "Gold standard mapping for RETRIEVE_AND_ANSWER"
+      },
+      "actual": {
+        "raw_intent": "MANAGE",
+        "normalized_action": "OPEN_RECORD",
+        "object_type": "asset",
+        "tool": "crm_query",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "MANAGE",
+          "object_type": "asset",
+          "record_id": "analytics",
+          "score": 1.0,
+          "language_preference": "eng"
+        }
+      },
+      "comparison": {
+        "row_id": "6dm85bg17bgk8vg18m",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "asset",
+            "actual": "asset",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "RETRIEVE_AND_ANSWER",
+            "actual": "OPEN_RECORD",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "vector_retrieval",
+            "actual": "crm_query",
+            "match": false
+          },
+          "expected_retrieval_needed": {
+            "expected": true,
+            "actual": false,
+            "match": false
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "zzt7c7p3iwjaq5dsp7",
+        "user_input": "Can you View Asset analytics?",
+        "expected_object": "asset",
+        "expected_action": "RETRIEVE_AND_ANSWER",
+        "expected_tool": "vector_retrieval",
+        "expected_retrieval_needed": true,
+        "source_file": "phase4_refined_results.md",
+        "phase": "phase305",
+        "context": "",
+        "difficulty": "hard",
+        "notes": "Gold standard mapping for RETRIEVE_AND_ANSWER"
+      },
+      "actual": {
+        "raw_intent": "MANAGE",
+        "normalized_action": "OPEN_RECORD",
+        "object_type": "asset",
+        "tool": "crm_query",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "MANAGE",
+          "object_type": "asset",
+          "record_id": "analytics",
+          "score": 1.0,
+          "language_preference": "eng"
+        }
+      },
+      "comparison": {
+        "row_id": "zzt7c7p3iwjaq5dsp7",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "asset",
+            "actual": "asset",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "RETRIEVE_AND_ANSWER",
+            "actual": "OPEN_RECORD",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "vector_retrieval",
+            "actual": "crm_query",
+            "match": false
+          },
+          "expected_retrieval_needed": {
+            "expected": true,
+            "actual": false,
+            "match": false
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "vlbzteqv0emkyl839w",
+        "user_input": "Export Asset list",
+        "expected_object": "asset",
+        "expected_action": "QUERY",
+        "expected_tool": "crm_query",
+        "expected_retrieval_needed": false,
+        "source_file": "phase4_refined_results.md",
+        "phase": "phase305",
+        "context": "",
+        "difficulty": "easy",
+        "notes": "Gold standard mapping for QUERY"
+      },
+      "actual": {
+        "raw_intent": "QUERY",
+        "normalized_action": "QUERY",
+        "object_type": "asset",
+        "tool": "crm_query",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "QUERY",
+          "object_type": "asset",
+          "data": {},
+          "score": 1.0
+        }
+      },
+      "comparison": {
+        "row_id": "vlbzteqv0emkyl839w",
+        "all_match": true,
+        "comparisons": {
+          "expected_object": {
+            "expected": "asset",
+            "actual": "asset",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "QUERY",
+            "actual": "QUERY",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "crm_query",
+            "actual": "crm_query",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "huct6kqctlla23cb14",
+        "user_input": "Can you Export Asset list?",
+        "expected_object": "asset",
+        "expected_action": "QUERY",
+        "expected_tool": "crm_query",
+        "expected_retrieval_needed": false,
+        "source_file": "phase4_refined_results.md",
+        "phase": "phase305",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Gold standard mapping for QUERY"
+      },
+      "actual": {
+        "raw_intent": "QUERY",
+        "normalized_action": "QUERY",
+        "object_type": "asset",
+        "tool": "crm_query",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "QUERY",
+          "object_type": "asset",
+          "data": {},
+          "score": 1.0
+        }
+      },
+      "comparison": {
+        "row_id": "huct6kqctlla23cb14",
+        "all_match": true,
+        "comparisons": {
+          "expected_object": {
+            "expected": "asset",
+            "actual": "asset",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "QUERY",
+            "actual": "QUERY",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "crm_query",
+            "actual": "crm_query",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "h5huhiudoc8uvnl54x",
+        "user_input": "Filter Assets by date",
+        "expected_object": "asset",
+        "expected_action": "ASK_CLARIFICATION",
+        "expected_tool": "none",
+        "expected_retrieval_needed": false,
+        "source_file": "phase4_refined_results.md",
+        "phase": "phase305",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Gold standard mapping for ASK_CLARIFICATION"
+      },
+      "actual": {
+        "raw_intent": "QUERY",
+        "normalized_action": "QUERY",
+        "object_type": "asset",
+        "tool": "crm_query",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "QUERY",
+          "object_type": "asset",
+          "text": "",
+          "score": 0.91,
+          "reasoning": {
+            "filters": {
+              "created_at": {
+                "operator": "range"
+              }
+            },
+            "fields_to_update": {},
+            "context_reference": {
+              "kind": null,
+              "index": 0,
+              "object_type": "asset"
+            },
+            "resolved_reference": {},
+            "confidence": 0.91,
+            "confidence_band": "high",
+            "action": "query",
+            "user_query": "Filter Assets by date"
+          },
+          "data": {
+            "created_at": {
+              "operator": "range"
+            }
+          },
+          "language_preference": "eng"
+        }
+      },
+      "comparison": {
+        "row_id": "h5huhiudoc8uvnl54x",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "asset",
+            "actual": "asset",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "ASK_CLARIFICATION",
+            "actual": "QUERY",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "none",
+            "actual": "crm_query",
+            "match": false
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "7h86cn89josn6b755o",
+        "user_input": "Can you Filter Assets by date?",
+        "expected_object": "asset",
+        "expected_action": "ASK_CLARIFICATION",
+        "expected_tool": "none",
+        "expected_retrieval_needed": false,
+        "source_file": "phase4_refined_results.md",
+        "phase": "phase305",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Gold standard mapping for ASK_CLARIFICATION"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": null,
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "direct_response",
+        "raw_output": {
+          "intent": "CHAT",
+          "is_suggestion": true,
+          "suggestion_prompt": "Can you Any new Assets??",
+          "text": "I think you might want to **open form** for **asset**. Is that correct? (Suggested: \"Can you Any new Assets??\")",
+          "score": 0.4054054,
+          "options": [
+            {
+              "label": "Yes, do that",
+              "value": "Can you Any new Assets??"
+            },
+            {
+              "label": "No, something else",
+              "value": "help"
+            }
+          ]
+        }
+      },
+      "comparison": {
+        "row_id": "7h86cn89josn6b755o",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "asset",
+            "actual": null,
+            "match": false
+          },
+          "expected_action": {
+            "expected": "ASK_CLARIFICATION",
+            "actual": "ASK_CLARIFICATION",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "none",
+            "actual": "none",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "l2fc1dy9vuiqcliw52",
+        "user_input": "Sort Assets by name",
+        "expected_object": "asset",
+        "expected_action": "ASK_CLARIFICATION",
+        "expected_tool": "none",
+        "expected_retrieval_needed": false,
+        "source_file": "phase4_refined_results.md",
+        "phase": "phase305",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Gold standard mapping for ASK_CLARIFICATION"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": null,
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "missing_response",
+        "raw_output": {
+          "intent": "CHAT",
+          "text": "Eval runner could not capture a runtime decision."
+        }
+      },
+      "comparison": {
+        "row_id": "l2fc1dy9vuiqcliw52",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "asset",
+            "actual": null,
+            "match": false
+          },
+          "expected_action": {
+            "expected": "ASK_CLARIFICATION",
+            "actual": "ASK_CLARIFICATION",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "none",
+            "actual": "none",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "q5wint7omh8ztus449",
+        "user_input": "Can you Sort Assets by name?",
+        "expected_object": "asset",
+        "expected_action": "ASK_CLARIFICATION",
+        "expected_tool": "none",
+        "expected_retrieval_needed": false,
+        "source_file": "phase4_refined_results.md",
+        "phase": "phase305",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Gold standard mapping for ASK_CLARIFICATION"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": null,
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "direct_response",
+        "raw_output": {
+          "intent": "CHAT",
+          "is_suggestion": true,
+          "suggestion_prompt": "Can you Any new Assets??",
+          "text": "I think you might want to **open form** for **asset**. Is that correct? (Suggested: \"Can you Any new Assets??\")",
+          "score": 0.47058824,
+          "options": [
+            {
+              "label": "Yes, do that",
+              "value": "Can you Any new Assets??"
+            },
+            {
+              "label": "No, something else",
+              "value": "help"
+            }
+          ]
+        }
+      },
+      "comparison": {
+        "row_id": "q5wint7omh8ztus449",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "asset",
+            "actual": null,
+            "match": false
+          },
+          "expected_action": {
+            "expected": "ASK_CLARIFICATION",
+            "actual": "ASK_CLARIFICATION",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "none",
+            "actual": "none",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "5urgynx638vlk9prfz",
+        "user_input": "Show me Asset #123",
+        "expected_object": "asset",
+        "expected_action": "OPEN_RECORD",
+        "expected_tool": "crm_query",
+        "expected_retrieval_needed": false,
+        "source_file": "phase4_refined_results.md",
+        "phase": "phase305",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Gold standard mapping for OPEN_RECORD"
+      },
+      "actual": {
+        "raw_intent": "QUERY",
+        "normalized_action": "QUERY",
+        "object_type": "asset",
+        "tool": "crm_query",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "QUERY",
+          "object_type": "asset",
+          "sql": null,
+          "score": 0.99
+        }
+      },
+      "comparison": {
+        "row_id": "5urgynx638vlk9prfz",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "asset",
+            "actual": "asset",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "OPEN_RECORD",
+            "actual": "QUERY",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "crm_query",
+            "actual": "crm_query",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "rqzc22jf2bene71fji",
+        "user_input": "Can you Show me Asset #123?",
+        "expected_object": "asset",
+        "expected_action": "OPEN_RECORD",
+        "expected_tool": "crm_query",
+        "expected_retrieval_needed": false,
+        "source_file": "phase4_refined_results.md",
+        "phase": "phase305",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Gold standard mapping for OPEN_RECORD"
+      },
+      "actual": {
+        "raw_intent": "QUERY",
+        "normalized_action": "QUERY",
+        "object_type": "asset",
+        "tool": "crm_query",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "QUERY",
+          "object_type": "asset",
+          "sql": null,
+          "score": 0.99
+        }
+      },
+      "comparison": {
+        "row_id": "rqzc22jf2bene71fji",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "asset",
+            "actual": "asset",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "OPEN_RECORD",
+            "actual": "QUERY",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "crm_query",
+            "actual": "crm_query",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "ufzhdq0pc5f80wdphn",
+        "user_input": "Open record for Asset",
+        "expected_object": "asset",
+        "expected_action": "OPEN_RECORD",
+        "expected_tool": "crm_query",
+        "expected_retrieval_needed": false,
+        "source_file": "phase4_refined_results.md",
+        "phase": "phase305",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Gold standard mapping for OPEN_RECORD"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": "asset",
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "CHAT",
+          "object_type": "asset",
+          "text": "I can help you open a asset. Try `show all assets`, `show recent assets`, or mention the name you want to open.",
+          "score": 0.95
+        }
+      },
+      "comparison": {
+        "row_id": "ufzhdq0pc5f80wdphn",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "asset",
+            "actual": "asset",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "OPEN_RECORD",
+            "actual": "ASK_CLARIFICATION",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "crm_query",
+            "actual": "none",
+            "match": false
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "l53nnx720dfqy6voin",
+        "user_input": "Can you Open record for Asset?",
+        "expected_object": "asset",
+        "expected_action": "OPEN_RECORD",
+        "expected_tool": "crm_query",
+        "expected_retrieval_needed": false,
+        "source_file": "phase4_refined_results.md",
+        "phase": "phase305",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Gold standard mapping for OPEN_RECORD"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": "asset",
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "CHAT",
+          "object_type": "asset",
+          "text": "I can help you open a asset. Try `show all assets`, `show recent assets`, or mention the name you want to open.",
+          "score": 0.95
+        }
+      },
+      "comparison": {
+        "row_id": "l53nnx720dfqy6voin",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "asset",
+            "actual": "asset",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "OPEN_RECORD",
+            "actual": "ASK_CLARIFICATION",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "crm_query",
+            "actual": "none",
+            "match": false
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "kgodwhn86uxlx89svb",
+        "user_input": "What's the status of the Asset?",
+        "expected_object": "asset",
+        "expected_action": "ASK_CLARIFICATION",
+        "expected_tool": "none",
+        "expected_retrieval_needed": false,
+        "source_file": "phase4_refined_results.md",
+        "phase": "phase305",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Gold standard mapping for ASK_CLARIFICATION"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": null,
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "direct_response",
+        "raw_output": {
+          "intent": "CHAT",
+          "is_suggestion": true,
+          "suggestion_prompt": "What's the status?",
+          "text": "I think you might want to **query** for **lead**. Is that correct? (Suggested: \"What's the status?\")",
+          "score": 0.65384614,
+          "options": [
+            {
+              "label": "Yes, do that",
+              "value": "What's the status?"
+            },
+            {
+              "label": "No, something else",
+              "value": "help"
+            }
+          ]
+        }
+      },
+      "comparison": {
+        "row_id": "kgodwhn86uxlx89svb",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "asset",
+            "actual": null,
+            "match": false
+          },
+          "expected_action": {
+            "expected": "ASK_CLARIFICATION",
+            "actual": "ASK_CLARIFICATION",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "none",
+            "actual": "none",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "03k0q633qgt5ymsssq",
+        "user_input": "Can you What's the status of the Asset??",
+        "expected_object": "asset",
+        "expected_action": "ASK_CLARIFICATION",
+        "expected_tool": "none",
+        "expected_retrieval_needed": false,
+        "source_file": "phase4_refined_results.md",
+        "phase": "phase305",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Gold standard mapping for ASK_CLARIFICATION"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": null,
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "direct_response",
+        "raw_output": {
+          "intent": "CHAT",
+          "is_suggestion": true,
+          "suggestion_prompt": "What's the status?",
+          "text": "I think you might want to **query** for **lead**. Is that correct? (Suggested: \"What's the status?\")",
+          "score": 0.5,
+          "options": [
+            {
+              "label": "Yes, do that",
+              "value": "What's the status?"
+            },
+            {
+              "label": "No, something else",
+              "value": "help"
+            }
+          ]
+        }
+      },
+      "comparison": {
+        "row_id": "03k0q633qgt5ymsssq",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "asset",
+            "actual": null,
+            "match": false
+          },
+          "expected_action": {
+            "expected": "ASK_CLARIFICATION",
+            "actual": "ASK_CLARIFICATION",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "none",
+            "actual": "none",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "i1ehyyammt4coawlpu",
+        "user_input": "Is the Asset done?",
+        "expected_object": "asset",
+        "expected_action": "ASK_CLARIFICATION",
+        "expected_tool": "none",
+        "expected_retrieval_needed": false,
+        "source_file": "phase4_refined_results.md",
+        "phase": "phase305",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Gold standard mapping for ASK_CLARIFICATION"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": null,
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "direct_response",
+        "raw_output": {
+          "intent": "CHAT",
+          "is_suggestion": true,
+          "suggestion_prompt": "Is it done?",
+          "text": "I think you might want to **query** for **lead**. Is that correct? (Suggested: \"Is it done?\")",
+          "score": 0.4,
+          "options": [
+            {
+              "label": "Yes, do that",
+              "value": "Is it done?"
+            },
+            {
+              "label": "No, something else",
+              "value": "help"
+            }
+          ]
+        }
+      },
+      "comparison": {
+        "row_id": "i1ehyyammt4coawlpu",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "asset",
+            "actual": null,
+            "match": false
+          },
+          "expected_action": {
+            "expected": "ASK_CLARIFICATION",
+            "actual": "ASK_CLARIFICATION",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "none",
+            "actual": "none",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "u1w71956z9qwfs3fh0",
+        "user_input": "Can you Is the Asset done??",
+        "expected_object": "asset",
+        "expected_action": "ASK_CLARIFICATION",
+        "expected_tool": "none",
+        "expected_retrieval_needed": false,
+        "source_file": "phase4_refined_results.md",
+        "phase": "phase305",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Gold standard mapping for ASK_CLARIFICATION"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": null,
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "direct_response",
+        "raw_output": {
+          "intent": "CHAT",
+          "is_suggestion": true,
+          "suggestion_prompt": "Can you Add a Asset?",
+          "text": "I think you might want to **open form** for **asset**. Is that correct? (Suggested: \"Can you Add a Asset?\")",
+          "score": 0.46666667,
+          "options": [
+            {
+              "label": "Yes, do that",
+              "value": "Can you Add a Asset?"
+            },
+            {
+              "label": "No, something else",
+              "value": "help"
+            }
+          ]
+        }
+      },
+      "comparison": {
+        "row_id": "u1w71956z9qwfs3fh0",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "asset",
+            "actual": null,
+            "match": false
+          },
+          "expected_action": {
+            "expected": "ASK_CLARIFICATION",
+            "actual": "ASK_CLARIFICATION",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "none",
+            "actual": "none",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "c2xud7beqoi4dveru5",
+        "user_input": "Next steps for this Asset",
+        "expected_object": "asset",
+        "expected_action": "RETRIEVE_AND_ANSWER",
+        "expected_tool": "vector_retrieval",
+        "expected_retrieval_needed": true,
+        "source_file": "phase4_refined_results.md",
+        "phase": "phase305",
+        "context": "",
+        "difficulty": "hard",
+        "notes": "Gold standard mapping for RETRIEVE_AND_ANSWER"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": null,
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "missing_response",
+        "raw_output": {
+          "intent": "CHAT",
+          "text": "Eval runner could not capture a runtime decision."
+        }
+      },
+      "comparison": {
+        "row_id": "c2xud7beqoi4dveru5",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "asset",
+            "actual": null,
+            "match": false
+          },
+          "expected_action": {
+            "expected": "RETRIEVE_AND_ANSWER",
+            "actual": "ASK_CLARIFICATION",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "vector_retrieval",
+            "actual": "none",
+            "match": false
+          },
+          "expected_retrieval_needed": {
+            "expected": true,
+            "actual": false,
+            "match": false
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "obfj28bpwafyj4ujlv",
+        "user_input": "Can you Next steps for this Asset?",
+        "expected_object": "asset",
+        "expected_action": "RETRIEVE_AND_ANSWER",
+        "expected_tool": "vector_retrieval",
+        "expected_retrieval_needed": true,
+        "source_file": "phase4_refined_results.md",
+        "phase": "phase305",
+        "context": "",
+        "difficulty": "hard",
+        "notes": "Gold standard mapping for RETRIEVE_AND_ANSWER"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": null,
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "missing_response",
+        "raw_output": {
+          "intent": "CHAT",
+          "text": "Eval runner could not capture a runtime decision."
+        }
+      },
+      "comparison": {
+        "row_id": "obfj28bpwafyj4ujlv",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "asset",
+            "actual": null,
+            "match": false
+          },
+          "expected_action": {
+            "expected": "RETRIEVE_AND_ANSWER",
+            "actual": "ASK_CLARIFICATION",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "vector_retrieval",
+            "actual": "none",
+            "match": false
+          },
+          "expected_retrieval_needed": {
+            "expected": true,
+            "actual": false,
+            "match": false
+          }
+        }
+      }
+    }
+  ]
+}

@@ -14,13 +14,14 @@ from web.backend.app.core.templates import templates
 from web.backend.app.core.toggles import FEATURE_TOGGLES
 from web.backend.app.utils.perf_diagnostics import RequestTimingMiddleware, diagnostics_enabled
 
-from db.database import engine, Base
+from db.database import engine, Base, initialize_database_runtime
 from db import models
 
 @asynccontextmanager
 async def lifespan(_: FastAPI):
     startup_started_at = time.perf_counter()
     Base.metadata.create_all(bind=engine)
+    initialize_database_runtime()
     if diagnostics_enabled():
         logger.info(
             "web_perf_startup component=lifespan_create_all duration_ms=%.2f",

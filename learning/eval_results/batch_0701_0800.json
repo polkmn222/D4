@@ -1,0 +1,6036 @@
+{
+  "generated_at": "2026-03-31T02:01:23.816048+00:00",
+  "dataset_path": "/var/folders/zg/z6kl4gjn3lj8l400kylykqm40000gp/T/tmp85j26ewn.jsonl",
+  "output_path": "learning/eval_results/batch_0701_0800.json",
+  "summary": {
+    "rows": 100,
+    "full_match_rows": 27,
+    "field_matches": {
+      "expected_object": 47,
+      "expected_action": 45,
+      "expected_tool": 55,
+      "expected_retrieval_needed": 76
+    }
+  },
+  "results": [
+    {
+      "dataset_row": {
+        "id": "x50mddjfpmbaxpfojx",
+        "user_input": "Show all Message Templates",
+        "expected_object": "message_template",
+        "expected_action": "QUERY",
+        "expected_tool": "crm_query",
+        "expected_retrieval_needed": false,
+        "source_file": "phase4_refined_results.md",
+        "phase": "phase305",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Gold standard mapping for QUERY"
+      },
+      "actual": {
+        "raw_intent": "QUERY",
+        "normalized_action": "QUERY",
+        "object_type": "message_template",
+        "tool": "crm_query",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "QUERY",
+          "object_type": "message_template",
+          "data": {},
+          "score": 1.0
+        }
+      },
+      "comparison": {
+        "row_id": "x50mddjfpmbaxpfojx",
+        "all_match": true,
+        "comparisons": {
+          "expected_object": {
+            "expected": "message_template",
+            "actual": "message_template",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "QUERY",
+            "actual": "QUERY",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "crm_query",
+            "actual": "crm_query",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "ddcigicxmtk08th6kn",
+        "user_input": "Can you Show all Message Templates?",
+        "expected_object": "message_template",
+        "expected_action": "QUERY",
+        "expected_tool": "crm_query",
+        "expected_retrieval_needed": false,
+        "source_file": "phase4_refined_results.md",
+        "phase": "phase305",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Gold standard mapping for QUERY"
+      },
+      "actual": {
+        "raw_intent": "QUERY",
+        "normalized_action": "QUERY",
+        "object_type": "message_template",
+        "tool": "crm_query",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "QUERY",
+          "object_type": "message_template",
+          "data": {},
+          "score": 1.0
+        }
+      },
+      "comparison": {
+        "row_id": "ddcigicxmtk08th6kn",
+        "all_match": true,
+        "comparisons": {
+          "expected_object": {
+            "expected": "message_template",
+            "actual": "message_template",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "QUERY",
+            "actual": "QUERY",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "crm_query",
+            "actual": "crm_query",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "0k8t8j6qdkq7alcnbb",
+        "user_input": "List Message Templates",
+        "expected_object": "message_template",
+        "expected_action": "QUERY",
+        "expected_tool": "crm_query",
+        "expected_retrieval_needed": false,
+        "source_file": "phase4_refined_results.md",
+        "phase": "phase305",
+        "context": "",
+        "difficulty": "easy",
+        "notes": "Gold standard mapping for QUERY"
+      },
+      "actual": {
+        "raw_intent": "QUERY",
+        "normalized_action": "QUERY",
+        "object_type": "message_template",
+        "tool": "crm_query",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "QUERY",
+          "object_type": "message_template",
+          "data": {},
+          "score": 1.0
+        }
+      },
+      "comparison": {
+        "row_id": "0k8t8j6qdkq7alcnbb",
+        "all_match": true,
+        "comparisons": {
+          "expected_object": {
+            "expected": "message_template",
+            "actual": "message_template",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "QUERY",
+            "actual": "QUERY",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "crm_query",
+            "actual": "crm_query",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "7ebd9ys3dbqcqlgong",
+        "user_input": "Can you List Message Templates?",
+        "expected_object": "message_template",
+        "expected_action": "QUERY",
+        "expected_tool": "crm_query",
+        "expected_retrieval_needed": false,
+        "source_file": "phase4_refined_results.md",
+        "phase": "phase305",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Gold standard mapping for QUERY"
+      },
+      "actual": {
+        "raw_intent": "QUERY",
+        "normalized_action": "QUERY",
+        "object_type": "message_template",
+        "tool": "crm_query",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "QUERY",
+          "object_type": "message_template",
+          "data": {},
+          "score": 1.0
+        }
+      },
+      "comparison": {
+        "row_id": "7ebd9ys3dbqcqlgong",
+        "all_match": true,
+        "comparisons": {
+          "expected_object": {
+            "expected": "message_template",
+            "actual": "message_template",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "QUERY",
+            "actual": "QUERY",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "crm_query",
+            "actual": "crm_query",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "6vj5a34a495umcbiiq",
+        "user_input": "View recent Message Templates",
+        "expected_object": "message_template",
+        "expected_action": "ASK_CLARIFICATION",
+        "expected_tool": "none",
+        "expected_retrieval_needed": false,
+        "source_file": "phase4_refined_results.md",
+        "phase": "phase305",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Gold standard mapping for ASK_CLARIFICATION"
+      },
+      "actual": {
+        "raw_intent": "QUERY",
+        "normalized_action": "QUERY",
+        "object_type": "message_template",
+        "tool": "crm_query",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "QUERY",
+          "object_type": "message_template",
+          "data": {
+            "query_mode": "recent"
+          },
+          "score": 1.0
+        }
+      },
+      "comparison": {
+        "row_id": "6vj5a34a495umcbiiq",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "message_template",
+            "actual": "message_template",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "ASK_CLARIFICATION",
+            "actual": "QUERY",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "none",
+            "actual": "crm_query",
+            "match": false
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "qh89ex47vufsqwj3bn",
+        "user_input": "Can you View recent Message Templates?",
+        "expected_object": "message_template",
+        "expected_action": "ASK_CLARIFICATION",
+        "expected_tool": "none",
+        "expected_retrieval_needed": false,
+        "source_file": "phase4_refined_results.md",
+        "phase": "phase305",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Gold standard mapping for ASK_CLARIFICATION"
+      },
+      "actual": {
+        "raw_intent": "QUERY",
+        "normalized_action": "QUERY",
+        "object_type": "message_template",
+        "tool": "crm_query",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "QUERY",
+          "object_type": "message_template",
+          "data": {
+            "query_mode": "recent"
+          },
+          "score": 1.0
+        }
+      },
+      "comparison": {
+        "row_id": "qh89ex47vufsqwj3bn",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "message_template",
+            "actual": "message_template",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "ASK_CLARIFICATION",
+            "actual": "QUERY",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "none",
+            "actual": "crm_query",
+            "match": false
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "0041jccrxkih7wt7vk",
+        "user_input": "Find a Message Template",
+        "expected_object": "message_template",
+        "expected_action": "QUERY",
+        "expected_tool": "crm_query",
+        "expected_retrieval_needed": false,
+        "source_file": "phase4_refined_results.md",
+        "phase": "phase305",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Gold standard mapping for QUERY"
+      },
+      "actual": {
+        "raw_intent": "OPEN_FORM",
+        "normalized_action": "OPEN_FORM",
+        "object_type": "message_template",
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "id": "000LJrEBrh7wU9zYGE",
+          "prompt": "Add a Message Template",
+          "intent": "OPEN_FORM",
+          "object_type": "message_template",
+          "score": 0.7037037,
+          "form_url": "/message_templates/new-modal",
+          "text": "I've opened the new message_template form for you below."
+        }
+      },
+      "comparison": {
+        "row_id": "0041jccrxkih7wt7vk",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "message_template",
+            "actual": "message_template",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "QUERY",
+            "actual": "OPEN_FORM",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "crm_query",
+            "actual": "none",
+            "match": false
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "vvaajp5w0kkiingw1u",
+        "user_input": "Can you Find a Message Template?",
+        "expected_object": "message_template",
+        "expected_action": "QUERY",
+        "expected_tool": "crm_query",
+        "expected_retrieval_needed": false,
+        "source_file": "phase4_refined_results.md",
+        "phase": "phase305",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Gold standard mapping for QUERY"
+      },
+      "actual": {
+        "raw_intent": "OPEN_FORM",
+        "normalized_action": "OPEN_FORM",
+        "object_type": "message_template",
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "id": "000a3rkn2hRNtL3AAL",
+          "prompt": "Can you Add a Message Template?",
+          "intent": "OPEN_FORM",
+          "object_type": "message_template",
+          "score": 0.7714286,
+          "form_url": "/message_templates/new-modal",
+          "text": "I've opened the new message_template form for you below."
+        }
+      },
+      "comparison": {
+        "row_id": "vvaajp5w0kkiingw1u",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "message_template",
+            "actual": "message_template",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "QUERY",
+            "actual": "OPEN_FORM",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "crm_query",
+            "actual": "none",
+            "match": false
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "evudgazcklxio2rz0n",
+        "user_input": "Search for Message Template",
+        "expected_object": "message_template",
+        "expected_action": "QUERY",
+        "expected_tool": "crm_query",
+        "expected_retrieval_needed": false,
+        "source_file": "phase4_refined_results.md",
+        "phase": "phase305",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Gold standard mapping for QUERY"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": null,
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "direct_response",
+        "raw_output": {
+          "intent": "CHAT",
+          "is_suggestion": true,
+          "suggestion_prompt": "Add a Message Template",
+          "text": "I think you might want to **open form** for **message_template**. Is that correct? (Suggested: \"Add a Message Template\")",
+          "score": 0.5151515,
+          "options": [
+            {
+              "label": "Yes, do that",
+              "value": "Add a Message Template"
+            },
+            {
+              "label": "No, something else",
+              "value": "help"
+            }
+          ]
+        }
+      },
+      "comparison": {
+        "row_id": "evudgazcklxio2rz0n",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "message_template",
+            "actual": null,
+            "match": false
+          },
+          "expected_action": {
+            "expected": "QUERY",
+            "actual": "ASK_CLARIFICATION",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "crm_query",
+            "actual": "none",
+            "match": false
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "jet45up2drwna6y8ij",
+        "user_input": "Can you Search for Message Template?",
+        "expected_object": "message_template",
+        "expected_action": "QUERY",
+        "expected_tool": "crm_query",
+        "expected_retrieval_needed": false,
+        "source_file": "phase4_refined_results.md",
+        "phase": "phase305",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Gold standard mapping for QUERY"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": null,
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "direct_response",
+        "raw_output": {
+          "intent": "CHAT",
+          "is_suggestion": true,
+          "suggestion_prompt": "Can you Add a Message Template?",
+          "text": "I think you might want to **open form** for **message_template**. Is that correct? (Suggested: \"Can you Add a Message Template?\")",
+          "score": 0.6097561,
+          "options": [
+            {
+              "label": "Yes, do that",
+              "value": "Can you Add a Message Template?"
+            },
+            {
+              "label": "No, something else",
+              "value": "help"
+            }
+          ]
+        }
+      },
+      "comparison": {
+        "row_id": "jet45up2drwna6y8ij",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "message_template",
+            "actual": null,
+            "match": false
+          },
+          "expected_action": {
+            "expected": "QUERY",
+            "actual": "ASK_CLARIFICATION",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "crm_query",
+            "actual": "none",
+            "match": false
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "yapjvishi3wga501ft",
+        "user_input": "Create new Message Template",
+        "expected_object": "message_template",
+        "expected_action": "OPEN_FORM",
+        "expected_tool": "none",
+        "expected_retrieval_needed": false,
+        "source_file": "phase4_refined_results.md",
+        "phase": "phase305",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Gold standard mapping for OPEN_FORM"
+      },
+      "actual": {
+        "raw_intent": "OPEN_FORM",
+        "normalized_action": "OPEN_FORM",
+        "object_type": "message_template",
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "direct_response",
+        "raw_output": {
+          "intent": "OPEN_FORM",
+          "object_type": "message_template",
+          "form_url": "/message_templates/new-modal",
+          "form_title": "Create Message Template",
+          "form_kind": "message_template_create",
+          "text": "I've opened the new message template form for you below.",
+          "score": 1.0
+        }
+      },
+      "comparison": {
+        "row_id": "yapjvishi3wga501ft",
+        "all_match": true,
+        "comparisons": {
+          "expected_object": {
+            "expected": "message_template",
+            "actual": "message_template",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "OPEN_FORM",
+            "actual": "OPEN_FORM",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "none",
+            "actual": "none",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "k9wckk668vh2kuzy39",
+        "user_input": "Can you Create new Message Template?",
+        "expected_object": "message_template",
+        "expected_action": "OPEN_FORM",
+        "expected_tool": "none",
+        "expected_retrieval_needed": false,
+        "source_file": "phase4_refined_results.md",
+        "phase": "phase305",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Gold standard mapping for OPEN_FORM"
+      },
+      "actual": {
+        "raw_intent": "OPEN_FORM",
+        "normalized_action": "OPEN_FORM",
+        "object_type": "message_template",
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "direct_response",
+        "raw_output": {
+          "intent": "OPEN_FORM",
+          "object_type": "message_template",
+          "form_url": "/message_templates/new-modal",
+          "form_title": "Create Message Template",
+          "form_kind": "message_template_create",
+          "text": "I've opened the new message template form for you below.",
+          "score": 1.0
+        }
+      },
+      "comparison": {
+        "row_id": "k9wckk668vh2kuzy39",
+        "all_match": true,
+        "comparisons": {
+          "expected_object": {
+            "expected": "message_template",
+            "actual": "message_template",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "OPEN_FORM",
+            "actual": "OPEN_FORM",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "none",
+            "actual": "none",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "6j4jiq2rsg0ut1re5w",
+        "user_input": "Add a Message Template",
+        "expected_object": "message_template",
+        "expected_action": "OPEN_FORM",
+        "expected_tool": "none",
+        "expected_retrieval_needed": false,
+        "source_file": "phase4_refined_results.md",
+        "phase": "phase305",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Gold standard mapping for OPEN_FORM"
+      },
+      "actual": {
+        "raw_intent": "OPEN_FORM",
+        "normalized_action": "OPEN_FORM",
+        "object_type": "message_template",
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "direct_response",
+        "raw_output": {
+          "intent": "OPEN_FORM",
+          "object_type": "message_template",
+          "form_url": "/message_templates/new-modal",
+          "form_title": "Create Message Template",
+          "form_kind": "message_template_create",
+          "text": "I've opened the new message template form for you below.",
+          "score": 1.0
+        }
+      },
+      "comparison": {
+        "row_id": "6j4jiq2rsg0ut1re5w",
+        "all_match": true,
+        "comparisons": {
+          "expected_object": {
+            "expected": "message_template",
+            "actual": "message_template",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "OPEN_FORM",
+            "actual": "OPEN_FORM",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "none",
+            "actual": "none",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "p8lzko3v71cj5inxnn",
+        "user_input": "Can you Add a Message Template?",
+        "expected_object": "message_template",
+        "expected_action": "OPEN_FORM",
+        "expected_tool": "none",
+        "expected_retrieval_needed": false,
+        "source_file": "phase4_refined_results.md",
+        "phase": "phase305",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Gold standard mapping for OPEN_FORM"
+      },
+      "actual": {
+        "raw_intent": "OPEN_FORM",
+        "normalized_action": "OPEN_FORM",
+        "object_type": "message_template",
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "direct_response",
+        "raw_output": {
+          "intent": "OPEN_FORM",
+          "object_type": "message_template",
+          "form_url": "/message_templates/new-modal",
+          "form_title": "Create Message Template",
+          "form_kind": "message_template_create",
+          "text": "I've opened the new message template form for you below.",
+          "score": 1.0
+        }
+      },
+      "comparison": {
+        "row_id": "p8lzko3v71cj5inxnn",
+        "all_match": true,
+        "comparisons": {
+          "expected_object": {
+            "expected": "message_template",
+            "actual": "message_template",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "OPEN_FORM",
+            "actual": "OPEN_FORM",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "none",
+            "actual": "none",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "zrbyxltv37qku6v2cq",
+        "user_input": "Open Message Template form",
+        "expected_object": "message_template",
+        "expected_action": "ASK_CLARIFICATION",
+        "expected_tool": "none",
+        "expected_retrieval_needed": false,
+        "source_file": "phase4_refined_results.md",
+        "phase": "phase305",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Gold standard mapping for ASK_CLARIFICATION"
+      },
+      "actual": {
+        "raw_intent": "MANAGE",
+        "normalized_action": "OPEN_RECORD",
+        "object_type": "message_template",
+        "tool": "crm_query",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "MANAGE",
+          "object_type": "message_template",
+          "record_id": "form",
+          "score": 1.0,
+          "language_preference": "eng"
+        }
+      },
+      "comparison": {
+        "row_id": "zrbyxltv37qku6v2cq",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "message_template",
+            "actual": "message_template",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "ASK_CLARIFICATION",
+            "actual": "OPEN_RECORD",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "none",
+            "actual": "crm_query",
+            "match": false
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "w987evdu7li59hoxlo",
+        "user_input": "Can you Open Message Template form?",
+        "expected_object": "message_template",
+        "expected_action": "ASK_CLARIFICATION",
+        "expected_tool": "none",
+        "expected_retrieval_needed": false,
+        "source_file": "phase4_refined_results.md",
+        "phase": "phase305",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Gold standard mapping for ASK_CLARIFICATION"
+      },
+      "actual": {
+        "raw_intent": "MANAGE",
+        "normalized_action": "OPEN_RECORD",
+        "object_type": "message_template",
+        "tool": "crm_query",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "MANAGE",
+          "object_type": "message_template",
+          "record_id": "form",
+          "score": 1.0,
+          "language_preference": "eng"
+        }
+      },
+      "comparison": {
+        "row_id": "w987evdu7li59hoxlo",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "message_template",
+            "actual": "message_template",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "ASK_CLARIFICATION",
+            "actual": "OPEN_RECORD",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "none",
+            "actual": "crm_query",
+            "match": false
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "k2e9me59cwb3791uup",
+        "user_input": "I want to create a Message Template",
+        "expected_object": "message_template",
+        "expected_action": "OPEN_FORM",
+        "expected_tool": "none",
+        "expected_retrieval_needed": false,
+        "source_file": "phase4_refined_results.md",
+        "phase": "phase305",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Gold standard mapping for OPEN_FORM"
+      },
+      "actual": {
+        "raw_intent": "OPEN_FORM",
+        "normalized_action": "OPEN_FORM",
+        "object_type": "message_template",
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "direct_response",
+        "raw_output": {
+          "intent": "OPEN_FORM",
+          "object_type": "message_template",
+          "form_url": "/message_templates/new-modal",
+          "form_title": "Create Message Template",
+          "form_kind": "message_template_create",
+          "text": "I've opened the new message template form for you below.",
+          "score": 1.0
+        }
+      },
+      "comparison": {
+        "row_id": "k2e9me59cwb3791uup",
+        "all_match": true,
+        "comparisons": {
+          "expected_object": {
+            "expected": "message_template",
+            "actual": "message_template",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "OPEN_FORM",
+            "actual": "OPEN_FORM",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "none",
+            "actual": "none",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "7xcy7j769viiobydi1",
+        "user_input": "Can you I want to create a Message Template?",
+        "expected_object": "message_template",
+        "expected_action": "OPEN_FORM",
+        "expected_tool": "none",
+        "expected_retrieval_needed": false,
+        "source_file": "phase4_refined_results.md",
+        "phase": "phase305",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Gold standard mapping for OPEN_FORM"
+      },
+      "actual": {
+        "raw_intent": "OPEN_FORM",
+        "normalized_action": "OPEN_FORM",
+        "object_type": "message_template",
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "direct_response",
+        "raw_output": {
+          "intent": "OPEN_FORM",
+          "object_type": "message_template",
+          "form_url": "/message_templates/new-modal",
+          "form_title": "Create Message Template",
+          "form_kind": "message_template_create",
+          "text": "I've opened the new message template form for you below.",
+          "score": 1.0
+        }
+      },
+      "comparison": {
+        "row_id": "7xcy7j769viiobydi1",
+        "all_match": true,
+        "comparisons": {
+          "expected_object": {
+            "expected": "message_template",
+            "actual": "message_template",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "OPEN_FORM",
+            "actual": "OPEN_FORM",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "none",
+            "actual": "none",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "dgudw3zmk31ey6jv6p",
+        "user_input": "Show me Message Template table",
+        "expected_object": "message_template",
+        "expected_action": "QUERY",
+        "expected_tool": "crm_query",
+        "expected_retrieval_needed": false,
+        "source_file": "phase4_refined_results.md",
+        "phase": "phase305",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Gold standard mapping for QUERY"
+      },
+      "actual": {
+        "raw_intent": "MANAGE",
+        "normalized_action": "OPEN_RECORD",
+        "object_type": "message_template",
+        "tool": "crm_query",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "MANAGE",
+          "object_type": "message_template",
+          "record_id": "table",
+          "score": 1.0,
+          "language_preference": "eng"
+        }
+      },
+      "comparison": {
+        "row_id": "dgudw3zmk31ey6jv6p",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "message_template",
+            "actual": "message_template",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "QUERY",
+            "actual": "OPEN_RECORD",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "crm_query",
+            "actual": "crm_query",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "7r4xd7v62q0qo0lh2x",
+        "user_input": "Can you Show me Message Template table?",
+        "expected_object": "message_template",
+        "expected_action": "QUERY",
+        "expected_tool": "crm_query",
+        "expected_retrieval_needed": false,
+        "source_file": "phase4_refined_results.md",
+        "phase": "phase305",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Gold standard mapping for QUERY"
+      },
+      "actual": {
+        "raw_intent": "MANAGE",
+        "normalized_action": "OPEN_RECORD",
+        "object_type": "message_template",
+        "tool": "crm_query",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "MANAGE",
+          "object_type": "message_template",
+          "record_id": "table",
+          "score": 1.0,
+          "language_preference": "eng"
+        }
+      },
+      "comparison": {
+        "row_id": "7r4xd7v62q0qo0lh2x",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "message_template",
+            "actual": "message_template",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "QUERY",
+            "actual": "OPEN_RECORD",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "crm_query",
+            "actual": "crm_query",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "xy5smw2y856zc3ocmc",
+        "user_input": "Open Message Template list",
+        "expected_object": "message_template",
+        "expected_action": "QUERY",
+        "expected_tool": "crm_query",
+        "expected_retrieval_needed": false,
+        "source_file": "phase4_refined_results.md",
+        "phase": "phase305",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Gold standard mapping for QUERY"
+      },
+      "actual": {
+        "raw_intent": "QUERY",
+        "normalized_action": "QUERY",
+        "object_type": "message_template",
+        "tool": "crm_query",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "QUERY",
+          "object_type": "message_template",
+          "data": {},
+          "score": 1.0
+        }
+      },
+      "comparison": {
+        "row_id": "xy5smw2y856zc3ocmc",
+        "all_match": true,
+        "comparisons": {
+          "expected_object": {
+            "expected": "message_template",
+            "actual": "message_template",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "QUERY",
+            "actual": "QUERY",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "crm_query",
+            "actual": "crm_query",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "ypbme5z7y9kvqcnws9",
+        "user_input": "Can you Open Message Template list?",
+        "expected_object": "message_template",
+        "expected_action": "QUERY",
+        "expected_tool": "crm_query",
+        "expected_retrieval_needed": false,
+        "source_file": "phase4_refined_results.md",
+        "phase": "phase305",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Gold standard mapping for QUERY"
+      },
+      "actual": {
+        "raw_intent": "QUERY",
+        "normalized_action": "QUERY",
+        "object_type": "message_template",
+        "tool": "crm_query",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "QUERY",
+          "object_type": "message_template",
+          "data": {},
+          "score": 1.0
+        }
+      },
+      "comparison": {
+        "row_id": "ypbme5z7y9kvqcnws9",
+        "all_match": true,
+        "comparisons": {
+          "expected_object": {
+            "expected": "message_template",
+            "actual": "message_template",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "QUERY",
+            "actual": "QUERY",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "crm_query",
+            "actual": "crm_query",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "69cad5pw7e3pfdmabd",
+        "user_input": "Find the latest Message Template",
+        "expected_object": "message_template",
+        "expected_action": "OPEN_RECORD",
+        "expected_tool": "crm_query",
+        "expected_retrieval_needed": false,
+        "source_file": "phase4_refined_results.md",
+        "phase": "phase305",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Gold standard mapping for OPEN_RECORD"
+      },
+      "actual": {
+        "raw_intent": "QUERY",
+        "normalized_action": "QUERY",
+        "object_type": "message_template",
+        "tool": "crm_query",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "QUERY",
+          "object_type": "message_template",
+          "data": {
+            "query_mode": "recent"
+          },
+          "score": 1.0
+        }
+      },
+      "comparison": {
+        "row_id": "69cad5pw7e3pfdmabd",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "message_template",
+            "actual": "message_template",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "OPEN_RECORD",
+            "actual": "QUERY",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "crm_query",
+            "actual": "crm_query",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "zhob26haekn75kllgf",
+        "user_input": "Can you Find the latest Message Template?",
+        "expected_object": "message_template",
+        "expected_action": "OPEN_RECORD",
+        "expected_tool": "crm_query",
+        "expected_retrieval_needed": false,
+        "source_file": "phase4_refined_results.md",
+        "phase": "phase305",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Gold standard mapping for OPEN_RECORD"
+      },
+      "actual": {
+        "raw_intent": "QUERY",
+        "normalized_action": "QUERY",
+        "object_type": "message_template",
+        "tool": "crm_query",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "QUERY",
+          "object_type": "message_template",
+          "data": {
+            "query_mode": "recent"
+          },
+          "score": 1.0
+        }
+      },
+      "comparison": {
+        "row_id": "zhob26haekn75kllgf",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "message_template",
+            "actual": "message_template",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "OPEN_RECORD",
+            "actual": "QUERY",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "crm_query",
+            "actual": "crm_query",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "x2tm5d9ys03x0u3upt",
+        "user_input": "Who is the last Message Template?",
+        "expected_object": "message_template",
+        "expected_action": "OPEN_RECORD",
+        "expected_tool": "crm_query",
+        "expected_retrieval_needed": false,
+        "source_file": "phase4_refined_results.md",
+        "phase": "phase305",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Gold standard mapping for OPEN_RECORD"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": null,
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "direct_response",
+        "raw_output": {
+          "intent": "CHAT",
+          "is_suggestion": true,
+          "suggestion_prompt": "Add a Message Template",
+          "text": "I think you might want to **open form** for **message_template**. Is that correct? (Suggested: \"Add a Message Template\")",
+          "score": 0.45945945,
+          "options": [
+            {
+              "label": "Yes, do that",
+              "value": "Add a Message Template"
+            },
+            {
+              "label": "No, something else",
+              "value": "help"
+            }
+          ]
+        }
+      },
+      "comparison": {
+        "row_id": "x2tm5d9ys03x0u3upt",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "message_template",
+            "actual": null,
+            "match": false
+          },
+          "expected_action": {
+            "expected": "OPEN_RECORD",
+            "actual": "ASK_CLARIFICATION",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "crm_query",
+            "actual": "none",
+            "match": false
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "klqkzn36oxthr9lcud",
+        "user_input": "Can you Who is the last Message Template??",
+        "expected_object": "message_template",
+        "expected_action": "OPEN_RECORD",
+        "expected_tool": "crm_query",
+        "expected_retrieval_needed": false,
+        "source_file": "phase4_refined_results.md",
+        "phase": "phase305",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Gold standard mapping for OPEN_RECORD"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": null,
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "direct_response",
+        "raw_output": {
+          "intent": "CHAT",
+          "is_suggestion": true,
+          "suggestion_prompt": "Can you Add a Message Template?",
+          "text": "I think you might want to **open form** for **message_template**. Is that correct? (Suggested: \"Can you Add a Message Template?\")",
+          "score": 0.5555556,
+          "options": [
+            {
+              "label": "Yes, do that",
+              "value": "Can you Add a Message Template?"
+            },
+            {
+              "label": "No, something else",
+              "value": "help"
+            }
+          ]
+        }
+      },
+      "comparison": {
+        "row_id": "klqkzn36oxthr9lcud",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "message_template",
+            "actual": null,
+            "match": false
+          },
+          "expected_action": {
+            "expected": "OPEN_RECORD",
+            "actual": "ASK_CLARIFICATION",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "crm_query",
+            "actual": "none",
+            "match": false
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "8fnl1g3wymjqt9p51q",
+        "user_input": "Show Message Template from today",
+        "expected_object": "message_template",
+        "expected_action": "QUERY",
+        "expected_tool": "crm_query",
+        "expected_retrieval_needed": false,
+        "source_file": "phase4_refined_results.md",
+        "phase": "phase305",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Gold standard mapping for QUERY"
+      },
+      "actual": {
+        "raw_intent": "MANAGE",
+        "normalized_action": "OPEN_RECORD",
+        "object_type": "message_template",
+        "tool": "crm_query",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "MANAGE",
+          "object_type": "message_template",
+          "record_id": "from",
+          "score": 1.0,
+          "language_preference": "eng"
+        }
+      },
+      "comparison": {
+        "row_id": "8fnl1g3wymjqt9p51q",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "message_template",
+            "actual": "message_template",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "QUERY",
+            "actual": "OPEN_RECORD",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "crm_query",
+            "actual": "crm_query",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "66sye4fvflwfvg9603",
+        "user_input": "Can you Show Message Template from today?",
+        "expected_object": "message_template",
+        "expected_action": "QUERY",
+        "expected_tool": "crm_query",
+        "expected_retrieval_needed": false,
+        "source_file": "phase4_refined_results.md",
+        "phase": "phase305",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Gold standard mapping for QUERY"
+      },
+      "actual": {
+        "raw_intent": "MANAGE",
+        "normalized_action": "OPEN_RECORD",
+        "object_type": "message_template",
+        "tool": "crm_query",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "MANAGE",
+          "object_type": "message_template",
+          "record_id": "from",
+          "score": 1.0,
+          "language_preference": "eng"
+        }
+      },
+      "comparison": {
+        "row_id": "66sye4fvflwfvg9603",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "message_template",
+            "actual": "message_template",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "QUERY",
+            "actual": "OPEN_RECORD",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "crm_query",
+            "actual": "crm_query",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "tjfgbkfano7h3hs6ai",
+        "user_input": "Any new Message Templates?",
+        "expected_object": "message_template",
+        "expected_action": "OPEN_FORM",
+        "expected_tool": "none",
+        "expected_retrieval_needed": false,
+        "source_file": "phase4_refined_results.md",
+        "phase": "phase305",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Gold standard mapping for OPEN_FORM"
+      },
+      "actual": {
+        "raw_intent": "OPEN_FORM",
+        "normalized_action": "OPEN_FORM",
+        "object_type": "message_template",
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "direct_response",
+        "raw_output": {
+          "intent": "OPEN_FORM",
+          "object_type": "message_template",
+          "form_url": "/message_templates/new-modal",
+          "form_title": "Create Message Template",
+          "form_kind": "message_template_create",
+          "text": "I've opened the new message template form for you below.",
+          "score": 1.0
+        }
+      },
+      "comparison": {
+        "row_id": "tjfgbkfano7h3hs6ai",
+        "all_match": true,
+        "comparisons": {
+          "expected_object": {
+            "expected": "message_template",
+            "actual": "message_template",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "OPEN_FORM",
+            "actual": "OPEN_FORM",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "none",
+            "actual": "none",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "zx9g6bhf0fgb69i3ca",
+        "user_input": "Can you Any new Message Templates??",
+        "expected_object": "message_template",
+        "expected_action": "OPEN_FORM",
+        "expected_tool": "none",
+        "expected_retrieval_needed": false,
+        "source_file": "phase4_refined_results.md",
+        "phase": "phase305",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Gold standard mapping for OPEN_FORM"
+      },
+      "actual": {
+        "raw_intent": "OPEN_FORM",
+        "normalized_action": "OPEN_FORM",
+        "object_type": "message_template",
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "direct_response",
+        "raw_output": {
+          "intent": "OPEN_FORM",
+          "object_type": "message_template",
+          "form_url": "/message_templates/new-modal",
+          "form_title": "Create Message Template",
+          "form_kind": "message_template_create",
+          "text": "I've opened the new message template form for you below.",
+          "score": 1.0
+        }
+      },
+      "comparison": {
+        "row_id": "zx9g6bhf0fgb69i3ca",
+        "all_match": true,
+        "comparisons": {
+          "expected_object": {
+            "expected": "message_template",
+            "actual": "message_template",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "OPEN_FORM",
+            "actual": "OPEN_FORM",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "none",
+            "actual": "none",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "nll0uwwx4nuopckgrw",
+        "user_input": "Pull Message Template data",
+        "expected_object": "message_template",
+        "expected_action": "QUERY",
+        "expected_tool": "crm_query",
+        "expected_retrieval_needed": false,
+        "source_file": "phase4_refined_results.md",
+        "phase": "phase305",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Gold standard mapping for QUERY"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": null,
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "direct_response",
+        "raw_output": {
+          "intent": "CHAT",
+          "is_suggestion": true,
+          "suggestion_prompt": "Add a Message Template",
+          "text": "I think you might want to **open form** for **message_template**. Is that correct? (Suggested: \"Add a Message Template\")",
+          "score": 0.53125,
+          "options": [
+            {
+              "label": "Yes, do that",
+              "value": "Add a Message Template"
+            },
+            {
+              "label": "No, something else",
+              "value": "help"
+            }
+          ]
+        }
+      },
+      "comparison": {
+        "row_id": "nll0uwwx4nuopckgrw",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "message_template",
+            "actual": null,
+            "match": false
+          },
+          "expected_action": {
+            "expected": "QUERY",
+            "actual": "ASK_CLARIFICATION",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "crm_query",
+            "actual": "none",
+            "match": false
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "41h679e3ny7sr8zitc",
+        "user_input": "Can you Pull Message Template data?",
+        "expected_object": "message_template",
+        "expected_action": "QUERY",
+        "expected_tool": "crm_query",
+        "expected_retrieval_needed": false,
+        "source_file": "phase4_refined_results.md",
+        "phase": "phase305",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Gold standard mapping for QUERY"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": null,
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "direct_response",
+        "raw_output": {
+          "intent": "CHAT",
+          "is_suggestion": true,
+          "suggestion_prompt": "Can you Add a Message Template?",
+          "text": "I think you might want to **open form** for **message_template**. Is that correct? (Suggested: \"Can you Add a Message Template?\")",
+          "score": 0.625,
+          "options": [
+            {
+              "label": "Yes, do that",
+              "value": "Can you Add a Message Template?"
+            },
+            {
+              "label": "No, something else",
+              "value": "help"
+            }
+          ]
+        }
+      },
+      "comparison": {
+        "row_id": "41h679e3ny7sr8zitc",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "message_template",
+            "actual": null,
+            "match": false
+          },
+          "expected_action": {
+            "expected": "QUERY",
+            "actual": "ASK_CLARIFICATION",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "crm_query",
+            "actual": "none",
+            "match": false
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "qm553jfrozf8qxl4gl",
+        "user_input": "Manage Message Templates",
+        "expected_object": "message_template",
+        "expected_action": "ASK_CLARIFICATION",
+        "expected_tool": "none",
+        "expected_retrieval_needed": false,
+        "source_file": "phase4_refined_results.md",
+        "phase": "phase305",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Gold standard mapping for ASK_CLARIFICATION"
+      },
+      "actual": {
+        "raw_intent": "MANAGE",
+        "normalized_action": "OPEN_RECORD",
+        "object_type": "message",
+        "tool": "crm_query",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "MANAGE",
+          "object_type": "message",
+          "record_id": "Templates",
+          "score": 1.0,
+          "language_preference": "eng"
+        }
+      },
+      "comparison": {
+        "row_id": "qm553jfrozf8qxl4gl",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "message_template",
+            "actual": "message",
+            "match": false
+          },
+          "expected_action": {
+            "expected": "ASK_CLARIFICATION",
+            "actual": "OPEN_RECORD",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "none",
+            "actual": "crm_query",
+            "match": false
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "g99fiu3jk85cbrz4h7",
+        "user_input": "Can you Manage Message Templates?",
+        "expected_object": "message_template",
+        "expected_action": "ASK_CLARIFICATION",
+        "expected_tool": "none",
+        "expected_retrieval_needed": false,
+        "source_file": "phase4_refined_results.md",
+        "phase": "phase305",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Gold standard mapping for ASK_CLARIFICATION"
+      },
+      "actual": {
+        "raw_intent": "MANAGE",
+        "normalized_action": "OPEN_RECORD",
+        "object_type": "message",
+        "tool": "crm_query",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "MANAGE",
+          "object_type": "message",
+          "record_id": "Templates",
+          "score": 1.0,
+          "language_preference": "eng"
+        }
+      },
+      "comparison": {
+        "row_id": "g99fiu3jk85cbrz4h7",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "message_template",
+            "actual": "message",
+            "match": false
+          },
+          "expected_action": {
+            "expected": "ASK_CLARIFICATION",
+            "actual": "OPEN_RECORD",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "none",
+            "actual": "crm_query",
+            "match": false
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "5tjoxqp953vla8e2jp",
+        "user_input": "Edit latest Message Template",
+        "expected_object": "message_template",
+        "expected_action": "OPEN_RECORD",
+        "expected_tool": "crm_query",
+        "expected_retrieval_needed": false,
+        "source_file": "phase4_refined_results.md",
+        "phase": "phase305",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Gold standard mapping for OPEN_RECORD"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": null,
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "direct_response",
+        "raw_output": {
+          "intent": "CHAT",
+          "object_type": null,
+          "text": "I need a recent record list first. Try `show recent records` or `show all contacts`, then tell me which one to open or edit.",
+          "score": 1.0
+        }
+      },
+      "comparison": {
+        "row_id": "5tjoxqp953vla8e2jp",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "message_template",
+            "actual": null,
+            "match": false
+          },
+          "expected_action": {
+            "expected": "OPEN_RECORD",
+            "actual": "ASK_CLARIFICATION",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "crm_query",
+            "actual": "none",
+            "match": false
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "gtzhopuof9rt7tm6ye",
+        "user_input": "Can you Edit latest Message Template?",
+        "expected_object": "message_template",
+        "expected_action": "OPEN_RECORD",
+        "expected_tool": "crm_query",
+        "expected_retrieval_needed": false,
+        "source_file": "phase4_refined_results.md",
+        "phase": "phase305",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Gold standard mapping for OPEN_RECORD"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": null,
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "direct_response",
+        "raw_output": {
+          "intent": "CHAT",
+          "object_type": null,
+          "text": "I need a recent record list first. Try `show recent records` or `show all contacts`, then tell me which one to open or edit.",
+          "score": 1.0
+        }
+      },
+      "comparison": {
+        "row_id": "gtzhopuof9rt7tm6ye",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "message_template",
+            "actual": null,
+            "match": false
+          },
+          "expected_action": {
+            "expected": "OPEN_RECORD",
+            "actual": "ASK_CLARIFICATION",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "crm_query",
+            "actual": "none",
+            "match": false
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "mue1soi0xx22f85bmv",
+        "user_input": "Update Message Template status",
+        "expected_object": "message_template",
+        "expected_action": "UPDATE",
+        "expected_tool": "crm_write",
+        "expected_retrieval_needed": false,
+        "source_file": "phase4_refined_results.md",
+        "phase": "phase305",
+        "context": "",
+        "difficulty": "hard",
+        "notes": "Gold standard mapping for UPDATE"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": "message_template",
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "direct_response",
+        "raw_output": {
+          "intent": "CHAT",
+          "object_type": "message_template",
+          "text": "I can update that message_template, but I need the record ID first.",
+          "score": 1.0
+        }
+      },
+      "comparison": {
+        "row_id": "mue1soi0xx22f85bmv",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "message_template",
+            "actual": "message_template",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "UPDATE",
+            "actual": "ASK_CLARIFICATION",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "crm_write",
+            "actual": "none",
+            "match": false
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "yn98nbs0rfdae98s0h",
+        "user_input": "Can you Update Message Template status?",
+        "expected_object": "message_template",
+        "expected_action": "UPDATE",
+        "expected_tool": "crm_write",
+        "expected_retrieval_needed": false,
+        "source_file": "phase4_refined_results.md",
+        "phase": "phase305",
+        "context": "",
+        "difficulty": "hard",
+        "notes": "Gold standard mapping for UPDATE"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": "message_template",
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "direct_response",
+        "raw_output": {
+          "intent": "CHAT",
+          "object_type": "message_template",
+          "text": "I can update that message_template, but I need the record ID first.",
+          "score": 1.0
+        }
+      },
+      "comparison": {
+        "row_id": "yn98nbs0rfdae98s0h",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "message_template",
+            "actual": "message_template",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "UPDATE",
+            "actual": "ASK_CLARIFICATION",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "crm_write",
+            "actual": "none",
+            "match": false
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "jwduz6t3h1d6cgq6gj",
+        "user_input": "Delete this Message Template",
+        "expected_object": "message_template",
+        "expected_action": "ASK_CLARIFICATION",
+        "expected_tool": "none",
+        "expected_retrieval_needed": false,
+        "source_file": "phase4_refined_results.md",
+        "phase": "phase305",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Gold standard mapping for ASK_CLARIFICATION"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": "message_template",
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "CHAT",
+          "object_type": "message_template",
+          "text": "I can help delete a message_template. First show the record you want, select it, and then confirm the delete action.",
+          "score": 0.95
+        }
+      },
+      "comparison": {
+        "row_id": "jwduz6t3h1d6cgq6gj",
+        "all_match": true,
+        "comparisons": {
+          "expected_object": {
+            "expected": "message_template",
+            "actual": "message_template",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "ASK_CLARIFICATION",
+            "actual": "ASK_CLARIFICATION",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "none",
+            "actual": "none",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "p946lugbc79d4b0af0",
+        "user_input": "Can you Delete this Message Template?",
+        "expected_object": "message_template",
+        "expected_action": "ASK_CLARIFICATION",
+        "expected_tool": "none",
+        "expected_retrieval_needed": false,
+        "source_file": "phase4_refined_results.md",
+        "phase": "phase305",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Gold standard mapping for ASK_CLARIFICATION"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": "message_template",
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "CHAT",
+          "object_type": "message_template",
+          "text": "I can help delete a message_template. First show the record you want, select it, and then confirm the delete action.",
+          "score": 0.95
+        }
+      },
+      "comparison": {
+        "row_id": "p946lugbc79d4b0af0",
+        "all_match": true,
+        "comparisons": {
+          "expected_object": {
+            "expected": "message_template",
+            "actual": "message_template",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "ASK_CLARIFICATION",
+            "actual": "ASK_CLARIFICATION",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "none",
+            "actual": "none",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "e90g0o4nrp60ek20a3",
+        "user_input": "Remove Message Template",
+        "expected_object": "message_template",
+        "expected_action": "ASK_CLARIFICATION",
+        "expected_tool": "none",
+        "expected_retrieval_needed": false,
+        "source_file": "phase4_refined_results.md",
+        "phase": "phase305",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Gold standard mapping for ASK_CLARIFICATION"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": "message_template",
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "CHAT",
+          "object_type": "message_template",
+          "text": "I can help delete a message_template. First show the record you want, select it, and then confirm the delete action.",
+          "score": 0.95
+        }
+      },
+      "comparison": {
+        "row_id": "e90g0o4nrp60ek20a3",
+        "all_match": true,
+        "comparisons": {
+          "expected_object": {
+            "expected": "message_template",
+            "actual": "message_template",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "ASK_CLARIFICATION",
+            "actual": "ASK_CLARIFICATION",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "none",
+            "actual": "none",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "806g4mlw29c5xmw17w",
+        "user_input": "Can you Remove Message Template?",
+        "expected_object": "message_template",
+        "expected_action": "ASK_CLARIFICATION",
+        "expected_tool": "none",
+        "expected_retrieval_needed": false,
+        "source_file": "phase4_refined_results.md",
+        "phase": "phase305",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Gold standard mapping for ASK_CLARIFICATION"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": "message_template",
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "CHAT",
+          "object_type": "message_template",
+          "text": "I can help delete a message_template. First show the record you want, select it, and then confirm the delete action.",
+          "score": 0.95
+        }
+      },
+      "comparison": {
+        "row_id": "806g4mlw29c5xmw17w",
+        "all_match": true,
+        "comparisons": {
+          "expected_object": {
+            "expected": "message_template",
+            "actual": "message_template",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "ASK_CLARIFICATION",
+            "actual": "ASK_CLARIFICATION",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "none",
+            "actual": "none",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "gofl9798yn68uj3s1m",
+        "user_input": "Check Message Template details",
+        "expected_object": "message_template",
+        "expected_action": "OPEN_RECORD",
+        "expected_tool": "crm_query",
+        "expected_retrieval_needed": false,
+        "source_file": "phase4_refined_results.md",
+        "phase": "phase305",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Gold standard mapping for OPEN_RECORD"
+      },
+      "actual": {
+        "raw_intent": "MANAGE",
+        "normalized_action": "OPEN_RECORD",
+        "object_type": "message_template",
+        "tool": "crm_query",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "MANAGE",
+          "object_type": "message_template",
+          "record_id": "details",
+          "score": 1.0,
+          "language_preference": "eng"
+        }
+      },
+      "comparison": {
+        "row_id": "gofl9798yn68uj3s1m",
+        "all_match": true,
+        "comparisons": {
+          "expected_object": {
+            "expected": "message_template",
+            "actual": "message_template",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "OPEN_RECORD",
+            "actual": "OPEN_RECORD",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "crm_query",
+            "actual": "crm_query",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "suoux38jssw6r1z552",
+        "user_input": "Can you Check Message Template details?",
+        "expected_object": "message_template",
+        "expected_action": "OPEN_RECORD",
+        "expected_tool": "crm_query",
+        "expected_retrieval_needed": false,
+        "source_file": "phase4_refined_results.md",
+        "phase": "phase305",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Gold standard mapping for OPEN_RECORD"
+      },
+      "actual": {
+        "raw_intent": "MANAGE",
+        "normalized_action": "OPEN_RECORD",
+        "object_type": "message_template",
+        "tool": "crm_query",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "MANAGE",
+          "object_type": "message_template",
+          "record_id": "details",
+          "score": 1.0,
+          "language_preference": "eng"
+        }
+      },
+      "comparison": {
+        "row_id": "suoux38jssw6r1z552",
+        "all_match": true,
+        "comparisons": {
+          "expected_object": {
+            "expected": "message_template",
+            "actual": "message_template",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "OPEN_RECORD",
+            "actual": "OPEN_RECORD",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "crm_query",
+            "actual": "crm_query",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "9u5znvd7dxx5sr4kjq",
+        "user_input": "Show Message Template summary",
+        "expected_object": "message_template",
+        "expected_action": "RETRIEVE_AND_ANSWER",
+        "expected_tool": "vector_retrieval",
+        "expected_retrieval_needed": true,
+        "source_file": "phase4_refined_results.md",
+        "phase": "phase305",
+        "context": "",
+        "difficulty": "hard",
+        "notes": "Gold standard mapping for RETRIEVE_AND_ANSWER"
+      },
+      "actual": {
+        "raw_intent": "MANAGE",
+        "normalized_action": "OPEN_RECORD",
+        "object_type": "message_template",
+        "tool": "crm_query",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "MANAGE",
+          "object_type": "message_template",
+          "record_id": "summary",
+          "score": 1.0,
+          "language_preference": "eng"
+        }
+      },
+      "comparison": {
+        "row_id": "9u5znvd7dxx5sr4kjq",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "message_template",
+            "actual": "message_template",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "RETRIEVE_AND_ANSWER",
+            "actual": "OPEN_RECORD",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "vector_retrieval",
+            "actual": "crm_query",
+            "match": false
+          },
+          "expected_retrieval_needed": {
+            "expected": true,
+            "actual": false,
+            "match": false
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "2niijcy6kscyqbkxck",
+        "user_input": "Can you Show Message Template summary?",
+        "expected_object": "message_template",
+        "expected_action": "RETRIEVE_AND_ANSWER",
+        "expected_tool": "vector_retrieval",
+        "expected_retrieval_needed": true,
+        "source_file": "phase4_refined_results.md",
+        "phase": "phase305",
+        "context": "",
+        "difficulty": "hard",
+        "notes": "Gold standard mapping for RETRIEVE_AND_ANSWER"
+      },
+      "actual": {
+        "raw_intent": "MANAGE",
+        "normalized_action": "OPEN_RECORD",
+        "object_type": "message_template",
+        "tool": "crm_query",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "MANAGE",
+          "object_type": "message_template",
+          "record_id": "summary",
+          "score": 1.0,
+          "language_preference": "eng"
+        }
+      },
+      "comparison": {
+        "row_id": "2niijcy6kscyqbkxck",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "message_template",
+            "actual": "message_template",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "RETRIEVE_AND_ANSWER",
+            "actual": "OPEN_RECORD",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "vector_retrieval",
+            "actual": "crm_query",
+            "match": false
+          },
+          "expected_retrieval_needed": {
+            "expected": true,
+            "actual": false,
+            "match": false
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "7ndhhprdj48zb1apj8",
+        "user_input": "Get info on Message Template",
+        "expected_object": "message_template",
+        "expected_action": "ASK_CLARIFICATION",
+        "expected_tool": "none",
+        "expected_retrieval_needed": false,
+        "source_file": "phase4_refined_results.md",
+        "phase": "phase305",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Gold standard mapping for ASK_CLARIFICATION"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": null,
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "direct_response",
+        "raw_output": {
+          "intent": "CHAT",
+          "is_suggestion": true,
+          "suggestion_prompt": "Add a Message Template",
+          "text": "I think you might want to **open form** for **message_template**. Is that correct? (Suggested: \"Add a Message Template\")",
+          "score": 0.5,
+          "options": [
+            {
+              "label": "Yes, do that",
+              "value": "Add a Message Template"
+            },
+            {
+              "label": "No, something else",
+              "value": "help"
+            }
+          ]
+        }
+      },
+      "comparison": {
+        "row_id": "7ndhhprdj48zb1apj8",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "message_template",
+            "actual": null,
+            "match": false
+          },
+          "expected_action": {
+            "expected": "ASK_CLARIFICATION",
+            "actual": "ASK_CLARIFICATION",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "none",
+            "actual": "none",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "z5wyf084z9x0d3a6pk",
+        "user_input": "Can you Get info on Message Template?",
+        "expected_object": "message_template",
+        "expected_action": "ASK_CLARIFICATION",
+        "expected_tool": "none",
+        "expected_retrieval_needed": false,
+        "source_file": "phase4_refined_results.md",
+        "phase": "phase305",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Gold standard mapping for ASK_CLARIFICATION"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": null,
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "direct_response",
+        "raw_output": {
+          "intent": "CHAT",
+          "is_suggestion": true,
+          "suggestion_prompt": "Can you Add a Message Template?",
+          "text": "I think you might want to **open form** for **message_template**. Is that correct? (Suggested: \"Can you Add a Message Template?\")",
+          "score": 0.5952381,
+          "options": [
+            {
+              "label": "Yes, do that",
+              "value": "Can you Add a Message Template?"
+            },
+            {
+              "label": "No, something else",
+              "value": "help"
+            }
+          ]
+        }
+      },
+      "comparison": {
+        "row_id": "z5wyf084z9x0d3a6pk",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "message_template",
+            "actual": null,
+            "match": false
+          },
+          "expected_action": {
+            "expected": "ASK_CLARIFICATION",
+            "actual": "ASK_CLARIFICATION",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "none",
+            "actual": "none",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "18gvvmpnmb6vlv72e4",
+        "user_input": "I need a Message Template report",
+        "expected_object": "message_template",
+        "expected_action": "RETRIEVE_AND_ANSWER",
+        "expected_tool": "vector_retrieval",
+        "expected_retrieval_needed": true,
+        "source_file": "phase4_refined_results.md",
+        "phase": "phase305",
+        "context": "",
+        "difficulty": "hard",
+        "notes": "Gold standard mapping for RETRIEVE_AND_ANSWER"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": null,
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "direct_response",
+        "raw_output": {
+          "intent": "CHAT",
+          "is_suggestion": true,
+          "suggestion_prompt": "Add a Message Template",
+          "text": "I think you might want to **open form** for **message_template**. Is that correct? (Suggested: \"Add a Message Template\")",
+          "score": 0.5277778,
+          "options": [
+            {
+              "label": "Yes, do that",
+              "value": "Add a Message Template"
+            },
+            {
+              "label": "No, something else",
+              "value": "help"
+            }
+          ]
+        }
+      },
+      "comparison": {
+        "row_id": "18gvvmpnmb6vlv72e4",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "message_template",
+            "actual": null,
+            "match": false
+          },
+          "expected_action": {
+            "expected": "RETRIEVE_AND_ANSWER",
+            "actual": "ASK_CLARIFICATION",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "vector_retrieval",
+            "actual": "none",
+            "match": false
+          },
+          "expected_retrieval_needed": {
+            "expected": true,
+            "actual": false,
+            "match": false
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "nc5hghux7z7tno4xvg",
+        "user_input": "Can you I need a Message Template report?",
+        "expected_object": "message_template",
+        "expected_action": "RETRIEVE_AND_ANSWER",
+        "expected_tool": "vector_retrieval",
+        "expected_retrieval_needed": true,
+        "source_file": "phase4_refined_results.md",
+        "phase": "phase305",
+        "context": "",
+        "difficulty": "hard",
+        "notes": "Gold standard mapping for RETRIEVE_AND_ANSWER"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": null,
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "direct_response",
+        "raw_output": {
+          "intent": "CHAT",
+          "is_suggestion": true,
+          "suggestion_prompt": "Can you Add a Message Template?",
+          "text": "I think you might want to **open form** for **message_template**. Is that correct? (Suggested: \"Can you Add a Message Template?\")",
+          "score": 0.6136364,
+          "options": [
+            {
+              "label": "Yes, do that",
+              "value": "Can you Add a Message Template?"
+            },
+            {
+              "label": "No, something else",
+              "value": "help"
+            }
+          ]
+        }
+      },
+      "comparison": {
+        "row_id": "nc5hghux7z7tno4xvg",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "message_template",
+            "actual": null,
+            "match": false
+          },
+          "expected_action": {
+            "expected": "RETRIEVE_AND_ANSWER",
+            "actual": "ASK_CLARIFICATION",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "vector_retrieval",
+            "actual": "none",
+            "match": false
+          },
+          "expected_retrieval_needed": {
+            "expected": true,
+            "actual": false,
+            "match": false
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "4s2msfuj3x43o8nv8m",
+        "user_input": "Show me top Message Templates",
+        "expected_object": "message_template",
+        "expected_action": "QUERY",
+        "expected_tool": "crm_query",
+        "expected_retrieval_needed": false,
+        "source_file": "phase4_refined_results.md",
+        "phase": "phase305",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Gold standard mapping for QUERY"
+      },
+      "actual": {
+        "raw_intent": "QUERY",
+        "normalized_action": "QUERY",
+        "object_type": "message_send",
+        "tool": "crm_query",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "QUERY",
+          "object_type": "message_send",
+          "data": {},
+          "score": 1.0,
+          "language_preference": "eng"
+        }
+      },
+      "comparison": {
+        "row_id": "4s2msfuj3x43o8nv8m",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "message_template",
+            "actual": "message_send",
+            "match": false
+          },
+          "expected_action": {
+            "expected": "QUERY",
+            "actual": "QUERY",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "crm_query",
+            "actual": "crm_query",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "1yu7atgm4c2yh4wst0",
+        "user_input": "Can you Show me top Message Templates?",
+        "expected_object": "message_template",
+        "expected_action": "QUERY",
+        "expected_tool": "crm_query",
+        "expected_retrieval_needed": false,
+        "source_file": "phase4_refined_results.md",
+        "phase": "phase305",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Gold standard mapping for QUERY"
+      },
+      "actual": {
+        "raw_intent": "QUERY",
+        "normalized_action": "QUERY",
+        "object_type": "message_send",
+        "tool": "crm_query",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "QUERY",
+          "object_type": "message_send",
+          "data": {},
+          "score": 1.0,
+          "language_preference": "eng"
+        }
+      },
+      "comparison": {
+        "row_id": "1yu7atgm4c2yh4wst0",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "message_template",
+            "actual": "message_send",
+            "match": false
+          },
+          "expected_action": {
+            "expected": "QUERY",
+            "actual": "QUERY",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "crm_query",
+            "actual": "crm_query",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "w9ow0531n7biwhqa7t",
+        "user_input": "Which Message Template is hot?",
+        "expected_object": "message_template",
+        "expected_action": "RETRIEVE_AND_ANSWER",
+        "expected_tool": "vector_retrieval",
+        "expected_retrieval_needed": true,
+        "source_file": "phase4_refined_results.md",
+        "phase": "phase305",
+        "context": "",
+        "difficulty": "hard",
+        "notes": "Gold standard mapping for RETRIEVE_AND_ANSWER"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": null,
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "direct_response",
+        "raw_output": {
+          "intent": "CHAT",
+          "is_suggestion": true,
+          "suggestion_prompt": "Add a Message Template",
+          "text": "I think you might want to **open form** for **message_template**. Is that correct? (Suggested: \"Add a Message Template\")",
+          "score": 0.4857143,
+          "options": [
+            {
+              "label": "Yes, do that",
+              "value": "Add a Message Template"
+            },
+            {
+              "label": "No, something else",
+              "value": "help"
+            }
+          ]
+        }
+      },
+      "comparison": {
+        "row_id": "w9ow0531n7biwhqa7t",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "message_template",
+            "actual": null,
+            "match": false
+          },
+          "expected_action": {
+            "expected": "RETRIEVE_AND_ANSWER",
+            "actual": "ASK_CLARIFICATION",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "vector_retrieval",
+            "actual": "none",
+            "match": false
+          },
+          "expected_retrieval_needed": {
+            "expected": true,
+            "actual": false,
+            "match": false
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "dglarjgmt9f1b5na8f",
+        "user_input": "Can you Which Message Template is hot??",
+        "expected_object": "message_template",
+        "expected_action": "RETRIEVE_AND_ANSWER",
+        "expected_tool": "vector_retrieval",
+        "expected_retrieval_needed": true,
+        "source_file": "phase4_refined_results.md",
+        "phase": "phase305",
+        "context": "",
+        "difficulty": "hard",
+        "notes": "Gold standard mapping for RETRIEVE_AND_ANSWER"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": null,
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "direct_response",
+        "raw_output": {
+          "intent": "CHAT",
+          "is_suggestion": true,
+          "suggestion_prompt": "Can you Add a Message Template?",
+          "text": "I think you might want to **open form** for **message_template**. Is that correct? (Suggested: \"Can you Add a Message Template?\")",
+          "score": 0.5813953,
+          "options": [
+            {
+              "label": "Yes, do that",
+              "value": "Can you Add a Message Template?"
+            },
+            {
+              "label": "No, something else",
+              "value": "help"
+            }
+          ]
+        }
+      },
+      "comparison": {
+        "row_id": "dglarjgmt9f1b5na8f",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "message_template",
+            "actual": null,
+            "match": false
+          },
+          "expected_action": {
+            "expected": "RETRIEVE_AND_ANSWER",
+            "actual": "ASK_CLARIFICATION",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "vector_retrieval",
+            "actual": "none",
+            "match": false
+          },
+          "expected_retrieval_needed": {
+            "expected": true,
+            "actual": false,
+            "match": false
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "pwcnlms6kl0jo8ogiq",
+        "user_input": "Follow up on Message Template",
+        "expected_object": "message_template",
+        "expected_action": "RETRIEVE_AND_ANSWER",
+        "expected_tool": "vector_retrieval",
+        "expected_retrieval_needed": true,
+        "source_file": "phase4_refined_results.md",
+        "phase": "phase305",
+        "context": "",
+        "difficulty": "hard",
+        "notes": "Gold standard mapping for RETRIEVE_AND_ANSWER"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": null,
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "direct_response",
+        "raw_output": {
+          "intent": "CHAT",
+          "is_suggestion": true,
+          "suggestion_prompt": "Add a Message Template",
+          "text": "I think you might want to **open form** for **message_template**. Is that correct? (Suggested: \"Add a Message Template\")",
+          "score": 0.4857143,
+          "options": [
+            {
+              "label": "Yes, do that",
+              "value": "Add a Message Template"
+            },
+            {
+              "label": "No, something else",
+              "value": "help"
+            }
+          ]
+        }
+      },
+      "comparison": {
+        "row_id": "pwcnlms6kl0jo8ogiq",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "message_template",
+            "actual": null,
+            "match": false
+          },
+          "expected_action": {
+            "expected": "RETRIEVE_AND_ANSWER",
+            "actual": "ASK_CLARIFICATION",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "vector_retrieval",
+            "actual": "none",
+            "match": false
+          },
+          "expected_retrieval_needed": {
+            "expected": true,
+            "actual": false,
+            "match": false
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "ghqgawug1i9nifr7m0",
+        "user_input": "Can you Follow up on Message Template?",
+        "expected_object": "message_template",
+        "expected_action": "RETRIEVE_AND_ANSWER",
+        "expected_tool": "vector_retrieval",
+        "expected_retrieval_needed": true,
+        "source_file": "phase4_refined_results.md",
+        "phase": "phase305",
+        "context": "",
+        "difficulty": "hard",
+        "notes": "Gold standard mapping for RETRIEVE_AND_ANSWER"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": null,
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "direct_response",
+        "raw_output": {
+          "intent": "CHAT",
+          "is_suggestion": true,
+          "suggestion_prompt": "Can you Add a Message Template?",
+          "text": "I think you might want to **open form** for **message_template**. Is that correct? (Suggested: \"Can you Add a Message Template?\")",
+          "score": 0.5813953,
+          "options": [
+            {
+              "label": "Yes, do that",
+              "value": "Can you Add a Message Template?"
+            },
+            {
+              "label": "No, something else",
+              "value": "help"
+            }
+          ]
+        }
+      },
+      "comparison": {
+        "row_id": "ghqgawug1i9nifr7m0",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "message_template",
+            "actual": null,
+            "match": false
+          },
+          "expected_action": {
+            "expected": "RETRIEVE_AND_ANSWER",
+            "actual": "ASK_CLARIFICATION",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "vector_retrieval",
+            "actual": "none",
+            "match": false
+          },
+          "expected_retrieval_needed": {
+            "expected": true,
+            "actual": false,
+            "match": false
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "op248n0np78jusvina",
+        "user_input": "Remind me about Message Template",
+        "expected_object": "message_template",
+        "expected_action": "RETRIEVE_AND_ANSWER",
+        "expected_tool": "vector_retrieval",
+        "expected_retrieval_needed": true,
+        "source_file": "phase4_refined_results.md",
+        "phase": "phase305",
+        "context": "",
+        "difficulty": "hard",
+        "notes": "Gold standard mapping for RETRIEVE_AND_ANSWER"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": null,
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "direct_response",
+        "raw_output": {
+          "intent": "CHAT",
+          "is_suggestion": true,
+          "suggestion_prompt": "Add a Message Template",
+          "text": "I think you might want to **open form** for **message_template**. Is that correct? (Suggested: \"Add a Message Template\")",
+          "score": 0.51428574,
+          "options": [
+            {
+              "label": "Yes, do that",
+              "value": "Add a Message Template"
+            },
+            {
+              "label": "No, something else",
+              "value": "help"
+            }
+          ]
+        }
+      },
+      "comparison": {
+        "row_id": "op248n0np78jusvina",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "message_template",
+            "actual": null,
+            "match": false
+          },
+          "expected_action": {
+            "expected": "RETRIEVE_AND_ANSWER",
+            "actual": "ASK_CLARIFICATION",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "vector_retrieval",
+            "actual": "none",
+            "match": false
+          },
+          "expected_retrieval_needed": {
+            "expected": true,
+            "actual": false,
+            "match": false
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "b2xthe54bu6ettpc1c",
+        "user_input": "Can you Remind me about Message Template?",
+        "expected_object": "message_template",
+        "expected_action": "RETRIEVE_AND_ANSWER",
+        "expected_tool": "vector_retrieval",
+        "expected_retrieval_needed": true,
+        "source_file": "phase4_refined_results.md",
+        "phase": "phase305",
+        "context": "",
+        "difficulty": "hard",
+        "notes": "Gold standard mapping for RETRIEVE_AND_ANSWER"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": null,
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "direct_response",
+        "raw_output": {
+          "intent": "CHAT",
+          "is_suggestion": true,
+          "suggestion_prompt": "Can you Add a Message Template?",
+          "text": "I think you might want to **open form** for **message_template**. Is that correct? (Suggested: \"Can you Add a Message Template?\")",
+          "score": 0.60465115,
+          "options": [
+            {
+              "label": "Yes, do that",
+              "value": "Can you Add a Message Template?"
+            },
+            {
+              "label": "No, something else",
+              "value": "help"
+            }
+          ]
+        }
+      },
+      "comparison": {
+        "row_id": "b2xthe54bu6ettpc1c",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "message_template",
+            "actual": null,
+            "match": false
+          },
+          "expected_action": {
+            "expected": "RETRIEVE_AND_ANSWER",
+            "actual": "ASK_CLARIFICATION",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "vector_retrieval",
+            "actual": "none",
+            "match": false
+          },
+          "expected_retrieval_needed": {
+            "expected": true,
+            "actual": false,
+            "match": false
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "mgpp1mcpmosk2o59fv",
+        "user_input": "Is there any Message Template for Tesla?",
+        "expected_object": "message_template",
+        "expected_action": "RETRIEVE_AND_ANSWER",
+        "expected_tool": "vector_retrieval",
+        "expected_retrieval_needed": true,
+        "source_file": "phase4_refined_results.md",
+        "phase": "phase305",
+        "context": "",
+        "difficulty": "hard",
+        "notes": "Gold standard mapping for RETRIEVE_AND_ANSWER"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": null,
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "direct_response",
+        "raw_output": {
+          "intent": "CHAT",
+          "is_suggestion": true,
+          "suggestion_prompt": "Any new Message Templates?",
+          "text": "I think you might want to **open form** for **message_template**. Is that correct? (Suggested: \"Any new Message Templates?\")",
+          "score": 0.5,
+          "options": [
+            {
+              "label": "Yes, do that",
+              "value": "Any new Message Templates?"
+            },
+            {
+              "label": "No, something else",
+              "value": "help"
+            }
+          ]
+        }
+      },
+      "comparison": {
+        "row_id": "mgpp1mcpmosk2o59fv",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "message_template",
+            "actual": null,
+            "match": false
+          },
+          "expected_action": {
+            "expected": "RETRIEVE_AND_ANSWER",
+            "actual": "ASK_CLARIFICATION",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "vector_retrieval",
+            "actual": "none",
+            "match": false
+          },
+          "expected_retrieval_needed": {
+            "expected": true,
+            "actual": false,
+            "match": false
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "vh9h89w4yg13ilui5s",
+        "user_input": "Can you Is there any Message Template for Tesla??",
+        "expected_object": "message_template",
+        "expected_action": "RETRIEVE_AND_ANSWER",
+        "expected_tool": "vector_retrieval",
+        "expected_retrieval_needed": true,
+        "source_file": "phase4_refined_results.md",
+        "phase": "phase305",
+        "context": "",
+        "difficulty": "hard",
+        "notes": "Gold standard mapping for RETRIEVE_AND_ANSWER"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": null,
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "direct_response",
+        "raw_output": {
+          "intent": "CHAT",
+          "is_suggestion": true,
+          "suggestion_prompt": "Can you Any new Message Templates??",
+          "text": "I think you might want to **open form** for **message_template**. Is that correct? (Suggested: \"Can you Any new Message Templates??\")",
+          "score": 0.58,
+          "options": [
+            {
+              "label": "Yes, do that",
+              "value": "Can you Any new Message Templates??"
+            },
+            {
+              "label": "No, something else",
+              "value": "help"
+            }
+          ]
+        }
+      },
+      "comparison": {
+        "row_id": "vh9h89w4yg13ilui5s",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "message_template",
+            "actual": null,
+            "match": false
+          },
+          "expected_action": {
+            "expected": "RETRIEVE_AND_ANSWER",
+            "actual": "ASK_CLARIFICATION",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "vector_retrieval",
+            "actual": "none",
+            "match": false
+          },
+          "expected_retrieval_needed": {
+            "expected": true,
+            "actual": false,
+            "match": false
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "7ui4wcm5ca7p1lb213",
+        "user_input": "Find Message Template named John",
+        "expected_object": "message_template",
+        "expected_action": "OPEN_RECORD",
+        "expected_tool": "crm_query",
+        "expected_retrieval_needed": false,
+        "source_file": "phase4_refined_results.md",
+        "phase": "phase305",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Gold standard mapping for OPEN_RECORD"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": null,
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "direct_response",
+        "raw_output": {
+          "intent": "CHAT",
+          "is_suggestion": true,
+          "suggestion_prompt": "Add a Message Template",
+          "text": "I think you might want to **open form** for **message_template**. Is that correct? (Suggested: \"Add a Message Template\")",
+          "score": 0.4473684,
+          "options": [
+            {
+              "label": "Yes, do that",
+              "value": "Add a Message Template"
+            },
+            {
+              "label": "No, something else",
+              "value": "help"
+            }
+          ]
+        }
+      },
+      "comparison": {
+        "row_id": "7ui4wcm5ca7p1lb213",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "message_template",
+            "actual": null,
+            "match": false
+          },
+          "expected_action": {
+            "expected": "OPEN_RECORD",
+            "actual": "ASK_CLARIFICATION",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "crm_query",
+            "actual": "none",
+            "match": false
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "yyz5g1hsnamqa50dam",
+        "user_input": "Can you Find Message Template named John?",
+        "expected_object": "message_template",
+        "expected_action": "OPEN_RECORD",
+        "expected_tool": "crm_query",
+        "expected_retrieval_needed": false,
+        "source_file": "phase4_refined_results.md",
+        "phase": "phase305",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Gold standard mapping for OPEN_RECORD"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": null,
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "direct_response",
+        "raw_output": {
+          "intent": "CHAT",
+          "is_suggestion": true,
+          "suggestion_prompt": "Can you Add a Message Template?",
+          "text": "I think you might want to **open form** for **message_template**. Is that correct? (Suggested: \"Can you Add a Message Template?\")",
+          "score": 0.54347825,
+          "options": [
+            {
+              "label": "Yes, do that",
+              "value": "Can you Add a Message Template?"
+            },
+            {
+              "label": "No, something else",
+              "value": "help"
+            }
+          ]
+        }
+      },
+      "comparison": {
+        "row_id": "yyz5g1hsnamqa50dam",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "message_template",
+            "actual": null,
+            "match": false
+          },
+          "expected_action": {
+            "expected": "OPEN_RECORD",
+            "actual": "ASK_CLARIFICATION",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "crm_query",
+            "actual": "none",
+            "match": false
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "p7b27vr2h2hs1pdh2y",
+        "user_input": "Show Message Template for BMW",
+        "expected_object": "message_template",
+        "expected_action": "QUERY",
+        "expected_tool": "crm_query",
+        "expected_retrieval_needed": false,
+        "source_file": "phase4_refined_results.md",
+        "phase": "phase305",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Gold standard mapping for QUERY"
+      },
+      "actual": {
+        "raw_intent": "QUERY",
+        "normalized_action": "QUERY",
+        "object_type": "message_send",
+        "tool": "crm_query",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "QUERY",
+          "object_type": "message_send",
+          "data": {},
+          "score": 1.0,
+          "language_preference": "eng"
+        }
+      },
+      "comparison": {
+        "row_id": "p7b27vr2h2hs1pdh2y",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "message_template",
+            "actual": "message_send",
+            "match": false
+          },
+          "expected_action": {
+            "expected": "QUERY",
+            "actual": "QUERY",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "crm_query",
+            "actual": "crm_query",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "pv15tkiyfok1348hn7",
+        "user_input": "Can you Show Message Template for BMW?",
+        "expected_object": "message_template",
+        "expected_action": "QUERY",
+        "expected_tool": "crm_query",
+        "expected_retrieval_needed": false,
+        "source_file": "phase4_refined_results.md",
+        "phase": "phase305",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Gold standard mapping for QUERY"
+      },
+      "actual": {
+        "raw_intent": "QUERY",
+        "normalized_action": "QUERY",
+        "object_type": "message_send",
+        "tool": "crm_query",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "QUERY",
+          "object_type": "message_send",
+          "data": {},
+          "score": 1.0,
+          "language_preference": "eng"
+        }
+      },
+      "comparison": {
+        "row_id": "pv15tkiyfok1348hn7",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "message_template",
+            "actual": "message_send",
+            "match": false
+          },
+          "expected_action": {
+            "expected": "QUERY",
+            "actual": "QUERY",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "crm_query",
+            "actual": "crm_query",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "yzim1i60ytr6bfix04",
+        "user_input": "Search Message Template with high priority",
+        "expected_object": "message_template",
+        "expected_action": "QUERY",
+        "expected_tool": "crm_query",
+        "expected_retrieval_needed": false,
+        "source_file": "phase4_refined_results.md",
+        "phase": "phase305",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Gold standard mapping for QUERY"
+      },
+      "actual": {
+        "raw_intent": "QUERY",
+        "normalized_action": "QUERY",
+        "object_type": "message_template",
+        "tool": "crm_query",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "QUERY",
+          "object_type": "message_template",
+          "text": "",
+          "score": 1.0,
+          "reasoning": {
+            "filters": {
+              "priority": "high"
+            },
+            "fields_to_update": {},
+            "context_reference": {
+              "kind": null,
+              "index": 0,
+              "object_type": "message_template"
+            },
+            "resolved_reference": {},
+            "confidence": 1.0,
+            "confidence_band": "high",
+            "action": "query",
+            "user_query": "Search Message Template with high priority"
+          },
+          "data": {
+            "priority": "high"
+          },
+          "language_preference": "eng"
+        }
+      },
+      "comparison": {
+        "row_id": "yzim1i60ytr6bfix04",
+        "all_match": true,
+        "comparisons": {
+          "expected_object": {
+            "expected": "message_template",
+            "actual": "message_template",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "QUERY",
+            "actual": "QUERY",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "crm_query",
+            "actual": "crm_query",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "d1nbtniyfsan5sld8e",
+        "user_input": "Can you Search Message Template with high priority?",
+        "expected_object": "message_template",
+        "expected_action": "QUERY",
+        "expected_tool": "crm_query",
+        "expected_retrieval_needed": false,
+        "source_file": "phase4_refined_results.md",
+        "phase": "phase305",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Gold standard mapping for QUERY"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": null,
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "direct_response",
+        "raw_output": {
+          "intent": "CHAT",
+          "is_suggestion": true,
+          "suggestion_prompt": "Can you Add a Message Template?",
+          "text": "I think you might want to **open form** for **message_template**. Is that correct? (Suggested: \"Can you Add a Message Template?\")",
+          "score": 0.44642857,
+          "options": [
+            {
+              "label": "Yes, do that",
+              "value": "Can you Add a Message Template?"
+            },
+            {
+              "label": "No, something else",
+              "value": "help"
+            }
+          ]
+        }
+      },
+      "comparison": {
+        "row_id": "d1nbtniyfsan5sld8e",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "message_template",
+            "actual": null,
+            "match": false
+          },
+          "expected_action": {
+            "expected": "QUERY",
+            "actual": "ASK_CLARIFICATION",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "crm_query",
+            "actual": "none",
+            "match": false
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "nflew0opr01g2cs906",
+        "user_input": "List all pending Message Templates",
+        "expected_object": "message_template",
+        "expected_action": "QUERY",
+        "expected_tool": "crm_query",
+        "expected_retrieval_needed": false,
+        "source_file": "phase4_refined_results.md",
+        "phase": "phase305",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Gold standard mapping for QUERY"
+      },
+      "actual": {
+        "raw_intent": "QUERY",
+        "normalized_action": "QUERY",
+        "object_type": "message_template",
+        "tool": "crm_query",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "QUERY",
+          "object_type": "message_template",
+          "data": {},
+          "score": 1.0
+        }
+      },
+      "comparison": {
+        "row_id": "nflew0opr01g2cs906",
+        "all_match": true,
+        "comparisons": {
+          "expected_object": {
+            "expected": "message_template",
+            "actual": "message_template",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "QUERY",
+            "actual": "QUERY",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "crm_query",
+            "actual": "crm_query",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "z4mbl778qil3fmdjhn",
+        "user_input": "Can you List all pending Message Templates?",
+        "expected_object": "message_template",
+        "expected_action": "QUERY",
+        "expected_tool": "crm_query",
+        "expected_retrieval_needed": false,
+        "source_file": "phase4_refined_results.md",
+        "phase": "phase305",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Gold standard mapping for QUERY"
+      },
+      "actual": {
+        "raw_intent": "QUERY",
+        "normalized_action": "QUERY",
+        "object_type": "message_template",
+        "tool": "crm_query",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "QUERY",
+          "object_type": "message_template",
+          "data": {},
+          "score": 1.0
+        }
+      },
+      "comparison": {
+        "row_id": "z4mbl778qil3fmdjhn",
+        "all_match": true,
+        "comparisons": {
+          "expected_object": {
+            "expected": "message_template",
+            "actual": "message_template",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "QUERY",
+            "actual": "QUERY",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "crm_query",
+            "actual": "crm_query",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "yamqwiktlz7x6dr9ha",
+        "user_input": "Open the Message Template create screen",
+        "expected_object": "message_template",
+        "expected_action": "OPEN_FORM",
+        "expected_tool": "none",
+        "expected_retrieval_needed": false,
+        "source_file": "phase4_refined_results.md",
+        "phase": "phase305",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Gold standard mapping for OPEN_FORM"
+      },
+      "actual": {
+        "raw_intent": "OPEN_FORM",
+        "normalized_action": "OPEN_FORM",
+        "object_type": "message_template",
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "direct_response",
+        "raw_output": {
+          "intent": "OPEN_FORM",
+          "object_type": "message_template",
+          "form_url": "/message_templates/new-modal",
+          "form_title": "Create Message Template",
+          "form_kind": "message_template_create",
+          "text": "I've opened the new message template form for you below.",
+          "score": 1.0
+        }
+      },
+      "comparison": {
+        "row_id": "yamqwiktlz7x6dr9ha",
+        "all_match": true,
+        "comparisons": {
+          "expected_object": {
+            "expected": "message_template",
+            "actual": "message_template",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "OPEN_FORM",
+            "actual": "OPEN_FORM",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "none",
+            "actual": "none",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "xc8z0sf7w2mg0ros2v",
+        "user_input": "Can you Open the Message Template create screen?",
+        "expected_object": "message_template",
+        "expected_action": "OPEN_FORM",
+        "expected_tool": "none",
+        "expected_retrieval_needed": false,
+        "source_file": "phase4_refined_results.md",
+        "phase": "phase305",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Gold standard mapping for OPEN_FORM"
+      },
+      "actual": {
+        "raw_intent": "OPEN_FORM",
+        "normalized_action": "OPEN_FORM",
+        "object_type": "message_template",
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "direct_response",
+        "raw_output": {
+          "intent": "OPEN_FORM",
+          "object_type": "message_template",
+          "form_url": "/message_templates/new-modal",
+          "form_title": "Create Message Template",
+          "form_kind": "message_template_create",
+          "text": "I've opened the new message template form for you below.",
+          "score": 1.0
+        }
+      },
+      "comparison": {
+        "row_id": "xc8z0sf7w2mg0ros2v",
+        "all_match": true,
+        "comparisons": {
+          "expected_object": {
+            "expected": "message_template",
+            "actual": "message_template",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "OPEN_FORM",
+            "actual": "OPEN_FORM",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "none",
+            "actual": "none",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "ty7kfjcydnpbkweuic",
+        "user_input": "Can you show my Message Templates?",
+        "expected_object": "message_template",
+        "expected_action": "QUERY",
+        "expected_tool": "crm_query",
+        "expected_retrieval_needed": false,
+        "source_file": "phase4_refined_results.md",
+        "phase": "phase305",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Gold standard mapping for QUERY"
+      },
+      "actual": {
+        "raw_intent": "QUERY",
+        "normalized_action": "QUERY",
+        "object_type": "message_send",
+        "tool": "crm_query",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "QUERY",
+          "object_type": "message_send",
+          "data": {},
+          "score": 1.0,
+          "language_preference": "eng"
+        }
+      },
+      "comparison": {
+        "row_id": "ty7kfjcydnpbkweuic",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "message_template",
+            "actual": "message_send",
+            "match": false
+          },
+          "expected_action": {
+            "expected": "QUERY",
+            "actual": "QUERY",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "crm_query",
+            "actual": "crm_query",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "rmfsuvosx5m2q6xusv",
+        "user_input": "Can you Can you show my Message Templates??",
+        "expected_object": "message_template",
+        "expected_action": "QUERY",
+        "expected_tool": "crm_query",
+        "expected_retrieval_needed": false,
+        "source_file": "phase4_refined_results.md",
+        "phase": "phase305",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Gold standard mapping for QUERY"
+      },
+      "actual": {
+        "raw_intent": "QUERY",
+        "normalized_action": "QUERY",
+        "object_type": "message_send",
+        "tool": "crm_query",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "QUERY",
+          "object_type": "message_send",
+          "data": {},
+          "score": 1.0,
+          "language_preference": "eng"
+        }
+      },
+      "comparison": {
+        "row_id": "rmfsuvosx5m2q6xusv",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "message_template",
+            "actual": "message_send",
+            "match": false
+          },
+          "expected_action": {
+            "expected": "QUERY",
+            "actual": "QUERY",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "crm_query",
+            "actual": "crm_query",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "7d8mjjza7t9ywt1tah",
+        "user_input": "Where are the Message Templates?",
+        "expected_object": "message_template",
+        "expected_action": "ASK_CLARIFICATION",
+        "expected_tool": "none",
+        "expected_retrieval_needed": false,
+        "source_file": "phase4_refined_results.md",
+        "phase": "phase305",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Gold standard mapping for ASK_CLARIFICATION"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": null,
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "direct_response",
+        "raw_output": {
+          "intent": "CHAT",
+          "is_suggestion": true,
+          "suggestion_prompt": "Any new Message Templates?",
+          "text": "I think you might want to **open form** for **message_template**. Is that correct? (Suggested: \"Any new Message Templates?\")",
+          "score": 0.5135135,
+          "options": [
+            {
+              "label": "Yes, do that",
+              "value": "Any new Message Templates?"
+            },
+            {
+              "label": "No, something else",
+              "value": "help"
+            }
+          ]
+        }
+      },
+      "comparison": {
+        "row_id": "7d8mjjza7t9ywt1tah",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "message_template",
+            "actual": null,
+            "match": false
+          },
+          "expected_action": {
+            "expected": "ASK_CLARIFICATION",
+            "actual": "ASK_CLARIFICATION",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "none",
+            "actual": "none",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "5b91wmk6z3apob2lx6",
+        "user_input": "Can you Where are the Message Templates??",
+        "expected_object": "message_template",
+        "expected_action": "ASK_CLARIFICATION",
+        "expected_tool": "none",
+        "expected_retrieval_needed": false,
+        "source_file": "phase4_refined_results.md",
+        "phase": "phase305",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Gold standard mapping for ASK_CLARIFICATION"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": null,
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "direct_response",
+        "raw_output": {
+          "intent": "CHAT",
+          "is_suggestion": true,
+          "suggestion_prompt": "Can you Any new Message Templates??",
+          "text": "I think you might want to **open form** for **message_template**. Is that correct? (Suggested: \"Can you Any new Message Templates??\")",
+          "score": 0.6,
+          "options": [
+            {
+              "label": "Yes, do that",
+              "value": "Can you Any new Message Templates??"
+            },
+            {
+              "label": "No, something else",
+              "value": "help"
+            }
+          ]
+        }
+      },
+      "comparison": {
+        "row_id": "5b91wmk6z3apob2lx6",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "message_template",
+            "actual": null,
+            "match": false
+          },
+          "expected_action": {
+            "expected": "ASK_CLARIFICATION",
+            "actual": "ASK_CLARIFICATION",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "none",
+            "actual": "none",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "ziwm9r5ht2inwl00mb",
+        "user_input": "Help with Message Template flow",
+        "expected_object": "message_template",
+        "expected_action": "RETRIEVE_AND_ANSWER",
+        "expected_tool": "vector_retrieval",
+        "expected_retrieval_needed": true,
+        "source_file": "phase4_refined_results.md",
+        "phase": "phase305",
+        "context": "",
+        "difficulty": "hard",
+        "notes": "Gold standard mapping for RETRIEVE_AND_ANSWER"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": null,
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "direct_response",
+        "raw_output": {
+          "intent": "CHAT",
+          "is_suggestion": true,
+          "suggestion_prompt": "Add a Message Template",
+          "text": "I think you might want to **open form** for **message_template**. Is that correct? (Suggested: \"Add a Message Template\")",
+          "score": 0.45945945,
+          "options": [
+            {
+              "label": "Yes, do that",
+              "value": "Add a Message Template"
+            },
+            {
+              "label": "No, something else",
+              "value": "help"
+            }
+          ]
+        }
+      },
+      "comparison": {
+        "row_id": "ziwm9r5ht2inwl00mb",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "message_template",
+            "actual": null,
+            "match": false
+          },
+          "expected_action": {
+            "expected": "RETRIEVE_AND_ANSWER",
+            "actual": "ASK_CLARIFICATION",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "vector_retrieval",
+            "actual": "none",
+            "match": false
+          },
+          "expected_retrieval_needed": {
+            "expected": true,
+            "actual": false,
+            "match": false
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "5tdp8d12fcuckfs12i",
+        "user_input": "Can you Help with Message Template flow?",
+        "expected_object": "message_template",
+        "expected_action": "RETRIEVE_AND_ANSWER",
+        "expected_tool": "vector_retrieval",
+        "expected_retrieval_needed": true,
+        "source_file": "phase4_refined_results.md",
+        "phase": "phase305",
+        "context": "",
+        "difficulty": "hard",
+        "notes": "Gold standard mapping for RETRIEVE_AND_ANSWER"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": null,
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "direct_response",
+        "raw_output": {
+          "intent": "CHAT",
+          "is_suggestion": true,
+          "suggestion_prompt": "Can you Add a Message Template?",
+          "text": "I think you might want to **open form** for **message_template**. Is that correct? (Suggested: \"Can you Add a Message Template?\")",
+          "score": 0.5555556,
+          "options": [
+            {
+              "label": "Yes, do that",
+              "value": "Can you Add a Message Template?"
+            },
+            {
+              "label": "No, something else",
+              "value": "help"
+            }
+          ]
+        }
+      },
+      "comparison": {
+        "row_id": "5tdp8d12fcuckfs12i",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "message_template",
+            "actual": null,
+            "match": false
+          },
+          "expected_action": {
+            "expected": "RETRIEVE_AND_ANSWER",
+            "actual": "ASK_CLARIFICATION",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "vector_retrieval",
+            "actual": "none",
+            "match": false
+          },
+          "expected_retrieval_needed": {
+            "expected": true,
+            "actual": false,
+            "match": false
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "knfn03l050fy7wan4l",
+        "user_input": "Guide me through Message Template creation",
+        "expected_object": "message_template",
+        "expected_action": "RETRIEVE_AND_ANSWER",
+        "expected_tool": "vector_retrieval",
+        "expected_retrieval_needed": true,
+        "source_file": "phase4_refined_results.md",
+        "phase": "phase305",
+        "context": "",
+        "difficulty": "hard",
+        "notes": "Gold standard mapping for RETRIEVE_AND_ANSWER"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": null,
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "direct_response",
+        "raw_output": {
+          "intent": "CHAT",
+          "is_suggestion": true,
+          "suggestion_prompt": "Create new Message Template",
+          "text": "I think you might want to **open form** for **message_template**. Is that correct? (Suggested: \"Create new Message Template\")",
+          "score": 0.5,
+          "options": [
+            {
+              "label": "Yes, do that",
+              "value": "Create new Message Template"
+            },
+            {
+              "label": "No, something else",
+              "value": "help"
+            }
+          ]
+        }
+      },
+      "comparison": {
+        "row_id": "knfn03l050fy7wan4l",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "message_template",
+            "actual": null,
+            "match": false
+          },
+          "expected_action": {
+            "expected": "RETRIEVE_AND_ANSWER",
+            "actual": "ASK_CLARIFICATION",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "vector_retrieval",
+            "actual": "none",
+            "match": false
+          },
+          "expected_retrieval_needed": {
+            "expected": true,
+            "actual": false,
+            "match": false
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "877vp2sz4c89dpncx7",
+        "user_input": "Can you Guide me through Message Template creation?",
+        "expected_object": "message_template",
+        "expected_action": "RETRIEVE_AND_ANSWER",
+        "expected_tool": "vector_retrieval",
+        "expected_retrieval_needed": true,
+        "source_file": "phase4_refined_results.md",
+        "phase": "phase305",
+        "context": "",
+        "difficulty": "hard",
+        "notes": "Gold standard mapping for RETRIEVE_AND_ANSWER"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": null,
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "direct_response",
+        "raw_output": {
+          "intent": "CHAT",
+          "is_suggestion": true,
+          "suggestion_prompt": "Can you Create new Message Template?",
+          "text": "I think you might want to **open form** for **message_template**. Is that correct? (Suggested: \"Can you Create new Message Template?\")",
+          "score": 0.5686275,
+          "options": [
+            {
+              "label": "Yes, do that",
+              "value": "Can you Create new Message Template?"
+            },
+            {
+              "label": "No, something else",
+              "value": "help"
+            }
+          ]
+        }
+      },
+      "comparison": {
+        "row_id": "877vp2sz4c89dpncx7",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "message_template",
+            "actual": null,
+            "match": false
+          },
+          "expected_action": {
+            "expected": "RETRIEVE_AND_ANSWER",
+            "actual": "ASK_CLARIFICATION",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "vector_retrieval",
+            "actual": "none",
+            "match": false
+          },
+          "expected_retrieval_needed": {
+            "expected": true,
+            "actual": false,
+            "match": false
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "mxna1al2nt1hjfcgft",
+        "user_input": "How many Message Templates do we have?",
+        "expected_object": "message_template",
+        "expected_action": "RETRIEVE_AND_ANSWER",
+        "expected_tool": "vector_retrieval",
+        "expected_retrieval_needed": true,
+        "source_file": "phase4_refined_results.md",
+        "phase": "phase305",
+        "context": "",
+        "difficulty": "hard",
+        "notes": "Gold standard mapping for RETRIEVE_AND_ANSWER"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": null,
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "direct_response",
+        "raw_output": {
+          "intent": "CHAT",
+          "is_suggestion": true,
+          "suggestion_prompt": "Any new Message Templates?",
+          "text": "I think you might want to **open form** for **message_template**. Is that correct? (Suggested: \"Any new Message Templates?\")",
+          "score": 0.47619048,
+          "options": [
+            {
+              "label": "Yes, do that",
+              "value": "Any new Message Templates?"
+            },
+            {
+              "label": "No, something else",
+              "value": "help"
+            }
+          ]
+        }
+      },
+      "comparison": {
+        "row_id": "mxna1al2nt1hjfcgft",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "message_template",
+            "actual": null,
+            "match": false
+          },
+          "expected_action": {
+            "expected": "RETRIEVE_AND_ANSWER",
+            "actual": "ASK_CLARIFICATION",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "vector_retrieval",
+            "actual": "none",
+            "match": false
+          },
+          "expected_retrieval_needed": {
+            "expected": true,
+            "actual": false,
+            "match": false
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "stoptg8objkq693zf6",
+        "user_input": "Can you How many Message Templates do we have??",
+        "expected_object": "message_template",
+        "expected_action": "RETRIEVE_AND_ANSWER",
+        "expected_tool": "vector_retrieval",
+        "expected_retrieval_needed": true,
+        "source_file": "phase4_refined_results.md",
+        "phase": "phase305",
+        "context": "",
+        "difficulty": "hard",
+        "notes": "Gold standard mapping for RETRIEVE_AND_ANSWER"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": null,
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "direct_response",
+        "raw_output": {
+          "intent": "CHAT",
+          "is_suggestion": true,
+          "suggestion_prompt": "Can you Any new Message Templates??",
+          "text": "I think you might want to **open form** for **message_template**. Is that correct? (Suggested: \"Can you Any new Message Templates??\")",
+          "score": 0.56,
+          "options": [
+            {
+              "label": "Yes, do that",
+              "value": "Can you Any new Message Templates??"
+            },
+            {
+              "label": "No, something else",
+              "value": "help"
+            }
+          ]
+        }
+      },
+      "comparison": {
+        "row_id": "stoptg8objkq693zf6",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "message_template",
+            "actual": null,
+            "match": false
+          },
+          "expected_action": {
+            "expected": "RETRIEVE_AND_ANSWER",
+            "actual": "ASK_CLARIFICATION",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "vector_retrieval",
+            "actual": "none",
+            "match": false
+          },
+          "expected_retrieval_needed": {
+            "expected": true,
+            "actual": false,
+            "match": false
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "m0ultiip1ouj3a8ccn",
+        "user_input": "Show Message Template history",
+        "expected_object": "message_template",
+        "expected_action": "RETRIEVE_AND_ANSWER",
+        "expected_tool": "message_history_query",
+        "expected_retrieval_needed": true,
+        "source_file": "phase4_refined_results.md",
+        "phase": "phase305",
+        "context": "",
+        "difficulty": "hard",
+        "notes": "Gold standard mapping for RETRIEVE_AND_ANSWER"
+      },
+      "actual": {
+        "raw_intent": "MANAGE",
+        "normalized_action": "OPEN_RECORD",
+        "object_type": "message_template",
+        "tool": "crm_query",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "MANAGE",
+          "object_type": "message_template",
+          "record_id": "history",
+          "score": 1.0,
+          "language_preference": "eng"
+        }
+      },
+      "comparison": {
+        "row_id": "m0ultiip1ouj3a8ccn",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "message_template",
+            "actual": "message_template",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "RETRIEVE_AND_ANSWER",
+            "actual": "OPEN_RECORD",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "message_history_query",
+            "actual": "crm_query",
+            "match": false
+          },
+          "expected_retrieval_needed": {
+            "expected": true,
+            "actual": false,
+            "match": false
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "j6faov72k39tldbkt7",
+        "user_input": "Can you Show Message Template history?",
+        "expected_object": "message_template",
+        "expected_action": "RETRIEVE_AND_ANSWER",
+        "expected_tool": "message_history_query",
+        "expected_retrieval_needed": true,
+        "source_file": "phase4_refined_results.md",
+        "phase": "phase305",
+        "context": "",
+        "difficulty": "hard",
+        "notes": "Gold standard mapping for RETRIEVE_AND_ANSWER"
+      },
+      "actual": {
+        "raw_intent": "MANAGE",
+        "normalized_action": "OPEN_RECORD",
+        "object_type": "message_template",
+        "tool": "crm_query",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "MANAGE",
+          "object_type": "message_template",
+          "record_id": "history",
+          "score": 1.0,
+          "language_preference": "eng"
+        }
+      },
+      "comparison": {
+        "row_id": "j6faov72k39tldbkt7",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "message_template",
+            "actual": "message_template",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "RETRIEVE_AND_ANSWER",
+            "actual": "OPEN_RECORD",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "message_history_query",
+            "actual": "crm_query",
+            "match": false
+          },
+          "expected_retrieval_needed": {
+            "expected": true,
+            "actual": false,
+            "match": false
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "r45hko0hcmewzjyxpv",
+        "user_input": "View Message Template analytics",
+        "expected_object": "message_template",
+        "expected_action": "RETRIEVE_AND_ANSWER",
+        "expected_tool": "vector_retrieval",
+        "expected_retrieval_needed": true,
+        "source_file": "phase4_refined_results.md",
+        "phase": "phase305",
+        "context": "",
+        "difficulty": "hard",
+        "notes": "Gold standard mapping for RETRIEVE_AND_ANSWER"
+      },
+      "actual": {
+        "raw_intent": "MANAGE",
+        "normalized_action": "OPEN_RECORD",
+        "object_type": "message_template",
+        "tool": "crm_query",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "MANAGE",
+          "object_type": "message_template",
+          "record_id": "analytics",
+          "score": 1.0,
+          "language_preference": "eng"
+        }
+      },
+      "comparison": {
+        "row_id": "r45hko0hcmewzjyxpv",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "message_template",
+            "actual": "message_template",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "RETRIEVE_AND_ANSWER",
+            "actual": "OPEN_RECORD",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "vector_retrieval",
+            "actual": "crm_query",
+            "match": false
+          },
+          "expected_retrieval_needed": {
+            "expected": true,
+            "actual": false,
+            "match": false
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "pqdy5bmwx6jaxk5bh0",
+        "user_input": "Can you View Message Template analytics?",
+        "expected_object": "message_template",
+        "expected_action": "RETRIEVE_AND_ANSWER",
+        "expected_tool": "vector_retrieval",
+        "expected_retrieval_needed": true,
+        "source_file": "phase4_refined_results.md",
+        "phase": "phase305",
+        "context": "",
+        "difficulty": "hard",
+        "notes": "Gold standard mapping for RETRIEVE_AND_ANSWER"
+      },
+      "actual": {
+        "raw_intent": "MANAGE",
+        "normalized_action": "OPEN_RECORD",
+        "object_type": "message_template",
+        "tool": "crm_query",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "MANAGE",
+          "object_type": "message_template",
+          "record_id": "analytics",
+          "score": 1.0,
+          "language_preference": "eng"
+        }
+      },
+      "comparison": {
+        "row_id": "pqdy5bmwx6jaxk5bh0",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "message_template",
+            "actual": "message_template",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "RETRIEVE_AND_ANSWER",
+            "actual": "OPEN_RECORD",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "vector_retrieval",
+            "actual": "crm_query",
+            "match": false
+          },
+          "expected_retrieval_needed": {
+            "expected": true,
+            "actual": false,
+            "match": false
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "bxubhw76lywa6wuo7f",
+        "user_input": "Export Message Template list",
+        "expected_object": "message_template",
+        "expected_action": "QUERY",
+        "expected_tool": "crm_query",
+        "expected_retrieval_needed": false,
+        "source_file": "phase4_refined_results.md",
+        "phase": "phase305",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Gold standard mapping for QUERY"
+      },
+      "actual": {
+        "raw_intent": "QUERY",
+        "normalized_action": "QUERY",
+        "object_type": "message_template",
+        "tool": "crm_query",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "QUERY",
+          "object_type": "message_template",
+          "data": {},
+          "score": 1.0
+        }
+      },
+      "comparison": {
+        "row_id": "bxubhw76lywa6wuo7f",
+        "all_match": true,
+        "comparisons": {
+          "expected_object": {
+            "expected": "message_template",
+            "actual": "message_template",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "QUERY",
+            "actual": "QUERY",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "crm_query",
+            "actual": "crm_query",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "99vi1a9yej3emsk6ia",
+        "user_input": "Can you Export Message Template list?",
+        "expected_object": "message_template",
+        "expected_action": "QUERY",
+        "expected_tool": "crm_query",
+        "expected_retrieval_needed": false,
+        "source_file": "phase4_refined_results.md",
+        "phase": "phase305",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Gold standard mapping for QUERY"
+      },
+      "actual": {
+        "raw_intent": "QUERY",
+        "normalized_action": "QUERY",
+        "object_type": "message_template",
+        "tool": "crm_query",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "QUERY",
+          "object_type": "message_template",
+          "data": {},
+          "score": 1.0
+        }
+      },
+      "comparison": {
+        "row_id": "99vi1a9yej3emsk6ia",
+        "all_match": true,
+        "comparisons": {
+          "expected_object": {
+            "expected": "message_template",
+            "actual": "message_template",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "QUERY",
+            "actual": "QUERY",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "crm_query",
+            "actual": "crm_query",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "awrpjy59nmmko9e3a1",
+        "user_input": "Filter Message Templates by date",
+        "expected_object": "message_template",
+        "expected_action": "ASK_CLARIFICATION",
+        "expected_tool": "none",
+        "expected_retrieval_needed": false,
+        "source_file": "phase4_refined_results.md",
+        "phase": "phase305",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Gold standard mapping for ASK_CLARIFICATION"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": null,
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "direct_response",
+        "raw_output": {
+          "intent": "CHAT",
+          "is_suggestion": true,
+          "suggestion_prompt": "Add a Message Template",
+          "text": "I think you might want to **open form** for **message_template**. Is that correct? (Suggested: \"Add a Message Template\")",
+          "score": 0.45945945,
+          "options": [
+            {
+              "label": "Yes, do that",
+              "value": "Add a Message Template"
+            },
+            {
+              "label": "No, something else",
+              "value": "help"
+            }
+          ]
+        }
+      },
+      "comparison": {
+        "row_id": "awrpjy59nmmko9e3a1",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "message_template",
+            "actual": null,
+            "match": false
+          },
+          "expected_action": {
+            "expected": "ASK_CLARIFICATION",
+            "actual": "ASK_CLARIFICATION",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "none",
+            "actual": "none",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "pzrqigawb2farhbahz",
+        "user_input": "Can you Filter Message Templates by date?",
+        "expected_object": "message_template",
+        "expected_action": "ASK_CLARIFICATION",
+        "expected_tool": "none",
+        "expected_retrieval_needed": false,
+        "source_file": "phase4_refined_results.md",
+        "phase": "phase305",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Gold standard mapping for ASK_CLARIFICATION"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": null,
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "direct_response",
+        "raw_output": {
+          "intent": "CHAT",
+          "is_suggestion": true,
+          "suggestion_prompt": "Can you Add a Message Template?",
+          "text": "I think you might want to **open form** for **message_template**. Is that correct? (Suggested: \"Can you Add a Message Template?\")",
+          "score": 0.5555556,
+          "options": [
+            {
+              "label": "Yes, do that",
+              "value": "Can you Add a Message Template?"
+            },
+            {
+              "label": "No, something else",
+              "value": "help"
+            }
+          ]
+        }
+      },
+      "comparison": {
+        "row_id": "pzrqigawb2farhbahz",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "message_template",
+            "actual": null,
+            "match": false
+          },
+          "expected_action": {
+            "expected": "ASK_CLARIFICATION",
+            "actual": "ASK_CLARIFICATION",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "none",
+            "actual": "none",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "gt2xe5d7xpizmbk4gj",
+        "user_input": "Sort Message Templates by name",
+        "expected_object": "message_template",
+        "expected_action": "ASK_CLARIFICATION",
+        "expected_tool": "none",
+        "expected_retrieval_needed": false,
+        "source_file": "phase4_refined_results.md",
+        "phase": "phase305",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Gold standard mapping for ASK_CLARIFICATION"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": null,
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "direct_response",
+        "raw_output": {
+          "intent": "CHAT",
+          "is_suggestion": true,
+          "suggestion_prompt": "Any new Message Templates?",
+          "text": "I think you might want to **open form** for **message_template**. Is that correct? (Suggested: \"Any new Message Templates?\")",
+          "score": 0.5,
+          "options": [
+            {
+              "label": "Yes, do that",
+              "value": "Any new Message Templates?"
+            },
+            {
+              "label": "No, something else",
+              "value": "help"
+            }
+          ]
+        }
+      },
+      "comparison": {
+        "row_id": "gt2xe5d7xpizmbk4gj",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "message_template",
+            "actual": null,
+            "match": false
+          },
+          "expected_action": {
+            "expected": "ASK_CLARIFICATION",
+            "actual": "ASK_CLARIFICATION",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "none",
+            "actual": "none",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "85jb1dxt5gs5mfprwk",
+        "user_input": "Can you Sort Message Templates by name?",
+        "expected_object": "message_template",
+        "expected_action": "ASK_CLARIFICATION",
+        "expected_tool": "none",
+        "expected_retrieval_needed": false,
+        "source_file": "phase4_refined_results.md",
+        "phase": "phase305",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Gold standard mapping for ASK_CLARIFICATION"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": null,
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "direct_response",
+        "raw_output": {
+          "intent": "CHAT",
+          "is_suggestion": true,
+          "suggestion_prompt": "Can you Any new Message Templates??",
+          "text": "I think you might want to **open form** for **message_template**. Is that correct? (Suggested: \"Can you Any new Message Templates??\")",
+          "score": 0.5869565,
+          "options": [
+            {
+              "label": "Yes, do that",
+              "value": "Can you Any new Message Templates??"
+            },
+            {
+              "label": "No, something else",
+              "value": "help"
+            }
+          ]
+        }
+      },
+      "comparison": {
+        "row_id": "85jb1dxt5gs5mfprwk",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "message_template",
+            "actual": null,
+            "match": false
+          },
+          "expected_action": {
+            "expected": "ASK_CLARIFICATION",
+            "actual": "ASK_CLARIFICATION",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "none",
+            "actual": "none",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "l6dd0rumitdk6tblec",
+        "user_input": "Show me Message Template #123",
+        "expected_object": "message_template",
+        "expected_action": "OPEN_RECORD",
+        "expected_tool": "crm_query",
+        "expected_retrieval_needed": false,
+        "source_file": "phase4_refined_results.md",
+        "phase": "phase305",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Gold standard mapping for OPEN_RECORD"
+      },
+      "actual": {
+        "raw_intent": "QUERY",
+        "normalized_action": "QUERY",
+        "object_type": "message_send",
+        "tool": "crm_query",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "QUERY",
+          "object_type": "message_send",
+          "data": {},
+          "score": 1.0,
+          "language_preference": "eng"
+        }
+      },
+      "comparison": {
+        "row_id": "l6dd0rumitdk6tblec",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "message_template",
+            "actual": "message_send",
+            "match": false
+          },
+          "expected_action": {
+            "expected": "OPEN_RECORD",
+            "actual": "QUERY",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "crm_query",
+            "actual": "crm_query",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "n6vkmkokslemv5o85f",
+        "user_input": "Can you Show me Message Template #123?",
+        "expected_object": "message_template",
+        "expected_action": "OPEN_RECORD",
+        "expected_tool": "crm_query",
+        "expected_retrieval_needed": false,
+        "source_file": "phase4_refined_results.md",
+        "phase": "phase305",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Gold standard mapping for OPEN_RECORD"
+      },
+      "actual": {
+        "raw_intent": "QUERY",
+        "normalized_action": "QUERY",
+        "object_type": "message_send",
+        "tool": "crm_query",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "QUERY",
+          "object_type": "message_send",
+          "data": {},
+          "score": 1.0,
+          "language_preference": "eng"
+        }
+      },
+      "comparison": {
+        "row_id": "n6vkmkokslemv5o85f",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "message_template",
+            "actual": "message_send",
+            "match": false
+          },
+          "expected_action": {
+            "expected": "OPEN_RECORD",
+            "actual": "QUERY",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "crm_query",
+            "actual": "crm_query",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "3z1fix9pzfd0qae2pz",
+        "user_input": "Open record for Message Template",
+        "expected_object": "message_template",
+        "expected_action": "OPEN_RECORD",
+        "expected_tool": "crm_query",
+        "expected_retrieval_needed": false,
+        "source_file": "phase4_refined_results.md",
+        "phase": "phase305",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Gold standard mapping for OPEN_RECORD"
+      },
+      "actual": {
+        "raw_intent": "QUERY",
+        "normalized_action": "QUERY",
+        "object_type": "message_send",
+        "tool": "crm_query",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "QUERY",
+          "object_type": "message_send",
+          "data": {},
+          "score": 1.0,
+          "language_preference": "eng"
+        }
+      },
+      "comparison": {
+        "row_id": "3z1fix9pzfd0qae2pz",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "message_template",
+            "actual": "message_send",
+            "match": false
+          },
+          "expected_action": {
+            "expected": "OPEN_RECORD",
+            "actual": "QUERY",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "crm_query",
+            "actual": "crm_query",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "lglqdzcacut1f2nrr6",
+        "user_input": "Can you Open record for Message Template?",
+        "expected_object": "message_template",
+        "expected_action": "OPEN_RECORD",
+        "expected_tool": "crm_query",
+        "expected_retrieval_needed": false,
+        "source_file": "phase4_refined_results.md",
+        "phase": "phase305",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Gold standard mapping for OPEN_RECORD"
+      },
+      "actual": {
+        "raw_intent": "QUERY",
+        "normalized_action": "QUERY",
+        "object_type": "message_send",
+        "tool": "crm_query",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "QUERY",
+          "object_type": "message_send",
+          "data": {},
+          "score": 1.0,
+          "language_preference": "eng"
+        }
+      },
+      "comparison": {
+        "row_id": "lglqdzcacut1f2nrr6",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "message_template",
+            "actual": "message_send",
+            "match": false
+          },
+          "expected_action": {
+            "expected": "OPEN_RECORD",
+            "actual": "QUERY",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "crm_query",
+            "actual": "crm_query",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "1vuq3m1i7opph11vvx",
+        "user_input": "What's the status of the Message Template?",
+        "expected_object": "message_template",
+        "expected_action": "ASK_CLARIFICATION",
+        "expected_tool": "none",
+        "expected_retrieval_needed": false,
+        "source_file": "phase4_refined_results.md",
+        "phase": "phase305",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Gold standard mapping for ASK_CLARIFICATION"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": null,
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "direct_response",
+        "raw_output": {
+          "intent": "CHAT",
+          "is_suggestion": true,
+          "suggestion_prompt": "What's the status?",
+          "text": "I think you might want to **query** for **lead**. Is that correct? (Suggested: \"What's the status?\")",
+          "score": 0.4722222,
+          "options": [
+            {
+              "label": "Yes, do that",
+              "value": "What's the status?"
+            },
+            {
+              "label": "No, something else",
+              "value": "help"
+            }
+          ]
+        }
+      },
+      "comparison": {
+        "row_id": "1vuq3m1i7opph11vvx",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "message_template",
+            "actual": null,
+            "match": false
+          },
+          "expected_action": {
+            "expected": "ASK_CLARIFICATION",
+            "actual": "ASK_CLARIFICATION",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "none",
+            "actual": "none",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "koj2p40pt7w8v80wxc",
+        "user_input": "Can you What's the status of the Message Template??",
+        "expected_object": "message_template",
+        "expected_action": "ASK_CLARIFICATION",
+        "expected_tool": "none",
+        "expected_retrieval_needed": false,
+        "source_file": "phase4_refined_results.md",
+        "phase": "phase305",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Gold standard mapping for ASK_CLARIFICATION"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": null,
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "direct_response",
+        "raw_output": {
+          "intent": "CHAT",
+          "is_suggestion": true,
+          "suggestion_prompt": "Can you Open the Message Template create screen?",
+          "text": "I think you might want to **open form** for **message_template**. Is that correct? (Suggested: \"Can you Open the Message Template create screen?\")",
+          "score": 0.53571427,
+          "options": [
+            {
+              "label": "Yes, do that",
+              "value": "Can you Open the Message Template create screen?"
+            },
+            {
+              "label": "No, something else",
+              "value": "help"
+            }
+          ]
+        }
+      },
+      "comparison": {
+        "row_id": "koj2p40pt7w8v80wxc",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "message_template",
+            "actual": null,
+            "match": false
+          },
+          "expected_action": {
+            "expected": "ASK_CLARIFICATION",
+            "actual": "ASK_CLARIFICATION",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "none",
+            "actual": "none",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "4dkqnklvnsluvhdof8",
+        "user_input": "Is the Message Template done?",
+        "expected_object": "message_template",
+        "expected_action": "ASK_CLARIFICATION",
+        "expected_tool": "none",
+        "expected_retrieval_needed": false,
+        "source_file": "phase4_refined_results.md",
+        "phase": "phase305",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Gold standard mapping for ASK_CLARIFICATION"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": null,
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "direct_response",
+        "raw_output": {
+          "intent": "CHAT",
+          "is_suggestion": true,
+          "suggestion_prompt": "Add a Message Template",
+          "text": "I think you might want to **open form** for **message_template**. Is that correct? (Suggested: \"Add a Message Template\")",
+          "score": 0.5151515,
+          "options": [
+            {
+              "label": "Yes, do that",
+              "value": "Add a Message Template"
+            },
+            {
+              "label": "No, something else",
+              "value": "help"
+            }
+          ]
+        }
+      },
+      "comparison": {
+        "row_id": "4dkqnklvnsluvhdof8",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "message_template",
+            "actual": null,
+            "match": false
+          },
+          "expected_action": {
+            "expected": "ASK_CLARIFICATION",
+            "actual": "ASK_CLARIFICATION",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "none",
+            "actual": "none",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "kvyzhxicc9zbiu8nrq",
+        "user_input": "Can you Is the Message Template done??",
+        "expected_object": "message_template",
+        "expected_action": "ASK_CLARIFICATION",
+        "expected_tool": "none",
+        "expected_retrieval_needed": false,
+        "source_file": "phase4_refined_results.md",
+        "phase": "phase305",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Gold standard mapping for ASK_CLARIFICATION"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": null,
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "direct_response",
+        "raw_output": {
+          "intent": "CHAT",
+          "is_suggestion": true,
+          "suggestion_prompt": "Can you Add a Message Template?",
+          "text": "I think you might want to **open form** for **message_template**. Is that correct? (Suggested: \"Can you Add a Message Template?\")",
+          "score": 0.6097561,
+          "options": [
+            {
+              "label": "Yes, do that",
+              "value": "Can you Add a Message Template?"
+            },
+            {
+              "label": "No, something else",
+              "value": "help"
+            }
+          ]
+        }
+      },
+      "comparison": {
+        "row_id": "kvyzhxicc9zbiu8nrq",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "message_template",
+            "actual": null,
+            "match": false
+          },
+          "expected_action": {
+            "expected": "ASK_CLARIFICATION",
+            "actual": "ASK_CLARIFICATION",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "none",
+            "actual": "none",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "jdiu9z6a0hpfa7fw97",
+        "user_input": "Next steps for this Message Template",
+        "expected_object": "message_template",
+        "expected_action": "RETRIEVE_AND_ANSWER",
+        "expected_tool": "vector_retrieval",
+        "expected_retrieval_needed": true,
+        "source_file": "phase4_refined_results.md",
+        "phase": "phase305",
+        "context": "",
+        "difficulty": "hard",
+        "notes": "Gold standard mapping for RETRIEVE_AND_ANSWER"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": null,
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "direct_response",
+        "raw_output": {
+          "intent": "CHAT",
+          "is_suggestion": true,
+          "suggestion_prompt": "Create new Message Template",
+          "text": "I think you might want to **open form** for **message_template**. Is that correct? (Suggested: \"Create new Message Template\")",
+          "score": 0.44186047,
+          "options": [
+            {
+              "label": "Yes, do that",
+              "value": "Create new Message Template"
+            },
+            {
+              "label": "No, something else",
+              "value": "help"
+            }
+          ]
+        }
+      },
+      "comparison": {
+        "row_id": "jdiu9z6a0hpfa7fw97",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "message_template",
+            "actual": null,
+            "match": false
+          },
+          "expected_action": {
+            "expected": "RETRIEVE_AND_ANSWER",
+            "actual": "ASK_CLARIFICATION",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "vector_retrieval",
+            "actual": "none",
+            "match": false
+          },
+          "expected_retrieval_needed": {
+            "expected": true,
+            "actual": false,
+            "match": false
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "om43g551k5pec1x8es",
+        "user_input": "Can you Next steps for this Message Template?",
+        "expected_object": "message_template",
+        "expected_action": "RETRIEVE_AND_ANSWER",
+        "expected_tool": "vector_retrieval",
+        "expected_retrieval_needed": true,
+        "source_file": "phase4_refined_results.md",
+        "phase": "phase305",
+        "context": "",
+        "difficulty": "hard",
+        "notes": "Gold standard mapping for RETRIEVE_AND_ANSWER"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": null,
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "direct_response",
+        "raw_output": {
+          "intent": "CHAT",
+          "is_suggestion": true,
+          "suggestion_prompt": "Can you Create new Message Template?",
+          "text": "I think you might want to **open form** for **message_template**. Is that correct? (Suggested: \"Can you Create new Message Template?\")",
+          "score": 0.54,
+          "options": [
+            {
+              "label": "Yes, do that",
+              "value": "Can you Create new Message Template?"
+            },
+            {
+              "label": "No, something else",
+              "value": "help"
+            }
+          ]
+        }
+      },
+      "comparison": {
+        "row_id": "om43g551k5pec1x8es",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "message_template",
+            "actual": null,
+            "match": false
+          },
+          "expected_action": {
+            "expected": "RETRIEVE_AND_ANSWER",
+            "actual": "ASK_CLARIFICATION",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "vector_retrieval",
+            "actual": "none",
+            "match": false
+          },
+          "expected_retrieval_needed": {
+            "expected": true,
+            "actual": false,
+            "match": false
+          }
+        }
+      }
+    }
+  ]
+}

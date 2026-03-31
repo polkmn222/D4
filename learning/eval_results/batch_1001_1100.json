@@ -1,0 +1,5632 @@
+{
+  "generated_at": "2026-03-31T02:02:11.714781+00:00",
+  "dataset_path": "/var/folders/zg/z6kl4gjn3lj8l400kylykqm40000gp/T/tmpceiacnd2.jsonl",
+  "output_path": "learning/eval_results/batch_1001_1100.json",
+  "summary": {
+    "rows": 100,
+    "full_match_rows": 45,
+    "field_matches": {
+      "expected_object": 86,
+      "expected_action": 46,
+      "expected_tool": 72,
+      "expected_retrieval_needed": 100
+    }
+  },
+  "results": [
+    {
+      "dataset_row": {
+        "id": "vxj1pzkypvlu7okzr1",
+        "user_input": "view assets",
+        "expected_object": "asset",
+        "expected_action": "QUERY",
+        "expected_tool": "crm_query",
+        "expected_retrieval_needed": false,
+        "source_file": "expanded_dataset_v1",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "easy",
+        "notes": "Expanded synthetic data for QUERY variation"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": "asset",
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "CHAT",
+          "object_type": "asset",
+          "text": "I can help you open a asset. Try `show all assets`, `show recent assets`, or mention the name you want to open.",
+          "score": 0.95
+        }
+      },
+      "comparison": {
+        "row_id": "vxj1pzkypvlu7okzr1",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "asset",
+            "actual": "asset",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "QUERY",
+            "actual": "ASK_CLARIFICATION",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "crm_query",
+            "actual": "none",
+            "match": false
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "0twpyi626m4xf3lpbk",
+        "user_input": "Can you pull up the list of products?",
+        "expected_object": "product",
+        "expected_action": "QUERY",
+        "expected_tool": "crm_query",
+        "expected_retrieval_needed": false,
+        "source_file": "expanded_dataset_v1",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Expanded synthetic data for QUERY variation"
+      },
+      "actual": {
+        "raw_intent": "QUERY",
+        "normalized_action": "QUERY",
+        "object_type": "product",
+        "tool": "crm_query",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "QUERY",
+          "object_type": "product",
+          "data": {},
+          "score": 1.0
+        }
+      },
+      "comparison": {
+        "row_id": "0twpyi626m4xf3lpbk",
+        "all_match": true,
+        "comparisons": {
+          "expected_object": {
+            "expected": "product",
+            "actual": "product",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "QUERY",
+            "actual": "QUERY",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "crm_query",
+            "actual": "crm_query",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "ykbnz15wlfhijno684",
+        "user_input": "I need to see all active products. please.",
+        "expected_object": "product",
+        "expected_action": "QUERY",
+        "expected_tool": "crm_query",
+        "expected_retrieval_needed": false,
+        "source_file": "expanded_dataset_v1",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Expanded synthetic data for QUERY variation"
+      },
+      "actual": {
+        "raw_intent": "QUERY",
+        "normalized_action": "QUERY",
+        "object_type": "product",
+        "tool": "crm_query",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "QUERY",
+          "object_type": "product",
+          "data": {},
+          "score": 1.0
+        }
+      },
+      "comparison": {
+        "row_id": "ykbnz15wlfhijno684",
+        "all_match": true,
+        "comparisons": {
+          "expected_object": {
+            "expected": "product",
+            "actual": "product",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "QUERY",
+            "actual": "QUERY",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "crm_query",
+            "actual": "crm_query",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "2467yilu9tfa538zok",
+        "user_input": "List all leads assigned to my team this quarter.",
+        "expected_object": "lead",
+        "expected_action": "QUERY",
+        "expected_tool": "crm_query",
+        "expected_retrieval_needed": false,
+        "source_file": "expanded_dataset_v1",
+        "phase": "phase306",
+        "context": "Looking at a specific record",
+        "difficulty": "hard",
+        "notes": "Expanded synthetic data for QUERY variation"
+      },
+      "actual": {
+        "raw_intent": "QUERY",
+        "normalized_action": "QUERY",
+        "object_type": "lead",
+        "tool": "crm_query",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "QUERY",
+          "object_type": "lead",
+          "data": {},
+          "score": 1.0
+        }
+      },
+      "comparison": {
+        "row_id": "2467yilu9tfa538zok",
+        "all_match": true,
+        "comparisons": {
+          "expected_object": {
+            "expected": "lead",
+            "actual": "lead",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "QUERY",
+            "actual": "QUERY",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "crm_query",
+            "actual": "crm_query",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "le7lhpu5gzvsaeudj3",
+        "user_input": "List all contacts assigned to my team this quarter.",
+        "expected_object": "contact",
+        "expected_action": "QUERY",
+        "expected_tool": "crm_query",
+        "expected_retrieval_needed": false,
+        "source_file": "expanded_dataset_v1",
+        "phase": "phase306",
+        "context": "After a search query",
+        "difficulty": "hard",
+        "notes": "Expanded synthetic data for QUERY variation"
+      },
+      "actual": {
+        "raw_intent": "QUERY",
+        "normalized_action": "QUERY",
+        "object_type": "contact",
+        "tool": "crm_query",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "QUERY",
+          "object_type": "contact",
+          "data": {},
+          "score": 1.0
+        }
+      },
+      "comparison": {
+        "row_id": "le7lhpu5gzvsaeudj3",
+        "all_match": true,
+        "comparisons": {
+          "expected_object": {
+            "expected": "contact",
+            "actual": "contact",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "QUERY",
+            "actual": "QUERY",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "crm_query",
+            "actual": "crm_query",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "xpw6yg47ynwqk3z4h2",
+        "user_input": "List my contacts",
+        "expected_object": "contact",
+        "expected_action": "QUERY",
+        "expected_tool": "crm_query",
+        "expected_retrieval_needed": false,
+        "source_file": "expanded_dataset_v1",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "easy",
+        "notes": "Expanded synthetic data for QUERY variation"
+      },
+      "actual": {
+        "raw_intent": "QUERY",
+        "normalized_action": "QUERY",
+        "object_type": "contact",
+        "tool": "crm_query",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "QUERY",
+          "object_type": "contact",
+          "data": {},
+          "score": 1.0
+        }
+      },
+      "comparison": {
+        "row_id": "xpw6yg47ynwqk3z4h2",
+        "all_match": true,
+        "comparisons": {
+          "expected_object": {
+            "expected": "contact",
+            "actual": "contact",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "QUERY",
+            "actual": "QUERY",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "crm_query",
+            "actual": "crm_query",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "ay59h8mfpx2utv8eo2",
+        "user_input": "Get asset list",
+        "expected_object": "asset",
+        "expected_action": "QUERY",
+        "expected_tool": "crm_query",
+        "expected_retrieval_needed": false,
+        "source_file": "expanded_dataset_v1",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "easy",
+        "notes": "Expanded synthetic data for QUERY variation"
+      },
+      "actual": {
+        "raw_intent": "QUERY",
+        "normalized_action": "QUERY",
+        "object_type": "asset",
+        "tool": "crm_query",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "QUERY",
+          "object_type": "asset",
+          "data": {},
+          "score": 1.0
+        }
+      },
+      "comparison": {
+        "row_id": "ay59h8mfpx2utv8eo2",
+        "all_match": true,
+        "comparisons": {
+          "expected_object": {
+            "expected": "asset",
+            "actual": "asset",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "QUERY",
+            "actual": "QUERY",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "crm_query",
+            "actual": "crm_query",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "7aa53f3e8jxxtkdwmh",
+        "user_input": "Show me all assets",
+        "expected_object": "asset",
+        "expected_action": "QUERY",
+        "expected_tool": "crm_query",
+        "expected_retrieval_needed": false,
+        "source_file": "expanded_dataset_v1",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "easy",
+        "notes": "Expanded synthetic data for QUERY variation"
+      },
+      "actual": {
+        "raw_intent": "QUERY",
+        "normalized_action": "QUERY",
+        "object_type": "asset",
+        "tool": "crm_query",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "QUERY",
+          "object_type": "asset",
+          "data": {},
+          "score": 1.0
+        }
+      },
+      "comparison": {
+        "row_id": "7aa53f3e8jxxtkdwmh",
+        "all_match": true,
+        "comparisons": {
+          "expected_object": {
+            "expected": "asset",
+            "actual": "asset",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "QUERY",
+            "actual": "QUERY",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "crm_query",
+            "actual": "crm_query",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "wzjb57oomj09sv9g51",
+        "user_input": "Show me all models",
+        "expected_object": "model",
+        "expected_action": "QUERY",
+        "expected_tool": "crm_query",
+        "expected_retrieval_needed": false,
+        "source_file": "expanded_dataset_v1",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "easy",
+        "notes": "Expanded synthetic data for QUERY variation"
+      },
+      "actual": {
+        "raw_intent": "QUERY",
+        "normalized_action": "QUERY",
+        "object_type": "model",
+        "tool": "crm_query",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "QUERY",
+          "object_type": "model",
+          "data": {},
+          "score": 1.0
+        }
+      },
+      "comparison": {
+        "row_id": "wzjb57oomj09sv9g51",
+        "all_match": true,
+        "comparisons": {
+          "expected_object": {
+            "expected": "model",
+            "actual": "model",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "QUERY",
+            "actual": "QUERY",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "crm_query",
+            "actual": "crm_query",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "ex64im96m4aowa2lp5",
+        "user_input": "Filter message templates by recent activity.",
+        "expected_object": "message_template",
+        "expected_action": "QUERY",
+        "expected_tool": "crm_query",
+        "expected_retrieval_needed": false,
+        "source_file": "expanded_dataset_v1",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Expanded synthetic data for QUERY variation"
+      },
+      "actual": {
+        "raw_intent": "QUERY",
+        "normalized_action": "QUERY",
+        "object_type": "message_template",
+        "tool": "crm_query",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "QUERY",
+          "object_type": "message_template",
+          "data": {
+            "query_mode": "recent"
+          },
+          "score": 1.0
+        }
+      },
+      "comparison": {
+        "row_id": "ex64im96m4aowa2lp5",
+        "all_match": true,
+        "comparisons": {
+          "expected_object": {
+            "expected": "message_template",
+            "actual": "message_template",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "QUERY",
+            "actual": "QUERY",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "crm_query",
+            "actual": "crm_query",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "emmrlrl6qm9s2sc3k4",
+        "user_input": "List my models",
+        "expected_object": "model",
+        "expected_action": "QUERY",
+        "expected_tool": "crm_query",
+        "expected_retrieval_needed": false,
+        "source_file": "expanded_dataset_v1",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "easy",
+        "notes": "Expanded synthetic data for QUERY variation"
+      },
+      "actual": {
+        "raw_intent": "QUERY",
+        "normalized_action": "QUERY",
+        "object_type": "model",
+        "tool": "crm_query",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "QUERY",
+          "object_type": "model",
+          "data": {},
+          "score": 1.0
+        }
+      },
+      "comparison": {
+        "row_id": "emmrlrl6qm9s2sc3k4",
+        "all_match": true,
+        "comparisons": {
+          "expected_object": {
+            "expected": "model",
+            "actual": "model",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "QUERY",
+            "actual": "QUERY",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "crm_query",
+            "actual": "crm_query",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "eiv7ts4khqcmj1wz43",
+        "user_input": "View assets",
+        "expected_object": "asset",
+        "expected_action": "QUERY",
+        "expected_tool": "crm_query",
+        "expected_retrieval_needed": false,
+        "source_file": "expanded_dataset_v1",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "easy",
+        "notes": "Expanded synthetic data for QUERY variation"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": "asset",
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "CHAT",
+          "object_type": "asset",
+          "text": "I can help you open a asset. Try `show all assets`, `show recent assets`, or mention the name you want to open.",
+          "score": 0.95
+        }
+      },
+      "comparison": {
+        "row_id": "eiv7ts4khqcmj1wz43",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "asset",
+            "actual": "asset",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "QUERY",
+            "actual": "ASK_CLARIFICATION",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "crm_query",
+            "actual": "none",
+            "match": false
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "09mgdd7p2i0obdzely",
+        "user_input": "Get message template list",
+        "expected_object": "message_template",
+        "expected_action": "QUERY",
+        "expected_tool": "crm_query",
+        "expected_retrieval_needed": false,
+        "source_file": "expanded_dataset_v1",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "easy",
+        "notes": "Expanded synthetic data for QUERY variation"
+      },
+      "actual": {
+        "raw_intent": "QUERY",
+        "normalized_action": "QUERY",
+        "object_type": "message_template",
+        "tool": "crm_query",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "QUERY",
+          "object_type": "message_template",
+          "data": {},
+          "score": 1.0
+        }
+      },
+      "comparison": {
+        "row_id": "09mgdd7p2i0obdzely",
+        "all_match": true,
+        "comparisons": {
+          "expected_object": {
+            "expected": "message_template",
+            "actual": "message_template",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "QUERY",
+            "actual": "QUERY",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "crm_query",
+            "actual": "crm_query",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "3zauaqj3v2tgbdazjl",
+        "user_input": "View products",
+        "expected_object": "product",
+        "expected_action": "QUERY",
+        "expected_tool": "crm_query",
+        "expected_retrieval_needed": false,
+        "source_file": "expanded_dataset_v1",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "easy",
+        "notes": "Expanded synthetic data for QUERY variation"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": "product",
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "CHAT",
+          "object_type": "product",
+          "text": "I can help you open a product. Try `show all products`, `show recent products`, or mention the name you want to open.",
+          "score": 0.95
+        }
+      },
+      "comparison": {
+        "row_id": "3zauaqj3v2tgbdazjl",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "product",
+            "actual": "product",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "QUERY",
+            "actual": "ASK_CLARIFICATION",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "crm_query",
+            "actual": "none",
+            "match": false
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "c3gr5tm12x3wcaiv9o",
+        "user_input": "Could you fetch a summary table of message templates sorted by priority?",
+        "expected_object": "message_template",
+        "expected_action": "QUERY",
+        "expected_tool": "crm_query",
+        "expected_retrieval_needed": false,
+        "source_file": "expanded_dataset_v1",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "hard",
+        "notes": "Expanded synthetic data for QUERY variation"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": null,
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "missing_response",
+        "raw_output": {
+          "intent": "CHAT",
+          "text": "Eval runner could not capture a runtime decision."
+        }
+      },
+      "comparison": {
+        "row_id": "c3gr5tm12x3wcaiv9o",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "message_template",
+            "actual": null,
+            "match": false
+          },
+          "expected_action": {
+            "expected": "QUERY",
+            "actual": "ASK_CLARIFICATION",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "crm_query",
+            "actual": "none",
+            "match": false
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "eypfn04xesewhobjod",
+        "user_input": "filter message templates by recent activity.",
+        "expected_object": "message_template",
+        "expected_action": "QUERY",
+        "expected_tool": "crm_query",
+        "expected_retrieval_needed": false,
+        "source_file": "expanded_dataset_v1",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Expanded synthetic data for QUERY variation"
+      },
+      "actual": {
+        "raw_intent": "QUERY",
+        "normalized_action": "QUERY",
+        "object_type": "message_template",
+        "tool": "crm_query",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "QUERY",
+          "object_type": "message_template",
+          "data": {
+            "query_mode": "recent"
+          },
+          "score": 1.0
+        }
+      },
+      "comparison": {
+        "row_id": "eypfn04xesewhobjod",
+        "all_match": true,
+        "comparisons": {
+          "expected_object": {
+            "expected": "message_template",
+            "actual": "message_template",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "QUERY",
+            "actual": "QUERY",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "crm_query",
+            "actual": "crm_query",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "i05jwddnr3fjemowgw",
+        "user_input": "Find products",
+        "expected_object": "product",
+        "expected_action": "QUERY",
+        "expected_tool": "crm_query",
+        "expected_retrieval_needed": false,
+        "source_file": "expanded_dataset_v1",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "easy",
+        "notes": "Expanded synthetic data for QUERY variation"
+      },
+      "actual": {
+        "raw_intent": "QUERY",
+        "normalized_action": "QUERY",
+        "object_type": "product",
+        "tool": "crm_query",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "id": "000QgO0ibTCquYCIRZ",
+          "prompt": "find product",
+          "intent": "QUERY",
+          "object_type": "product",
+          "score": 0.8
+        }
+      },
+      "comparison": {
+        "row_id": "i05jwddnr3fjemowgw",
+        "all_match": true,
+        "comparisons": {
+          "expected_object": {
+            "expected": "product",
+            "actual": "product",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "QUERY",
+            "actual": "QUERY",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "crm_query",
+            "actual": "crm_query",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "6qo8olpkz3avzdcjp3",
+        "user_input": "Could you fetch a summary table of contacts sorted by priority?",
+        "expected_object": "contact",
+        "expected_action": "QUERY",
+        "expected_tool": "crm_query",
+        "expected_retrieval_needed": false,
+        "source_file": "expanded_dataset_v1",
+        "phase": "phase306",
+        "context": "Following up on a previous task",
+        "difficulty": "hard",
+        "notes": "Expanded synthetic data for QUERY variation"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": null,
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "missing_response",
+        "raw_output": {
+          "intent": "CHAT",
+          "text": "Eval runner could not capture a runtime decision."
+        }
+      },
+      "comparison": {
+        "row_id": "6qo8olpkz3avzdcjp3",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "contact",
+            "actual": null,
+            "match": false
+          },
+          "expected_action": {
+            "expected": "QUERY",
+            "actual": "ASK_CLARIFICATION",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "crm_query",
+            "actual": "none",
+            "match": false
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "lcfec4p0vlazhtb4vy",
+        "user_input": "list my products",
+        "expected_object": "product",
+        "expected_action": "QUERY",
+        "expected_tool": "crm_query",
+        "expected_retrieval_needed": false,
+        "source_file": "expanded_dataset_v1",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "easy",
+        "notes": "Expanded synthetic data for QUERY variation"
+      },
+      "actual": {
+        "raw_intent": "QUERY",
+        "normalized_action": "QUERY",
+        "object_type": "product",
+        "tool": "crm_query",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "QUERY",
+          "object_type": "product",
+          "data": {},
+          "score": 1.0
+        }
+      },
+      "comparison": {
+        "row_id": "lcfec4p0vlazhtb4vy",
+        "all_match": true,
+        "comparisons": {
+          "expected_object": {
+            "expected": "product",
+            "actual": "product",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "QUERY",
+            "actual": "QUERY",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "crm_query",
+            "actual": "crm_query",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "j1pzvs8bzae5y4902i",
+        "user_input": "view message templates",
+        "expected_object": "message_template",
+        "expected_action": "QUERY",
+        "expected_tool": "crm_query",
+        "expected_retrieval_needed": false,
+        "source_file": "expanded_dataset_v1",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "easy",
+        "notes": "Expanded synthetic data for QUERY variation"
+      },
+      "actual": {
+        "raw_intent": "QUERY",
+        "normalized_action": "QUERY",
+        "object_type": "message_send",
+        "tool": "crm_query",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "QUERY",
+          "object_type": "message_send",
+          "data": {},
+          "score": 1.0,
+          "language_preference": "eng"
+        }
+      },
+      "comparison": {
+        "row_id": "j1pzvs8bzae5y4902i",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "message_template",
+            "actual": "message_send",
+            "match": false
+          },
+          "expected_action": {
+            "expected": "QUERY",
+            "actual": "QUERY",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "crm_query",
+            "actual": "crm_query",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "glf67hi1hw9g35vfml",
+        "user_input": "Find message templates",
+        "expected_object": "message_template",
+        "expected_action": "QUERY",
+        "expected_tool": "crm_query",
+        "expected_retrieval_needed": false,
+        "source_file": "expanded_dataset_v1",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "easy",
+        "notes": "Expanded synthetic data for QUERY variation"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": null,
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "direct_response",
+        "raw_output": {
+          "intent": "CHAT",
+          "is_suggestion": true,
+          "suggestion_prompt": "Any new Message Templates?",
+          "text": "I think you might want to **open form** for **message_template**. Is that correct? (Suggested: \"Any new Message Templates?\")",
+          "score": 0.58064514,
+          "options": [
+            {
+              "label": "Yes, do that",
+              "value": "Any new Message Templates?"
+            },
+            {
+              "label": "No, something else",
+              "value": "help"
+            }
+          ]
+        }
+      },
+      "comparison": {
+        "row_id": "glf67hi1hw9g35vfml",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "message_template",
+            "actual": null,
+            "match": false
+          },
+          "expected_action": {
+            "expected": "QUERY",
+            "actual": "ASK_CLARIFICATION",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "crm_query",
+            "actual": "none",
+            "match": false
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "frkvo4nccmyidpdbtl",
+        "user_input": "Can you pull up the list of brands?",
+        "expected_object": "brand",
+        "expected_action": "QUERY",
+        "expected_tool": "crm_query",
+        "expected_retrieval_needed": false,
+        "source_file": "expanded_dataset_v1",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Expanded synthetic data for QUERY variation"
+      },
+      "actual": {
+        "raw_intent": "QUERY",
+        "normalized_action": "QUERY",
+        "object_type": "brand",
+        "tool": "crm_query",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "QUERY",
+          "object_type": "brand",
+          "data": {},
+          "score": 1.0
+        }
+      },
+      "comparison": {
+        "row_id": "frkvo4nccmyidpdbtl",
+        "all_match": true,
+        "comparisons": {
+          "expected_object": {
+            "expected": "brand",
+            "actual": "brand",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "QUERY",
+            "actual": "QUERY",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "crm_query",
+            "actual": "crm_query",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "sgo7fwry2np3gt6bgq",
+        "user_input": "list all contacts assigned to my team this quarter.",
+        "expected_object": "contact",
+        "expected_action": "QUERY",
+        "expected_tool": "crm_query",
+        "expected_retrieval_needed": false,
+        "source_file": "expanded_dataset_v1",
+        "phase": "phase306",
+        "context": "Looking at a specific record",
+        "difficulty": "hard",
+        "notes": "Expanded synthetic data for QUERY variation"
+      },
+      "actual": {
+        "raw_intent": "QUERY",
+        "normalized_action": "QUERY",
+        "object_type": "contact",
+        "tool": "crm_query",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "QUERY",
+          "object_type": "contact",
+          "data": {},
+          "score": 1.0
+        }
+      },
+      "comparison": {
+        "row_id": "sgo7fwry2np3gt6bgq",
+        "all_match": true,
+        "comparisons": {
+          "expected_object": {
+            "expected": "contact",
+            "actual": "contact",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "QUERY",
+            "actual": "QUERY",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "crm_query",
+            "actual": "crm_query",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "ydzo9subw72ty0ti2y",
+        "user_input": "display my product pipeline.",
+        "expected_object": "product",
+        "expected_action": "QUERY",
+        "expected_tool": "crm_query",
+        "expected_retrieval_needed": false,
+        "source_file": "expanded_dataset_v1",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Expanded synthetic data for QUERY variation"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": null,
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "missing_response",
+        "raw_output": {
+          "intent": "CHAT",
+          "text": "Eval runner could not capture a runtime decision."
+        }
+      },
+      "comparison": {
+        "row_id": "ydzo9subw72ty0ti2y",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "product",
+            "actual": null,
+            "match": false
+          },
+          "expected_action": {
+            "expected": "QUERY",
+            "actual": "ASK_CLARIFICATION",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "crm_query",
+            "actual": "none",
+            "match": false
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "6dolyqluv6fh2vn9rc",
+        "user_input": "I need to see all active models.",
+        "expected_object": "model",
+        "expected_action": "QUERY",
+        "expected_tool": "crm_query",
+        "expected_retrieval_needed": false,
+        "source_file": "expanded_dataset_v1",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Expanded synthetic data for QUERY variation"
+      },
+      "actual": {
+        "raw_intent": "QUERY",
+        "normalized_action": "QUERY",
+        "object_type": "model",
+        "tool": "crm_query",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "QUERY",
+          "object_type": "model",
+          "data": {},
+          "score": 1.0
+        }
+      },
+      "comparison": {
+        "row_id": "6dolyqluv6fh2vn9rc",
+        "all_match": true,
+        "comparisons": {
+          "expected_object": {
+            "expected": "model",
+            "actual": "model",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "QUERY",
+            "actual": "QUERY",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "crm_query",
+            "actual": "crm_query",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "i07ds3yyjhhfmeve1q",
+        "user_input": "Show me the leads that haven't been contacted in 30 days.",
+        "expected_object": "lead",
+        "expected_action": "QUERY",
+        "expected_tool": "crm_query",
+        "expected_retrieval_needed": false,
+        "source_file": "expanded_dataset_v1",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "hard",
+        "notes": "Expanded synthetic data for QUERY variation"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": "lead",
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "CHAT",
+          "object_type": "lead",
+          "text": "I need a specific lead record first. Open one or select one, then try again.",
+          "score": 1.0,
+          "language_preference": "eng"
+        }
+      },
+      "comparison": {
+        "row_id": "i07ds3yyjhhfmeve1q",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "lead",
+            "actual": "lead",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "QUERY",
+            "actual": "ASK_CLARIFICATION",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "crm_query",
+            "actual": "none",
+            "match": false
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "wpbb9o1x1ogds7akec",
+        "user_input": "Show me the opportunitys that haven't been contacted in 30 days.",
+        "expected_object": "opportunity",
+        "expected_action": "QUERY",
+        "expected_tool": "crm_query",
+        "expected_retrieval_needed": false,
+        "source_file": "expanded_dataset_v1",
+        "phase": "phase306",
+        "context": "Looking at a specific record",
+        "difficulty": "hard",
+        "notes": "Expanded synthetic data for QUERY variation"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": "contact",
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "CHAT",
+          "object_type": "contact",
+          "text": "I need a specific contact record first. Open one or select one, then try again.",
+          "score": 1.0,
+          "language_preference": "eng"
+        }
+      },
+      "comparison": {
+        "row_id": "wpbb9o1x1ogds7akec",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "opportunity",
+            "actual": "contact",
+            "match": false
+          },
+          "expected_action": {
+            "expected": "QUERY",
+            "actual": "ASK_CLARIFICATION",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "crm_query",
+            "actual": "none",
+            "match": false
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "6oinv16jqvrtns5dy5",
+        "user_input": "Filter leads by recent activity.",
+        "expected_object": "lead",
+        "expected_action": "QUERY",
+        "expected_tool": "crm_query",
+        "expected_retrieval_needed": false,
+        "source_file": "expanded_dataset_v1",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Expanded synthetic data for QUERY variation"
+      },
+      "actual": {
+        "raw_intent": "QUERY",
+        "normalized_action": "QUERY",
+        "object_type": "lead",
+        "tool": "crm_query",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "QUERY",
+          "object_type": "lead",
+          "data": {
+            "query_mode": "recent"
+          },
+          "score": 1.0
+        }
+      },
+      "comparison": {
+        "row_id": "6oinv16jqvrtns5dy5",
+        "all_match": true,
+        "comparisons": {
+          "expected_object": {
+            "expected": "lead",
+            "actual": "lead",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "QUERY",
+            "actual": "QUERY",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "crm_query",
+            "actual": "crm_query",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "4r9z96zlkhryevxu4z",
+        "user_input": "List all contacts assigned to my team this quarter.",
+        "expected_object": "contact",
+        "expected_action": "QUERY",
+        "expected_tool": "crm_query",
+        "expected_retrieval_needed": false,
+        "source_file": "expanded_dataset_v1",
+        "phase": "phase306",
+        "context": "Following up on a previous task",
+        "difficulty": "hard",
+        "notes": "Expanded synthetic data for QUERY variation"
+      },
+      "actual": {
+        "raw_intent": "QUERY",
+        "normalized_action": "QUERY",
+        "object_type": "contact",
+        "tool": "crm_query",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "QUERY",
+          "object_type": "contact",
+          "data": {},
+          "score": 1.0
+        }
+      },
+      "comparison": {
+        "row_id": "4r9z96zlkhryevxu4z",
+        "all_match": true,
+        "comparisons": {
+          "expected_object": {
+            "expected": "contact",
+            "actual": "contact",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "QUERY",
+            "actual": "QUERY",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "crm_query",
+            "actual": "crm_query",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "db4pwnnwd8r4pqhrtz",
+        "user_input": "List all models assigned to my team this quarter.",
+        "expected_object": "model",
+        "expected_action": "QUERY",
+        "expected_tool": "crm_query",
+        "expected_retrieval_needed": false,
+        "source_file": "expanded_dataset_v1",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "hard",
+        "notes": "Expanded synthetic data for QUERY variation"
+      },
+      "actual": {
+        "raw_intent": "QUERY",
+        "normalized_action": "QUERY",
+        "object_type": "model",
+        "tool": "crm_query",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "QUERY",
+          "object_type": "model",
+          "data": {},
+          "score": 1.0
+        }
+      },
+      "comparison": {
+        "row_id": "db4pwnnwd8r4pqhrtz",
+        "all_match": true,
+        "comparisons": {
+          "expected_object": {
+            "expected": "model",
+            "actual": "model",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "QUERY",
+            "actual": "QUERY",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "crm_query",
+            "actual": "crm_query",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "nekfhrcfksr96kwsme",
+        "user_input": "Filter assets by recent activity.",
+        "expected_object": "asset",
+        "expected_action": "QUERY",
+        "expected_tool": "crm_query",
+        "expected_retrieval_needed": false,
+        "source_file": "expanded_dataset_v1",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Expanded synthetic data for QUERY variation"
+      },
+      "actual": {
+        "raw_intent": "QUERY",
+        "normalized_action": "QUERY",
+        "object_type": "asset",
+        "tool": "crm_query",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "QUERY",
+          "object_type": "asset",
+          "data": {
+            "query_mode": "recent"
+          },
+          "score": 1.0
+        }
+      },
+      "comparison": {
+        "row_id": "nekfhrcfksr96kwsme",
+        "all_match": true,
+        "comparisons": {
+          "expected_object": {
+            "expected": "asset",
+            "actual": "asset",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "QUERY",
+            "actual": "QUERY",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "crm_query",
+            "actual": "crm_query",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "u5kl9l8x21ymbepx74",
+        "user_input": "Get model list",
+        "expected_object": "model",
+        "expected_action": "QUERY",
+        "expected_tool": "crm_query",
+        "expected_retrieval_needed": false,
+        "source_file": "expanded_dataset_v1",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "easy",
+        "notes": "Expanded synthetic data for QUERY variation"
+      },
+      "actual": {
+        "raw_intent": "QUERY",
+        "normalized_action": "QUERY",
+        "object_type": "model",
+        "tool": "crm_query",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "QUERY",
+          "object_type": "model",
+          "data": {},
+          "score": 1.0
+        }
+      },
+      "comparison": {
+        "row_id": "u5kl9l8x21ymbepx74",
+        "all_match": true,
+        "comparisons": {
+          "expected_object": {
+            "expected": "model",
+            "actual": "model",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "QUERY",
+            "actual": "QUERY",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "crm_query",
+            "actual": "crm_query",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "kr2uzf71suh7f7s522",
+        "user_input": "List my brands",
+        "expected_object": "brand",
+        "expected_action": "QUERY",
+        "expected_tool": "crm_query",
+        "expected_retrieval_needed": false,
+        "source_file": "expanded_dataset_v1",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "easy",
+        "notes": "Expanded synthetic data for QUERY variation"
+      },
+      "actual": {
+        "raw_intent": "QUERY",
+        "normalized_action": "QUERY",
+        "object_type": "brand",
+        "tool": "crm_query",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "QUERY",
+          "object_type": "brand",
+          "data": {},
+          "score": 1.0
+        }
+      },
+      "comparison": {
+        "row_id": "kr2uzf71suh7f7s522",
+        "all_match": true,
+        "comparisons": {
+          "expected_object": {
+            "expected": "brand",
+            "actual": "brand",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "QUERY",
+            "actual": "QUERY",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "crm_query",
+            "actual": "crm_query",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "u5sn8g7iw7jq5n3wis",
+        "user_input": "list my assets",
+        "expected_object": "asset",
+        "expected_action": "QUERY",
+        "expected_tool": "crm_query",
+        "expected_retrieval_needed": false,
+        "source_file": "expanded_dataset_v1",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "easy",
+        "notes": "Expanded synthetic data for QUERY variation"
+      },
+      "actual": {
+        "raw_intent": "QUERY",
+        "normalized_action": "QUERY",
+        "object_type": "asset",
+        "tool": "crm_query",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "QUERY",
+          "object_type": "asset",
+          "data": {},
+          "score": 1.0
+        }
+      },
+      "comparison": {
+        "row_id": "u5sn8g7iw7jq5n3wis",
+        "all_match": true,
+        "comparisons": {
+          "expected_object": {
+            "expected": "asset",
+            "actual": "asset",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "QUERY",
+            "actual": "QUERY",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "crm_query",
+            "actual": "crm_query",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "qvyah6dtqyebn024bc",
+        "user_input": "Could you fetch a summary table of contacts sorted by priority?",
+        "expected_object": "contact",
+        "expected_action": "QUERY",
+        "expected_tool": "crm_query",
+        "expected_retrieval_needed": false,
+        "source_file": "expanded_dataset_v1",
+        "phase": "phase306",
+        "context": "Following up on a previous task",
+        "difficulty": "hard",
+        "notes": "Expanded synthetic data for QUERY variation"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": null,
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "missing_response",
+        "raw_output": {
+          "intent": "CHAT",
+          "text": "Eval runner could not capture a runtime decision."
+        }
+      },
+      "comparison": {
+        "row_id": "qvyah6dtqyebn024bc",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "contact",
+            "actual": null,
+            "match": false
+          },
+          "expected_action": {
+            "expected": "QUERY",
+            "actual": "ASK_CLARIFICATION",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "crm_query",
+            "actual": "none",
+            "match": false
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "7ub135x0f10nfxcw7c",
+        "user_input": "Filter assets by recent activity.",
+        "expected_object": "asset",
+        "expected_action": "QUERY",
+        "expected_tool": "crm_query",
+        "expected_retrieval_needed": false,
+        "source_file": "expanded_dataset_v1",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Expanded synthetic data for QUERY variation"
+      },
+      "actual": {
+        "raw_intent": "QUERY",
+        "normalized_action": "QUERY",
+        "object_type": "asset",
+        "tool": "crm_query",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "QUERY",
+          "object_type": "asset",
+          "data": {
+            "query_mode": "recent"
+          },
+          "score": 1.0
+        }
+      },
+      "comparison": {
+        "row_id": "7ub135x0f10nfxcw7c",
+        "all_match": true,
+        "comparisons": {
+          "expected_object": {
+            "expected": "asset",
+            "actual": "asset",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "QUERY",
+            "actual": "QUERY",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "crm_query",
+            "actual": "crm_query",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "a5eixsci7fniqr0mrd",
+        "user_input": "Could you fetch a summary table of message templates sorted by priority?",
+        "expected_object": "message_template",
+        "expected_action": "QUERY",
+        "expected_tool": "crm_query",
+        "expected_retrieval_needed": false,
+        "source_file": "expanded_dataset_v1",
+        "phase": "phase306",
+        "context": "Looking at a specific record",
+        "difficulty": "hard",
+        "notes": "Expanded synthetic data for QUERY variation"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": null,
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "missing_response",
+        "raw_output": {
+          "intent": "CHAT",
+          "text": "Eval runner could not capture a runtime decision."
+        }
+      },
+      "comparison": {
+        "row_id": "a5eixsci7fniqr0mrd",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "message_template",
+            "actual": null,
+            "match": false
+          },
+          "expected_action": {
+            "expected": "QUERY",
+            "actual": "ASK_CLARIFICATION",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "crm_query",
+            "actual": "none",
+            "match": false
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "cuwl8iyketzjrmbfub",
+        "user_input": "Show me the assets that haven't been contacted in 30 days.",
+        "expected_object": "asset",
+        "expected_action": "QUERY",
+        "expected_tool": "crm_query",
+        "expected_retrieval_needed": false,
+        "source_file": "expanded_dataset_v1",
+        "phase": "phase306",
+        "context": "After a search query",
+        "difficulty": "hard",
+        "notes": "Expanded synthetic data for QUERY variation"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": "contact",
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "CHAT",
+          "object_type": "contact",
+          "text": "I need a specific contact record first. Open one or select one, then try again.",
+          "score": 1.0,
+          "language_preference": "eng"
+        }
+      },
+      "comparison": {
+        "row_id": "cuwl8iyketzjrmbfub",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "asset",
+            "actual": "contact",
+            "match": false
+          },
+          "expected_action": {
+            "expected": "QUERY",
+            "actual": "ASK_CLARIFICATION",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "crm_query",
+            "actual": "none",
+            "match": false
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "dui9j1zyk0u7acmco4",
+        "user_input": "Find models",
+        "expected_object": "model",
+        "expected_action": "QUERY",
+        "expected_tool": "crm_query",
+        "expected_retrieval_needed": false,
+        "source_file": "expanded_dataset_v1",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "easy",
+        "notes": "Expanded synthetic data for QUERY variation"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": null,
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "direct_response",
+        "raw_output": {
+          "intent": "CHAT",
+          "is_suggestion": true,
+          "suggestion_prompt": "Find Tesla Model 3.",
+          "text": "I think you might want to **query** for **model**. Is that correct? (Suggested: \"Find Tesla Model 3.\")",
+          "score": 0.47619048,
+          "options": [
+            {
+              "label": "Yes, do that",
+              "value": "Find Tesla Model 3."
+            },
+            {
+              "label": "No, something else",
+              "value": "help"
+            }
+          ]
+        }
+      },
+      "comparison": {
+        "row_id": "dui9j1zyk0u7acmco4",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "model",
+            "actual": null,
+            "match": false
+          },
+          "expected_action": {
+            "expected": "QUERY",
+            "actual": "ASK_CLARIFICATION",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "crm_query",
+            "actual": "none",
+            "match": false
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "p687iif1no671y6dq9",
+        "user_input": "get model list",
+        "expected_object": "model",
+        "expected_action": "QUERY",
+        "expected_tool": "crm_query",
+        "expected_retrieval_needed": false,
+        "source_file": "expanded_dataset_v1",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "easy",
+        "notes": "Expanded synthetic data for QUERY variation"
+      },
+      "actual": {
+        "raw_intent": "QUERY",
+        "normalized_action": "QUERY",
+        "object_type": "model",
+        "tool": "crm_query",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "QUERY",
+          "object_type": "model",
+          "data": {},
+          "score": 1.0
+        }
+      },
+      "comparison": {
+        "row_id": "p687iif1no671y6dq9",
+        "all_match": true,
+        "comparisons": {
+          "expected_object": {
+            "expected": "model",
+            "actual": "model",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "QUERY",
+            "actual": "QUERY",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "crm_query",
+            "actual": "crm_query",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "6javbpjtx0bemzmpiv",
+        "user_input": "Open product #1024",
+        "expected_object": "product",
+        "expected_action": "OPEN_RECORD",
+        "expected_tool": "crm_query",
+        "expected_retrieval_needed": false,
+        "source_file": "expanded_dataset_v1",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "easy",
+        "notes": "Expanded synthetic data for OPEN_RECORD variation"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": "product",
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "CHAT",
+          "object_type": "product",
+          "text": "I can help you open a product. Try `show all products`, `show recent products`, or mention the name you want to open.",
+          "score": 0.95
+        }
+      },
+      "comparison": {
+        "row_id": "6javbpjtx0bemzmpiv",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "product",
+            "actual": "product",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "OPEN_RECORD",
+            "actual": "ASK_CLARIFICATION",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "crm_query",
+            "actual": "none",
+            "match": false
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "4yvfrq4zv428spqd3z",
+        "user_input": "Show details for model",
+        "expected_object": "model",
+        "expected_action": "OPEN_RECORD",
+        "expected_tool": "crm_query",
+        "expected_retrieval_needed": false,
+        "source_file": "expanded_dataset_v1",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "easy",
+        "notes": "Expanded synthetic data for OPEN_RECORD variation"
+      },
+      "actual": {
+        "raw_intent": "QUERY",
+        "normalized_action": "QUERY",
+        "object_type": "model",
+        "tool": "crm_query",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "QUERY",
+          "object_type": "model",
+          "sql": null,
+          "score": 0.99
+        }
+      },
+      "comparison": {
+        "row_id": "4yvfrq4zv428spqd3z",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "model",
+            "actual": "model",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "OPEN_RECORD",
+            "actual": "QUERY",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "crm_query",
+            "actual": "crm_query",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "dl65b5h61m7xe8g8zs",
+        "user_input": "Dig into the details of the product associated with the recent marketing campaign. please.",
+        "expected_object": "product",
+        "expected_action": "OPEN_RECORD",
+        "expected_tool": "crm_query",
+        "expected_retrieval_needed": false,
+        "source_file": "expanded_dataset_v1",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "hard",
+        "notes": "Expanded synthetic data for OPEN_RECORD variation"
+      },
+      "actual": {
+        "raw_intent": "QUERY",
+        "normalized_action": "QUERY",
+        "object_type": "product",
+        "tool": "crm_query",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "QUERY",
+          "object_type": "product",
+          "data": {
+            "query_mode": "recent"
+          },
+          "score": 1.0
+        }
+      },
+      "comparison": {
+        "row_id": "dl65b5h61m7xe8g8zs",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "product",
+            "actual": "product",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "OPEN_RECORD",
+            "actual": "QUERY",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "crm_query",
+            "actual": "crm_query",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "1stkjppal75jurc1hb",
+        "user_input": "dig into the details of the product associated with the recent marketing campaign.",
+        "expected_object": "product",
+        "expected_action": "OPEN_RECORD",
+        "expected_tool": "crm_query",
+        "expected_retrieval_needed": false,
+        "source_file": "expanded_dataset_v1",
+        "phase": "phase306",
+        "context": "After a search query",
+        "difficulty": "hard",
+        "notes": "Expanded synthetic data for OPEN_RECORD variation"
+      },
+      "actual": {
+        "raw_intent": "QUERY",
+        "normalized_action": "QUERY",
+        "object_type": "product",
+        "tool": "crm_query",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "QUERY",
+          "object_type": "product",
+          "data": {
+            "query_mode": "recent"
+          },
+          "score": 1.0
+        }
+      },
+      "comparison": {
+        "row_id": "1stkjppal75jurc1hb",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "product",
+            "actual": "product",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "OPEN_RECORD",
+            "actual": "QUERY",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "crm_query",
+            "actual": "crm_query",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "o6mbce2smn5tmp15f5",
+        "user_input": "view that product",
+        "expected_object": "product",
+        "expected_action": "OPEN_RECORD",
+        "expected_tool": "crm_query",
+        "expected_retrieval_needed": false,
+        "source_file": "expanded_dataset_v1",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "easy",
+        "notes": "Expanded synthetic data for OPEN_RECORD variation"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": "product",
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "CHAT",
+          "object_type": "product",
+          "text": "I can help you open a product. Try `show all products`, `show recent products`, or mention the name you want to open.",
+          "score": 0.95
+        }
+      },
+      "comparison": {
+        "row_id": "o6mbce2smn5tmp15f5",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "product",
+            "actual": "product",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "OPEN_RECORD",
+            "actual": "ASK_CLARIFICATION",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "crm_query",
+            "actual": "none",
+            "match": false
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "4m5ym0fnkquz9qt264",
+        "user_input": "I want to see the details of the asset from Acme Corp.",
+        "expected_object": "asset",
+        "expected_action": "OPEN_RECORD",
+        "expected_tool": "crm_query",
+        "expected_retrieval_needed": false,
+        "source_file": "expanded_dataset_v1",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Expanded synthetic data for OPEN_RECORD variation"
+      },
+      "actual": {
+        "raw_intent": "MANAGE",
+        "normalized_action": "OPEN_RECORD",
+        "object_type": "asset",
+        "tool": "crm_query",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "MANAGE",
+          "object_type": "asset",
+          "record_id": "from",
+          "score": 1.0,
+          "language_preference": "eng"
+        }
+      },
+      "comparison": {
+        "row_id": "4m5ym0fnkquz9qt264",
+        "all_match": true,
+        "comparisons": {
+          "expected_object": {
+            "expected": "asset",
+            "actual": "asset",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "OPEN_RECORD",
+            "actual": "OPEN_RECORD",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "crm_query",
+            "actual": "crm_query",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "uupyj60gcz5k9iawp8",
+        "user_input": "Open the record for the message template that has the highest potential value right now.",
+        "expected_object": "message_template",
+        "expected_action": "OPEN_RECORD",
+        "expected_tool": "crm_query",
+        "expected_retrieval_needed": false,
+        "source_file": "expanded_dataset_v1",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "hard",
+        "notes": "Expanded synthetic data for OPEN_RECORD variation"
+      },
+      "actual": {
+        "raw_intent": "MANAGE",
+        "normalized_action": "OPEN_RECORD",
+        "object_type": "message_template",
+        "tool": "crm_query",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "MANAGE",
+          "object_type": "message_template",
+          "record_id": "that",
+          "score": 1.0,
+          "language_preference": "eng"
+        }
+      },
+      "comparison": {
+        "row_id": "uupyj60gcz5k9iawp8",
+        "all_match": true,
+        "comparisons": {
+          "expected_object": {
+            "expected": "message_template",
+            "actual": "message_template",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "OPEN_RECORD",
+            "actual": "OPEN_RECORD",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "crm_query",
+            "actual": "crm_query",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "tbfc6wwwoj60o6trtl",
+        "user_input": "Open the record for the asset that has the highest potential value right now.",
+        "expected_object": "asset",
+        "expected_action": "OPEN_RECORD",
+        "expected_tool": "crm_query",
+        "expected_retrieval_needed": false,
+        "source_file": "expanded_dataset_v1",
+        "phase": "phase306",
+        "context": "After a search query",
+        "difficulty": "hard",
+        "notes": "Expanded synthetic data for OPEN_RECORD variation"
+      },
+      "actual": {
+        "raw_intent": "MANAGE",
+        "normalized_action": "OPEN_RECORD",
+        "object_type": "asset",
+        "tool": "crm_query",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "MANAGE",
+          "object_type": "asset",
+          "record_id": "that",
+          "score": 1.0,
+          "language_preference": "eng"
+        }
+      },
+      "comparison": {
+        "row_id": "tbfc6wwwoj60o6trtl",
+        "all_match": true,
+        "comparisons": {
+          "expected_object": {
+            "expected": "asset",
+            "actual": "asset",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "OPEN_RECORD",
+            "actual": "OPEN_RECORD",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "crm_query",
+            "actual": "crm_query",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "lbrtsq78v6pxfgtfzo",
+        "user_input": "Open the latest contact",
+        "expected_object": "contact",
+        "expected_action": "OPEN_RECORD",
+        "expected_tool": "crm_query",
+        "expected_retrieval_needed": false,
+        "source_file": "expanded_dataset_v1",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "easy",
+        "notes": "Expanded synthetic data for OPEN_RECORD variation"
+      },
+      "actual": {
+        "raw_intent": "QUERY",
+        "normalized_action": "QUERY",
+        "object_type": "contact",
+        "tool": "crm_query",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "QUERY",
+          "object_type": "contact",
+          "data": {
+            "query_mode": "recent"
+          },
+          "score": 1.0
+        }
+      },
+      "comparison": {
+        "row_id": "lbrtsq78v6pxfgtfzo",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "contact",
+            "actual": "contact",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "OPEN_RECORD",
+            "actual": "QUERY",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "crm_query",
+            "actual": "crm_query",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "f09v9vq8fd9xergw0m",
+        "user_input": "open the latest lead",
+        "expected_object": "lead",
+        "expected_action": "OPEN_RECORD",
+        "expected_tool": "crm_query",
+        "expected_retrieval_needed": false,
+        "source_file": "expanded_dataset_v1",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "easy",
+        "notes": "Expanded synthetic data for OPEN_RECORD variation"
+      },
+      "actual": {
+        "raw_intent": "QUERY",
+        "normalized_action": "QUERY",
+        "object_type": "lead",
+        "tool": "crm_query",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "QUERY",
+          "object_type": "lead",
+          "data": {
+            "query_mode": "recent"
+          },
+          "score": 1.0
+        }
+      },
+      "comparison": {
+        "row_id": "f09v9vq8fd9xergw0m",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "lead",
+            "actual": "lead",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "OPEN_RECORD",
+            "actual": "QUERY",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "crm_query",
+            "actual": "crm_query",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "oayobx664bd62x8wis",
+        "user_input": "Open the record for the product that has the highest potential value right now. please.",
+        "expected_object": "product",
+        "expected_action": "OPEN_RECORD",
+        "expected_tool": "crm_query",
+        "expected_retrieval_needed": false,
+        "source_file": "expanded_dataset_v1",
+        "phase": "phase306",
+        "context": "Following up on a previous task",
+        "difficulty": "hard",
+        "notes": "Expanded synthetic data for OPEN_RECORD variation"
+      },
+      "actual": {
+        "raw_intent": "MANAGE",
+        "normalized_action": "OPEN_RECORD",
+        "object_type": "product",
+        "tool": "crm_query",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "MANAGE",
+          "object_type": "product",
+          "record_id": "that",
+          "score": 1.0,
+          "language_preference": "eng"
+        }
+      },
+      "comparison": {
+        "row_id": "oayobx664bd62x8wis",
+        "all_match": true,
+        "comparisons": {
+          "expected_object": {
+            "expected": "product",
+            "actual": "product",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "OPEN_RECORD",
+            "actual": "OPEN_RECORD",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "crm_query",
+            "actual": "crm_query",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "h45203a5tewv4izbtm",
+        "user_input": "Open model #1024",
+        "expected_object": "model",
+        "expected_action": "OPEN_RECORD",
+        "expected_tool": "crm_query",
+        "expected_retrieval_needed": false,
+        "source_file": "expanded_dataset_v1",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "easy",
+        "notes": "Expanded synthetic data for OPEN_RECORD variation"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": "model",
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "CHAT",
+          "object_type": "model",
+          "text": "I can help you open a model. Try `show all models`, `show recent models`, or mention the name you want to open.",
+          "score": 0.95
+        }
+      },
+      "comparison": {
+        "row_id": "h45203a5tewv4izbtm",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "model",
+            "actual": "model",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "OPEN_RECORD",
+            "actual": "ASK_CLARIFICATION",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "crm_query",
+            "actual": "none",
+            "match": false
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "jmrv8gnmcr3uvi1rbg",
+        "user_input": "View that asset",
+        "expected_object": "asset",
+        "expected_action": "OPEN_RECORD",
+        "expected_tool": "crm_query",
+        "expected_retrieval_needed": false,
+        "source_file": "expanded_dataset_v1",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "easy",
+        "notes": "Expanded synthetic data for OPEN_RECORD variation"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": "asset",
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "CHAT",
+          "object_type": "asset",
+          "text": "I can help you open a asset. Try `show all assets`, `show recent assets`, or mention the name you want to open.",
+          "score": 0.95
+        }
+      },
+      "comparison": {
+        "row_id": "jmrv8gnmcr3uvi1rbg",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "asset",
+            "actual": "asset",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "OPEN_RECORD",
+            "actual": "ASK_CLARIFICATION",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "crm_query",
+            "actual": "none",
+            "match": false
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "flwys7qc3im4rn3bgt",
+        "user_input": "Open the latest model",
+        "expected_object": "model",
+        "expected_action": "OPEN_RECORD",
+        "expected_tool": "crm_query",
+        "expected_retrieval_needed": false,
+        "source_file": "expanded_dataset_v1",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "easy",
+        "notes": "Expanded synthetic data for OPEN_RECORD variation"
+      },
+      "actual": {
+        "raw_intent": "QUERY",
+        "normalized_action": "QUERY",
+        "object_type": "model",
+        "tool": "crm_query",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "QUERY",
+          "object_type": "model",
+          "data": {
+            "query_mode": "recent"
+          },
+          "score": 1.0
+        }
+      },
+      "comparison": {
+        "row_id": "flwys7qc3im4rn3bgt",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "model",
+            "actual": "model",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "OPEN_RECORD",
+            "actual": "QUERY",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "crm_query",
+            "actual": "crm_query",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "bhuwtvu446onrraiia",
+        "user_input": "Open product #1024",
+        "expected_object": "product",
+        "expected_action": "OPEN_RECORD",
+        "expected_tool": "crm_query",
+        "expected_retrieval_needed": false,
+        "source_file": "expanded_dataset_v1",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "easy",
+        "notes": "Expanded synthetic data for OPEN_RECORD variation"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": "product",
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "CHAT",
+          "object_type": "product",
+          "text": "I can help you open a product. Try `show all products`, `show recent products`, or mention the name you want to open.",
+          "score": 0.95
+        }
+      },
+      "comparison": {
+        "row_id": "bhuwtvu446onrraiia",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "product",
+            "actual": "product",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "OPEN_RECORD",
+            "actual": "ASK_CLARIFICATION",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "crm_query",
+            "actual": "none",
+            "match": false
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "0nlx8nq91x38lygq0g",
+        "user_input": "Dig into the details of the opportunity associated with the recent marketing campaign.",
+        "expected_object": "opportunity",
+        "expected_action": "OPEN_RECORD",
+        "expected_tool": "crm_query",
+        "expected_retrieval_needed": false,
+        "source_file": "expanded_dataset_v1",
+        "phase": "phase306",
+        "context": "Following up on a previous task",
+        "difficulty": "hard",
+        "notes": "Expanded synthetic data for OPEN_RECORD variation"
+      },
+      "actual": {
+        "raw_intent": "QUERY",
+        "normalized_action": "QUERY",
+        "object_type": "opportunity",
+        "tool": "crm_query",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "QUERY",
+          "object_type": "opportunity",
+          "data": {
+            "query_mode": "recent"
+          },
+          "score": 1.0
+        }
+      },
+      "comparison": {
+        "row_id": "0nlx8nq91x38lygq0g",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "opportunity",
+            "actual": "opportunity",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "OPEN_RECORD",
+            "actual": "QUERY",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "crm_query",
+            "actual": "crm_query",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "3z9czxppf8g640qp8s",
+        "user_input": "Open the record for the contact that has the highest potential value right now.",
+        "expected_object": "contact",
+        "expected_action": "OPEN_RECORD",
+        "expected_tool": "crm_query",
+        "expected_retrieval_needed": false,
+        "source_file": "expanded_dataset_v1",
+        "phase": "phase306",
+        "context": "After a search query",
+        "difficulty": "hard",
+        "notes": "Expanded synthetic data for OPEN_RECORD variation"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": "contact",
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "CHAT",
+          "object_type": "contact",
+          "text": "I need a specific contact record first. Open one or select one, then try again.",
+          "score": 1.0,
+          "language_preference": "eng"
+        }
+      },
+      "comparison": {
+        "row_id": "3z9czxppf8g640qp8s",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "contact",
+            "actual": "contact",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "OPEN_RECORD",
+            "actual": "ASK_CLARIFICATION",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "crm_query",
+            "actual": "none",
+            "match": false
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "4y0nt4kfvg4f2wvyk2",
+        "user_input": "I want to see the details of the model from Acme Corp.",
+        "expected_object": "model",
+        "expected_action": "OPEN_RECORD",
+        "expected_tool": "crm_query",
+        "expected_retrieval_needed": false,
+        "source_file": "expanded_dataset_v1",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Expanded synthetic data for OPEN_RECORD variation"
+      },
+      "actual": {
+        "raw_intent": "MANAGE",
+        "normalized_action": "OPEN_RECORD",
+        "object_type": "model",
+        "tool": "crm_query",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "MANAGE",
+          "object_type": "model",
+          "record_id": "from",
+          "score": 1.0,
+          "language_preference": "eng"
+        }
+      },
+      "comparison": {
+        "row_id": "4y0nt4kfvg4f2wvyk2",
+        "all_match": true,
+        "comparisons": {
+          "expected_object": {
+            "expected": "model",
+            "actual": "model",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "OPEN_RECORD",
+            "actual": "OPEN_RECORD",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "crm_query",
+            "actual": "crm_query",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "01kir9nziymogz2ekl",
+        "user_input": "Please show me the specific opportunity we discussed.",
+        "expected_object": "opportunity",
+        "expected_action": "OPEN_RECORD",
+        "expected_tool": "crm_query",
+        "expected_retrieval_needed": false,
+        "source_file": "expanded_dataset_v1",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Expanded synthetic data for OPEN_RECORD variation"
+      },
+      "actual": {
+        "raw_intent": "QUERY",
+        "normalized_action": "QUERY",
+        "object_type": "opportunity",
+        "tool": "crm_query",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "QUERY",
+          "object_type": "opportunity",
+          "data": {},
+          "score": 1.0
+        }
+      },
+      "comparison": {
+        "row_id": "01kir9nziymogz2ekl",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "opportunity",
+            "actual": "opportunity",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "OPEN_RECORD",
+            "actual": "QUERY",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "crm_query",
+            "actual": "crm_query",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "chrhadvadsvfxclrsx",
+        "user_input": "dig into the details of the opportunity associated with the recent marketing campaign.",
+        "expected_object": "opportunity",
+        "expected_action": "OPEN_RECORD",
+        "expected_tool": "crm_query",
+        "expected_retrieval_needed": false,
+        "source_file": "expanded_dataset_v1",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "hard",
+        "notes": "Expanded synthetic data for OPEN_RECORD variation"
+      },
+      "actual": {
+        "raw_intent": "QUERY",
+        "normalized_action": "QUERY",
+        "object_type": "opportunity",
+        "tool": "crm_query",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "QUERY",
+          "object_type": "opportunity",
+          "data": {
+            "query_mode": "recent"
+          },
+          "score": 1.0
+        }
+      },
+      "comparison": {
+        "row_id": "chrhadvadsvfxclrsx",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "opportunity",
+            "actual": "opportunity",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "OPEN_RECORD",
+            "actual": "QUERY",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "crm_query",
+            "actual": "crm_query",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "cxrap61ny7jhowwyec",
+        "user_input": "Dig into the details of the model associated with the recent marketing campaign.",
+        "expected_object": "model",
+        "expected_action": "OPEN_RECORD",
+        "expected_tool": "crm_query",
+        "expected_retrieval_needed": false,
+        "source_file": "expanded_dataset_v1",
+        "phase": "phase306",
+        "context": "After a search query",
+        "difficulty": "hard",
+        "notes": "Expanded synthetic data for OPEN_RECORD variation"
+      },
+      "actual": {
+        "raw_intent": "QUERY",
+        "normalized_action": "QUERY",
+        "object_type": "model",
+        "tool": "crm_query",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "QUERY",
+          "object_type": "model",
+          "data": {
+            "query_mode": "recent"
+          },
+          "score": 1.0
+        }
+      },
+      "comparison": {
+        "row_id": "cxrap61ny7jhowwyec",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "model",
+            "actual": "model",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "OPEN_RECORD",
+            "actual": "QUERY",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "crm_query",
+            "actual": "crm_query",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "ikgnzflns9hk8ueemf",
+        "user_input": "View that product",
+        "expected_object": "product",
+        "expected_action": "OPEN_RECORD",
+        "expected_tool": "crm_query",
+        "expected_retrieval_needed": false,
+        "source_file": "expanded_dataset_v1",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "easy",
+        "notes": "Expanded synthetic data for OPEN_RECORD variation"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": "product",
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "CHAT",
+          "object_type": "product",
+          "text": "I can help you open a product. Try `show all products`, `show recent products`, or mention the name you want to open.",
+          "score": 0.95
+        }
+      },
+      "comparison": {
+        "row_id": "ikgnzflns9hk8ueemf",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "product",
+            "actual": "product",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "OPEN_RECORD",
+            "actual": "ASK_CLARIFICATION",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "crm_query",
+            "actual": "none",
+            "match": false
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "byfpe84gmfl1y77kpe",
+        "user_input": "Open model #1024",
+        "expected_object": "model",
+        "expected_action": "OPEN_RECORD",
+        "expected_tool": "crm_query",
+        "expected_retrieval_needed": false,
+        "source_file": "expanded_dataset_v1",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "easy",
+        "notes": "Expanded synthetic data for OPEN_RECORD variation"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": "model",
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "CHAT",
+          "object_type": "model",
+          "text": "I can help you open a model. Try `show all models`, `show recent models`, or mention the name you want to open.",
+          "score": 0.95
+        }
+      },
+      "comparison": {
+        "row_id": "byfpe84gmfl1y77kpe",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "model",
+            "actual": "model",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "OPEN_RECORD",
+            "actual": "ASK_CLARIFICATION",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "crm_query",
+            "actual": "none",
+            "match": false
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "f02zv9yin5sbkxttuo",
+        "user_input": "Open the last product I created.",
+        "expected_object": "product",
+        "expected_action": "OPEN_RECORD",
+        "expected_tool": "crm_query",
+        "expected_retrieval_needed": false,
+        "source_file": "expanded_dataset_v1",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Expanded synthetic data for OPEN_RECORD variation"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": "product",
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "CHAT",
+          "object_type": "product",
+          "text": "I can help you open a product. Try `show all products`, `show recent products`, or mention the name you want to open.",
+          "score": 0.95
+        }
+      },
+      "comparison": {
+        "row_id": "f02zv9yin5sbkxttuo",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "product",
+            "actual": "product",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "OPEN_RECORD",
+            "actual": "ASK_CLARIFICATION",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "crm_query",
+            "actual": "none",
+            "match": false
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "cn0wuuehm3pwxemyvf",
+        "user_input": "Please show me the specific lead we discussed.",
+        "expected_object": "lead",
+        "expected_action": "OPEN_RECORD",
+        "expected_tool": "crm_query",
+        "expected_retrieval_needed": false,
+        "source_file": "expanded_dataset_v1",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Expanded synthetic data for OPEN_RECORD variation"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": "lead",
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "CHAT",
+          "object_type": "lead",
+          "text": "that lead we just discussed",
+          "score": 0.0,
+          "reasoning": {
+            "filters": {},
+            "fields_to_update": {},
+            "context_reference": {
+              "kind": "last_record",
+              "index": 0,
+              "object_type": "lead"
+            },
+            "resolved_reference": {},
+            "confidence": 0.0,
+            "confidence_band": "low",
+            "action": "chat",
+            "user_query": "Please show me the specific lead we discussed."
+          },
+          "language_preference": "eng"
+        }
+      },
+      "comparison": {
+        "row_id": "cn0wuuehm3pwxemyvf",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "lead",
+            "actual": "lead",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "OPEN_RECORD",
+            "actual": "ASK_CLARIFICATION",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "crm_query",
+            "actual": "none",
+            "match": false
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "sdiiddxdq6crpgq2h2",
+        "user_input": "Dig into the details of the lead associated with the recent marketing campaign.",
+        "expected_object": "lead",
+        "expected_action": "OPEN_RECORD",
+        "expected_tool": "crm_query",
+        "expected_retrieval_needed": false,
+        "source_file": "expanded_dataset_v1",
+        "phase": "phase306",
+        "context": "After a search query",
+        "difficulty": "hard",
+        "notes": "Expanded synthetic data for OPEN_RECORD variation"
+      },
+      "actual": {
+        "raw_intent": "QUERY",
+        "normalized_action": "QUERY",
+        "object_type": "lead",
+        "tool": "crm_query",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "QUERY",
+          "object_type": "lead",
+          "data": {
+            "query_mode": "recent"
+          },
+          "score": 1.0
+        }
+      },
+      "comparison": {
+        "row_id": "sdiiddxdq6crpgq2h2",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "lead",
+            "actual": "lead",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "OPEN_RECORD",
+            "actual": "QUERY",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "crm_query",
+            "actual": "crm_query",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "b85x9jzn8q167xivcj",
+        "user_input": "Open the latest opportunity please.",
+        "expected_object": "opportunity",
+        "expected_action": "OPEN_RECORD",
+        "expected_tool": "crm_query",
+        "expected_retrieval_needed": false,
+        "source_file": "expanded_dataset_v1",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "easy",
+        "notes": "Expanded synthetic data for OPEN_RECORD variation"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": "opportunity",
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "direct_response",
+        "raw_output": {
+          "intent": "CHAT",
+          "object_type": "opportunity",
+          "text": "I need a recent opportunity list first. Try `show recent opportunitys` or `show all contacts`, then tell me which one to open or edit.",
+          "score": 1.0
+        }
+      },
+      "comparison": {
+        "row_id": "b85x9jzn8q167xivcj",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "opportunity",
+            "actual": "opportunity",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "OPEN_RECORD",
+            "actual": "ASK_CLARIFICATION",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "crm_query",
+            "actual": "none",
+            "match": false
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "x7wifkul2dfq84ydyv",
+        "user_input": "Open the record for the brand that has the highest potential value right now.",
+        "expected_object": "brand",
+        "expected_action": "OPEN_RECORD",
+        "expected_tool": "crm_query",
+        "expected_retrieval_needed": false,
+        "source_file": "expanded_dataset_v1",
+        "phase": "phase306",
+        "context": "Following up on a previous task",
+        "difficulty": "hard",
+        "notes": "Expanded synthetic data for OPEN_RECORD variation"
+      },
+      "actual": {
+        "raw_intent": "MANAGE",
+        "normalized_action": "OPEN_RECORD",
+        "object_type": "brand",
+        "tool": "crm_query",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "MANAGE",
+          "object_type": "brand",
+          "record_id": "that",
+          "score": 1.0,
+          "language_preference": "eng"
+        }
+      },
+      "comparison": {
+        "row_id": "x7wifkul2dfq84ydyv",
+        "all_match": true,
+        "comparisons": {
+          "expected_object": {
+            "expected": "brand",
+            "actual": "brand",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "OPEN_RECORD",
+            "actual": "OPEN_RECORD",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "crm_query",
+            "actual": "crm_query",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "mthu8atrltrpj5qc33",
+        "user_input": "Please show me the specific contact we discussed.",
+        "expected_object": "contact",
+        "expected_action": "OPEN_RECORD",
+        "expected_tool": "crm_query",
+        "expected_retrieval_needed": false,
+        "source_file": "expanded_dataset_v1",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Expanded synthetic data for OPEN_RECORD variation"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": null,
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "missing_response",
+        "raw_output": {
+          "intent": "CHAT",
+          "text": "Eval runner could not capture a runtime decision."
+        }
+      },
+      "comparison": {
+        "row_id": "mthu8atrltrpj5qc33",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "contact",
+            "actual": null,
+            "match": false
+          },
+          "expected_action": {
+            "expected": "OPEN_RECORD",
+            "actual": "ASK_CLARIFICATION",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "crm_query",
+            "actual": "none",
+            "match": false
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "uo5c7e4voruudzbg6l",
+        "user_input": "show details for brand",
+        "expected_object": "brand",
+        "expected_action": "OPEN_RECORD",
+        "expected_tool": "crm_query",
+        "expected_retrieval_needed": false,
+        "source_file": "expanded_dataset_v1",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "easy",
+        "notes": "Expanded synthetic data for OPEN_RECORD variation"
+      },
+      "actual": {
+        "raw_intent": "QUERY",
+        "normalized_action": "QUERY",
+        "object_type": "brand",
+        "tool": "crm_query",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "QUERY",
+          "object_type": "brand",
+          "sql": null,
+          "score": 0.99
+        }
+      },
+      "comparison": {
+        "row_id": "uo5c7e4voruudzbg6l",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "brand",
+            "actual": "brand",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "OPEN_RECORD",
+            "actual": "QUERY",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "crm_query",
+            "actual": "crm_query",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "118ffu0u29l8c8z3j6",
+        "user_input": "show details for message template",
+        "expected_object": "message_template",
+        "expected_action": "OPEN_RECORD",
+        "expected_tool": "crm_query",
+        "expected_retrieval_needed": false,
+        "source_file": "expanded_dataset_v1",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "easy",
+        "notes": "Expanded synthetic data for OPEN_RECORD variation"
+      },
+      "actual": {
+        "raw_intent": "QUERY",
+        "normalized_action": "QUERY",
+        "object_type": "message_send",
+        "tool": "crm_query",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "QUERY",
+          "object_type": "message_send",
+          "data": {},
+          "score": 1.0,
+          "language_preference": "eng"
+        }
+      },
+      "comparison": {
+        "row_id": "118ffu0u29l8c8z3j6",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "message_template",
+            "actual": "message_send",
+            "match": false
+          },
+          "expected_action": {
+            "expected": "OPEN_RECORD",
+            "actual": "QUERY",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "crm_query",
+            "actual": "crm_query",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "5xhfrm5yp2sdka5fpr",
+        "user_input": "Dig into the details of the brand associated with the recent marketing campaign.",
+        "expected_object": "brand",
+        "expected_action": "OPEN_RECORD",
+        "expected_tool": "crm_query",
+        "expected_retrieval_needed": false,
+        "source_file": "expanded_dataset_v1",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "hard",
+        "notes": "Expanded synthetic data for OPEN_RECORD variation"
+      },
+      "actual": {
+        "raw_intent": "QUERY",
+        "normalized_action": "QUERY",
+        "object_type": "brand",
+        "tool": "crm_query",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "QUERY",
+          "object_type": "brand",
+          "data": {
+            "query_mode": "recent"
+          },
+          "score": 1.0
+        }
+      },
+      "comparison": {
+        "row_id": "5xhfrm5yp2sdka5fpr",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "brand",
+            "actual": "brand",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "OPEN_RECORD",
+            "actual": "QUERY",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "crm_query",
+            "actual": "crm_query",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "vqg3zpwk0dbdanl3co",
+        "user_input": "Dig into the details of the model associated with the recent marketing campaign.",
+        "expected_object": "model",
+        "expected_action": "OPEN_RECORD",
+        "expected_tool": "crm_query",
+        "expected_retrieval_needed": false,
+        "source_file": "expanded_dataset_v1",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "hard",
+        "notes": "Expanded synthetic data for OPEN_RECORD variation"
+      },
+      "actual": {
+        "raw_intent": "QUERY",
+        "normalized_action": "QUERY",
+        "object_type": "model",
+        "tool": "crm_query",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "QUERY",
+          "object_type": "model",
+          "data": {
+            "query_mode": "recent"
+          },
+          "score": 1.0
+        }
+      },
+      "comparison": {
+        "row_id": "vqg3zpwk0dbdanl3co",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "model",
+            "actual": "model",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "OPEN_RECORD",
+            "actual": "QUERY",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "crm_query",
+            "actual": "crm_query",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "pk34k346r6bjc7ce5r",
+        "user_input": "Can you open the record for model John Doe?",
+        "expected_object": "model",
+        "expected_action": "OPEN_RECORD",
+        "expected_tool": "crm_query",
+        "expected_retrieval_needed": false,
+        "source_file": "expanded_dataset_v1",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Expanded synthetic data for OPEN_RECORD variation"
+      },
+      "actual": {
+        "raw_intent": "MANAGE",
+        "normalized_action": "OPEN_RECORD",
+        "object_type": "model",
+        "tool": "crm_query",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "MANAGE",
+          "object_type": "model",
+          "record_id": "John",
+          "score": 1.0,
+          "language_preference": "eng"
+        }
+      },
+      "comparison": {
+        "row_id": "pk34k346r6bjc7ce5r",
+        "all_match": true,
+        "comparisons": {
+          "expected_object": {
+            "expected": "model",
+            "actual": "model",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "OPEN_RECORD",
+            "actual": "OPEN_RECORD",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "crm_query",
+            "actual": "crm_query",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "aqhlnif86zekhgi2rj",
+        "user_input": "View that message template",
+        "expected_object": "message_template",
+        "expected_action": "OPEN_RECORD",
+        "expected_tool": "crm_query",
+        "expected_retrieval_needed": false,
+        "source_file": "expanded_dataset_v1",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "easy",
+        "notes": "Expanded synthetic data for OPEN_RECORD variation"
+      },
+      "actual": {
+        "raw_intent": "QUERY",
+        "normalized_action": "QUERY",
+        "object_type": "message_send",
+        "tool": "crm_query",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "QUERY",
+          "object_type": "message_send",
+          "data": {},
+          "score": 1.0,
+          "language_preference": "eng"
+        }
+      },
+      "comparison": {
+        "row_id": "aqhlnif86zekhgi2rj",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "message_template",
+            "actual": "message_send",
+            "match": false
+          },
+          "expected_action": {
+            "expected": "OPEN_RECORD",
+            "actual": "QUERY",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "crm_query",
+            "actual": "crm_query",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "hs8di9o9fs61eqpfvx",
+        "user_input": "Can you open the record for asset John Doe?",
+        "expected_object": "asset",
+        "expected_action": "OPEN_RECORD",
+        "expected_tool": "crm_query",
+        "expected_retrieval_needed": false,
+        "source_file": "expanded_dataset_v1",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Expanded synthetic data for OPEN_RECORD variation"
+      },
+      "actual": {
+        "raw_intent": "MANAGE",
+        "normalized_action": "OPEN_RECORD",
+        "object_type": "asset",
+        "tool": "crm_query",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "MANAGE",
+          "object_type": "asset",
+          "record_id": "John",
+          "score": 1.0,
+          "language_preference": "eng"
+        }
+      },
+      "comparison": {
+        "row_id": "hs8di9o9fs61eqpfvx",
+        "all_match": true,
+        "comparisons": {
+          "expected_object": {
+            "expected": "asset",
+            "actual": "asset",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "OPEN_RECORD",
+            "actual": "OPEN_RECORD",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "crm_query",
+            "actual": "crm_query",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "d91rbtipbg18s94uir",
+        "user_input": "Dig into the details of the message template associated with the recent marketing campaign.",
+        "expected_object": "message_template",
+        "expected_action": "OPEN_RECORD",
+        "expected_tool": "crm_query",
+        "expected_retrieval_needed": false,
+        "source_file": "expanded_dataset_v1",
+        "phase": "phase306",
+        "context": "After a search query",
+        "difficulty": "hard",
+        "notes": "Expanded synthetic data for OPEN_RECORD variation"
+      },
+      "actual": {
+        "raw_intent": "QUERY",
+        "normalized_action": "QUERY",
+        "object_type": "message_template",
+        "tool": "crm_query",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "QUERY",
+          "object_type": "message_template",
+          "data": {
+            "query_mode": "recent"
+          },
+          "score": 1.0
+        }
+      },
+      "comparison": {
+        "row_id": "d91rbtipbg18s94uir",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "message_template",
+            "actual": "message_template",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "OPEN_RECORD",
+            "actual": "QUERY",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "crm_query",
+            "actual": "crm_query",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "0e392z0wxgljrsxqil",
+        "user_input": "open the record for the message template that has the highest potential value right now.",
+        "expected_object": "message_template",
+        "expected_action": "OPEN_RECORD",
+        "expected_tool": "crm_query",
+        "expected_retrieval_needed": false,
+        "source_file": "expanded_dataset_v1",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "hard",
+        "notes": "Expanded synthetic data for OPEN_RECORD variation"
+      },
+      "actual": {
+        "raw_intent": "MANAGE",
+        "normalized_action": "OPEN_RECORD",
+        "object_type": "message_template",
+        "tool": "crm_query",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "MANAGE",
+          "object_type": "message_template",
+          "record_id": "that",
+          "score": 1.0,
+          "language_preference": "eng"
+        }
+      },
+      "comparison": {
+        "row_id": "0e392z0wxgljrsxqil",
+        "all_match": true,
+        "comparisons": {
+          "expected_object": {
+            "expected": "message_template",
+            "actual": "message_template",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "OPEN_RECORD",
+            "actual": "OPEN_RECORD",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "crm_query",
+            "actual": "crm_query",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "liq5bgcjqx5jcqm0u5",
+        "user_input": "I want to see the details of the opportunity from Acme Corp.",
+        "expected_object": "opportunity",
+        "expected_action": "OPEN_RECORD",
+        "expected_tool": "crm_query",
+        "expected_retrieval_needed": false,
+        "source_file": "expanded_dataset_v1",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Expanded synthetic data for OPEN_RECORD variation"
+      },
+      "actual": {
+        "raw_intent": "MANAGE",
+        "normalized_action": "OPEN_RECORD",
+        "object_type": "opportunity",
+        "tool": "crm_query",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "MANAGE",
+          "object_type": "opportunity",
+          "record_id": "from",
+          "score": 1.0,
+          "language_preference": "eng"
+        }
+      },
+      "comparison": {
+        "row_id": "liq5bgcjqx5jcqm0u5",
+        "all_match": true,
+        "comparisons": {
+          "expected_object": {
+            "expected": "opportunity",
+            "actual": "opportunity",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "OPEN_RECORD",
+            "actual": "OPEN_RECORD",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "crm_query",
+            "actual": "crm_query",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "j4et6sditdhc4xso5i",
+        "user_input": "view that asset please.",
+        "expected_object": "asset",
+        "expected_action": "OPEN_RECORD",
+        "expected_tool": "crm_query",
+        "expected_retrieval_needed": false,
+        "source_file": "expanded_dataset_v1",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "easy",
+        "notes": "Expanded synthetic data for OPEN_RECORD variation"
+      },
+      "actual": {
+        "raw_intent": "MANAGE",
+        "normalized_action": "OPEN_RECORD",
+        "object_type": "asset",
+        "tool": "crm_query",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "MANAGE",
+          "object_type": "asset",
+          "record_id": "please",
+          "score": 1.0,
+          "language_preference": "eng"
+        }
+      },
+      "comparison": {
+        "row_id": "j4et6sditdhc4xso5i",
+        "all_match": true,
+        "comparisons": {
+          "expected_object": {
+            "expected": "asset",
+            "actual": "asset",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "OPEN_RECORD",
+            "actual": "OPEN_RECORD",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "crm_query",
+            "actual": "crm_query",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "uq7sopp34c63l4xh1p",
+        "user_input": "Dig into the details of the brand associated with the recent marketing campaign.",
+        "expected_object": "brand",
+        "expected_action": "OPEN_RECORD",
+        "expected_tool": "crm_query",
+        "expected_retrieval_needed": false,
+        "source_file": "expanded_dataset_v1",
+        "phase": "phase306",
+        "context": "Following up on a previous task",
+        "difficulty": "hard",
+        "notes": "Expanded synthetic data for OPEN_RECORD variation"
+      },
+      "actual": {
+        "raw_intent": "QUERY",
+        "normalized_action": "QUERY",
+        "object_type": "brand",
+        "tool": "crm_query",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "QUERY",
+          "object_type": "brand",
+          "data": {
+            "query_mode": "recent"
+          },
+          "score": 1.0
+        }
+      },
+      "comparison": {
+        "row_id": "uq7sopp34c63l4xh1p",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "brand",
+            "actual": "brand",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "OPEN_RECORD",
+            "actual": "QUERY",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "crm_query",
+            "actual": "crm_query",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "k0ka4ihkvp6mbmz2ce",
+        "user_input": "Dig into the details of the model associated with the recent marketing campaign. please.",
+        "expected_object": "model",
+        "expected_action": "OPEN_RECORD",
+        "expected_tool": "crm_query",
+        "expected_retrieval_needed": false,
+        "source_file": "expanded_dataset_v1",
+        "phase": "phase306",
+        "context": "Following up on a previous task",
+        "difficulty": "hard",
+        "notes": "Expanded synthetic data for OPEN_RECORD variation"
+      },
+      "actual": {
+        "raw_intent": "QUERY",
+        "normalized_action": "QUERY",
+        "object_type": "model",
+        "tool": "crm_query",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "QUERY",
+          "object_type": "model",
+          "data": {
+            "query_mode": "recent"
+          },
+          "score": 1.0
+        }
+      },
+      "comparison": {
+        "row_id": "k0ka4ihkvp6mbmz2ce",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "model",
+            "actual": "model",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "OPEN_RECORD",
+            "actual": "QUERY",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "crm_query",
+            "actual": "crm_query",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "mhzr7qwvhsrs4vz8ud",
+        "user_input": "Dig into the details of the asset associated with the recent marketing campaign.",
+        "expected_object": "asset",
+        "expected_action": "OPEN_RECORD",
+        "expected_tool": "crm_query",
+        "expected_retrieval_needed": false,
+        "source_file": "expanded_dataset_v1",
+        "phase": "phase306",
+        "context": "After a search query",
+        "difficulty": "hard",
+        "notes": "Expanded synthetic data for OPEN_RECORD variation"
+      },
+      "actual": {
+        "raw_intent": "QUERY",
+        "normalized_action": "QUERY",
+        "object_type": "asset",
+        "tool": "crm_query",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "QUERY",
+          "object_type": "asset",
+          "data": {
+            "query_mode": "recent"
+          },
+          "score": 1.0
+        }
+      },
+      "comparison": {
+        "row_id": "mhzr7qwvhsrs4vz8ud",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "asset",
+            "actual": "asset",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "OPEN_RECORD",
+            "actual": "QUERY",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "crm_query",
+            "actual": "crm_query",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "bb9m0668y49x3kffix",
+        "user_input": "can you open the record for asset john doe?",
+        "expected_object": "asset",
+        "expected_action": "OPEN_RECORD",
+        "expected_tool": "crm_query",
+        "expected_retrieval_needed": false,
+        "source_file": "expanded_dataset_v1",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Expanded synthetic data for OPEN_RECORD variation"
+      },
+      "actual": {
+        "raw_intent": "MANAGE",
+        "normalized_action": "OPEN_RECORD",
+        "object_type": "asset",
+        "tool": "crm_query",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "MANAGE",
+          "object_type": "asset",
+          "record_id": "john",
+          "score": 1.0,
+          "language_preference": "eng"
+        }
+      },
+      "comparison": {
+        "row_id": "bb9m0668y49x3kffix",
+        "all_match": true,
+        "comparisons": {
+          "expected_object": {
+            "expected": "asset",
+            "actual": "asset",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "OPEN_RECORD",
+            "actual": "OPEN_RECORD",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "crm_query",
+            "actual": "crm_query",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "471x6m5lu4i04xcfif",
+        "user_input": "Dig into the details of the lead associated with the recent marketing campaign.",
+        "expected_object": "lead",
+        "expected_action": "OPEN_RECORD",
+        "expected_tool": "crm_query",
+        "expected_retrieval_needed": false,
+        "source_file": "expanded_dataset_v1",
+        "phase": "phase306",
+        "context": "After a search query",
+        "difficulty": "hard",
+        "notes": "Expanded synthetic data for OPEN_RECORD variation"
+      },
+      "actual": {
+        "raw_intent": "QUERY",
+        "normalized_action": "QUERY",
+        "object_type": "lead",
+        "tool": "crm_query",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "QUERY",
+          "object_type": "lead",
+          "data": {
+            "query_mode": "recent"
+          },
+          "score": 1.0
+        }
+      },
+      "comparison": {
+        "row_id": "471x6m5lu4i04xcfif",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "lead",
+            "actual": "lead",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "OPEN_RECORD",
+            "actual": "QUERY",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "crm_query",
+            "actual": "crm_query",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "q0hzxo8ejzmgb30pq9",
+        "user_input": "Can you open the record for brand John Doe?",
+        "expected_object": "brand",
+        "expected_action": "OPEN_RECORD",
+        "expected_tool": "crm_query",
+        "expected_retrieval_needed": false,
+        "source_file": "expanded_dataset_v1",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Expanded synthetic data for OPEN_RECORD variation"
+      },
+      "actual": {
+        "raw_intent": "MANAGE",
+        "normalized_action": "OPEN_RECORD",
+        "object_type": "brand",
+        "tool": "crm_query",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "MANAGE",
+          "object_type": "brand",
+          "record_id": "John",
+          "score": 1.0,
+          "language_preference": "eng"
+        }
+      },
+      "comparison": {
+        "row_id": "q0hzxo8ejzmgb30pq9",
+        "all_match": true,
+        "comparisons": {
+          "expected_object": {
+            "expected": "brand",
+            "actual": "brand",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "OPEN_RECORD",
+            "actual": "OPEN_RECORD",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "crm_query",
+            "actual": "crm_query",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "ubbvwq6garfjsi7by5",
+        "user_input": "Open the latest model",
+        "expected_object": "model",
+        "expected_action": "OPEN_RECORD",
+        "expected_tool": "crm_query",
+        "expected_retrieval_needed": false,
+        "source_file": "expanded_dataset_v1",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "easy",
+        "notes": "Expanded synthetic data for OPEN_RECORD variation"
+      },
+      "actual": {
+        "raw_intent": "QUERY",
+        "normalized_action": "QUERY",
+        "object_type": "model",
+        "tool": "crm_query",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "QUERY",
+          "object_type": "model",
+          "data": {
+            "query_mode": "recent"
+          },
+          "score": 1.0
+        }
+      },
+      "comparison": {
+        "row_id": "ubbvwq6garfjsi7by5",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "model",
+            "actual": "model",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "OPEN_RECORD",
+            "actual": "QUERY",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "crm_query",
+            "actual": "crm_query",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "wapfnuteft5cealv70",
+        "user_input": "can you open the record for asset john doe?",
+        "expected_object": "asset",
+        "expected_action": "OPEN_RECORD",
+        "expected_tool": "crm_query",
+        "expected_retrieval_needed": false,
+        "source_file": "expanded_dataset_v1",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Expanded synthetic data for OPEN_RECORD variation"
+      },
+      "actual": {
+        "raw_intent": "MANAGE",
+        "normalized_action": "OPEN_RECORD",
+        "object_type": "asset",
+        "tool": "crm_query",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "MANAGE",
+          "object_type": "asset",
+          "record_id": "john",
+          "score": 1.0,
+          "language_preference": "eng"
+        }
+      },
+      "comparison": {
+        "row_id": "wapfnuteft5cealv70",
+        "all_match": true,
+        "comparisons": {
+          "expected_object": {
+            "expected": "asset",
+            "actual": "asset",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "OPEN_RECORD",
+            "actual": "OPEN_RECORD",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "crm_query",
+            "actual": "crm_query",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "97l8n2a9tpcsy309zj",
+        "user_input": "Open the record for the message template that has the highest potential value right now.",
+        "expected_object": "message_template",
+        "expected_action": "OPEN_RECORD",
+        "expected_tool": "crm_query",
+        "expected_retrieval_needed": false,
+        "source_file": "expanded_dataset_v1",
+        "phase": "phase306",
+        "context": "After a search query",
+        "difficulty": "hard",
+        "notes": "Expanded synthetic data for OPEN_RECORD variation"
+      },
+      "actual": {
+        "raw_intent": "MANAGE",
+        "normalized_action": "OPEN_RECORD",
+        "object_type": "message_template",
+        "tool": "crm_query",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "MANAGE",
+          "object_type": "message_template",
+          "record_id": "that",
+          "score": 1.0,
+          "language_preference": "eng"
+        }
+      },
+      "comparison": {
+        "row_id": "97l8n2a9tpcsy309zj",
+        "all_match": true,
+        "comparisons": {
+          "expected_object": {
+            "expected": "message_template",
+            "actual": "message_template",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "OPEN_RECORD",
+            "actual": "OPEN_RECORD",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "crm_query",
+            "actual": "crm_query",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "o4zlfk7bcwmw9uxa4x",
+        "user_input": "Dig into the details of the contact associated with the recent marketing campaign.",
+        "expected_object": "contact",
+        "expected_action": "OPEN_RECORD",
+        "expected_tool": "crm_query",
+        "expected_retrieval_needed": false,
+        "source_file": "expanded_dataset_v1",
+        "phase": "phase306",
+        "context": "After a search query",
+        "difficulty": "hard",
+        "notes": "Expanded synthetic data for OPEN_RECORD variation"
+      },
+      "actual": {
+        "raw_intent": "QUERY",
+        "normalized_action": "QUERY",
+        "object_type": "contact",
+        "tool": "crm_query",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "QUERY",
+          "object_type": "contact",
+          "data": {
+            "query_mode": "recent"
+          },
+          "score": 1.0
+        }
+      },
+      "comparison": {
+        "row_id": "o4zlfk7bcwmw9uxa4x",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "contact",
+            "actual": "contact",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "OPEN_RECORD",
+            "actual": "QUERY",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "crm_query",
+            "actual": "crm_query",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "p0to55816fzjqyi666",
+        "user_input": "Can you open the record for product John Doe?",
+        "expected_object": "product",
+        "expected_action": "OPEN_RECORD",
+        "expected_tool": "crm_query",
+        "expected_retrieval_needed": false,
+        "source_file": "expanded_dataset_v1",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Expanded synthetic data for OPEN_RECORD variation"
+      },
+      "actual": {
+        "raw_intent": "MANAGE",
+        "normalized_action": "OPEN_RECORD",
+        "object_type": "product",
+        "tool": "crm_query",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "MANAGE",
+          "object_type": "product",
+          "record_id": "John",
+          "score": 1.0,
+          "language_preference": "eng"
+        }
+      },
+      "comparison": {
+        "row_id": "p0to55816fzjqyi666",
+        "all_match": true,
+        "comparisons": {
+          "expected_object": {
+            "expected": "product",
+            "actual": "product",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "OPEN_RECORD",
+            "actual": "OPEN_RECORD",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "crm_query",
+            "actual": "crm_query",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "5vph3wq3kt9swydhgb",
+        "user_input": "View that model",
+        "expected_object": "model",
+        "expected_action": "OPEN_RECORD",
+        "expected_tool": "crm_query",
+        "expected_retrieval_needed": false,
+        "source_file": "expanded_dataset_v1",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "easy",
+        "notes": "Expanded synthetic data for OPEN_RECORD variation"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": "model",
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "CHAT",
+          "object_type": "model",
+          "text": "I can help you open a model. Try `show all models`, `show recent models`, or mention the name you want to open.",
+          "score": 0.95
+        }
+      },
+      "comparison": {
+        "row_id": "5vph3wq3kt9swydhgb",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "model",
+            "actual": "model",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "OPEN_RECORD",
+            "actual": "ASK_CLARIFICATION",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "crm_query",
+            "actual": "none",
+            "match": false
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "dvg056e2gatpmz72r8",
+        "user_input": "Show details for model please.",
+        "expected_object": "model",
+        "expected_action": "OPEN_RECORD",
+        "expected_tool": "crm_query",
+        "expected_retrieval_needed": false,
+        "source_file": "expanded_dataset_v1",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "easy",
+        "notes": "Expanded synthetic data for OPEN_RECORD variation"
+      },
+      "actual": {
+        "raw_intent": "MANAGE",
+        "normalized_action": "OPEN_RECORD",
+        "object_type": "model",
+        "tool": "crm_query",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "MANAGE",
+          "object_type": "model",
+          "record_id": "please",
+          "score": 1.0,
+          "language_preference": "eng"
+        }
+      },
+      "comparison": {
+        "row_id": "dvg056e2gatpmz72r8",
+        "all_match": true,
+        "comparisons": {
+          "expected_object": {
+            "expected": "model",
+            "actual": "model",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "OPEN_RECORD",
+            "actual": "OPEN_RECORD",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "crm_query",
+            "actual": "crm_query",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "qvznbacpxxkvlssl4k",
+        "user_input": "Please show me the specific message template we discussed.",
+        "expected_object": "message_template",
+        "expected_action": "OPEN_RECORD",
+        "expected_tool": "crm_query",
+        "expected_retrieval_needed": false,
+        "source_file": "expanded_dataset_v1",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Expanded synthetic data for OPEN_RECORD variation"
+      },
+      "actual": {
+        "raw_intent": "QUERY",
+        "normalized_action": "QUERY",
+        "object_type": "message_send",
+        "tool": "crm_query",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "QUERY",
+          "object_type": "message_send",
+          "data": {},
+          "score": 1.0,
+          "language_preference": "eng"
+        }
+      },
+      "comparison": {
+        "row_id": "qvznbacpxxkvlssl4k",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "message_template",
+            "actual": "message_send",
+            "match": false
+          },
+          "expected_action": {
+            "expected": "OPEN_RECORD",
+            "actual": "QUERY",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "crm_query",
+            "actual": "crm_query",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "ih8myad3mgh84fa01s",
+        "user_input": "please show me the specific asset we discussed.",
+        "expected_object": "asset",
+        "expected_action": "OPEN_RECORD",
+        "expected_tool": "crm_query",
+        "expected_retrieval_needed": false,
+        "source_file": "expanded_dataset_v1",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Expanded synthetic data for OPEN_RECORD variation"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": "asset",
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "CHAT",
+          "object_type": "asset",
+          "text": "Which specific asset were we discussing?",
+          "score": 0.5,
+          "reasoning": {
+            "context_reference": {
+              "kind": "last_record",
+              "index": 0,
+              "object_type": "asset"
+            },
+            "resolved_reference": {},
+            "confidence": 0.4,
+            "confidence_band": "medium"
+          },
+          "language_preference": "eng"
+        }
+      },
+      "comparison": {
+        "row_id": "ih8myad3mgh84fa01s",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "asset",
+            "actual": "asset",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "OPEN_RECORD",
+            "actual": "ASK_CLARIFICATION",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "crm_query",
+            "actual": "none",
+            "match": false
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "py1d7yrxp2vre2d2e5",
+        "user_input": "View that contact",
+        "expected_object": "contact",
+        "expected_action": "OPEN_RECORD",
+        "expected_tool": "crm_query",
+        "expected_retrieval_needed": false,
+        "source_file": "expanded_dataset_v1",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "easy",
+        "notes": "Expanded synthetic data for OPEN_RECORD variation"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": "contact",
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "CHAT",
+          "object_type": "contact",
+          "text": "I need a specific contact record first. Open one or select one, then try again.",
+          "score": 1.0,
+          "language_preference": "eng"
+        }
+      },
+      "comparison": {
+        "row_id": "py1d7yrxp2vre2d2e5",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "contact",
+            "actual": "contact",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "OPEN_RECORD",
+            "actual": "ASK_CLARIFICATION",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "crm_query",
+            "actual": "none",
+            "match": false
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "i2iyzci21cqqo6opgh",
+        "user_input": "Dig into the details of the lead associated with the recent marketing campaign.",
+        "expected_object": "lead",
+        "expected_action": "OPEN_RECORD",
+        "expected_tool": "crm_query",
+        "expected_retrieval_needed": false,
+        "source_file": "expanded_dataset_v1",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "hard",
+        "notes": "Expanded synthetic data for OPEN_RECORD variation"
+      },
+      "actual": {
+        "raw_intent": "QUERY",
+        "normalized_action": "QUERY",
+        "object_type": "lead",
+        "tool": "crm_query",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "QUERY",
+          "object_type": "lead",
+          "data": {
+            "query_mode": "recent"
+          },
+          "score": 1.0
+        }
+      },
+      "comparison": {
+        "row_id": "i2iyzci21cqqo6opgh",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "lead",
+            "actual": "lead",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "OPEN_RECORD",
+            "actual": "QUERY",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "crm_query",
+            "actual": "crm_query",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "agh19ym1tidevmlpa3",
+        "user_input": "Can you open the record for message template John Doe?",
+        "expected_object": "message_template",
+        "expected_action": "OPEN_RECORD",
+        "expected_tool": "crm_query",
+        "expected_retrieval_needed": false,
+        "source_file": "expanded_dataset_v1",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Expanded synthetic data for OPEN_RECORD variation"
+      },
+      "actual": {
+        "raw_intent": "MANAGE",
+        "normalized_action": "OPEN_RECORD",
+        "object_type": "message_template",
+        "tool": "crm_query",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "MANAGE",
+          "object_type": "message_template",
+          "record_id": "John",
+          "score": 1.0,
+          "language_preference": "eng"
+        }
+      },
+      "comparison": {
+        "row_id": "agh19ym1tidevmlpa3",
+        "all_match": true,
+        "comparisons": {
+          "expected_object": {
+            "expected": "message_template",
+            "actual": "message_template",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "OPEN_RECORD",
+            "actual": "OPEN_RECORD",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "crm_query",
+            "actual": "crm_query",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "b2a0ppvszfllr284k2",
+        "user_input": "Open the record for the product that has the highest potential value right now.",
+        "expected_object": "product",
+        "expected_action": "OPEN_RECORD",
+        "expected_tool": "crm_query",
+        "expected_retrieval_needed": false,
+        "source_file": "expanded_dataset_v1",
+        "phase": "phase306",
+        "context": "After a search query",
+        "difficulty": "hard",
+        "notes": "Expanded synthetic data for OPEN_RECORD variation"
+      },
+      "actual": {
+        "raw_intent": "MANAGE",
+        "normalized_action": "OPEN_RECORD",
+        "object_type": "product",
+        "tool": "crm_query",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "MANAGE",
+          "object_type": "product",
+          "record_id": "that",
+          "score": 1.0,
+          "language_preference": "eng"
+        }
+      },
+      "comparison": {
+        "row_id": "b2a0ppvszfllr284k2",
+        "all_match": true,
+        "comparisons": {
+          "expected_object": {
+            "expected": "product",
+            "actual": "product",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "OPEN_RECORD",
+            "actual": "OPEN_RECORD",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "crm_query",
+            "actual": "crm_query",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "9a20eqf96v41dk32ng",
+        "user_input": "dig into the details of the message template associated with the recent marketing campaign.",
+        "expected_object": "message_template",
+        "expected_action": "OPEN_RECORD",
+        "expected_tool": "crm_query",
+        "expected_retrieval_needed": false,
+        "source_file": "expanded_dataset_v1",
+        "phase": "phase306",
+        "context": "Following up on a previous task",
+        "difficulty": "hard",
+        "notes": "Expanded synthetic data for OPEN_RECORD variation"
+      },
+      "actual": {
+        "raw_intent": "QUERY",
+        "normalized_action": "QUERY",
+        "object_type": "message_template",
+        "tool": "crm_query",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "QUERY",
+          "object_type": "message_template",
+          "data": {
+            "query_mode": "recent"
+          },
+          "score": 1.0
+        }
+      },
+      "comparison": {
+        "row_id": "9a20eqf96v41dk32ng",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "message_template",
+            "actual": "message_template",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "OPEN_RECORD",
+            "actual": "QUERY",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "crm_query",
+            "actual": "crm_query",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    }
+  ]
+}

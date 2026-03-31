@@ -49,12 +49,13 @@ class DashboardService:
         
         all_records.sort(key=lambda x: x["date"], reverse=True)
         
-        # Filter opportunities for the last 7 days based on creation date (using KST for consistency)
-        horizon_7_days_ago = get_kst_now_naive() - timedelta(days=7)
-        
+        # Weekly performance follows the local Korean business week: Monday through Sunday.
+        now_kst = get_kst_now_naive()
+        start_of_week = (now_kst - timedelta(days=now_kst.weekday())).replace(hour=0, minute=0, second=0, microsecond=0)
+
         recent_opps_created = []
         if all_opps: # Proceed only if all_opps was fetched successfully
-            recent_opps_created = [o for o in all_opps if safe_date(o) >= horizon_7_days_ago]
+            recent_opps_created = [o for o in all_opps if safe_date(o) >= start_of_week]
 
         # Calculate performance stats from the filtered opportunities
         stages = ["Qualification", "Test Drive", "Proposal/Price Quote", "Negotiation/Review", "Closed Won", "Closed Lost"]

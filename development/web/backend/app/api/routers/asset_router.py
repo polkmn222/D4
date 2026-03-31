@@ -232,9 +232,13 @@ async def list_assets(request: Request, db: Session = Depends(get_db)):
 async def update_asset_endpoint(
     asset_id: str,
     name: Optional[str] = Form(None),
+    contact: Optional[str] = Form(None),
     contact_id: Optional[str] = Form(None),
+    product: Optional[str] = Form(None),
     product_id: Optional[str] = Form(None),
+    brand: Optional[str] = Form(None),
     brand_id: Optional[str] = Form(None),
+    model: Optional[str] = Form(None),
     model_id: Optional[str] = Form(None),
     vin: Optional[str] = Form(None),
     price: Optional[int] = Form(None),
@@ -243,8 +247,16 @@ async def update_asset_endpoint(
 ):
     try:
         AssetService.update_asset(
-            db, asset_id, name=name, contact_id=contact_id, product_id=product_id, 
-            brand_id=brand_id, model_id=model_id, vin=vin, price=price, status=status
+            db,
+            asset_id,
+            name=name,
+            contact=contact if contact is not None else contact_id,
+            product=product if product is not None else product_id,
+            brand=brand if brand is not None else brand_id,
+            model=model if model is not None else model_id,
+            vin=vin,
+            price=price,
+            status=status,
         )
         return RedirectResponse(url=f"/assets/{asset_id}?success=Record+updated+successfully", status_code=303)
     except Exception as e:

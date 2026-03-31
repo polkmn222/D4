@@ -25,12 +25,27 @@ def test_shared_modal_template_keeps_message_template_type_switch_contract():
     assert "const typeSelect = document.querySelector('select[name=\"record_type\"]');" in source
     assert "const subjectWrapper = document.querySelector('.sf-field-wrapper[data-field=\"subject\"]');" in source
     assert "const imageWrapper = document.querySelector('.sf-field-wrapper[data-field=\"image\"]');" in source
+    assert 'id="modal-form-image-input"' in source
+    assert "function renderModalTemplateImageState() {" in source
+    assert "function handleModalTemplateImageSelection(input) {" in source
+    assert "function clearModalTemplateImageSelection() {" in source
     assert "if (type === 'SMS' && bytes > 90) {" in source
     assert "typeSelect.value = 'LMS';" in source
     assert "subjectWrapper.style.display = (type === 'SMS') ? 'none' : 'flex';" in source
     assert "imageWrapper.style.display = (type === 'MMS') ? 'flex' : 'none';" in source
+    assert "renderModalTemplateImageState();" in source
     assert "byteCounter.textContent = `${bytes} / ${limit} bytes (${type})`;" in source
     assert "saveBtn.disabled = true;" in source
+
+
+def test_shared_modal_template_adds_asset_status_picklist_contract():
+    source = Path("development/web/frontend/templates/templates/sf_form_modal.html").read_text(encoding="utf-8")
+    router_source = Path("development/web/backend/app/api/form_router.py").read_text(encoding="utf-8")
+
+    assert "field == 'status' and object_type == 'Asset'" in source
+    assert 'asset_status_options|default(["Active", "Available", "Sold", "Maintenance", "Inactive"], true)' in source
+    assert "AssetStatus.ACTIVE.value" in router_source
+    assert '"asset_status_options": asset_status_options' in router_source
 
 
 def test_lead_modal_embedded_mode_contract_keeps_lookup_inputs_and_removes_modal_close():
@@ -77,3 +92,12 @@ def test_form_router_keeps_lookup_prefill_contracts_for_related_create_flows():
     assert '"product_name": prod_obj.name if prod_obj else ""' in source
     assert '"asset_name": asset_obj.name if asset_obj else ""' in source
     assert 'if model_obj and not brand and getattr(model_obj, "brand", None):' in source
+
+
+def test_message_modal_router_prefills_saved_message_delivery_metadata():
+    source = Path("development/web/backend/app/api/form_router.py").read_text(encoding="utf-8")
+
+    assert '"record_type": getattr(msg, "record_type", None) or "SMS"' in source
+    assert '"subject": getattr(msg, "subject", None) or ""' in source
+    assert '"attachment_id": getattr(msg, "attachment_id", None) or ""' in source
+    assert '"image": getattr(msg, "image_url", None) or ""' in source

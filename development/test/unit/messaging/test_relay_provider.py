@@ -27,7 +27,7 @@ def test_relay_provider_sends_with_bearer_token():
         "status": "success",
         "data": {
             "status": "success",
-            "provider": "solapi",
+            "provider": "surem",
             "provider_message_id": "group-1",
             "message": "accepted",
         },

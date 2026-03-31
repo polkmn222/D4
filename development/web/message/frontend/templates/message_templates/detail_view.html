@@ -99,7 +99,7 @@
                                     <img src="{{ value }}" style="max-width: 100%; max-height: 200px; object-fit: contain;">
                                 </div>
                                 <div style="display: flex; gap: 0.5rem;">
-                                    <button class="btn btn-sm" onclick="document.getElementById('file-Image').click()">Change Image</button>
+                                    <button class="btn btn-sm" onclick="document.getElementById('file-Image').click()">Replace Image</button>
                                     <button class="btn btn-sm" style="color: var(--error);" onclick="removeTemplateImage('{{ record_id }}')">Remove</button>
                                 </div>
                             {% else %}
@@ -147,10 +147,22 @@
                         <option value="MMS" {% if value == 'MMS' %}selected{% endif %}>MMS</option>
                     </select>
                     {% elif field == 'Image' and object_type == 'MessageTemplate' %}
-                    <div style="display: flex; gap: 0.5rem; align-items: center;">
-                        <input type="text" id="input-{{ field }}" class="sf-inline-input" value="{{ value | format_value }}" style="flex-grow: 1;">
-                        <input type="file" id="file-{{ field }}" style="display: none;" accept="image/*" onchange="handleTemplateImageUpload(event, '{{ record_id }}')">
-                        <button class="btn" onclick="document.getElementById('file-{{ field }}').click()">Upload File</button>
+                        <input type="file" id="file-{{ field }}" style="display: none;" accept="image/jpeg,image/jpg" onchange="handleTemplateImageUpload(event, '{{ record_id }}')">
+                        <div id="template-detail-image-edit-panel" style="display: flex; flex-direction: column; gap: 0.75rem;">
+                        <div id="template-detail-image-edit-empty" {% if value %}style="display: none; border: 2px dashed var(--border); border-radius: 10px; padding: 1rem; text-align: center; color: var(--text-label); background: #fafbfc;"{% else %}style="display: block; border: 2px dashed var(--border); border-radius: 10px; padding: 1rem; text-align: center; color: var(--text-label); background: #fafbfc;"{% endif %}>
+                            <div style="font-size: 1.35rem; margin-bottom: 0.45rem;">🖼️</div>
+                            <div style="font-size: 0.78rem; margin-bottom: 0.8rem;">Upload a JPG image for MMS templates.</div>
+                            <button type="button" class="btn" onclick="document.getElementById('file-{{ field }}').click()">Upload Image</button>
+                        </div>
+                        <div id="template-detail-image-edit-preview-wrap" {% if value %}style="display: block; border: 1px solid var(--border); border-radius: 10px; padding: 0.9rem; background: #fbfcfe;"{% else %}style="display: none; border: 1px solid var(--border); border-radius: 10px; padding: 0.9rem; background: #fbfcfe;"{% endif %}>
+                            <img id="template-detail-image-edit-preview" src="{{ value }}" alt="Template image preview" style="display: block; width: 100%; max-height: 220px; object-fit: contain; border-radius: 8px; background: #fff;">
+                            <div id="template-detail-image-edit-meta" style="margin-top: 0.65rem; font-size: 0.76rem; color: #5d6c84;">{% if value %}Current template image{% endif %}</div>
+                            <div class="template-detail-image-actions" style="display: flex; gap: 0.5rem; margin-top: 0.75rem; align-items: center; flex-wrap: wrap;">
+                                <button type="button" class="btn" onclick="document.getElementById('file-{{ field }}').click()">Replace Image</button>
+                                <button type="button" class="btn" style="color: var(--error);" onclick="removeTemplateImage('{{ record_id }}')">Clear Image</button>
+                            </div>
+                        </div>
+                        <div id="template-detail-image-edit-helper" style="font-size: 0.78rem; color: #35506b;"></div>
                     </div>
                     {% else %}
                     <input type="text" id="input-{{ field }}" class="sf-inline-input" value="{{ value | format_value }}">
@@ -250,6 +262,11 @@
 
     function renderTemplateDetailImageCard(imageUrl, helperText = '') {
         const textNode = document.getElementById('text-Image');
+        const editEmpty = document.getElementById('template-detail-image-edit-empty');
+        const editPreviewWrap = document.getElementById('template-detail-image-edit-preview-wrap');
+        const editPreview = document.getElementById('template-detail-image-edit-preview');
+        const editMeta = document.getElementById('template-detail-image-edit-meta');
+        const editHelper = document.getElementById('template-detail-image-edit-helper');
         if (!textNode) return;
 
         const helperMarkup = helperText
@@ -262,11 +279,16 @@
                     <img src="${imageUrl}" style="max-width: 100%; max-height: 200px; object-fit: contain;">
                 </div>
                 <div style="display: flex; gap: 0.5rem;">
-                    <button type="button" class="btn btn-sm" onclick="document.getElementById('file-Image').click()">Change Image</button>
+                    <button type="button" class="btn btn-sm" onclick="document.getElementById('file-Image').click()">Replace Image</button>
                     <button type="button" class="btn btn-sm" style="color: var(--error);" onclick="removeTemplateImage('{{ record_id }}')">Remove</button>
                 </div>
                 ${helperMarkup}
             `;
+            if (editEmpty) editEmpty.style.display = 'none';
+            if (editPreviewWrap) editPreviewWrap.style.display = 'block';
+            if (editPreview) editPreview.src = imageUrl;
+            if (editMeta) editMeta.textContent = helperText ? 'Selected JPG image' : 'Current template image';
+            if (editHelper) editHelper.textContent = helperText;
             return;
         }
 
@@ -278,6 +300,11 @@
             </div>
             ${helperMarkup}
         `;
+        if (editEmpty) editEmpty.style.display = 'block';
+        if (editPreviewWrap) editPreviewWrap.style.display = 'none';
+        if (editPreview) editPreview.src = '';
+        if (editMeta) editMeta.textContent = '';
+        if (editHelper) editHelper.textContent = helperText;
     }
 
     function collectTemplateDetailUpdates() {

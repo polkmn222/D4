@@ -108,7 +108,7 @@ async def list_messages(request: Request, db: Session = Depends(get_db)):
         template = template_map.get(m.template) if m.template else None
         contact_name = f"{contact.first_name} {contact.last_name}" if contact else "Unknown"
         template_name = template.name if template else "Custom Content"
-        msg_type = template.record_type if template and template.record_type else "SMS"
+        msg_type = getattr(m, "record_type", None) or (template.record_type if template and template.record_type else "SMS")
         name_display = f"{contact_name} - {template_name} ({msg_type})"
         items.append({
             "id": m.id,
@@ -247,7 +247,10 @@ async def message_detail(request: Request, message_id: str, db: Session = Depend
         "Template": template_name,
         "Template_Hidden_Ref": message.template or "",
         "Direction": message.direction or "",
+        "Type": getattr(message, "record_type", None) or (template.record_type if template else "") or "",
+        "Subject": getattr(message, "subject", None) or "",
         "Status": message.status or "",
+        "Image": getattr(message, "image_url", None) or "",
         "Content": message.content or "",
     }
 

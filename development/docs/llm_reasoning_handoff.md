@@ -28,6 +28,23 @@ What this means in practice:
 - fallback reasoning is only used after deterministic handling cannot resolve the request safely
 - execution still depends on validator-approved structure and validated context
 
+## Current Eval State
+
+There is now a minimal local decision eval adapter for `learning/eval_dataset_expanded.jsonl`.
+
+Important boundaries:
+
+- it runs through `AiAgentService.process_query()`
+- it captures the decision payload before `_execute_intent()` performs side effects
+- it compares runtime output against eval labels rather than asserting that eval labels are literal runtime intents
+- it is useful for regression review, but it is not itself a proof that final user-visible answer quality is correct
+
+Current practical implication:
+
+- some mismatches indicate a real runtime defect
+- some mismatches indicate an eval-label design problem
+- some mismatches indicate that the dataset expects behavior the current product contract does not explicitly promise
+
 ## Key Guarantees
 
 The current layer should be treated as reliable for these guarantees:
@@ -70,6 +87,7 @@ Highest-signal implementation files:
 - `development/ai_agent/llm/backend/intent_reasoner.py`
 - `development/ai_agent/llm/backend/conversation_context.py`
 - `development/ai_agent/llm/backend/intent_preclassifier.py`
+- `development/ai_agent/llm/backend/decision_eval.py`
 - `development/ai_agent/ui/backend/service.py`
 
 Practical importance:
@@ -77,6 +95,7 @@ Practical importance:
 - `intent_reasoner.py` is the main fallback contract, prompt, normalization, and validation surface
 - `conversation_context.py` defines the compact validated context model that makes contextual resolution possible
 - `intent_preclassifier.py` protects the deterministic fast path
+- `decision_eval.py` is the current adapter that compares runtime decisions against the expanded JSONL eval labels
 - `service.py` is still the runtime handoff point for fallback reasoning and remains the main merge-risk file
 
 ## Important Tests
@@ -101,6 +120,7 @@ Additional supporting tests:
 - `development/test/unit/ai_agent/backend/test_phase229_context_resolution.py`
 - `development/test/unit/ai_agent/backend/test_phase230_query_context.py`
 - `development/test/unit/ai_agent/backend/test_phase226_deterministic_crud.py`
+- `development/test/unit/ai_agent/backend/test_decision_eval.py`
 
 ## Important Docs
 
@@ -115,6 +135,7 @@ Practical roles:
 
 - `llm_reasoning.md` describes the current contract and limits
 - `llm_reasoning_eval.md` gives realistic evaluation cases for future quality checks
+- `llm_reasoning_eval.md` also documents how to interpret JSONL eval mismatches without over-attributing them to runtime defects
 - `testing.md` defines the mandatory proof expectations for behavior changes
 - `codex-working-rules.md` keeps scope, backup, and reporting discipline in place
 
@@ -148,11 +169,13 @@ Higher-risk future changes include:
 
 Best narrow follow-up areas from the current state:
 
-1. Tighten evaluation-driven handling for a few remaining awkward query-style noisy prompts without making them executable by default.
-2. Improve clarification specificity for weak contextual phrases only where the validator can already see the likely missing object or target type.
-3. Expand proof coverage around prompt-guided raw-output shapes that are close to the current safe contract but still awkward.
-4. Keep the evaluation set and the main reasoner regression pack aligned whenever fallback behavior changes.
-5. Avoid touching `service.py` unless a reasoning change truly cannot affect runtime behavior without it.
+1. Review eval results in fixed batches such as 100 rows at a time.
+2. Separate runtime defects from eval-label defects before changing the reasoning layer.
+3. Tighten evaluation-driven handling for a few remaining awkward query-style noisy prompts without making them executable by default.
+4. Improve clarification specificity for weak contextual phrases only where the validator can already see the likely missing object or target type.
+5. Expand proof coverage around prompt-guided raw-output shapes that are close to the current safe contract but still awkward.
+6. Keep the evaluation set and the main reasoner regression pack aligned whenever fallback behavior changes.
+7. Avoid touching `service.py` unless a reasoning change truly cannot affect runtime behavior without it.
 
 ## Safe Vs Risky Change Types
 

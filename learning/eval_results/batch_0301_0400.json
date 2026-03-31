@@ -1,0 +1,5897 @@
+{
+  "generated_at": "2026-03-31T02:00:30.436770+00:00",
+  "dataset_path": "/var/folders/zg/z6kl4gjn3lj8l400kylykqm40000gp/T/tmpbnn2n316.jsonl",
+  "output_path": "learning/eval_results/batch_0301_0400.json",
+  "summary": {
+    "rows": 100,
+    "full_match_rows": 33,
+    "field_matches": {
+      "expected_object": 58,
+      "expected_action": 46,
+      "expected_tool": 54,
+      "expected_retrieval_needed": 76
+    }
+  },
+  "results": [
+    {
+      "dataset_row": {
+        "id": "24kc6jclsjmnrdplpx",
+        "user_input": "Show all Brands",
+        "expected_object": "brand",
+        "expected_action": "QUERY",
+        "expected_tool": "crm_query",
+        "expected_retrieval_needed": false,
+        "source_file": "phase5_cycle3_final_results.md",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "easy",
+        "notes": "Gold standard mapping for QUERY"
+      },
+      "actual": {
+        "raw_intent": "QUERY",
+        "normalized_action": "QUERY",
+        "object_type": "brand",
+        "tool": "crm_query",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "QUERY",
+          "object_type": "brand",
+          "data": {},
+          "score": 1.0
+        }
+      },
+      "comparison": {
+        "row_id": "24kc6jclsjmnrdplpx",
+        "all_match": true,
+        "comparisons": {
+          "expected_object": {
+            "expected": "brand",
+            "actual": "brand",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "QUERY",
+            "actual": "QUERY",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "crm_query",
+            "actual": "crm_query",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "jr9y796x4wy6jtnpkr",
+        "user_input": "Can you Show all Brands?",
+        "expected_object": "brand",
+        "expected_action": "QUERY",
+        "expected_tool": "crm_query",
+        "expected_retrieval_needed": false,
+        "source_file": "phase5_cycle3_final_results.md",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Gold standard mapping for QUERY"
+      },
+      "actual": {
+        "raw_intent": "QUERY",
+        "normalized_action": "QUERY",
+        "object_type": "brand",
+        "tool": "crm_query",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "QUERY",
+          "object_type": "brand",
+          "data": {},
+          "score": 1.0
+        }
+      },
+      "comparison": {
+        "row_id": "jr9y796x4wy6jtnpkr",
+        "all_match": true,
+        "comparisons": {
+          "expected_object": {
+            "expected": "brand",
+            "actual": "brand",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "QUERY",
+            "actual": "QUERY",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "crm_query",
+            "actual": "crm_query",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "5z1rcqz8vfta7rzjk6",
+        "user_input": "List Brands",
+        "expected_object": "brand",
+        "expected_action": "QUERY",
+        "expected_tool": "crm_query",
+        "expected_retrieval_needed": false,
+        "source_file": "phase5_cycle3_final_results.md",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "easy",
+        "notes": "Gold standard mapping for QUERY"
+      },
+      "actual": {
+        "raw_intent": "QUERY",
+        "normalized_action": "QUERY",
+        "object_type": "brand",
+        "tool": "crm_query",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "QUERY",
+          "object_type": "brand",
+          "data": {},
+          "score": 1.0
+        }
+      },
+      "comparison": {
+        "row_id": "5z1rcqz8vfta7rzjk6",
+        "all_match": true,
+        "comparisons": {
+          "expected_object": {
+            "expected": "brand",
+            "actual": "brand",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "QUERY",
+            "actual": "QUERY",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "crm_query",
+            "actual": "crm_query",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "3n7rozuulmzzdad4o7",
+        "user_input": "Can you List Brands?",
+        "expected_object": "brand",
+        "expected_action": "QUERY",
+        "expected_tool": "crm_query",
+        "expected_retrieval_needed": false,
+        "source_file": "phase5_cycle3_final_results.md",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Gold standard mapping for QUERY"
+      },
+      "actual": {
+        "raw_intent": "QUERY",
+        "normalized_action": "QUERY",
+        "object_type": "brand",
+        "tool": "crm_query",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "QUERY",
+          "object_type": "brand",
+          "data": {},
+          "score": 1.0
+        }
+      },
+      "comparison": {
+        "row_id": "3n7rozuulmzzdad4o7",
+        "all_match": true,
+        "comparisons": {
+          "expected_object": {
+            "expected": "brand",
+            "actual": "brand",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "QUERY",
+            "actual": "QUERY",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "crm_query",
+            "actual": "crm_query",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "e9t38871s1s06h7h3k",
+        "user_input": "View recent Brands",
+        "expected_object": "brand",
+        "expected_action": "ASK_CLARIFICATION",
+        "expected_tool": "none",
+        "expected_retrieval_needed": false,
+        "source_file": "phase5_cycle3_final_results.md",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Gold standard mapping for ASK_CLARIFICATION"
+      },
+      "actual": {
+        "raw_intent": "QUERY",
+        "normalized_action": "QUERY",
+        "object_type": "brand",
+        "tool": "crm_query",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "QUERY",
+          "object_type": "brand",
+          "data": {
+            "query_mode": "recent"
+          },
+          "score": 1.0
+        }
+      },
+      "comparison": {
+        "row_id": "e9t38871s1s06h7h3k",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "brand",
+            "actual": "brand",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "ASK_CLARIFICATION",
+            "actual": "QUERY",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "none",
+            "actual": "crm_query",
+            "match": false
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "s5u164cmrjvyqmvm5f",
+        "user_input": "Can you View recent Brands?",
+        "expected_object": "brand",
+        "expected_action": "ASK_CLARIFICATION",
+        "expected_tool": "none",
+        "expected_retrieval_needed": false,
+        "source_file": "phase5_cycle3_final_results.md",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Gold standard mapping for ASK_CLARIFICATION"
+      },
+      "actual": {
+        "raw_intent": "QUERY",
+        "normalized_action": "QUERY",
+        "object_type": "brand",
+        "tool": "crm_query",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "QUERY",
+          "object_type": "brand",
+          "data": {
+            "query_mode": "recent"
+          },
+          "score": 1.0
+        }
+      },
+      "comparison": {
+        "row_id": "s5u164cmrjvyqmvm5f",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "brand",
+            "actual": "brand",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "ASK_CLARIFICATION",
+            "actual": "QUERY",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "none",
+            "actual": "crm_query",
+            "match": false
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "t1p7itw9amu0e0vjdr",
+        "user_input": "Find a Brand",
+        "expected_object": "brand",
+        "expected_action": "QUERY",
+        "expected_tool": "crm_query",
+        "expected_retrieval_needed": false,
+        "source_file": "phase5_cycle3_final_results.md",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "easy",
+        "notes": "Gold standard mapping for QUERY"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": null,
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "direct_response",
+        "raw_output": {
+          "intent": "CHAT",
+          "is_suggestion": true,
+          "suggestion_prompt": "Add a Brand",
+          "text": "I think you might want to **open form** for **brand**. Is that correct? (Suggested: \"Add a Brand\")",
+          "score": 0.53333336,
+          "options": [
+            {
+              "label": "Yes, do that",
+              "value": "Add a Brand"
+            },
+            {
+              "label": "No, something else",
+              "value": "help"
+            }
+          ]
+        }
+      },
+      "comparison": {
+        "row_id": "t1p7itw9amu0e0vjdr",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "brand",
+            "actual": null,
+            "match": false
+          },
+          "expected_action": {
+            "expected": "QUERY",
+            "actual": "ASK_CLARIFICATION",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "crm_query",
+            "actual": "none",
+            "match": false
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "a9yvhexv844vfeav2x",
+        "user_input": "Can you Find a Brand?",
+        "expected_object": "brand",
+        "expected_action": "QUERY",
+        "expected_tool": "crm_query",
+        "expected_retrieval_needed": false,
+        "source_file": "phase5_cycle3_final_results.md",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Gold standard mapping for QUERY"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": null,
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "direct_response",
+        "raw_output": {
+          "intent": "CHAT",
+          "is_suggestion": true,
+          "suggestion_prompt": "Can you Add a Brand?",
+          "text": "I think you might want to **open form** for **brand**. Is that correct? (Suggested: \"Can you Add a Brand?\")",
+          "score": 0.6956522,
+          "options": [
+            {
+              "label": "Yes, do that",
+              "value": "Can you Add a Brand?"
+            },
+            {
+              "label": "No, something else",
+              "value": "help"
+            }
+          ]
+        }
+      },
+      "comparison": {
+        "row_id": "a9yvhexv844vfeav2x",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "brand",
+            "actual": null,
+            "match": false
+          },
+          "expected_action": {
+            "expected": "QUERY",
+            "actual": "ASK_CLARIFICATION",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "crm_query",
+            "actual": "none",
+            "match": false
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "cltjd7hj3byuhvpw3a",
+        "user_input": "Search for Brand",
+        "expected_object": "brand",
+        "expected_action": "QUERY",
+        "expected_tool": "crm_query",
+        "expected_retrieval_needed": false,
+        "source_file": "phase5_cycle3_final_results.md",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "easy",
+        "notes": "Gold standard mapping for QUERY"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": null,
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "direct_response",
+        "raw_output": {
+          "intent": "CHAT",
+          "is_suggestion": true,
+          "suggestion_prompt": "Search for BMW X5.",
+          "text": "I think you might want to **query** for **lead**. Is that correct? (Suggested: \"Search for BMW X5.\")",
+          "score": 0.5217391,
+          "options": [
+            {
+              "label": "Yes, do that",
+              "value": "Search for BMW X5."
+            },
+            {
+              "label": "No, something else",
+              "value": "help"
+            }
+          ]
+        }
+      },
+      "comparison": {
+        "row_id": "cltjd7hj3byuhvpw3a",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "brand",
+            "actual": null,
+            "match": false
+          },
+          "expected_action": {
+            "expected": "QUERY",
+            "actual": "ASK_CLARIFICATION",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "crm_query",
+            "actual": "none",
+            "match": false
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "44betr1rpxi0251lax",
+        "user_input": "Can you Search for Brand?",
+        "expected_object": "brand",
+        "expected_action": "QUERY",
+        "expected_tool": "crm_query",
+        "expected_retrieval_needed": false,
+        "source_file": "phase5_cycle3_final_results.md",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Gold standard mapping for QUERY"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": null,
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "direct_response",
+        "raw_output": {
+          "intent": "CHAT",
+          "is_suggestion": true,
+          "suggestion_prompt": "Can you Add a Brand?",
+          "text": "I think you might want to **open form** for **brand**. Is that correct? (Suggested: \"Can you Add a Brand?\")",
+          "score": 0.46666667,
+          "options": [
+            {
+              "label": "Yes, do that",
+              "value": "Can you Add a Brand?"
+            },
+            {
+              "label": "No, something else",
+              "value": "help"
+            }
+          ]
+        }
+      },
+      "comparison": {
+        "row_id": "44betr1rpxi0251lax",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "brand",
+            "actual": null,
+            "match": false
+          },
+          "expected_action": {
+            "expected": "QUERY",
+            "actual": "ASK_CLARIFICATION",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "crm_query",
+            "actual": "none",
+            "match": false
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "vhxs2acw30d6okv82s",
+        "user_input": "Create new Brand",
+        "expected_object": "brand",
+        "expected_action": "OPEN_FORM",
+        "expected_tool": "none",
+        "expected_retrieval_needed": false,
+        "source_file": "phase5_cycle3_final_results.md",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "easy",
+        "notes": "Gold standard mapping for OPEN_FORM"
+      },
+      "actual": {
+        "raw_intent": "OPEN_FORM",
+        "normalized_action": "OPEN_FORM",
+        "object_type": "brand",
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "direct_response",
+        "raw_output": {
+          "intent": "OPEN_FORM",
+          "object_type": "brand",
+          "form_url": "/vehicle_specifications/new-modal?type=Brand",
+          "form_title": "Create Brand",
+          "form_kind": "brand_create",
+          "text": "I've opened the new brand form for you below.",
+          "score": 1.0
+        }
+      },
+      "comparison": {
+        "row_id": "vhxs2acw30d6okv82s",
+        "all_match": true,
+        "comparisons": {
+          "expected_object": {
+            "expected": "brand",
+            "actual": "brand",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "OPEN_FORM",
+            "actual": "OPEN_FORM",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "none",
+            "actual": "none",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "ucf7m6okrofmzrnv67",
+        "user_input": "Can you Create new Brand?",
+        "expected_object": "brand",
+        "expected_action": "OPEN_FORM",
+        "expected_tool": "none",
+        "expected_retrieval_needed": false,
+        "source_file": "phase5_cycle3_final_results.md",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Gold standard mapping for OPEN_FORM"
+      },
+      "actual": {
+        "raw_intent": "OPEN_FORM",
+        "normalized_action": "OPEN_FORM",
+        "object_type": "brand",
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "direct_response",
+        "raw_output": {
+          "intent": "OPEN_FORM",
+          "object_type": "brand",
+          "form_url": "/vehicle_specifications/new-modal?type=Brand",
+          "form_title": "Create Brand",
+          "form_kind": "brand_create",
+          "text": "I've opened the new brand form for you below.",
+          "score": 1.0
+        }
+      },
+      "comparison": {
+        "row_id": "ucf7m6okrofmzrnv67",
+        "all_match": true,
+        "comparisons": {
+          "expected_object": {
+            "expected": "brand",
+            "actual": "brand",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "OPEN_FORM",
+            "actual": "OPEN_FORM",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "none",
+            "actual": "none",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "gq926u0fm7lzz1ywl8",
+        "user_input": "Add a Brand",
+        "expected_object": "brand",
+        "expected_action": "OPEN_FORM",
+        "expected_tool": "none",
+        "expected_retrieval_needed": false,
+        "source_file": "phase5_cycle3_final_results.md",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "easy",
+        "notes": "Gold standard mapping for OPEN_FORM"
+      },
+      "actual": {
+        "raw_intent": "OPEN_FORM",
+        "normalized_action": "OPEN_FORM",
+        "object_type": "brand",
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "direct_response",
+        "raw_output": {
+          "intent": "OPEN_FORM",
+          "object_type": "brand",
+          "form_url": "/vehicle_specifications/new-modal?type=Brand",
+          "form_title": "Create Brand",
+          "form_kind": "brand_create",
+          "text": "I've opened the new brand form for you below.",
+          "score": 1.0
+        }
+      },
+      "comparison": {
+        "row_id": "gq926u0fm7lzz1ywl8",
+        "all_match": true,
+        "comparisons": {
+          "expected_object": {
+            "expected": "brand",
+            "actual": "brand",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "OPEN_FORM",
+            "actual": "OPEN_FORM",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "none",
+            "actual": "none",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "oownw53a3p0z04k3t1",
+        "user_input": "Can you Add a Brand?",
+        "expected_object": "brand",
+        "expected_action": "OPEN_FORM",
+        "expected_tool": "none",
+        "expected_retrieval_needed": false,
+        "source_file": "phase5_cycle3_final_results.md",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Gold standard mapping for OPEN_FORM"
+      },
+      "actual": {
+        "raw_intent": "OPEN_FORM",
+        "normalized_action": "OPEN_FORM",
+        "object_type": "brand",
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "direct_response",
+        "raw_output": {
+          "intent": "OPEN_FORM",
+          "object_type": "brand",
+          "form_url": "/vehicle_specifications/new-modal?type=Brand",
+          "form_title": "Create Brand",
+          "form_kind": "brand_create",
+          "text": "I've opened the new brand form for you below.",
+          "score": 1.0
+        }
+      },
+      "comparison": {
+        "row_id": "oownw53a3p0z04k3t1",
+        "all_match": true,
+        "comparisons": {
+          "expected_object": {
+            "expected": "brand",
+            "actual": "brand",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "OPEN_FORM",
+            "actual": "OPEN_FORM",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "none",
+            "actual": "none",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "8qd0dzr5bi3zj6tibt",
+        "user_input": "Open Brand form",
+        "expected_object": "brand",
+        "expected_action": "ASK_CLARIFICATION",
+        "expected_tool": "none",
+        "expected_retrieval_needed": false,
+        "source_file": "phase5_cycle3_final_results.md",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Gold standard mapping for ASK_CLARIFICATION"
+      },
+      "actual": {
+        "raw_intent": "MANAGE",
+        "normalized_action": "OPEN_RECORD",
+        "object_type": "brand",
+        "tool": "crm_query",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "MANAGE",
+          "object_type": "brand",
+          "record_id": "form",
+          "score": 1.0,
+          "language_preference": "eng"
+        }
+      },
+      "comparison": {
+        "row_id": "8qd0dzr5bi3zj6tibt",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "brand",
+            "actual": "brand",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "ASK_CLARIFICATION",
+            "actual": "OPEN_RECORD",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "none",
+            "actual": "crm_query",
+            "match": false
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "6c2c5sebawjr9b5mwi",
+        "user_input": "Can you Open Brand form?",
+        "expected_object": "brand",
+        "expected_action": "ASK_CLARIFICATION",
+        "expected_tool": "none",
+        "expected_retrieval_needed": false,
+        "source_file": "phase5_cycle3_final_results.md",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Gold standard mapping for ASK_CLARIFICATION"
+      },
+      "actual": {
+        "raw_intent": "MANAGE",
+        "normalized_action": "OPEN_RECORD",
+        "object_type": "brand",
+        "tool": "crm_query",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "MANAGE",
+          "object_type": "brand",
+          "record_id": "form",
+          "score": 1.0,
+          "language_preference": "eng"
+        }
+      },
+      "comparison": {
+        "row_id": "6c2c5sebawjr9b5mwi",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "brand",
+            "actual": "brand",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "ASK_CLARIFICATION",
+            "actual": "OPEN_RECORD",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "none",
+            "actual": "crm_query",
+            "match": false
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "xextinkafgexagi5ce",
+        "user_input": "I want to create a Brand",
+        "expected_object": "brand",
+        "expected_action": "OPEN_FORM",
+        "expected_tool": "none",
+        "expected_retrieval_needed": false,
+        "source_file": "phase5_cycle3_final_results.md",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Gold standard mapping for OPEN_FORM"
+      },
+      "actual": {
+        "raw_intent": "OPEN_FORM",
+        "normalized_action": "OPEN_FORM",
+        "object_type": "brand",
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "direct_response",
+        "raw_output": {
+          "intent": "OPEN_FORM",
+          "object_type": "brand",
+          "form_url": "/vehicle_specifications/new-modal?type=Brand",
+          "form_title": "Create Brand",
+          "form_kind": "brand_create",
+          "text": "I've opened the new brand form for you below.",
+          "score": 1.0
+        }
+      },
+      "comparison": {
+        "row_id": "xextinkafgexagi5ce",
+        "all_match": true,
+        "comparisons": {
+          "expected_object": {
+            "expected": "brand",
+            "actual": "brand",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "OPEN_FORM",
+            "actual": "OPEN_FORM",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "none",
+            "actual": "none",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "qfu2v7n8fqwg7c078g",
+        "user_input": "Can you I want to create a Brand?",
+        "expected_object": "brand",
+        "expected_action": "OPEN_FORM",
+        "expected_tool": "none",
+        "expected_retrieval_needed": false,
+        "source_file": "phase5_cycle3_final_results.md",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Gold standard mapping for OPEN_FORM"
+      },
+      "actual": {
+        "raw_intent": "OPEN_FORM",
+        "normalized_action": "OPEN_FORM",
+        "object_type": "brand",
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "direct_response",
+        "raw_output": {
+          "intent": "OPEN_FORM",
+          "object_type": "brand",
+          "form_url": "/vehicle_specifications/new-modal?type=Brand",
+          "form_title": "Create Brand",
+          "form_kind": "brand_create",
+          "text": "I've opened the new brand form for you below.",
+          "score": 1.0
+        }
+      },
+      "comparison": {
+        "row_id": "qfu2v7n8fqwg7c078g",
+        "all_match": true,
+        "comparisons": {
+          "expected_object": {
+            "expected": "brand",
+            "actual": "brand",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "OPEN_FORM",
+            "actual": "OPEN_FORM",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "none",
+            "actual": "none",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "2d6d7hgreue1mb26zq",
+        "user_input": "Show me Brand table",
+        "expected_object": "brand",
+        "expected_action": "QUERY",
+        "expected_tool": "crm_query",
+        "expected_retrieval_needed": false,
+        "source_file": "phase5_cycle3_final_results.md",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Gold standard mapping for QUERY"
+      },
+      "actual": {
+        "raw_intent": "MANAGE",
+        "normalized_action": "OPEN_RECORD",
+        "object_type": "brand",
+        "tool": "crm_query",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "MANAGE",
+          "object_type": "brand",
+          "record_id": "table",
+          "score": 1.0,
+          "language_preference": "eng"
+        }
+      },
+      "comparison": {
+        "row_id": "2d6d7hgreue1mb26zq",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "brand",
+            "actual": "brand",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "QUERY",
+            "actual": "OPEN_RECORD",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "crm_query",
+            "actual": "crm_query",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "5w2isczyw6weszs7zw",
+        "user_input": "Can you Show me Brand table?",
+        "expected_object": "brand",
+        "expected_action": "QUERY",
+        "expected_tool": "crm_query",
+        "expected_retrieval_needed": false,
+        "source_file": "phase5_cycle3_final_results.md",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Gold standard mapping for QUERY"
+      },
+      "actual": {
+        "raw_intent": "MANAGE",
+        "normalized_action": "OPEN_RECORD",
+        "object_type": "brand",
+        "tool": "crm_query",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "MANAGE",
+          "object_type": "brand",
+          "record_id": "table",
+          "score": 1.0,
+          "language_preference": "eng"
+        }
+      },
+      "comparison": {
+        "row_id": "5w2isczyw6weszs7zw",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "brand",
+            "actual": "brand",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "QUERY",
+            "actual": "OPEN_RECORD",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "crm_query",
+            "actual": "crm_query",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "p6zgu08v7tgp8id3ha",
+        "user_input": "Open Brand list",
+        "expected_object": "brand",
+        "expected_action": "QUERY",
+        "expected_tool": "crm_query",
+        "expected_retrieval_needed": false,
+        "source_file": "phase5_cycle3_final_results.md",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "easy",
+        "notes": "Gold standard mapping for QUERY"
+      },
+      "actual": {
+        "raw_intent": "QUERY",
+        "normalized_action": "QUERY",
+        "object_type": "brand",
+        "tool": "crm_query",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "QUERY",
+          "object_type": "brand",
+          "data": {},
+          "score": 1.0
+        }
+      },
+      "comparison": {
+        "row_id": "p6zgu08v7tgp8id3ha",
+        "all_match": true,
+        "comparisons": {
+          "expected_object": {
+            "expected": "brand",
+            "actual": "brand",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "QUERY",
+            "actual": "QUERY",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "crm_query",
+            "actual": "crm_query",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "ntv2vh8dvmrk9hfebl",
+        "user_input": "Can you Open Brand list?",
+        "expected_object": "brand",
+        "expected_action": "QUERY",
+        "expected_tool": "crm_query",
+        "expected_retrieval_needed": false,
+        "source_file": "phase5_cycle3_final_results.md",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Gold standard mapping for QUERY"
+      },
+      "actual": {
+        "raw_intent": "QUERY",
+        "normalized_action": "QUERY",
+        "object_type": "brand",
+        "tool": "crm_query",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "QUERY",
+          "object_type": "brand",
+          "data": {},
+          "score": 1.0
+        }
+      },
+      "comparison": {
+        "row_id": "ntv2vh8dvmrk9hfebl",
+        "all_match": true,
+        "comparisons": {
+          "expected_object": {
+            "expected": "brand",
+            "actual": "brand",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "QUERY",
+            "actual": "QUERY",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "crm_query",
+            "actual": "crm_query",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "kp6atoyeqooo1si0ji",
+        "user_input": "Find the latest Brand",
+        "expected_object": "brand",
+        "expected_action": "OPEN_RECORD",
+        "expected_tool": "crm_query",
+        "expected_retrieval_needed": false,
+        "source_file": "phase5_cycle3_final_results.md",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Gold standard mapping for OPEN_RECORD"
+      },
+      "actual": {
+        "raw_intent": "QUERY",
+        "normalized_action": "QUERY",
+        "object_type": "brand",
+        "tool": "crm_query",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "QUERY",
+          "object_type": "brand",
+          "data": {
+            "query_mode": "recent"
+          },
+          "score": 1.0
+        }
+      },
+      "comparison": {
+        "row_id": "kp6atoyeqooo1si0ji",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "brand",
+            "actual": "brand",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "OPEN_RECORD",
+            "actual": "QUERY",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "crm_query",
+            "actual": "crm_query",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "pnqbv3p2ztkfnzs1ew",
+        "user_input": "Can you Find the latest Brand?",
+        "expected_object": "brand",
+        "expected_action": "OPEN_RECORD",
+        "expected_tool": "crm_query",
+        "expected_retrieval_needed": false,
+        "source_file": "phase5_cycle3_final_results.md",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Gold standard mapping for OPEN_RECORD"
+      },
+      "actual": {
+        "raw_intent": "QUERY",
+        "normalized_action": "QUERY",
+        "object_type": "brand",
+        "tool": "crm_query",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "QUERY",
+          "object_type": "brand",
+          "data": {
+            "query_mode": "recent"
+          },
+          "score": 1.0
+        }
+      },
+      "comparison": {
+        "row_id": "pnqbv3p2ztkfnzs1ew",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "brand",
+            "actual": "brand",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "OPEN_RECORD",
+            "actual": "QUERY",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "crm_query",
+            "actual": "crm_query",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "urlzkry6ff0kp19fmu",
+        "user_input": "Who is the last Brand?",
+        "expected_object": "brand",
+        "expected_action": "OPEN_RECORD",
+        "expected_tool": "crm_query",
+        "expected_retrieval_needed": false,
+        "source_file": "phase5_cycle3_final_results.md",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Gold standard mapping for OPEN_RECORD"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": null,
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "direct_response",
+        "raw_output": {
+          "intent": "CHAT",
+          "is_suggestion": true,
+          "suggestion_prompt": "Who is the last Lead?",
+          "text": "I think you might want to **query** for **lead**. Is that correct? (Suggested: \"Who is the last Lead?\")",
+          "score": 0.61538464,
+          "options": [
+            {
+              "label": "Yes, do that",
+              "value": "Who is the last Lead?"
+            },
+            {
+              "label": "No, something else",
+              "value": "help"
+            }
+          ]
+        }
+      },
+      "comparison": {
+        "row_id": "urlzkry6ff0kp19fmu",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "brand",
+            "actual": null,
+            "match": false
+          },
+          "expected_action": {
+            "expected": "OPEN_RECORD",
+            "actual": "ASK_CLARIFICATION",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "crm_query",
+            "actual": "none",
+            "match": false
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "u12oi7co7gia6mc92z",
+        "user_input": "Can you Who is the last Brand??",
+        "expected_object": "brand",
+        "expected_action": "OPEN_RECORD",
+        "expected_tool": "crm_query",
+        "expected_retrieval_needed": false,
+        "source_file": "phase5_cycle3_final_results.md",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Gold standard mapping for OPEN_RECORD"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": null,
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "direct_response",
+        "raw_output": {
+          "intent": "CHAT",
+          "is_suggestion": true,
+          "suggestion_prompt": "Who is the last Lead?",
+          "text": "I think you might want to **query** for **lead**. Is that correct? (Suggested: \"Who is the last Lead?\")",
+          "score": 0.47058824,
+          "options": [
+            {
+              "label": "Yes, do that",
+              "value": "Who is the last Lead?"
+            },
+            {
+              "label": "No, something else",
+              "value": "help"
+            }
+          ]
+        }
+      },
+      "comparison": {
+        "row_id": "u12oi7co7gia6mc92z",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "brand",
+            "actual": null,
+            "match": false
+          },
+          "expected_action": {
+            "expected": "OPEN_RECORD",
+            "actual": "ASK_CLARIFICATION",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "crm_query",
+            "actual": "none",
+            "match": false
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "gv6vwtfn4oy5l6xyrh",
+        "user_input": "Show Brand from today",
+        "expected_object": "brand",
+        "expected_action": "QUERY",
+        "expected_tool": "crm_query",
+        "expected_retrieval_needed": false,
+        "source_file": "phase5_cycle3_final_results.md",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Gold standard mapping for QUERY"
+      },
+      "actual": {
+        "raw_intent": "MANAGE",
+        "normalized_action": "OPEN_RECORD",
+        "object_type": "brand",
+        "tool": "crm_query",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "MANAGE",
+          "object_type": "brand",
+          "record_id": "from",
+          "score": 1.0,
+          "language_preference": "eng"
+        }
+      },
+      "comparison": {
+        "row_id": "gv6vwtfn4oy5l6xyrh",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "brand",
+            "actual": "brand",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "QUERY",
+            "actual": "OPEN_RECORD",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "crm_query",
+            "actual": "crm_query",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "k3na1di53lav2qi747",
+        "user_input": "Can you Show Brand from today?",
+        "expected_object": "brand",
+        "expected_action": "QUERY",
+        "expected_tool": "crm_query",
+        "expected_retrieval_needed": false,
+        "source_file": "phase5_cycle3_final_results.md",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Gold standard mapping for QUERY"
+      },
+      "actual": {
+        "raw_intent": "MANAGE",
+        "normalized_action": "OPEN_RECORD",
+        "object_type": "brand",
+        "tool": "crm_query",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "MANAGE",
+          "object_type": "brand",
+          "record_id": "from",
+          "score": 1.0,
+          "language_preference": "eng"
+        }
+      },
+      "comparison": {
+        "row_id": "k3na1di53lav2qi747",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "brand",
+            "actual": "brand",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "QUERY",
+            "actual": "OPEN_RECORD",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "crm_query",
+            "actual": "crm_query",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "ub9k9hj564vzyxmvwf",
+        "user_input": "Any new Brands?",
+        "expected_object": "brand",
+        "expected_action": "OPEN_FORM",
+        "expected_tool": "none",
+        "expected_retrieval_needed": false,
+        "source_file": "phase5_cycle3_final_results.md",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "easy",
+        "notes": "Gold standard mapping for OPEN_FORM"
+      },
+      "actual": {
+        "raw_intent": "OPEN_FORM",
+        "normalized_action": "OPEN_FORM",
+        "object_type": "brand",
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "direct_response",
+        "raw_output": {
+          "intent": "OPEN_FORM",
+          "object_type": "brand",
+          "form_url": "/vehicle_specifications/new-modal?type=Brand",
+          "form_title": "Create Brand",
+          "form_kind": "brand_create",
+          "text": "I've opened the new brand form for you below.",
+          "score": 1.0
+        }
+      },
+      "comparison": {
+        "row_id": "ub9k9hj564vzyxmvwf",
+        "all_match": true,
+        "comparisons": {
+          "expected_object": {
+            "expected": "brand",
+            "actual": "brand",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "OPEN_FORM",
+            "actual": "OPEN_FORM",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "none",
+            "actual": "none",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "fu9k0je9yn7w1izopo",
+        "user_input": "Can you Any new Brands??",
+        "expected_object": "brand",
+        "expected_action": "OPEN_FORM",
+        "expected_tool": "none",
+        "expected_retrieval_needed": false,
+        "source_file": "phase5_cycle3_final_results.md",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Gold standard mapping for OPEN_FORM"
+      },
+      "actual": {
+        "raw_intent": "OPEN_FORM",
+        "normalized_action": "OPEN_FORM",
+        "object_type": "brand",
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "direct_response",
+        "raw_output": {
+          "intent": "OPEN_FORM",
+          "object_type": "brand",
+          "form_url": "/vehicle_specifications/new-modal?type=Brand",
+          "form_title": "Create Brand",
+          "form_kind": "brand_create",
+          "text": "I've opened the new brand form for you below.",
+          "score": 1.0
+        }
+      },
+      "comparison": {
+        "row_id": "fu9k0je9yn7w1izopo",
+        "all_match": true,
+        "comparisons": {
+          "expected_object": {
+            "expected": "brand",
+            "actual": "brand",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "OPEN_FORM",
+            "actual": "OPEN_FORM",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "none",
+            "actual": "none",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "8rr1r0wbg063i7w538",
+        "user_input": "Pull Brand data",
+        "expected_object": "brand",
+        "expected_action": "QUERY",
+        "expected_tool": "crm_query",
+        "expected_retrieval_needed": false,
+        "source_file": "phase5_cycle3_final_results.md",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "easy",
+        "notes": "Gold standard mapping for QUERY"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": null,
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "direct_response",
+        "raw_output": {
+          "intent": "CHAT",
+          "is_suggestion": true,
+          "suggestion_prompt": "Pull Lead data",
+          "text": "I think you might want to **query** for **lead**. Is that correct? (Suggested: \"Pull Lead data\")",
+          "score": 0.47619048,
+          "options": [
+            {
+              "label": "Yes, do that",
+              "value": "Pull Lead data"
+            },
+            {
+              "label": "No, something else",
+              "value": "help"
+            }
+          ]
+        }
+      },
+      "comparison": {
+        "row_id": "8rr1r0wbg063i7w538",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "brand",
+            "actual": null,
+            "match": false
+          },
+          "expected_action": {
+            "expected": "QUERY",
+            "actual": "ASK_CLARIFICATION",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "crm_query",
+            "actual": "none",
+            "match": false
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "jqo4wkbj5y4qotjz5w",
+        "user_input": "Can you Pull Brand data?",
+        "expected_object": "brand",
+        "expected_action": "QUERY",
+        "expected_tool": "crm_query",
+        "expected_retrieval_needed": false,
+        "source_file": "phase5_cycle3_final_results.md",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Gold standard mapping for QUERY"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": null,
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "direct_response",
+        "raw_output": {
+          "intent": "CHAT",
+          "is_suggestion": true,
+          "suggestion_prompt": "Can you Pull Lead data?",
+          "text": "I think you might want to **query** for **lead**. Is that correct? (Suggested: \"Can you Pull Lead data?\")",
+          "score": 0.62068963,
+          "options": [
+            {
+              "label": "Yes, do that",
+              "value": "Can you Pull Lead data?"
+            },
+            {
+              "label": "No, something else",
+              "value": "help"
+            }
+          ]
+        }
+      },
+      "comparison": {
+        "row_id": "jqo4wkbj5y4qotjz5w",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "brand",
+            "actual": null,
+            "match": false
+          },
+          "expected_action": {
+            "expected": "QUERY",
+            "actual": "ASK_CLARIFICATION",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "crm_query",
+            "actual": "none",
+            "match": false
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "dc8q6a484cocpdml0u",
+        "user_input": "Manage Brands",
+        "expected_object": "brand",
+        "expected_action": "ASK_CLARIFICATION",
+        "expected_tool": "none",
+        "expected_retrieval_needed": false,
+        "source_file": "phase5_cycle3_final_results.md",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Gold standard mapping for ASK_CLARIFICATION"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": "brand",
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "CHAT",
+          "object_type": "brand",
+          "text": "I need a specific brand record before I can open or manage it. Please give the brand name, ID, or a single clear selection.",
+          "score": 0.95,
+          "reasoning": {
+            "context_reference": {
+              "kind": null,
+              "index": 0,
+              "object_type": "brand"
+            },
+            "resolved_reference": {},
+            "confidence": 0.95,
+            "confidence_band": "high"
+          },
+          "language_preference": "eng"
+        }
+      },
+      "comparison": {
+        "row_id": "dc8q6a484cocpdml0u",
+        "all_match": true,
+        "comparisons": {
+          "expected_object": {
+            "expected": "brand",
+            "actual": "brand",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "ASK_CLARIFICATION",
+            "actual": "ASK_CLARIFICATION",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "none",
+            "actual": "none",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "t82m8wv1fpfhl51uzy",
+        "user_input": "Can you Manage Brands?",
+        "expected_object": "brand",
+        "expected_action": "ASK_CLARIFICATION",
+        "expected_tool": "none",
+        "expected_retrieval_needed": false,
+        "source_file": "phase5_cycle3_final_results.md",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Gold standard mapping for ASK_CLARIFICATION"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": null,
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "direct_response",
+        "raw_output": {
+          "intent": "CHAT",
+          "is_suggestion": true,
+          "suggestion_prompt": "Can you Any new Brands??",
+          "text": "I think you might want to **open form** for **brand**. Is that correct? (Suggested: \"Can you Any new Brands??\")",
+          "score": 0.5,
+          "options": [
+            {
+              "label": "Yes, do that",
+              "value": "Can you Any new Brands??"
+            },
+            {
+              "label": "No, something else",
+              "value": "help"
+            }
+          ]
+        }
+      },
+      "comparison": {
+        "row_id": "t82m8wv1fpfhl51uzy",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "brand",
+            "actual": null,
+            "match": false
+          },
+          "expected_action": {
+            "expected": "ASK_CLARIFICATION",
+            "actual": "ASK_CLARIFICATION",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "none",
+            "actual": "none",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "ofmniba496n4uzt1dw",
+        "user_input": "Edit latest Brand",
+        "expected_object": "brand",
+        "expected_action": "OPEN_RECORD",
+        "expected_tool": "crm_query",
+        "expected_retrieval_needed": false,
+        "source_file": "phase5_cycle3_final_results.md",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Gold standard mapping for OPEN_RECORD"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": null,
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "direct_response",
+        "raw_output": {
+          "intent": "CHAT",
+          "object_type": null,
+          "text": "I need a recent record list first. Try `show recent records` or `show all contacts`, then tell me which one to open or edit.",
+          "score": 1.0
+        }
+      },
+      "comparison": {
+        "row_id": "ofmniba496n4uzt1dw",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "brand",
+            "actual": null,
+            "match": false
+          },
+          "expected_action": {
+            "expected": "OPEN_RECORD",
+            "actual": "ASK_CLARIFICATION",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "crm_query",
+            "actual": "none",
+            "match": false
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "ixmv3bym4bkzci0b06",
+        "user_input": "Can you Edit latest Brand?",
+        "expected_object": "brand",
+        "expected_action": "OPEN_RECORD",
+        "expected_tool": "crm_query",
+        "expected_retrieval_needed": false,
+        "source_file": "phase5_cycle3_final_results.md",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Gold standard mapping for OPEN_RECORD"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": null,
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "direct_response",
+        "raw_output": {
+          "intent": "CHAT",
+          "object_type": null,
+          "text": "I need a recent record list first. Try `show recent records` or `show all contacts`, then tell me which one to open or edit.",
+          "score": 1.0
+        }
+      },
+      "comparison": {
+        "row_id": "ixmv3bym4bkzci0b06",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "brand",
+            "actual": null,
+            "match": false
+          },
+          "expected_action": {
+            "expected": "OPEN_RECORD",
+            "actual": "ASK_CLARIFICATION",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "crm_query",
+            "actual": "none",
+            "match": false
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "b4s044d9txmo2wc7hm",
+        "user_input": "Update Brand status",
+        "expected_object": "brand",
+        "expected_action": "UPDATE",
+        "expected_tool": "crm_write",
+        "expected_retrieval_needed": false,
+        "source_file": "phase5_cycle3_final_results.md",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "hard",
+        "notes": "Gold standard mapping for UPDATE"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": "brand",
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "direct_response",
+        "raw_output": {
+          "intent": "CHAT",
+          "object_type": "brand",
+          "text": "I can update that brand, but I need the record ID first.",
+          "score": 1.0
+        }
+      },
+      "comparison": {
+        "row_id": "b4s044d9txmo2wc7hm",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "brand",
+            "actual": "brand",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "UPDATE",
+            "actual": "ASK_CLARIFICATION",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "crm_write",
+            "actual": "none",
+            "match": false
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "kzujr4gif738q0vgk0",
+        "user_input": "Can you Update Brand status?",
+        "expected_object": "brand",
+        "expected_action": "UPDATE",
+        "expected_tool": "crm_write",
+        "expected_retrieval_needed": false,
+        "source_file": "phase5_cycle3_final_results.md",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "hard",
+        "notes": "Gold standard mapping for UPDATE"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": "brand",
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "direct_response",
+        "raw_output": {
+          "intent": "CHAT",
+          "object_type": "brand",
+          "text": "I can update that brand, but I need the record ID first.",
+          "score": 1.0
+        }
+      },
+      "comparison": {
+        "row_id": "kzujr4gif738q0vgk0",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "brand",
+            "actual": "brand",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "UPDATE",
+            "actual": "ASK_CLARIFICATION",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "crm_write",
+            "actual": "none",
+            "match": false
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "qn3zh1x4xxl1ohl3vp",
+        "user_input": "Delete this Brand",
+        "expected_object": "brand",
+        "expected_action": "ASK_CLARIFICATION",
+        "expected_tool": "none",
+        "expected_retrieval_needed": false,
+        "source_file": "phase5_cycle3_final_results.md",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Gold standard mapping for ASK_CLARIFICATION"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": "brand",
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "CHAT",
+          "object_type": "brand",
+          "text": "I can help delete a brand. First show the record you want, select it, and then confirm the delete action.",
+          "score": 0.95
+        }
+      },
+      "comparison": {
+        "row_id": "qn3zh1x4xxl1ohl3vp",
+        "all_match": true,
+        "comparisons": {
+          "expected_object": {
+            "expected": "brand",
+            "actual": "brand",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "ASK_CLARIFICATION",
+            "actual": "ASK_CLARIFICATION",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "none",
+            "actual": "none",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "9t4gfdwiwjiqfeadvq",
+        "user_input": "Can you Delete this Brand?",
+        "expected_object": "brand",
+        "expected_action": "ASK_CLARIFICATION",
+        "expected_tool": "none",
+        "expected_retrieval_needed": false,
+        "source_file": "phase5_cycle3_final_results.md",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Gold standard mapping for ASK_CLARIFICATION"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": "brand",
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "CHAT",
+          "object_type": "brand",
+          "text": "I can help delete a brand. First show the record you want, select it, and then confirm the delete action.",
+          "score": 0.95
+        }
+      },
+      "comparison": {
+        "row_id": "9t4gfdwiwjiqfeadvq",
+        "all_match": true,
+        "comparisons": {
+          "expected_object": {
+            "expected": "brand",
+            "actual": "brand",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "ASK_CLARIFICATION",
+            "actual": "ASK_CLARIFICATION",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "none",
+            "actual": "none",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "nbjqtk72bif4wca7qn",
+        "user_input": "Remove Brand",
+        "expected_object": "brand",
+        "expected_action": "ASK_CLARIFICATION",
+        "expected_tool": "none",
+        "expected_retrieval_needed": false,
+        "source_file": "phase5_cycle3_final_results.md",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Gold standard mapping for ASK_CLARIFICATION"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": "brand",
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "CHAT",
+          "object_type": "brand",
+          "text": "I can help delete a brand. First show the record you want, select it, and then confirm the delete action.",
+          "score": 0.95
+        }
+      },
+      "comparison": {
+        "row_id": "nbjqtk72bif4wca7qn",
+        "all_match": true,
+        "comparisons": {
+          "expected_object": {
+            "expected": "brand",
+            "actual": "brand",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "ASK_CLARIFICATION",
+            "actual": "ASK_CLARIFICATION",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "none",
+            "actual": "none",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "m2w20b73e5jgq68ozx",
+        "user_input": "Can you Remove Brand?",
+        "expected_object": "brand",
+        "expected_action": "ASK_CLARIFICATION",
+        "expected_tool": "none",
+        "expected_retrieval_needed": false,
+        "source_file": "phase5_cycle3_final_results.md",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Gold standard mapping for ASK_CLARIFICATION"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": "brand",
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "CHAT",
+          "object_type": "brand",
+          "text": "I can help delete a brand. First show the record you want, select it, and then confirm the delete action.",
+          "score": 0.95
+        }
+      },
+      "comparison": {
+        "row_id": "m2w20b73e5jgq68ozx",
+        "all_match": true,
+        "comparisons": {
+          "expected_object": {
+            "expected": "brand",
+            "actual": "brand",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "ASK_CLARIFICATION",
+            "actual": "ASK_CLARIFICATION",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "none",
+            "actual": "none",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "67h7dzwxzoglkvmbx0",
+        "user_input": "Check Brand details",
+        "expected_object": "brand",
+        "expected_action": "OPEN_RECORD",
+        "expected_tool": "crm_query",
+        "expected_retrieval_needed": false,
+        "source_file": "phase5_cycle3_final_results.md",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Gold standard mapping for OPEN_RECORD"
+      },
+      "actual": {
+        "raw_intent": "MANAGE",
+        "normalized_action": "OPEN_RECORD",
+        "object_type": "brand",
+        "tool": "crm_query",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "MANAGE",
+          "object_type": "brand",
+          "record_id": "details",
+          "score": 1.0,
+          "language_preference": "eng"
+        }
+      },
+      "comparison": {
+        "row_id": "67h7dzwxzoglkvmbx0",
+        "all_match": true,
+        "comparisons": {
+          "expected_object": {
+            "expected": "brand",
+            "actual": "brand",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "OPEN_RECORD",
+            "actual": "OPEN_RECORD",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "crm_query",
+            "actual": "crm_query",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "4vkwed1u7m3dr3tb5m",
+        "user_input": "Can you Check Brand details?",
+        "expected_object": "brand",
+        "expected_action": "OPEN_RECORD",
+        "expected_tool": "crm_query",
+        "expected_retrieval_needed": false,
+        "source_file": "phase5_cycle3_final_results.md",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Gold standard mapping for OPEN_RECORD"
+      },
+      "actual": {
+        "raw_intent": "MANAGE",
+        "normalized_action": "OPEN_RECORD",
+        "object_type": "brand",
+        "tool": "crm_query",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "MANAGE",
+          "object_type": "brand",
+          "record_id": "details",
+          "score": 1.0,
+          "language_preference": "eng"
+        }
+      },
+      "comparison": {
+        "row_id": "4vkwed1u7m3dr3tb5m",
+        "all_match": true,
+        "comparisons": {
+          "expected_object": {
+            "expected": "brand",
+            "actual": "brand",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "OPEN_RECORD",
+            "actual": "OPEN_RECORD",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "crm_query",
+            "actual": "crm_query",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "iovhcqdy57st3zm1p4",
+        "user_input": "Show Brand summary",
+        "expected_object": "brand",
+        "expected_action": "RETRIEVE_AND_ANSWER",
+        "expected_tool": "vector_retrieval",
+        "expected_retrieval_needed": true,
+        "source_file": "phase5_cycle3_final_results.md",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "hard",
+        "notes": "Gold standard mapping for RETRIEVE_AND_ANSWER"
+      },
+      "actual": {
+        "raw_intent": "MANAGE",
+        "normalized_action": "OPEN_RECORD",
+        "object_type": "brand",
+        "tool": "crm_query",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "MANAGE",
+          "object_type": "brand",
+          "record_id": "summary",
+          "score": 1.0,
+          "language_preference": "eng"
+        }
+      },
+      "comparison": {
+        "row_id": "iovhcqdy57st3zm1p4",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "brand",
+            "actual": "brand",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "RETRIEVE_AND_ANSWER",
+            "actual": "OPEN_RECORD",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "vector_retrieval",
+            "actual": "crm_query",
+            "match": false
+          },
+          "expected_retrieval_needed": {
+            "expected": true,
+            "actual": false,
+            "match": false
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "tvmyrapoynngqyoo9t",
+        "user_input": "Can you Show Brand summary?",
+        "expected_object": "brand",
+        "expected_action": "RETRIEVE_AND_ANSWER",
+        "expected_tool": "vector_retrieval",
+        "expected_retrieval_needed": true,
+        "source_file": "phase5_cycle3_final_results.md",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "hard",
+        "notes": "Gold standard mapping for RETRIEVE_AND_ANSWER"
+      },
+      "actual": {
+        "raw_intent": "MANAGE",
+        "normalized_action": "OPEN_RECORD",
+        "object_type": "brand",
+        "tool": "crm_query",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "MANAGE",
+          "object_type": "brand",
+          "record_id": "summary",
+          "score": 1.0,
+          "language_preference": "eng"
+        }
+      },
+      "comparison": {
+        "row_id": "tvmyrapoynngqyoo9t",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "brand",
+            "actual": "brand",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "RETRIEVE_AND_ANSWER",
+            "actual": "OPEN_RECORD",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "vector_retrieval",
+            "actual": "crm_query",
+            "match": false
+          },
+          "expected_retrieval_needed": {
+            "expected": true,
+            "actual": false,
+            "match": false
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "uww745yopt3hqzhv4x",
+        "user_input": "Get info on Brand",
+        "expected_object": "brand",
+        "expected_action": "ASK_CLARIFICATION",
+        "expected_tool": "none",
+        "expected_retrieval_needed": false,
+        "source_file": "phase5_cycle3_final_results.md",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Gold standard mapping for ASK_CLARIFICATION"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": null,
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "missing_response",
+        "raw_output": {
+          "intent": "CHAT",
+          "text": "Eval runner could not capture a runtime decision."
+        }
+      },
+      "comparison": {
+        "row_id": "uww745yopt3hqzhv4x",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "brand",
+            "actual": null,
+            "match": false
+          },
+          "expected_action": {
+            "expected": "ASK_CLARIFICATION",
+            "actual": "ASK_CLARIFICATION",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "none",
+            "actual": "none",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "hz4cuck8u2lgo0j7wt",
+        "user_input": "Can you Get info on Brand?",
+        "expected_object": "brand",
+        "expected_action": "ASK_CLARIFICATION",
+        "expected_tool": "none",
+        "expected_retrieval_needed": false,
+        "source_file": "phase5_cycle3_final_results.md",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Gold standard mapping for ASK_CLARIFICATION"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": null,
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "direct_response",
+        "raw_output": {
+          "intent": "CHAT",
+          "is_suggestion": true,
+          "suggestion_prompt": "Can you Add a Brand?",
+          "text": "I think you might want to **open form** for **brand**. Is that correct? (Suggested: \"Can you Add a Brand?\")",
+          "score": 0.4516129,
+          "options": [
+            {
+              "label": "Yes, do that",
+              "value": "Can you Add a Brand?"
+            },
+            {
+              "label": "No, something else",
+              "value": "help"
+            }
+          ]
+        }
+      },
+      "comparison": {
+        "row_id": "hz4cuck8u2lgo0j7wt",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "brand",
+            "actual": null,
+            "match": false
+          },
+          "expected_action": {
+            "expected": "ASK_CLARIFICATION",
+            "actual": "ASK_CLARIFICATION",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "none",
+            "actual": "none",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "37u8pmmwkqxjc7scmu",
+        "user_input": "I need a Brand report",
+        "expected_object": "brand",
+        "expected_action": "RETRIEVE_AND_ANSWER",
+        "expected_tool": "vector_retrieval",
+        "expected_retrieval_needed": true,
+        "source_file": "phase5_cycle3_final_results.md",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "hard",
+        "notes": "Gold standard mapping for RETRIEVE_AND_ANSWER"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": "brand",
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "CHAT",
+          "object_type": "brand",
+          "text": "What specific information are you looking for in the brand report?",
+          "score": 0.6,
+          "reasoning": {
+            "context_reference": {
+              "kind": null,
+              "index": 0,
+              "object_type": "brand"
+            },
+            "resolved_reference": {},
+            "confidence": 0.6,
+            "confidence_band": "medium"
+          },
+          "language_preference": "eng"
+        }
+      },
+      "comparison": {
+        "row_id": "37u8pmmwkqxjc7scmu",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "brand",
+            "actual": "brand",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "RETRIEVE_AND_ANSWER",
+            "actual": "ASK_CLARIFICATION",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "vector_retrieval",
+            "actual": "none",
+            "match": false
+          },
+          "expected_retrieval_needed": {
+            "expected": true,
+            "actual": false,
+            "match": false
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "cnokv8icewvh7109y4",
+        "user_input": "Can you I need a Brand report?",
+        "expected_object": "brand",
+        "expected_action": "RETRIEVE_AND_ANSWER",
+        "expected_tool": "vector_retrieval",
+        "expected_retrieval_needed": true,
+        "source_file": "phase5_cycle3_final_results.md",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "hard",
+        "notes": "Gold standard mapping for RETRIEVE_AND_ANSWER"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": null,
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "direct_response",
+        "raw_output": {
+          "intent": "CHAT",
+          "is_suggestion": true,
+          "suggestion_prompt": "Can you Add a Brand?",
+          "text": "I think you might want to **open form** for **brand**. Is that correct? (Suggested: \"Can you Add a Brand?\")",
+          "score": 0.4848485,
+          "options": [
+            {
+              "label": "Yes, do that",
+              "value": "Can you Add a Brand?"
+            },
+            {
+              "label": "No, something else",
+              "value": "help"
+            }
+          ]
+        }
+      },
+      "comparison": {
+        "row_id": "cnokv8icewvh7109y4",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "brand",
+            "actual": null,
+            "match": false
+          },
+          "expected_action": {
+            "expected": "RETRIEVE_AND_ANSWER",
+            "actual": "ASK_CLARIFICATION",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "vector_retrieval",
+            "actual": "none",
+            "match": false
+          },
+          "expected_retrieval_needed": {
+            "expected": true,
+            "actual": false,
+            "match": false
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "pwm4re8a5xi66a5m8i",
+        "user_input": "Show me top Brands",
+        "expected_object": "brand",
+        "expected_action": "QUERY",
+        "expected_tool": "crm_query",
+        "expected_retrieval_needed": false,
+        "source_file": "phase5_cycle3_final_results.md",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Gold standard mapping for QUERY"
+      },
+      "actual": {
+        "raw_intent": "QUERY",
+        "normalized_action": "QUERY",
+        "object_type": "brand",
+        "tool": "crm_query",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "QUERY",
+          "object_type": "brand",
+          "sql": null,
+          "score": 0.99
+        }
+      },
+      "comparison": {
+        "row_id": "pwm4re8a5xi66a5m8i",
+        "all_match": true,
+        "comparisons": {
+          "expected_object": {
+            "expected": "brand",
+            "actual": "brand",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "QUERY",
+            "actual": "QUERY",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "crm_query",
+            "actual": "crm_query",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "7ty7y0cizwkl7jwgru",
+        "user_input": "Can you Show me top Brands?",
+        "expected_object": "brand",
+        "expected_action": "QUERY",
+        "expected_tool": "crm_query",
+        "expected_retrieval_needed": false,
+        "source_file": "phase5_cycle3_final_results.md",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Gold standard mapping for QUERY"
+      },
+      "actual": {
+        "raw_intent": "QUERY",
+        "normalized_action": "QUERY",
+        "object_type": "brand",
+        "tool": "crm_query",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "QUERY",
+          "object_type": "brand",
+          "sql": null,
+          "score": 0.99
+        }
+      },
+      "comparison": {
+        "row_id": "7ty7y0cizwkl7jwgru",
+        "all_match": true,
+        "comparisons": {
+          "expected_object": {
+            "expected": "brand",
+            "actual": "brand",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "QUERY",
+            "actual": "QUERY",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "crm_query",
+            "actual": "crm_query",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "2h0toc86k7ohka8knb",
+        "user_input": "Which Brand is hot?",
+        "expected_object": "brand",
+        "expected_action": "RETRIEVE_AND_ANSWER",
+        "expected_tool": "vector_retrieval",
+        "expected_retrieval_needed": true,
+        "source_file": "phase5_cycle3_final_results.md",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "hard",
+        "notes": "Gold standard mapping for RETRIEVE_AND_ANSWER"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": "brand",
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "CHAT",
+          "object_type": "brand",
+          "text": "What do you mean by 'hot'? Are you looking for popular, trending, or something else?",
+          "score": 0.5,
+          "reasoning": {
+            "context_reference": {
+              "kind": null,
+              "index": 0,
+              "object_type": "brand"
+            },
+            "resolved_reference": {},
+            "confidence": 0.5,
+            "confidence_band": "medium"
+          },
+          "language_preference": "eng"
+        }
+      },
+      "comparison": {
+        "row_id": "2h0toc86k7ohka8knb",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "brand",
+            "actual": "brand",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "RETRIEVE_AND_ANSWER",
+            "actual": "ASK_CLARIFICATION",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "vector_retrieval",
+            "actual": "none",
+            "match": false
+          },
+          "expected_retrieval_needed": {
+            "expected": true,
+            "actual": false,
+            "match": false
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "tglu0cn0uuar1ph9n4",
+        "user_input": "Can you Which Brand is hot??",
+        "expected_object": "brand",
+        "expected_action": "RETRIEVE_AND_ANSWER",
+        "expected_tool": "vector_retrieval",
+        "expected_retrieval_needed": true,
+        "source_file": "phase5_cycle3_final_results.md",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "hard",
+        "notes": "Gold standard mapping for RETRIEVE_AND_ANSWER"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": null,
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "direct_response",
+        "raw_output": {
+          "intent": "CHAT",
+          "is_suggestion": true,
+          "suggestion_prompt": "Can you Add a Brand?",
+          "text": "I think you might want to **open form** for **brand**. Is that correct? (Suggested: \"Can you Add a Brand?\")",
+          "score": 0.4375,
+          "options": [
+            {
+              "label": "Yes, do that",
+              "value": "Can you Add a Brand?"
+            },
+            {
+              "label": "No, something else",
+              "value": "help"
+            }
+          ]
+        }
+      },
+      "comparison": {
+        "row_id": "tglu0cn0uuar1ph9n4",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "brand",
+            "actual": null,
+            "match": false
+          },
+          "expected_action": {
+            "expected": "RETRIEVE_AND_ANSWER",
+            "actual": "ASK_CLARIFICATION",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "vector_retrieval",
+            "actual": "none",
+            "match": false
+          },
+          "expected_retrieval_needed": {
+            "expected": true,
+            "actual": false,
+            "match": false
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "ahx34hlqu8p8fd1t94",
+        "user_input": "Follow up on Brand",
+        "expected_object": "brand",
+        "expected_action": "RETRIEVE_AND_ANSWER",
+        "expected_tool": "vector_retrieval",
+        "expected_retrieval_needed": true,
+        "source_file": "phase5_cycle3_final_results.md",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "hard",
+        "notes": "Gold standard mapping for RETRIEVE_AND_ANSWER"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": null,
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "missing_response",
+        "raw_output": {
+          "intent": "CHAT",
+          "text": "Eval runner could not capture a runtime decision."
+        }
+      },
+      "comparison": {
+        "row_id": "ahx34hlqu8p8fd1t94",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "brand",
+            "actual": null,
+            "match": false
+          },
+          "expected_action": {
+            "expected": "RETRIEVE_AND_ANSWER",
+            "actual": "ASK_CLARIFICATION",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "vector_retrieval",
+            "actual": "none",
+            "match": false
+          },
+          "expected_retrieval_needed": {
+            "expected": true,
+            "actual": false,
+            "match": false
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "etl2sorkwccapvd0rv",
+        "user_input": "Can you Follow up on Brand?",
+        "expected_object": "brand",
+        "expected_action": "RETRIEVE_AND_ANSWER",
+        "expected_tool": "vector_retrieval",
+        "expected_retrieval_needed": true,
+        "source_file": "phase5_cycle3_final_results.md",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "hard",
+        "notes": "Gold standard mapping for RETRIEVE_AND_ANSWER"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": null,
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "direct_response",
+        "raw_output": {
+          "intent": "CHAT",
+          "is_suggestion": true,
+          "suggestion_prompt": "Can you Add a Brand?",
+          "text": "I think you might want to **open form** for **brand**. Is that correct? (Suggested: \"Can you Add a Brand?\")",
+          "score": 0.4375,
+          "options": [
+            {
+              "label": "Yes, do that",
+              "value": "Can you Add a Brand?"
+            },
+            {
+              "label": "No, something else",
+              "value": "help"
+            }
+          ]
+        }
+      },
+      "comparison": {
+        "row_id": "etl2sorkwccapvd0rv",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "brand",
+            "actual": null,
+            "match": false
+          },
+          "expected_action": {
+            "expected": "RETRIEVE_AND_ANSWER",
+            "actual": "ASK_CLARIFICATION",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "vector_retrieval",
+            "actual": "none",
+            "match": false
+          },
+          "expected_retrieval_needed": {
+            "expected": true,
+            "actual": false,
+            "match": false
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "9s3lijxgezqpuhcbr9",
+        "user_input": "Remind me about Brand",
+        "expected_object": "brand",
+        "expected_action": "RETRIEVE_AND_ANSWER",
+        "expected_tool": "vector_retrieval",
+        "expected_retrieval_needed": true,
+        "source_file": "phase5_cycle3_final_results.md",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "hard",
+        "notes": "Gold standard mapping for RETRIEVE_AND_ANSWER"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": null,
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "missing_response",
+        "raw_output": {
+          "intent": "CHAT",
+          "text": "Eval runner could not capture a runtime decision."
+        }
+      },
+      "comparison": {
+        "row_id": "9s3lijxgezqpuhcbr9",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "brand",
+            "actual": null,
+            "match": false
+          },
+          "expected_action": {
+            "expected": "RETRIEVE_AND_ANSWER",
+            "actual": "ASK_CLARIFICATION",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "vector_retrieval",
+            "actual": "none",
+            "match": false
+          },
+          "expected_retrieval_needed": {
+            "expected": true,
+            "actual": false,
+            "match": false
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "uwm8dwl1hwwh95pkjn",
+        "user_input": "Can you Remind me about Brand?",
+        "expected_object": "brand",
+        "expected_action": "RETRIEVE_AND_ANSWER",
+        "expected_tool": "vector_retrieval",
+        "expected_retrieval_needed": true,
+        "source_file": "phase5_cycle3_final_results.md",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "hard",
+        "notes": "Gold standard mapping for RETRIEVE_AND_ANSWER"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": null,
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "direct_response",
+        "raw_output": {
+          "intent": "CHAT",
+          "is_suggestion": true,
+          "suggestion_prompt": "Can you Add a Brand?",
+          "text": "I think you might want to **open form** for **brand**. Is that correct? (Suggested: \"Can you Add a Brand?\")",
+          "score": 0.45454547,
+          "options": [
+            {
+              "label": "Yes, do that",
+              "value": "Can you Add a Brand?"
+            },
+            {
+              "label": "No, something else",
+              "value": "help"
+            }
+          ]
+        }
+      },
+      "comparison": {
+        "row_id": "uwm8dwl1hwwh95pkjn",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "brand",
+            "actual": null,
+            "match": false
+          },
+          "expected_action": {
+            "expected": "RETRIEVE_AND_ANSWER",
+            "actual": "ASK_CLARIFICATION",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "vector_retrieval",
+            "actual": "none",
+            "match": false
+          },
+          "expected_retrieval_needed": {
+            "expected": true,
+            "actual": false,
+            "match": false
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "ym0pl2xtyjtjg7zkm3",
+        "user_input": "Is there any Brand for Tesla?",
+        "expected_object": "brand",
+        "expected_action": "RETRIEVE_AND_ANSWER",
+        "expected_tool": "vector_retrieval",
+        "expected_retrieval_needed": true,
+        "source_file": "phase5_cycle3_final_results.md",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "hard",
+        "notes": "Gold standard mapping for RETRIEVE_AND_ANSWER"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": null,
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "missing_response",
+        "raw_output": {
+          "intent": "CHAT",
+          "text": "Eval runner could not capture a runtime decision."
+        }
+      },
+      "comparison": {
+        "row_id": "ym0pl2xtyjtjg7zkm3",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "brand",
+            "actual": null,
+            "match": false
+          },
+          "expected_action": {
+            "expected": "RETRIEVE_AND_ANSWER",
+            "actual": "ASK_CLARIFICATION",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "vector_retrieval",
+            "actual": "none",
+            "match": false
+          },
+          "expected_retrieval_needed": {
+            "expected": true,
+            "actual": false,
+            "match": false
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "ss9pkbsgb78ripnk5n",
+        "user_input": "Can you Is there any Brand for Tesla??",
+        "expected_object": "brand",
+        "expected_action": "RETRIEVE_AND_ANSWER",
+        "expected_tool": "vector_retrieval",
+        "expected_retrieval_needed": true,
+        "source_file": "phase5_cycle3_final_results.md",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "hard",
+        "notes": "Gold standard mapping for RETRIEVE_AND_ANSWER"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": null,
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "direct_response",
+        "raw_output": {
+          "intent": "CHAT",
+          "is_suggestion": true,
+          "suggestion_prompt": "Can you Any new Brands??",
+          "text": "I think you might want to **open form** for **brand**. Is that correct? (Suggested: \"Can you Any new Brands??\")",
+          "score": 0.4047619,
+          "options": [
+            {
+              "label": "Yes, do that",
+              "value": "Can you Any new Brands??"
+            },
+            {
+              "label": "No, something else",
+              "value": "help"
+            }
+          ]
+        }
+      },
+      "comparison": {
+        "row_id": "ss9pkbsgb78ripnk5n",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "brand",
+            "actual": null,
+            "match": false
+          },
+          "expected_action": {
+            "expected": "RETRIEVE_AND_ANSWER",
+            "actual": "ASK_CLARIFICATION",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "vector_retrieval",
+            "actual": "none",
+            "match": false
+          },
+          "expected_retrieval_needed": {
+            "expected": true,
+            "actual": false,
+            "match": false
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "w5rxanozzaddnu1n76",
+        "user_input": "Find Brand named John",
+        "expected_object": "brand",
+        "expected_action": "OPEN_RECORD",
+        "expected_tool": "crm_query",
+        "expected_retrieval_needed": false,
+        "source_file": "phase5_cycle3_final_results.md",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Gold standard mapping for OPEN_RECORD"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": null,
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "direct_response",
+        "raw_output": {
+          "intent": "CHAT",
+          "is_suggestion": true,
+          "suggestion_prompt": "Find John.",
+          "text": "I think you might want to **query** for **lead**. Is that correct? (Suggested: \"Find John.\")",
+          "score": 0.47619048,
+          "options": [
+            {
+              "label": "Yes, do that",
+              "value": "Find John."
+            },
+            {
+              "label": "No, something else",
+              "value": "help"
+            }
+          ]
+        }
+      },
+      "comparison": {
+        "row_id": "w5rxanozzaddnu1n76",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "brand",
+            "actual": null,
+            "match": false
+          },
+          "expected_action": {
+            "expected": "OPEN_RECORD",
+            "actual": "ASK_CLARIFICATION",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "crm_query",
+            "actual": "none",
+            "match": false
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "ui4pwckzfi0u6ef8mw",
+        "user_input": "Can you Find Brand named John?",
+        "expected_object": "brand",
+        "expected_action": "OPEN_RECORD",
+        "expected_tool": "crm_query",
+        "expected_retrieval_needed": false,
+        "source_file": "phase5_cycle3_final_results.md",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Gold standard mapping for OPEN_RECORD"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": null,
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "direct_response",
+        "raw_output": {
+          "intent": "CHAT",
+          "is_suggestion": true,
+          "suggestion_prompt": "Can you Add a Brand?",
+          "text": "I think you might want to **open form** for **brand**. Is that correct? (Suggested: \"Can you Add a Brand?\")",
+          "score": 0.4117647,
+          "options": [
+            {
+              "label": "Yes, do that",
+              "value": "Can you Add a Brand?"
+            },
+            {
+              "label": "No, something else",
+              "value": "help"
+            }
+          ]
+        }
+      },
+      "comparison": {
+        "row_id": "ui4pwckzfi0u6ef8mw",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "brand",
+            "actual": null,
+            "match": false
+          },
+          "expected_action": {
+            "expected": "OPEN_RECORD",
+            "actual": "ASK_CLARIFICATION",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "crm_query",
+            "actual": "none",
+            "match": false
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "896ak2oqeplnl6mizb",
+        "user_input": "Show Brand for BMW",
+        "expected_object": "brand",
+        "expected_action": "QUERY",
+        "expected_tool": "crm_query",
+        "expected_retrieval_needed": false,
+        "source_file": "phase5_cycle3_final_results.md",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Gold standard mapping for QUERY"
+      },
+      "actual": {
+        "raw_intent": "QUERY",
+        "normalized_action": "QUERY",
+        "object_type": "brand",
+        "tool": "crm_query",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "QUERY",
+          "object_type": "brand",
+          "sql": null,
+          "score": 0.99
+        }
+      },
+      "comparison": {
+        "row_id": "896ak2oqeplnl6mizb",
+        "all_match": true,
+        "comparisons": {
+          "expected_object": {
+            "expected": "brand",
+            "actual": "brand",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "QUERY",
+            "actual": "QUERY",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "crm_query",
+            "actual": "crm_query",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "qbp1vxlqcrggtudef3",
+        "user_input": "Can you Show Brand for BMW?",
+        "expected_object": "brand",
+        "expected_action": "QUERY",
+        "expected_tool": "crm_query",
+        "expected_retrieval_needed": false,
+        "source_file": "phase5_cycle3_final_results.md",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Gold standard mapping for QUERY"
+      },
+      "actual": {
+        "raw_intent": "QUERY",
+        "normalized_action": "QUERY",
+        "object_type": "brand",
+        "tool": "crm_query",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "QUERY",
+          "object_type": "brand",
+          "sql": null,
+          "score": 0.99
+        }
+      },
+      "comparison": {
+        "row_id": "qbp1vxlqcrggtudef3",
+        "all_match": true,
+        "comparisons": {
+          "expected_object": {
+            "expected": "brand",
+            "actual": "brand",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "QUERY",
+            "actual": "QUERY",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "crm_query",
+            "actual": "crm_query",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "f7ua1wxs25638up3c5",
+        "user_input": "Search Brand with high priority",
+        "expected_object": "brand",
+        "expected_action": "QUERY",
+        "expected_tool": "crm_query",
+        "expected_retrieval_needed": false,
+        "source_file": "phase5_cycle3_final_results.md",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Gold standard mapping for QUERY"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": null,
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "missing_response",
+        "raw_output": {
+          "intent": "CHAT",
+          "text": "Eval runner could not capture a runtime decision."
+        }
+      },
+      "comparison": {
+        "row_id": "f7ua1wxs25638up3c5",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "brand",
+            "actual": null,
+            "match": false
+          },
+          "expected_action": {
+            "expected": "QUERY",
+            "actual": "ASK_CLARIFICATION",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "crm_query",
+            "actual": "none",
+            "match": false
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "ey7j64old0rujyc8ab",
+        "user_input": "Can you Search Brand with high priority?",
+        "expected_object": "brand",
+        "expected_action": "QUERY",
+        "expected_tool": "crm_query",
+        "expected_retrieval_needed": false,
+        "source_file": "phase5_cycle3_final_results.md",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Gold standard mapping for QUERY"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": null,
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "missing_response",
+        "raw_output": {
+          "intent": "CHAT",
+          "text": "Eval runner could not capture a runtime decision."
+        }
+      },
+      "comparison": {
+        "row_id": "ey7j64old0rujyc8ab",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "brand",
+            "actual": null,
+            "match": false
+          },
+          "expected_action": {
+            "expected": "QUERY",
+            "actual": "ASK_CLARIFICATION",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "crm_query",
+            "actual": "none",
+            "match": false
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "h55gulyp5hhlih8sww",
+        "user_input": "List all pending Brands",
+        "expected_object": "brand",
+        "expected_action": "QUERY",
+        "expected_tool": "crm_query",
+        "expected_retrieval_needed": false,
+        "source_file": "phase5_cycle3_final_results.md",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Gold standard mapping for QUERY"
+      },
+      "actual": {
+        "raw_intent": "QUERY",
+        "normalized_action": "QUERY",
+        "object_type": "brand",
+        "tool": "crm_query",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "QUERY",
+          "object_type": "brand",
+          "data": {},
+          "score": 1.0
+        }
+      },
+      "comparison": {
+        "row_id": "h55gulyp5hhlih8sww",
+        "all_match": true,
+        "comparisons": {
+          "expected_object": {
+            "expected": "brand",
+            "actual": "brand",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "QUERY",
+            "actual": "QUERY",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "crm_query",
+            "actual": "crm_query",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "kv3al0jxotbfegy4so",
+        "user_input": "Can you List all pending Brands?",
+        "expected_object": "brand",
+        "expected_action": "QUERY",
+        "expected_tool": "crm_query",
+        "expected_retrieval_needed": false,
+        "source_file": "phase5_cycle3_final_results.md",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Gold standard mapping for QUERY"
+      },
+      "actual": {
+        "raw_intent": "QUERY",
+        "normalized_action": "QUERY",
+        "object_type": "brand",
+        "tool": "crm_query",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "QUERY",
+          "object_type": "brand",
+          "data": {},
+          "score": 1.0
+        }
+      },
+      "comparison": {
+        "row_id": "kv3al0jxotbfegy4so",
+        "all_match": true,
+        "comparisons": {
+          "expected_object": {
+            "expected": "brand",
+            "actual": "brand",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "QUERY",
+            "actual": "QUERY",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "crm_query",
+            "actual": "crm_query",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "e0kjxhpfnqts11ckg3",
+        "user_input": "Open the Brand create screen",
+        "expected_object": "brand",
+        "expected_action": "OPEN_FORM",
+        "expected_tool": "none",
+        "expected_retrieval_needed": false,
+        "source_file": "phase5_cycle3_final_results.md",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Gold standard mapping for OPEN_FORM"
+      },
+      "actual": {
+        "raw_intent": "OPEN_FORM",
+        "normalized_action": "OPEN_FORM",
+        "object_type": "brand",
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "direct_response",
+        "raw_output": {
+          "intent": "OPEN_FORM",
+          "object_type": "brand",
+          "form_url": "/vehicle_specifications/new-modal?type=Brand",
+          "form_title": "Create Brand",
+          "form_kind": "brand_create",
+          "text": "I've opened the new brand form for you below.",
+          "score": 1.0
+        }
+      },
+      "comparison": {
+        "row_id": "e0kjxhpfnqts11ckg3",
+        "all_match": true,
+        "comparisons": {
+          "expected_object": {
+            "expected": "brand",
+            "actual": "brand",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "OPEN_FORM",
+            "actual": "OPEN_FORM",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "none",
+            "actual": "none",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "pqg3zjtindg26vv48v",
+        "user_input": "Can you Open the Brand create screen?",
+        "expected_object": "brand",
+        "expected_action": "OPEN_FORM",
+        "expected_tool": "none",
+        "expected_retrieval_needed": false,
+        "source_file": "phase5_cycle3_final_results.md",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Gold standard mapping for OPEN_FORM"
+      },
+      "actual": {
+        "raw_intent": "OPEN_FORM",
+        "normalized_action": "OPEN_FORM",
+        "object_type": "brand",
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "direct_response",
+        "raw_output": {
+          "intent": "OPEN_FORM",
+          "object_type": "brand",
+          "form_url": "/vehicle_specifications/new-modal?type=Brand",
+          "form_title": "Create Brand",
+          "form_kind": "brand_create",
+          "text": "I've opened the new brand form for you below.",
+          "score": 1.0
+        }
+      },
+      "comparison": {
+        "row_id": "pqg3zjtindg26vv48v",
+        "all_match": true,
+        "comparisons": {
+          "expected_object": {
+            "expected": "brand",
+            "actual": "brand",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "OPEN_FORM",
+            "actual": "OPEN_FORM",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "none",
+            "actual": "none",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "vmhaommvsrl1ilcfi1",
+        "user_input": "Can you show my Brands?",
+        "expected_object": "brand",
+        "expected_action": "QUERY",
+        "expected_tool": "crm_query",
+        "expected_retrieval_needed": false,
+        "source_file": "phase5_cycle3_final_results.md",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Gold standard mapping for QUERY"
+      },
+      "actual": {
+        "raw_intent": "QUERY",
+        "normalized_action": "QUERY",
+        "object_type": "brand",
+        "tool": "crm_query",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "QUERY",
+          "object_type": "brand",
+          "sql": null,
+          "score": 0.99
+        }
+      },
+      "comparison": {
+        "row_id": "vmhaommvsrl1ilcfi1",
+        "all_match": true,
+        "comparisons": {
+          "expected_object": {
+            "expected": "brand",
+            "actual": "brand",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "QUERY",
+            "actual": "QUERY",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "crm_query",
+            "actual": "crm_query",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "is5euawxqqdkla9nkz",
+        "user_input": "Can you Can you show my Brands??",
+        "expected_object": "brand",
+        "expected_action": "QUERY",
+        "expected_tool": "crm_query",
+        "expected_retrieval_needed": false,
+        "source_file": "phase5_cycle3_final_results.md",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Gold standard mapping for QUERY"
+      },
+      "actual": {
+        "raw_intent": "QUERY",
+        "normalized_action": "QUERY",
+        "object_type": "brand",
+        "tool": "crm_query",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "QUERY",
+          "object_type": "brand",
+          "sql": null,
+          "score": 0.99
+        }
+      },
+      "comparison": {
+        "row_id": "is5euawxqqdkla9nkz",
+        "all_match": true,
+        "comparisons": {
+          "expected_object": {
+            "expected": "brand",
+            "actual": "brand",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "QUERY",
+            "actual": "QUERY",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "crm_query",
+            "actual": "crm_query",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "uw9ufcoedbanjpjuu2",
+        "user_input": "Where are the Brands?",
+        "expected_object": "brand",
+        "expected_action": "ASK_CLARIFICATION",
+        "expected_tool": "none",
+        "expected_retrieval_needed": false,
+        "source_file": "phase5_cycle3_final_results.md",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Gold standard mapping for ASK_CLARIFICATION"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": null,
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "missing_response",
+        "raw_output": {
+          "intent": "CHAT",
+          "text": "Eval runner could not capture a runtime decision."
+        }
+      },
+      "comparison": {
+        "row_id": "uw9ufcoedbanjpjuu2",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "brand",
+            "actual": null,
+            "match": false
+          },
+          "expected_action": {
+            "expected": "ASK_CLARIFICATION",
+            "actual": "ASK_CLARIFICATION",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "none",
+            "actual": "none",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "j8cme9eysqhvri5l6y",
+        "user_input": "Can you Where are the Brands??",
+        "expected_object": "brand",
+        "expected_action": "ASK_CLARIFICATION",
+        "expected_tool": "none",
+        "expected_retrieval_needed": false,
+        "source_file": "phase5_cycle3_final_results.md",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Gold standard mapping for ASK_CLARIFICATION"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": null,
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "direct_response",
+        "raw_output": {
+          "intent": "CHAT",
+          "is_suggestion": true,
+          "suggestion_prompt": "Can you Any new Brands??",
+          "text": "I think you might want to **open form** for **brand**. Is that correct? (Suggested: \"Can you Any new Brands??\")",
+          "score": 0.45714286,
+          "options": [
+            {
+              "label": "Yes, do that",
+              "value": "Can you Any new Brands??"
+            },
+            {
+              "label": "No, something else",
+              "value": "help"
+            }
+          ]
+        }
+      },
+      "comparison": {
+        "row_id": "j8cme9eysqhvri5l6y",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "brand",
+            "actual": null,
+            "match": false
+          },
+          "expected_action": {
+            "expected": "ASK_CLARIFICATION",
+            "actual": "ASK_CLARIFICATION",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "none",
+            "actual": "none",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "luyomds5e957itqv5g",
+        "user_input": "Help with Brand flow",
+        "expected_object": "brand",
+        "expected_action": "RETRIEVE_AND_ANSWER",
+        "expected_tool": "vector_retrieval",
+        "expected_retrieval_needed": true,
+        "source_file": "phase5_cycle3_final_results.md",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "hard",
+        "notes": "Gold standard mapping for RETRIEVE_AND_ANSWER"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": null,
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "missing_response",
+        "raw_output": {
+          "intent": "CHAT",
+          "text": "Eval runner could not capture a runtime decision."
+        }
+      },
+      "comparison": {
+        "row_id": "luyomds5e957itqv5g",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "brand",
+            "actual": null,
+            "match": false
+          },
+          "expected_action": {
+            "expected": "RETRIEVE_AND_ANSWER",
+            "actual": "ASK_CLARIFICATION",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "vector_retrieval",
+            "actual": "none",
+            "match": false
+          },
+          "expected_retrieval_needed": {
+            "expected": true,
+            "actual": false,
+            "match": false
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "0c1oghdzj71sk6q232",
+        "user_input": "Can you Help with Brand flow?",
+        "expected_object": "brand",
+        "expected_action": "RETRIEVE_AND_ANSWER",
+        "expected_tool": "vector_retrieval",
+        "expected_retrieval_needed": true,
+        "source_file": "phase5_cycle3_final_results.md",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "hard",
+        "notes": "Gold standard mapping for RETRIEVE_AND_ANSWER"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": null,
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "direct_response",
+        "raw_output": {
+          "intent": "CHAT",
+          "is_suggestion": true,
+          "suggestion_prompt": "Can you Add a Brand?",
+          "text": "I think you might want to **open form** for **brand**. Is that correct? (Suggested: \"Can you Add a Brand?\")",
+          "score": 0.4117647,
+          "options": [
+            {
+              "label": "Yes, do that",
+              "value": "Can you Add a Brand?"
+            },
+            {
+              "label": "No, something else",
+              "value": "help"
+            }
+          ]
+        }
+      },
+      "comparison": {
+        "row_id": "0c1oghdzj71sk6q232",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "brand",
+            "actual": null,
+            "match": false
+          },
+          "expected_action": {
+            "expected": "RETRIEVE_AND_ANSWER",
+            "actual": "ASK_CLARIFICATION",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "vector_retrieval",
+            "actual": "none",
+            "match": false
+          },
+          "expected_retrieval_needed": {
+            "expected": true,
+            "actual": false,
+            "match": false
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "evhdkcmao024hb62kc",
+        "user_input": "Guide me through Brand creation",
+        "expected_object": "brand",
+        "expected_action": "RETRIEVE_AND_ANSWER",
+        "expected_tool": "vector_retrieval",
+        "expected_retrieval_needed": true,
+        "source_file": "phase5_cycle3_final_results.md",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "hard",
+        "notes": "Gold standard mapping for RETRIEVE_AND_ANSWER"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": "brand",
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "CHAT",
+          "object_type": "brand",
+          "text": "The fallback reasoning did not produce any fields to create the brand. Please provide the fields you want to set.",
+          "score": 0.92,
+          "reasoning": {
+            "context_reference": {
+              "kind": null,
+              "index": 0,
+              "object_type": "brand"
+            },
+            "resolved_reference": {},
+            "confidence": 0.92,
+            "confidence_band": "high"
+          },
+          "language_preference": "eng"
+        }
+      },
+      "comparison": {
+        "row_id": "evhdkcmao024hb62kc",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "brand",
+            "actual": "brand",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "RETRIEVE_AND_ANSWER",
+            "actual": "ASK_CLARIFICATION",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "vector_retrieval",
+            "actual": "none",
+            "match": false
+          },
+          "expected_retrieval_needed": {
+            "expected": true,
+            "actual": false,
+            "match": false
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "c2xz5pzb25nutw8yd5",
+        "user_input": "Can you Guide me through Brand creation?",
+        "expected_object": "brand",
+        "expected_action": "RETRIEVE_AND_ANSWER",
+        "expected_tool": "vector_retrieval",
+        "expected_retrieval_needed": true,
+        "source_file": "phase5_cycle3_final_results.md",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "hard",
+        "notes": "Gold standard mapping for RETRIEVE_AND_ANSWER"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": null,
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "direct_response",
+        "raw_output": {
+          "intent": "CHAT",
+          "is_suggestion": true,
+          "suggestion_prompt": "Can you Create new Brand?",
+          "text": "I think you might want to **open form** for **brand**. Is that correct? (Suggested: \"Can you Create new Brand?\")",
+          "score": 0.4,
+          "options": [
+            {
+              "label": "Yes, do that",
+              "value": "Can you Create new Brand?"
+            },
+            {
+              "label": "No, something else",
+              "value": "help"
+            }
+          ]
+        }
+      },
+      "comparison": {
+        "row_id": "c2xz5pzb25nutw8yd5",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "brand",
+            "actual": null,
+            "match": false
+          },
+          "expected_action": {
+            "expected": "RETRIEVE_AND_ANSWER",
+            "actual": "ASK_CLARIFICATION",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "vector_retrieval",
+            "actual": "none",
+            "match": false
+          },
+          "expected_retrieval_needed": {
+            "expected": true,
+            "actual": false,
+            "match": false
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "t56w0jn6tcmh1wc6ru",
+        "user_input": "How many Brands do we have?",
+        "expected_object": "brand",
+        "expected_action": "RETRIEVE_AND_ANSWER",
+        "expected_tool": "vector_retrieval",
+        "expected_retrieval_needed": true,
+        "source_file": "phase5_cycle3_final_results.md",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "hard",
+        "notes": "Gold standard mapping for RETRIEVE_AND_ANSWER"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": null,
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "direct_response",
+        "raw_output": {
+          "intent": "CHAT",
+          "is_suggestion": true,
+          "suggestion_prompt": "Do we have any?",
+          "text": "I think you might want to **query** for **lead**. Is that correct? (Suggested: \"Do we have any?\")",
+          "score": 0.4642857,
+          "options": [
+            {
+              "label": "Yes, do that",
+              "value": "Do we have any?"
+            },
+            {
+              "label": "No, something else",
+              "value": "help"
+            }
+          ]
+        }
+      },
+      "comparison": {
+        "row_id": "t56w0jn6tcmh1wc6ru",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "brand",
+            "actual": null,
+            "match": false
+          },
+          "expected_action": {
+            "expected": "RETRIEVE_AND_ANSWER",
+            "actual": "ASK_CLARIFICATION",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "vector_retrieval",
+            "actual": "none",
+            "match": false
+          },
+          "expected_retrieval_needed": {
+            "expected": true,
+            "actual": false,
+            "match": false
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "zjbxepnur8elywmcnb",
+        "user_input": "Can you How many Brands do we have??",
+        "expected_object": "brand",
+        "expected_action": "RETRIEVE_AND_ANSWER",
+        "expected_tool": "vector_retrieval",
+        "expected_retrieval_needed": true,
+        "source_file": "phase5_cycle3_final_results.md",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "hard",
+        "notes": "Gold standard mapping for RETRIEVE_AND_ANSWER"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": null,
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "direct_response",
+        "raw_output": {
+          "intent": "CHAT",
+          "is_suggestion": true,
+          "suggestion_prompt": "Can you Any new Brands??",
+          "text": "I think you might want to **open form** for **brand**. Is that correct? (Suggested: \"Can you Any new Brands??\")",
+          "score": 0.425,
+          "options": [
+            {
+              "label": "Yes, do that",
+              "value": "Can you Any new Brands??"
+            },
+            {
+              "label": "No, something else",
+              "value": "help"
+            }
+          ]
+        }
+      },
+      "comparison": {
+        "row_id": "zjbxepnur8elywmcnb",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "brand",
+            "actual": null,
+            "match": false
+          },
+          "expected_action": {
+            "expected": "RETRIEVE_AND_ANSWER",
+            "actual": "ASK_CLARIFICATION",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "vector_retrieval",
+            "actual": "none",
+            "match": false
+          },
+          "expected_retrieval_needed": {
+            "expected": true,
+            "actual": false,
+            "match": false
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "vb0iipxmgc9jqyeubd",
+        "user_input": "Show Brand history",
+        "expected_object": "brand",
+        "expected_action": "RETRIEVE_AND_ANSWER",
+        "expected_tool": "message_history_query",
+        "expected_retrieval_needed": true,
+        "source_file": "phase5_cycle3_final_results.md",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "hard",
+        "notes": "Gold standard mapping for RETRIEVE_AND_ANSWER"
+      },
+      "actual": {
+        "raw_intent": "MANAGE",
+        "normalized_action": "OPEN_RECORD",
+        "object_type": "brand",
+        "tool": "crm_query",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "MANAGE",
+          "object_type": "brand",
+          "record_id": "history",
+          "score": 1.0,
+          "language_preference": "eng"
+        }
+      },
+      "comparison": {
+        "row_id": "vb0iipxmgc9jqyeubd",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "brand",
+            "actual": "brand",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "RETRIEVE_AND_ANSWER",
+            "actual": "OPEN_RECORD",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "message_history_query",
+            "actual": "crm_query",
+            "match": false
+          },
+          "expected_retrieval_needed": {
+            "expected": true,
+            "actual": false,
+            "match": false
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "eclzrp6oo57aoin751",
+        "user_input": "Can you Show Brand history?",
+        "expected_object": "brand",
+        "expected_action": "RETRIEVE_AND_ANSWER",
+        "expected_tool": "message_history_query",
+        "expected_retrieval_needed": true,
+        "source_file": "phase5_cycle3_final_results.md",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "hard",
+        "notes": "Gold standard mapping for RETRIEVE_AND_ANSWER"
+      },
+      "actual": {
+        "raw_intent": "MANAGE",
+        "normalized_action": "OPEN_RECORD",
+        "object_type": "brand",
+        "tool": "crm_query",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "MANAGE",
+          "object_type": "brand",
+          "record_id": "history",
+          "score": 1.0,
+          "language_preference": "eng"
+        }
+      },
+      "comparison": {
+        "row_id": "eclzrp6oo57aoin751",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "brand",
+            "actual": "brand",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "RETRIEVE_AND_ANSWER",
+            "actual": "OPEN_RECORD",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "message_history_query",
+            "actual": "crm_query",
+            "match": false
+          },
+          "expected_retrieval_needed": {
+            "expected": true,
+            "actual": false,
+            "match": false
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "0fah5lybetfn8fa7im",
+        "user_input": "View Brand analytics",
+        "expected_object": "brand",
+        "expected_action": "RETRIEVE_AND_ANSWER",
+        "expected_tool": "vector_retrieval",
+        "expected_retrieval_needed": true,
+        "source_file": "phase5_cycle3_final_results.md",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "hard",
+        "notes": "Gold standard mapping for RETRIEVE_AND_ANSWER"
+      },
+      "actual": {
+        "raw_intent": "MANAGE",
+        "normalized_action": "OPEN_RECORD",
+        "object_type": "brand",
+        "tool": "crm_query",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "MANAGE",
+          "object_type": "brand",
+          "record_id": "analytics",
+          "score": 1.0,
+          "language_preference": "eng"
+        }
+      },
+      "comparison": {
+        "row_id": "0fah5lybetfn8fa7im",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "brand",
+            "actual": "brand",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "RETRIEVE_AND_ANSWER",
+            "actual": "OPEN_RECORD",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "vector_retrieval",
+            "actual": "crm_query",
+            "match": false
+          },
+          "expected_retrieval_needed": {
+            "expected": true,
+            "actual": false,
+            "match": false
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "979kgz76cts0tdyi8t",
+        "user_input": "Can you View Brand analytics?",
+        "expected_object": "brand",
+        "expected_action": "RETRIEVE_AND_ANSWER",
+        "expected_tool": "vector_retrieval",
+        "expected_retrieval_needed": true,
+        "source_file": "phase5_cycle3_final_results.md",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "hard",
+        "notes": "Gold standard mapping for RETRIEVE_AND_ANSWER"
+      },
+      "actual": {
+        "raw_intent": "MANAGE",
+        "normalized_action": "OPEN_RECORD",
+        "object_type": "brand",
+        "tool": "crm_query",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "MANAGE",
+          "object_type": "brand",
+          "record_id": "analytics",
+          "score": 1.0,
+          "language_preference": "eng"
+        }
+      },
+      "comparison": {
+        "row_id": "979kgz76cts0tdyi8t",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "brand",
+            "actual": "brand",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "RETRIEVE_AND_ANSWER",
+            "actual": "OPEN_RECORD",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "vector_retrieval",
+            "actual": "crm_query",
+            "match": false
+          },
+          "expected_retrieval_needed": {
+            "expected": true,
+            "actual": false,
+            "match": false
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "jdkasex13p8gcaohei",
+        "user_input": "Export Brand list",
+        "expected_object": "brand",
+        "expected_action": "QUERY",
+        "expected_tool": "crm_query",
+        "expected_retrieval_needed": false,
+        "source_file": "phase5_cycle3_final_results.md",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "easy",
+        "notes": "Gold standard mapping for QUERY"
+      },
+      "actual": {
+        "raw_intent": "QUERY",
+        "normalized_action": "QUERY",
+        "object_type": "brand",
+        "tool": "crm_query",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "QUERY",
+          "object_type": "brand",
+          "data": {},
+          "score": 1.0
+        }
+      },
+      "comparison": {
+        "row_id": "jdkasex13p8gcaohei",
+        "all_match": true,
+        "comparisons": {
+          "expected_object": {
+            "expected": "brand",
+            "actual": "brand",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "QUERY",
+            "actual": "QUERY",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "crm_query",
+            "actual": "crm_query",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "ehhp7qasulf0ft6jte",
+        "user_input": "Can you Export Brand list?",
+        "expected_object": "brand",
+        "expected_action": "QUERY",
+        "expected_tool": "crm_query",
+        "expected_retrieval_needed": false,
+        "source_file": "phase5_cycle3_final_results.md",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Gold standard mapping for QUERY"
+      },
+      "actual": {
+        "raw_intent": "QUERY",
+        "normalized_action": "QUERY",
+        "object_type": "brand",
+        "tool": "crm_query",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "QUERY",
+          "object_type": "brand",
+          "data": {},
+          "score": 1.0
+        }
+      },
+      "comparison": {
+        "row_id": "ehhp7qasulf0ft6jte",
+        "all_match": true,
+        "comparisons": {
+          "expected_object": {
+            "expected": "brand",
+            "actual": "brand",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "QUERY",
+            "actual": "QUERY",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "crm_query",
+            "actual": "crm_query",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "12mi8eqozxpg810cxh",
+        "user_input": "Filter Brands by date",
+        "expected_object": "brand",
+        "expected_action": "ASK_CLARIFICATION",
+        "expected_tool": "none",
+        "expected_retrieval_needed": false,
+        "source_file": "phase5_cycle3_final_results.md",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Gold standard mapping for ASK_CLARIFICATION"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": null,
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "missing_response",
+        "raw_output": {
+          "intent": "CHAT",
+          "text": "Eval runner could not capture a runtime decision."
+        }
+      },
+      "comparison": {
+        "row_id": "12mi8eqozxpg810cxh",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "brand",
+            "actual": null,
+            "match": false
+          },
+          "expected_action": {
+            "expected": "ASK_CLARIFICATION",
+            "actual": "ASK_CLARIFICATION",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "none",
+            "actual": "none",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "ukixz04lmmo5msp90v",
+        "user_input": "Can you Filter Brands by date?",
+        "expected_object": "brand",
+        "expected_action": "ASK_CLARIFICATION",
+        "expected_tool": "none",
+        "expected_retrieval_needed": false,
+        "source_file": "phase5_cycle3_final_results.md",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Gold standard mapping for ASK_CLARIFICATION"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": null,
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "direct_response",
+        "raw_output": {
+          "intent": "CHAT",
+          "is_suggestion": true,
+          "suggestion_prompt": "Can you Any new Brands??",
+          "text": "I think you might want to **open form** for **brand**. Is that correct? (Suggested: \"Can you Any new Brands??\")",
+          "score": 0.4054054,
+          "options": [
+            {
+              "label": "Yes, do that",
+              "value": "Can you Any new Brands??"
+            },
+            {
+              "label": "No, something else",
+              "value": "help"
+            }
+          ]
+        }
+      },
+      "comparison": {
+        "row_id": "ukixz04lmmo5msp90v",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "brand",
+            "actual": null,
+            "match": false
+          },
+          "expected_action": {
+            "expected": "ASK_CLARIFICATION",
+            "actual": "ASK_CLARIFICATION",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "none",
+            "actual": "none",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "4jn45sdpjietpntwkh",
+        "user_input": "Sort Brands by name",
+        "expected_object": "brand",
+        "expected_action": "ASK_CLARIFICATION",
+        "expected_tool": "none",
+        "expected_retrieval_needed": false,
+        "source_file": "phase5_cycle3_final_results.md",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Gold standard mapping for ASK_CLARIFICATION"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": null,
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "missing_response",
+        "raw_output": {
+          "intent": "CHAT",
+          "text": "Eval runner could not capture a runtime decision."
+        }
+      },
+      "comparison": {
+        "row_id": "4jn45sdpjietpntwkh",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "brand",
+            "actual": null,
+            "match": false
+          },
+          "expected_action": {
+            "expected": "ASK_CLARIFICATION",
+            "actual": "ASK_CLARIFICATION",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "none",
+            "actual": "none",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "rgbus0wwj46uffm7v3",
+        "user_input": "Can you Sort Brands by name?",
+        "expected_object": "brand",
+        "expected_action": "ASK_CLARIFICATION",
+        "expected_tool": "none",
+        "expected_retrieval_needed": false,
+        "source_file": "phase5_cycle3_final_results.md",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Gold standard mapping for ASK_CLARIFICATION"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": null,
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "direct_response",
+        "raw_output": {
+          "intent": "CHAT",
+          "is_suggestion": true,
+          "suggestion_prompt": "Can you Any new Brands??",
+          "text": "I think you might want to **open form** for **brand**. Is that correct? (Suggested: \"Can you Any new Brands??\")",
+          "score": 0.47058824,
+          "options": [
+            {
+              "label": "Yes, do that",
+              "value": "Can you Any new Brands??"
+            },
+            {
+              "label": "No, something else",
+              "value": "help"
+            }
+          ]
+        }
+      },
+      "comparison": {
+        "row_id": "rgbus0wwj46uffm7v3",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "brand",
+            "actual": null,
+            "match": false
+          },
+          "expected_action": {
+            "expected": "ASK_CLARIFICATION",
+            "actual": "ASK_CLARIFICATION",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "none",
+            "actual": "none",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "2r15m5nza3un3dzdch",
+        "user_input": "Show me Brand #123",
+        "expected_object": "brand",
+        "expected_action": "OPEN_RECORD",
+        "expected_tool": "crm_query",
+        "expected_retrieval_needed": false,
+        "source_file": "phase5_cycle3_final_results.md",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Gold standard mapping for OPEN_RECORD"
+      },
+      "actual": {
+        "raw_intent": "QUERY",
+        "normalized_action": "QUERY",
+        "object_type": "brand",
+        "tool": "crm_query",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "QUERY",
+          "object_type": "brand",
+          "sql": null,
+          "score": 0.99
+        }
+      },
+      "comparison": {
+        "row_id": "2r15m5nza3un3dzdch",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "brand",
+            "actual": "brand",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "OPEN_RECORD",
+            "actual": "QUERY",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "crm_query",
+            "actual": "crm_query",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "r5qq52zkq8gqxyzrfx",
+        "user_input": "Can you Show me Brand #123?",
+        "expected_object": "brand",
+        "expected_action": "OPEN_RECORD",
+        "expected_tool": "crm_query",
+        "expected_retrieval_needed": false,
+        "source_file": "phase5_cycle3_final_results.md",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Gold standard mapping for OPEN_RECORD"
+      },
+      "actual": {
+        "raw_intent": "QUERY",
+        "normalized_action": "QUERY",
+        "object_type": "brand",
+        "tool": "crm_query",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "QUERY",
+          "object_type": "brand",
+          "sql": null,
+          "score": 0.99
+        }
+      },
+      "comparison": {
+        "row_id": "r5qq52zkq8gqxyzrfx",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "brand",
+            "actual": "brand",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "OPEN_RECORD",
+            "actual": "QUERY",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "crm_query",
+            "actual": "crm_query",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "xoukieukq16zq97l61",
+        "user_input": "Open record for Brand",
+        "expected_object": "brand",
+        "expected_action": "OPEN_RECORD",
+        "expected_tool": "crm_query",
+        "expected_retrieval_needed": false,
+        "source_file": "phase5_cycle3_final_results.md",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Gold standard mapping for OPEN_RECORD"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": "brand",
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "CHAT",
+          "object_type": "brand",
+          "text": "I can help you open a brand. Try `show all brands`, `show recent brands`, or mention the name you want to open.",
+          "score": 0.95
+        }
+      },
+      "comparison": {
+        "row_id": "xoukieukq16zq97l61",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "brand",
+            "actual": "brand",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "OPEN_RECORD",
+            "actual": "ASK_CLARIFICATION",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "crm_query",
+            "actual": "none",
+            "match": false
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "zt6c15kql7d1y60i9w",
+        "user_input": "Can you Open record for Brand?",
+        "expected_object": "brand",
+        "expected_action": "OPEN_RECORD",
+        "expected_tool": "crm_query",
+        "expected_retrieval_needed": false,
+        "source_file": "phase5_cycle3_final_results.md",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Gold standard mapping for OPEN_RECORD"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": "brand",
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "CHAT",
+          "object_type": "brand",
+          "text": "I can help you open a brand. Try `show all brands`, `show recent brands`, or mention the name you want to open.",
+          "score": 0.95
+        }
+      },
+      "comparison": {
+        "row_id": "zt6c15kql7d1y60i9w",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "brand",
+            "actual": "brand",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "OPEN_RECORD",
+            "actual": "ASK_CLARIFICATION",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "crm_query",
+            "actual": "none",
+            "match": false
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "80trx142hdtch215ku",
+        "user_input": "What's the status of the Brand?",
+        "expected_object": "brand",
+        "expected_action": "ASK_CLARIFICATION",
+        "expected_tool": "none",
+        "expected_retrieval_needed": false,
+        "source_file": "phase5_cycle3_final_results.md",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Gold standard mapping for ASK_CLARIFICATION"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": null,
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "direct_response",
+        "raw_output": {
+          "intent": "CHAT",
+          "is_suggestion": true,
+          "suggestion_prompt": "What's the status?",
+          "text": "I think you might want to **query** for **lead**. Is that correct? (Suggested: \"What's the status?\")",
+          "score": 0.65384614,
+          "options": [
+            {
+              "label": "Yes, do that",
+              "value": "What's the status?"
+            },
+            {
+              "label": "No, something else",
+              "value": "help"
+            }
+          ]
+        }
+      },
+      "comparison": {
+        "row_id": "80trx142hdtch215ku",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "brand",
+            "actual": null,
+            "match": false
+          },
+          "expected_action": {
+            "expected": "ASK_CLARIFICATION",
+            "actual": "ASK_CLARIFICATION",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "none",
+            "actual": "none",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "c5qn19f820j6k1421s",
+        "user_input": "Can you What's the status of the Brand??",
+        "expected_object": "brand",
+        "expected_action": "ASK_CLARIFICATION",
+        "expected_tool": "none",
+        "expected_retrieval_needed": false,
+        "source_file": "phase5_cycle3_final_results.md",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Gold standard mapping for ASK_CLARIFICATION"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": null,
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "direct_response",
+        "raw_output": {
+          "intent": "CHAT",
+          "is_suggestion": true,
+          "suggestion_prompt": "What's the status?",
+          "text": "I think you might want to **query** for **lead**. Is that correct? (Suggested: \"What's the status?\")",
+          "score": 0.5,
+          "options": [
+            {
+              "label": "Yes, do that",
+              "value": "What's the status?"
+            },
+            {
+              "label": "No, something else",
+              "value": "help"
+            }
+          ]
+        }
+      },
+      "comparison": {
+        "row_id": "c5qn19f820j6k1421s",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "brand",
+            "actual": null,
+            "match": false
+          },
+          "expected_action": {
+            "expected": "ASK_CLARIFICATION",
+            "actual": "ASK_CLARIFICATION",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "none",
+            "actual": "none",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "k1foaghdv84eumpkrx",
+        "user_input": "Is the Brand done?",
+        "expected_object": "brand",
+        "expected_action": "ASK_CLARIFICATION",
+        "expected_tool": "none",
+        "expected_retrieval_needed": false,
+        "source_file": "phase5_cycle3_final_results.md",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Gold standard mapping for ASK_CLARIFICATION"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": null,
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "direct_response",
+        "raw_output": {
+          "intent": "CHAT",
+          "is_suggestion": true,
+          "suggestion_prompt": "Is it done?",
+          "text": "I think you might want to **query** for **lead**. Is that correct? (Suggested: \"Is it done?\")",
+          "score": 0.4,
+          "options": [
+            {
+              "label": "Yes, do that",
+              "value": "Is it done?"
+            },
+            {
+              "label": "No, something else",
+              "value": "help"
+            }
+          ]
+        }
+      },
+      "comparison": {
+        "row_id": "k1foaghdv84eumpkrx",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "brand",
+            "actual": null,
+            "match": false
+          },
+          "expected_action": {
+            "expected": "ASK_CLARIFICATION",
+            "actual": "ASK_CLARIFICATION",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "none",
+            "actual": "none",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "lj94lg0tt86pl5ap00",
+        "user_input": "Can you Is the Brand done??",
+        "expected_object": "brand",
+        "expected_action": "ASK_CLARIFICATION",
+        "expected_tool": "none",
+        "expected_retrieval_needed": false,
+        "source_file": "phase5_cycle3_final_results.md",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Gold standard mapping for ASK_CLARIFICATION"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": null,
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "direct_response",
+        "raw_output": {
+          "intent": "CHAT",
+          "is_suggestion": true,
+          "suggestion_prompt": "Can you Add a Brand?",
+          "text": "I think you might want to **open form** for **brand**. Is that correct? (Suggested: \"Can you Add a Brand?\")",
+          "score": 0.4516129,
+          "options": [
+            {
+              "label": "Yes, do that",
+              "value": "Can you Add a Brand?"
+            },
+            {
+              "label": "No, something else",
+              "value": "help"
+            }
+          ]
+        }
+      },
+      "comparison": {
+        "row_id": "lj94lg0tt86pl5ap00",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "brand",
+            "actual": null,
+            "match": false
+          },
+          "expected_action": {
+            "expected": "ASK_CLARIFICATION",
+            "actual": "ASK_CLARIFICATION",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "none",
+            "actual": "none",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "wrjh7uzzc2fvgizrxq",
+        "user_input": "Next steps for this Brand",
+        "expected_object": "brand",
+        "expected_action": "RETRIEVE_AND_ANSWER",
+        "expected_tool": "vector_retrieval",
+        "expected_retrieval_needed": true,
+        "source_file": "phase5_cycle3_final_results.md",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "hard",
+        "notes": "Gold standard mapping for RETRIEVE_AND_ANSWER"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": null,
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "missing_response",
+        "raw_output": {
+          "intent": "CHAT",
+          "text": "Eval runner could not capture a runtime decision."
+        }
+      },
+      "comparison": {
+        "row_id": "wrjh7uzzc2fvgizrxq",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "brand",
+            "actual": null,
+            "match": false
+          },
+          "expected_action": {
+            "expected": "RETRIEVE_AND_ANSWER",
+            "actual": "ASK_CLARIFICATION",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "vector_retrieval",
+            "actual": "none",
+            "match": false
+          },
+          "expected_retrieval_needed": {
+            "expected": true,
+            "actual": false,
+            "match": false
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "p6bt63x0rvddwk6bny",
+        "user_input": "Can you Next steps for this Brand?",
+        "expected_object": "brand",
+        "expected_action": "RETRIEVE_AND_ANSWER",
+        "expected_tool": "vector_retrieval",
+        "expected_retrieval_needed": true,
+        "source_file": "phase5_cycle3_final_results.md",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "hard",
+        "notes": "Gold standard mapping for RETRIEVE_AND_ANSWER"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": null,
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "missing_response",
+        "raw_output": {
+          "intent": "CHAT",
+          "text": "Eval runner could not capture a runtime decision."
+        }
+      },
+      "comparison": {
+        "row_id": "p6bt63x0rvddwk6bny",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "brand",
+            "actual": null,
+            "match": false
+          },
+          "expected_action": {
+            "expected": "RETRIEVE_AND_ANSWER",
+            "actual": "ASK_CLARIFICATION",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "vector_retrieval",
+            "actual": "none",
+            "match": false
+          },
+          "expected_retrieval_needed": {
+            "expected": true,
+            "actual": false,
+            "match": false
+          }
+        }
+      }
+    }
+  ]
+}

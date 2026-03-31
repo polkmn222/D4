@@ -1,0 +1,322 @@
+[
+  {
+    "batch": "batch_0001_0100",
+    "start": 1,
+    "end": 100,
+    "status": "completed",
+    "summary": {
+      "rows": 100,
+      "full_match_rows": 38,
+      "field_matches": {
+        "expected_object": 74,
+        "expected_action": 48,
+        "expected_tool": 58,
+        "expected_retrieval_needed": 76
+      }
+    }
+  },
+  {
+    "batch": "batch_0101_0200",
+    "start": 101,
+    "end": 200,
+    "status": "completed",
+    "summary": {
+      "rows": 100,
+      "full_match_rows": 36,
+      "field_matches": {
+        "expected_object": 63,
+        "expected_action": 46,
+        "expected_tool": 54,
+        "expected_retrieval_needed": 76
+      }
+    }
+  },
+  {
+    "batch": "batch_0201_0300",
+    "start": 201,
+    "end": 300,
+    "status": "completed",
+    "summary": {
+      "rows": 100,
+      "full_match_rows": 37,
+      "field_matches": {
+        "expected_object": 59,
+        "expected_action": 51,
+        "expected_tool": 58,
+        "expected_retrieval_needed": 76
+      }
+    }
+  },
+  {
+    "batch": "batch_0301_0400",
+    "start": 301,
+    "end": 400,
+    "status": "completed",
+    "summary": {
+      "rows": 100,
+      "full_match_rows": 33,
+      "field_matches": {
+        "expected_object": 58,
+        "expected_action": 46,
+        "expected_tool": 54,
+        "expected_retrieval_needed": 76
+      }
+    }
+  },
+  {
+    "batch": "batch_0401_0500",
+    "start": 401,
+    "end": 500,
+    "status": "completed",
+    "summary": {
+      "rows": 100,
+      "full_match_rows": 35,
+      "field_matches": {
+        "expected_object": 58,
+        "expected_action": 46,
+        "expected_tool": 54,
+        "expected_retrieval_needed": 76
+      }
+    }
+  },
+  {
+    "batch": "batch_0501_0600",
+    "start": 501,
+    "end": 600,
+    "status": "completed",
+    "summary": {
+      "rows": 100,
+      "full_match_rows": 33,
+      "field_matches": {
+        "expected_object": 57,
+        "expected_action": 47,
+        "expected_tool": 55,
+        "expected_retrieval_needed": 76
+      }
+    }
+  },
+  {
+    "batch": "batch_0601_0700",
+    "start": 601,
+    "end": 700,
+    "status": "completed",
+    "summary": {
+      "rows": 100,
+      "full_match_rows": 35,
+      "field_matches": {
+        "expected_object": 58,
+        "expected_action": 46,
+        "expected_tool": 54,
+        "expected_retrieval_needed": 76
+      }
+    }
+  },
+  {
+    "batch": "batch_0701_0800",
+    "start": 701,
+    "end": 800,
+    "status": "completed",
+    "summary": {
+      "rows": 100,
+      "full_match_rows": 27,
+      "field_matches": {
+        "expected_object": 47,
+        "expected_action": 45,
+        "expected_tool": 55,
+        "expected_retrieval_needed": 76
+      }
+    }
+  },
+  {
+    "batch": "batch_0801_0900",
+    "start": 801,
+    "end": 900,
+    "status": "completed",
+    "summary": {
+      "rows": 100,
+      "full_match_rows": 58,
+      "field_matches": {
+        "expected_object": 66,
+        "expected_action": 60,
+        "expected_tool": 61,
+        "expected_retrieval_needed": 100
+      }
+    }
+  },
+  {
+    "batch": "batch_0901_1000",
+    "start": 901,
+    "end": 1000,
+    "status": "completed",
+    "summary": {
+      "rows": 100,
+      "full_match_rows": 51,
+      "field_matches": {
+        "expected_object": 61,
+        "expected_action": 51,
+        "expected_tool": 51,
+        "expected_retrieval_needed": 100
+      }
+    }
+  },
+  {
+    "batch": "batch_1001_1100",
+    "start": 1001,
+    "end": 1100,
+    "status": "completed",
+    "summary": {
+      "rows": 100,
+      "full_match_rows": 45,
+      "field_matches": {
+        "expected_object": 86,
+        "expected_action": 46,
+        "expected_tool": 72,
+        "expected_retrieval_needed": 100
+      }
+    }
+  },
+  {
+    "batch": "batch_1101_1200",
+    "start": 1101,
+    "end": 1200,
+    "status": "completed",
+    "summary": {
+      "rows": 100,
+      "full_match_rows": 34,
+      "field_matches": {
+        "expected_object": 90,
+        "expected_action": 34,
+        "expected_tool": 57,
+        "expected_retrieval_needed": 100
+      }
+    }
+  },
+  {
+    "batch": "batch_1201_1300",
+    "start": 1201,
+    "end": 1300,
+    "status": "completed",
+    "summary": {
+      "rows": 100,
+      "full_match_rows": 43,
+      "field_matches": {
+        "expected_object": 90,
+        "expected_action": 43,
+        "expected_tool": 75,
+        "expected_retrieval_needed": 100
+      }
+    }
+  },
+  {
+    "batch": "batch_1301_1400",
+    "start": 1301,
+    "end": 1400,
+    "status": "completed",
+    "summary": {
+      "rows": 100,
+      "full_match_rows": 58,
+      "field_matches": {
+        "expected_object": 90,
+        "expected_action": 58,
+        "expected_tool": 76,
+        "expected_retrieval_needed": 100
+      }
+    }
+  },
+  {
+    "batch": "batch_1401_1500",
+    "start": 1401,
+    "end": 1500,
+    "status": "completed",
+    "summary": {
+      "rows": 100,
+      "full_match_rows": 6,
+      "field_matches": {
+        "expected_object": 82,
+        "expected_action": 6,
+        "expected_tool": 6,
+        "expected_retrieval_needed": 100
+      }
+    }
+  },
+  {
+    "batch": "batch_1501_1600",
+    "start": 1501,
+    "end": 1600,
+    "status": "completed",
+    "summary": {
+      "rows": 100,
+      "full_match_rows": 13,
+      "field_matches": {
+        "expected_object": 79,
+        "expected_action": 13,
+        "expected_tool": 13,
+        "expected_retrieval_needed": 100
+      }
+    }
+  },
+  {
+    "batch": "batch_1601_1700",
+    "start": 1601,
+    "end": 1700,
+    "status": "completed",
+    "summary": {
+      "rows": 100,
+      "full_match_rows": 27,
+      "field_matches": {
+        "expected_object": 53,
+        "expected_action": 60,
+        "expected_tool": 67,
+        "expected_retrieval_needed": 100
+      }
+    }
+  },
+  {
+    "batch": "batch_1701_1800",
+    "start": 1701,
+    "end": 1800,
+    "status": "completed",
+    "summary": {
+      "rows": 100,
+      "full_match_rows": 44,
+      "field_matches": {
+        "expected_object": 56,
+        "expected_action": 87,
+        "expected_tool": 100,
+        "expected_retrieval_needed": 100
+      }
+    }
+  },
+  {
+    "batch": "batch_1801_1900",
+    "start": 1801,
+    "end": 1900,
+    "status": "completed",
+    "summary": {
+      "rows": 100,
+      "full_match_rows": 6,
+      "field_matches": {
+        "expected_object": 40,
+        "expected_action": 18,
+        "expected_tool": 20,
+        "expected_retrieval_needed": 20
+      }
+    }
+  },
+  {
+    "batch": "batch_1901_2000",
+    "start": 1901,
+    "end": 2000,
+    "status": "completed",
+    "summary": {
+      "rows": 100,
+      "full_match_rows": 1,
+      "field_matches": {
+        "expected_object": 38,
+        "expected_action": 24,
+        "expected_tool": 26,
+        "expected_retrieval_needed": 60
+      }
+    }
+  }
+]

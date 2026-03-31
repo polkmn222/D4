@@ -42,6 +42,16 @@ def _clear_template_image_fields(template) -> None:
     template.file_path = ""
     template.attachment_id = None
 
+
+def _resolve_template_image_url(template, db: Session) -> str:
+    image_url = getattr(template, "image_url", None) or ""
+    if not image_url and getattr(template, "attachment_id", None):
+        attachment = AttachmentService.get_attachment(db, template.attachment_id)
+        image_url = getattr(attachment, "file_path", "") or ""
+    if image_url and "/static/uploads/templates/" in image_url:
+        image_url = image_url.replace("/static/uploads/templates/", "/static/uploads/message_templates/")
+    return image_url
+
 # --- MESSAGE TEMPLATES ---
 @router.get("/views")
 @handle_agent_errors
@@ -161,16 +171,14 @@ async def template_detail(request: Request, template_id: str, db: Session = Depe
     try:
         t = MessageTemplateService.get_template(db, template_id)
         if not t: return RedirectResponse(url="/message_templates?error=Template+not+found")
-        
-        # Atomization: Decouple from generic Attachment system
-        # We only care about t.image_url now
-        
+        resolved_image_url = _resolve_template_image_url(t, db)
+
         details = {
             "Name": t.name if t.name else "",
             "Type": t.record_type if t.record_type else "",
             "Subject": t.subject if t.subject else "",
             "Content": t.content if t.content else "",
-            "Image": t.image_url if t.record_type == "MMS" and t.image_url else ""
+            "Image": resolved_image_url if t.record_type == "MMS" and resolved_image_url else ""
         }
         
         related_lists = []
@@ -285,6 +293,7 @@ async def update_template_route(
     content: Optional[str] = Form(None),
     description: Optional[str] = Form(None),
     record_type: Optional[str] = Form("SMS"),
+    remove_image: Optional[str] = Form(None),
     image: Optional[UploadFile] = File(None),
     db: Session = Depends(get_db)
 ):
@@ -296,7 +305,10 @@ async def update_template_route(
         normalized_record_type = (record_type or "SMS").upper()
         has_existing_image = bool(getattr(t, "attachment_id", None) or getattr(t, "image_url", None))
         has_new_image = bool(image and image.filename)
-        if normalized_record_type == "MMS" and not has_existing_image and not has_new_image:
+        remove_image_requested = str(remove_image or "").strip().lower() in {"1", "true", "yes", "on"}
+        if has_new_image:
+            remove_image_requested = False
+        if normalized_record_type == "MMS" and not has_existing_image and not has_new_image and not remove_image_requested:
             return RedirectResponse(
                 url=f"/message_templates/{template_id}?error=MMS+templates+require+a+JPG+image+under+500KB",
                 status_code=303,
@@ -312,12 +324,13 @@ async def update_template_route(
         
         MessageTemplateService.update_template(db, template_id, **update_data)
 
-        if normalized_record_type != "MMS" and has_existing_image:
+        if has_existing_image and (normalized_record_type != "MMS" or remove_image_requested):
             _remove_template_image(db, t)
             _clear_template_image_fields(t)
-            db.commit()
-            db.refresh(t)
-            return RedirectResponse(url=f"/message_templates/{template_id}?success=Record+updated+successfully", status_code=303)
+            if not has_new_image:
+                db.commit()
+                db.refresh(t)
+                return RedirectResponse(url=f"/message_templates/{template_id}?success=Record+updated+successfully", status_code=303)
 
         # Handle Image Upload if provided
         if image and image.filename:

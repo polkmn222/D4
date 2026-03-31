@@ -17,15 +17,21 @@ services:
         sync: false
       - key: RELAY_TARGET_PROVIDER
         sync: false
-      - key: SOLAPI_API_KEY
+      - key: SUREM_USER_CODE
         sync: false
-      - key: SOLAPI_API_SECRET
+      - key: SUREM_SECRET_KEY
         sync: false
-      - key: SOLAPI_SENDER_NUMBER
+      - key: SUREM_REQ_PHONE
         sync: false
-      - key: SOLAPI_FORCE_TO_NUMBER
+      - key: SUREM_FORCE_TO_NUMBER
         sync: false
-      - key: SOLAPI_ALLOWED_IP
+      - key: SUREM_AUTH_URL
+        sync: false
+      - key: SUREM_SMS_URL
+        sync: false
+      - key: SUREM_MMS_URL
+        sync: false
+      - key: SUREM_IMAGE_URL
         sync: false
       - key: SLACK_MESSAGE_WEBHOOK_URL
         sync: false

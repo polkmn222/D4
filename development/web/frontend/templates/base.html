@@ -121,6 +121,9 @@
 
     <script>
         let globalLoadingCount = 0;
+        let globalLoadingTimer = null;
+        const GLOBAL_LOADING_DELAY_MS = 1000;
+        const GLOBAL_LOADING_FETCH_TIMEOUT_MS = 12000;
 
         function showGlobalLoading(message = 'Loading...') {
             const overlay = document.getElementById('sf-global-loading');
@@ -130,7 +133,18 @@
             }
             globalLoadingCount += 1;
             text.innerText = message;
-            overlay.style.display = 'flex';
+            if (overlay.style.display === 'flex') {
+                return;
+            }
+            if (globalLoadingTimer) {
+                return;
+            }
+            globalLoadingTimer = setTimeout(() => {
+                globalLoadingTimer = null;
+                if (globalLoadingCount > 0) {
+                    overlay.style.display = 'flex';
+                }
+            }, GLOBAL_LOADING_DELAY_MS);
         }
 
         function hideGlobalLoading() {
@@ -140,6 +154,10 @@
             }
             globalLoadingCount = Math.max(0, globalLoadingCount - 1);
             if (globalLoadingCount === 0) {
+                if (globalLoadingTimer) {
+                    clearTimeout(globalLoadingTimer);
+                    globalLoadingTimer = null;
+                }
                 overlay.style.display = 'none';
             }
         }
@@ -148,6 +166,10 @@
             const overlay = document.getElementById('sf-global-loading');
             if (!overlay) {
                 return;
+            }
+            if (globalLoadingTimer) {
+                clearTimeout(globalLoadingTimer);
+                globalLoadingTimer = null;
             }
             globalLoadingCount = 0;
             overlay.style.display = 'none';
@@ -172,9 +194,38 @@
             return false;
         }
 
+        function fetchWithTimeout(resource, options = {}, timeoutMs = GLOBAL_LOADING_FETCH_TIMEOUT_MS) {
+            const controller = new AbortController();
+            const timer = setTimeout(() => controller.abort(), timeoutMs);
+            return fetch(resource, { ...options, signal: controller.signal })
+                .finally(() => {
+                    clearTimeout(timer);
+                });
+        }
+
+        function shouldTrackNavigationLink(link) {
+            if (!link || shouldSkipGlobalLoading(link)) {
+                return false;
+            }
+            const href = link.getAttribute('href') || '';
+            if (!href || href.startsWith('#') || href.startsWith('javascript:')) {
+                return false;
+            }
+            if (link.hasAttribute('download') || link.target === '_blank') {
+                return false;
+            }
+            if (link.closest('#sf-modal-overlay')) {
+                return false;
+            }
+            if (typeof link.onclick === 'function' && String(link.onclick).includes('openModal(')) {
+                return false;
+            }
+            return true;
+        }
+
         function openModal(url) {
             showGlobalLoading('Opening...');
-            fetch(url)
+            fetchWithTimeout(url)
                 .then(response => response.text())
                 .then(html => {
                     const content = document.getElementById('modal-content');
@@ -238,7 +289,7 @@
 
         function runJsonAction({ url, method = 'POST', headers = {}, body = null, successMessage = null, errorMessage = 'Action failed.', onSuccess = null }) {
             showGlobalLoading('Working...');
-            return fetch(url, {
+            return fetchWithTimeout(url, {
                 method,
                 headers: {
                     'Accept': 'application/json',
@@ -311,7 +362,7 @@
                     showGlobalLoading(submitMode === 'save-new' ? 'Saving and preparing new form...' : 'Saving...');
 
                     try {
-                        const response = await fetch(form.action || window.location.href, {
+                        const response = await fetchWithTimeout(form.action || window.location.href, {
                             method: (form.method || 'POST').toUpperCase(),
                             body: new FormData(form),
                             headers: { 'Accept': 'text/html,application/json' },
@@ -328,7 +379,7 @@
                                 showToast(data.message || 'Record saved successfully.');
                                 const sourceUrl = new URL(container.dataset.modalSourceUrl || window.location.href, window.location.origin);
                                 sourceUrl.searchParams.delete('id');
-                                const html = await fetch(sourceUrl.toString()).then((res) => res.text());
+                                const html = await fetchWithTimeout(sourceUrl.toString()).then((res) => res.text());
                                 container.innerHTML = html;
                                 container.dataset.modalSourceUrl = sourceUrl.toString();
                                 enhanceModalForms(container);
@@ -357,7 +408,7 @@
                                 showToast(successMsg || 'Record saved successfully.');
                                 const sourceUrl = new URL(container.dataset.modalSourceUrl || window.location.href, window.location.origin);
                                 sourceUrl.searchParams.delete('id');
-                                const html = await fetch(sourceUrl.toString()).then((res) => res.text());
+                                const html = await fetchWithTimeout(sourceUrl.toString()).then((res) => res.text());
                                 container.innerHTML = html;
                                 container.dataset.modalSourceUrl = sourceUrl.toString();
                                 enhanceModalForms(container);
@@ -389,7 +440,7 @@
         }
 
         // --- DELETE CONFIRMATION ---
-        function showConfirmModal(title, msg, onConfirm) {
+        function showConfirmModal(title, msg, onConfirm, confirmLabel = 'Delete') {
             const modal = document.getElementById('sf-confirm-modal');
             const titleEl = document.getElementById('sf-confirm-title');
             const msgEl = document.getElementById('sf-confirm-msg');
@@ -397,6 +448,7 @@
             
             titleEl.innerText = title;
             msgEl.innerText = msg;
+            deleteBtn.innerText = confirmLabel;
             modal.style.display = 'flex';
             
             deleteBtn.onclick = () => {
@@ -425,7 +477,7 @@
                         }, 1000);
                     }
                 }).catch(() => {});
-            });
+            }, 'Delete');
         }
 
         function closeConfirmModal() {
@@ -579,9 +631,8 @@
                 }
 
                 const link = event.target.closest('a[href]');
-                if (link && !shouldSkipGlobalLoading(link)) {
-                    const href = link.getAttribute('href') || '';
-                    if (href.startsWith('#') || href.startsWith('javascript:') || link.target === '_blank' || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) {
+                if (link && shouldTrackNavigationLink(link)) {
+                    if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) {
                         return;
                     }
                     showGlobalLoading('Loading...');
@@ -592,12 +643,8 @@
                 if (!button || shouldSkipGlobalLoading(button)) {
                     return;
                 }
-                if (button.type === 'submit' || button.closest('#sf-confirm-modal') || button.getAttribute('onclick')) {
-                    const label = (button.innerText || '').trim().toLowerCase();
-                    if (label && !label.includes('cancel') && !label.includes('close')) {
-                        showGlobalLoading('Working...');
-                        setTimeout(() => hideGlobalLoading(), 1200);
-                    }
+                if (button.closest('#sf-confirm-modal')) {
+                    return;
                 }
             }, true);
 
@@ -651,19 +698,45 @@
             window.location.href = `/search?q=${encodeURIComponent(query)}&type=${scope}`;
         }
 
+        function preserveSearchInputSelection(input, callback) {
+            if (!input || typeof callback !== 'function') {
+                return typeof callback === 'function' ? callback() : undefined;
+            }
+            const shouldRestoreFocus = document.activeElement === input;
+            const selectionStart = typeof input.selectionStart === 'number' ? input.selectionStart : null;
+            const selectionEnd = typeof input.selectionEnd === 'number' ? input.selectionEnd : null;
+            const selectionDirection = input.selectionDirection || 'none';
+            const result = callback();
+            if (shouldRestoreFocus) {
+                requestAnimationFrame(() => {
+                    input.focus({ preventScroll: true });
+                    if (selectionStart !== null && selectionEnd !== null) {
+                        input.setSelectionRange(selectionStart, selectionEnd, selectionDirection);
+                    }
+                });
+            }
+            return result;
+        }
+
         let searchTimeout;
+        let searchRequestSequence = 0;
         function handleSearchInput(query) {
             clearTimeout(searchTimeout);
+            const activeRequestSequence = ++searchRequestSequence;
             if (!query) {
                 showRecentSearches();
                 return;
             }
             searchTimeout = setTimeout(async () => {
                 const scope = document.getElementById('search-scope').value;
+                const searchInput = document.getElementById('global-search-input');
                 try {
                     const response = await fetch(`/api/search/suggestions?q=${encodeURIComponent(query)}&type=${scope}`);
                     const suggestions = await response.json();
-                    renderSearchDropdown(suggestions, false);
+                    if (activeRequestSequence !== searchRequestSequence) {
+                        return;
+                    }
+                    preserveSearchInputSelection(searchInput, () => renderSearchDropdown(suggestions, false));
                 } catch (e) {
                     console.error("Fetch suggestions error", e);
                 }
@@ -800,6 +873,9 @@
         }
         
         window.addEventListener('click', function(e) {
+            if (e.target.closest('#sf-confirm-modal')) {
+                return;
+            }
             if (!e.target.closest('.sf-dropdown')) {
                 document.querySelectorAll('.sf-dropdown.active').forEach(dd => {
                     dd.classList.remove('active');

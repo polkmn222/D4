@@ -22,13 +22,13 @@ from ai_agent.llm.backend.recommendations import AIRecommendationService
 logger = logging.getLogger(__name__)
 
 router = APIRouter(prefix="/messaging", tags=["Messaging"])
-DEMO_UNAVAILABLE_MESSAGE = "Demo message service unavailable. Contact the administrator."
+DEMO_UNAVAILABLE_MESSAGE = "메시지 서비스에 연결할 수 없습니다. 관리자에게 문의해주세요!"
 
 
-def _serialize_messaging_recommendations(db: Session, recommended_opps, limit: int = 5):
+def _serialize_messaging_recommendations(db: Session, recommended_opps, limit: Optional[int] = None):
     results_data = []
     for opp in recommended_opps:
-        if len(results_data) >= limit:
+        if limit is not None and len(results_data) >= limit:
             break
 
         contact = db.query(Contact).filter(Contact.id == opp.contact, Contact.deleted_at == None).first()
@@ -53,6 +53,59 @@ def _serialize_messaging_recommendations(db: Session, recommended_opps, limit: i
             "model": {"name": mod.name},
         })
     return results_data
+
+
+def _load_default_recipient_rows(db: Session):
+    results = db.query(Opportunity, Contact, Model)\
+        .join(Contact, Opportunity.contact == Contact.id)\
+        .join(Model, Opportunity.model == Model.id)\
+        .filter(Opportunity.deleted_at == None, Contact.deleted_at == None)\
+        .filter(Contact.phone != None, Contact.phone != "")\
+        .order_by(Opportunity.created_at.desc())\
+        .all()
+
+    opportunities_data = []
+    for opp, contact, mod in results:
+        opportunities_data.append({
+            "id": opp.id,
+            "name": opp.name,
+            "stage": opp.stage,
+            "created_at": opp.created_at.strftime('%Y-%m-%d') if opp.created_at else '-',
+            "contact_id": contact.id,
+            "contact": {"name": f"{contact.first_name if contact.first_name else ''} {contact.last_name if contact.last_name else ''}".strip() or contact.name or "Unnamed", "phone": contact.phone},
+            "model": {"name": mod.name} if mod else None
+        })
+    return opportunities_data
+
+
+def _load_message_template_rows(db: Session):
+    message_templates_query = db.query(MessageTemplate, Attachment)\
+        .outerjoin(Attachment, MessageTemplate.attachment_id == Attachment.id)\
+        .filter(MessageTemplate.deleted_at == None)\
+        .all()
+
+    templates_data = []
+    for t, a in message_templates_query:
+        image_url = t.image_url
+        if image_url and "/static/uploads/templates/" in image_url:
+            image_url = image_url.replace("/static/uploads/templates/", "/static/uploads/message_templates/")
+
+        templates_data.append({
+            "id": t.id,
+            "name": t.name,
+            "subject": "" if t.record_type == "SMS" else t.subject,
+            "content": t.content,
+            "record_type": t.record_type,
+            "file_path": t.file_path,
+            "attachment_id": t.attachment_id,
+            "attachment": {
+                "name": a.name,
+                "size": a.file_size,
+                "type": a.content_type
+            } if a else None,
+            "image_url": image_url
+        })
+    return templates_data
 
 class MessageSendRequest(BaseModel):
     contact_id: str
@@ -97,17 +150,18 @@ def _validate_bearer_token(authorization: Optional[str], expected_token: str) ->
 
 
 def _relay_target_provider() -> str:
-    return os.getenv("RELAY_TARGET_PROVIDER", "").strip().lower() or "solapi"
+    return os.getenv("RELAY_TARGET_PROVIDER", "").strip().lower() or "surem"
 
 
 def _provider_ready_for_demo(provider_name: str) -> tuple[bool, Optional[str]]:
     if provider_name == "relay":
         return False, "relay_target_cannot_be_relay"
-    if provider_name == "solapi":
+    if provider_name == "surem":
         required = {
-            "SOLAPI_API_KEY": os.getenv("SOLAPI_API_KEY", "").strip(),
-            "SOLAPI_API_SECRET": os.getenv("SOLAPI_API_SECRET", "").strip(),
-            "SOLAPI_SENDER_NUMBER": os.getenv("SOLAPI_SENDER_NUMBER", "").strip(),
+            "SUREM_AUTH_userCode": os.getenv("SUREM_AUTH_userCode", "").strip() or os.getenv("SUREM_USER_CODE", "").strip(),
+            "SUREM_AUTH_secretKey": os.getenv("SUREM_AUTH_secretKey", "").strip() or os.getenv("SUREM_SECRET_KEY", "").strip(),
+            "SUREM_reqPhone": os.getenv("SUREM_reqPhone", "").strip() or os.getenv("SUREM_REQ_PHONE", "").strip(),
+            "SUREM_TO": os.getenv("SUREM_TO", "").strip() or os.getenv("SUREM_FORCE_TO_NUMBER", "").strip(),
         }
         missing = [name for name, value in required.items() if not value]
         if missing:
@@ -341,53 +395,9 @@ async def messaging_ui(request: Request, db: Session = Depends(get_db)):
         opp_contacts = db.query(Contact).join(Opportunity, Contact.id == Opportunity.contact).distinct().all()
         
         # Fetch opportunities with joined Contact and Model for display (Filtering for non-null Models)
-        results = db.query(Opportunity, Contact, Model)\
-            .join(Contact, Opportunity.contact == Contact.id)\
-            .join(Model, Opportunity.model == Model.id)\
-            .filter(Opportunity.deleted_at == None, Contact.deleted_at == None)\
-            .filter(Contact.phone != None, Contact.phone != "")\
-            .order_by(Opportunity.created_at.desc())\
-            .all()
+        opportunities_data = _load_default_recipient_rows(db)
+        templates_data = _load_message_template_rows(db)
 
-        opportunities_data = []
-        for opp, contact, mod in results:
-            opportunities_data.append({
-                "id": opp.id,
-                "name": opp.name,
-                "stage": opp.stage,
-                "created_at": opp.created_at,
-                "contact_id": contact.id,
-                "contact": {"name": f"{contact.first_name if contact.first_name else ''} {contact.last_name if contact.last_name else ''}".strip() or contact.name or "Unnamed", "phone": contact.phone},
-                "model": {"name": mod.name} if mod else None
-            })
-        
-        message_templates_query = db.query(MessageTemplate, Attachment)\
-            .outerjoin(Attachment, MessageTemplate.attachment_id == Attachment.id)\
-            .filter(MessageTemplate.deleted_at == None)\
-            .all()
-        
-        templates_data = []
-        for t, a in message_templates_query:
-            image_url = t.image_url
-            if image_url and "/static/uploads/templates/" in image_url:
-                image_url = image_url.replace("/static/uploads/templates/", "/static/uploads/message_templates/")
-            
-            templates_data.append({
-                "id": t.id,
-                "name": t.name,
-                "subject": "" if t.record_type == "SMS" else t.subject,
-                "content": t.content,
-                "record_type": t.record_type,
-                "file_path": t.file_path,
-                "attachment_id": t.attachment_id,
-                "attachment": {
-                    "name": a.name,
-                    "size": a.file_size,
-                    "type": a.content_type
-                } if a else None,
-                "image_url": image_url
-            })
-        
         return templates.TemplateResponse(request, "send_message.html", {
             "request": request,
             "contacts": opp_contacts,
@@ -404,12 +414,8 @@ async def get_messaging_recommendations(db: Session = Depends(get_db)):
         """
         Returns AI recommended opportunities (now pre-filtered for phone numbers by the service).
         """
-        recommended_opps = AIRecommendationService.get_sendable_recommendations(
-            db,
-            limit=AIRecommendationService.SENDABLE_RECOMMENDATION_LIMIT,
-            scan_limit=50,
-        )
-        return _serialize_messaging_recommendations(db, recommended_opps, limit=AIRecommendationService.SENDABLE_RECOMMENDATION_LIMIT)
+        recommended_opps = AIRecommendationService.get_sendable_recommendations(db)
+        return _serialize_messaging_recommendations(db, recommended_opps)
     except Exception as e:
         logger.error(f"Error getting messaging recommendations: {e}")
         return []
@@ -421,29 +427,22 @@ async def get_default_recipients(db: Session = Depends(get_db)):
         """
         Returns the default list of opportunities that have a phone number (Filtering for non-null Models).
         """
-        results = db.query(Opportunity, Contact, Model)\
-            .join(Contact, Opportunity.contact == Contact.id)\
-            .join(Model, Opportunity.model == Model.id)\
-            .filter(Opportunity.deleted_at == None, Contact.deleted_at == None)\
-            .filter(Contact.phone != None, Contact.phone != "")\
-            .order_by(Opportunity.created_at.desc())\
-            .all()
-
-        opportunities_data = []
-        for opp, contact, mod in results:
-            opportunities_data.append({
-                "id": opp.id,
-                "name": opp.name,
-                "stage": opp.stage,
-                "created_at": opp.created_at.strftime('%Y-%m-%d') if opp.created_at else '-',
-                "contact_id": contact.id,
-                "contact": {"name": f"{contact.first_name if contact.first_name else ''} {contact.last_name if contact.last_name else ''}".strip() or contact.name or "Unnamed", "phone": contact.phone},
-                "model": {"name": mod.name} if mod else None
-            })
-        return opportunities_data
+        return _load_default_recipient_rows(db)
     except Exception as e:
         logger.error(f"Error getting default recipients: {e}")
         return []
+
+
+@router.get("/ai-agent-compose-data")
+async def get_ai_agent_compose_data(db: Session = Depends(get_db)):
+    try:
+        return {
+            "default_recipients": _load_default_recipient_rows(db),
+            "templates": _load_message_template_rows(db),
+        }
+    except Exception as e:
+        logger.error(f"Error getting AI agent compose data: {e}")
+        return JSONResponse(status_code=500, content={"status": "error", "message": str(e)})
 
 @router.post("/templates/upload")
 async def upload_template_image(file: UploadFile = File(...), db: Session = Depends(get_db)):

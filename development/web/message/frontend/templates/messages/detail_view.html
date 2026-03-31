@@ -69,6 +69,15 @@
     </div>
 
     <!-- Full-width Content -->
+    {% if details.get('Image') %}
+    <div class="sf-description-large">
+        <div class="sf-field-label">Image</div>
+        <div class="sf-field-value" style="min-height: 1.5rem;">
+            <img src="{{ details.get('Image') }}" alt="Message image" style="max-width: 240px; width: 100%; border-radius: 12px; border: 1px solid var(--border); object-fit: cover;">
+        </div>
+    </div>
+    {% endif %}
+
     <div class="sf-description-large">
         <div class="sf-field-label">Content</div>
         <div class="sf-field-value" style="line-height: 1.5; min-height: 1.5rem; white-space: pre-wrap;">{{ details.get('Content') | format_value | safe if details.get('Content') | format_value != '' else '&nbsp;'|safe }}</div>

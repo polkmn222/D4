@@ -1,0 +1,5711 @@
+{
+  "generated_at": "2026-03-31T02:03:51.648097+00:00",
+  "dataset_path": "/var/folders/zg/z6kl4gjn3lj8l400kylykqm40000gp/T/tmpuutgdi53.jsonl",
+  "output_path": "learning/eval_results/batch_1701_1800.json",
+  "summary": {
+    "rows": 100,
+    "full_match_rows": 44,
+    "field_matches": {
+      "expected_object": 56,
+      "expected_action": 87,
+      "expected_tool": 100,
+      "expected_retrieval_needed": 100
+    }
+  },
+  "results": [
+    {
+      "dataset_row": {
+        "id": "i5ay06x3i7o32bjxr6",
+        "user_input": "Where are the models?",
+        "expected_object": "model",
+        "expected_action": "ASK_CLARIFICATION",
+        "expected_tool": "none",
+        "expected_retrieval_needed": false,
+        "source_file": "expanded_dataset_v1",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Expanded synthetic data for ASK_CLARIFICATION variation"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": null,
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "missing_response",
+        "raw_output": {
+          "intent": "CHAT",
+          "text": "Eval runner could not capture a runtime decision."
+        }
+      },
+      "comparison": {
+        "row_id": "i5ay06x3i7o32bjxr6",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "model",
+            "actual": null,
+            "match": false
+          },
+          "expected_action": {
+            "expected": "ASK_CLARIFICATION",
+            "actual": "ASK_CLARIFICATION",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "none",
+            "actual": "none",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "i7m36plid3dwftqsmj",
+        "user_input": "Drop the message template from the database.",
+        "expected_object": "message_template",
+        "expected_action": "ASK_CLARIFICATION",
+        "expected_tool": "none",
+        "expected_retrieval_needed": false,
+        "source_file": "expanded_dataset_v1",
+        "phase": "phase306",
+        "context": "Following up on a previous task",
+        "difficulty": "hard",
+        "notes": "Expanded synthetic data for ASK_CLARIFICATION variation"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": null,
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "missing_response",
+        "raw_output": {
+          "intent": "CHAT",
+          "text": "Eval runner could not capture a runtime decision."
+        }
+      },
+      "comparison": {
+        "row_id": "i7m36plid3dwftqsmj",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "message_template",
+            "actual": null,
+            "match": false
+          },
+          "expected_action": {
+            "expected": "ASK_CLARIFICATION",
+            "actual": "ASK_CLARIFICATION",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "none",
+            "actual": "none",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "ptso2qyu1hyu4czff3",
+        "user_input": "Update the info for that opportunity with the new details.",
+        "expected_object": "opportunity",
+        "expected_action": "ASK_CLARIFICATION",
+        "expected_tool": "none",
+        "expected_retrieval_needed": false,
+        "source_file": "expanded_dataset_v1",
+        "phase": "phase306",
+        "context": "After a search query",
+        "difficulty": "hard",
+        "notes": "Expanded synthetic data for ASK_CLARIFICATION variation"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": "opportunity",
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "CHAT",
+          "object_type": "opportunity",
+          "text": "I need a specific opportunity record first. Open one or select one, then try again.",
+          "score": 1.0,
+          "language_preference": "eng"
+        }
+      },
+      "comparison": {
+        "row_id": "ptso2qyu1hyu4czff3",
+        "all_match": true,
+        "comparisons": {
+          "expected_object": {
+            "expected": "opportunity",
+            "actual": "opportunity",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "ASK_CLARIFICATION",
+            "actual": "ASK_CLARIFICATION",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "none",
+            "actual": "none",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "6tosgug0w2vtf864ki",
+        "user_input": "Update the info for that product with the new details.",
+        "expected_object": "product",
+        "expected_action": "ASK_CLARIFICATION",
+        "expected_tool": "none",
+        "expected_retrieval_needed": false,
+        "source_file": "expanded_dataset_v1",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "hard",
+        "notes": "Expanded synthetic data for ASK_CLARIFICATION variation"
+      },
+      "actual": {
+        "raw_intent": "OPEN_FORM",
+        "normalized_action": "OPEN_FORM",
+        "object_type": "product",
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "direct_response",
+        "raw_output": {
+          "intent": "OPEN_FORM",
+          "object_type": "product",
+          "form_url": "/products/new-modal",
+          "form_title": "Create Product",
+          "form_kind": "product_create",
+          "text": "I've opened the new product form for you below.",
+          "score": 1.0
+        }
+      },
+      "comparison": {
+        "row_id": "6tosgug0w2vtf864ki",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "product",
+            "actual": "product",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "ASK_CLARIFICATION",
+            "actual": "OPEN_FORM",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "none",
+            "actual": "none",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "g6gsj9wjwgqu4pm7ue",
+        "user_input": "Can you delete the opportunity we talked about earlier?",
+        "expected_object": "opportunity",
+        "expected_action": "ASK_CLARIFICATION",
+        "expected_tool": "none",
+        "expected_retrieval_needed": false,
+        "source_file": "expanded_dataset_v1",
+        "phase": "phase306",
+        "context": "Following up on a previous task",
+        "difficulty": "hard",
+        "notes": "Expanded synthetic data for ASK_CLARIFICATION variation"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": "opportunity",
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "CHAT",
+          "object_type": "opportunity",
+          "text": "Which specific opportunity from our previous conversation do you want to delete?",
+          "score": 0.58,
+          "reasoning": {
+            "context_reference": {
+              "kind": "last_record",
+              "index": 0,
+              "object_type": "opportunity"
+            },
+            "resolved_reference": {},
+            "confidence": 0.58,
+            "confidence_band": "medium"
+          },
+          "language_preference": "eng"
+        }
+      },
+      "comparison": {
+        "row_id": "g6gsj9wjwgqu4pm7ue",
+        "all_match": true,
+        "comparisons": {
+          "expected_object": {
+            "expected": "opportunity",
+            "actual": "opportunity",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "ASK_CLARIFICATION",
+            "actual": "ASK_CLARIFICATION",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "none",
+            "actual": "none",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "p1kh7jc4h48ssnmtb0",
+        "user_input": "Update the info for that product with the new details.",
+        "expected_object": "product",
+        "expected_action": "ASK_CLARIFICATION",
+        "expected_tool": "none",
+        "expected_retrieval_needed": false,
+        "source_file": "expanded_dataset_v1",
+        "phase": "phase306",
+        "context": "After a search query",
+        "difficulty": "hard",
+        "notes": "Expanded synthetic data for ASK_CLARIFICATION variation"
+      },
+      "actual": {
+        "raw_intent": "OPEN_FORM",
+        "normalized_action": "OPEN_FORM",
+        "object_type": "product",
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "direct_response",
+        "raw_output": {
+          "intent": "OPEN_FORM",
+          "object_type": "product",
+          "form_url": "/products/new-modal",
+          "form_title": "Create Product",
+          "form_kind": "product_create",
+          "text": "I've opened the new product form for you below.",
+          "score": 1.0
+        }
+      },
+      "comparison": {
+        "row_id": "p1kh7jc4h48ssnmtb0",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "product",
+            "actual": "product",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "ASK_CLARIFICATION",
+            "actual": "OPEN_FORM",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "none",
+            "actual": "none",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "fjic55s160m3wpar4f",
+        "user_input": "Change the status.",
+        "expected_object": "brand",
+        "expected_action": "ASK_CLARIFICATION",
+        "expected_tool": "none",
+        "expected_retrieval_needed": false,
+        "source_file": "expanded_dataset_v1",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Expanded synthetic data for ASK_CLARIFICATION variation"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": null,
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "direct_response",
+        "raw_output": {
+          "intent": "CHAT",
+          "is_suggestion": true,
+          "suggestion_prompt": "What's the status?",
+          "text": "I think you might want to **query** for **lead**. Is that correct? (Suggested: \"What's the status?\")",
+          "score": 0.45833334,
+          "options": [
+            {
+              "label": "Yes, do that",
+              "value": "What's the status?"
+            },
+            {
+              "label": "No, something else",
+              "value": "help"
+            }
+          ]
+        }
+      },
+      "comparison": {
+        "row_id": "fjic55s160m3wpar4f",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "brand",
+            "actual": null,
+            "match": false
+          },
+          "expected_action": {
+            "expected": "ASK_CLARIFICATION",
+            "actual": "ASK_CLARIFICATION",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "none",
+            "actual": "none",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "sng9chaydstqnkjv1k",
+        "user_input": "remove the model.",
+        "expected_object": "model",
+        "expected_action": "ASK_CLARIFICATION",
+        "expected_tool": "none",
+        "expected_retrieval_needed": false,
+        "source_file": "expanded_dataset_v1",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Expanded synthetic data for ASK_CLARIFICATION variation"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": "model",
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "CHAT",
+          "object_type": "model",
+          "text": "I can help delete a model. First show the record you want, select it, and then confirm the delete action.",
+          "score": 0.95
+        }
+      },
+      "comparison": {
+        "row_id": "sng9chaydstqnkjv1k",
+        "all_match": true,
+        "comparisons": {
+          "expected_object": {
+            "expected": "model",
+            "actual": "model",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "ASK_CLARIFICATION",
+            "actual": "ASK_CLARIFICATION",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "none",
+            "actual": "none",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "q58i2y0wfc5l7a9ufn",
+        "user_input": "Can you delete the lead we talked about earlier?",
+        "expected_object": "lead",
+        "expected_action": "ASK_CLARIFICATION",
+        "expected_tool": "none",
+        "expected_retrieval_needed": false,
+        "source_file": "expanded_dataset_v1",
+        "phase": "phase306",
+        "context": "Following up on a previous task",
+        "difficulty": "hard",
+        "notes": "Expanded synthetic data for ASK_CLARIFICATION variation"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": null,
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "missing_response",
+        "raw_output": {
+          "intent": "CHAT",
+          "text": "Eval runner could not capture a runtime decision."
+        }
+      },
+      "comparison": {
+        "row_id": "q58i2y0wfc5l7a9ufn",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "lead",
+            "actual": null,
+            "match": false
+          },
+          "expected_action": {
+            "expected": "ASK_CLARIFICATION",
+            "actual": "ASK_CLARIFICATION",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "none",
+            "actual": "none",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "pe28cqhivv88n97y97",
+        "user_input": "where are the leads?",
+        "expected_object": "lead",
+        "expected_action": "ASK_CLARIFICATION",
+        "expected_tool": "none",
+        "expected_retrieval_needed": false,
+        "source_file": "expanded_dataset_v1",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Expanded synthetic data for ASK_CLARIFICATION variation"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": null,
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "missing_response",
+        "raw_output": {
+          "intent": "CHAT",
+          "text": "Eval runner could not capture a runtime decision."
+        }
+      },
+      "comparison": {
+        "row_id": "pe28cqhivv88n97y97",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "lead",
+            "actual": null,
+            "match": false
+          },
+          "expected_action": {
+            "expected": "ASK_CLARIFICATION",
+            "actual": "ASK_CLARIFICATION",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "none",
+            "actual": "none",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "idjdms5p2qt6xzz4ji",
+        "user_input": "Delete this brand.",
+        "expected_object": "brand",
+        "expected_action": "ASK_CLARIFICATION",
+        "expected_tool": "none",
+        "expected_retrieval_needed": false,
+        "source_file": "expanded_dataset_v1",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Expanded synthetic data for ASK_CLARIFICATION variation"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": "brand",
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "CHAT",
+          "object_type": "brand",
+          "text": "I can help delete a brand. First show the record you want, select it, and then confirm the delete action.",
+          "score": 0.95
+        }
+      },
+      "comparison": {
+        "row_id": "idjdms5p2qt6xzz4ji",
+        "all_match": true,
+        "comparisons": {
+          "expected_object": {
+            "expected": "brand",
+            "actual": "brand",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "ASK_CLARIFICATION",
+            "actual": "ASK_CLARIFICATION",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "none",
+            "actual": "none",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "y4abye8dyrdzmyfmzk",
+        "user_input": "Delete this message template.",
+        "expected_object": "message_template",
+        "expected_action": "ASK_CLARIFICATION",
+        "expected_tool": "none",
+        "expected_retrieval_needed": false,
+        "source_file": "expanded_dataset_v1",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Expanded synthetic data for ASK_CLARIFICATION variation"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": "message_template",
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "CHAT",
+          "object_type": "message_template",
+          "text": "I can help delete a message_template. First show the record you want, select it, and then confirm the delete action.",
+          "score": 0.95
+        }
+      },
+      "comparison": {
+        "row_id": "y4abye8dyrdzmyfmzk",
+        "all_match": true,
+        "comparisons": {
+          "expected_object": {
+            "expected": "message_template",
+            "actual": "message_template",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "ASK_CLARIFICATION",
+            "actual": "ASK_CLARIFICATION",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "none",
+            "actual": "none",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "itckgr7go9duos2pfe",
+        "user_input": "Drop the opportunity from the database.",
+        "expected_object": "opportunity",
+        "expected_action": "ASK_CLARIFICATION",
+        "expected_tool": "none",
+        "expected_retrieval_needed": false,
+        "source_file": "expanded_dataset_v1",
+        "phase": "phase306",
+        "context": "After a search query",
+        "difficulty": "hard",
+        "notes": "Expanded synthetic data for ASK_CLARIFICATION variation"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": null,
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "missing_response",
+        "raw_output": {
+          "intent": "CHAT",
+          "text": "Eval runner could not capture a runtime decision."
+        }
+      },
+      "comparison": {
+        "row_id": "itckgr7go9duos2pfe",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "opportunity",
+            "actual": null,
+            "match": false
+          },
+          "expected_action": {
+            "expected": "ASK_CLARIFICATION",
+            "actual": "ASK_CLARIFICATION",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "none",
+            "actual": "none",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "7u75kdvavr3jnx7zb1",
+        "user_input": "Where are the assets?",
+        "expected_object": "asset",
+        "expected_action": "ASK_CLARIFICATION",
+        "expected_tool": "none",
+        "expected_retrieval_needed": false,
+        "source_file": "expanded_dataset_v1",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Expanded synthetic data for ASK_CLARIFICATION variation"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": null,
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "missing_response",
+        "raw_output": {
+          "intent": "CHAT",
+          "text": "Eval runner could not capture a runtime decision."
+        }
+      },
+      "comparison": {
+        "row_id": "7u75kdvavr3jnx7zb1",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "asset",
+            "actual": null,
+            "match": false
+          },
+          "expected_action": {
+            "expected": "ASK_CLARIFICATION",
+            "actual": "ASK_CLARIFICATION",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "none",
+            "actual": "none",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "misrn2k4k5odd458yb",
+        "user_input": "Update the info for that message template with the new details.",
+        "expected_object": "message_template",
+        "expected_action": "ASK_CLARIFICATION",
+        "expected_tool": "none",
+        "expected_retrieval_needed": false,
+        "source_file": "expanded_dataset_v1",
+        "phase": "phase306",
+        "context": "Following up on a previous task",
+        "difficulty": "hard",
+        "notes": "Expanded synthetic data for ASK_CLARIFICATION variation"
+      },
+      "actual": {
+        "raw_intent": "OPEN_FORM",
+        "normalized_action": "OPEN_FORM",
+        "object_type": "message_template",
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "direct_response",
+        "raw_output": {
+          "intent": "OPEN_FORM",
+          "object_type": "message_template",
+          "form_url": "/message_templates/new-modal",
+          "form_title": "Create Message Template",
+          "form_kind": "message_template_create",
+          "text": "I've opened the new message template form for you below.",
+          "score": 1.0
+        }
+      },
+      "comparison": {
+        "row_id": "misrn2k4k5odd458yb",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "message_template",
+            "actual": "message_template",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "ASK_CLARIFICATION",
+            "actual": "OPEN_FORM",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "none",
+            "actual": "none",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "2utedhgws0lbd38m1k",
+        "user_input": "drop the brand from the database.",
+        "expected_object": "brand",
+        "expected_action": "ASK_CLARIFICATION",
+        "expected_tool": "none",
+        "expected_retrieval_needed": false,
+        "source_file": "expanded_dataset_v1",
+        "phase": "phase306",
+        "context": "Looking at a specific record",
+        "difficulty": "hard",
+        "notes": "Expanded synthetic data for ASK_CLARIFICATION variation"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": null,
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "missing_response",
+        "raw_output": {
+          "intent": "CHAT",
+          "text": "Eval runner could not capture a runtime decision."
+        }
+      },
+      "comparison": {
+        "row_id": "2utedhgws0lbd38m1k",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "brand",
+            "actual": null,
+            "match": false
+          },
+          "expected_action": {
+            "expected": "ASK_CLARIFICATION",
+            "actual": "ASK_CLARIFICATION",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "none",
+            "actual": "none",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "jzk7bk9s6ipvnia1jg",
+        "user_input": "Can you delete the message template we talked about earlier?",
+        "expected_object": "message_template",
+        "expected_action": "ASK_CLARIFICATION",
+        "expected_tool": "none",
+        "expected_retrieval_needed": false,
+        "source_file": "expanded_dataset_v1",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "hard",
+        "notes": "Expanded synthetic data for ASK_CLARIFICATION variation"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": null,
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "direct_response",
+        "raw_output": {
+          "intent": "CHAT",
+          "is_suggestion": true,
+          "suggestion_prompt": "Can you Add a Message Template?",
+          "text": "I think you might want to **open form** for **message_template**. Is that correct? (Suggested: \"Can you Add a Message Template?\")",
+          "score": 0.4262295,
+          "options": [
+            {
+              "label": "Yes, do that",
+              "value": "Can you Add a Message Template?"
+            },
+            {
+              "label": "No, something else",
+              "value": "help"
+            }
+          ]
+        }
+      },
+      "comparison": {
+        "row_id": "jzk7bk9s6ipvnia1jg",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "message_template",
+            "actual": null,
+            "match": false
+          },
+          "expected_action": {
+            "expected": "ASK_CLARIFICATION",
+            "actual": "ASK_CLARIFICATION",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "none",
+            "actual": "none",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "auxgxwp53muat0ejj3",
+        "user_input": "Drop the lead from the database.",
+        "expected_object": "lead",
+        "expected_action": "ASK_CLARIFICATION",
+        "expected_tool": "none",
+        "expected_retrieval_needed": false,
+        "source_file": "expanded_dataset_v1",
+        "phase": "phase306",
+        "context": "Looking at a specific record",
+        "difficulty": "hard",
+        "notes": "Expanded synthetic data for ASK_CLARIFICATION variation"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": "lead",
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "CHAT",
+          "object_type": "lead",
+          "text": "Which specific lead do you want to delete?",
+          "score": 0.5,
+          "reasoning": {
+            "context_reference": {
+              "kind": null,
+              "index": 0,
+              "object_type": "lead"
+            },
+            "resolved_reference": {},
+            "confidence": 0.4,
+            "confidence_band": "medium"
+          },
+          "language_preference": "eng"
+        }
+      },
+      "comparison": {
+        "row_id": "auxgxwp53muat0ejj3",
+        "all_match": true,
+        "comparisons": {
+          "expected_object": {
+            "expected": "lead",
+            "actual": "lead",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "ASK_CLARIFICATION",
+            "actual": "ASK_CLARIFICATION",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "none",
+            "actual": "none",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "5yafcv4y3x6di3sd3i",
+        "user_input": "Remove the opportunity.",
+        "expected_object": "opportunity",
+        "expected_action": "ASK_CLARIFICATION",
+        "expected_tool": "none",
+        "expected_retrieval_needed": false,
+        "source_file": "expanded_dataset_v1",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Expanded synthetic data for ASK_CLARIFICATION variation"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": "opportunity",
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "CHAT",
+          "object_type": "opportunity",
+          "text": "I can help delete a opportunity. First show the record you want, select it, and then confirm the delete action.",
+          "score": 0.95
+        }
+      },
+      "comparison": {
+        "row_id": "5yafcv4y3x6di3sd3i",
+        "all_match": true,
+        "comparisons": {
+          "expected_object": {
+            "expected": "opportunity",
+            "actual": "opportunity",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "ASK_CLARIFICATION",
+            "actual": "ASK_CLARIFICATION",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "none",
+            "actual": "none",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "7yokrn9b1x6hrp2s8s",
+        "user_input": "Can you delete the model we talked about earlier?",
+        "expected_object": "model",
+        "expected_action": "ASK_CLARIFICATION",
+        "expected_tool": "none",
+        "expected_retrieval_needed": false,
+        "source_file": "expanded_dataset_v1",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "hard",
+        "notes": "Expanded synthetic data for ASK_CLARIFICATION variation"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": "model",
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "CHAT",
+          "object_type": "model",
+          "text": "Which specific model are you trying to delete?",
+          "score": 0.67,
+          "reasoning": {
+            "context_reference": {
+              "kind": "last_record",
+              "index": 0,
+              "object_type": "model"
+            },
+            "resolved_reference": {},
+            "confidence": 0.67,
+            "confidence_band": "medium"
+          },
+          "language_preference": "eng"
+        }
+      },
+      "comparison": {
+        "row_id": "7yokrn9b1x6hrp2s8s",
+        "all_match": true,
+        "comparisons": {
+          "expected_object": {
+            "expected": "model",
+            "actual": "model",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "ASK_CLARIFICATION",
+            "actual": "ASK_CLARIFICATION",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "none",
+            "actual": "none",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "cwjbhwc8pza2e8uqvd",
+        "user_input": "Remove the product.",
+        "expected_object": "product",
+        "expected_action": "ASK_CLARIFICATION",
+        "expected_tool": "none",
+        "expected_retrieval_needed": false,
+        "source_file": "expanded_dataset_v1",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Expanded synthetic data for ASK_CLARIFICATION variation"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": "product",
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "CHAT",
+          "object_type": "product",
+          "text": "I can help delete a product. First show the record you want, select it, and then confirm the delete action.",
+          "score": 0.95
+        }
+      },
+      "comparison": {
+        "row_id": "cwjbhwc8pza2e8uqvd",
+        "all_match": true,
+        "comparisons": {
+          "expected_object": {
+            "expected": "product",
+            "actual": "product",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "ASK_CLARIFICATION",
+            "actual": "ASK_CLARIFICATION",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "none",
+            "actual": "none",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "jtwemsnxnkxt43ry6p",
+        "user_input": "Update the info for that model with the new details.",
+        "expected_object": "model",
+        "expected_action": "ASK_CLARIFICATION",
+        "expected_tool": "none",
+        "expected_retrieval_needed": false,
+        "source_file": "expanded_dataset_v1",
+        "phase": "phase306",
+        "context": "Looking at a specific record",
+        "difficulty": "hard",
+        "notes": "Expanded synthetic data for ASK_CLARIFICATION variation"
+      },
+      "actual": {
+        "raw_intent": "OPEN_FORM",
+        "normalized_action": "OPEN_FORM",
+        "object_type": "model",
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "direct_response",
+        "raw_output": {
+          "intent": "OPEN_FORM",
+          "object_type": "model",
+          "form_url": "/models/new-modal",
+          "form_title": "Create Model",
+          "form_kind": "model_create",
+          "text": "I've opened the new model form for you below.",
+          "score": 1.0
+        }
+      },
+      "comparison": {
+        "row_id": "jtwemsnxnkxt43ry6p",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "model",
+            "actual": "model",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "ASK_CLARIFICATION",
+            "actual": "OPEN_FORM",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "none",
+            "actual": "none",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "8klb054b0mnr7tsr4e",
+        "user_input": "Drop the message template from the database.",
+        "expected_object": "message_template",
+        "expected_action": "ASK_CLARIFICATION",
+        "expected_tool": "none",
+        "expected_retrieval_needed": false,
+        "source_file": "expanded_dataset_v1",
+        "phase": "phase306",
+        "context": "Looking at a specific record",
+        "difficulty": "hard",
+        "notes": "Expanded synthetic data for ASK_CLARIFICATION variation"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": null,
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "missing_response",
+        "raw_output": {
+          "intent": "CHAT",
+          "text": "Eval runner could not capture a runtime decision."
+        }
+      },
+      "comparison": {
+        "row_id": "8klb054b0mnr7tsr4e",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "message_template",
+            "actual": null,
+            "match": false
+          },
+          "expected_action": {
+            "expected": "ASK_CLARIFICATION",
+            "actual": "ASK_CLARIFICATION",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "none",
+            "actual": "none",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "yeft83hc62lmidb6ob",
+        "user_input": "remove the message template.",
+        "expected_object": "message_template",
+        "expected_action": "ASK_CLARIFICATION",
+        "expected_tool": "none",
+        "expected_retrieval_needed": false,
+        "source_file": "expanded_dataset_v1",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Expanded synthetic data for ASK_CLARIFICATION variation"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": "message_template",
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "CHAT",
+          "object_type": "message_template",
+          "text": "I can help delete a message_template. First show the record you want, select it, and then confirm the delete action.",
+          "score": 0.95
+        }
+      },
+      "comparison": {
+        "row_id": "yeft83hc62lmidb6ob",
+        "all_match": true,
+        "comparisons": {
+          "expected_object": {
+            "expected": "message_template",
+            "actual": "message_template",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "ASK_CLARIFICATION",
+            "actual": "ASK_CLARIFICATION",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "none",
+            "actual": "none",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "ldj0zr2c3vr94k54m4",
+        "user_input": "Update the model.",
+        "expected_object": "model",
+        "expected_action": "ASK_CLARIFICATION",
+        "expected_tool": "none",
+        "expected_retrieval_needed": false,
+        "source_file": "expanded_dataset_v1",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Expanded synthetic data for ASK_CLARIFICATION variation"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": "model",
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "direct_response",
+        "raw_output": {
+          "intent": "CHAT",
+          "object_type": "model",
+          "text": "I can update that model, but I need the record ID first.",
+          "score": 1.0
+        }
+      },
+      "comparison": {
+        "row_id": "ldj0zr2c3vr94k54m4",
+        "all_match": true,
+        "comparisons": {
+          "expected_object": {
+            "expected": "model",
+            "actual": "model",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "ASK_CLARIFICATION",
+            "actual": "ASK_CLARIFICATION",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "none",
+            "actual": "none",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "tm9jdee6c7ylb5cdj2",
+        "user_input": "Change the status.",
+        "expected_object": "brand",
+        "expected_action": "ASK_CLARIFICATION",
+        "expected_tool": "none",
+        "expected_retrieval_needed": false,
+        "source_file": "expanded_dataset_v1",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Expanded synthetic data for ASK_CLARIFICATION variation"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": null,
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "direct_response",
+        "raw_output": {
+          "intent": "CHAT",
+          "is_suggestion": true,
+          "suggestion_prompt": "What's the status?",
+          "text": "I think you might want to **query** for **lead**. Is that correct? (Suggested: \"What's the status?\")",
+          "score": 0.45833334,
+          "options": [
+            {
+              "label": "Yes, do that",
+              "value": "What's the status?"
+            },
+            {
+              "label": "No, something else",
+              "value": "help"
+            }
+          ]
+        }
+      },
+      "comparison": {
+        "row_id": "tm9jdee6c7ylb5cdj2",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "brand",
+            "actual": null,
+            "match": false
+          },
+          "expected_action": {
+            "expected": "ASK_CLARIFICATION",
+            "actual": "ASK_CLARIFICATION",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "none",
+            "actual": "none",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "ak0dg8z4uoklm66vtk",
+        "user_input": "Can you delete the model we talked about earlier?",
+        "expected_object": "model",
+        "expected_action": "ASK_CLARIFICATION",
+        "expected_tool": "none",
+        "expected_retrieval_needed": false,
+        "source_file": "expanded_dataset_v1",
+        "phase": "phase306",
+        "context": "Following up on a previous task",
+        "difficulty": "hard",
+        "notes": "Expanded synthetic data for ASK_CLARIFICATION variation"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": "model",
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "CHAT",
+          "object_type": "model",
+          "text": "Which specific model do you want me to delete?",
+          "score": 0.73,
+          "reasoning": {
+            "context_reference": {
+              "kind": "last_record",
+              "index": 0,
+              "object_type": "model"
+            },
+            "resolved_reference": {},
+            "confidence": 0.73,
+            "confidence_band": "medium"
+          },
+          "language_preference": "eng"
+        }
+      },
+      "comparison": {
+        "row_id": "ak0dg8z4uoklm66vtk",
+        "all_match": true,
+        "comparisons": {
+          "expected_object": {
+            "expected": "model",
+            "actual": "model",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "ASK_CLARIFICATION",
+            "actual": "ASK_CLARIFICATION",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "none",
+            "actual": "none",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "zpv6uorz1417e74tzg",
+        "user_input": "Can you delete the model we talked about earlier?",
+        "expected_object": "model",
+        "expected_action": "ASK_CLARIFICATION",
+        "expected_tool": "none",
+        "expected_retrieval_needed": false,
+        "source_file": "expanded_dataset_v1",
+        "phase": "phase306",
+        "context": "Looking at a specific record",
+        "difficulty": "hard",
+        "notes": "Expanded synthetic data for ASK_CLARIFICATION variation"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": null,
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "missing_response",
+        "raw_output": {
+          "intent": "CHAT",
+          "text": "Eval runner could not capture a runtime decision."
+        }
+      },
+      "comparison": {
+        "row_id": "zpv6uorz1417e74tzg",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "model",
+            "actual": null,
+            "match": false
+          },
+          "expected_action": {
+            "expected": "ASK_CLARIFICATION",
+            "actual": "ASK_CLARIFICATION",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "none",
+            "actual": "none",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "d83jbwf7w11kvrugqy",
+        "user_input": "can you delete the contact we talked about earlier? please.",
+        "expected_object": "contact",
+        "expected_action": "ASK_CLARIFICATION",
+        "expected_tool": "none",
+        "expected_retrieval_needed": false,
+        "source_file": "expanded_dataset_v1",
+        "phase": "phase306",
+        "context": "Following up on a previous task",
+        "difficulty": "hard",
+        "notes": "Expanded synthetic data for ASK_CLARIFICATION variation"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": null,
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "missing_response",
+        "raw_output": {
+          "intent": "CHAT",
+          "text": "Eval runner could not capture a runtime decision."
+        }
+      },
+      "comparison": {
+        "row_id": "d83jbwf7w11kvrugqy",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "contact",
+            "actual": null,
+            "match": false
+          },
+          "expected_action": {
+            "expected": "ASK_CLARIFICATION",
+            "actual": "ASK_CLARIFICATION",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "none",
+            "actual": "none",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "m6xcvbdekazps5a09s",
+        "user_input": "can you delete the opportunity we talked about earlier?",
+        "expected_object": "opportunity",
+        "expected_action": "ASK_CLARIFICATION",
+        "expected_tool": "none",
+        "expected_retrieval_needed": false,
+        "source_file": "expanded_dataset_v1",
+        "phase": "phase306",
+        "context": "After a search query",
+        "difficulty": "hard",
+        "notes": "Expanded synthetic data for ASK_CLARIFICATION variation"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": "opportunity",
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "CHAT",
+          "object_type": "opportunity",
+          "text": "Which specific opportunity do you want to delete?,",
+          "score": 0.75,
+          "reasoning": {
+            "context_reference": {
+              "kind": "last_record",
+              "index": 0,
+              "object_type": "opportunity"
+            },
+            "resolved_reference": {},
+            "confidence": 0.75,
+            "confidence_band": "medium"
+          },
+          "language_preference": "eng"
+        }
+      },
+      "comparison": {
+        "row_id": "m6xcvbdekazps5a09s",
+        "all_match": true,
+        "comparisons": {
+          "expected_object": {
+            "expected": "opportunity",
+            "actual": "opportunity",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "ASK_CLARIFICATION",
+            "actual": "ASK_CLARIFICATION",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "none",
+            "actual": "none",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "37rkedsemqmkeqnrpm",
+        "user_input": "Update the info for that message template with the new details.",
+        "expected_object": "message_template",
+        "expected_action": "ASK_CLARIFICATION",
+        "expected_tool": "none",
+        "expected_retrieval_needed": false,
+        "source_file": "expanded_dataset_v1",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "hard",
+        "notes": "Expanded synthetic data for ASK_CLARIFICATION variation"
+      },
+      "actual": {
+        "raw_intent": "OPEN_FORM",
+        "normalized_action": "OPEN_FORM",
+        "object_type": "message_template",
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "direct_response",
+        "raw_output": {
+          "intent": "OPEN_FORM",
+          "object_type": "message_template",
+          "form_url": "/message_templates/new-modal",
+          "form_title": "Create Message Template",
+          "form_kind": "message_template_create",
+          "text": "I've opened the new message template form for you below.",
+          "score": 1.0
+        }
+      },
+      "comparison": {
+        "row_id": "37rkedsemqmkeqnrpm",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "message_template",
+            "actual": "message_template",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "ASK_CLARIFICATION",
+            "actual": "OPEN_FORM",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "none",
+            "actual": "none",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "ajkgyqx8wab4tiyuar",
+        "user_input": "Update the product.",
+        "expected_object": "product",
+        "expected_action": "ASK_CLARIFICATION",
+        "expected_tool": "none",
+        "expected_retrieval_needed": false,
+        "source_file": "expanded_dataset_v1",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Expanded synthetic data for ASK_CLARIFICATION variation"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": "product",
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "direct_response",
+        "raw_output": {
+          "intent": "CHAT",
+          "object_type": "product",
+          "text": "I can update that product, but I need the record ID first.",
+          "score": 1.0
+        }
+      },
+      "comparison": {
+        "row_id": "ajkgyqx8wab4tiyuar",
+        "all_match": true,
+        "comparisons": {
+          "expected_object": {
+            "expected": "product",
+            "actual": "product",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "ASK_CLARIFICATION",
+            "actual": "ASK_CLARIFICATION",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "none",
+            "actual": "none",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "rr8jp2le2ql0o7krbj",
+        "user_input": "Where are the assets?",
+        "expected_object": "asset",
+        "expected_action": "ASK_CLARIFICATION",
+        "expected_tool": "none",
+        "expected_retrieval_needed": false,
+        "source_file": "expanded_dataset_v1",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Expanded synthetic data for ASK_CLARIFICATION variation"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": null,
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "missing_response",
+        "raw_output": {
+          "intent": "CHAT",
+          "text": "Eval runner could not capture a runtime decision."
+        }
+      },
+      "comparison": {
+        "row_id": "rr8jp2le2ql0o7krbj",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "asset",
+            "actual": null,
+            "match": false
+          },
+          "expected_action": {
+            "expected": "ASK_CLARIFICATION",
+            "actual": "ASK_CLARIFICATION",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "none",
+            "actual": "none",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "vegxlotv5rpj9yjgf6",
+        "user_input": "Can you delete the model we talked about earlier?",
+        "expected_object": "model",
+        "expected_action": "ASK_CLARIFICATION",
+        "expected_tool": "none",
+        "expected_retrieval_needed": false,
+        "source_file": "expanded_dataset_v1",
+        "phase": "phase306",
+        "context": "Following up on a previous task",
+        "difficulty": "hard",
+        "notes": "Expanded synthetic data for ASK_CLARIFICATION variation"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": null,
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "missing_response",
+        "raw_output": {
+          "intent": "CHAT",
+          "text": "Eval runner could not capture a runtime decision."
+        }
+      },
+      "comparison": {
+        "row_id": "vegxlotv5rpj9yjgf6",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "model",
+            "actual": null,
+            "match": false
+          },
+          "expected_action": {
+            "expected": "ASK_CLARIFICATION",
+            "actual": "ASK_CLARIFICATION",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "none",
+            "actual": "none",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "1k14uizmia2coj8q91",
+        "user_input": "delete this message template.",
+        "expected_object": "message_template",
+        "expected_action": "ASK_CLARIFICATION",
+        "expected_tool": "none",
+        "expected_retrieval_needed": false,
+        "source_file": "expanded_dataset_v1",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Expanded synthetic data for ASK_CLARIFICATION variation"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": "message_template",
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "CHAT",
+          "object_type": "message_template",
+          "text": "I can help delete a message_template. First show the record you want, select it, and then confirm the delete action.",
+          "score": 0.95
+        }
+      },
+      "comparison": {
+        "row_id": "1k14uizmia2coj8q91",
+        "all_match": true,
+        "comparisons": {
+          "expected_object": {
+            "expected": "message_template",
+            "actual": "message_template",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "ASK_CLARIFICATION",
+            "actual": "ASK_CLARIFICATION",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "none",
+            "actual": "none",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "4zjmnx7j7ioicx7hin",
+        "user_input": "Update the info for that opportunity with the new details.",
+        "expected_object": "opportunity",
+        "expected_action": "ASK_CLARIFICATION",
+        "expected_tool": "none",
+        "expected_retrieval_needed": false,
+        "source_file": "expanded_dataset_v1",
+        "phase": "phase306",
+        "context": "Following up on a previous task",
+        "difficulty": "hard",
+        "notes": "Expanded synthetic data for ASK_CLARIFICATION variation"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": "opportunity",
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "CHAT",
+          "object_type": "opportunity",
+          "text": "I need a specific opportunity record first. Open one or select one, then try again.",
+          "score": 1.0,
+          "language_preference": "eng"
+        }
+      },
+      "comparison": {
+        "row_id": "4zjmnx7j7ioicx7hin",
+        "all_match": true,
+        "comparisons": {
+          "expected_object": {
+            "expected": "opportunity",
+            "actual": "opportunity",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "ASK_CLARIFICATION",
+            "actual": "ASK_CLARIFICATION",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "none",
+            "actual": "none",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "7v1kmripdpwec9rqy0",
+        "user_input": "Drop the message template from the database.",
+        "expected_object": "message_template",
+        "expected_action": "ASK_CLARIFICATION",
+        "expected_tool": "none",
+        "expected_retrieval_needed": false,
+        "source_file": "expanded_dataset_v1",
+        "phase": "phase306",
+        "context": "Looking at a specific record",
+        "difficulty": "hard",
+        "notes": "Expanded synthetic data for ASK_CLARIFICATION variation"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": null,
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "missing_response",
+        "raw_output": {
+          "intent": "CHAT",
+          "text": "Eval runner could not capture a runtime decision."
+        }
+      },
+      "comparison": {
+        "row_id": "7v1kmripdpwec9rqy0",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "message_template",
+            "actual": null,
+            "match": false
+          },
+          "expected_action": {
+            "expected": "ASK_CLARIFICATION",
+            "actual": "ASK_CLARIFICATION",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "none",
+            "actual": "none",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "m7mxs0qd1xwq6us7cz",
+        "user_input": "Drop the product from the database.",
+        "expected_object": "product",
+        "expected_action": "ASK_CLARIFICATION",
+        "expected_tool": "none",
+        "expected_retrieval_needed": false,
+        "source_file": "expanded_dataset_v1",
+        "phase": "phase306",
+        "context": "After a search query",
+        "difficulty": "hard",
+        "notes": "Expanded synthetic data for ASK_CLARIFICATION variation"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": "product",
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "CHAT",
+          "object_type": "product",
+          "text": "Are you sure you want to delete all products from the database?",
+          "score": 0.6,
+          "reasoning": {
+            "context_reference": {
+              "kind": null,
+              "index": 0,
+              "object_type": "product"
+            },
+            "resolved_reference": {},
+            "confidence": 0.6,
+            "confidence_band": "medium"
+          },
+          "language_preference": "eng"
+        }
+      },
+      "comparison": {
+        "row_id": "m7mxs0qd1xwq6us7cz",
+        "all_match": true,
+        "comparisons": {
+          "expected_object": {
+            "expected": "product",
+            "actual": "product",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "ASK_CLARIFICATION",
+            "actual": "ASK_CLARIFICATION",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "none",
+            "actual": "none",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "okqoczsjn69mj1hdmx",
+        "user_input": "Drop the product from the database. please.",
+        "expected_object": "product",
+        "expected_action": "ASK_CLARIFICATION",
+        "expected_tool": "none",
+        "expected_retrieval_needed": false,
+        "source_file": "expanded_dataset_v1",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "hard",
+        "notes": "Expanded synthetic data for ASK_CLARIFICATION variation"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": null,
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "missing_response",
+        "raw_output": {
+          "intent": "CHAT",
+          "text": "Eval runner could not capture a runtime decision."
+        }
+      },
+      "comparison": {
+        "row_id": "okqoczsjn69mj1hdmx",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "product",
+            "actual": null,
+            "match": false
+          },
+          "expected_action": {
+            "expected": "ASK_CLARIFICATION",
+            "actual": "ASK_CLARIFICATION",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "none",
+            "actual": "none",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "gscdm4zf9yefwmedd2",
+        "user_input": "Can you delete the product we talked about earlier?",
+        "expected_object": "product",
+        "expected_action": "ASK_CLARIFICATION",
+        "expected_tool": "none",
+        "expected_retrieval_needed": false,
+        "source_file": "expanded_dataset_v1",
+        "phase": "phase306",
+        "context": "Looking at a specific record",
+        "difficulty": "hard",
+        "notes": "Expanded synthetic data for ASK_CLARIFICATION variation"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": "product",
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "CHAT",
+          "object_type": "product",
+          "text": "Which specific product are you referring to?",
+          "score": 0.5,
+          "reasoning": {
+            "context_reference": {
+              "kind": "last_record",
+              "index": 0,
+              "object_type": "product"
+            },
+            "resolved_reference": {},
+            "confidence": 0.42,
+            "confidence_band": "medium"
+          },
+          "language_preference": "eng"
+        }
+      },
+      "comparison": {
+        "row_id": "gscdm4zf9yefwmedd2",
+        "all_match": true,
+        "comparisons": {
+          "expected_object": {
+            "expected": "product",
+            "actual": "product",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "ASK_CLARIFICATION",
+            "actual": "ASK_CLARIFICATION",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "none",
+            "actual": "none",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "2z6a09r55dxnmut88b",
+        "user_input": "Drop the brand from the database.",
+        "expected_object": "brand",
+        "expected_action": "ASK_CLARIFICATION",
+        "expected_tool": "none",
+        "expected_retrieval_needed": false,
+        "source_file": "expanded_dataset_v1",
+        "phase": "phase306",
+        "context": "Following up on a previous task",
+        "difficulty": "hard",
+        "notes": "Expanded synthetic data for ASK_CLARIFICATION variation"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": null,
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "missing_response",
+        "raw_output": {
+          "intent": "CHAT",
+          "text": "Eval runner could not capture a runtime decision."
+        }
+      },
+      "comparison": {
+        "row_id": "2z6a09r55dxnmut88b",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "brand",
+            "actual": null,
+            "match": false
+          },
+          "expected_action": {
+            "expected": "ASK_CLARIFICATION",
+            "actual": "ASK_CLARIFICATION",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "none",
+            "actual": "none",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "rqbhf6hmird637owoc",
+        "user_input": "Where are the leads?",
+        "expected_object": "lead",
+        "expected_action": "ASK_CLARIFICATION",
+        "expected_tool": "none",
+        "expected_retrieval_needed": false,
+        "source_file": "expanded_dataset_v1",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Expanded synthetic data for ASK_CLARIFICATION variation"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": null,
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "missing_response",
+        "raw_output": {
+          "intent": "CHAT",
+          "text": "Eval runner could not capture a runtime decision."
+        }
+      },
+      "comparison": {
+        "row_id": "rqbhf6hmird637owoc",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "lead",
+            "actual": null,
+            "match": false
+          },
+          "expected_action": {
+            "expected": "ASK_CLARIFICATION",
+            "actual": "ASK_CLARIFICATION",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "none",
+            "actual": "none",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "gphr1si6im8qd9zlv9",
+        "user_input": "Can you delete the product we talked about earlier? please.",
+        "expected_object": "product",
+        "expected_action": "ASK_CLARIFICATION",
+        "expected_tool": "none",
+        "expected_retrieval_needed": false,
+        "source_file": "expanded_dataset_v1",
+        "phase": "phase306",
+        "context": "After a search query",
+        "difficulty": "hard",
+        "notes": "Expanded synthetic data for ASK_CLARIFICATION variation"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": "product",
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "CHAT",
+          "object_type": "product",
+          "text": "Which specific product are you referring to from our previous conversation?",
+          "score": 0.5,
+          "reasoning": {
+            "context_reference": {
+              "kind": "previous_conversation_reference",
+              "index": 0,
+              "object_type": "product"
+            },
+            "resolved_reference": {},
+            "confidence": 0.42,
+            "confidence_band": "medium"
+          },
+          "language_preference": "eng"
+        }
+      },
+      "comparison": {
+        "row_id": "gphr1si6im8qd9zlv9",
+        "all_match": true,
+        "comparisons": {
+          "expected_object": {
+            "expected": "product",
+            "actual": "product",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "ASK_CLARIFICATION",
+            "actual": "ASK_CLARIFICATION",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "none",
+            "actual": "none",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "xqe85jqfmpcwzrr3tc",
+        "user_input": "Change the status.",
+        "expected_object": "brand",
+        "expected_action": "ASK_CLARIFICATION",
+        "expected_tool": "none",
+        "expected_retrieval_needed": false,
+        "source_file": "expanded_dataset_v1",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Expanded synthetic data for ASK_CLARIFICATION variation"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": null,
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "direct_response",
+        "raw_output": {
+          "intent": "CHAT",
+          "is_suggestion": true,
+          "suggestion_prompt": "What's the status?",
+          "text": "I think you might want to **query** for **lead**. Is that correct? (Suggested: \"What's the status?\")",
+          "score": 0.45833334,
+          "options": [
+            {
+              "label": "Yes, do that",
+              "value": "What's the status?"
+            },
+            {
+              "label": "No, something else",
+              "value": "help"
+            }
+          ]
+        }
+      },
+      "comparison": {
+        "row_id": "xqe85jqfmpcwzrr3tc",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "brand",
+            "actual": null,
+            "match": false
+          },
+          "expected_action": {
+            "expected": "ASK_CLARIFICATION",
+            "actual": "ASK_CLARIFICATION",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "none",
+            "actual": "none",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "a9655hkgrd64nrxowt",
+        "user_input": "Can you delete the brand we talked about earlier?",
+        "expected_object": "brand",
+        "expected_action": "ASK_CLARIFICATION",
+        "expected_tool": "none",
+        "expected_retrieval_needed": false,
+        "source_file": "expanded_dataset_v1",
+        "phase": "phase306",
+        "context": "After a search query",
+        "difficulty": "hard",
+        "notes": "Expanded synthetic data for ASK_CLARIFICATION variation"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": null,
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "missing_response",
+        "raw_output": {
+          "intent": "CHAT",
+          "text": "Eval runner could not capture a runtime decision."
+        }
+      },
+      "comparison": {
+        "row_id": "a9655hkgrd64nrxowt",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "brand",
+            "actual": null,
+            "match": false
+          },
+          "expected_action": {
+            "expected": "ASK_CLARIFICATION",
+            "actual": "ASK_CLARIFICATION",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "none",
+            "actual": "none",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "jch7smwjqqcxj3y6n4",
+        "user_input": "Change the status.",
+        "expected_object": "asset",
+        "expected_action": "ASK_CLARIFICATION",
+        "expected_tool": "none",
+        "expected_retrieval_needed": false,
+        "source_file": "expanded_dataset_v1",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Expanded synthetic data for ASK_CLARIFICATION variation"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": null,
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "direct_response",
+        "raw_output": {
+          "intent": "CHAT",
+          "is_suggestion": true,
+          "suggestion_prompt": "What's the status?",
+          "text": "I think you might want to **query** for **lead**. Is that correct? (Suggested: \"What's the status?\")",
+          "score": 0.45833334,
+          "options": [
+            {
+              "label": "Yes, do that",
+              "value": "What's the status?"
+            },
+            {
+              "label": "No, something else",
+              "value": "help"
+            }
+          ]
+        }
+      },
+      "comparison": {
+        "row_id": "jch7smwjqqcxj3y6n4",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "asset",
+            "actual": null,
+            "match": false
+          },
+          "expected_action": {
+            "expected": "ASK_CLARIFICATION",
+            "actual": "ASK_CLARIFICATION",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "none",
+            "actual": "none",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "4dxmiof4m0f7lsqzjv",
+        "user_input": "Drop the asset from the database.",
+        "expected_object": "asset",
+        "expected_action": "ASK_CLARIFICATION",
+        "expected_tool": "none",
+        "expected_retrieval_needed": false,
+        "source_file": "expanded_dataset_v1",
+        "phase": "phase306",
+        "context": "Looking at a specific record",
+        "difficulty": "hard",
+        "notes": "Expanded synthetic data for ASK_CLARIFICATION variation"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": null,
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "missing_response",
+        "raw_output": {
+          "intent": "CHAT",
+          "text": "Eval runner could not capture a runtime decision."
+        }
+      },
+      "comparison": {
+        "row_id": "4dxmiof4m0f7lsqzjv",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "asset",
+            "actual": null,
+            "match": false
+          },
+          "expected_action": {
+            "expected": "ASK_CLARIFICATION",
+            "actual": "ASK_CLARIFICATION",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "none",
+            "actual": "none",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "ozgf84r7inralpd9yw",
+        "user_input": "Remove the message template.",
+        "expected_object": "message_template",
+        "expected_action": "ASK_CLARIFICATION",
+        "expected_tool": "none",
+        "expected_retrieval_needed": false,
+        "source_file": "expanded_dataset_v1",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Expanded synthetic data for ASK_CLARIFICATION variation"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": "message_template",
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "CHAT",
+          "object_type": "message_template",
+          "text": "I can help delete a message_template. First show the record you want, select it, and then confirm the delete action.",
+          "score": 0.95
+        }
+      },
+      "comparison": {
+        "row_id": "ozgf84r7inralpd9yw",
+        "all_match": true,
+        "comparisons": {
+          "expected_object": {
+            "expected": "message_template",
+            "actual": "message_template",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "ASK_CLARIFICATION",
+            "actual": "ASK_CLARIFICATION",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "none",
+            "actual": "none",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "xr0jh0pe7f0s8h8tha",
+        "user_input": "Update the info for that product with the new details.",
+        "expected_object": "product",
+        "expected_action": "ASK_CLARIFICATION",
+        "expected_tool": "none",
+        "expected_retrieval_needed": false,
+        "source_file": "expanded_dataset_v1",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "hard",
+        "notes": "Expanded synthetic data for ASK_CLARIFICATION variation"
+      },
+      "actual": {
+        "raw_intent": "OPEN_FORM",
+        "normalized_action": "OPEN_FORM",
+        "object_type": "product",
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "direct_response",
+        "raw_output": {
+          "intent": "OPEN_FORM",
+          "object_type": "product",
+          "form_url": "/products/new-modal",
+          "form_title": "Create Product",
+          "form_kind": "product_create",
+          "text": "I've opened the new product form for you below.",
+          "score": 1.0
+        }
+      },
+      "comparison": {
+        "row_id": "xr0jh0pe7f0s8h8tha",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "product",
+            "actual": "product",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "ASK_CLARIFICATION",
+            "actual": "OPEN_FORM",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "none",
+            "actual": "none",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "kd13pzxvu1fafmpo89",
+        "user_input": "Can you delete the product we talked about earlier? please.",
+        "expected_object": "product",
+        "expected_action": "ASK_CLARIFICATION",
+        "expected_tool": "none",
+        "expected_retrieval_needed": false,
+        "source_file": "expanded_dataset_v1",
+        "phase": "phase306",
+        "context": "After a search query",
+        "difficulty": "hard",
+        "notes": "Expanded synthetic data for ASK_CLARIFICATION variation"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": "product",
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "CHAT",
+          "object_type": "product",
+          "text": "Which product are you referring to from our earlier conversation?",
+          "score": 0.69,
+          "reasoning": {
+            "context_reference": {
+              "kind": "from_context",
+              "index": 0,
+              "object_type": "product"
+            },
+            "resolved_reference": {},
+            "confidence": 0.69,
+            "confidence_band": "medium"
+          },
+          "language_preference": "eng"
+        }
+      },
+      "comparison": {
+        "row_id": "kd13pzxvu1fafmpo89",
+        "all_match": true,
+        "comparisons": {
+          "expected_object": {
+            "expected": "product",
+            "actual": "product",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "ASK_CLARIFICATION",
+            "actual": "ASK_CLARIFICATION",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "none",
+            "actual": "none",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "n24lt98wl1d4c6mbkv",
+        "user_input": "Can you delete the message template we talked about earlier?",
+        "expected_object": "message_template",
+        "expected_action": "ASK_CLARIFICATION",
+        "expected_tool": "none",
+        "expected_retrieval_needed": false,
+        "source_file": "expanded_dataset_v1",
+        "phase": "phase306",
+        "context": "After a search query",
+        "difficulty": "hard",
+        "notes": "Expanded synthetic data for ASK_CLARIFICATION variation"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": null,
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "direct_response",
+        "raw_output": {
+          "intent": "CHAT",
+          "is_suggestion": true,
+          "suggestion_prompt": "Can you Add a Message Template?",
+          "text": "I think you might want to **open form** for **message_template**. Is that correct? (Suggested: \"Can you Add a Message Template?\")",
+          "score": 0.4262295,
+          "options": [
+            {
+              "label": "Yes, do that",
+              "value": "Can you Add a Message Template?"
+            },
+            {
+              "label": "No, something else",
+              "value": "help"
+            }
+          ]
+        }
+      },
+      "comparison": {
+        "row_id": "n24lt98wl1d4c6mbkv",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "message_template",
+            "actual": null,
+            "match": false
+          },
+          "expected_action": {
+            "expected": "ASK_CLARIFICATION",
+            "actual": "ASK_CLARIFICATION",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "none",
+            "actual": "none",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "tx6wylz74uq1uvcnxz",
+        "user_input": "Delete this lead.",
+        "expected_object": "lead",
+        "expected_action": "ASK_CLARIFICATION",
+        "expected_tool": "none",
+        "expected_retrieval_needed": false,
+        "source_file": "expanded_dataset_v1",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Expanded synthetic data for ASK_CLARIFICATION variation"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": "lead",
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "CHAT",
+          "object_type": "lead",
+          "text": "I can help delete a lead. First show the record you want, select it, and then confirm the delete action.",
+          "score": 0.95
+        }
+      },
+      "comparison": {
+        "row_id": "tx6wylz74uq1uvcnxz",
+        "all_match": true,
+        "comparisons": {
+          "expected_object": {
+            "expected": "lead",
+            "actual": "lead",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "ASK_CLARIFICATION",
+            "actual": "ASK_CLARIFICATION",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "none",
+            "actual": "none",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "wmfrwud7cmf94dwxok",
+        "user_input": "update the info for that asset with the new details.",
+        "expected_object": "asset",
+        "expected_action": "ASK_CLARIFICATION",
+        "expected_tool": "none",
+        "expected_retrieval_needed": false,
+        "source_file": "expanded_dataset_v1",
+        "phase": "phase306",
+        "context": "After a search query",
+        "difficulty": "hard",
+        "notes": "Expanded synthetic data for ASK_CLARIFICATION variation"
+      },
+      "actual": {
+        "raw_intent": "OPEN_FORM",
+        "normalized_action": "OPEN_FORM",
+        "object_type": "asset",
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "direct_response",
+        "raw_output": {
+          "intent": "OPEN_FORM",
+          "object_type": "asset",
+          "form_url": "/assets/new-modal",
+          "form_title": "Create Asset",
+          "form_kind": "asset_create",
+          "text": "I've opened the new asset form for you below.",
+          "score": 1.0
+        }
+      },
+      "comparison": {
+        "row_id": "wmfrwud7cmf94dwxok",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "asset",
+            "actual": "asset",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "ASK_CLARIFICATION",
+            "actual": "OPEN_FORM",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "none",
+            "actual": "none",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "1sdqjh64pu6ef38v94",
+        "user_input": "Drop the lead from the database.",
+        "expected_object": "lead",
+        "expected_action": "ASK_CLARIFICATION",
+        "expected_tool": "none",
+        "expected_retrieval_needed": false,
+        "source_file": "expanded_dataset_v1",
+        "phase": "phase306",
+        "context": "Following up on a previous task",
+        "difficulty": "hard",
+        "notes": "Expanded synthetic data for ASK_CLARIFICATION variation"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": "lead",
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "CHAT",
+          "object_type": "lead",
+          "text": "Are you sure you want to delete all leads from the database?",
+          "score": 0.6,
+          "reasoning": {
+            "context_reference": {
+              "kind": null,
+              "index": 0,
+              "object_type": "lead"
+            },
+            "resolved_reference": {},
+            "confidence": 0.6,
+            "confidence_band": "medium"
+          },
+          "language_preference": "eng"
+        }
+      },
+      "comparison": {
+        "row_id": "1sdqjh64pu6ef38v94",
+        "all_match": true,
+        "comparisons": {
+          "expected_object": {
+            "expected": "lead",
+            "actual": "lead",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "ASK_CLARIFICATION",
+            "actual": "ASK_CLARIFICATION",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "none",
+            "actual": "none",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "3687z2rd7yhomwrv6b",
+        "user_input": "drop the message template from the database.",
+        "expected_object": "message_template",
+        "expected_action": "ASK_CLARIFICATION",
+        "expected_tool": "none",
+        "expected_retrieval_needed": false,
+        "source_file": "expanded_dataset_v1",
+        "phase": "phase306",
+        "context": "Following up on a previous task",
+        "difficulty": "hard",
+        "notes": "Expanded synthetic data for ASK_CLARIFICATION variation"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": null,
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "missing_response",
+        "raw_output": {
+          "intent": "CHAT",
+          "text": "Eval runner could not capture a runtime decision."
+        }
+      },
+      "comparison": {
+        "row_id": "3687z2rd7yhomwrv6b",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "message_template",
+            "actual": null,
+            "match": false
+          },
+          "expected_action": {
+            "expected": "ASK_CLARIFICATION",
+            "actual": "ASK_CLARIFICATION",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "none",
+            "actual": "none",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "kbby5fcqynb2x46tcl",
+        "user_input": "Can you delete the product we talked about earlier?",
+        "expected_object": "product",
+        "expected_action": "ASK_CLARIFICATION",
+        "expected_tool": "none",
+        "expected_retrieval_needed": false,
+        "source_file": "expanded_dataset_v1",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "hard",
+        "notes": "Expanded synthetic data for ASK_CLARIFICATION variation"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": null,
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "missing_response",
+        "raw_output": {
+          "intent": "CHAT",
+          "text": "Eval runner could not capture a runtime decision."
+        }
+      },
+      "comparison": {
+        "row_id": "kbby5fcqynb2x46tcl",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "product",
+            "actual": null,
+            "match": false
+          },
+          "expected_action": {
+            "expected": "ASK_CLARIFICATION",
+            "actual": "ASK_CLARIFICATION",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "none",
+            "actual": "none",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "paalcwlwau1plw448l",
+        "user_input": "Where are the opportunitys?",
+        "expected_object": "opportunity",
+        "expected_action": "ASK_CLARIFICATION",
+        "expected_tool": "none",
+        "expected_retrieval_needed": false,
+        "source_file": "expanded_dataset_v1",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Expanded synthetic data for ASK_CLARIFICATION variation"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": null,
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "missing_response",
+        "raw_output": {
+          "intent": "CHAT",
+          "text": "Eval runner could not capture a runtime decision."
+        }
+      },
+      "comparison": {
+        "row_id": "paalcwlwau1plw448l",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "opportunity",
+            "actual": null,
+            "match": false
+          },
+          "expected_action": {
+            "expected": "ASK_CLARIFICATION",
+            "actual": "ASK_CLARIFICATION",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "none",
+            "actual": "none",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "whyybmuor6pwsbp7nj",
+        "user_input": "Remove the contact.",
+        "expected_object": "contact",
+        "expected_action": "ASK_CLARIFICATION",
+        "expected_tool": "none",
+        "expected_retrieval_needed": false,
+        "source_file": "expanded_dataset_v1",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Expanded synthetic data for ASK_CLARIFICATION variation"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": "contact",
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "CHAT",
+          "object_type": "contact",
+          "text": "I can help delete a contact. First show the record you want, select it, and then confirm the delete action.",
+          "score": 0.95
+        }
+      },
+      "comparison": {
+        "row_id": "whyybmuor6pwsbp7nj",
+        "all_match": true,
+        "comparisons": {
+          "expected_object": {
+            "expected": "contact",
+            "actual": "contact",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "ASK_CLARIFICATION",
+            "actual": "ASK_CLARIFICATION",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "none",
+            "actual": "none",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "jhnyx2tr1s7ya44z20",
+        "user_input": "Remove the contact.",
+        "expected_object": "contact",
+        "expected_action": "ASK_CLARIFICATION",
+        "expected_tool": "none",
+        "expected_retrieval_needed": false,
+        "source_file": "expanded_dataset_v1",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Expanded synthetic data for ASK_CLARIFICATION variation"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": "contact",
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "CHAT",
+          "object_type": "contact",
+          "text": "I can help delete a contact. First show the record you want, select it, and then confirm the delete action.",
+          "score": 0.95
+        }
+      },
+      "comparison": {
+        "row_id": "jhnyx2tr1s7ya44z20",
+        "all_match": true,
+        "comparisons": {
+          "expected_object": {
+            "expected": "contact",
+            "actual": "contact",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "ASK_CLARIFICATION",
+            "actual": "ASK_CLARIFICATION",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "none",
+            "actual": "none",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "2a8l2rtl7l5h2j9p9e",
+        "user_input": "Drop the opportunity from the database.",
+        "expected_object": "opportunity",
+        "expected_action": "ASK_CLARIFICATION",
+        "expected_tool": "none",
+        "expected_retrieval_needed": false,
+        "source_file": "expanded_dataset_v1",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "hard",
+        "notes": "Expanded synthetic data for ASK_CLARIFICATION variation"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": null,
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "missing_response",
+        "raw_output": {
+          "intent": "CHAT",
+          "text": "Eval runner could not capture a runtime decision."
+        }
+      },
+      "comparison": {
+        "row_id": "2a8l2rtl7l5h2j9p9e",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "opportunity",
+            "actual": null,
+            "match": false
+          },
+          "expected_action": {
+            "expected": "ASK_CLARIFICATION",
+            "actual": "ASK_CLARIFICATION",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "none",
+            "actual": "none",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "jqasayrpzmzg3lkgr4",
+        "user_input": "Update the info for that lead with the new details.",
+        "expected_object": "lead",
+        "expected_action": "ASK_CLARIFICATION",
+        "expected_tool": "none",
+        "expected_retrieval_needed": false,
+        "source_file": "expanded_dataset_v1",
+        "phase": "phase306",
+        "context": "After a search query",
+        "difficulty": "hard",
+        "notes": "Expanded synthetic data for ASK_CLARIFICATION variation"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": "lead",
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "CHAT",
+          "object_type": "lead",
+          "text": "I need a specific lead record first. Open one or select one, then try again.",
+          "score": 1.0,
+          "language_preference": "eng"
+        }
+      },
+      "comparison": {
+        "row_id": "jqasayrpzmzg3lkgr4",
+        "all_match": true,
+        "comparisons": {
+          "expected_object": {
+            "expected": "lead",
+            "actual": "lead",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "ASK_CLARIFICATION",
+            "actual": "ASK_CLARIFICATION",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "none",
+            "actual": "none",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "0bq491sbcpy75e7lbf",
+        "user_input": "remove the brand.",
+        "expected_object": "brand",
+        "expected_action": "ASK_CLARIFICATION",
+        "expected_tool": "none",
+        "expected_retrieval_needed": false,
+        "source_file": "expanded_dataset_v1",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Expanded synthetic data for ASK_CLARIFICATION variation"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": "brand",
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "CHAT",
+          "object_type": "brand",
+          "text": "I can help delete a brand. First show the record you want, select it, and then confirm the delete action.",
+          "score": 0.95
+        }
+      },
+      "comparison": {
+        "row_id": "0bq491sbcpy75e7lbf",
+        "all_match": true,
+        "comparisons": {
+          "expected_object": {
+            "expected": "brand",
+            "actual": "brand",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "ASK_CLARIFICATION",
+            "actual": "ASK_CLARIFICATION",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "none",
+            "actual": "none",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "e3tbfjue229zxlq39q",
+        "user_input": "where are the opportunitys?",
+        "expected_object": "opportunity",
+        "expected_action": "ASK_CLARIFICATION",
+        "expected_tool": "none",
+        "expected_retrieval_needed": false,
+        "source_file": "expanded_dataset_v1",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Expanded synthetic data for ASK_CLARIFICATION variation"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": null,
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "missing_response",
+        "raw_output": {
+          "intent": "CHAT",
+          "text": "Eval runner could not capture a runtime decision."
+        }
+      },
+      "comparison": {
+        "row_id": "e3tbfjue229zxlq39q",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "opportunity",
+            "actual": null,
+            "match": false
+          },
+          "expected_action": {
+            "expected": "ASK_CLARIFICATION",
+            "actual": "ASK_CLARIFICATION",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "none",
+            "actual": "none",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "ep5cas77d5yi82nu9b",
+        "user_input": "drop the opportunity from the database.",
+        "expected_object": "opportunity",
+        "expected_action": "ASK_CLARIFICATION",
+        "expected_tool": "none",
+        "expected_retrieval_needed": false,
+        "source_file": "expanded_dataset_v1",
+        "phase": "phase306",
+        "context": "After a search query",
+        "difficulty": "hard",
+        "notes": "Expanded synthetic data for ASK_CLARIFICATION variation"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": null,
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "missing_response",
+        "raw_output": {
+          "intent": "CHAT",
+          "text": "Eval runner could not capture a runtime decision."
+        }
+      },
+      "comparison": {
+        "row_id": "ep5cas77d5yi82nu9b",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "opportunity",
+            "actual": null,
+            "match": false
+          },
+          "expected_action": {
+            "expected": "ASK_CLARIFICATION",
+            "actual": "ASK_CLARIFICATION",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "none",
+            "actual": "none",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "gyf34vsjxhbz3rugx7",
+        "user_input": "Drop the opportunity from the database.",
+        "expected_object": "opportunity",
+        "expected_action": "ASK_CLARIFICATION",
+        "expected_tool": "none",
+        "expected_retrieval_needed": false,
+        "source_file": "expanded_dataset_v1",
+        "phase": "phase306",
+        "context": "After a search query",
+        "difficulty": "hard",
+        "notes": "Expanded synthetic data for ASK_CLARIFICATION variation"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": null,
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "missing_response",
+        "raw_output": {
+          "intent": "CHAT",
+          "text": "Eval runner could not capture a runtime decision."
+        }
+      },
+      "comparison": {
+        "row_id": "gyf34vsjxhbz3rugx7",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "opportunity",
+            "actual": null,
+            "match": false
+          },
+          "expected_action": {
+            "expected": "ASK_CLARIFICATION",
+            "actual": "ASK_CLARIFICATION",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "none",
+            "actual": "none",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "d9y7k5oo0v9emnta03",
+        "user_input": "Update the info for that lead with the new details.",
+        "expected_object": "lead",
+        "expected_action": "ASK_CLARIFICATION",
+        "expected_tool": "none",
+        "expected_retrieval_needed": false,
+        "source_file": "expanded_dataset_v1",
+        "phase": "phase306",
+        "context": "Looking at a specific record",
+        "difficulty": "hard",
+        "notes": "Expanded synthetic data for ASK_CLARIFICATION variation"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": "lead",
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "CHAT",
+          "object_type": "lead",
+          "text": "I need a specific lead record first. Open one or select one, then try again.",
+          "score": 1.0,
+          "language_preference": "eng"
+        }
+      },
+      "comparison": {
+        "row_id": "d9y7k5oo0v9emnta03",
+        "all_match": true,
+        "comparisons": {
+          "expected_object": {
+            "expected": "lead",
+            "actual": "lead",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "ASK_CLARIFICATION",
+            "actual": "ASK_CLARIFICATION",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "none",
+            "actual": "none",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "b97dkfifqjergmfno8",
+        "user_input": "Update the product.",
+        "expected_object": "product",
+        "expected_action": "ASK_CLARIFICATION",
+        "expected_tool": "none",
+        "expected_retrieval_needed": false,
+        "source_file": "expanded_dataset_v1",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Expanded synthetic data for ASK_CLARIFICATION variation"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": "product",
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "direct_response",
+        "raw_output": {
+          "intent": "CHAT",
+          "object_type": "product",
+          "text": "I can update that product, but I need the record ID first.",
+          "score": 1.0
+        }
+      },
+      "comparison": {
+        "row_id": "b97dkfifqjergmfno8",
+        "all_match": true,
+        "comparisons": {
+          "expected_object": {
+            "expected": "product",
+            "actual": "product",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "ASK_CLARIFICATION",
+            "actual": "ASK_CLARIFICATION",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "none",
+            "actual": "none",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "ox8me8hce8t00k95k1",
+        "user_input": "where are the brands?",
+        "expected_object": "brand",
+        "expected_action": "ASK_CLARIFICATION",
+        "expected_tool": "none",
+        "expected_retrieval_needed": false,
+        "source_file": "expanded_dataset_v1",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Expanded synthetic data for ASK_CLARIFICATION variation"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": null,
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "missing_response",
+        "raw_output": {
+          "intent": "CHAT",
+          "text": "Eval runner could not capture a runtime decision."
+        }
+      },
+      "comparison": {
+        "row_id": "ox8me8hce8t00k95k1",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "brand",
+            "actual": null,
+            "match": false
+          },
+          "expected_action": {
+            "expected": "ASK_CLARIFICATION",
+            "actual": "ASK_CLARIFICATION",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "none",
+            "actual": "none",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "q51v3cs2ac2gyx0bzg",
+        "user_input": "Drop the message template from the database. please.",
+        "expected_object": "message_template",
+        "expected_action": "ASK_CLARIFICATION",
+        "expected_tool": "none",
+        "expected_retrieval_needed": false,
+        "source_file": "expanded_dataset_v1",
+        "phase": "phase306",
+        "context": "Looking at a specific record",
+        "difficulty": "hard",
+        "notes": "Expanded synthetic data for ASK_CLARIFICATION variation"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": null,
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "missing_response",
+        "raw_output": {
+          "intent": "CHAT",
+          "text": "Eval runner could not capture a runtime decision."
+        }
+      },
+      "comparison": {
+        "row_id": "q51v3cs2ac2gyx0bzg",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "message_template",
+            "actual": null,
+            "match": false
+          },
+          "expected_action": {
+            "expected": "ASK_CLARIFICATION",
+            "actual": "ASK_CLARIFICATION",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "none",
+            "actual": "none",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "rwdy2jc60uoajmrqnp",
+        "user_input": "Where are the models?",
+        "expected_object": "model",
+        "expected_action": "ASK_CLARIFICATION",
+        "expected_tool": "none",
+        "expected_retrieval_needed": false,
+        "source_file": "expanded_dataset_v1",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Expanded synthetic data for ASK_CLARIFICATION variation"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": "model",
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "CHAT",
+          "object_type": "model",
+          "text": "What kind of models are you looking for?",
+          "score": 0.5,
+          "reasoning": {
+            "context_reference": {
+              "kind": null,
+              "index": 0,
+              "object_type": "model"
+            },
+            "resolved_reference": {},
+            "confidence": 0.4,
+            "confidence_band": "medium"
+          },
+          "language_preference": "eng"
+        }
+      },
+      "comparison": {
+        "row_id": "rwdy2jc60uoajmrqnp",
+        "all_match": true,
+        "comparisons": {
+          "expected_object": {
+            "expected": "model",
+            "actual": "model",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "ASK_CLARIFICATION",
+            "actual": "ASK_CLARIFICATION",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "none",
+            "actual": "none",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "twpj2w0gbayimr8ewk",
+        "user_input": "Update the info for that lead with the new details.",
+        "expected_object": "lead",
+        "expected_action": "ASK_CLARIFICATION",
+        "expected_tool": "none",
+        "expected_retrieval_needed": false,
+        "source_file": "expanded_dataset_v1",
+        "phase": "phase306",
+        "context": "Looking at a specific record",
+        "difficulty": "hard",
+        "notes": "Expanded synthetic data for ASK_CLARIFICATION variation"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": "lead",
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "CHAT",
+          "object_type": "lead",
+          "text": "I need a specific lead record first. Open one or select one, then try again.",
+          "score": 1.0,
+          "language_preference": "eng"
+        }
+      },
+      "comparison": {
+        "row_id": "twpj2w0gbayimr8ewk",
+        "all_match": true,
+        "comparisons": {
+          "expected_object": {
+            "expected": "lead",
+            "actual": "lead",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "ASK_CLARIFICATION",
+            "actual": "ASK_CLARIFICATION",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "none",
+            "actual": "none",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "re6p1axlvtpshyuglx",
+        "user_input": "Drop the message template from the database.",
+        "expected_object": "message_template",
+        "expected_action": "ASK_CLARIFICATION",
+        "expected_tool": "none",
+        "expected_retrieval_needed": false,
+        "source_file": "expanded_dataset_v1",
+        "phase": "phase306",
+        "context": "Following up on a previous task",
+        "difficulty": "hard",
+        "notes": "Expanded synthetic data for ASK_CLARIFICATION variation"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": null,
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "missing_response",
+        "raw_output": {
+          "intent": "CHAT",
+          "text": "Eval runner could not capture a runtime decision."
+        }
+      },
+      "comparison": {
+        "row_id": "re6p1axlvtpshyuglx",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "message_template",
+            "actual": null,
+            "match": false
+          },
+          "expected_action": {
+            "expected": "ASK_CLARIFICATION",
+            "actual": "ASK_CLARIFICATION",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "none",
+            "actual": "none",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "mhwoh4df7rzqdv56nz",
+        "user_input": "Can you delete the brand we talked about earlier?",
+        "expected_object": "brand",
+        "expected_action": "ASK_CLARIFICATION",
+        "expected_tool": "none",
+        "expected_retrieval_needed": false,
+        "source_file": "expanded_dataset_v1",
+        "phase": "phase306",
+        "context": "Looking at a specific record",
+        "difficulty": "hard",
+        "notes": "Expanded synthetic data for ASK_CLARIFICATION variation"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": null,
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "missing_response",
+        "raw_output": {
+          "intent": "CHAT",
+          "text": "Eval runner could not capture a runtime decision."
+        }
+      },
+      "comparison": {
+        "row_id": "mhwoh4df7rzqdv56nz",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "brand",
+            "actual": null,
+            "match": false
+          },
+          "expected_action": {
+            "expected": "ASK_CLARIFICATION",
+            "actual": "ASK_CLARIFICATION",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "none",
+            "actual": "none",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "h1tl8iwlr4khr8f0ft",
+        "user_input": "Delete this model.",
+        "expected_object": "model",
+        "expected_action": "ASK_CLARIFICATION",
+        "expected_tool": "none",
+        "expected_retrieval_needed": false,
+        "source_file": "expanded_dataset_v1",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Expanded synthetic data for ASK_CLARIFICATION variation"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": "model",
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "CHAT",
+          "object_type": "model",
+          "text": "I can help delete a model. First show the record you want, select it, and then confirm the delete action.",
+          "score": 0.95
+        }
+      },
+      "comparison": {
+        "row_id": "h1tl8iwlr4khr8f0ft",
+        "all_match": true,
+        "comparisons": {
+          "expected_object": {
+            "expected": "model",
+            "actual": "model",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "ASK_CLARIFICATION",
+            "actual": "ASK_CLARIFICATION",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "none",
+            "actual": "none",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "gs1b5wvyr79da1b1p3",
+        "user_input": "Drop the asset from the database.",
+        "expected_object": "asset",
+        "expected_action": "ASK_CLARIFICATION",
+        "expected_tool": "none",
+        "expected_retrieval_needed": false,
+        "source_file": "expanded_dataset_v1",
+        "phase": "phase306",
+        "context": "Following up on a previous task",
+        "difficulty": "hard",
+        "notes": "Expanded synthetic data for ASK_CLARIFICATION variation"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": null,
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "missing_response",
+        "raw_output": {
+          "intent": "CHAT",
+          "text": "Eval runner could not capture a runtime decision."
+        }
+      },
+      "comparison": {
+        "row_id": "gs1b5wvyr79da1b1p3",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "asset",
+            "actual": null,
+            "match": false
+          },
+          "expected_action": {
+            "expected": "ASK_CLARIFICATION",
+            "actual": "ASK_CLARIFICATION",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "none",
+            "actual": "none",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "dhphabafxp1ij7wbhz",
+        "user_input": "Update the info for that contact with the new details.",
+        "expected_object": "contact",
+        "expected_action": "ASK_CLARIFICATION",
+        "expected_tool": "none",
+        "expected_retrieval_needed": false,
+        "source_file": "expanded_dataset_v1",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "hard",
+        "notes": "Expanded synthetic data for ASK_CLARIFICATION variation"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": "contact",
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "CHAT",
+          "object_type": "contact",
+          "text": "I need a specific contact record first. Open one or select one, then try again.",
+          "score": 1.0,
+          "language_preference": "eng"
+        }
+      },
+      "comparison": {
+        "row_id": "dhphabafxp1ij7wbhz",
+        "all_match": true,
+        "comparisons": {
+          "expected_object": {
+            "expected": "contact",
+            "actual": "contact",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "ASK_CLARIFICATION",
+            "actual": "ASK_CLARIFICATION",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "none",
+            "actual": "none",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "7y7m5we6zduuwdvnej",
+        "user_input": "Update the info for that opportunity with the new details.",
+        "expected_object": "opportunity",
+        "expected_action": "ASK_CLARIFICATION",
+        "expected_tool": "none",
+        "expected_retrieval_needed": false,
+        "source_file": "expanded_dataset_v1",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "hard",
+        "notes": "Expanded synthetic data for ASK_CLARIFICATION variation"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": "opportunity",
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "CHAT",
+          "object_type": "opportunity",
+          "text": "I need a specific opportunity record first. Open one or select one, then try again.",
+          "score": 1.0,
+          "language_preference": "eng"
+        }
+      },
+      "comparison": {
+        "row_id": "7y7m5we6zduuwdvnej",
+        "all_match": true,
+        "comparisons": {
+          "expected_object": {
+            "expected": "opportunity",
+            "actual": "opportunity",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "ASK_CLARIFICATION",
+            "actual": "ASK_CLARIFICATION",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "none",
+            "actual": "none",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "p3fwdeyiuq9hpha4ec",
+        "user_input": "Drop the brand from the database.",
+        "expected_object": "brand",
+        "expected_action": "ASK_CLARIFICATION",
+        "expected_tool": "none",
+        "expected_retrieval_needed": false,
+        "source_file": "expanded_dataset_v1",
+        "phase": "phase306",
+        "context": "Following up on a previous task",
+        "difficulty": "hard",
+        "notes": "Expanded synthetic data for ASK_CLARIFICATION variation"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": null,
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "missing_response",
+        "raw_output": {
+          "intent": "CHAT",
+          "text": "Eval runner could not capture a runtime decision."
+        }
+      },
+      "comparison": {
+        "row_id": "p3fwdeyiuq9hpha4ec",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "brand",
+            "actual": null,
+            "match": false
+          },
+          "expected_action": {
+            "expected": "ASK_CLARIFICATION",
+            "actual": "ASK_CLARIFICATION",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "none",
+            "actual": "none",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "el6oc5kzolzpozy3b0",
+        "user_input": "Remove the asset.",
+        "expected_object": "asset",
+        "expected_action": "ASK_CLARIFICATION",
+        "expected_tool": "none",
+        "expected_retrieval_needed": false,
+        "source_file": "expanded_dataset_v1",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Expanded synthetic data for ASK_CLARIFICATION variation"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": "asset",
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "CHAT",
+          "object_type": "asset",
+          "text": "I can help delete a asset. First show the record you want, select it, and then confirm the delete action.",
+          "score": 0.95
+        }
+      },
+      "comparison": {
+        "row_id": "el6oc5kzolzpozy3b0",
+        "all_match": true,
+        "comparisons": {
+          "expected_object": {
+            "expected": "asset",
+            "actual": "asset",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "ASK_CLARIFICATION",
+            "actual": "ASK_CLARIFICATION",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "none",
+            "actual": "none",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "u9el6hifnl880jn99b",
+        "user_input": "delete this lead.",
+        "expected_object": "lead",
+        "expected_action": "ASK_CLARIFICATION",
+        "expected_tool": "none",
+        "expected_retrieval_needed": false,
+        "source_file": "expanded_dataset_v1",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Expanded synthetic data for ASK_CLARIFICATION variation"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": "lead",
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "CHAT",
+          "object_type": "lead",
+          "text": "I can help delete a lead. First show the record you want, select it, and then confirm the delete action.",
+          "score": 0.95
+        }
+      },
+      "comparison": {
+        "row_id": "u9el6hifnl880jn99b",
+        "all_match": true,
+        "comparisons": {
+          "expected_object": {
+            "expected": "lead",
+            "actual": "lead",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "ASK_CLARIFICATION",
+            "actual": "ASK_CLARIFICATION",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "none",
+            "actual": "none",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "wubrlmnb42tlerf1m7",
+        "user_input": "Can you delete the contact we talked about earlier?",
+        "expected_object": "contact",
+        "expected_action": "ASK_CLARIFICATION",
+        "expected_tool": "none",
+        "expected_retrieval_needed": false,
+        "source_file": "expanded_dataset_v1",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "hard",
+        "notes": "Expanded synthetic data for ASK_CLARIFICATION variation"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": null,
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "missing_response",
+        "raw_output": {
+          "intent": "CHAT",
+          "text": "Eval runner could not capture a runtime decision."
+        }
+      },
+      "comparison": {
+        "row_id": "wubrlmnb42tlerf1m7",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "contact",
+            "actual": null,
+            "match": false
+          },
+          "expected_action": {
+            "expected": "ASK_CLARIFICATION",
+            "actual": "ASK_CLARIFICATION",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "none",
+            "actual": "none",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "yyaekkw6yi4x9ixiuo",
+        "user_input": "Change the status. please.",
+        "expected_object": "opportunity",
+        "expected_action": "ASK_CLARIFICATION",
+        "expected_tool": "none",
+        "expected_retrieval_needed": false,
+        "source_file": "expanded_dataset_v1",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Expanded synthetic data for ASK_CLARIFICATION variation"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "REFUSE",
+        "object_type": null,
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "direct_response",
+        "raw_output": {
+          "intent": "CHAT",
+          "text": "I can only help with D5 CRM work. Ask me about leads, contacts, opportunities, products, assets, brands, models, templates, messages, or other D5 tasks.",
+          "score": 1.0
+        }
+      },
+      "comparison": {
+        "row_id": "yyaekkw6yi4x9ixiuo",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "opportunity",
+            "actual": null,
+            "match": false
+          },
+          "expected_action": {
+            "expected": "ASK_CLARIFICATION",
+            "actual": "REFUSE",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "none",
+            "actual": "none",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "ljb7rq1dl2lhatlnvz",
+        "user_input": "Drop the contact from the database.",
+        "expected_object": "contact",
+        "expected_action": "ASK_CLARIFICATION",
+        "expected_tool": "none",
+        "expected_retrieval_needed": false,
+        "source_file": "expanded_dataset_v1",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "hard",
+        "notes": "Expanded synthetic data for ASK_CLARIFICATION variation"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": null,
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "missing_response",
+        "raw_output": {
+          "intent": "CHAT",
+          "text": "Eval runner could not capture a runtime decision."
+        }
+      },
+      "comparison": {
+        "row_id": "ljb7rq1dl2lhatlnvz",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "contact",
+            "actual": null,
+            "match": false
+          },
+          "expected_action": {
+            "expected": "ASK_CLARIFICATION",
+            "actual": "ASK_CLARIFICATION",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "none",
+            "actual": "none",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "doh9x7jbh0ke7einmd",
+        "user_input": "Update the info for that opportunity with the new details.",
+        "expected_object": "opportunity",
+        "expected_action": "ASK_CLARIFICATION",
+        "expected_tool": "none",
+        "expected_retrieval_needed": false,
+        "source_file": "expanded_dataset_v1",
+        "phase": "phase306",
+        "context": "Looking at a specific record",
+        "difficulty": "hard",
+        "notes": "Expanded synthetic data for ASK_CLARIFICATION variation"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": "opportunity",
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "CHAT",
+          "object_type": "opportunity",
+          "text": "I need a specific opportunity record first. Open one or select one, then try again.",
+          "score": 1.0,
+          "language_preference": "eng"
+        }
+      },
+      "comparison": {
+        "row_id": "doh9x7jbh0ke7einmd",
+        "all_match": true,
+        "comparisons": {
+          "expected_object": {
+            "expected": "opportunity",
+            "actual": "opportunity",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "ASK_CLARIFICATION",
+            "actual": "ASK_CLARIFICATION",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "none",
+            "actual": "none",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "dt7kx0ghi802bjrbom",
+        "user_input": "Drop the contact from the database.",
+        "expected_object": "contact",
+        "expected_action": "ASK_CLARIFICATION",
+        "expected_tool": "none",
+        "expected_retrieval_needed": false,
+        "source_file": "expanded_dataset_v1",
+        "phase": "phase306",
+        "context": "After a search query",
+        "difficulty": "hard",
+        "notes": "Expanded synthetic data for ASK_CLARIFICATION variation"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": null,
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "missing_response",
+        "raw_output": {
+          "intent": "CHAT",
+          "text": "Eval runner could not capture a runtime decision."
+        }
+      },
+      "comparison": {
+        "row_id": "dt7kx0ghi802bjrbom",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "contact",
+            "actual": null,
+            "match": false
+          },
+          "expected_action": {
+            "expected": "ASK_CLARIFICATION",
+            "actual": "ASK_CLARIFICATION",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "none",
+            "actual": "none",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "mdh18ira9016vjl32g",
+        "user_input": "Can you delete the contact we talked about earlier?",
+        "expected_object": "contact",
+        "expected_action": "ASK_CLARIFICATION",
+        "expected_tool": "none",
+        "expected_retrieval_needed": false,
+        "source_file": "expanded_dataset_v1",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "hard",
+        "notes": "Expanded synthetic data for ASK_CLARIFICATION variation"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": null,
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "missing_response",
+        "raw_output": {
+          "intent": "CHAT",
+          "text": "Eval runner could not capture a runtime decision."
+        }
+      },
+      "comparison": {
+        "row_id": "mdh18ira9016vjl32g",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "contact",
+            "actual": null,
+            "match": false
+          },
+          "expected_action": {
+            "expected": "ASK_CLARIFICATION",
+            "actual": "ASK_CLARIFICATION",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "none",
+            "actual": "none",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "sji3ftd21djv9r90xf",
+        "user_input": "Update the info for that product with the new details.",
+        "expected_object": "product",
+        "expected_action": "ASK_CLARIFICATION",
+        "expected_tool": "none",
+        "expected_retrieval_needed": false,
+        "source_file": "expanded_dataset_v1",
+        "phase": "phase306",
+        "context": "Following up on a previous task",
+        "difficulty": "hard",
+        "notes": "Expanded synthetic data for ASK_CLARIFICATION variation"
+      },
+      "actual": {
+        "raw_intent": "OPEN_FORM",
+        "normalized_action": "OPEN_FORM",
+        "object_type": "product",
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "direct_response",
+        "raw_output": {
+          "intent": "OPEN_FORM",
+          "object_type": "product",
+          "form_url": "/products/new-modal",
+          "form_title": "Create Product",
+          "form_kind": "product_create",
+          "text": "I've opened the new product form for you below.",
+          "score": 1.0
+        }
+      },
+      "comparison": {
+        "row_id": "sji3ftd21djv9r90xf",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "product",
+            "actual": "product",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "ASK_CLARIFICATION",
+            "actual": "OPEN_FORM",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "none",
+            "actual": "none",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "zbrb28x8eazrk6a39u",
+        "user_input": "Update the brand.",
+        "expected_object": "brand",
+        "expected_action": "ASK_CLARIFICATION",
+        "expected_tool": "none",
+        "expected_retrieval_needed": false,
+        "source_file": "expanded_dataset_v1",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Expanded synthetic data for ASK_CLARIFICATION variation"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": "brand",
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "direct_response",
+        "raw_output": {
+          "intent": "CHAT",
+          "object_type": "brand",
+          "text": "I can update that brand, but I need the record ID first.",
+          "score": 1.0
+        }
+      },
+      "comparison": {
+        "row_id": "zbrb28x8eazrk6a39u",
+        "all_match": true,
+        "comparisons": {
+          "expected_object": {
+            "expected": "brand",
+            "actual": "brand",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "ASK_CLARIFICATION",
+            "actual": "ASK_CLARIFICATION",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "none",
+            "actual": "none",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "dls6f6s855xn88g2kp",
+        "user_input": "Change the status.",
+        "expected_object": "message_template",
+        "expected_action": "ASK_CLARIFICATION",
+        "expected_tool": "none",
+        "expected_retrieval_needed": false,
+        "source_file": "expanded_dataset_v1",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Expanded synthetic data for ASK_CLARIFICATION variation"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": null,
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "direct_response",
+        "raw_output": {
+          "intent": "CHAT",
+          "is_suggestion": true,
+          "suggestion_prompt": "What's the status?",
+          "text": "I think you might want to **query** for **lead**. Is that correct? (Suggested: \"What's the status?\")",
+          "score": 0.45833334,
+          "options": [
+            {
+              "label": "Yes, do that",
+              "value": "What's the status?"
+            },
+            {
+              "label": "No, something else",
+              "value": "help"
+            }
+          ]
+        }
+      },
+      "comparison": {
+        "row_id": "dls6f6s855xn88g2kp",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "message_template",
+            "actual": null,
+            "match": false
+          },
+          "expected_action": {
+            "expected": "ASK_CLARIFICATION",
+            "actual": "ASK_CLARIFICATION",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "none",
+            "actual": "none",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "awykd2k9bz277lhb2n",
+        "user_input": "Drop the asset from the database.",
+        "expected_object": "asset",
+        "expected_action": "ASK_CLARIFICATION",
+        "expected_tool": "none",
+        "expected_retrieval_needed": false,
+        "source_file": "expanded_dataset_v1",
+        "phase": "phase306",
+        "context": "Following up on a previous task",
+        "difficulty": "hard",
+        "notes": "Expanded synthetic data for ASK_CLARIFICATION variation"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": "asset",
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "CHAT",
+          "object_type": "asset",
+          "text": "Are you sure you want to delete all assets from the database?",
+          "score": 0.6,
+          "reasoning": {
+            "context_reference": {
+              "kind": null,
+              "index": 0,
+              "object_type": "asset"
+            },
+            "resolved_reference": {},
+            "confidence": 0.6,
+            "confidence_band": "medium"
+          },
+          "language_preference": "eng"
+        }
+      },
+      "comparison": {
+        "row_id": "awykd2k9bz277lhb2n",
+        "all_match": true,
+        "comparisons": {
+          "expected_object": {
+            "expected": "asset",
+            "actual": "asset",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "ASK_CLARIFICATION",
+            "actual": "ASK_CLARIFICATION",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "none",
+            "actual": "none",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "sy2tzlybtgiknzbnrm",
+        "user_input": "update the info for that message template with the new details.",
+        "expected_object": "message_template",
+        "expected_action": "ASK_CLARIFICATION",
+        "expected_tool": "none",
+        "expected_retrieval_needed": false,
+        "source_file": "expanded_dataset_v1",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "hard",
+        "notes": "Expanded synthetic data for ASK_CLARIFICATION variation"
+      },
+      "actual": {
+        "raw_intent": "OPEN_FORM",
+        "normalized_action": "OPEN_FORM",
+        "object_type": "message_template",
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "direct_response",
+        "raw_output": {
+          "intent": "OPEN_FORM",
+          "object_type": "message_template",
+          "form_url": "/message_templates/new-modal",
+          "form_title": "Create Message Template",
+          "form_kind": "message_template_create",
+          "text": "I've opened the new message template form for you below.",
+          "score": 1.0
+        }
+      },
+      "comparison": {
+        "row_id": "sy2tzlybtgiknzbnrm",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "message_template",
+            "actual": "message_template",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "ASK_CLARIFICATION",
+            "actual": "OPEN_FORM",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "none",
+            "actual": "none",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "mp8im8yal9gc5sn0vr",
+        "user_input": "Update the info for that asset with the new details.",
+        "expected_object": "asset",
+        "expected_action": "ASK_CLARIFICATION",
+        "expected_tool": "none",
+        "expected_retrieval_needed": false,
+        "source_file": "expanded_dataset_v1",
+        "phase": "phase306",
+        "context": "Looking at a specific record",
+        "difficulty": "hard",
+        "notes": "Expanded synthetic data for ASK_CLARIFICATION variation"
+      },
+      "actual": {
+        "raw_intent": "OPEN_FORM",
+        "normalized_action": "OPEN_FORM",
+        "object_type": "asset",
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "direct_response",
+        "raw_output": {
+          "intent": "OPEN_FORM",
+          "object_type": "asset",
+          "form_url": "/assets/new-modal",
+          "form_title": "Create Asset",
+          "form_kind": "asset_create",
+          "text": "I've opened the new asset form for you below.",
+          "score": 1.0
+        }
+      },
+      "comparison": {
+        "row_id": "mp8im8yal9gc5sn0vr",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "asset",
+            "actual": "asset",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "ASK_CLARIFICATION",
+            "actual": "OPEN_FORM",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "none",
+            "actual": "none",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "5aptrrmtyo0tdyf264",
+        "user_input": "Remove the product.",
+        "expected_object": "product",
+        "expected_action": "ASK_CLARIFICATION",
+        "expected_tool": "none",
+        "expected_retrieval_needed": false,
+        "source_file": "expanded_dataset_v1",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Expanded synthetic data for ASK_CLARIFICATION variation"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": "product",
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "CHAT",
+          "object_type": "product",
+          "text": "I can help delete a product. First show the record you want, select it, and then confirm the delete action.",
+          "score": 0.95
+        }
+      },
+      "comparison": {
+        "row_id": "5aptrrmtyo0tdyf264",
+        "all_match": true,
+        "comparisons": {
+          "expected_object": {
+            "expected": "product",
+            "actual": "product",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "ASK_CLARIFICATION",
+            "actual": "ASK_CLARIFICATION",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "none",
+            "actual": "none",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "gfh9g25go0t1bes61h",
+        "user_input": "Remove the product.",
+        "expected_object": "product",
+        "expected_action": "ASK_CLARIFICATION",
+        "expected_tool": "none",
+        "expected_retrieval_needed": false,
+        "source_file": "expanded_dataset_v1",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Expanded synthetic data for ASK_CLARIFICATION variation"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": "product",
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "CHAT",
+          "object_type": "product",
+          "text": "I can help delete a product. First show the record you want, select it, and then confirm the delete action.",
+          "score": 0.95
+        }
+      },
+      "comparison": {
+        "row_id": "gfh9g25go0t1bes61h",
+        "all_match": true,
+        "comparisons": {
+          "expected_object": {
+            "expected": "product",
+            "actual": "product",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "ASK_CLARIFICATION",
+            "actual": "ASK_CLARIFICATION",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "none",
+            "actual": "none",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "1qy02251vl99ook4um",
+        "user_input": "update the info for that brand with the new details.",
+        "expected_object": "brand",
+        "expected_action": "ASK_CLARIFICATION",
+        "expected_tool": "none",
+        "expected_retrieval_needed": false,
+        "source_file": "expanded_dataset_v1",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "hard",
+        "notes": "Expanded synthetic data for ASK_CLARIFICATION variation"
+      },
+      "actual": {
+        "raw_intent": "OPEN_FORM",
+        "normalized_action": "OPEN_FORM",
+        "object_type": "brand",
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "direct_response",
+        "raw_output": {
+          "intent": "OPEN_FORM",
+          "object_type": "brand",
+          "form_url": "/vehicle_specifications/new-modal?type=Brand",
+          "form_title": "Create Brand",
+          "form_kind": "brand_create",
+          "text": "I've opened the new brand form for you below.",
+          "score": 1.0
+        }
+      },
+      "comparison": {
+        "row_id": "1qy02251vl99ook4um",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "brand",
+            "actual": "brand",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "ASK_CLARIFICATION",
+            "actual": "OPEN_FORM",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "none",
+            "actual": "none",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "hi830sigg36kr2ie20",
+        "user_input": "Update the info for that opportunity with the new details.",
+        "expected_object": "opportunity",
+        "expected_action": "ASK_CLARIFICATION",
+        "expected_tool": "none",
+        "expected_retrieval_needed": false,
+        "source_file": "expanded_dataset_v1",
+        "phase": "phase306",
+        "context": "Following up on a previous task",
+        "difficulty": "hard",
+        "notes": "Expanded synthetic data for ASK_CLARIFICATION variation"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": "opportunity",
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "CHAT",
+          "object_type": "opportunity",
+          "text": "I need a specific opportunity record first. Open one or select one, then try again.",
+          "score": 1.0,
+          "language_preference": "eng"
+        }
+      },
+      "comparison": {
+        "row_id": "hi830sigg36kr2ie20",
+        "all_match": true,
+        "comparisons": {
+          "expected_object": {
+            "expected": "opportunity",
+            "actual": "opportunity",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "ASK_CLARIFICATION",
+            "actual": "ASK_CLARIFICATION",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "none",
+            "actual": "none",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "qqudcoldjv9a2vid82",
+        "user_input": "Update the info for that message template with the new details.",
+        "expected_object": "message_template",
+        "expected_action": "ASK_CLARIFICATION",
+        "expected_tool": "none",
+        "expected_retrieval_needed": false,
+        "source_file": "expanded_dataset_v1",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "hard",
+        "notes": "Expanded synthetic data for ASK_CLARIFICATION variation"
+      },
+      "actual": {
+        "raw_intent": "OPEN_FORM",
+        "normalized_action": "OPEN_FORM",
+        "object_type": "message_template",
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "direct_response",
+        "raw_output": {
+          "intent": "OPEN_FORM",
+          "object_type": "message_template",
+          "form_url": "/message_templates/new-modal",
+          "form_title": "Create Message Template",
+          "form_kind": "message_template_create",
+          "text": "I've opened the new message template form for you below.",
+          "score": 1.0
+        }
+      },
+      "comparison": {
+        "row_id": "qqudcoldjv9a2vid82",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "message_template",
+            "actual": "message_template",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "ASK_CLARIFICATION",
+            "actual": "OPEN_FORM",
+            "match": false
+          },
+          "expected_tool": {
+            "expected": "none",
+            "actual": "none",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "5un1qhsa5j9vqcxodu",
+        "user_input": "delete this model. please.",
+        "expected_object": "model",
+        "expected_action": "ASK_CLARIFICATION",
+        "expected_tool": "none",
+        "expected_retrieval_needed": false,
+        "source_file": "expanded_dataset_v1",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Expanded synthetic data for ASK_CLARIFICATION variation"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": "model",
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "CHAT",
+          "object_type": "model",
+          "text": "I can help delete a model. First show the record you want, select it, and then confirm the delete action.",
+          "score": 0.95
+        }
+      },
+      "comparison": {
+        "row_id": "5un1qhsa5j9vqcxodu",
+        "all_match": true,
+        "comparisons": {
+          "expected_object": {
+            "expected": "model",
+            "actual": "model",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "ASK_CLARIFICATION",
+            "actual": "ASK_CLARIFICATION",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "none",
+            "actual": "none",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "otam61ksgky3p5u76d",
+        "user_input": "Change the status.",
+        "expected_object": "lead",
+        "expected_action": "ASK_CLARIFICATION",
+        "expected_tool": "none",
+        "expected_retrieval_needed": false,
+        "source_file": "expanded_dataset_v1",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Expanded synthetic data for ASK_CLARIFICATION variation"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": null,
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "direct_response",
+        "raw_output": {
+          "intent": "CHAT",
+          "is_suggestion": true,
+          "suggestion_prompt": "What's the status?",
+          "text": "I think you might want to **query** for **lead**. Is that correct? (Suggested: \"What's the status?\")",
+          "score": 0.45833334,
+          "options": [
+            {
+              "label": "Yes, do that",
+              "value": "What's the status?"
+            },
+            {
+              "label": "No, something else",
+              "value": "help"
+            }
+          ]
+        }
+      },
+      "comparison": {
+        "row_id": "otam61ksgky3p5u76d",
+        "all_match": false,
+        "comparisons": {
+          "expected_object": {
+            "expected": "lead",
+            "actual": null,
+            "match": false
+          },
+          "expected_action": {
+            "expected": "ASK_CLARIFICATION",
+            "actual": "ASK_CLARIFICATION",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "none",
+            "actual": "none",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    {
+      "dataset_row": {
+        "id": "z1h4mx01125rt9gt8b",
+        "user_input": "Remove the contact.",
+        "expected_object": "contact",
+        "expected_action": "ASK_CLARIFICATION",
+        "expected_tool": "none",
+        "expected_retrieval_needed": false,
+        "source_file": "expanded_dataset_v1",
+        "phase": "phase306",
+        "context": "",
+        "difficulty": "medium",
+        "notes": "Expanded synthetic data for ASK_CLARIFICATION variation"
+      },
+      "actual": {
+        "raw_intent": "CHAT",
+        "normalized_action": "ASK_CLARIFICATION",
+        "object_type": "contact",
+        "tool": "none",
+        "retrieval_needed": false,
+        "source": "execute_intent_input",
+        "raw_output": {
+          "intent": "CHAT",
+          "object_type": "contact",
+          "text": "I can help delete a contact. First show the record you want, select it, and then confirm the delete action.",
+          "score": 0.95
+        }
+      },
+      "comparison": {
+        "row_id": "z1h4mx01125rt9gt8b",
+        "all_match": true,
+        "comparisons": {
+          "expected_object": {
+            "expected": "contact",
+            "actual": "contact",
+            "match": true
+          },
+          "expected_action": {
+            "expected": "ASK_CLARIFICATION",
+            "actual": "ASK_CLARIFICATION",
+            "match": true
+          },
+          "expected_tool": {
+            "expected": "none",
+            "actual": "none",
+            "match": true
+          },
+          "expected_retrieval_needed": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    }
+  ]
+}

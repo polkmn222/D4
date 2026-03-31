@@ -13,6 +13,42 @@ Its purpose is narrow:
 
 This layer is accuracy-first and conservative. It is not a general planner and it does not replace deterministic CRUD/query routing.
 
+## Runtime Intent Vs Eval Label
+
+The current runtime contract and the local eval contract are related, but they are not the same layer.
+
+Runtime reasoning and service execution still use the live intent family such as:
+
+- `CHAT`
+- `QUERY`
+- `CREATE`
+- `UPDATE`
+- `DELETE`
+- `MANAGE`
+- `OPEN_FORM`
+- `RECOMMEND`
+- `SEND_MESSAGE`
+
+The local decision eval introduced for `learning/eval_dataset_expanded.jsonl` compares those runtime outputs against a narrower eval label set:
+
+- `QUERY`
+- `OPEN_FORM`
+- `OPEN_RECORD`
+- `CREATE`
+- `UPDATE`
+- `ASK_CLARIFICATION`
+- `RETRIEVE_AND_ANSWER`
+- `REFUSE`
+
+Important:
+
+- eval labels are a comparison vocabulary, not the source-of-truth runtime API
+- a runtime `CHAT` response may map to `ASK_CLARIFICATION` or `REFUSE` in eval
+- a runtime `MANAGE` response may map to `OPEN_RECORD` in eval when it resolves one concrete record
+- tool labels such as `crm_query` or `crm_write` are eval-side abstractions, not guaranteed live response fields
+
+Future reasoning work must avoid assuming that a dataset label is automatically a valid runtime intent name.
+
 ## Scope And Runtime Position
 
 The runtime still prefers deterministic handling first.
@@ -21,13 +57,29 @@ Current order in practice:
 
 1. explicit contextual helpers already owned by the runtime
 2. deterministic CRUD/query routing
-3. simple clarification from `IntentReasoner.clarify_if_needed()`
-4. lightweight rule-based preclassification from `IntentPreClassifier.detect()`
-5. structured LLM fallback reasoning
-6. Python-side normalization and validation
-7. `_execute_intent()` with validated payload only
+3. narrow retrieval-only helpers such as the message-policy vector path when the query clearly asks for message-sending rules
+4. simple clarification from `IntentReasoner.clarify_if_needed()`
+5. lightweight rule-based preclassification from `IntentPreClassifier.detect()`
+6. structured LLM fallback reasoning
+7. Python-side normalization and validation
+8. `_execute_intent()` with validated payload only
 
 The fallback reasoner is used only after deterministic handling has failed to produce a safe result.
+
+## Narrow Retrieval Helpers
+
+The current runtime includes one narrow retrieval-only helper before the fallback LLM path:
+
+- message-policy retrieval for questions about message-sending eligibility, consent, opt-out handling, informational vs marketing messages, and night-send restrictions
+
+Current boundaries:
+
+- the source is `learning/message_sending_rules_qdrant.json`
+- embeddings are created through the OpenAI embeddings API
+- vectors are stored in Qdrant
+- sync is explicit through `MessagePolicyRetrievalService.sync_source_documents()`
+- the returned runtime intent remains `CHAT`, not a separate retrieval intent
+- this helper is intentionally narrow and does not broaden into general document search or broad RAG behavior
 
 ## Why The Narrow `service.py` Hook Exists
 
@@ -114,6 +166,19 @@ The fallback prompt asks the model for a structured JSON object. The validator c
 - `sql`
 
 These fields are not all required for every result. The contract is practical rather than fully declarative: the validator defines which combinations are acceptable.
+
+## Current Eval Normalization Notes
+
+The local decision eval currently uses the following adapter-style normalization so runtime behavior can be compared against the dataset without redesigning the service layer:
+
+- runtime `MANAGE` with a resolved record is treated as eval `OPEN_RECORD`
+- runtime `CHAT` used for a safe clarification is treated as eval `ASK_CLARIFICATION`
+- runtime `CHAT` used for an explicit scope or safety refusal is treated as eval `REFUSE`
+- runtime `QUERY` maps to eval tool `crm_query`
+- runtime `CREATE`, `UPDATE`, and `DELETE` map to eval tool `crm_write`
+- eval retrieval tools such as `vector_retrieval` and `message_history_query` are comparison labels for retrieval-style behavior, not established runtime intent names in the current service contract
+
+This normalization is intentionally narrow. It exists to measure the current decision layer without forcing a broad runtime refactor.
 
 ### Practical Field Expectations
 

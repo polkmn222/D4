@@ -1,0 +1,62 @@
+{
+  "datasets": {
+    "object500_english": {
+      "lead": "development/ai_agent/llm/eval/datasets/object500_english/lead.jsonl",
+      "contact": "development/ai_agent/llm/eval/datasets/object500_english/contact.jsonl",
+      "opportunity": "development/ai_agent/llm/eval/datasets/object500_english/opportunity.jsonl",
+      "brand": "development/ai_agent/llm/eval/datasets/object500_english/brand.jsonl",
+      "model": "development/ai_agent/llm/eval/datasets/object500_english/model.jsonl",
+      "product": "development/ai_agent/llm/eval/datasets/object500_english/product.jsonl",
+      "asset": "development/ai_agent/llm/eval/datasets/object500_english/asset.jsonl",
+      "message_template": "development/ai_agent/llm/eval/datasets/object500_english/message_template.jsonl",
+      "summary": "development/ai_agent/llm/eval/datasets/object500_english/summary.json"
+    }
+  },
+  "analysis": {
+    "english": {
+      "deterministic": "development/ai_agent/llm/eval/analysis/english/deterministic.jsonl",
+      "llm_clarification": "development/ai_agent/llm/eval/analysis/english/llm_clarification.jsonl",
+      "safety_hold": "development/ai_agent/llm/eval/analysis/english/safety_hold.jsonl",
+      "review": "development/ai_agent/llm/eval/analysis/english/review.jsonl",
+      "summary_json": "development/ai_agent/llm/eval/analysis/english/english_mismatch_summary.json",
+      "summary_md": "development/ai_agent/llm/eval/analysis/english/english_mismatch_summary.md",
+      "execution_plan": "development/ai_agent/llm/eval/analysis/english/english_execution_plan.md"
+    }
+  },
+  "current_results": {
+    "object500_english": {
+      "lead": {
+        "path": "development/ai_agent/llm/eval/results/object500_english/current/lead.json",
+        "selected_from": "learning/eval_results_object500_english_after_phase335/phase326_lead_results.json"
+      },
+      "contact": {
+        "path": "development/ai_agent/llm/eval/results/object500_english/current/contact.json",
+        "selected_from": "learning/eval_results_object500_english_after_phase335/phase327_contact_results.json"
+      },
+      "opportunity": {
+        "path": "development/ai_agent/llm/eval/results/object500_english/current/opportunity.json",
+        "selected_from": "learning/eval_results_object500_english_after_phase335/phase328_opportunity_results.json"
+      },
+      "brand": {
+        "path": "development/ai_agent/llm/eval/results/object500_english/current/brand.json",
+        "selected_from": "learning/eval_results_object500_english_after_phase338b/phase329_brand_results.json"
+      },
+      "model": {
+        "path": "development/ai_agent/llm/eval/results/object500_english/current/model.json",
+        "selected_from": "learning/eval_results_object500_english_after_phase336/phase330_model_results.json"
+      },
+      "product": {
+        "path": "development/ai_agent/llm/eval/results/object500_english/current/product.json",
+        "selected_from": "learning/eval_results_object500_english_after_phase338b/phase331_product_results.json"
+      },
+      "asset": {
+        "path": "development/ai_agent/llm/eval/results/object500_english/current/asset.json",
+        "selected_from": "learning/eval_results_object500_english_after_phase336/phase332_asset_results.json"
+      },
+      "message_template": {
+        "path": "development/ai_agent/llm/eval/results/object500_english/current/message_template.json",
+        "selected_from": "learning/eval_results_object500_english_after_phase336/phase333_message_template_results.json"
+      }
+    }
+  }
+}

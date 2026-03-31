@@ -66,6 +66,8 @@ graph TD
 - Messaging-specific routers and services now live under `web/message/backend/`.
 - Shared service patterns handle CRUD, search, dashboards, messaging, imports, attachments, and provider integrations.
 - The AI agent service orchestrates intent resolution, record operations, provider fanout, and follow-up context by reusing the shared backend services where possible.
+- The AI agent also includes a narrow message-policy retrieval path that uses OpenAI embeddings plus Qdrant search over `learning/message_sending_rules_qdrant.json`.
+- That policy path is explicit-sync and retrieval-only: it is meant for policy questions such as consent, opt-out, recipient eligibility, and night-send rules, not for general CRUD or generic knowledge search.
 - The standalone agent UI uses a deterministic command parser plus shared CRM route URLs to drive multi-object create, list, open, and edit flows without the AI conversational orchestration layer.
 - The AI agent also stores conversation selection state, delete-confirmation state, and recent record context in its in-memory conversation context store.
 
@@ -97,7 +99,7 @@ graph TD
 3. A CRM route delegates business logic to the appropriate backend service.
 4. Services operate on SQLAlchemy models and persist through PostgreSQL.
 5. The response returns either HTML, redirect responses, or JSON.
-6. AI requests under `/ai-agent` flow through the AI router and service, which can call shared services and database access paths.
+6. AI requests under `/ai-agent` flow through the AI router and service, which can call shared services, vector retrieval helpers, and database access paths.
 
 ## Architectural Principles
 

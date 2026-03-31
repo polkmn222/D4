@@ -47,6 +47,28 @@ async def test_transcribe_audio_bytes_rejects_unsupported_audio_type():
 
 
 @pytest.mark.asyncio
+async def test_transcribe_audio_bytes_accepts_webm_codec_content_type():
+    with patch.object(
+        AiAgentService,
+        "_call_groq_audio_transcription",
+        new=AsyncMock(return_value="show all leads"),
+    ), patch.object(
+        AiAgentService,
+        "_validate_transcript_with_cerebras",
+        new=AsyncMock(return_value={"text": "show all leads", "validator": "cerebras", "changed": False}),
+    ), patch("ai_agent.ui.backend.service.GROQ_API_KEY", "groq-test-key"):
+        response = await AiAgentService.transcribe_audio_bytes(
+            file_bytes=b"voice-bytes",
+            filename="voice.webm",
+            content_type="audio/webm;codecs=opus",
+            language_preference="eng",
+        )
+
+    assert response["status"] == "ok"
+    assert response["text"] == "show all leads"
+
+
+@pytest.mark.asyncio
 async def test_stt_router_reads_uploaded_file_and_delegates_to_service():
     upload = UploadFile(filename="voice.webm", file=BytesIO(b"voice-bytes"))
     upload.headers = {"content-type": "audio/webm"}

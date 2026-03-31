@@ -1,0 +1,130 @@
+{
+  "lead": {
+    "phase": 326,
+    "path": "learning/eval_dataset_object500_english/phase326_lead_english_500.jsonl",
+    "rows": 500,
+    "unique_user_inputs": 500,
+    "action_counts": {
+      "QUERY": 140,
+      "OPEN_RECORD": 80,
+      "OPEN_FORM": 55,
+      "CREATE": 35,
+      "UPDATE": 45,
+      "ASK_CLARIFICATION": 60,
+      "RETRIEVE_AND_ANSWER": 70,
+      "REFUSE": 15
+    }
+  },
+  "contact": {
+    "phase": 327,
+    "path": "learning/eval_dataset_object500_english/phase327_contact_english_500.jsonl",
+    "rows": 500,
+    "unique_user_inputs": 500,
+    "action_counts": {
+      "QUERY": 140,
+      "OPEN_RECORD": 80,
+      "OPEN_FORM": 55,
+      "CREATE": 35,
+      "UPDATE": 45,
+      "ASK_CLARIFICATION": 60,
+      "RETRIEVE_AND_ANSWER": 70,
+      "REFUSE": 15
+    }
+  },
+  "opportunity": {
+    "phase": 328,
+    "path": "learning/eval_dataset_object500_english/phase328_opportunity_english_500.jsonl",
+    "rows": 500,
+    "unique_user_inputs": 500,
+    "action_counts": {
+      "QUERY": 140,
+      "OPEN_RECORD": 80,
+      "OPEN_FORM": 55,
+      "CREATE": 35,
+      "UPDATE": 45,
+      "ASK_CLARIFICATION": 60,
+      "RETRIEVE_AND_ANSWER": 70,
+      "REFUSE": 15
+    }
+  },
+  "brand": {
+    "phase": 329,
+    "path": "learning/eval_dataset_object500_english/phase329_brand_english_500.jsonl",
+    "rows": 500,
+    "unique_user_inputs": 500,
+    "action_counts": {
+      "QUERY": 140,
+      "OPEN_RECORD": 80,
+      "OPEN_FORM": 55,
+      "CREATE": 35,
+      "UPDATE": 45,
+      "ASK_CLARIFICATION": 60,
+      "RETRIEVE_AND_ANSWER": 70,
+      "REFUSE": 15
+    }
+  },
+  "model": {
+    "phase": 330,
+    "path": "learning/eval_dataset_object500_english/phase330_model_english_500.jsonl",
+    "rows": 500,
+    "unique_user_inputs": 500,
+    "action_counts": {
+      "QUERY": 140,
+      "OPEN_RECORD": 80,
+      "OPEN_FORM": 55,
+      "CREATE": 35,
+      "UPDATE": 45,
+      "ASK_CLARIFICATION": 60,
+      "RETRIEVE_AND_ANSWER": 70,
+      "REFUSE": 15
+    }
+  },
+  "product": {
+    "phase": 331,
+    "path": "learning/eval_dataset_object500_english/phase331_product_english_500.jsonl",
+    "rows": 500,
+    "unique_user_inputs": 500,
+    "action_counts": {
+      "QUERY": 140,
+      "OPEN_RECORD": 80,
+      "OPEN_FORM": 55,
+      "CREATE": 35,
+      "UPDATE": 45,
+      "ASK_CLARIFICATION": 60,
+      "RETRIEVE_AND_ANSWER": 70,
+      "REFUSE": 15
+    }
+  },
+  "asset": {
+    "phase": 332,
+    "path": "learning/eval_dataset_object500_english/phase332_asset_english_500.jsonl",
+    "rows": 500,
+    "unique_user_inputs": 500,
+    "action_counts": {
+      "QUERY": 140,
+      "OPEN_RECORD": 80,
+      "OPEN_FORM": 55,
+      "CREATE": 35,
+      "UPDATE": 45,
+      "ASK_CLARIFICATION": 60,
+      "RETRIEVE_AND_ANSWER": 70,
+      "REFUSE": 15
+    }
+  },
+  "message_template": {
+    "phase": 333,
+    "path": "learning/eval_dataset_object500_english/phase333_message_template_english_500.jsonl",
+    "rows": 500,
+    "unique_user_inputs": 500,
+    "action_counts": {
+      "QUERY": 140,
+      "OPEN_RECORD": 80,
+      "OPEN_FORM": 55,
+      "CREATE": 35,
+      "UPDATE": 45,
+      "ASK_CLARIFICATION": 60,
+      "RETRIEVE_AND_ANSWER": 70,
+      "REFUSE": 15
+    }
+  }
+}

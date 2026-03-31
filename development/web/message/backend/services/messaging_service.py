@@ -1,5 +1,4 @@
 import logging
-import os
 from sqlalchemy.orm import Session
 from .message_service import MessageService
 from .message_template_service import MessageTemplateService
@@ -16,24 +15,6 @@ class MessagingService:
     SMS_LIMIT = 90
     LMS_MMS_LIMIT = 2000
 
-    @staticmethod
-    def _is_truthy(value: Optional[str]) -> bool:
-        return (value or "").strip().lower() in {"1", "true", "yes", "on"}
-
-    @classmethod
-    def _enforce_provider_runtime_guard(cls) -> None:
-        provider_name = MessageProviderFactory.get_provider_name()
-        if provider_name != "solapi":
-            return
-        if not os.getenv("VERCEL"):
-            return
-        if cls._is_truthy(os.getenv("ALLOW_SOLAPI_ON_VERCEL")):
-            return
-        raise ValueError(
-            "Solapi delivery is blocked on Vercel by default. "
-            "Use Render for real SMS/LMS/MMS sends, or set ALLOW_SOLAPI_ON_VERCEL=true only after configuring fixed outbound IPs."
-        )
-
     @classmethod
     def _dispatch_payload(
         cls,
@@ -42,8 +23,6 @@ class MessagingService:
         provider_name_override: Optional[str] = None,
     ) -> dict:
         provider_name = provider_name_override or MessageProviderFactory.get_provider_name()
-        if provider_name == "solapi" and not provider_name_override:
-            cls._enforce_provider_runtime_guard()
         provider = MessageProviderFactory.get_provider_by_name(provider_name)
         return provider.send(db, payload)
 
@@ -155,6 +134,27 @@ class MessagingService:
         return resolved_content, resolved_subject, resolved_attachment_id, attachment
 
     @classmethod
+    def _record_failed_attempt(
+        cls,
+        db: Session,
+        contact_id: str,
+        content: Optional[str],
+        template_id: Optional[str],
+    ) -> None:
+        fallback_content = (content or "").strip() or "[Message send failed before dispatch]"
+        try:
+            MessageService.create_message(
+                db,
+                contact=contact_id,
+                content=fallback_content,
+                template=template_id,
+                direction="Outbound",
+                status="Failed",
+            )
+        except Exception as audit_exc:
+            logger.error("Failed to record message send failure audit row: %s", audit_exc)
+
+    @classmethod
     @handle_agent_errors
     def send_message(
         cls,
@@ -170,6 +170,8 @@ class MessagingService:
         """
         Provider-driven message dispatch with mock/slack/test-safe defaults.
         """
+        resolved_content_for_audit = content
+        failure_row_recorded = False
         try:
             content, subject, attachment_id, attachment = cls._resolve_message_content(
                 db,
@@ -178,6 +180,7 @@ class MessagingService:
                 subject,
                 attachment_id,
             )
+            resolved_content_for_audit = content
 
             # Normalize and Validate limits
             byte_len = cls._message_length(content)
@@ -222,10 +225,15 @@ class MessagingService:
                 content=content, 
                 template=template_id,
                 direction="Outbound",
+                subject=subject,
+                record_type=record_type,
                 status=send_status,
                 provider_message_id=provider_response.get("provider_message_id"),
+                image_url=payload.image_url,
+                attachment_id=attachment_id,
                 **kwargs
             )
+            failure_row_recorded = send_status == "Failed"
             
             logger.info(f"Message {send_status} to contact {contact_id}: {msg.id}")
             
@@ -237,6 +245,13 @@ class MessagingService:
             return msg
         except Exception as e:
             logger.error(f"Critical error in send_message: {e}")
+            if not failure_row_recorded:
+                cls._record_failed_attempt(
+                    db,
+                    contact_id=contact_id,
+                    content=resolved_content_for_audit,
+                    template_id=template_id,
+                )
             raise e
 
     @classmethod

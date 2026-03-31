@@ -1,5 +1,5 @@
 .sf-card.sf-list-view-shell {
-    overflow: hidden !important;
+    overflow: visible !important;
     display: flex;
     flex-direction: column;
 }

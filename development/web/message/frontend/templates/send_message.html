@@ -32,7 +32,7 @@
                         <table class="sf-table" id="recipient-table">
                             <thead style="position: sticky; top: 0; background: white; z-index: 10;">
                                 <tr>
-                                    <th style="width: 40px; text-align: center;"><input type="checkbox" id="select-all" onclick="Messaging.recipients.toggleSelectAll(this)"></th>
+                                    <th style="width: 40px; text-align: center;"><input type="checkbox" id="select-all" onclick="toggleSelectAll(this)"></th>
                                     <th onclick="sortTable(this, 1)" style="cursor: pointer;">
                                         <div style="display: flex; justify-content: space-between; align-items: center;">
                                             Name
@@ -69,7 +69,7 @@
                                 {% for opp in opportunities %}
                                 {% if opp.contact and opp.contact.phone %}
                                 <tr class="recipient-row">
-                                   <td style="text-align: center;"><input type="checkbox" name="selected_recipients" value="{{ opp.contact_id }}" data-opp-id="{{ opp.id }}" data-name="{{ opp.contact.name }}" onclick="updateSelectionOrder(this)"></td>
+                                   <td style="text-align: center;"><input type="checkbox" name="selected_recipients" value="{{ opp.contact_id }}" data-selection-key="{{ opp.id }}" data-opp-id="{{ opp.id }}" data-name="{{ opp.contact.name }}" onclick="updateSelectionOrder(this)"></td>
                                    <td class="search-field">{{ opp.contact.name }} (Opty: {{ opp.name }})</td>
                                    <td id="status-{{ opp.id }}" class="status-cell" style="font-size: 0.75rem; color: #1abc9c; font-weight: 600;"></td>
                                    <td class="search-field">{{ opp.contact.phone }}</td>
@@ -84,6 +84,21 @@
                     </div>
                     <div id="selection-import-note" style="display: none; padding: 0.85rem 1rem; border-radius: 8px; background: #f5f9ff; border: 1px solid #d7e5f7; font-size: 0.8rem; color: #35506b;"></div>
                     <div id="duplicate-review-inline" style="display: none; padding: 1rem; border-radius: 10px; background: #fff8f2; border: 1px solid #f2d2b6; font-size: 0.82rem; color: #6d4b31;"></div>
+                    <details id="staged-message-panel" style="display: none; margin-top: 0.9rem; width: 100%; border-radius: 10px; background: #fff; border: 1px solid #d7e5f7; overflow: hidden;">
+                        <summary id="staged-message-panel-summary" style="cursor: pointer; list-style: none; padding: 0.8rem 0.9rem; background: #f5f9ff; color: #35506b; font-size: 0.8rem; font-weight: 700;">Saved Recipients</summary>
+                        <div style="max-height: 220px; overflow-y: auto; border-top: 1px solid #d7e5f7;">
+                            <table class="sf-table" style="margin: 0;">
+                                <thead>
+                                    <tr>
+                                        <th>RECIPIENT</th>
+                                        <th>TEMPLATE</th>
+                                        <th>TYPE</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="staged-message-table-body"></tbody>
+                            </table>
+                        </div>
+                    </details>
                 </div>
 
                 <!-- Template & Message Type Area -->
@@ -94,13 +109,17 @@
                             <div style="display: flex; gap: 0.5rem;">
                                 <button class="btn btn-sm" style="font-size: 0.75rem; padding: 4px 8px;" onclick="openTemplateModal(false)">New</button>
                                 <button class="btn btn-sm" id="edit-template-btn" style="font-size: 0.75rem; padding: 4px 8px; display: none;" onclick="openTemplateModal(true)">Edit</button>
-                                <button class="btn btn-sm" id="preview-template-btn" style="font-size: 0.75rem; padding: 4px 8px; display: none;" onclick="previewSelectedTemplate()">Preview</button>
                                 <button class="btn btn-sm" id="delete-template-btn" style="font-size: 0.75rem; padding: 4px 8px; color: var(--error); display: none;" onclick="deleteSelectedTemplate()">Delete</button>
                                 <button class="btn btn-sm" style="font-size: 0.75rem; padding: 4px 8px; color: var(--error);" onclick="openBulkDeleteTemplatesModal()">Bulk Del</button>
                             </div>
                         </div>
                         <div id="template-import-note" style="display: none; margin-bottom: 0.75rem; padding: 0.75rem 0.9rem; border-radius: 8px; background: #f4f9ff; border: 1px solid #d8e5f6; font-size: 0.8rem; color: #35506b;"></div>
-                        <select id="template-select" class="sf-inline-input" onchange="applyTemplate(this.value)" style="height: 40px; width: 100%;">
+                        <div id="template-lookup-shell" style="position: relative; margin-bottom: 0.5rem;">
+                            <input type="text" id="template-search" class="sf-inline-input" onfocus="openTemplateSearchResults()" oninput="filterTemplateSelect(this.value)" placeholder="Search templates..." autocomplete="off" style="height: 40px; width: 100%; padding-right: 2.25rem;">
+                            <button type="button" id="template-search-clear" onclick="clearTemplateSelection()" style="display: none; position: absolute; right: 0.45rem; top: 50%; transform: translateY(-50%); border: none; background: transparent; color: #8a94a6; cursor: pointer; font-size: 1rem;">×</button>
+                            <div id="template-search-results" style="display: none; position: absolute; top: calc(100% + 6px); left: 0; right: 0; z-index: 30; background: #fff; border: 1px solid var(--border); border-radius: 10px; box-shadow: 0 12px 24px rgba(9, 30, 66, 0.12); max-height: 240px; overflow-y: auto;"></div>
+                        </div>
+                        <select id="template-select" class="sf-inline-input" onchange="applyTemplate(this.value)" style="display: none;">
                             <option value="">-- Select Template --</option>
                             {% for t in templates %}
                             <option value="{{ t.id }}" 
@@ -115,22 +134,6 @@
                             </option>
                             {% endfor %}
                         </select>
-                        <div id="template-preview-card" style="display: none; margin-top: 0.75rem; padding: 0.9rem; border: 1px solid var(--border); border-radius: 8px; background: #fafcff;">
-                            <div style="display: flex; justify-content: space-between; align-items: center; gap: 1rem;">
-                                <div>
-                                    <div id="template-preview-name" style="font-size: 0.9rem; font-weight: 700; color: #16325c;"></div>
-                                    <div id="template-preview-type" style="font-size: 0.74rem; color: var(--text-label); margin-top: 2px;"></div>
-                                </div>
-                            <div id="template-preview-subject" style="font-size: 0.75rem; color: #49617f; text-align: right; display: none;"></div>
-                            </div>
-                            <div id="template-preview-image-wrap" style="display: none; margin-top: 0.75rem;">
-                                <button type="button" onclick="openTemplateImageLightbox()" style="border: none; background: transparent; padding: 0; cursor: pointer;">
-                                    <img id="template-preview-image" style="width: 96px; height: 96px; object-fit: cover; border-radius: 10px; border: 1px solid var(--border);">
-                                </button>
-                                <div style="font-size: 0.72rem; color: var(--text-label); margin-top: 0.35rem;">Click to preview template image</div>
-                            </div>
-                            <div id="template-preview-body" style="margin-top: 0.75rem; font-size: 0.82rem; color: #33465c; line-height: 1.5; white-space: pre-wrap;"></div>
-                        </div>
                     </div>
                     <div>
                         <label style="display: block; font-size: 0.875rem; font-weight: 600; color: var(--text-label); margin-bottom: 0.5rem;">Message Type</label>
@@ -173,11 +176,11 @@
                 <div id="mms-attachment-area" style="display: none; border: 2px dashed var(--border); border-radius: 8px; padding: 1.5rem; text-align: center; background: #f9f9f9;">
                     <input type="file" id="mms-image" accept="image/jpeg, image/jpg" style="display: none;" onchange="handleImageUpload(this)">
                     <input type="hidden" id="message-attachment-id">
-                    <button class="btn" onclick="document.getElementById('mms-image').click()" style="background: white; border: 1px solid var(--border); margin-bottom: 10px;">Select JPG Attachment</button>
+                    <button class="btn" onclick="document.getElementById('mms-image').click()" style="background: white; border: 1px solid var(--border); margin-bottom: 10px;">Upload Image</button>
                     <div id="image-preview-container" style="display: none; margin-top: 10px;">
                         <img id="mms-preview-img" style="max-width: 200px; max-height: 200px; border-radius: 4px; border: 1px solid var(--border);">
                         <div id="image-name" style="font-size: 0.75rem; color: var(--text-label); margin-top: 5px;"></div>
-                        <button class="btn btn-sm" style="color: #e74c3c; background: none; margin-top: 5px;" onclick="removeImage()">Remove</button>
+                        <button class="btn btn-sm" style="color: #e74c3c; background: none; margin-top: 5px;" onclick="removeImage()">Clear Image</button>
                     </div>
                     <p style="font-size: 0.7rem; color: var(--text-label);">Maximum size: 500KB. Only .jpg files are supported.</p>
                 </div>
@@ -223,7 +226,7 @@
                 <div style="display: flex; flex-direction: column; gap: 0.75rem; width: 300px; margin-top: 1rem;">
                     <div id="demo-relay-status-banner" style="display: none; padding: 0.85rem 1rem; border-radius: 10px; background: #fff6f6; border: 1px solid #f2c7c7; color: #7b2d2f; font-size: 0.82rem; line-height: 1.45;"></div>
                     <button id="demo-message-send-btn" class="btn btn-primary" onclick="sendMessage()" style="width: 100%; padding: 0.85rem; font-weight: 700; font-size: 1rem; box-shadow: 0 4px 6px rgba(1, 118, 211, 0.2);">Send Message</button>
-                    <button class="btn" onclick="openPreviewModal()" style="width: 100%; background: #f0f7ff; color: #0176d3; border: 1px solid #0176d3; padding: 0.6rem; font-weight: 600;">Preview Message</button>
+                    <button class="btn" onclick="saveStagedMessages()" style="width: 100%; background: #f0f7ff; color: #0176d3; border: 1px solid #0176d3; padding: 0.6rem; font-weight: 600;">Save Recipients</button>
                     <button class="btn" style="width: 100%; background: white; border: 1px solid var(--border); padding: 0.6rem;" onclick="clearAll()">Clear All</button>
                 </div>
             </div>
@@ -259,65 +262,83 @@
 
 <!-- Template CRUD Modal -->
 <div id="template-modal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 2000; justify-content: center; align-items: center;">
-    <div class="sf-card" style="width: 500px; padding: 2rem;">
-        <h2 id="modal-title" style="margin-bottom: 1.5rem;">Create New Template</h2>
-        <div style="display: flex; flex-direction: column; gap: 1.5rem;">
-            <div>
-                <label style="display: block; font-size: 0.875rem; font-weight: 600; color: var(--text-label); margin-bottom: 0.5rem;">Template Name</label>
-                <input type="text" id="modal-tpl-name" class="sf-inline-input" style="width: 100%; height: 40px; border: 1px solid var(--border);">
+    <div class="sf-card" style="width: 640px; padding: 0; overflow: hidden; border-radius: 8px;">
+        <div class="sf-modal-header" style="background: white; border-bottom: 2px solid var(--border); padding: 1.25rem 1.5rem; position: relative;">
+            <h2 id="modal-title" style="font-size: 1.25rem; font-weight: 400; text-align: center; margin: 0;">Create New Template</h2>
+            <span style="position: absolute; right: 1rem; top: 1rem; cursor: pointer; font-size: 1.5rem; color: #747474;" onclick="closeTemplateModal()">×</span>
+        </div>
+        <div class="sf-modal-body" style="padding: 0; background: white; max-height: 80vh; overflow-y: auto;">
+            <div style="background: #f3f3f3; padding: 0.5rem 1.5rem; text-align: right; border-bottom: 1px solid var(--border);">
+                <span style="color: #ea001e; font-weight: 700;">*</span> = Required Information
             </div>
-            <div id="modal-template-subject-row">
-                <label style="display: block; font-size: 0.875rem; font-weight: 600; color: var(--text-label); margin-bottom: 0.5rem;">Subject (LMS/MMS only)</label>
-                <input type="text" id="modal-tpl-subject" class="sf-inline-input" style="width: 100%; height: 40px; border: 1px solid var(--border);">
-                <div id="modal-tpl-subject-meta" style="margin-top: 0.35rem; font-size: 0.72rem; color: var(--text-label);">0 / 40 bytes</div>
-            </div>
-            <div>
-                <label style="display: block; font-size: 0.875rem; font-weight: 600; color: var(--text-label); margin-bottom: 0.5rem;">Content</label>
-                <textarea id="modal-tpl-content" style="width: 100%; height: 150px; padding: 1rem; border: 1px solid var(--border); border-radius: 4px; font-size: 1rem; font-family: inherit; resize: vertical;"></textarea>
-                <div id="modal-tpl-content-meta" style="margin-top: 0.35rem; font-size: 0.72rem; color: var(--text-label);">0 / 90 bytes</div>
-            </div>
-            <div>
-                <label style="display: block; font-size: 0.875rem; font-weight: 600; color: var(--text-label); margin-bottom: 0.5rem;">Record Type</label>
-                <select id="modal-tpl-type" class="sf-inline-input" style="width: 100%; height: 40px; border: 1px solid var(--border);">
-                    <option value="SMS">SMS</option>
-                    <option value="LMS">LMS</option>
-                    <option value="MMS">MMS</option>
-                </select>
-            </div>
-            <div id="modal-mms-upload-area" style="display: none; border: 1px dashed var(--border); border-radius: 8px; padding: 1rem; background: #fafcff;">
-                <label style="display: block; font-size: 0.875rem; font-weight: 600; color: var(--text-label); margin-bottom: 0.5rem;">MMS Image</label>
-                <input type="file" id="modal-tpl-image" accept="image/jpeg, image/jpg" style="display: none;" onchange="handleTemplateImageUpload(this)">
+            <div style="padding: 1.5rem;">
+                <div style="background: #f3f3f3; padding: 0.5rem 1rem; margin-bottom: 1.5rem; border-radius: 4px;">
+                    <h3 style="font-size: 0.875rem; font-weight: 700; margin: 0;">MessageTemplate Information</h3>
+                </div>
                 <input type="hidden" id="modal-tpl-file-path">
                 <input type="hidden" id="modal-tpl-attachment-id">
                 <input type="hidden" id="modal-tpl-image-url">
-                <div style="display: flex; align-items: center; justify-content: space-between; gap: 0.75rem; margin-bottom: 0.75rem;">
-                    <button type="button" class="btn" style="background: white; border: 1px solid var(--border);" onclick="document.getElementById('modal-tpl-image').click()">Upload JPG</button>
-                    <span style="font-size: 0.72rem; color: var(--text-label);">JPG only, max 500KB</span>
-                </div>
-                <div style="font-size: 0.72rem; color: #7a5f47; margin-bottom: 0.75rem;">Replacing or removing the image will replace the previous template image.</div>
-                <div id="modal-tpl-image-loading" style="display: none; margin-bottom: 0.75rem; font-size: 0.74rem; color: #35506b;">Uploading image...</div>
-                <details id="modal-tpl-image-help" style="font-size: 0.74rem; color: #5b708b; margin-bottom: 0.75rem;">
-                    <summary style="cursor: pointer; font-weight: 700;">Allowed image rules</summary>
-                    <div style="margin-top: 0.45rem; line-height: 1.45;">
-                        <div>- JPG images only</div>
-                        <div>- 500KB maximum</div>
-                        <div>- The saved image can be reused in Send Message and AI Agent</div>
-                        <div id="modal-tpl-image-error" style="display: none; margin-top: 0.45rem; color: #a13f3b; font-weight: 700;"></div>
+                <div id="send-message-template-modal-grid" style="display: grid; grid-template-columns: 1fr 1fr; column-gap: 2rem; row-gap: 1rem;">
+                    <div class="sf-field-wrapper" data-field="name" style="display: flex; flex-direction: column; gap: 0.25rem;">
+                        <label style="font-size: 0.75rem; color: var(--text-label);"><span style="color: #ea001e; font-weight: 700;">*</span> Name</label>
+                        <input type="text" id="modal-tpl-name" class="sf-inline-input">
                     </div>
-                </details>
-                <div id="modal-image-preview-container" style="display: none; align-items: center; gap: 0.9rem;">
-                    <img id="modal-tpl-preview" style="width: 72px; height: 72px; object-fit: cover; border-radius: 8px; border: 1px solid var(--border);">
-                    <div style="display: flex; flex-direction: column; gap: 0.25rem;">
-                        <div id="modal-tpl-file-name" style="font-size: 0.82rem; font-weight: 700; color: #16325c;"></div>
-                        <div id="modal-tpl-file-info" style="font-size: 0.74rem; color: var(--text-label);"></div>
-                        <button type="button" class="btn btn-sm" style="padding: 0; background: none; color: var(--error); text-align: left;" onclick="clearTemplateImageUpload()">Remove Image</button>
+                    <div class="sf-field-wrapper" data-field="record_type" style="display: flex; flex-direction: column; gap: 0.25rem;">
+                        <label style="font-size: 0.75rem; color: var(--text-label);">Type</label>
+                        <select id="modal-tpl-type" class="sf-inline-input">
+                            <option value="SMS">SMS</option>
+                            <option value="LMS">LMS</option>
+                            <option value="MMS">MMS</option>
+                        </select>
+                    </div>
+                    <div id="modal-template-subject-row" class="sf-field-wrapper" data-field="subject" style="display: flex; flex-direction: column; gap: 0.25rem;">
+                        <label style="font-size: 0.75rem; color: var(--text-label);">Subject</label>
+                        <input type="text" id="modal-tpl-subject" class="sf-inline-input">
+                        <div id="modal-tpl-subject-meta" style="margin-top: 0.25rem; font-size: 0.75rem; color: var(--text-label); text-align: right;">0 / 40 bytes</div>
+                    </div>
+                    <div id="modal-mms-upload-area" class="sf-field-wrapper" data-field="image" style="display: none; flex-direction: column; gap: 0.25rem;">
+                        <label style="font-size: 0.75rem; color: var(--text-label);">Image</label>
+                        <div class="sf-template-image-field">
+                            <input type="file" id="modal-tpl-image" accept="image/jpeg,image/jpg" style="display: none;" onchange="handleTemplateImageUpload(this)">
+                            <div id="modal-form-image-panel" style="display: flex; flex-direction: column; gap: 0.75rem;">
+                                <div id="modal-form-image-empty" style="display: none; border: 2px dashed var(--border); border-radius: 10px; padding: 1rem; text-align: center; color: var(--text-label); background: #fafbfc;">
+                                    <div style="font-size: 1.35rem; margin-bottom: 0.45rem;">🖼️</div>
+                                    <div style="font-size: 0.78rem; margin-bottom: 0.8rem;">Upload a JPG image for MMS templates.</div>
+                                    <button type="button" class="btn" onclick="document.getElementById('modal-tpl-image').click()">Upload Image</button>
+                                </div>
+                                <div id="modal-image-preview-container" style="display: none; border: 1px solid var(--border); border-radius: 10px; padding: 0.9rem; background: #fbfcfe;">
+                                    <img id="modal-tpl-preview" alt="Template image preview" style="display: block; width: 100%; max-height: 220px; object-fit: contain; border-radius: 8px; background: #fff;">
+                                    <div id="modal-tpl-file-info" style="margin-top: 0.65rem; font-size: 0.76rem; color: #5d6c84;"></div>
+                                    <div style="display: flex; gap: 0.5rem; margin-top: 0.75rem;">
+                                        <button type="button" class="btn" onclick="document.getElementById('modal-tpl-image').click()">Replace Image</button>
+                                        <button type="button" class="btn btn-inline-cancel" onclick="clearTemplateImageUpload()">Clear Selection</button>
+                                    </div>
+                                </div>
+                                <div style="font-size: 0.72rem; color: #7a5f47;">Use the same image upload, preview, and clear flow here as on the template detail page.</div>
+                                <div id="modal-tpl-image-loading" style="display: none; font-size: 0.74rem; color: #35506b;">Uploading image...</div>
+                                <details id="modal-tpl-image-help" style="font-size: 0.74rem; color: #5b708b;">
+                                    <summary style="cursor: pointer; font-weight: 700;">Allowed image rules</summary>
+                                    <div style="margin-top: 0.45rem; line-height: 1.45;">
+                                        <div>- JPG images only</div>
+                                        <div>- 500KB maximum</div>
+                                        <div>- The saved image can be reused in Send Message and AI Agent</div>
+                                    </div>
+                                </details>
+                                <div id="modal-tpl-image-error" style="display: none; font-size: 0.76rem; color: var(--error);"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="sf-field-wrapper" data-field="content" style="display: flex; flex-direction: column; gap: 0.25rem; grid-column: span 2;">
+                        <label style="font-size: 0.75rem; color: var(--text-label);">Content</label>
+                        <textarea id="modal-tpl-content" class="sf-inline-input" style="height: 140px; resize: vertical;"></textarea>
+                        <div id="modal-tpl-content-meta" style="margin-top: 0.25rem; font-size: 0.75rem; color: var(--text-label); text-align: right;">0 / 90 bytes</div>
                     </div>
                 </div>
             </div>
-            <div style="display: flex; justify-content: flex-end; gap: 1rem; margin-top: 1rem;">
-                <button class="btn" style="background: white; border: 1px solid var(--border);" onclick="closeTemplateModal()">Cancel</button>
-                <button class="btn btn-primary" onclick="saveTemplate()">Save Template</button>
-            </div>
+        </div>
+        <div class="sf-modal-footer" style="background: white; padding: 0.75rem 1.5rem; justify-content: center; gap: 0.5rem;">
+            <button class="btn btn-inline-cancel" onclick="closeTemplateModal()">Cancel</button>
+            <button class="btn btn-primary" onclick="saveTemplate()">Save Template</button>
         </div>
     </div>
 </div>
@@ -429,7 +450,7 @@
     </div>
 </div>
 
-<div id="ai-recommend-mode-modal" class="modal" style="display: none; position: fixed; z-index: 1250; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.55);">
+<div id="ai-recommend-mode-modal" class="modal" data-no-loading="true" style="display: none; position: fixed; z-index: 1250; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.55);">
     <div class="sf-card" style="position: relative; margin: 8% auto; width: 92%; max-width: 520px; padding: 0; overflow: hidden; border-radius: 10px;">
         <div style="padding: 1.2rem 1.4rem; border-bottom: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; background: #fafaf9;">
             <div>
@@ -439,10 +460,10 @@
             <button onclick="closeAiRecommendModeModal()" style="border: none; background: none; cursor: pointer; font-size: 1.5rem; color: #706e6b;">&times;</button>
         </div>
         <div style="padding: 1.2rem 1.4rem; display: grid; grid-template-columns: 1fr 1fr; gap: 0.7rem;">
-            <button type="button" class="btn ai-recommend-mode-choice" data-mode="Hot Deals" onclick="selectAiRecommendMode(this)">Hot Deals</button>
-            <button type="button" class="btn ai-recommend-mode-choice" data-mode="Follow Up" onclick="selectAiRecommendMode(this)">Follow Up</button>
-            <button type="button" class="btn ai-recommend-mode-choice" data-mode="Closed Won" onclick="selectAiRecommendMode(this)">Closed Won</button>
-            <button type="button" class="btn ai-recommend-mode-choice" data-mode="New Records" onclick="selectAiRecommendMode(this)">New Records</button>
+            <button type="button" class="btn ai-recommend-mode-choice" data-no-loading="true" data-mode="Hot Deals" onclick="selectAiRecommendMode(this)">Hot Deals</button>
+            <button type="button" class="btn ai-recommend-mode-choice" data-no-loading="true" data-mode="Follow Up" onclick="selectAiRecommendMode(this)">Follow Up</button>
+            <button type="button" class="btn ai-recommend-mode-choice" data-no-loading="true" data-mode="Closed Won" onclick="selectAiRecommendMode(this)">Closed Won</button>
+            <button type="button" class="btn ai-recommend-mode-choice" data-no-loading="true" data-mode="New Records" onclick="selectAiRecommendMode(this)">New Records</button>
         </div>
         <div style="padding: 1rem 1.4rem; border-top: 1px solid var(--border); display: flex; justify-content: flex-end; gap: 0.7rem; background: #fafaf9;">
             <button class="btn" onclick="closeAiRecommendModeModal()">Cancel</button>
@@ -453,31 +474,84 @@
 
 <script src="/static/js/bulk_action.js"></script>
 <script>
+    function preserveInputFocusAndSelection(input, callback) {
+        if (!input || typeof callback !== 'function') {
+            return typeof callback === 'function' ? callback() : undefined;
+        }
+        const shouldRestoreFocus = document.activeElement === input;
+        const selectionStart = typeof input.selectionStart === 'number' ? input.selectionStart : null;
+        const selectionEnd = typeof input.selectionEnd === 'number' ? input.selectionEnd : null;
+        const selectionDirection = input.selectionDirection || 'none';
+        const result = callback();
+        if (shouldRestoreFocus) {
+            requestAnimationFrame(() => {
+                input.focus({ preventScroll: true });
+                if (selectionStart !== null && selectionEnd !== null) {
+                    input.setSelectionRange(selectionStart, selectionEnd, selectionDirection);
+                }
+            });
+        }
+        return result;
+    }
+
+    function getVisibleRecipientCheckboxes() {
+        return Array.from(document.querySelectorAll('.recipient-row'))
+            .filter(row => row.style.display !== 'none' && row.hidden !== true)
+            .map(row => row.querySelector('input[name="selected_recipients"]'))
+            .filter(Boolean);
+    }
+
+    function syncRecipientSelectAllState() {
+        const headerCheckbox = document.getElementById('select-all');
+        if (!headerCheckbox) return;
+        const visibleCheckboxes = getVisibleRecipientCheckboxes();
+        const checkedCount = visibleCheckboxes.filter(cb => cb.checked).length;
+        headerCheckbox.checked = visibleCheckboxes.length > 0 && checkedCount === visibleCheckboxes.length;
+        headerCheckbox.indeterminate = checkedCount > 0 && checkedCount < visibleCheckboxes.length;
+    }
+
     function filterRecipients() {
-        const query = document.getElementById('recipient-search').value.toLowerCase();
-        const rows = document.querySelectorAll('.recipient-row');
-        rows.forEach(row => {
-            const text = row.innerText.toLowerCase();
-            row.style.display = text.includes(query) ? '' : 'none';
+        const searchInput = document.getElementById('recipient-search');
+        const query = (searchInput?.value || '').toLowerCase();
+        preserveInputFocusAndSelection(searchInput, () => {
+            const rows = document.querySelectorAll('.recipient-row');
+            rows.forEach(row => {
+                const text = row.innerText.toLowerCase();
+                row.style.display = text.includes(query) ? '' : 'none';
+            });
+            syncRecipientSelectAllState();
         });
     }
 
-    function updateSelectionOrder(cb) {
+    function updateSelectionOrder(cb, options = {}) {
+        const selectionKey = cb.getAttribute('data-selection-key') || cb.getAttribute('data-opp-id') || cb.value;
         if (cb.checked) {
-            if (!selectionOrder.includes(cb.value)) selectionOrder.push(cb.value);
+            if (!selectionOrder.includes(selectionKey)) selectionOrder.push(selectionKey);
         } else {
-            selectionOrder = selectionOrder.filter(id => id !== cb.value);
+            selectionOrder = selectionOrder.filter(id => id !== selectionKey);
         }
-        updatePreview();
+        if (!options.skipSync) syncRecipientSelectAllState();
+        if (!options.skipPreview) updatePreview();
     }
 
     function toggleSelectAll(checkbox) {
-        const visibleCheckboxes = document.querySelectorAll('.recipient-row[style=""] input[name="selected_recipients"], .recipient-row:not([style]) input[name="selected_recipients"]');
+        const targetChecked = Boolean(checkbox.checked);
+        const visibleCheckboxes = getVisibleRecipientCheckboxes();
         visibleCheckboxes.forEach(cb => {
-            cb.checked = checkbox.checked;
-            updateSelectionOrder(cb);
+            cb.checked = targetChecked;
+            updateSelectionOrder(cb, { skipSync: true, skipPreview: true });
         });
+        syncRecipientSelectAllState();
+        updatePreview();
     }
+
+    window.__messagingRecipientApi = {
+        getVisibleCheckboxes: getVisibleRecipientCheckboxes,
+        syncSelectAllState: syncRecipientSelectAllState,
+        toggleSelectAll: toggleSelectAll,
+        updateSelectionOrder: updateSelectionOrder,
+        filterRecipients: filterRecipients,
+    };
 
     function updateCharLimit() {
         const type = document.querySelector('input[name="msg_type"]:checked').value;
@@ -632,10 +706,178 @@
         updatePreview();
     }
 
+    let templateSelectOptionsCache = [];
+
+    function escapeHtml(value) {
+        return String(value ?? '')
+            .replace(/&/g, '&amp;')
+            .replace(/</g, '&lt;')
+            .replace(/>/g, '&gt;')
+            .replace(/"/g, '&quot;')
+            .replace(/'/g, '&#39;');
+    }
+
+    function escapeJs(value) {
+        return String(value ?? '').replace(/\\/g, '\\\\').replace(/'/g, "\\'");
+    }
+
+    function captureTemplateSelectOptions() {
+        const select = document.getElementById('template-select');
+        if (!select) return;
+        templateSelectOptionsCache = Array.from(select.options)
+            .filter(option => option.value)
+            .map(option => ({
+                value: option.value,
+                text: option.text,
+                body: option.getAttribute('data-body') || '',
+                name: option.getAttribute('data-name') || option.text,
+                subject: option.getAttribute('data-subject') || '',
+                type: option.getAttribute('data-type') || 'SMS',
+                image: option.getAttribute('data-image') || '',
+                filePath: option.getAttribute('data-file-path') || '',
+                attachmentId: option.getAttribute('data-attachment-id') || '',
+            }));
+    }
+
+    function renderTemplateSelectOptions(term = '', preserveValue = '') {
+        const select = document.getElementById('template-select');
+        if (!select) return;
+        const normalizedTerm = (term || '').trim().toLowerCase();
+        const selectedValue = preserveValue || select.value || '';
+        const matched = normalizedTerm
+            ? templateSelectOptionsCache.filter(option => {
+                const haystack = `${option.name} ${option.subject} ${option.body} ${option.type}`.toLowerCase();
+                return haystack.includes(normalizedTerm);
+            })
+            : templateSelectOptionsCache.slice();
+        const selectedOption = selectedValue
+            ? templateSelectOptionsCache.find(option => option.value === selectedValue)
+            : null;
+        const options = selectedOption && !matched.some(option => option.value === selectedOption.value)
+            ? [selectedOption].concat(matched)
+            : matched;
+
+        select.innerHTML = '<option value="">-- Select Template --</option>';
+        options.forEach((option) => {
+            const el = document.createElement('option');
+            el.value = option.value;
+            el.text = option.text;
+            el.setAttribute('data-body', option.body);
+            el.setAttribute('data-name', option.name);
+            el.setAttribute('data-subject', option.subject);
+            el.setAttribute('data-type', option.type);
+            el.setAttribute('data-image', option.image);
+            el.setAttribute('data-file-path', option.filePath);
+            el.setAttribute('data-attachment-id', option.attachmentId);
+            if (option.value === selectedValue) el.selected = true;
+            select.appendChild(el);
+        });
+    }
+
+    function renderTemplateSearchResults(term = '', preserveValue = '') {
+        const container = document.getElementById('template-search-results');
+        const clearBtn = document.getElementById('template-search-clear');
+        const searchInput = document.getElementById('template-search');
+        if (!container || !searchInput) return;
+
+        const normalizedTerm = (term || '').trim().toLowerCase();
+        const selectedValue = preserveValue || document.getElementById('template-select')?.value || '';
+        const matches = normalizedTerm
+            ? templateSelectOptionsCache.filter(option => {
+                const haystack = `${option.name} ${option.subject} ${option.body} ${option.type}`.toLowerCase();
+                return haystack.includes(normalizedTerm);
+            })
+            : templateSelectOptionsCache.slice(0, 12);
+
+        clearBtn.style.display = (searchInput.value || selectedValue) ? 'block' : 'none';
+        if (!matches.length) {
+            container.innerHTML = '<div style="padding: 0.8rem 0.9rem; font-size: 0.8rem; color: #5d6c84;">No templates match this search.</div>';
+            container.style.display = 'block';
+            return;
+        }
+
+        container.innerHTML = matches.map((option) => {
+            const isSelected = option.value === selectedValue;
+            const subjectLine = option.type === 'SMS' ? '' : `<div style="font-size: 0.72rem; color: #5d6c84;">${escapeHtml(option.subject || 'No subject')}</div>`;
+            return `
+                <button type="button" data-template-id="${escapeHtml(option.value)}" onclick="selectTemplateFromSearch('${escapeJs(option.value)}')" style="display: flex; width: 100%; text-align: left; border: none; background: ${isSelected ? '#f4f9ff' : '#fff'}; padding: 0.75rem 0.9rem; cursor: pointer; border-bottom: 1px solid #eef2f7;">
+                    <div style="display: flex; flex-direction: column; gap: 0.2rem;">
+                        <div style="font-size: 0.82rem; font-weight: 700; color: #16325c;">${escapeHtml(option.name)}</div>
+                        <div style="font-size: 0.72rem; color: #7a869a;">${escapeHtml(option.type)}</div>
+                        ${subjectLine}
+                    </div>
+                </button>
+            `;
+        }).join('');
+        container.style.display = 'block';
+    }
+
+    function filterTemplateSelect(term) {
+        const selectedValue = document.getElementById('template-select')?.value || '';
+        const searchInput = document.getElementById('template-search');
+        preserveInputFocusAndSelection(searchInput, () => {
+            renderTemplateSelectOptions(term, selectedValue);
+            renderTemplateSearchResults(term, selectedValue);
+        });
+    }
+
+    function setTemplateSelectValue(templateId) {
+        const select = document.getElementById('template-select');
+        if (!select) return;
+        renderTemplateSelectOptions(document.getElementById('template-search')?.value || '', templateId);
+        select.value = templateId || '';
+        const selected = templateSelectOptionsCache.find(option => option.value === templateId);
+        const searchInput = document.getElementById('template-search');
+        if (searchInput) searchInput.value = selected ? selected.name : '';
+        renderTemplateSearchResults(searchInput?.value || '', templateId);
+    }
+
+    function openTemplateSearchResults() {
+        renderTemplateSearchResults(document.getElementById('template-search')?.value || '', document.getElementById('template-select')?.value || '');
+    }
+
+    function closeTemplateSearchResults() {
+        const container = document.getElementById('template-search-results');
+        if (container) container.style.display = 'none';
+    }
+
+    function selectTemplateFromSearch(templateId) {
+        setTemplateSelectValue(templateId);
+        closeTemplateSearchResults();
+        applyTemplate(templateId);
+    }
+
+    function clearTemplateSelection() {
+        const searchInput = document.getElementById('template-search');
+        if (searchInput) searchInput.value = '';
+        renderTemplateSelectOptions('', '');
+        if (document.getElementById('template-select')) {
+            document.getElementById('template-select').value = '';
+        }
+        closeTemplateSearchResults();
+        const clearBtn = document.getElementById('template-search-clear');
+        if (clearBtn) clearBtn.style.display = 'none';
+        applyTemplate('');
+    }
+
     function applyTemplate(templateId) {
         const select = document.getElementById('template-select');
-        const option = select.options[select.selectedIndex];
+        const option = select ? select.options[select.selectedIndex] : null;
         const importNote = document.getElementById('template-import-note');
+        if (!option || !templateId) {
+            document.getElementById('edit-template-btn').style.display = 'none';
+            document.getElementById('delete-template-btn').style.display = 'none';
+            document.getElementById('preview-mms-img-card').style.display = 'none';
+            document.getElementById('preview-mms-display').src = '';
+            if (document.getElementById('template-search')) {
+                document.getElementById('template-search').value = '';
+            }
+            if (importNote) {
+                importNote.style.display = 'none';
+                importNote.innerText = '';
+            }
+            return;
+        }
         const body = option.getAttribute('data-body');
         const subject = option.getAttribute('data-subject');
         const type = option.getAttribute('data-type');
@@ -654,25 +896,8 @@
             }
 
             document.getElementById('edit-template-btn').style.display = 'inline-block';
-            document.getElementById('preview-template-btn').style.display = 'inline-block';
             document.getElementById('delete-template-btn').style.display = 'inline-block';
-            document.getElementById('template-preview-card').style.display = 'block';
-            document.getElementById('template-preview-name').innerText = option.getAttribute('data-name') || 'Selected Template';
-            document.getElementById('template-preview-type').innerHTML = `Type: <span style="display:inline-flex;align-items:center;gap:6px;"><span style="padding:2px 8px;border-radius:999px;background:${type === 'MMS' ? '#fff3e8' : type === 'LMS' ? '#eef4ff' : '#eef8f1'};color:${type === 'MMS' ? '#b35a00' : type === 'LMS' ? '#3057b7' : '#1f7a4d'};font-weight:700;">${type || 'SMS'}</span></span>`;
-            const subjectPreview = document.getElementById('template-preview-subject');
-            subjectPreview.style.display = type === 'SMS' ? 'none' : 'block';
-            subjectPreview.innerText = subject ? `Subject: ${subject}` : 'No subject';
-            document.getElementById('template-preview-body').innerText = body || '';
             const imageUrl = option.getAttribute('data-image') || '';
-            const imageWrap = document.getElementById('template-preview-image-wrap');
-            const imageEl = document.getElementById('template-preview-image');
-            if (imageUrl) {
-                imageWrap.style.display = 'block';
-                imageEl.src = imageUrl;
-            } else {
-                imageWrap.style.display = 'none';
-                imageEl.src = '';
-            }
             
             // Handle image sync
             const mmsImgCard = document.getElementById('preview-mms-img-card');
@@ -710,18 +935,6 @@
             }
             
             updatePreview();
-        } else {
-            document.getElementById('edit-template-btn').style.display = 'none';
-            document.getElementById('preview-template-btn').style.display = 'none';
-            document.getElementById('delete-template-btn').style.display = 'none';
-            document.getElementById('template-preview-card').style.display = 'none';
-            document.getElementById('template-preview-image-wrap').style.display = 'none';
-            document.getElementById('preview-mms-img-card').style.display = 'none';
-            document.getElementById('preview-mms-display').src = '';
-            if (importNote) {
-                importNote.style.display = 'none';
-                importNote.innerText = '';
-            }
         }
     }
 
@@ -878,10 +1091,14 @@
         const area = document.getElementById('modal-mms-upload-area');
         if (!area) return;
         toggleTemplateSubjectRow(type);
-        area.style.display = type === 'MMS' ? 'block' : 'none';
+        area.style.display = type === 'MMS' ? 'flex' : 'none';
         if (type !== 'MMS') {
             clearTemplateImageUpload();
+            return;
         }
+        const hasPreview = Boolean(document.getElementById('modal-tpl-preview').src);
+        document.getElementById('modal-form-image-empty').style.display = hasPreview ? 'none' : 'block';
+        document.getElementById('modal-image-preview-container').style.display = hasPreview ? 'block' : 'none';
     }
 
     function clearTemplateImageUpload() {
@@ -892,8 +1109,8 @@
         document.getElementById('modal-tpl-image-url').value = '';
         document.getElementById('modal-tpl-image-loading').style.display = 'none';
         document.getElementById('modal-image-preview-container').style.display = 'none';
+        document.getElementById('modal-form-image-empty').style.display = document.getElementById('modal-tpl-type').value === 'MMS' ? 'block' : 'none';
         document.getElementById('modal-tpl-preview').src = '';
-        document.getElementById('modal-tpl-file-name').innerText = '';
         document.getElementById('modal-tpl-file-info').innerText = '';
         document.getElementById('modal-tpl-image-error').style.display = 'none';
         document.getElementById('modal-tpl-image-error').innerText = '';
@@ -936,9 +1153,9 @@
         document.getElementById('modal-tpl-file-path').value = '';
         document.getElementById('modal-tpl-attachment-id').value = '';
         document.getElementById('modal-tpl-image-url').value = '';
-        document.getElementById('modal-image-preview-container').style.display = 'flex';
+        document.getElementById('modal-form-image-empty').style.display = 'none';
+        document.getElementById('modal-image-preview-container').style.display = 'block';
         document.getElementById('modal-tpl-preview').src = pendingTemplateModalImagePreviewUrl;
-        document.getElementById('modal-tpl-file-name').innerText = file.name;
         document.getElementById('modal-tpl-file-info').innerText = `${Math.round(file.size / 1024)} KB · JPG`;
         showToast('Template image selected. It will be saved when you save the template.');
     }
@@ -1035,8 +1252,31 @@
         const ids = Array.from(checkboxes).map(cb => cb.value);
         if (ids.length === 0) return;
 
-        showConfirmModal(`Delete ${ids.length} Templates`, `Are you sure you want to delete ${ids.length} selected templates?`, () => {
-            executeBulkDelete(ids, 'MessageTemplate');
+        showConfirmModal(`Delete ${ids.length} Templates`, `Are you sure you want to delete ${ids.length} selected templates?`, async () => {
+            try {
+                const response = await fetch('/bulk/delete', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        ids,
+                        object_type: 'MessageTemplate'
+                    })
+                });
+                const data = await response.json();
+                if (!response.ok || data.status !== 'success') {
+                    showToast(data.message || 'Bulk delete failed.', true);
+                    return;
+                }
+                closeBulkDeleteTemplatesModal();
+                showToast(data.message || `Deleted ${ids.length} templates.`);
+                setTimeout(() => window.location.reload(), 800);
+            } catch (error) {
+                console.error('Bulk Delete Template error:', error);
+                showToast('An error occurred during bulk delete.', true);
+            }
         });
     }
 
@@ -1070,6 +1310,46 @@
             templateId: document.getElementById('template-select').value,
             attachmentId: document.getElementById('message-attachment-id').value,
         };
+    }
+
+    function renderStagedRecipientsTable() {
+        const panel = document.getElementById('staged-message-panel');
+        const panelSummary = document.getElementById('staged-message-panel-summary');
+        const tableBody = document.getElementById('staged-message-table-body');
+        if (!panel || !panelSummary || !tableBody) return;
+
+        const rows = Object.entries(stagedMessages);
+        if (!rows.length) {
+            panel.style.display = 'none';
+            tableBody.innerHTML = '';
+            return;
+        }
+
+        panel.style.display = 'block';
+        panelSummary.textContent = `Saved Recipients (${rows.length})`;
+        tableBody.innerHTML = rows.map(([, item]) => `
+            <tr>
+                <td><strong>${escapeHtml(item.recipientName || 'Recipient')}</strong></td>
+                <td>${escapeHtml(item.templateName || 'Custom')}</td>
+                <td>${escapeHtml(item.type || 'SMS')}</td>
+            </tr>
+        `).join('');
+    }
+
+    function hasMessageSource(messageConfig) {
+        return Boolean((messageConfig.templateId || '').trim()) || Boolean((messageConfig.content || '').trim());
+    }
+
+    function validateRecipientSaveRequirements(selectedCount, messageConfig) {
+        if (selectedCount < 1) {
+            showToast('Select at least one recipient before saving recipients.', true);
+            return false;
+        }
+        if (!hasMessageSource(messageConfig)) {
+            showToast('Select a template or enter message content before saving recipients.', true);
+            return false;
+        }
+        return true;
     }
 
     function getDuplicatePhoneGroups(recipients) {
@@ -1325,18 +1605,37 @@
         }
     }
 
+    function initializeAiAgentGuidance() {
+        const raw = sessionStorage.getItem('aiAgentMessageGuidance');
+        const note = document.getElementById('selection-import-note');
+        if (!raw || !note) return;
+
+        try {
+            const guidance = JSON.parse(raw);
+            if (!guidance || guidance.source !== 'ai_agent') return;
+
+            note.style.display = 'block';
+            note.innerHTML = 'AI Agent opened Send Message for you. <strong>1.</strong> Choose recipients. <strong>2.</strong> Select a template or type your message. <strong>3.</strong> Review the mobile preview and send.';
+            document.getElementById('recipient-search')?.focus();
+        } catch (error) {
+            console.error('AI Agent message guidance parse error:', error);
+        } finally {
+            sessionStorage.removeItem('aiAgentMessageGuidance');
+        }
+    }
+
     function initializeAiAgentTemplate() {
         const templateId = sessionStorage.getItem('aiAgentMessageTemplate');
         if (!templateId) return;
 
         const select = document.getElementById('template-select');
         if (!select) return;
-        const option = Array.from(select.options).find(item => item.value === templateId);
+        const option = templateSelectOptionsCache.find(item => item.value === templateId);
         if (option) {
             sessionStorage.setItem('aiAgentTemplateImported', 'true');
-            select.value = templateId;
+            setTemplateSelectValue(templateId);
             applyTemplate(templateId);
-            showToast(`Loaded template: ${option.getAttribute('data-name') || option.text}`);
+            showToast(`Loaded template: ${option.name || option.text}`);
         }
         sessionStorage.removeItem('aiAgentMessageTemplate');
     }
@@ -1352,7 +1651,7 @@
     const demoRelayAvailabilityState = {
         checked: false,
         available: false,
-        message: "Checking demo message service availability...",
+        message: "메시지 서비스 연결 상태를 확인하고 있습니다...",
     };
 
     function applyDemoRelayAvailabilityState() {
@@ -1393,7 +1692,7 @@
     async function refreshDemoRelayAvailability() {
         demoRelayAvailabilityState.checked = false;
         demoRelayAvailabilityState.available = false;
-        demoRelayAvailabilityState.message = 'Checking demo message service availability...';
+        demoRelayAvailabilityState.message = '메시지 서비스 연결 상태를 확인하고 있습니다...';
         applyDemoRelayAvailabilityState();
 
         try {
@@ -1401,12 +1700,12 @@
             const payload = await response.json();
             demoRelayAvailabilityState.checked = true;
             demoRelayAvailabilityState.available = Boolean(payload.available);
-            demoRelayAvailabilityState.message = payload.message || 'Demo message service unavailable. Contact the administrator.';
+            demoRelayAvailabilityState.message = payload.message || '메시지 서비스에 연결할 수 없습니다. 관리자에게 문의해주세요!';
         } catch (error) {
             console.error('Demo relay availability error:', error);
             demoRelayAvailabilityState.checked = true;
             demoRelayAvailabilityState.available = false;
-            demoRelayAvailabilityState.message = 'Demo message service unavailable. Contact the administrator.';
+            demoRelayAvailabilityState.message = '메시지 서비스에 연결할 수 없습니다. 관리자에게 문의해주세요!';
         }
 
         applyDemoRelayAvailabilityState();
@@ -1414,11 +1713,11 @@
 
     function ensureDemoRelayAvailability() {
         if (!demoRelayAvailabilityState.checked) {
-            showToast('Checking demo message service availability. Please wait a moment.', true);
+            showToast('메시지 서비스 연결 상태를 확인하고 있습니다. 잠시만 기다려주세요.', true);
             return false;
         }
         if (!demoRelayAvailabilityState.available) {
-            showToast(demoRelayAvailabilityState.message || 'Demo message service unavailable. Contact the administrator.', true);
+            showToast(demoRelayAvailabilityState.message || '메시지 서비스에 연결할 수 없습니다. 관리자에게 문의해주세요!', true);
             return false;
         }
         return true;
@@ -1503,6 +1802,7 @@
             });
 
             if (!hasError) {
+                renderStagedRecipientsTable();
                 document.getElementById('messaging-main-view').style.display = 'none';
                 document.getElementById('messaging-summary-view').style.display = 'flex';
                 showToast("All shipments have been completed.");
@@ -1664,7 +1964,7 @@
 
         // Iterate over selection order to ensure correct ordering
         selectionOrder.forEach(oppId => {
-            const cb = document.querySelector(`input[name="selected_recipients"][value="${oppId}"]`);
+            const cb = document.querySelector(`input[name="selected_recipients"][data-selection-key="${oppId}"]`);
             if (!cb || !cb.checked) return;
             const recipient = plan.recipients.find(item => item.contactId === cb.value);
             if (!recipient) return;
@@ -1703,9 +2003,13 @@
 
     function saveStagedMessages() {
         const selected = document.querySelectorAll('input[name="selected_recipients"]:checked');
-        const type = document.querySelector('input[name="msg_type"]:checked').value;
-        const subject = document.getElementById('message-subject').value;
-        const content = document.getElementById('message-content').value;
+        const messageConfig = buildCurrentMessageConfig();
+        if (!validateRecipientSaveRequirements(selected.length, messageConfig)) {
+            return;
+        }
+        const type = messageConfig.type;
+        const subject = messageConfig.subject;
+        const content = messageConfig.content;
         
         // Fix Image URL: always get it from the preview if it's MMS
         let imageUrl = null;
@@ -1718,11 +2022,13 @@
         
         const templateSelect = document.getElementById('template-select');
         const templateName = templateSelect.value ? templateSelect.options[templateSelect.selectedIndex].text : "Custom";
-        const attachmentId = document.getElementById('message-attachment-id').value;
+        const attachmentId = messageConfig.attachmentId;
+        const savedNames = [];
 
         selected.forEach(cb => {
             const oppId = cb.getAttribute('data-opp-id');
             const contactId = cb.value;
+            const recipientName = cb.getAttribute('data-name') || 'Recipient';
             // Only stage if it hasn't been staged yet (Staged records should never change)
             if (contactId && !stagedMessages[contactId]) {
                 stagedMessages[contactId] = {
@@ -1731,8 +2037,10 @@
                     type: type,
                     imageUrl: imageUrl,
                     templateName: templateName,
-                    attachmentId: attachmentId
+                    attachmentId: attachmentId,
+                    recipientName: recipientName
                 };
+                savedNames.push(recipientName);
                 
                 // Update table row
                 const statusCell = document.getElementById(`status-${oppId}`);
@@ -1742,7 +2050,7 @@
                 }
             }
         });
-
+        renderStagedRecipientsTable();
         showToast(`Saved staging for ${selected.length} recipients.`);
         closePreviewModal();
     }
@@ -1814,6 +2122,7 @@
         if (isActive && !forceReload) {
             // Turning OFF: Show all rows
             rows.forEach(row => row.style.display = '');
+            syncRecipientSelectAllState();
             btn.setAttribute('data-active', 'false');
             btn.style.background = '#f0f7ff';
             btn.style.color = '#0176d3';
@@ -1867,6 +2176,7 @@
                     row.style.display = 'none';
                 }
             });
+            syncRecipientSelectAllState();
 
             btn.setAttribute('data-active', 'true');
             btn.style.background = '#0176d3';
@@ -1880,11 +2190,7 @@
     function clearAll() {
         document.getElementById('message-content').value = '';
         document.getElementById('message-subject').value = '';
-        document.getElementById('template-select').value = '';
-        document.getElementById('edit-template-btn').style.display = 'none';
-        document.getElementById('preview-template-btn').style.display = 'none';
-        document.getElementById('delete-template-btn').style.display = 'none';
-        document.getElementById('template-preview-card').style.display = 'none';
+        clearTemplateSelection();
         document.getElementById('template-import-note').style.display = 'none';
         document.getElementById('template-import-note').innerText = '';
         sessionStorage.removeItem('aiAgentTemplateImported');
@@ -1892,6 +2198,7 @@
         
         // Clear staged messages
         stagedMessages = {};
+        renderStagedRecipientsTable();
         
         // Clear all status cells
         const statusCells = document.querySelectorAll('.status-cell');
@@ -1904,8 +2211,13 @@
     }
 
     document.addEventListener('DOMContentLoaded', () => {
+        captureTemplateSelectOptions();
+        renderTemplateSelectOptions('');
+        renderStagedRecipientsTable();
         refreshDemoRelayAvailability();
+        syncRecipientSelectAllState();
         updateCharLimit();
+        initializeAiAgentGuidance();
         initializeAiAgentSelection();
         initializeAiAgentTemplate();
         document.getElementById('modal-tpl-type').addEventListener('change', (event) => {
@@ -1913,6 +2225,12 @@
         });
         document.getElementById('modal-tpl-content').addEventListener('input', updateTemplateModalCounters);
         document.getElementById('modal-tpl-subject').addEventListener('input', updateTemplateModalCounters);
+        document.addEventListener('click', (event) => {
+            const shell = document.getElementById('template-lookup-shell');
+            if (shell && !shell.contains(event.target)) {
+                closeTemplateSearchResults();
+            }
+        });
     });
 </script>
 

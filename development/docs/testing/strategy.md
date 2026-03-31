@@ -80,5 +80,5 @@ For each core object family, aim to cover:
 - Prefer `DATABASE_URL=sqlite:///:memory:` for unit suites that do not require live PostgreSQL behavior.
 - Use the configured PostgreSQL database only for targeted integration checks that genuinely need the live schema or provider-connected flows.
 - Treat Slack provider verification as automated external validation, not manual testing.
-- Treat Solapi verification as an integration check that depends on network access, credentials, force-to-number configuration, and Solapi IP allowlisting.
+- Treat SureM verification as an integration check that depends on network access, credentials, request-phone configuration, and fixed-recipient configuration.
 - Do not use browser-driven or human click-through validation as an acceptance path.
